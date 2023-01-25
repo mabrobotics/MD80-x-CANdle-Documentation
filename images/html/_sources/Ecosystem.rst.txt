@@ -1,0 +1,87 @@
+Ecosystem overview 
+##################
+
+MD80
+****
+MD80 is a highly integrated brushless motor controller. It can be interfaced with a great variety of motors to turn them into advanced servo actuators. MD80 can work with both direct drive (no gearbox) and geared motors.
+
+.. figure:: md80.jpg
+   :width: 45%
+   :align: center
+   :class: no-scaled-link
+   :figclass: align-center
+
+   MD80 brushless controller
+
+
+
+CANdle and CANdle HAT
+*********************
+
+CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus. 
+
+.. |pic1| image:: CANdle.jpg
+	:alt: CANdle Device
+	:width: 45%
+	:class: no-scaled-link
+
+.. |pic2| image:: CANdleHAT.jpg
+	:alt: CANdle HAT Device
+	:width: 45%
+	:class: no-scaled-link
+	
+.. |note| image:: note.png
+	:width: 3.5%
+	:class: no-scaled-link
+	
+.. |warning| image:: warning.png
+	:width: 3.5%
+	:class: no-scaled-link
+	
+.. raw:: html
+
+	<style> .orange {color:orange} </style>
+.. role:: orange
+
+.. raw:: html
+
+	<style> .red {color:red} </style>
+.. role:: red
+
+.. raw:: html
+
+	<style> .blue {color:blue} </style>
+.. role:: blue
+
+
+|pic1| |pic2|
+
+
+|note| :blue:`Note: This is a sample note This is a sample note This is a sample note This is a sample note This is a sample note This is a sample note This is a sample note This is a sample note This is a sample note`
+
+|warning| :orange:`warning: This is a sample warning This is a sample note This is a sample warning This is a sample warning Ths is a sample warning This is a sample warning This is a sample warning This is a sample warning This is a sample warning`
+
+
+.. list-table:: Hardware errors
+   :header-rows: 1
+   :align: center
+   
+   * - Error name
+     - Error
+   * - ERROR_OFFSET_CAL
+     - Problem with the offset determination during calibration -> try recalibrating
+   * - ERROR_RESISTANCE_IDENT
+     - Problem with resistance identification -> try recalibrating or running the mdtool config bandwidth command 
+   * - ERROR_RESISTANCE_IDENT
+     - Problem with inductanceidentification -> try recalibrating or running the mdtool config bandwidth command 
+   * - ERROR_POLE_PAIR_CAL
+     - Problem with pole pair detection routine -> try recalibrating
+   * - ERROR_SETUP
+     - Problem with motor config file download -> check the config file again and try to upload one more time 
+
+
+	  	  
+
+     
+   
+
