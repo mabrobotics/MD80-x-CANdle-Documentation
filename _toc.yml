@@ -5,5 +5,5 @@ format: jb-book
 root: intro
 chapters:
 - file: Ecosystem
-- file: notebooks
-- file: markdown-notebooks
+- file: MD80
+- file: CANdle
