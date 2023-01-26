@@ -207,7 +207,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 :class: no-scaled-link
 ```
 
-* When succeeded, the motor is set up correctly and now’s the time to calibrate it using mdtool setup calibration <ID>. Please follow the @@@@calibration guidelines for more information.
+* When succeeded, the motor is set up correctly and now’s the time to calibrate it using mdtool setup calibration <ID>. Please follow the [calibration](calibration) guidelines for more information.
 
 * After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the command: `mdtool setup info <ID>`. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process.
 

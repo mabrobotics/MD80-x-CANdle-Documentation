@@ -5,7 +5,12 @@ format: jb-book
 root: intro
 chapters:
 - file: Ecosystem
+  title: MD80 x CANdle Ecosystem overview
 - file: MD80
+  title: MD80 controller
 - file: CANdle
+  title: CANdle and CANdle HAT
 - file: Software
+  title: Software package
 - file: FAQ
+  title: Common problems and FAQ

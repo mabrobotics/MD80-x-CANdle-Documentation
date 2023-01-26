@@ -166,7 +166,7 @@ and reboot:
 ```
 sudo reboot
 ```
-
+(latency)=
 ## Latency
 
 The latency was measured in a real scenario to get the most accurate results. A special flag was embedded into the MD80 command which the MD80 should return in the next response it sends. This way the whole route from the host, through CANdle, MD80 and back was profiled in terms of the delay. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus. 
