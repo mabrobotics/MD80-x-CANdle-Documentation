@@ -28,11 +28,12 @@ CANdle (CAN + dongle) is a translator device between the host controller and the
 
 ## Safety information 
 
+Even though the MD80 is a small brushless controller it can push a substantial amount of current through the motor windings. This means there are many hazards related to the high torques that the actuator is able to produce as well as elevated temperatures that may occur in close proximity to the MD80 controller or the motor. Always make sure the actuator is mounted firmly and does not pose a threat to its surroundings. Make sure the power supply current limits are set to low values (~1A) as a additional safety measure when you are unsure about the tested behavior of the system. 
+
 
 ## Operating conditions (MD80 and CANdle)
 
 ```{list-table}
-:header-rows: 1
 
 * - Ambient Temperature (Operating)
   - 0°C - 40°C
