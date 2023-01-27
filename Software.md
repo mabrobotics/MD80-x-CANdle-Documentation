@@ -160,11 +160,11 @@ For the config commands to take action after the next power cycle a save command
 
 This command runs the basic calibration routine. During calibration, the drive has to be able to rotate freely and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the calibration section.
 
-#### `mdtool setup calibration_aux <ID>`
+#### `mdtool setup calibration_out <ID>`
 
 This command runs the output encoder calibration routine. During output encoder calibration, the drive has to be able to rotate for at least two full rotations of the output shaft and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the [output encoder calibration](output_encoder_calibration) section.
 
-#### `mdtool setup motor <ID> <*.cfg>`
+#### `mdtool setup motor <*.cfg> <ID>` 
 
 This command is used to write a new motor config. For more information please see the section Configuring MD80 controller for a new motor.
 
@@ -188,8 +188,8 @@ This command is used to test the actuator movement in impedance mode. It helps t
 #### `mdtool test latency <baudrate>`
 This command is used to test the PC<>CANdle communication speed which greatly affects the PC<>MD80 communication speed. The higher the measured frequency the better. 
 
-#### `mdtool test check_aux <ID>`
-This command is used to check how accurate the external encoder is compared to the main encoder. This command runs a routine that makes one full rotation of the output shaft and then fills up the max, min and standard deviation errors of the output encoder that can be accessed using  the `mdtool setup info` command. 
+#### `mdtool test encoder <type> <ID>`
+This command is used to check how accurate a praticular encoder was calibrated. The <type> argument can be either "main" for onboard encoder, or <output> for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the `mdtool setup info` command. 
 
 #### `mdtool encoder <ID>`
 This command is useful when one wants to measure the position of the actuator in the current setup (without writing a custom script). After the command is executed the screen shows the current position of the actuator’s shaft and it does so until you press Ctrl + C. 

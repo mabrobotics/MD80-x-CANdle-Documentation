@@ -2,7 +2,7 @@
 
 ## How to check if my motor is operating properly
 
-First thing to check is the `mdtool setup info <ID>` command output. If there are no errors (meaning the error field are empty or show 'ALL OK" message) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating (you can check it using `mdtool test move` command). The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the `mdtool encoder <ID>` command output. If any of these quantities look suspicious feel free to contact us using: [contact@mabrobotics.pl](contact@mabrobotics.pl). 
+First thing to check is the `mdtool setup info <ID>` command output. If there are no errors (meaning the error field are empty or show 'ALL OK" message) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating (you can check it using `mdtool test move` command). The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the `mdtool encoder <ID>` command output. If any of these quantities look suspicious feel free to contact us using: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact).
 
 ## Motor terminals not soldered properly
 
