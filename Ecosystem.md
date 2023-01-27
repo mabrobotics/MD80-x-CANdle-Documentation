@@ -46,7 +46,7 @@ Even though the MD80 is a small brushless controller it can push a substantial a
 * - Altitude (Operating)
   - -400 m to 2000 m
 ```
-
+(hardware_setup)=
 ## Hardware setup 
 
 CAN bus topology is a single-line network structure. A typical hardware connection/wiring scheme for CANdle x MD80 ecosystem is presented in the picture below:
@@ -84,7 +84,7 @@ CANdle HAT MD80-actuator string (SPI/UART bus using Raspberry Pi 4)
 
 Here are some things to look out for while playing with the MD80 x CANdle ecosystem for the first time:
 1. Always stay cautious when dealing with actuators. Even though they don't seem like it, they may severely hurt you when unintentional movement occurs. It’s recommended to fix the actuator to the workbench. 
-2. Get accustomed to the safety limits section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you're doing - increase the limits. 
+2. Get accustomed to the [safety limits](safety_limits) section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you're doing - increase the limits. 
 3. We recommend using power supply sources that have the ability to work in two quadrants - meaning they can supply and dissipate some of the energy produced by the motor in case it works as a generator. Old trafo-based power supplies usually block current coming into the power supply, causing overvoltage events on the MD80s. The best choice is to use LiPo batteries or at least SMPS power supplies. 
 
 ## Quick startup guide
@@ -100,7 +100,7 @@ TL;DR this section is only essential when you want to configure a standalone con
 MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor. Below is a list of steps to configure the controller to work with a motor of your choice. 
 
 ```{warning}
-Steps presented in this section are made on HW 2.0 unit. These steps are universal between the controller revisions, however, be sure to always check the maximum ratings before you apply voltage to the controller. 
+Steps presented in this section are made on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the [maximum ratings](ratings) before you apply voltage to the controller. 
 ```
 
 * First make sure the MD80 controller is able to work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power). 
@@ -118,7 +118,7 @@ Magnet - encoder placement cross section
 
 The optimal height between the magnet and the encoder IC is 1mm. The magnet and the encoder must be on the same rotation axis.
 
-MD80 HW2.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The PCB 3D models for both HW2.0, HW1.1, and HV1.3 can be found here. 
+MD80 HW2.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The PCB 3D models for both HW2.0, HW1.1, and HV1.3 can be found @@@@here. 
 
 ```{figure} images/technical_drawing_md80.png
 :alt: candle
@@ -141,7 +141,7 @@ Always make sure the head of the screw is inside the white hole outline. Otherwi
 * Solder the motor wires to the PCB making sure all the individual motor wires within a single phase are connected together (in case the motor is wound with more than one wire on each phase). It is possible to solder the motor from the bottom, however, soldering the wires on the top is also acceptable. Make sure that the phase wires are connected only to their respective polygons. 
 
 ```{warning}
-The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the calibration. Each modification in wire order should be followed by a full motor calibration. 
+The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the [calibration](calibration). Each modification in wire order should be followed by a full motor [calibration](calibration). 
 ```
 
 ```{figure} images/soldering.jpg
@@ -157,7 +157,7 @@ Sometimes it may be difficult due to the high-temperature enamel on the copper w
 Failing to complete this step may result in failed calibration or/and excessive cogging torque.  
 ```
 
-* Connect the power supply to the controller through the CANdle device as specified in this section. When powered the controller should blink shortly with a green LED once a second. If the red LED is fully on there are some errors that should be cleared after the calibration. 
+* Connect the power supply to the controller through the CANdle device as specified in [this section](hardware_setup). When powered the controller should blink shortly with a green LED once a second. If the red LED is fully on there are some errors that should be cleared after the calibration. 
 
 ```{warning}
 <font color='red'>Always make sure that the polarity of the power supply is correct. MD80 controllers do not have reverse polarity protection so connecting the power supply in reverse polarity will cause permanent damage to the controller.</font> 

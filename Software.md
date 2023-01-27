@@ -11,7 +11,7 @@ CANdle C++ library is the base module of software that all other modules are bas
 The quick startup guide includes cloning the repo, building and running the examples. First, you should clone the candle repo from the MAB Robotics GitHub page to your local machine. Then, make sure you're in the main directory candle/ and run the following commands:
 ```
 mkdir build
-cd build 
+cd build
 cmake ..
 make 
 ```
