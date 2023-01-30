@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Ecosystem overview &#8212; MD80 x CANdle Manual</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MD80" href="MD80.html" />
+    <link rel="prev" title="MD80 x CANdle Manual" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MD80 x CANdle Manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD80 x CANdle Manual
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   MD80 x CANdle Ecosystem overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MD80.html">
+   MD80 controller
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CANdle.html">
+   CANdle and CANdle HAT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Software.html">
+   Software package
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FAQ.html">
+   Common problems and FAQ
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FEcosystem.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Ecosystem.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#md80">
+   MD80
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-and-candle-hat">
+   CANdle and CANdle HAT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#safety-information">
+   Safety information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operating-conditions-md80-and-candle">
+   Operating conditions (MD80 and CANdle)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware-setup">
+   Hardware setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#before-first-use">
+   Before first use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-startup-guide">
+   Quick startup guide
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-md80-controller-for-a-new-motor">
+   Configuring MD80 controller for a new motor
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Ecosystem overview</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#md80">
+   MD80
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-and-candle-hat">
+   CANdle and CANdle HAT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#safety-information">
+   Safety information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operating-conditions-md80-and-candle">
+   Operating conditions (MD80 and CANdle)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware-setup">
+   Hardware setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#before-first-use">
+   Before first use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-startup-guide">
+   Quick startup guide
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-md80-controller-for-a-new-motor">
+   Configuring MD80 controller for a new motor
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="ecosystem-overview">
+<h1>Ecosystem overview<a class="headerlink" href="#ecosystem-overview" title="Permalink to this headline">#</a></h1>
+<p>MD80 x CANdle is a system of brushless actuator controllers (MD80) and translator devices (CANdle) used for interfacing with them. MD80-based actuators can be used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and many more.</p>
+<section id="md80">
+<h2>MD80<a class="headerlink" href="#md80" title="Permalink to this headline">#</a></h2>
+<p>MD80 is a highly integrated brushless motor controller. It can be interfaced with a great variety of motors to turn them into advanced servo actuators. MD80 can work with both direct drive (no gearbox) and geared motors.</p>
+<img alt="MD80" class="no-scaled-link align-center" src="_images/md80.jpg" style="width: 400px;" />
+</section>
+<section id="candle-and-candle-hat">
+<h2>CANdle and CANdle HAT<a class="headerlink" href="#candle-and-candle-hat" title="Permalink to this headline">#</a></h2>
+<p>CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus.</p>
+<img alt="candle" class="no-scaled-link align-center" src="_images/candle.jpg" style="width: 400px;" />
+</section>
+<section id="safety-information">
+<h2>Safety information<a class="headerlink" href="#safety-information" title="Permalink to this headline">#</a></h2>
+<p>Even though the MD80 is a small brushless controller it can push a substantial amount of current through the motor windings. This means there are many hazards related to the high torques that the actuator is able to produce as well as elevated temperatures that may occur in close proximity to the MD80 controller or the motor. Always make sure the actuator is mounted firmly and does not pose a threat to its surroundings. Make sure the power supply current limits are set to low values (~1A) as a additional safety measure when you are unsure about the tested behavior of the system.</p>
+</section>
+<section id="operating-conditions-md80-and-candle">
+<h2>Operating conditions (MD80 and CANdle)<a class="headerlink" href="#operating-conditions-md80-and-candle" title="Permalink to this headline">#</a></h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Ambient Temperature (Operating)</p></td>
+<td><p>0°C - 40°C</p></td>
+</tr>
+<tr class="row-even"><td><p>Ambient Temperature (non-operating)</p></td>
+<td><p>0°C - 60°C</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum Humidity (Operating)</p></td>
+<td><p>up to 95%, non-condensing at 40 ºC</p></td>
+</tr>
+<tr class="row-even"><td><p>Maximum Humidity (Non-Operating)</p></td>
+<td><p>up to 95%, non-condensing at 60 ºC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Altitude (Operating)</p></td>
+<td><p>-400 m to 2000 m</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hardware-setup">
+<span id="id1"></span><h2>Hardware setup<a class="headerlink" href="#hardware-setup" title="Permalink to this headline">#</a></h2>
+<p>CAN bus topology is a single-line network structure. A typical hardware connection/wiring scheme for CANdle x MD80 ecosystem is presented in the picture below:</p>
+<img alt="candle" class="no-scaled-link align-center" src="_images/hardware_setup.png" />
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>In case you’d like to read more about the recommended lengths of the bus segments we suggest the elektormotus guide.</p>
+</div>
+<p>The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (<code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code> command) on each controlller. Termination should be always turned on or attached to the last controller in a string.</p>
+<figure class="align-center" id="id2">
+<img alt="candle" class="no-scaled-link" src="_images/hardware_setup_candle.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">CANdle MD80-actuator string (USB bus)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<img alt="candle" class="no-scaled-link" src="_images/hardware_setup_candleHAT.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">CANdle HAT MD80-actuator string (SPI/UART bus using Raspberry Pi 4)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="before-first-use">
+<h2>Before first use<a class="headerlink" href="#before-first-use" title="Permalink to this headline">#</a></h2>
+<p>Here are some things to look out for while playing with the MD80 x CANdle ecosystem for the first time:</p>
+<ol class="simple">
+<li><p>Always stay cautious when dealing with actuators. Even though they don’t seem like it, they may severely hurt you when unintentional movement occurs. It’s recommended to fix the actuator to the workbench.</p></li>
+<li><p>Get accustomed to the <a class="reference internal" href="MD80.html#safety-limits"><span class="std std-ref">safety limits</span></a> section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you’re doing - increase the limits.</p></li>
+<li><p>We recommend using power supply sources that have the ability to work in two quadrants - meaning they can supply and dissipate some of the energy produced by the motor in case it works as a generator. Old trafo-based power supplies usually block current coming into the power supply, causing overvoltage events on the MD80s. The best choice is to use LiPo batteries or at least SMPS power supplies.</p></li>
+</ol>
+</section>
+<section id="quick-startup-guide">
+<h2>Quick startup guide<a class="headerlink" href="#quick-startup-guide" title="Permalink to this headline">#</a></h2>
+<p>Please see the quick startup guide on our YouTube channel: <a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;t=1s">MD80 x CANdle - Getting Started Tutorial</a></p>
+</section>
+<section id="configuring-md80-controller-for-a-new-motor">
+<h2>Configuring MD80 controller for a new motor<a class="headerlink" href="#configuring-md80-controller-for-a-new-motor" title="Permalink to this headline">#</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>TL;DR this section is only essential when you want to configure a standalone controller with a motor or reconfigure a driver for a new motor. When purchasing an actuator assembly the actuator will come preconfigured.</p>
+</div>
+<p>MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor. Below is a list of steps to configure the controller to work with a motor of your choice.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Steps presented in this section are made on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> before you apply voltage to the controller.</p>
+</div>
+<ul class="simple">
+<li><p>First make sure the MD80 controller is able to work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power).</p></li>
+<li><p>Place the <a class="reference external" href="https://www.supermagnete.de/eng/disc-magnets-neodymium/disc-magnet-10mm-5mm_S-10-05-DN">diametrically magnetized magnet</a> on the motor shaft and mount the MD80 controller firmly centered above the magnet.</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<img alt="candle" class="no-scaled-link" src="_images/magnet_encoder_asm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Magnet - encoder placement cross section</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The optimal height between the magnet and the encoder IC is 1mm. The magnet and the encoder must be on the same rotation axis.</p>
+<p>MD80 HW2.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The PCB 3D models for both HW2.0, HW1.1, and HV1.3 can be found &#64;&#64;&#64;&#64;here.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/technical_drawing_md80.png" />
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always make sure the head of the screw is inside the white hole outline. Otherwise, it may cause permanent damage to the controller when a short circuit occurs between the head screw and any of the copper planes. Using M2.5 socket screws is recommended.</p>
+</div>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/screw_placement.png" />
+</figure>
+<ul class="simple">
+<li><p>Solder the motor wires to the PCB making sure all the individual motor wires within a single phase are connected together (in case the motor is wound with more than one wire on each phase). It is possible to solder the motor from the bottom, however, soldering the wires on the top is also acceptable. Make sure that the phase wires are connected only to their respective polygons.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a>. Each modification in wire order should be followed by a full motor <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a>.</p>
+</div>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/soldering.jpg" />
+</figure>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Sometimes it may be difficult due to the high-temperature enamel on the copper wires. In that case, try to apply solder at high temperatures using flux until the solder sticks to all wires nicely.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Failing to complete this step may result in failed calibration or/and excessive cogging torque.</p>
+</div>
+<ul class="simple">
+<li><p>Connect the power supply to the controller through the CANdle device as specified in <a class="reference internal" href="#hardware-setup"><span class="std std-ref">this section</span></a>. When powered the controller should blink shortly with a green LED once a second. If the red LED is fully on there are some errors that should be cleared after the calibration.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><font color='red'>Always make sure that the polarity of the power supply is correct. MD80 controllers do not have reverse polarity protection so connecting the power supply in reverse polarity will cause permanent damage to the controller.</font></p>
+</div>
+<ul class="simple">
+<li><p>Connect CANdle to the PC using a USB type-C cable.</p></li>
+<li><p>If the current version of your devices is older please always <b> upgrade the MD80 first, then update CANdle, and at the end update the MDtool </b>. For the MDtool installation guide refer to the <a class="reference internal" href="Software.html#mdtool"><span class="std std-ref">MDtool</span></a> section.</p></li>
+<li><p>Once installed and run the MDtool will create an MDtool directory in <b>~/.config</b>  directory.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Press Ctrl+H to view the hidden folders (starting with a dot)</p>
+</div>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/mdtool_dir.png" />
+</figure>
+<p>There, you will find a mdtool.ini file which contains factory settings and should not be modified,  and a mdtool_motors directory, which holds all the motor configuration files you will work with.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/mdtool_motors_dir.png" />
+</figure>
+<p>Feel free to add a new *.cfg file for your custom motors in there. Use the already existing files as a reference, especially the AK60-6.cfg which contains some additional comments.</p>
+<ul class="simple">
+<li><p>Check if the MD80 controller can be discovered properly using the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command</p></li>
+</ul>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/mdtool_ping_all.png" />
+</figure>
+<ul class="simple">
+<li><p>To setup the MD80 controller simply call <a class="reference internal" href="Software.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_motor_EX.png" />
+</figure>
+<ul class="simple">
+<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using mdtool setup calibration <ID>. Please follow the <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information.</p></li>
+<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process.</p></li>
+</ul>
+<p>Correct after-calibration mdtool setup info command output may look like this:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_info_correct.png" />
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">MD80 x CANdle Manual</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="MD80.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MD80</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By MAB Robotics<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
