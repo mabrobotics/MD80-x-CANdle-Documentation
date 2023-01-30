@@ -164,7 +164,7 @@ Failing to complete this step may result in failed calibration or/and excessive 
 ```
 * Connect CANdle to the PC using a USB type-C cable. 
 
-* If the current version of your devices is older please always <b> upgrade the MD80 first, then update CANdle, and at the end update the MDtool </b>. For the MDtool installation guide refer to the MDtool section.
+* If the current version of your devices is older please always <b> upgrade the MD80 first, then update CANdle, and at the end update the MDtool </b>. For the MDtool installation guide refer to the [MDtool](mdtool) section.
 
 * Once installed and run the MDtool will create an MDtool directory in <b>~/.config</b>  directory. 
 
@@ -190,7 +190,7 @@ There, you will find a mdtool.ini file which contains factory settings and shoul
 Feel free to add a new *.cfg file for your custom motors in there. Use the already existing files as a reference, especially the AK60-6.cfg which contains some additional comments. 
 
 
-* Check if the MD80 controller can be discovered properly using the `mdtool ping all` command
+* Check if the MD80 controller can be discovered properly using the [`mdtool ping all`](mdtool_ping) command
 
 ```{figure} images/mdtool_ping_all.png
 :alt: candle
@@ -199,7 +199,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 :class: no-scaled-link
 ```
 
-* To setup the MD80 controller simply call `mdtool setup motor <ID> <*.cfg>` where the ID is the ID that shows up after the `mdtool ping` command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again. 
+* To setup the MD80 controller simply call [`mdtool setup motor <ID> <*.cfg>`](mdtool_setup_motor) where the ID is the ID that shows up after the [`mdtool ping`](mdtool_ping) command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again. 
 
 ```{figure} images/mdtool_setup_motor_EX.png
 :alt: candle
@@ -210,7 +210,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 
 * When succeeded, the motor is set up correctly and now’s the time to calibrate it using mdtool setup calibration <ID>. Please follow the [calibration](calibration) guidelines for more information.
 
-* After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the command: `mdtool setup info <ID>`. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process.
+* After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the [`mdtool setup info <ID>`](mdtool_setup_info). This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process.
 
 Correct after-calibration mdtool setup info command output may look like this:
 

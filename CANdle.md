@@ -67,7 +67,7 @@ When the control code finishes, the `Candle::end()` method should be called. Thi
 
 ## USB bus
 
-The USB bus is the most common one, used in both CANdle and CANdle HAT. This is the slowest communication bus when it comes to performance, due to the non-realtime nature of the host, however, it's the easiest one to set up and test. Since the USB communication interface is not well-suited for real-time applications due to random host delays, the MD80 baudrate is not the limiting factor - you can set it to 1/2/5/8 Mbps and there will be no difference in the update rate. 
+The USB bus is the most common one, used in both CANdle and CANdle HAT. This is one of the slowest communication bus when it comes to performance, due to the non-realtime nature of the host, however, it's the easiest one to set up and test. Since the USB communication interface is not well-suited for real-time applications due to random host delays, the MD80 baudrate is not the limiting factor - you can set it to 1/2/5/8 Mbps and there will be no difference in the update rate. 
 
 ```{hint}
 We highly recommend using the USB bus set up for the first run. 
@@ -75,7 +75,7 @@ We highly recommend using the USB bus set up for the first run.
 
 ## SPI bus
 
-The SPI bus is only available on CANdle HAT devices. It’s the fastest possible bus that can be used to communicate with the MD80 controllers using CANdle HAT. Together with the RT-PATCHED kernel of the system, you will get the best performance. 
+The SPI bus is only available on CANdle HAT devices. It’s the fastest possible bus that can be used to communicate with the MD80 controllers using CANdle HAT. Together with the RT-PATCH'ed kernel of the system, you will get the best performance. 
 
 ```{hint}
 CANdle HAT in SPI mode works with all FDCAN speeds, however, we advise setting it to 8M for the best performance. 

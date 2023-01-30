@@ -98,10 +98,12 @@ For the command prompt to work after the installation you have to restart the te
 
 ### Commands
 
+(mdtool_bus)=
 #### `mdtool bus <bus> <device>`
 
 MDtool is able to work with CANdle and CANdle HAT. This is why before the first use it has to be configured for a particular communication bus. Use the bus command to set it to USB, SPI, or UART, based on which device you own. The default bus setting is USB. You don't have to repeat this setting unless you want to change the current communication bus. The device parameter is optional and can be used in case of the UART and SPI bus, if the default device (/dev/spidev0.0 in case of SPI or /dev/ttyAMA0 in case of UART) is not suitable for your application. 
 
+(mdtool_ping)=
 #### `mdtool ping <baud>`
 
 MDtool is able to discover the drives that are connected to the CAN bus. You can ping the drives at a specific speed (1M/2M/5M/8M) or just use the ‘all’ keyword for pinging all speeds in one go. 
@@ -110,6 +112,7 @@ MDtool is able to discover the drives that are connected to the CAN bus. You can
 CANdle does not support working with drives configured with different CAN speeds on the same CAN bus – please make sure when “mdtool ping all” command is executed, all discovered drives lie in a single speed category.
 ```
 
+(mdtool_config_zero)=
 #### `mdtool config zero <ID>`
 
 This command sets the current motor position to zero - from the moment this command is called all encoder measurements are referenced from the current position. 
@@ -118,6 +121,7 @@ This command sets the current motor position to zero - from the moment this comm
 This setting has to be saved to be preserved after power down! Please see the config save <ID> command.
 ```
 
+(mdtool_config_can)=
 #### `mdtool config can <current ID> <new ID> <baud> <watchdog period [ms]> <termination>`
 
 This command is used to change MD80’s parameters such as CAN ID, CAN speed, and CAN watchdog.
@@ -132,7 +136,7 @@ Software-controlled termination is available since version HW V2.0. It is an opt
 ```{note}
 This setting has to be saved to be preserved after power down! Please see the mdtool config save <ID> command.
 ```
-
+(mdtool_config_current)=
 #### `mdtool config current <ID> <current>`
 
 This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor's maximum torque capabilities. Using the config current command one can increase the maximum current. The absolute maximum value is 40 A. 
@@ -144,6 +148,7 @@ The guarantee does not include burnout actions due to too high current settings.
 This setting has to be saved to be preserved after power down! Please see the config save <ID> command.
 ```
 
+(mdtool_config_bandwidth)=
 #### `mdtool config bandwidth <ID> <torque bandwidth in Hz>`
 
 This command can be used to change the torque bandwidth without recalibrating the actuator. For more information on the torque bandwidth please see the section about [calibration](calibration). 
@@ -152,22 +157,27 @@ This command can be used to change the torque bandwidth without recalibrating th
 This setting has to be saved to be preserved after power down! Please see the config save <ID> command.
 ```
 
+(mdtool_config_save)=
 #### `mdtool config save <ID>`
 
 For the config commands to take action after the next power cycle a save command has to be executed. This command saves the current drive’s settings to the non-volatile FLASH memory.
 
+(mdtool_setup_calibration)=
 #### `mdtool setup calibration <ID>`
 
 This command runs the basic calibration routine. During calibration, the drive has to be able to rotate freely and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the calibration section.
 
+(mdtool_setup_calibration_out)=
 #### `mdtool setup calibration_out <ID>`
 
 This command runs the output encoder calibration routine. During output encoder calibration, the drive has to be able to rotate for at least two full rotations of the output shaft and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the [output encoder calibration](output_encoder_calibration) section.
 
+(mdtool_setup_motor)=
 #### `mdtool setup motor <*.cfg> <ID>` 
 
 This command is used to write a new motor config. For more information please see the section Configuring MD80 controller for a new motor.
 
+(mdtool_setup_info)=
 #### `mdtool setup info <ID>`
 This command is used to read the motor internal parameters. An example command output might look like this:
 
@@ -179,18 +189,23 @@ This command is used to read the motor internal parameters. An example command o
 ```
 Reading the errors is the easiest way of debugging possible problems with the drive. For errors description please visit the [error codes](error_codes) section. 
 
+(mdtool_blink)=
 #### `mdtool blink <ID>`
 This command is mostly used to find an MD80 drive on a long CAN bus using its ID – the command makes the drive flash its onboard LEDs for easy identification.
 
+(mdtool_test_move)=
 #### `mdtool test move <ID> <position>`
 This command is used to test the actuator movement in impedance mode. It helps to assess if the calibration was successful and if there are no issues visible to the naked eye. The position argument is always the amount of position for the motor to be moved from the current position. 
 
+(mdtool_test_latency)=
 #### `mdtool test latency <baudrate>`
 This command is used to test the PC<>CANdle communication speed which greatly affects the PC<>MD80 communication speed. The higher the measured frequency the better. 
 
+(mdtool_test_encoder)=
 #### `mdtool test encoder <type> <ID>`
-This command is used to check how accurate a praticular encoder was calibrated. The <type> argument can be either "main" for onboard encoder, or <output> for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the `mdtool setup info` command. 
+This command is used to check how accurate a praticular encoder was calibrated. The 'type' argument can be either 'main' for onboard encoder, or 'output' for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the [`mdtool setup info`](mdtool_setup_info) command. 
 
+(mdtool_encoder)=
 #### `mdtool encoder <ID>`
 This command is useful when one wants to measure the position of the actuator in the current setup (without writing a custom script). After the command is executed the screen shows the current position of the actuator’s shaft and it does so until you press Ctrl + C. 
 
@@ -292,7 +307,7 @@ Informing that for both drives mode has been set correctly.
 
 
 ### Set Zero 
-Often when starting, setting a current position to zero is desired. This can be accomplished with a call to `/zero_md80s service`.
+Often when starting, setting a current position to zero is desired. This can be accomplished with a call to `/zero_md80s` service.
 ```
 rosservice call /zero_md80s "{drive_ids:[200, 800]}"
 ```
@@ -301,7 +316,7 @@ rosservice call /zero_md80s "{drive_ids:[200, 800]}"
 Using services `/enable_md80s` and `/disable_md80s` the drives and the node publishers and subscribers can be enabled/disabled.
 
 ```{note}
-After calling /enable_md80s service, no calls to services other than /disable_md80s should be done.
+After calling `/enable_md80s` service, no calls to services other than `/disable_md80s` should be done.
 ```
 
 After enabling, the node will publish current joint states to `/joint_states` at a frequency dependent on a currently chosen communication bus and speed mode. Joint names are generated based on drive ID, for example, a drive with id 546 will be called `Joint 546`.
@@ -446,7 +461,7 @@ ros2 topic pub /md80/motion_command candle_ros2/MotionCommand "{drive_ids: [200,
 
 ## MD80 update tool - MAB CAN Flasher 
 
-MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the `mdtool ping all` command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher -help` command on the first use to get acquainted with the available options.
+MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher -help` command on the first use to get acquainted with the available options.
 
 ### Example use cases 
 `./MAB_CAN_Flasher --id 150 --baud 1M` - update the md80 controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:
