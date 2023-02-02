@@ -353,8 +353,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configuring-md80-controller-for-a-new-motor">
-   Configuring MD80 controller for a new motor
+  <a class="reference internal nav-link" href="#configuring-the-md80-controller-for-a-new-motor">
+   Configuring the MD80 controller for a new motor
   </a>
  </li>
 </ul>
@@ -412,8 +412,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configuring-md80-controller-for-a-new-motor">
-   Configuring MD80 controller for a new motor
+  <a class="reference internal nav-link" href="#configuring-the-md80-controller-for-a-new-motor">
+   Configuring the MD80 controller for a new motor
   </a>
  </li>
 </ul>
@@ -441,7 +441,7 @@ title="Print to PDF"
 </section>
 <section id="safety-information">
 <h2>Safety information<a class="headerlink" href="#safety-information" title="Permalink to this headline">#</a></h2>
-<p>Even though the MD80 is a small brushless controller it can push a substantial amount of current through the motor windings. This means there are many hazards related to the high torques that the actuator is able to produce as well as elevated temperatures that may occur in close proximity to the MD80 controller or the motor. Always make sure the actuator is mounted firmly and does not pose a threat to its surroundings. Make sure the power supply current limits are set to low values (~1A) as a additional safety measure when you are unsure about the tested behavior of the system.</p>
+<p>Even though the MD80 is a small brushless controller it can push a substantial amount of current through the motor windings. This means there are many hazards related to the high torques that the actuator is able to produce as well as elevated temperatures that may occur close to the MD80 controller or the motor. Always make sure the actuator is mounted firmly and does not pose a threat to its surroundings. Make sure the power supply current limits are set to low values (~1A) as an additional safety measure when you are unsure about the tested behavior of the system.</p>
 </section>
 <section id="operating-conditions-md80-and-candle">
 <h2>Operating conditions (MD80 and CANdle)<a class="headerlink" href="#operating-conditions-md80-and-candle" title="Permalink to this headline">#</a></h2>
@@ -477,7 +477,7 @@ title="Print to PDF"
 <p class="admonition-title">Hint</p>
 <p>In case you’d like to read more about the recommended lengths of the bus segments we suggest the elektormotus guide.</p>
 </div>
-<p>The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (<code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code> command) on each controlller. Termination should be always turned on or attached to the last controller in a string.</p>
+<p>The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (<code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code> command) on each controller. Termination should be always turned on or attached to the last controller in a string.</p>
 <figure class="align-center" id="id2">
 <img alt="candle" class="no-scaled-link" src="_images/hardware_setup_candle.jpg" />
 <figcaption>
@@ -497,15 +497,15 @@ title="Print to PDF"
 <ol class="simple">
 <li><p>Always stay cautious when dealing with actuators. Even though they don’t seem like it, they may severely hurt you when unintentional movement occurs. It’s recommended to fix the actuator to the workbench.</p></li>
 <li><p>Get accustomed to the <a class="reference internal" href="MD80.html#safety-limits"><span class="std std-ref">safety limits</span></a> section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you’re doing - increase the limits.</p></li>
-<li><p>We recommend using power supply sources that have the ability to work in two quadrants - meaning they can supply and dissipate some of the energy produced by the motor in case it works as a generator. Old trafo-based power supplies usually block current coming into the power supply, causing overvoltage events on the MD80s. The best choice is to use LiPo batteries or at least SMPS power supplies.</p></li>
+<li><p>We recommend using power supply sources that can work in two quadrants - meaning they can supply and dissipate some of the energy produced by the motor in case it works as a generator. Old trafo-based power supplies usually block current coming into the power supply, causing overvoltage events on the MD80s. The best choice is to use LiPo batteries or at least SMPS power supplies.</p></li>
 </ol>
 </section>
 <section id="quick-startup-guide">
 <h2>Quick startup guide<a class="headerlink" href="#quick-startup-guide" title="Permalink to this headline">#</a></h2>
 <p>Please see the quick startup guide on our YouTube channel: <a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;t=1s">MD80 x CANdle - Getting Started Tutorial</a></p>
 </section>
-<section id="configuring-md80-controller-for-a-new-motor">
-<h2>Configuring MD80 controller for a new motor<a class="headerlink" href="#configuring-md80-controller-for-a-new-motor" title="Permalink to this headline">#</a></h2>
+<section id="configuring-the-md80-controller-for-a-new-motor">
+<h2>Configuring the MD80 controller for a new motor<a class="headerlink" href="#configuring-the-md80-controller-for-a-new-motor" title="Permalink to this headline">#</a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>TL;DR this section is only essential when you want to configure a standalone controller with a motor or reconfigure a driver for a new motor. When purchasing an actuator assembly the actuator will come preconfigured.</p>
@@ -513,10 +513,10 @@ title="Print to PDF"
 <p>MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor. Below is a list of steps to configure the controller to work with a motor of your choice.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Steps presented in this section are made on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> before you apply voltage to the controller.</p>
+<p>Steps presented in this section are made on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> before applying voltage to the controller.</p>
 </div>
 <ul class="simple">
-<li><p>First make sure the MD80 controller is able to work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power).</p></li>
+<li><p>First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power).</p></li>
 <li><p>Place the <a class="reference external" href="https://www.supermagnete.de/eng/disc-magnets-neodymium/disc-magnet-10mm-5mm_S-10-05-DN">diametrically magnetized magnet</a> on the motor shaft and mount the MD80 controller firmly centered above the magnet.</p></li>
 </ul>
 <figure class="align-center" id="id4">
@@ -526,19 +526,22 @@ title="Print to PDF"
 </figcaption>
 </figure>
 <p>The optimal height between the magnet and the encoder IC is 1mm. The magnet and the encoder must be on the same rotation axis.</p>
-<p>MD80 HW2.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The PCB 3D models for both HW2.0, HW1.1, and HV1.3 can be found &#64;&#64;&#64;&#64;here.</p>
+<p>MD80 V2.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The PCB 3D models for both V2.0, HW1.1, and HV1.3 can be found here.</p>
 <figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/technical_drawing_md80.png" />
+<img alt="_images/PCB_drawing.png" class="bg-primary mb-1" src="_images/PCB_drawing.png" />
+</figure>
+<figure class="align-center">
+<img alt="_images/mount_cross_section.png" class="bg-primary mb-1" src="_images/mount_cross_section.png" />
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Always make sure the head of the screw is inside the white hole outline. Otherwise, it may cause permanent damage to the controller when a short circuit occurs between the head screw and any of the copper planes. Using M2.5 socket screws is recommended.</p>
+<p>Always make sure the head of the screw is inside the white hole outline. Otherwise, it may cause permanent damage to the controller when a short circuit occurs between the head screw and any of the copper planes. Using M2.5 DIN912 stainless socket screws is recommended.</p>
 </div>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/screw_placement.png" />
 </figure>
 <ul class="simple">
-<li><p>Solder the motor wires to the PCB making sure all the individual motor wires within a single phase are connected together (in case the motor is wound with more than one wire on each phase). It is possible to solder the motor from the bottom, however, soldering the wires on the top is also acceptable. Make sure that the phase wires are connected only to their respective polygons.</p></li>
+<li><p>Solder the motor wires to the PCB making sure all the individual motor wires within a single phase are connected (in case the motor is wound with more than one wire on each phase). It is possible to solder the motor from the bottom, however, soldering the wires on the top is also acceptable. Make sure that the phase wires are connected only to their respective polygons.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -586,14 +589,20 @@ title="Print to PDF"
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_ping_all.png" />
 </figure>
 <ul class="simple">
-<li><p>To setup the MD80 controller simply call <a class="reference internal" href="Software.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
+<li><p>To setup the MD80 controller simply call <a class="reference internal" href="Software.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;*.cfg&gt;</span> <span class="pre">&lt;ID&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_motor_EX.png" />
 </figure>
 <ul class="simple">
-<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using mdtool setup calibration <ID>. Please follow the <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information.</p></li>
-<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process.</p></li>
+<li><p>Do not worry if at this point there are many errors after calling <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a> command (like below). They should be cleared after a successful calibration.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/after_setup_EX8108.png" />
+</figure>
+<ul class="simple">
+<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using <a class="reference internal" href="Software.html#mdtool-setup-calibration"><span class="std std-ref">mdtool setup calibration <ID></span></a>. Please follow the <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information.</p></li>
+<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error’s description and try the recommended action to clear it <a class="reference internal" href="MD80.html#error-codes"><span class="std std-ref">error section</span></a>.</p></li>
 </ul>
 <p>Correct after-calibration mdtool setup info command output may look like this:</p>
 <figure class="align-center">

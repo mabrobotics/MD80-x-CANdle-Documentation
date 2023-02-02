@@ -987,8 +987,16 @@ Example use case: In legged robots, force control can be achieved by advanced co
 <p>Currently we support one encoder type with two placement configurations:</p>
 <ul class="simple">
 <li><p>AS5047 placed axially on the output shaft with a regular diametrically magnetized magnet</p></li>
+</ul>
+<figure class="align-center">
+<img alt="_images/output_encoder_axial.jpg" class="no-scaled-link" src="_images/output_encoder_axial.jpg" style="width: 300px;" />
+</figure>
+<ul class="simple">
 <li><p>AS5047 placed non-axially together with a diametrically magnetized ring magnet</p></li>
 </ul>
+<figure class="align-center">
+<img alt="_images/output_encoder_offaxis.jpg" class="no-scaled-link" src="_images/output_encoder_offaxis.jpg" style="width: 300px;" />
+</figure>
 <p>The output encoder configuration is performed in the motor config files and saved to the MD80 using the <a class="reference internal" href="Software.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span></code></span></a> command. There are only two parameters used in output encoder setup:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">output</span> <span class="n">encoder</span><span class="p">]</span>
 <span class="n">output</span> <span class="n">encoder</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">encoder</span> <span class="nb">type</span><span class="o">&gt;</span>
@@ -1077,7 +1085,7 @@ motion based on <b><font color="#008000">main encoder</font></b>,</p></td>
 <ul class="simple">
 <li><ul>
 <li><p>in case of axially placed sensors make sure they are placed in center at the right height above the magnet</p></li>
-<li><p>in case of non-axial configuration make sure the magnet is close to the ring magnet (&lt;0.5mm) and the sensor IC is centered in respect to the ring magnet plane.</p></li>
+<li><p>in case of non-axial configuration make sure the magnet is close to the ring magnet (&lt;0.5mm) and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.</p></li>
 </ul>
 </li>
 <li><p>Connect the MD80 with the encoder using a picoblade series cable assembly and apply voltage to the MD80.</p></li>
