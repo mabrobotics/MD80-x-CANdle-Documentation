@@ -91,6 +91,7 @@ Here are some things to look out for while playing with the MD80 x CANdle ecosys
 
 Please see the quick startup guide on our YouTube channel: [MD80 x CANdle - Getting Started Tutorial](https://www.youtube.com/watch?v=bIZuhFpFtus&t=1s)
 
+(configuring_MD80_for_new_motor)=
 ## Configuring the MD80 controller for a new motor
 
 ```{hint}
@@ -202,7 +203,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 :class: no-scaled-link
 ```
 
-* To setup the MD80 controller simply call [`mdtool setup motor <*.cfg> <ID>`](mdtool_setup_motor) where the ID is the ID that shows up after the [`mdtool ping`](mdtool_ping) command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again. 
+* To setup the MD80 controller simply call [`mdtool setup motor <ID> <*.cfg>`](mdtool_setup_motor) where the ID is the ID that shows up after the [`mdtool ping`](mdtool_ping) command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again. 
 
 ```{figure} images/mdtool_setup_motor_EX.png
 :alt: candle

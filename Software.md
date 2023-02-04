@@ -173,9 +173,9 @@ This command runs the basic calibration routine. During calibration, the drive h
 This command runs the output encoder calibration routine. During output encoder calibration, the drive has to be able to rotate for at least two full rotations of the output shaft and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the [output encoder calibration](output_encoder_calibration) section.
 
 (mdtool_setup_motor)=
-#### `mdtool setup motor <*.cfg> <ID>` 
+#### `mdtool setup motor <ID> <*.cfg>` 
 
-This command is used to write a new motor config. For more information please see the section Configuring MD80 controller for a new motor.
+This command is used to write a new motor config. For more information please see the section [configuring MD80 controller for a new motor](configuring_MD80_for_new_motor).
 
 (mdtool_setup_info)=
 #### `mdtool setup info <ID>`
