@@ -48,11 +48,11 @@ or delete the build directory contents and call cmake .. again (the default libr
 :class: no-scaled-link
 ```
 
-### CANdle Python library
+## CANdle Python library
 
 CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: https://pypi.org/project/pyCandleMAB/ and installed using pip:
 ```
-sudo python3 -m pip install pyCandleMAB
+python3 -m pip install pyCandleMAB
 ```
 It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the [getting started guide](https://www.youtube.com/watch?v=bIZuhFpFtus&t=1s). To achieve the best performance in low latency systems we advise using the C++ libraries directly.
 
@@ -60,9 +60,6 @@ It can be used to quickly start playing with the actuators, without the need to 
 We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.
 ```
 
-```{warning}
-Currently only C++ library allows reading and modifying MD80 registers from the script level.
-```
 (mdtool)=
 ## MDtool
 
@@ -139,7 +136,7 @@ This setting has to be saved to be preserved after power down! Please see the md
 (mdtool_config_current)=
 #### `mdtool config current <ID> <current>`
 
-This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor's maximum torque capabilities. Using the config current command one can increase the maximum current. The absolute maximum value is 40 A. 
+This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor's maximum torque capabilities. Using the config current command one can increase the maximum current. For the absolute maximum please refer to [maximum ratings](ratings) section.
 
 ```{warning}
 The guarantee does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.
@@ -175,7 +172,13 @@ This command runs the output encoder calibration routine. During output encoder 
 (mdtool_setup_motor)=
 #### `mdtool setup motor <ID> <*.cfg>` 
 
-This command is used to write a new motor config. For more information please see the section [configuring MD80 controller for a new motor](configuring_MD80_for_new_motor).
+This command is used to write a new motor config. For the config file argument one of the *.cfg files from ~/.config/mtool/mdtool_motors/ directory should be passed. Check out the description below for more information on the respective config fields:
+
+```{figure} images/config_AK60.png
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 (mdtool_setup_info)=
 #### `mdtool setup info <ID>`
@@ -204,6 +207,10 @@ This command is used to test the PC<>CANdle communication speed which greatly af
 (mdtool_test_encoder)=
 #### `mdtool test encoder <type> <ID>`
 This command is used to check how accurate a praticular encoder was calibrated. The 'type' argument can be either 'main' for onboard encoder, or 'output' for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the [`mdtool setup info`](mdtool_setup_info) command. 
+
+```{warning}
+Main encoder errors can be larger for non-sinusoidal motors (BLDC motors) because of their back-emf waveform shape. If you care about very precise positioning we advise using PMSM motors (sinusoidal).
+```
 
 (mdtool_encoder)=
 #### `mdtool encoder <ID>`
@@ -458,51 +465,3 @@ Setting desired position, velocity, and torque is done via `/md80/motion_command
 ```
 ros2 topic pub /md80/motion_command candle_ros2/MotionCommand "{drive_ids: [200, 800], target_position: [3.0, 3.0], target_velocity: [0.0, 0.0], target_torque: [0.0, 0.0]}"
 ```
-
-## MD80 update tool - MAB CAN Flasher 
-
-MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher -help` command on the first use to get acquainted with the available options.
-
-### Example use cases 
-`./MAB_CAN_Flasher --id 150 --baud 1M` - update the md80 controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:
-
-```{figure} images/flashing1.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-`./MAB_CAN_Flasher --all -baud 1M` - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:
-
-```{figure} images/flashing2.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-In case the update process is interrupted and the md80 controller seems to be broken, you can disconnect the power supply, call:
-```
-./MAB_CAN_Flasher --id 9 --baud 1M --wait 
-```
-and while the command is running connect the power supply. This command will wait for the bootloader response and try to recover the firmware. If the flashing does not occur in the first power cycle you can repeat it until the bootloader is detected. The example output of the wait option for the ak80-64 motor is shown below:
-
-```{figure} images/flashing3_wait.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-## CANdle update tool - MAB USB Flasher
-
-**MAB_USB_Flasher** is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). When an update is released we will prepare a MAB_USB_Flasher application and send it to you. To update, first turn off all applications that may be using CANdle, and simply run `./MAB_USB_Flasher`.
-
-```{figure} images/mab_usb_flasher.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-After a successful update, the CANdle device is ready. 
