@@ -116,6 +116,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="QuickStartGuide.html">
+   Quick Start Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Ecosystem.html">
    MD80 x CANdle Ecosystem overview
   </a>
@@ -138,6 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="FAQ.html">
    Common problems and FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Downloads.html">
+   Downloads
   </a>
  </li>
 </ul>
@@ -332,12 +342,12 @@ title="Print to PDF"
      Building as a static lib
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#candle-python-library">
-     CANdle Python library
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-python-library">
+   CANdle Python library
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mdtool">
@@ -553,7 +563,7 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mdtool-setup-motor-cfg-id">
+      <a class="reference internal nav-link" href="#mdtool-setup-motor-id-cfg">
        <code class="docutils literal notranslate">
         <span class="pre">
          mdtool
@@ -565,10 +575,10 @@ title="Print to PDF"
          motor
         </span>
         <span class="pre">
-         &lt;*.cfg&gt;
+         &lt;ID&gt;
         </span>
         <span class="pre">
-         &lt;ID&gt;
+         &lt;*.cfg&gt;
         </span>
        </code>
       </a>
@@ -748,23 +758,6 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">
-   MD80 update tool - MAB CAN Flasher
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-use-cases">
-     Example use cases
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">
-   CANdle update tool - MAB USB Flasher
-  </a>
  </li>
 </ul>
 
@@ -800,12 +793,12 @@ title="Print to PDF"
      Building as a static lib
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#candle-python-library">
-     CANdle Python library
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-python-library">
+   CANdle Python library
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mdtool">
@@ -1021,7 +1014,7 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mdtool-setup-motor-cfg-id">
+      <a class="reference internal nav-link" href="#mdtool-setup-motor-id-cfg">
        <code class="docutils literal notranslate">
         <span class="pre">
          mdtool
@@ -1033,10 +1026,10 @@ title="Print to PDF"
          motor
         </span>
         <span class="pre">
-         &lt;*.cfg&gt;
+         &lt;ID&gt;
         </span>
         <span class="pre">
-         &lt;ID&gt;
+         &lt;*.cfg&gt;
         </span>
        </code>
       </a>
@@ -1216,23 +1209,6 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">
-   MD80 update tool - MAB CAN Flasher
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-use-cases">
-     Example use cases
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">
-   CANdle update tool - MAB USB Flasher
-  </a>
  </li>
 </ul>
 
@@ -1284,10 +1260,11 @@ title="Print to PDF"
 <img alt="candle" class="no-scaled-link" src="_images/candle_build_shared.png" />
 </figure>
 </section>
+</section>
 <section id="candle-python-library">
-<h3>CANdle Python library<a class="headerlink" href="#candle-python-library" title="Permalink to this headline">#</a></h3>
+<h2>CANdle Python library<a class="headerlink" href="#candle-python-library" title="Permalink to this headline">#</a></h2>
 <p>CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: <a class="reference external" href="https://pypi.org/project/pyCandleMAB/">https://pypi.org/project/pyCandleMAB/</a> and installed using pip:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pyCandleMAB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pyCandleMAB</span>
 </pre></div>
 </div>
 <p>It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the <a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;t=1s">getting started guide</a>. To achieve the best performance in low latency systems we advise using the C++ libraries directly.</p>
@@ -1295,11 +1272,6 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p>We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Currently only C++ library allows reading and modifying MD80 registers from the script level.</p>
-</div>
-</section>
 </section>
 <section id="mdtool">
 <span id="id1"></span><h2>MDtool<a class="headerlink" href="#mdtool" title="Permalink to this headline">#</a></h2>
@@ -1374,7 +1346,7 @@ title="Print to PDF"
 </section>
 <section id="mdtool-config-current-id-current">
 <span id="mdtool-config-current"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;current&gt;</span></code><a class="headerlink" href="#mdtool-config-current-id-current" title="Permalink to this headline">#</a></h4>
-<p>This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor’s maximum torque capabilities. Using the config current command one can increase the maximum current. The absolute maximum value is 40 A.</p>
+<p>This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor’s maximum torque capabilities. Using the config current command one can increase the maximum current. For the absolute maximum please refer to <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> section.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The guarantee does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.</p>
@@ -1404,9 +1376,12 @@ title="Print to PDF"
 <span id="mdtool-setup-calibration-out"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration_out</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-calibration-out-id" title="Permalink to this headline">#</a></h4>
 <p>This command runs the output encoder calibration routine. During output encoder calibration, the drive has to be able to rotate for at least two full rotations of the output shaft and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the <a class="reference internal" href="MD80.html#output-encoder-calibration"><span class="std std-ref">output encoder calibration</span></a> section.</p>
 </section>
-<section id="mdtool-setup-motor-cfg-id">
-<span id="mdtool-setup-motor"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;*.cfg&gt;</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-motor-cfg-id" title="Permalink to this headline">#</a></h4>
-<p>This command is used to write a new motor config. For more information please see the section Configuring MD80 controller for a new motor.</p>
+<section id="mdtool-setup-motor-id-cfg">
+<span id="mdtool-setup-motor"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code><a class="headerlink" href="#mdtool-setup-motor-id-cfg" title="Permalink to this headline">#</a></h4>
+<p>This command is used to write a new motor config. For the config file argument one of the *.cfg files from ~/.config/mtool/mdtool_motors/ directory should be passed. Check out the description below for more information on the respective config fields:</p>
+<figure class="align-center">
+<img alt="_images/config_AK60.png" class="no-scaled-link" src="_images/config_AK60.png" />
+</figure>
 </section>
 <section id="mdtool-setup-info-id">
 <span id="mdtool-setup-info"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-info-id" title="Permalink to this headline">#</a></h4>
@@ -1431,6 +1406,10 @@ title="Print to PDF"
 <section id="mdtool-test-encoder-type-id">
 <span id="mdtool-test-encoder"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">&lt;type&gt;</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-test-encoder-type-id" title="Permalink to this headline">#</a></h4>
 <p>This command is used to check how accurate a praticular encoder was calibrated. The ‘type’ argument can be either ‘main’ for onboard encoder, or ‘output’ for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the <a class="reference internal" href="#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span></code></span></a> command.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Main encoder errors can be larger for non-sinusoidal motors (BLDC motors) because of their back-emf waveform shape. If you care about very precise positioning we advise using PMSM motors (sinusoidal).</p>
+</div>
 </section>
 <section id="mdtool-encoder-id">
 <span id="mdtool-encoder"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-encoder-id" title="Permalink to this headline">#</a></h4>
@@ -1650,37 +1629,6 @@ You can also look for status messages in the terminal window where the node was 
 </pre></div>
 </div>
 </section>
-</section>
-<section id="md80-update-tool-mab-can-flasher">
-<h2>MD80 update tool - MAB CAN Flasher<a class="headerlink" href="#md80-update-tool-mab-can-flasher" title="Permalink to this headline">#</a></h2>
-<p>MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">-help</span></code> command on the first use to get acquainted with the available options.</p>
-<section id="example-use-cases">
-<h3>Example use cases<a class="headerlink" href="#example-use-cases" title="Permalink to this headline">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--id</span> <span class="pre">150</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update the md80 controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/flashing1.png" />
-</figure>
-<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--all</span> <span class="pre">-baud</span> <span class="pre">1M</span></code> - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/flashing2.png" />
-</figure>
-<p>In case the update process is interrupted and the md80 controller seems to be broken, you can disconnect the power supply, call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span> <span class="o">--</span><span class="n">wait</span> 
-</pre></div>
-</div>
-<p>and while the command is running connect the power supply. This command will wait for the bootloader response and try to recover the firmware. If the flashing does not occur in the first power cycle you can repeat it until the bootloader is detected. The example output of the wait option for the ak80-64 motor is shown below:</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/flashing3_wait.png" />
-</figure>
-</section>
-</section>
-<section id="candle-update-tool-mab-usb-flasher">
-<h2>CANdle update tool - MAB USB Flasher<a class="headerlink" href="#candle-update-tool-mab-usb-flasher" title="Permalink to this headline">#</a></h2>
-<p><strong>MAB_USB_Flasher</strong> is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). When an update is released we will prepare a MAB_USB_Flasher application and send it to you. To update, first turn off all applications that may be using CANdle, and simply run <code class="docutils literal notranslate"><span class="pre">./MAB_USB_Flasher</span></code>.</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/mab_usb_flasher.png" />
-</figure>
-<p>After a successful update, the CANdle device is ready.</p>
 </section>
 </section>
 

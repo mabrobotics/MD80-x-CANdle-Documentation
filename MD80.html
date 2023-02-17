@@ -118,6 +118,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="QuickStartGuide.html">
+   Quick Start Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Ecosystem.html">
    MD80 x CANdle Ecosystem overview
   </a>
@@ -140,6 +145,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="FAQ.html">
    Common problems and FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Downloads.html">
+   Downloads
   </a>
  </li>
 </ul>
@@ -680,7 +690,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p><strong>General parameters table for MD80 HW2.0:</strong></p>
+<p><strong>General parameters table for MD80 V2.0:</strong></p>
 <table class="table">
 <colgroup>
 <col style="width: 50%" />
@@ -1147,7 +1157,7 @@ When the system that you’re designing is a highly dynamic one, you want the to
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_info_allok.png" />
 </figure>
-<p>The output encoder parameters are rather straightforward, except the “output encoder last check” errors. These values are filled during the output encoder check routine, that can be run using <a class="reference internal" href="Software.html#mdtool-test-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">output</span></code></span></a>. These params represent the output encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the PCB. This means that if there are large inaccuracies during the calibration, or the output encoder moves in your setup, you can always check how accurate it is by running the check_aux routine.</p>
+<p>The output encoder parameters are rather straightforward, except the “output encoder last check” errors. These values are filled during the output encoder check routine, which can be run using <a class="reference internal" href="Software.html#mdtool-test-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">output</span></code></span></a>. These params represent the output encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the PCB. This means that if there are large inaccuracies during the calibration, or the output encoder moves in your setup, you can always check how accurate it is by running the check_aux routine.</p>
 <p>Example errors for AS5047_CENTER:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/errors_encoder_center.png" />
@@ -1156,7 +1166,7 @@ When the system that you’re designing is a highly dynamic one, you want the to
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/errors_encoder_offaxis.png" />
 </figure>
-<p>As can be seen the non-axial encoder features larger errors, and thus can be utilized only for initial position determination rather than output shaft control. In case the errors get too large they will turn yellow after running <a class="reference internal" href="Software.html#mdtool-test-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">output</span></code></span></a> command indicating there might be a problem with your setup:</p>
+<p>As can be seen, the non-axial encoder features larger errors, and thus can be utilized only for initial position determination rather than output shaft control. In case the errors get too large they will turn yellow after running <a class="reference internal" href="Software.html#mdtool-test-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">output</span></code></span></a> command indicating there might be a problem with your setup:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/errors_yellow.png" />
 </figure>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Common Issues and FAQ &#8212; MD80 x CANdle Manual</title>
+    <title>Downloads &#8212; MD80 x CANdle Manual</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Downloads" href="Downloads.html" />
-    <link rel="prev" title="Software Pack" href="Software.html" />
+    <link rel="prev" title="Common Issues and FAQ" href="FAQ.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,6 +115,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="QuickStartGuide.html">
+   Quick Start Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Ecosystem.html">
    MD80 x CANdle Ecosystem overview
   </a>
@@ -135,13 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
    Software package
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="FAQ.html">
    Common problems and FAQ
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Downloads.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Downloads
   </a>
  </li>
@@ -235,7 +239,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FFAQ.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDownloads.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +267,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/FAQ.md"
+        <a href="_sources/Downloads.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -323,33 +327,35 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-check-if-my-motor-is-operating-properly">
-   How to check if my motor is operating properly
+  <a class="reference internal nav-link" href="#d-models">
+   3D models
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">
-   Motor terminals not soldered properly
+  <a class="reference internal nav-link" href="#software-stable">
+   Software (stable)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#failed-calibration">
-   Failed calibration
+  <a class="reference internal nav-link" href="#software-devel">
+   Software (devel)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lack-of-fdcan-termination">
-   Lack of FDCAN termination
+  <a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">
+   MD80 update tool - MAB CAN Flasher
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-use-cases">
+     Example use cases
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#different-fdcan-speeds-between-actuators">
-   Different FDCAN speeds between actuators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#too-low-torque-bandwidth-setting">
-   Too-low torque bandwidth setting
+  <a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">
+   CANdle update tool - MAB USB Flasher
   </a>
  </li>
 </ul>
@@ -361,7 +367,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Common Issues and FAQ</h1>
+                <h1>Downloads</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -372,33 +378,35 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-check-if-my-motor-is-operating-properly">
-   How to check if my motor is operating properly
+  <a class="reference internal nav-link" href="#d-models">
+   3D models
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">
-   Motor terminals not soldered properly
+  <a class="reference internal nav-link" href="#software-stable">
+   Software (stable)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#failed-calibration">
-   Failed calibration
+  <a class="reference internal nav-link" href="#software-devel">
+   Software (devel)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lack-of-fdcan-termination">
-   Lack of FDCAN termination
+  <a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">
+   MD80 update tool - MAB CAN Flasher
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-use-cases">
+     Example use cases
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#different-fdcan-speeds-between-actuators">
-   Different FDCAN speeds between actuators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#too-low-torque-bandwidth-setting">
-   Too-low torque bandwidth setting
+  <a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">
+   CANdle update tool - MAB USB Flasher
   </a>
  </li>
 </ul>
@@ -411,40 +419,127 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="common-issues-and-faq">
-<h1>Common Issues and FAQ<a class="headerlink" href="#common-issues-and-faq" title="Permalink to this headline">#</a></h1>
-<section id="how-to-check-if-my-motor-is-operating-properly">
-<h2>How to check if my motor is operating properly<a class="headerlink" href="#how-to-check-if-my-motor-is-operating-properly" title="Permalink to this headline">#</a></h2>
-<p>First thing to check is the <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span></code></span></a> command output. If there are no errors (meaning the error field are empty or show ‘ALL OK” message) and no parameters are in yellow (indicating suspicious values) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating. You can check it using <a class="reference internal" href="Software.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span></code></span></a> command - for example by commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the <a class="reference internal" href="Software.html#mdtool-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span></code></span></a> command output. If any of these quantities look suspicious feel free to contact us using: <a class="reference external" href="https://www.mabrobotics.pl/contact">contact&#64;mabrobotics.pl</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="downloads">
+<span id="id1"></span><h1>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">#</a></h1>
+<section id="d-models">
+<span id="hardware-downloads"></span><h2>3D models<a class="headerlink" href="#d-models" title="Permalink to this headline">#</a></h2>
+<p>Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found <a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing">here</a>.</p>
 </section>
-<section id="motor-terminals-not-soldered-properly">
-<h2>Motor terminals not soldered properly<a class="headerlink" href="#motor-terminals-not-soldered-properly" title="Permalink to this headline">#</a></h2>
-<p>In case you have ordered the MD80 controllers without the MAB assembly option you will have to make sure the controller is soldered correctly to the motor. Usually, hobby motors have multiple wires wound in parallel on each motor phase, and it is crucial to solder ALL wires to the controller. Leaving a single string of wire can lead to an imbalance between the phases, which in the best scenario will cause the calibration to fail and in the worst will cause large torque variations (large cogging torque).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Operating such an improperly configured motor can lead to hazardous situations for both the operator and the driver.</p>
+<section id="software-stable">
+<span id="software-downloads"></span><h2>Software (stable)<a class="headerlink" href="#software-stable" title="Permalink to this headline">#</a></h2>
+<p>Main stable releases:</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>CANdle lib</p></th>
+<th class="head"><p>MDtool</p></th>
+<th class="head"><p>pyCANdle</p></th>
+<th class="head"><p>CANdle ROS</p></th>
+<th class="head"><p>CANdle ROS2</p></th>
+<th class="head"><p>CANdle device</p></th>
+<th class="head"><p>MD80</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>earlier</p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/releases/tag/v3.0">3.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/mdtool/releases/tag/v1.1">1.1.0</a></p></td>
+<td><p><a class="reference external" href="https://pypi.org/project/pyCandleMAB/1.2.0/">1.2.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/releases/tag/v1.1">1.1.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1">1.1.0</a></p></td>
+<td><p>1.4</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>12.12.2022 (latest)</p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/releases/tag/v3.1_hotfix">3.1</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/mdtool/releases/tag/v1.2.1">1.2.1</a></p></td>
+<td><p><a class="reference external" href="https://pypi.org/project/pyCandleMAB/">1.3.1</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/releases/tag/v1.2">1.2.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2">1.2.0</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link">2.0</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link">2.0</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="software-devel">
+<h2>Software (devel)<a class="headerlink" href="#software-devel" title="Permalink to this headline">#</a></h2>
+<p>Table below summarizes the devel software releases. These revisions may have some bugs, however they include the latest features</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>CANdle lib</p></th>
+<th class="head"><p>MDtool</p></th>
+<th class="head"><p>pyCANdle</p></th>
+<th class="head"><p>CANdle ROS</p></th>
+<th class="head"><p>CANdle ROS2</p></th>
+<th class="head"><p>CANdle device</p></th>
+<th class="head"><p>MD80</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>17.03.2023</p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/1XKJnNAEghF8Jh2HlLuUUaDgkVnVy6OfJ?usp=share_link">3.2.0.d</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/1LcdnHda-m0qAY4UQbjLMrsXUz_42LABR?usp=share_link">1.2.2.d</a></p></td>
+<td><p>coming soon</p></td>
+<td><p>coming soon</p></td>
+<td><p>coming soon</p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/1GAVajHGv3E2Ztz91iTGgU-HBfVtfEJ5R?usp=share_link">2.1.0.d</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/1Gq0XDg758q5lsCxbxaYgVc85BizdQZzE?usp=share_link">2.1.0.d</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="md80-update-tool-mab-can-flasher">
+<h2>MD80 update tool - MAB CAN Flasher<a class="headerlink" href="#md80-update-tool-mab-can-flasher" title="Permalink to this headline">#</a></h2>
+<p>MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
+<section id="example-use-cases">
+<h3>Example use cases<a class="headerlink" href="#example-use-cases" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--id</span> <span class="pre">150</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update the md80 controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:</p>
+<figure class="align-center">
+<img alt="_images/flashing1.png" class="no-scaled-link" src="_images/flashing1.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--all</span> <span class="pre">-baud</span> <span class="pre">1M</span></code> - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:</p>
+<figure class="align-center">
+<img alt="_images/flashing2.png" class="no-scaled-link" src="_images/flashing2.png" />
+</figure>
+<p>In case the update process is interrupted and the md80 controller seems to be broken, you can disconnect the power supply, call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span> <span class="o">--</span><span class="n">wait</span> 
+</pre></div>
 </div>
+<p>and while the command is running connect the power supply. This command will wait for the bootloader response and try to recover the firmware. If the flashing does not occur in the first power cycle you can repeat it until the bootloader is detected. An example output of the wait option for the ak80-64 motor is shown below:</p>
+<figure class="align-center">
+<img alt="_images/flashing3_wait.png" class="no-scaled-link" src="_images/flashing3_wait.png" />
+</figure>
 </section>
-<section id="failed-calibration">
-<h2>Failed calibration<a class="headerlink" href="#failed-calibration" title="Permalink to this headline">#</a></h2>
-<p>The calibration can fail for several reasons, yet the most common one is just improperly soldered motor wires. In this case, you’ll see the ERROR_CALIBRATION general error or ERROR_CALIBRATION and ERROR_PARAM_IDENT. These two errors will also show up when automatic parameter identification fails. In this case, rerunning the calibration should fix the issue. ERROR_POLE_PAIR_DET error is shown in case the automatic pole pair detection algorithm detected a different pole pair number (compared to the one form the *.cfg file) or it failed due to high rotor friction/external load, which stopped the rotor during the process.</p>
-<p>The other most common reason is that the eccentricity calibration is interrupted by either a large load on the motor shaft or the encoder placed non-axially in regard to the magnet mounted on the motor shaft. In this case, you’ll see the ERROR_CALIBRATION general error. To fix it be sure to unload the motor shaft completely, make it run smoothly, and make sure the controller is placed axially with respect to the magnet placed on the motor shaft.</p>
 </section>
-<section id="lack-of-fdcan-termination">
-<h2>Lack of FDCAN termination<a class="headerlink" href="#lack-of-fdcan-termination" title="Permalink to this headline">#</a></h2>
-<p>Proper termination on the FDCAN bus is crucial, especially when the string of actuators is long. In case you see some communication errors, or the drives connected to your FDCAN bus string are not discovered correctly using MDtool be sure to check if the termination is present and working (the resistance between CANH and CANL lines should be 60 Ohms - two 120 Ohm resistors in series). Please remember, you only need to place a single termination resistor on the end of the string when using CANdle. The other resistor is embedded in the CANdle device.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Since version HW2.0 a resistor is embedded in the hardware of each MD80 controller. Please check out the <code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code> command for more information on how to use it.</p>
-</div>
-</section>
-<section id="different-fdcan-speeds-between-actuators">
-<h2>Different FDCAN speeds between actuators<a class="headerlink" href="#different-fdcan-speeds-between-actuators" title="Permalink to this headline">#</a></h2>
-<p>MD80 x CANdle ecosystem is not adopted for working with actuators of different FDCAN baudrates. Trying to control actuators with different baud rates on a common FDCAN bus can cause the communication to fail or not start at all. This is why it is crucial to make sure when you call the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command, all discovered MD80 controllers lie in a single baudrate category. If that’s not the case, use the <a class="reference internal" href="Software.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command to fix it.</p>
-</section>
-<section id="too-low-torque-bandwidth-setting">
-<h2>Too-low torque bandwidth setting<a class="headerlink" href="#too-low-torque-bandwidth-setting" title="Permalink to this headline">#</a></h2>
-<p>When the torque bandwidth is set to a too-low value it can cause the motor to behave improperly in highly dynamic scenarios, for example, impacts. Because with low torque bandwidth, the torque controller gains are set so that the controller is slow, it might not be able to keep up with the changing setpoint value. In order to fix this issue, you can calibrate the motor for a higher torque bandwidth frequency using <a class="reference internal" href="Software.html#mdtool-config-bandwidth"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span></code></span></a> command. This has a disadvantage connected to it - the higher the bandwidth the more audible noise you will hear coming from the motor.</p>
+<section id="candle-update-tool-mab-usb-flasher">
+<h2>CANdle update tool - MAB USB Flasher<a class="headerlink" href="#candle-update-tool-mab-usb-flasher" title="Permalink to this headline">#</a></h2>
+<p><strong>MAB_USB_Flasher</strong> is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). To update, first turn off all applications that may be using CANdle, and simply run <code class="docutils literal notranslate"><span class="pre">./MAB_USB_Flasher</span></code>.</p>
+<figure class="align-center">
+<img alt="_images/mab_usb_flasher.png" class="no-scaled-link" src="_images/mab_usb_flasher.png" />
+</figure>
+<p>After a successful update, the CANdle device is ready.</p>
 </section>
 </section>
 
@@ -475,19 +570,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Software.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="FAQ.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Software Pack</p>
+            <p class="prev-next-title">Common Issues and FAQ</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="Downloads.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Downloads</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
