@@ -58,13 +58,25 @@ Table below summarizes the devel software releases. These revisions may have som
 * - 17.03.2023
   - [3.2.0.d](https://drive.google.com/drive/folders/1XKJnNAEghF8Jh2HlLuUUaDgkVnVy6OfJ?usp=share_link)
   - [1.2.2.d](https://drive.google.com/drive/folders/1LcdnHda-m0qAY4UQbjLMrsXUz_42LABR?usp=share_link)
-  - coming soon
+  - x
+  - x
+  - x
+  - [2.1.0.d](https://drive.google.com/drive/folders/1GAVajHGv3E2Ztz91iTGgU-HBfVtfEJ5R?usp=share_link)
+  - [2.1.0.d](https://drive.google.com/drive/folders/1Gq0XDg758q5lsCxbxaYgVc85BizdQZzE?usp=share_link)
+* - 23.03.2023
+  - [3.2.1.d]()
+  - [1.2.21.d]()
+  - [1.3.24.d](https://test.pypi.org/project/pyCandleMAB/)
   - coming soon
   - coming soon
   - [2.1.0.d](https://drive.google.com/drive/folders/1GAVajHGv3E2Ztz91iTGgU-HBfVtfEJ5R?usp=share_link)
-  - [2.1.0.d](https://drive.google.com/drive/folders/1Gq0XDg758q5lsCxbxaYgVc85BizdQZzE?usp=share_link)
+  - [2.1.1.d]()
 ```
 
+### 23.03.2023 Devel notes:
+- fixed skipping steps during output encoder calibration
+- removed the calibration requirement in REPORT output encoder mode 
+- added output encoder calibration mode (full / direction only) in STARTUP and MOTION mode (only for in-axis encoder)
 
 
 ## MD80 update tool - MAB CAN Flasher 
