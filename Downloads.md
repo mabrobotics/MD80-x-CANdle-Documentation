@@ -63,25 +63,29 @@ Table below summarizes the devel software releases. These revisions may have som
   - x
   - [2.1.0.d](https://drive.google.com/drive/folders/1GAVajHGv3E2Ztz91iTGgU-HBfVtfEJ5R?usp=share_link)
   - [2.1.0.d](https://drive.google.com/drive/folders/1Gq0XDg758q5lsCxbxaYgVc85BizdQZzE?usp=share_link)
-* - 23.03.2023
-  - [3.2.1.d]()
-  - [1.2.21.d]()
-  - [1.3.24.d](https://test.pypi.org/project/pyCandleMAB/)
-  - coming soon
-  - coming soon
-  - [2.1.0.d](https://drive.google.com/drive/folders/1GAVajHGv3E2Ztz91iTGgU-HBfVtfEJ5R?usp=share_link)
-  - [2.1.1.d]()
+* - 14.03.2023
+  - [3.2.2.d](https://github.com/mabrobotics/candle/tree/devel)
+  - [1.2.3.d](https://drive.google.com/drive/folders/1bAZZKrBu9R3J_9sd9xww4XWaTdY5FyzK?usp=share_link)
+  - [1.3.28.d](https://test.pypi.org/project/pyCandleMAB/)
+  - [1.2.1.d](https://github.com/mabrobotics/candle_ros/tree/pre_release_1_2_1)
+  - [1.2.1.d](https://github.com/mabrobotics/candle_ros2/tree/pre_release_1_2_1)
+  - [2.1.1.d](https://drive.google.com/drive/folders/1kAkStBijoZBEln6f3KyjOSIYR7WeFRll?usp=share_link)
+  - [2.1.2.d](https://drive.google.com/drive/folders/13bxca2xk1ZKk3wDXaCpl0JHR8IbdUOmP?usp=share_link)
 ```
 
-### 23.03.2023 Devel notes:
-- fixed skipping steps during output encoder calibration
-- removed the calibration requirement in REPORT output encoder mode 
+### 14.03.2023 Devel notes:
+- **fixed communication problems when setting up custom gains in candle lib scripts**
+- removed the calibration requirement for the external encoder in REPORT output encoder mode 
 - added output encoder calibration mode (full / direction only) in STARTUP and MOTION mode (only for in-axis encoder)
-
+- added support for skipping pole pair detection calibration step (useful for large, high power trapezoidal motors)
 
 ## MD80 update tool - MAB CAN Flasher 
 
 MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.
+
+```{note}
+Make sure the MAB_CAN_Flasher can be executed. If not use the `sudo chmod +x ./MAB_CAN_Flasher` command.
+```
 
 ### Example use cases 
 `./MAB_CAN_Flasher --id 150 --baud 1M` - update the md80 controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:
@@ -91,7 +95,7 @@ MAB_CAN_Flasher is a console application used to update the MD80 controller soft
 :align: center
 :class: no-scaled-link
 ```
-`./MAB_CAN_Flasher --all -baud 1M` - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:
+`./MAB_CAN_Flasher --all --baud 1M` - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:
 
 ```{figure} images/flashing2.png
 :class: bg-primary mb-1
@@ -114,6 +118,10 @@ and while the command is running connect the power supply. This command will wai
 ## CANdle update tool - MAB USB Flasher
 
 **MAB_USB_Flasher** is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). To update, first turn off all applications that may be using CANdle, and simply run `./MAB_USB_Flasher`.
+
+```{note}
+Make sure the MAB_USB_Flasher can be executed. If not use the `sudo chmod +x ./MAB_USB_Flasher` command.
+```
 
 ```{figure} images/mab_usb_flasher.png
 :class: bg-primary mb-1
