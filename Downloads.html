@@ -340,6 +340,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#software-devel">
    Software (devel)
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#devel-notes">
+     14.03.2023 Devel notes:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">
@@ -391,6 +398,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#software-devel">
    Software (devel)
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#devel-notes">
+     14.03.2023 Devel notes:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">
@@ -501,25 +515,47 @@ title="Print to PDF"
 <tr class="row-even"><td><p>17.03.2023</p></td>
 <td><p><a class="reference external" href="https://drive.google.com/drive/folders/1XKJnNAEghF8Jh2HlLuUUaDgkVnVy6OfJ?usp=share_link">3.2.0.d</a></p></td>
 <td><p><a class="reference external" href="https://drive.google.com/drive/folders/1LcdnHda-m0qAY4UQbjLMrsXUz_42LABR?usp=share_link">1.2.2.d</a></p></td>
-<td><p>coming soon</p></td>
-<td><p>coming soon</p></td>
-<td><p>coming soon</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
 <td><p><a class="reference external" href="https://drive.google.com/drive/folders/1GAVajHGv3E2Ztz91iTGgU-HBfVtfEJ5R?usp=share_link">2.1.0.d</a></p></td>
 <td><p><a class="reference external" href="https://drive.google.com/drive/folders/1Gq0XDg758q5lsCxbxaYgVc85BizdQZzE?usp=share_link">2.1.0.d</a></p></td>
 </tr>
+<tr class="row-odd"><td><p>14.03.2023</p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/tree/devel">3.2.2.d</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/1bAZZKrBu9R3J_9sd9xww4XWaTdY5FyzK?usp=share_link">1.2.3.d</a></p></td>
+<td><p><a class="reference external" href="https://test.pypi.org/project/pyCandleMAB/">1.3.28.d</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/tree/pre_release_1_2_1">1.2.1.d</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/tree/pre_release_1_2_1">1.2.1.d</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/1kAkStBijoZBEln6f3KyjOSIYR7WeFRll?usp=share_link">2.1.1.d</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/13bxca2xk1ZKk3wDXaCpl0JHR8IbdUOmP?usp=share_link">2.1.2.d</a></p></td>
+</tr>
 </tbody>
 </table>
+<section id="devel-notes">
+<h3>14.03.2023 Devel notes:<a class="headerlink" href="#devel-notes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>fixed communication problems when setting up custom gains in candle lib scripts</strong></p></li>
+<li><p>removed the calibration requirement for the external encoder in REPORT output encoder mode</p></li>
+<li><p>added output encoder calibration mode (full / direction only) in STARTUP and MOTION mode (only for in-axis encoder)</p></li>
+<li><p>added support for skipping pole pair detection calibration step (useful for large, high power trapezoidal motors)</p></li>
+</ul>
+</section>
 </section>
 <section id="md80-update-tool-mab-can-flasher">
 <h2>MD80 update tool - MAB CAN Flasher<a class="headerlink" href="#md80-update-tool-mab-can-flasher" title="Permalink to this headline">#</a></h2>
 <p>MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the MAB_CAN_Flasher can be executed. If not use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./MAB_CAN_Flasher</span></code> command.</p>
+</div>
 <section id="example-use-cases">
 <h3>Example use cases<a class="headerlink" href="#example-use-cases" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--id</span> <span class="pre">150</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update the md80 controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:</p>
 <figure class="align-center">
 <img alt="_images/flashing1.png" class="no-scaled-link" src="_images/flashing1.png" />
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--all</span> <span class="pre">-baud</span> <span class="pre">1M</span></code> - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--all</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update all available md80 controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two md80 controllers:</p>
 <figure class="align-center">
 <img alt="_images/flashing2.png" class="no-scaled-link" src="_images/flashing2.png" />
 </figure>
@@ -536,6 +572,10 @@ title="Print to PDF"
 <section id="candle-update-tool-mab-usb-flasher">
 <h2>CANdle update tool - MAB USB Flasher<a class="headerlink" href="#candle-update-tool-mab-usb-flasher" title="Permalink to this headline">#</a></h2>
 <p><strong>MAB_USB_Flasher</strong> is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). To update, first turn off all applications that may be using CANdle, and simply run <code class="docutils literal notranslate"><span class="pre">./MAB_USB_Flasher</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the MAB_USB_Flasher can be executed. If not use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./MAB_USB_Flasher</span></code> command.</p>
+</div>
 <figure class="align-center">
 <img alt="_images/mab_usb_flasher.png" class="no-scaled-link" src="_images/mab_usb_flasher.png" />
 </figure>

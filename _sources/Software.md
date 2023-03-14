@@ -2,68 +2,10 @@
 
 The MD80 x CANdle software pack consists of a few modules. All of them are based on the main CANdle C++ library which takes care of the low-level communication and provides API for high-level software. 
 
-## CANdle C++ library 
-
-CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD80 controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD80 controllers. 
-
-### Quick start
-
-The quick startup guide includes cloning the repo, building and running the examples. First, you should clone the candle repo from the MAB Robotics GitHub page to your local machine. Then, make sure you're in the main directory candle/ and run the following commands:
-```
-mkdir build
-cd build
-cmake ..
-make 
-```
-starting from the top one these commands: create a build directory, go into the build directory, generate makefiles using CMake and compile the source code using make. After executing these commands you should be able to see the compiled examples in the candle/build/ directory. To run one of them use the following command:
-```
-./exampleX 
-```
-where X is the number of the example. 
-
-### Building as a static lib
-
-Candle C++ library can be built as a static or shared object library. In the quick startup guide, we used the default settings, thus the library was compiled to a shared object file. In case you’d like to build it for a static lib you should pass additional arguments to the cmake .. command:
-```
-cmake .. -DCANDLE_BUILD_STATIC=TRUE
-```
-After executing this command you should be able to see the following CMake output:
-
-```{figure} images/candle_build_static.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-In case you’d like to go back to shared lib just call: 
-```
-cmake .. -DCANDLE_BUILD_STATIC=FALSE
-```
-or delete the build directory contents and call cmake .. again (the default library type is shared). This is what the cmake output looks like when reconfiguring for shared lib: 
-```{figure} images/candle_build_shared.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-## CANdle Python library
-
-CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: https://pypi.org/project/pyCandleMAB/ and installed using pip:
-```
-python3 -m pip install pyCandleMAB
-```
-It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the [getting started guide](https://www.youtube.com/watch?v=bIZuhFpFtus&t=1s). To achieve the best performance in low latency systems we advise using the C++ libraries directly.
-
-```{note}
-We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.
-```
-
 (mdtool)=
 ## MDtool
 
-**MDtool** is a console application for configuring and performing basic diagnostics on MD80 drives via CANdle. The application is available as a standalone executable and as a .deb package. The program is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.
+**MDtool** is a console application for configuring and performing basic diagnostics on MD80 drives via CANdle. It is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.
 
 ### Installation
 
@@ -139,7 +81,7 @@ This setting has to be saved to be preserved after power down! Please see the md
 This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor's maximum torque capabilities. Using the config current command one can increase the maximum current. For the absolute maximum please refer to [maximum ratings](ratings) section.
 
 ```{warning}
-The guarantee does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.
+The warranty does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.
 ```
 ```{note}
 This setting has to be saved to be preserved after power down! Please see the config save <ID> command.
@@ -182,7 +124,7 @@ This command is used to write a new motor config. For the config file argument o
 
 (mdtool_setup_info)=
 #### `mdtool setup info <ID>`
-This command is used to read the motor internal parameters. An example command output might look like this:
+This command is used to read the motor internal parameters. Use 'all' keyword at the end of the command to read full parameter set. An example command output might look like this:
 
 ```{figure} images/mdtool_setup_info_allok.png
 :alt: candle
@@ -215,6 +157,64 @@ Main encoder errors can be larger for non-sinusoidal motors (BLDC motors) becaus
 (mdtool_encoder)=
 #### `mdtool encoder <ID>`
 This command is useful when one wants to measure the position of the actuator in the current setup (without writing a custom script). After the command is executed the screen shows the current position of the actuator’s shaft and it does so until you press Ctrl + C. 
+
+## CANdle C++ library 
+
+CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD80 controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD80 controllers. 
+
+### Quick start
+
+The quick startup guide includes cloning the repo, building and running the examples. First, you should clone the candle repo from the MAB Robotics GitHub page to your local machine. Then, make sure you're in the main directory candle/ and run the following commands:
+```
+mkdir build
+cd build
+cmake ..
+make 
+```
+starting from the top one these commands: create a build directory, go into the build directory, generate makefiles using CMake and compile the source code using make. After executing these commands you should be able to see the compiled examples in the candle/build/ directory. To run one of them use the following command:
+```
+./exampleX 
+```
+where X is the number of the example. 
+
+### Building as a static lib
+
+Candle C++ library can be built as a static or shared object library. In the quick startup guide, we used the default settings, thus the library was compiled to a shared object file. In case you’d like to build it for a static lib you should pass additional arguments to the cmake .. command:
+```
+cmake .. -DCANDLE_BUILD_STATIC=TRUE
+```
+After executing this command you should be able to see the following CMake output:
+
+```{figure} images/candle_build_static.png
+:alt: candle
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+In case you’d like to go back to shared lib just call: 
+```
+cmake .. -DCANDLE_BUILD_STATIC=FALSE
+```
+or delete the build directory contents and call cmake .. again (the default library type is shared). This is what the cmake output looks like when reconfiguring for shared lib: 
+```{figure} images/candle_build_shared.png
+:alt: candle
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+## CANdle Python library
+
+CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: https://pypi.org/project/pyCandleMAB/ and installed using pip:
+```
+python3 -m pip install pyCandleMAB
+```
+It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the [getting started guide](https://www.youtube.com/watch?v=bIZuhFpFtus&t=1s). To achieve the best performance in low latency systems we advise using the C++ libraries directly.
+
+```{note}
+We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.
+```
 
 ## CANdle ROS/ROS2 nodes
 

@@ -328,28 +328,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-c-library">
-   CANdle C++ library
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quick-start">
-     Quick start
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#building-as-a-static-lib">
-     Building as a static lib
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-python-library">
-   CANdle Python library
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mdtool">
    MDtool
   </a>
@@ -694,6 +672,28 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-c-library">
+   CANdle C++ library
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-start">
+     Quick start
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-as-a-static-lib">
+     Building as a static lib
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-python-library">
+   CANdle Python library
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#candle-ros-ros2-nodes">
@@ -779,28 +779,6 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-c-library">
-   CANdle C++ library
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quick-start">
-     Quick start
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#building-as-a-static-lib">
-     Building as a static lib
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-python-library">
-   CANdle Python library
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mdtool">
    MDtool
   </a>
@@ -1147,6 +1125,28 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-c-library">
+   CANdle C++ library
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quick-start">
+     Quick start
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-as-a-static-lib">
+     Building as a static lib
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#candle-python-library">
+   CANdle Python library
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#candle-ros-ros2-nodes">
    CANdle ROS/ROS2 nodes
   </a>
@@ -1223,59 +1223,9 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="software-pack">
 <h1>Software Pack<a class="headerlink" href="#software-pack" title="Permalink to this headline">#</a></h1>
 <p>The MD80 x CANdle software pack consists of a few modules. All of them are based on the main CANdle C++ library which takes care of the low-level communication and provides API for high-level software.</p>
-<section id="candle-c-library">
-<h2>CANdle C++ library<a class="headerlink" href="#candle-c-library" title="Permalink to this headline">#</a></h2>
-<p>CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD80 controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD80 controllers.</p>
-<section id="quick-start">
-<h3>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">#</a></h3>
-<p>The quick startup guide includes cloning the repo, building and running the examples. First, you should clone the candle repo from the MAB Robotics GitHub page to your local machine. Then, make sure you’re in the main directory candle/ and run the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
-<span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">..</span>
-<span class="n">make</span> 
-</pre></div>
-</div>
-<p>starting from the top one these commands: create a build directory, go into the build directory, generate makefiles using CMake and compile the source code using make. After executing these commands you should be able to see the compiled examples in the candle/build/ directory. To run one of them use the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">exampleX</span> 
-</pre></div>
-</div>
-<p>where X is the number of the example.</p>
-</section>
-<section id="building-as-a-static-lib">
-<h3>Building as a static lib<a class="headerlink" href="#building-as-a-static-lib" title="Permalink to this headline">#</a></h3>
-<p>Candle C++ library can be built as a static or shared object library. In the quick startup guide, we used the default settings, thus the library was compiled to a shared object file. In case you’d like to build it for a static lib you should pass additional arguments to the cmake .. command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCANDLE_BUILD_STATIC</span><span class="o">=</span><span class="n">TRUE</span>
-</pre></div>
-</div>
-<p>After executing this command you should be able to see the following CMake output:</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/candle_build_static.png" />
-</figure>
-<p>In case you’d like to go back to shared lib just call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCANDLE_BUILD_STATIC</span><span class="o">=</span><span class="n">FALSE</span>
-</pre></div>
-</div>
-<p>or delete the build directory contents and call cmake .. again (the default library type is shared). This is what the cmake output looks like when reconfiguring for shared lib:</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/candle_build_shared.png" />
-</figure>
-</section>
-</section>
-<section id="candle-python-library">
-<h2>CANdle Python library<a class="headerlink" href="#candle-python-library" title="Permalink to this headline">#</a></h2>
-<p>CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: <a class="reference external" href="https://pypi.org/project/pyCandleMAB/">https://pypi.org/project/pyCandleMAB/</a> and installed using pip:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pyCandleMAB</span>
-</pre></div>
-</div>
-<p>It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the <a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;t=1s">getting started guide</a>. To achieve the best performance in low latency systems we advise using the C++ libraries directly.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.</p>
-</div>
-</section>
 <section id="mdtool">
 <span id="id1"></span><h2>MDtool<a class="headerlink" href="#mdtool" title="Permalink to this headline">#</a></h2>
-<p><strong>MDtool</strong> is a console application for configuring and performing basic diagnostics on MD80 drives via CANdle. The application is available as a standalone executable and as a .deb package. The program is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.</p>
+<p><strong>MDtool</strong> is a console application for configuring and performing basic diagnostics on MD80 drives via CANdle. It is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.</p>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h3>
 <p>The easiest way to install the MDtool is to select the appropriate *.deb package from the <a class="reference external" href="https://github.com/mabrobotics/mdtool/releases">MDtool GitHub repo releases page</a> (compliant with your system’s architecture). To install after the download simply call:</p>
@@ -1349,7 +1299,7 @@ title="Print to PDF"
 <p>This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor’s maximum torque capabilities. Using the config current command one can increase the maximum current. For the absolute maximum please refer to <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> section.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The guarantee does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.</p>
+<p>The warranty does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1385,7 +1335,7 @@ title="Print to PDF"
 </section>
 <section id="mdtool-setup-info-id">
 <span id="mdtool-setup-info"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-info-id" title="Permalink to this headline">#</a></h4>
-<p>This command is used to read the motor internal parameters. An example command output might look like this:</p>
+<p>This command is used to read the motor internal parameters. Use ‘all’ keyword at the end of the command to read full parameter set. An example command output might look like this:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_info_allok.png" />
 </figure>
@@ -1416,6 +1366,56 @@ title="Print to PDF"
 <p>This command is useful when one wants to measure the position of the actuator in the current setup (without writing a custom script). After the command is executed the screen shows the current position of the actuator’s shaft and it does so until you press Ctrl + C.</p>
 </section>
 </section>
+</section>
+<section id="candle-c-library">
+<h2>CANdle C++ library<a class="headerlink" href="#candle-c-library" title="Permalink to this headline">#</a></h2>
+<p>CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD80 controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD80 controllers.</p>
+<section id="quick-start">
+<h3>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">#</a></h3>
+<p>The quick startup guide includes cloning the repo, building and running the examples. First, you should clone the candle repo from the MAB Robotics GitHub page to your local machine. Then, make sure you’re in the main directory candle/ and run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span> 
+</pre></div>
+</div>
+<p>starting from the top one these commands: create a build directory, go into the build directory, generate makefiles using CMake and compile the source code using make. After executing these commands you should be able to see the compiled examples in the candle/build/ directory. To run one of them use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">exampleX</span> 
+</pre></div>
+</div>
+<p>where X is the number of the example.</p>
+</section>
+<section id="building-as-a-static-lib">
+<h3>Building as a static lib<a class="headerlink" href="#building-as-a-static-lib" title="Permalink to this headline">#</a></h3>
+<p>Candle C++ library can be built as a static or shared object library. In the quick startup guide, we used the default settings, thus the library was compiled to a shared object file. In case you’d like to build it for a static lib you should pass additional arguments to the cmake .. command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCANDLE_BUILD_STATIC</span><span class="o">=</span><span class="n">TRUE</span>
+</pre></div>
+</div>
+<p>After executing this command you should be able to see the following CMake output:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candle_build_static.png" />
+</figure>
+<p>In case you’d like to go back to shared lib just call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCANDLE_BUILD_STATIC</span><span class="o">=</span><span class="n">FALSE</span>
+</pre></div>
+</div>
+<p>or delete the build directory contents and call cmake .. again (the default library type is shared). This is what the cmake output looks like when reconfiguring for shared lib:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candle_build_shared.png" />
+</figure>
+</section>
+</section>
+<section id="candle-python-library">
+<h2>CANdle Python library<a class="headerlink" href="#candle-python-library" title="Permalink to this headline">#</a></h2>
+<p>CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: <a class="reference external" href="https://pypi.org/project/pyCandleMAB/">https://pypi.org/project/pyCandleMAB/</a> and installed using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pyCandleMAB</span>
+</pre></div>
+</div>
+<p>It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the <a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;t=1s">getting started guide</a>. To achieve the best performance in low latency systems we advise using the C++ libraries directly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.</p>
+</div>
 </section>
 <section id="candle-ros-ros2-nodes">
 <h2>CANdle ROS/ROS2 nodes<a class="headerlink" href="#candle-ros-ros2-nodes" title="Permalink to this headline">#</a></h2>

@@ -2,7 +2,7 @@
 
 ## How to check if my motor is operating properly
 
-First thing to check is the [`mdtool setup info`](mdtool_setup_info) command output. If there are no errors (meaning the error field are empty or show 'ALL OK" message) and no parameters are in yellow (indicating suspicious values) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating. You can check it using [`mdtool test move`](mdtool_test_move) command - for example by commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the [`mdtool encoder`](mdtool_encoder) command output. If any of these quantities look suspicious feel free to contact us using: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact).
+First thing to check is the [`mdtool setup info`](mdtool_setup_info) command output. If there are no errors (meaning the error field are empty or show 'ALL OK" message) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating. You can check it using [`mdtool test move`](mdtool_test_move) command - for example by commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the [`mdtool encoder`](mdtool_encoder) command output. If any of these quantities look suspicious feel free to contact us using: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact).
 
 ## Motor terminals not soldered properly
 
@@ -22,8 +22,8 @@ The other most common reason is that the eccentricity calibration is interrupted
 
 Proper termination on the FDCAN bus is crucial, especially when the string of actuators is long. In case you see some communication errors, or the drives connected to your FDCAN bus string are not discovered correctly using MDtool be sure to check if the termination is present and working (the resistance between CANH and CANL lines should be 60 Ohms - two 120 Ohm resistors in series). Please remember, you only need to place a single termination resistor on the end of the string when using CANdle. The other resistor is embedded in the CANdle device. 
 
-```{warning}
-Since version HW2.0 a resistor is embedded in the hardware of each MD80 controller. Please check out the `mdtool config can` command for more information on how to use it.
+```{hint}
+Since version HW2.0 a resistor is embedded in the hardware of each MD80 controller. Please check out the [`mdtool config can`](mdtool_config_can) command for more information on how to use it.
 ```
 
 ##  Different FDCAN speeds between actuators

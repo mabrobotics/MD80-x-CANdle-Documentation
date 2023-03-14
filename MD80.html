@@ -760,6 +760,10 @@ title="Print to PDF"
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/cable_colors.png" />
 </figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><font color='red'> Always make sure CAN bus lines are not shorted to the positive power rail. Applying supply voltage to these pins will cause permanent damage to the controller! </font></p>
+</div>
 <p>All MD80 versions have the capability to measure the MOSFET and motor temperature. This is to ensure the safe operation of the driver and motor. The motor shutdown temperature is configurable up to 140<span class="math notranslate nohighlight">\(^\circ\)</span>C max with a hysteresis of 20<span class="math notranslate nohighlight">\(^\circ\)</span>C. The driver shutdown temperature is fixed at 100<span class="math notranslate nohighlight">\(^\circ\)</span>C with a hysteresis of 20<span class="math notranslate nohighlight">\(^\circ\)</span>C.</p>
 <p>The connectors in the case of the HW1.1 and HV1.3 versions are located as follows:</p>
 <figure class="align-center">
@@ -1061,6 +1065,10 @@ motion based on <b><font color="#008000">main encoder</font></b>,</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The non-axial configuration outputs a nonlinear position values. This means it requires a <a class="reference internal" href="#output-encoder-calibration"><span class="std std-ref">full calibration</span></a> (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in high level software</p>
+</div>
 <p>Not all modes are recommended for every encoder. The non-axially placed AS5047 encoder is inherently more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to the table below:</p>
 <table class="table">
 <colgroup>
@@ -1094,7 +1102,7 @@ motion based on <b><font color="#008000">main encoder</font></b>,</p></td>
 </figure>
 <ul class="simple">
 <li><ul>
-<li><p>in case of axially placed sensors make sure they are placed in center at the right height above the magnet</p></li>
+<li><p>in case of axially placed sensors make sure they are placed in center at correct height above the magnet (1 mm is usually optimal)</p></li>
 <li><p>in case of non-axial configuration make sure the magnet is close to the ring magnet (&lt;0.5mm) and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.</p></li>
 </ul>
 </li>
@@ -1148,12 +1156,16 @@ When the system that you’re designing is a highly dynamic one, you want the to
 </section>
 <section id="output-encoder-calibration">
 <span id="id8"></span><h2>Output Encoder Calibration<a class="headerlink" href="#output-encoder-calibration" title="Permalink to this headline">#</a></h2>
-<p>The output encoder calibration routine is used to recognise the correct direction of rotation, and record the correction lookup-table to account for non-axial placement of the encoder in respect to the magnet.</p>
+<p>The output encoder calibration routine is used to recognize the correct direction of rotation, and record the correction lookup-table to account for non-axial placement of the encoder in respect to the magnet.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This routine rotates the actuators output shaft by more than one single rotation. Please make sure the shaft is free to rotate during the test.</p>
+<p>The full calibration routine rotates the actuators output shaft by more than one single rotation in the FULL calibration mode. Please make sure the shaft is free to rotate during the test.</p>
 </div>
-<p>In order to run the routine use the mdtool setup calibration_aux command. After completing the routine the MD80 will reboot and after that it is recommended to run the mdtool setup info command in order to make sure the setup reports no errors:</p>
+<p>In case your setup is not able to complete a full rotation due to mechanical constraints you can set the <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">encoder</span> <span class="pre">calibration</span> <span class="pre">mode</span></code> to <code class="docutils literal notranslate"><span class="pre">DIRONLY</span></code> in your *.cfg file in the [output encoder] section. This way the calibration will end on the first stage - checking the correct direction of rotation, so only 1/4 of a full rotation is needed. Please note that this is not possible using off-axis encoder - it requires a full calibration routine.</p>
+<figure class="align-center">
+<img alt="_images/output_calibration_requirements.png" class="no-scaled-link" src="_images/output_calibration_requirements.png" />
+</figure>
+<p>To run the routine, use the <a class="reference internal" href="Software.html#mdtool-setup-calibration-out"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration_out</span></code></span></a> command. After completing the routine the MD80 will reboot and after that it is recommended to run the mdtool setup info command in order to make sure the setup reports no errors:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_info_allok.png" />
 </figure>

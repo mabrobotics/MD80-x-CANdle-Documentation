@@ -67,7 +67,7 @@ When the control code finishes, the `Candle::end()` method should be called. Thi
 
 ## USB bus
 
-The USB bus is the most common one, used in both CANdle and CANdle HAT. This is one of the slowest communication bus when it comes to performance, due to the non-realtime nature of the host, however, it's the easiest one to set up and test. Since the USB communication interface is not well-suited for real-time applications due to random host delays, the MD80 baudrate is not the limiting factor - you can set it to 1/2/5/8 Mbps and there will be no difference in the update rate. 
+The USB bus is the most common one, used in both CANdle and CANdle HAT. This is one of the slowest communication bus when it comes to performance, due to the non-realtime nature of the host, however, it's the easiest one to set up and test. Since the USB communication interface is not well-suited for real-time applications due to random host delays the update rates are dependent on your master controller device. 
 
 ```{hint}
 We highly recommend using the USB bus set up for the first run. 
