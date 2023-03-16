@@ -14,6 +14,8 @@ chapters:
   title: CANdle and CANdle HAT
 - file: Software
   title: Software package
+- file: canProtocol
+  title: MD80 FDCAN protocol
 - file: FAQ
   title: Common problems and FAQ
 - file: Downloads

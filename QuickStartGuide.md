@@ -19,7 +19,7 @@ Check out our video tutorials if you prefer this way of presentation:
 (configuring_MD80_for_new_motor)=
 ## Configuring the MD80 controller for a new motor
 
-MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor. Below is a list of steps to configure the controller to work with a motor of your choice. 
+MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor.
 
 ```{warning}
 Steps presented in this section are performed on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the [maximum ratings](ratings) before applying voltage to the controller. 
