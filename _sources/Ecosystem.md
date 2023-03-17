@@ -57,7 +57,7 @@ CAN bus topology is a single-line network structure. A typical hardware connecti
 :align: center
 :class: no-scaled-link
 ```
-```{hint} In case you’d like to read more about the recommended lengths of the bus segments we suggest the elektormotus guide. 
+```{hint} In case you’d like to read more about the recommended lengths of the bus segments we suggest the [elektormotus guide](https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf). 
 ```
 
 The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (`mdtool config can` command) on each controller. Termination should be always turned on or attached to the last controller in a string. 

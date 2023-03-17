@@ -143,6 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="canProtocol.html">
+   MD80 FDCAN protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="FAQ.html">
    Common problems and FAQ
   </a>
@@ -1190,137 +1195,161 @@ When the system that you’re designing is a highly dynamic one, you want the to
 <section id="error-codes">
 <span id="id9"></span><h2>Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">#</a></h2>
 <p>When an abnormal situation takes place the controller sets an error bit indicating a particular error. The table below lists all available error codes and their descriptions.</p>
-<p>Since MD80 software update V2.1 the errors are divided into a few categories and they are more descriptive:</p>
 <p><b>Main / Output Encoder Errors</b></p>
-<table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Error name</p></th>
-<th class="head"><p>Error description and action to clear it</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ERROR_COMMUNICATION</p></td>
-<td><p>MD80 could not communicate with the encoder -&gt; check connections</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_WRONG_DIRECTION</p></td>
-<td><p>Indicates the calibrated output encoder direction is different from the main encoder direction -&gt; recalibrate</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_EMPTY_LUT</p></td>
-<td><p>indicates the encoder eccentricity table is empty -&gt; recalibrate</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_FAULTY_LUT</p></td>
-<td><p>indicates the encoder eccentricity table is faulty (contains too large corrections) -&gt; check the setup and recalibrate</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_CALIBRATION_FAILED</p></td>
-<td><p>calibration failed due to wrong motor &lt;&gt; encoder setup -&gt; check setup, recalibrate in case of problems contact MABRobotics</p></td>
-</tr>
-</tbody>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error description</b></td>
+      <td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_COMMUNICATION </td>
+			<td>MD80 could not communicate with the encoder </td>
+      <td>Check connections </td>
+		</tr>
+    <tr>
+			<td>ERROR_WRONG_DIRECTION</td>
+			<td>Indicates the calibrated output encoder direction is different from the main encoder direction</td>
+      <td>Recalibrate</td>
+		</tr>
+    <tr>
+			<td>ERROR_EMPTY_LUT</td>
+			<td>Indicates the encoder eccentricity table is empty</td>
+      <td>Recalibrate</td>
+		</tr>
+    <tr>
+			<td>ERROR_FAULTY_LUT</td>
+			<td>Indicates the encoder eccentricity table is faulty (contains too large corrections)</td>
+    	<td>Check the setup and recalibrate</td>
+		</tr>
+    <tr>
+			<td>ERROR_CALIBRATION_FAILED</td>
+			<td>Calibration failed due to wrong motor <> encoder setup</td>
+			<td>Check setup, recalibrate in case of problems contact MABRobotics</td>
+		</tr>
+	</tbody>
 </table>
+<p></p>
 <p><b>Calibration Errors</b></p>
-<table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Error name</p></th>
-<th class="head"><p>Error description and action to clear it</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ERROR_OFFSET_CAL</p></td>
-<td><p>Problem with the offset determination during calibration -&gt; try recalibrating</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_RESISTANCE_IDENT</p></td>
-<td><p>Problem with resistance identification -&gt; try recalibrating or running the <code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span></code> command</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_INDUCTANCE_IDENT</p></td>
-<td><p>Problem with inductanceidentification -&gt; try recalibrating or running the <code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span></code> command</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_POLE_PAIR_CAL</p></td>
-<td><p>Problem with pole pair detection routine -&gt; try recalibrating</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_SETUP</p></td>
-<td><p>Problem with motor config file download -&gt; check the config file again and try to upload one more time</p></td>
-</tr>
-</tbody>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error description</b></td>
+      <td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_OFFSET_CAL </td>
+			<td>Problem with the offset determination during calibration </td>
+      <td>Try recalibrating</td>
+		</tr>
+    <tr>
+			<td>ERROR_RESISTANCE_IDENT</td>
+			<td>Problem with resistance identification</td>
+      <td>Try recalibrating or running the `mdtool config bandwidth` command</td>
+		</tr>
+    <tr>
+			<td>ERROR_INDUCTANCE_IDENT</td>
+			<td>Problem with inductance identification</td>
+      <td>Try recalibrating or running the `mdtool config bandwidth` command</td>
+		</tr>
+    <tr>
+			<td>ERROR_POLE_PAIR_CAL</td>
+			<td>Problem with pole pair detection routine</td>
+      <td>Try recalibrating</td>
+		</tr>
+    <tr>
+			<td>ERROR_SETUP</td>
+			<td>Problem with motor config file download</td>
+      <td>Check the config file again and try to upload one more time</td>
+		</tr>
+	</tbody>
 </table>
+<p></p>
 <p><b>Bridge errors</b></p>
-<table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Error name</p></th>
-<th class="head"><p>Error description and action to clear it</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ERROR_BRIDGE_COM</p></td>
-<td><p>Communication problem with the bridge -&gt; contact MABRobotics</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_BRIDGE_OC</p></td>
-<td><p>The bridge detected overcurrent -&gt; lower the current limit, restart the drives</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_BRIDGE_GENERAL_FAULT</p></td>
-<td><p>Usually indicates a hardware issue -&gt; contact MABRobotics</p></td>
-</tr>
-</tbody>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error description</b></td>
+      <td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_BRIDGE_COM</td>
+			<td>Communication problem with the bridge</td>
+      <td>Contact MABRobotics</td>
+		</tr>
+    <tr>
+			<td>ERROR_BRIDGE_OC</td>
+			<td>The bridge detected overcurrent</td>
+      <td>Lower the current limit, restart the drives</td>
+		</tr>
+    <tr>
+			<td>ERROR_BRIDGE_GENERAL_FAULT</td>
+			<td>Usually indicates a hardware issue</td>
+      <td>Contact MABRobotics</td>
+		</tr>
+	</tbody>
 </table>
+<p></p>
 <p><b>Hardware errors</b></p>
-<table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Error name</p></th>
-<th class="head"><p>Error description and action to clear it</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ERROR_OVER_CURRENT</p></td>
-<td><p>Overcurrent detected -&gt; lower the current limit, restart the drives</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_OVER_VOLTAGE</p></td>
-<td><p>Overvoltage detected -&gt; lover the system voltage, avoid rapid braking in the system, use a modern PSU, or a LiPo battery</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_UNDER_VOLTAGE</p></td>
-<td><p>Undervoltage detected -&gt; ensure your power supply has enough current capability for your system</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_MOTOR_TEMP</p></td>
-<td><p>Motor temperature exceeded the limit set in the config file -&gt; wait for the motor to cool down</p></td>
-</tr>
-<tr class="row-even"><td><p>ERROR_MOSFET_TEMP</p></td>
-<td><p>MD80 power side exceeded the limit of 100*C -&gt; wait for the MD80 to cool down</p></td>
-</tr>
-<tr class="row-odd"><td><p>ERROR_ADC_CURRENT_OFFSETS</p></td>
-<td><p>Error during adc current offsets calibration -&gt; usually indicates a hardware error - contact MABRobotics</p></td>
-</tr>
-</tbody>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error description</b></td>
+      <td> <b>Action to clear it</b></td>
+		</tr>
+    <tr>
+			<td>ERROR_OVER_CURRENT</td>
+			<td>Overcurrent detected</td>
+      <td>Lower the current limit, restart the drives</td>
+		</tr>
+    <tr>
+			<td>ERROR_OVER_VOLTAGE</td>
+			<td>Overvoltage detected</td>
+      <td>Lower the system voltage, avoid rapid braking in the system, use a modern PSU, or a LiPo battery</td>
+		</tr>
+    <tr>
+			<td>ERROR_UNDER_VOLTAGE</td>
+			<td>Undervoltage detected</td>
+      <td>Ensure your power supply has enough current capability for your system</td>
+		</tr>
+    <tr>
+			<td>ERROR_MOTOR_TEMP</td>
+			<td>Motor temperature exceeded the limit set in the config file</td>
+      <td>Wait for the motor to cool down</td>
+		</tr>
+    <tr>
+			<td>ERROR_MOSFET_TEMP</td>
+			<td>MD80 power side exceeded the limit of 100*C</td>
+      <td>wait for the MD80 to cool down</td>
+		</tr>
+     <tr>
+			<td>ERROR_ADC_CURRENT_OFFSETS</td>
+			<td>Error during adc current offsets calibration</td>
+      <td>Usually indicates a hardware error - contact MABRobotics</td>
+		</tr> 
+  </tbody>
 </table>
+<p></p>
 <p><b>Comunication errors</b></p>
-<table class="table">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Error name</p></th>
-<th class="head"><p>Error description and action to clear it</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ERROR_CAN_WD</p></td>
-<td><p>Indicates the communication with the host was ended by the watchdog -&gt; make sure candle.end() is called in your script</p></td>
-</tr>
-</tbody>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error description</b></td>
+      <td> <b>Action to clear it</b></td>
+		</tr>
+    <tr>
+			<td>ERROR_CAN_WD</td>
+			<td>Indicates the communication with the host was ended by the watchdog</td>
+      <td>make sure candle.end() is called in your script</td>
+		</tr>
+  </tbody>
 </table>
+<p></p>
 </section>
 </section>
 

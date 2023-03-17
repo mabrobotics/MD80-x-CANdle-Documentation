@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Ecosystem overview &#8212; MD80 x CANdle Manual</title>
+    <title>MD80 FDCAN communication &#8212; MD80 x CANdle Manual</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MD80" href="MD80.html" />
-    <link rel="prev" title="Quick Start Guide" href="QuickStartGuide.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,14 +112,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="QuickStartGuide.html">
    Quick Start Guide
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Ecosystem.html">
    MD80 x CANdle Ecosystem overview
   </a>
  </li>
@@ -138,11 +136,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Software.html">
    Software package
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="canProtocol.html">
-   MD80 FDCAN protocol
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +238,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FEcosystem.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FcanProdocol.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -273,7 +266,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/Ecosystem.md"
+        <a href="_sources/canProdocol.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -332,29 +325,19 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#md80">
-   MD80
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   MD80 FDCAN communication
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-and-candle-hat">
-   CANdle and CANdle HAT
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware-requirements">
+   Hardware requirements
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#safety-information">
-   Safety information
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#operating-conditions-md80-and-candle">
-   Operating conditions (MD80 and CANdle)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hardware-setup">
-   Hardware setup
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communication-overview">
+   Communication overview
   </a>
  </li>
 </ul>
@@ -366,7 +349,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Ecosystem overview</h1>
+                <h1>MD80 FDCAN communication</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -376,29 +359,19 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#md80">
-   MD80
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   MD80 FDCAN communication
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#candle-and-candle-hat">
-   CANdle and CANdle HAT
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware-requirements">
+   Hardware requirements
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#safety-information">
-   Safety information
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#operating-conditions-md80-and-candle">
-   Operating conditions (MD80 and CANdle)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hardware-setup">
-   Hardware setup
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communication-overview">
+   Communication overview
   </a>
  </li>
 </ul>
@@ -411,71 +384,91 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ecosystem-overview">
-<h1>Ecosystem overview<a class="headerlink" href="#ecosystem-overview" title="Permalink to this headline">#</a></h1>
-<p>MD80 x CANdle is a system of brushless actuator controllers (MD80) and translator devices (CANdle) used for interfacing with them. MD80-based actuators can be used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and many more.</p>
-<section id="md80">
-<h2>MD80<a class="headerlink" href="#md80" title="Permalink to this headline">#</a></h2>
-<p>MD80 is a highly integrated brushless motor controller. It can be interfaced with a great variety of motors to turn them into advanced servo actuators. MD80 can work with both direct drive (no gearbox) and geared motors.</p>
-<img alt="MD80" class="no-scaled-link align-center" src="_images/md80.jpg" style="width: 400px;" />
+  <section class="tex2jax_ignore mathjax_ignore" id="md80-fdcan-communication">
+<h1>MD80 FDCAN communication<a class="headerlink" href="#md80-fdcan-communication" title="Permalink to this headline">#</a></h1>
+<p>The easiest way to communicate with an MD80 controller is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD80 controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD80 actuators from your custom FDCAN-capable master controller.</p>
 </section>
-<section id="candle-and-candle-hat">
-<h2>CANdle and CANdle HAT<a class="headerlink" href="#candle-and-candle-hat" title="Permalink to this headline">#</a></h2>
-<p>CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus.</p>
-<img alt="candle" class="no-scaled-link align-center" src="_images/candle.jpg" style="width: 400px;" />
+<section class="tex2jax_ignore mathjax_ignore" id="hardware-requirements">
+<h1>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">#</a></h1>
+<p>The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Currently, the differential side of the transceiver (the CANH and CANL lines) is supplied with 5V. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus (MD80 controllers from version 2.0 have a built-in resistor that can be controlled by software).</p>
 </section>
-<section id="safety-information">
-<h2>Safety information<a class="headerlink" href="#safety-information" title="Permalink to this headline">#</a></h2>
-<p>Even though the MD80 is a small brushless controller it can push a substantial amount of current through the motor windings. This means there are many hazards related to the high torques that the actuator is able to produce as well as elevated temperatures that may occur close to the MD80 controller or the motor. Always make sure the actuator is mounted firmly and does not pose a threat to its surroundings. Make sure the power supply current limits are set to low values (~1A) as an additional safety measure when you are unsure about the tested behavior of the system.</p>
-</section>
-<section id="operating-conditions-md80-and-candle">
-<h2>Operating conditions (MD80 and CANdle)<a class="headerlink" href="#operating-conditions-md80-and-candle" title="Permalink to this headline">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="communication-overview">
+<h1>Communication overview<a class="headerlink" href="#communication-overview" title="Permalink to this headline">#</a></h1>
+<p>MD80 controllers are programed to receive a frame that takes the following structure:</p>
+<table>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>appDir</td>
+<td>The top level directory that contains your app. If this option is used then
+it assumed your scripts are in</td>
+</tr>
+<tr>
+<td>baseUrl</td>
+<td>By default, all modules are located relative to this path. If baseUrl is not
+explicitly set, then all modules are loaded relative to the directory that holds
+the build file. If appDir is set, then baseUrl should be specified as relative
+to the appDir.</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>The directory path to save the output. If not specified, then the path will
+default to be a directory called "build" as a sibling to the build file. All
+relative paths are relative to the build file.</td>
+</tr>
+<tr>
+<td>modules</td>
+<td>List the modules that will be optimized. All their immediate and deep
+dependencies will be included in the module's file when the build is done. If
+that module or any of its dependencies includes i18n bundles, only the root
+bundles will be included unless the locale: section is set above.</td>
+</tr>
+</table>
 <table class="table">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BYTE 0</p></th>
+<th class="head"><p>BYTE 1</p></th>
+<th class="head"><p>BYTE 0</p></th>
+<th class="head"><p>CANdle ROS</p></th>
+<th class="head"><p>CANdle ROS2</p></th>
+<th class="head"><p>CANdle device</p></th>
+<th class="head"><p>MD80</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p>Ambient Temperature (Operating)</p></td>
-<td><p>0°C - 40°C</p></td>
+<tr class="row-even"><td><p>earlier</p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/releases/tag/v3.0">3.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/mdtool/releases/tag/v1.1">1.1.0</a></p></td>
+<td><p><a class="reference external" href="https://pypi.org/project/pyCandleMAB/1.2.0/">1.2.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/releases/tag/v1.1">1.1.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1">1.1.0</a></p></td>
+<td><p>1.4</p></td>
+<td><p>1.0</p></td>
 </tr>
-<tr class="row-even"><td><p>Ambient Temperature (non-operating)</p></td>
-<td><p>0°C - 60°C</p></td>
-</tr>
-<tr class="row-odd"><td><p>Maximum Humidity (Operating)</p></td>
-<td><p>up to 95%, non-condensing at 40 ºC</p></td>
-</tr>
-<tr class="row-even"><td><p>Maximum Humidity (Non-Operating)</p></td>
-<td><p>up to 95%, non-condensing at 60 ºC</p></td>
-</tr>
-<tr class="row-odd"><td><p>Altitude (Operating)</p></td>
-<td><p>-400 m to 2000 m</p></td>
+<tr class="row-odd"><td><p>12.12.2022 (latest)</p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/releases/tag/v3.1_hotfix">3.1</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/mdtool/releases/tag/v1.2.1">1.2.1</a></p></td>
+<td><p><a class="reference external" href="https://pypi.org/project/pyCandleMAB/">1.3.1</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/releases/tag/v1.2">1.2.0</a></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2">1.2.0</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link">2.0</a></p></td>
+<td><p><a class="reference external" href="https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link">2.0</a></p></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="hardware-setup">
-<span id="id1"></span><h2>Hardware setup<a class="headerlink" href="#hardware-setup" title="Permalink to this headline">#</a></h2>
-<p>CAN bus topology is a single-line network structure. A typical hardware connection/wiring scheme for CANdle x MD80 ecosystem is presented in the picture below:</p>
-<img alt="candle" class="no-scaled-link align-center" src="_images/hardware_setup.png" />
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>In case you’d like to read more about the recommended lengths of the bus segments we suggest the <a class="reference external" href="https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf">elektormotus guide</a>.</p>
-</div>
-<p>The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (<code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code> command) on each controller. Termination should be always turned on or attached to the last controller in a string.</p>
-<figure class="align-center" id="id2">
-<img alt="candle" class="no-scaled-link" src="_images/hardware_setup_candle.jpg" />
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">CANdle MD80-actuator string (USB bus)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id3">
-<img alt="candle" class="no-scaled-link" src="_images/hardware_setup_candleHAT.jpg" />
-<figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">CANdle HAT MD80-actuator string (SPI/UART bus using Raspberry Pi 4)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -505,20 +498,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="QuickStartGuide.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Quick Start Guide</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="MD80.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MD80</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
