@@ -169,45 +169,30 @@ sudo reboot
 (latency)=
 ## Latency
 
-The latency was measured in a real scenario to get the most accurate results. A special flag was embedded into the MD80 command which the MD80 should return in the next response it sends. This way the whole route from the host, through CANdle, MD80 and back was profiled in terms of the delay. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus. 
+The latency was measured using the [`mdtool test latency 8M`](mdtool_test_latency) command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD80. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus. 
 
-```{figure} images/USB_latency.png
+```{figure} images/MD80_latency.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
-```{figure} images/SPI_latency.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-```{figure} images/UART_latency.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-
-Each mode was tested with a different number of actuators on the bus and the scheduler priority was set to high. As can be seen, the SPI bus gives the best results, reaching 2.5 kHz of communication speed with a single MD80 controller. The USB bus is slower, especially on the Raspberry PI, but is still sufficient for advanced control scenarios. The UART bus is the slowest, but it offers the lowest jitter. The division between priority normal and priority high was accomplished using a script that changes the scheduler priority of the running test program:
-```
-CONTROL_PID=$(sudo pidof -s <NAME_OF_YOUR_EXECUTABLE>)
-CONTROL_PRIORITY=99
-sudo chrt -f -p ${CONTROL_PRIORITY} ${CONTROL_PID}
-```
-
-This script changes the priority only when the program is already running (otherwise it will not work). It can be used when your program cannot be run directly with sudo - for example, it is useful when dealing with ROS nodes. 
-
-You can also embed the following snippet in your C++ code if you can run it with sudo directly: 
+High task priority was achieved using the following snippet in the mdtool test latency function:
 ```
     struct sched_param sp;
     memset(&sp, 0, sizeof(sp));
     sp.sched_priority = 99;
     sched_setscheduler(0, SCHED_FIFO, &sp);
+```
+
+To be able to change task priority be sure to call the test with `sudo`. 
+
+To change a running task priority use the snippet below. It can be useful when your program cannot be run directly with sudo - for example, when dealing with ROS nodes. 
+```
+CONTROL_PID=$(sudo pidof -s <NAME_OF_YOUR_EXECUTABLE>)
+CONTROL_PRIORITY=99
+sudo chrt -f -p ${CONTROL_PRIORITY} ${CONTROL_PID}
 ```
 
 During testing on Raspberry PI SBCs we have found out that isolating a CPU core (isolcpus) specifically for the CANdle process did not result in a performance increase - rather made it less performant. 

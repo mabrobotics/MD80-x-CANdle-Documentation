@@ -1,11 +1,15 @@
 # MD80 FDCAN communication
 The easiest way to communicate with an MD80 controller is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD80 controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD80 actuators from your custom FDCAN-capable master controller.
 
+```{note}
+The regular frames are soon to be made obsolete solution for communicating with the MD80s. Whenever possible please prefer using the generic register access.
+```
+
 ## Hardware requirements
 The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Currently, the differential side of the transceiver (the CANH and CANL lines) is supplied with 5V. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus (MD80 controllers from version 2.0 have a built-in resistor that can be controlled by software).
 
 ## Communication overview
-MD80 controllers are programed to receive a frame that takes the following structure:
+MD80 controllers are programmed to receive a frame that takes the following structure:
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -371,7 +375,7 @@ Example (10.0f amps):
 ```{note}
 This command needs to be saved using the `SAVE CONFIG` command to be preserved after power-up. 
 ```
-### 6. Get info
+### 6. GET_INFO
 
 Get info frame is used to get the default response from the actuator. 
 
@@ -757,7 +761,7 @@ Calibration command is used to run the calibration routine. Please make sure tha
 <p></p> -->
 
 
-### 13. Write registers
+### 13. WRITE_REGISTER
 
 Write register frame is used to modify values of the user-modifiable registers. The list of registers is available at the end of this chapter. Only registers with write access can be modified.
 
@@ -775,7 +779,7 @@ Write register frame is used to modify values of the user-modifiable registers. 
       <td> <b>BYTE X+4-X+Y </b></td>
 		</tr>
 		<tr>
-			<td>SET CAN CONFIG</td>
+			<td>WRITE_REGISTER</td>
 			<td>0x40</td>
 			<td>X (64 max)</td>
 			<td>0x40</td>
@@ -798,7 +802,7 @@ Params:
 
 When all registers write operations succeed the drive will respond with default response.
 
-### 14. Read registers
+### 14. READ_REGISTER
 
 Read register command is used to retrieve certain register values. The actuator will respond with a frame consisting of the addresses and values of the registers issued in the master request. the master request should have the following form: 
 
@@ -816,7 +820,7 @@ Read register command is used to retrieve certain register values. The actuator 
       <td> <b>BYTE X+4-X+Y </b></td>
 		</tr>
 		<tr>
-			<td>SET CAN CONFIG</td>
+			<td>READ_REGISTER</td>
 			<td>0x41</td>
 			<td>X (64 max)</td>
 			<td>0x41</td>

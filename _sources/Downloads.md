@@ -33,11 +33,11 @@ Main stable releases:
 			<td>1.4</td>
 			<td>1.0</td>
 		</tr>
-    <tr>
+    	<tr>
 			<td>12.12.2022 (latest)</td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.1_hotfix >3.1</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.2.1 >1.2.1</a></td>
-      <td><a href = https://pypi.org/project/pyCandleMAB/ >1.3.1</a></td>
+      		<td><a href = https://pypi.org/project/pyCandleMAB/ >1.3.1</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
@@ -55,24 +55,24 @@ Table below summarizes the devel software releases. These revisions may have som
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
 		<tr>
-      <td> <b>Date</b></td>
+			<td> <b>Date</b></td>
 			<td> <b>CANdle lib</b></td>
 			<td> <b>MDtool</b></td>
-      <td> <b>pyCANdle</b></td>
+			<td> <b>pyCANdle</b></td>
 			<td> <b>CANdle ROS</b></td>
 			<td> <b>CANdle ROS2</b></td>
-      <td> <b>CANdle device</b></td>
-      <td> <b>MD80</b></td>
+			<td> <b>CANdle device</b></td>
+			<td> <b>MD80</b></td>
 		</tr>
-    <tr>
-			<td>14.03.2023 (latest)</td>
-			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.2.2.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1bAZZKrBu9R3J_9sd9xww4XWaTdY5FyzK?usp=share_link >1.2.3.d</a></td>
-      <td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.3.29.</a></td>
+		<tr>
+			<td>21.03.2023 (latest)</td>
+			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.2.3.d</a></td>
+			<td><a href = https://github.com/mabrobotics/mdtool/actions/runs/4478903095 >1.2.4.d</a></td>
+     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.3.31</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros/tree/pre_release_1_2_1 >1.2.1.d</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/pre_release_1_2_1 >1.2.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1kAkStBijoZBEln6f3KyjOSIYR7WeFRll?usp=share_link >2.1.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/13bxca2xk1ZKk3wDXaCpl0JHR8IbdUOmP?usp=share_link >2.1.2.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1FnShMgwSF55qew5ycVoGetr83XWlPmr7?usp=share_link >2.1.2.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1S0qrE8BpZ620tOoTm4aA-zVxHHDNQZ0R?usp=share_link >2.1.2.d</a></td>
 		</tr>
 	</tbody>
 </table>
@@ -83,6 +83,10 @@ Table below summarizes the devel software releases. These revisions may have som
 - removed the calibration requirement for the external encoder in REPORT output encoder mode 
 - added output encoder calibration mode (full / direction only) in STARTUP and MOTION mode (only for in-axis encoder)
 - added support for skipping pole pair detection calibration step (useful for large, high power trapezoidal motors)
+
+### 21.03.2023 Devel notes:
+- **added support for up to 16 MD80s on a single CANdle device**
+
 
 ## MD80 update tool - MAB CAN Flasher 
 

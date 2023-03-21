@@ -141,6 +141,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="canProtocol.html">
+   MD80 FDCAN protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="FAQ.html">
    Common problems and FAQ
   </a>
@@ -608,28 +613,22 @@ Individual drives can be accessed via Candle::md80s vector. The vector holds ins
 </section>
 <section id="latency">
 <span id="id2"></span><h2>Latency<a class="headerlink" href="#latency" title="Permalink to this headline">#</a></h2>
-<p>The latency was measured in a real scenario to get the most accurate results. A special flag was embedded into the MD80 command which the MD80 should return in the next response it sends. This way the whole route from the host, through CANdle, MD80 and back was profiled in terms of the delay. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus.</p>
+<p>The latency was measured using the <a class="reference internal" href="Software.html#mdtool-test-latency"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">latency</span> <span class="pre">8M</span></code></span></a> command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD80. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus.</p>
 <figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/USB_latency.png" />
+<img alt="candle" class="no-scaled-link" src="_images/MD80_latency.png" />
 </figure>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/SPI_latency.png" />
-</figure>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="_images/UART_latency.png" />
-</figure>
-<p>Each mode was tested with a different number of actuators on the bus and the scheduler priority was set to high. As can be seen, the SPI bus gives the best results, reaching 2.5 kHz of communication speed with a single MD80 controller. The USB bus is slower, especially on the Raspberry PI, but is still sufficient for advanced control scenarios. The UART bus is the slowest, but it offers the lowest jitter. The division between priority normal and priority high was accomplished using a script that changes the scheduler priority of the running test program:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CONTROL_PID=$(sudo pidof -s &lt;NAME_OF_YOUR_EXECUTABLE&gt;)
-CONTROL_PRIORITY=99
-sudo chrt -f -p ${CONTROL_PRIORITY} ${CONTROL_PID}
-</pre></div>
-</div>
-<p>This script changes the priority only when the program is already running (otherwise it will not work). It can be used when your program cannot be run directly with sudo - for example, it is useful when dealing with ROS nodes.</p>
-<p>You can also embed the following snippet in your C++ code if you can run it with sudo directly:</p>
+<p>High task priority was achieved using the following snippet in the mdtool test latency function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">struct</span> <span class="n">sched_param</span> <span class="n">sp</span><span class="p">;</span>
     <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">sp</span><span class="p">));</span>
     <span class="n">sp</span><span class="o">.</span><span class="n">sched_priority</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span>
     <span class="n">sched_setscheduler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">SCHED_FIFO</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sp</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To be able to change task priority be sure to call the test with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+<p>To change a running task priority use the snippet below. It can be useful when your program cannot be run directly with sudo - for example, when dealing with ROS nodes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CONTROL_PID=$(sudo pidof -s &lt;NAME_OF_YOUR_EXECUTABLE&gt;)
+CONTROL_PRIORITY=99
+sudo chrt -f -p ${CONTROL_PRIORITY} ${CONTROL_PID}
 </pre></div>
 </div>
 <p>During testing on Raspberry PI SBCs we have found out that isolating a CPU core (isolcpus) specifically for the CANdle process did not result in a performance increase - rather made it less performant.</p>
