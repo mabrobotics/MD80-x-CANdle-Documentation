@@ -67,7 +67,7 @@ Table below summarizes the devel software releases. These revisions may have som
 		<tr>
 			<td>21.03.2023 (latest)</td>
 			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.2.3.d</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/actions/runs/4478903095 >1.2.4.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1LQJMENE0Vx6TyeI4RKZ9BIhXe1nI901-?usp=share_link >1.2.4.d</a></td>
      		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.3.31</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros/tree/pre_release_1_2_1 >1.2.1.d</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/pre_release_1_2_1 >1.2.1.d</a></td>
