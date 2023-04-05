@@ -27,7 +27,7 @@ Steps presented in this section are performed on HW 2.0 unit. These steps are un
 
 * First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power). 
 
-* Place the [diametrically magnetized magnet](https://www.supermagnete.de/eng/disc-magnets-neodymium/disc-magnet-10mm-5mm_S-10-05-DN) on the motor shaft and mount the MD80 controller firmly centered above the magnet. 
+* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-magnet) on the motor shaft and mount the MD80 controller firmly centered above the magnet. 
 
 ```{figure} images/magnet_encoder_asm.png
 :alt: candle
