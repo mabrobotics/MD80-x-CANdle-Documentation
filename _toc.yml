@@ -16,6 +16,11 @@ chapters:
   title: Software package
 - file: canProtocol
   title: MD80 FDCAN protocol
+- file: CANopen
+  title: MD80 CANopen
+  sections:
+    - file: OD
+      title: Object Dictionary
 - file: FAQ
   title: Common problems and FAQ
 - file: Downloads
