@@ -32,3 +32,4 @@ html:
   use_repository_button: true
   comments:
     hypothesis: true
+  favicon: logo32x32.png
