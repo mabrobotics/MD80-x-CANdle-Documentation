@@ -321,6 +321,11 @@ Defines the period of heartbeat message sent by the MD80.
 			<td>0x6041</td>
 			<td>StatusWord</td>
 		</tr>
+		<tr>
+      		<td>0x1A00:2</td>
+			<td>0x6061</td>
+			<td>Modes Of Operation Display</td>
+		</tr>
 	</tbody>
 </table>
 <p></p>
@@ -346,8 +351,8 @@ Defines the period of heartbeat message sent by the MD80.
 		</tr>
 		<tr>
       		<td>0x1A01:2</td>
-			<td>0x6061</td>
-			<td>Modes Of Operation Display</td>
+			<td>0x6064</td>
+			<td>Position Actual Value</td>
 		</tr>
 	</tbody>
 </table>
@@ -374,8 +379,8 @@ Defines the period of heartbeat message sent by the MD80.
 		</tr>
 		<tr>
       		<td>0x1A02:2</td>
-			<td>0x6064</td>
-			<td>Position Actual Value</td>
+			<td>0x606C</td>
+			<td>Velocity Actual Value</td>
 		</tr>
 	</tbody>
 </table>
@@ -402,34 +407,6 @@ Defines the period of heartbeat message sent by the MD80.
 		</tr>
 		<tr>
       		<td>0x1A03:2</td>
-			<td>0x606C</td>
-			<td>Velocity Actual Value</td>
-		</tr>
-	</tbody>
-</table>
-<p></p>
-
-### 0x1A04 - Transmit PDO5 mapping
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Index</b></td>
-			<td> <b>PDO Index</b></td>
-			<td> <b>Name</b></td>
-		</tr>
-		<tr>
-      		<td>0x1A04</td>
-			<td>-</td>
-			<td>Transmit PDO5 mapping</td>
-		</tr>
-		<tr>
-      		<td>0x1A04:1</td>
-			<td>0x6041</td>
-			<td>StatusWord</td>
-		</tr>
-		<tr>
-      		<td>0x1A04:2</td>
 			<td>0x6077</td>
 			<td>Torque Actual Value</td>
 		</tr>
@@ -569,6 +546,18 @@ Configures the most important motor settings. This object is especially useful w
             <td>0</td>
             <td>-</td>
 		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0A</td>
+			<td>Can ID</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1 - 31</td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
 	</tbody>
 </table>
 <p></p>
@@ -644,6 +633,10 @@ Configures the Velocity PID controller gains. Be sure to save after modification
 </table>
 <p></p>
 
+```{figure} images/velocity_pid_CANopen.png
+:align: center
+```
+
 ### 0x2002 - Position PID Controller
 
 Configures the Position PID controller gains. Be sure to save after modification using 0x1010 Store Parameters. 
@@ -713,6 +706,10 @@ Configures the Position PID controller gains. Be sure to save after modification
 	</tbody>
 </table>
 <p></p>
+
+```{figure} images/position_pid_CANopen.png
+:align: center
+```
 
 (system_command)=
 ### 0x2003 - System Command
@@ -835,7 +832,7 @@ Allows to issue a system command. Write a non-zero value to start a specific act
 
 ### 0x2004 - System Status
 
-Allows to read System status. Each specific status is a UINT32, where lower bits (0-15) indicate errors, and higher bits (16-31) indicate warnings. 
+Allows to read System status. Each specific status is a UINT32, where lower bits (0-15) indicate errors, and higher bits (16-31) indicate warnings. Please see the [Error Codes](error_codes) section to see how to decode the status to individual fields. 
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
