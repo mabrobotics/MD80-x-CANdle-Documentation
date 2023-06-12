@@ -768,7 +768,7 @@ Write register frame is used to modify values of the user-modifiable registers. 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
 		<tr>
-			<td> <b>FRAME NAME</b></td>
+			<td> <b>FRAME NAME</b></td> 
 			<td> <b>ID</b></td>
 			<td> <b>LENGTH</b></td>
 			<td> <b>BYTE 0 [ID]</b></td>
