@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MD80 FDCAN communication &#8212; MD80 x CANdle Manual</title>
+    <title>CANopen &#8212; MD80 x CANdle Manual</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,8 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo32x32.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Object Dictionary" href="OD.html" />
+    <link rel="prev" title="MD80 FDCAN communication" href="canProtocol.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -112,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="QuickStartGuide.html">
    Quick Start Guide
@@ -137,6 +140,28 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Software.html">
    Software package
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="canProtocol.html">
+   MD80 FDCAN protocol
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   MD80 CANopen
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="OD.html">
+     Object Dictionary
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="FAQ.html">
@@ -238,7 +263,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FcanProdocol.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCANopen.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -266,7 +291,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/canProdocol.md"
+        <a href="_sources/CANopen.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -325,19 +350,9 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   MD80 FDCAN communication
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hardware-requirements">
-   Hardware requirements
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#communication-overview">
-   Communication overview
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-a-new-motor">
+   Setting up a new motor
   </a>
  </li>
 </ul>
@@ -349,7 +364,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>MD80 FDCAN communication</h1>
+                <h1>CANopen</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -359,19 +374,9 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   MD80 FDCAN communication
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hardware-requirements">
-   Hardware requirements
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#communication-overview">
-   Communication overview
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-a-new-motor">
+   Setting up a new motor
   </a>
  </li>
 </ul>
@@ -384,91 +389,63 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="md80-fdcan-communication">
-<h1>MD80 FDCAN communication<a class="headerlink" href="#md80-fdcan-communication" title="Permalink to this headline">#</a></h1>
-<p>The easiest way to communicate with an MD80 controller is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD80 controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD80 actuators from your custom FDCAN-capable master controller.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="canopen">
+<h1>CANopen<a class="headerlink" href="#canopen" title="Permalink to this headline">#</a></h1>
+<p>MD80 controllers are capable of supporting CANopen communication protocol accoriding the CiA402 device profile. For further details, please examine the Object Dictionary chapter that contains the communication objects that are used to exchange data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure you’ve contacted MABRobotics for the aproperiate software update, as the default MD80 flasher only supports CANdle protocol.</p>
+</div>
+<section id="setting-up-a-new-motor">
+<h2>Setting up a new motor<a class="headerlink" href="#setting-up-a-new-motor" title="Permalink to this headline">#</a></h2>
+<p>To set up a new motor make sure the drive is in the “switch on disabled” state. After that make sure you set up the following registers:</p>
+<p><strong>1. Motor Parameters:</strong></p>
+<ul class="simple">
+<li><p>0x6075:0 - Rated Current</p></li>
+<li><p>0x6076:0 - Rated Torque</p></li>
+<li><p>0x6072:0 - Max Torque</p></li>
+<li><p>0x6072:0 - Max Current</p></li>
+<li><p>0x6080:0 - Max Speed</p></li>
+<li><p>0x2000:1 - Pole Pairs</p></li>
+<li><p>0x2000:2 - Torque Constant</p></li>
+<li><p>0x2000:5 - Torque Bandwidth</p></li>
+<li><p>0x2000:7 - Motor Shutdown Temp</p></li>
+<li><p>0x2000:8 - Gear Ratio</p></li>
+</ul>
+<p><strong>2. Velocity PID gains:</strong></p>
+<ul class="simple">
+<li><p>0x2001:1 - Kp</p></li>
+<li><p>0x2001:2 - Ki</p></li>
+<li><p>0x2001:3 - Kd</p></li>
+<li><p>0x2001:4 - Integral Limit</p></li>
+</ul>
+<p><strong>3. Position PID gains:</strong></p>
+<ul class="simple">
+<li><p>0x2002:1 - Kp</p></li>
+<li><p>0x2002:2 - Ki</p></li>
+<li><p>0x2002:3 - Kd</p></li>
+<li><p>0x2002:4 - Integral Limit</p></li>
+</ul>
+<p><strong>4. Profile velocity/position settings:</strong></p>
+<ul class="simple">
+<li><p>0x6081 - Profile Velocity</p></li>
+<li><p>0x6083 - Profile Acceleration</p></li>
+<li><p>0x6084 - Profile Deceleration</p></li>
+</ul>
+<p><strong>5. (Optional) Output encoder setup:</strong></p>
+<ul class="simple">
+<li><p>0x2005:1 - Output Encoder Type</p></li>
+<li><p>0x2005:2 - Calibration Mode</p></li>
+<li><p>0x2005:3 - Mode</p></li>
+</ul>
+<p><strong>After filling up the registers listed above there are two crucial steps:</strong></p>
+<ol class="simple">
+<li><p>Run <a class="reference internal" href="OD.html#store-parameters"><span class="std std-ref">store parameters</span></a> routine using 0x1010:1</p></li>
+<li><p>Run <a class="reference internal" href="OD.html#system-command"><span class="std std-ref">calibration routine</span></a> using 0x2003:3 (and output encoder calibration routine 0x2003:4 if output encoder is present)</p></li>
+</ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="hardware-requirements">
-<h1>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">#</a></h1>
-<p>The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Currently, the differential side of the transceiver (the CANH and CANL lines) is supplied with 5V. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus (MD80 controllers from version 2.0 have a built-in resistor that can be controlled by software).</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="communication-overview">
-<h1>Communication overview<a class="headerlink" href="#communication-overview" title="Permalink to this headline">#</a></h1>
-<p>MD80 controllers are programed to receive a frame that takes the following structure:</p>
-<table>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>appDir</td>
-<td>The top level directory that contains your app. If this option is used then
-it assumed your scripts are in</td>
-</tr>
-<tr>
-<td>baseUrl</td>
-<td>By default, all modules are located relative to this path. If baseUrl is not
-explicitly set, then all modules are loaded relative to the directory that holds
-the build file. If appDir is set, then baseUrl should be specified as relative
-to the appDir.</td>
-</tr>
-<tr>
-<td>dir</td>
-<td>The directory path to save the output. If not specified, then the path will
-default to be a directory called "build" as a sibling to the build file. All
-relative paths are relative to the build file.</td>
-</tr>
-<tr>
-<td>modules</td>
-<td>List the modules that will be optimized. All their immediate and deep
-dependencies will be included in the module's file when the build is done. If
-that module or any of its dependencies includes i18n bundles, only the root
-bundles will be included unless the locale: section is set above.</td>
-</tr>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 13%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>BYTE 0</p></th>
-<th class="head"><p>BYTE 1</p></th>
-<th class="head"><p>BYTE 0</p></th>
-<th class="head"><p>CANdle ROS</p></th>
-<th class="head"><p>CANdle ROS2</p></th>
-<th class="head"><p>CANdle device</p></th>
-<th class="head"><p>MD80</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>earlier</p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/releases/tag/v3.0">3.0</a></p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/mdtool/releases/tag/v1.1">1.1.0</a></p></td>
-<td><p><a class="reference external" href="https://pypi.org/project/pyCandleMAB/1.2.0/">1.2.0</a></p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/releases/tag/v1.1">1.1.0</a></p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1">1.1.0</a></p></td>
-<td><p>1.4</p></td>
-<td><p>1.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>12.12.2022 (latest)</p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/candle/releases/tag/v3.1_hotfix">3.1</a></p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/mdtool/releases/tag/v1.2.1">1.2.1</a></p></td>
-<td><p><a class="reference external" href="https://pypi.org/project/pyCandleMAB/">1.3.1</a></p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros/releases/tag/v1.2">1.2.0</a></p></td>
-<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2">1.2.0</a></p></td>
-<td><p><a class="reference external" href="https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link">2.0</a></p></td>
-<td><p><a class="reference external" href="https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link">2.0</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -498,6 +475,20 @@ bundles will be included unless the locale: section is set above.</td>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="canProtocol.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">MD80 FDCAN communication</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="OD.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Object Dictionary</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

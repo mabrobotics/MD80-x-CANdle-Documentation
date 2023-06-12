@@ -51,10 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo32x32.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Downloads" href="Downloads.html" />
-    <link rel="prev" title="Software Pack" href="Software.html" />
+    <link rel="prev" title="Object Dictionary" href="OD.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,6 +140,28 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="Software.html">
    Software package
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="canProtocol.html">
+   MD80 FDCAN protocol
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="CANopen.html">
+   MD80 CANopen
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="OD.html">
+     Object Dictionary
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -437,7 +460,7 @@ title="Print to PDF"
 </section>
 <section id="lack-of-fdcan-termination">
 <h2>Lack of FDCAN termination<a class="headerlink" href="#lack-of-fdcan-termination" title="Permalink to this headline">#</a></h2>
-<p>Proper termination on the FDCAN bus is crucial, especially when the string of actuators is long. In case you see some communication errors, or the drives connected to your FDCAN bus string are not discovered correctly using MDtool be sure to check if the termination is present and working (the resistance between CANH and CANL lines should be 60 Ohms - two 120 Ohm resistors in series). Please remember, you only need to place a single termination resistor on the end of the string when using CANdle. The other resistor is embedded in the CANdle device.</p>
+<p>Proper termination on the FDCAN bus is crucial, especially when the string of actuators is long. In case you see some communication errors, or the drives connected to your FDCAN bus string are not discovered correctly using MDtool be sure to check if the termination is present and working (the resistance between CANH and CANL lines should be 60 Ohms - two 120 Ohm resistors in parallel). Please remember, you only need to place a single termination resistor on the end of the string when using CANdle. The other resistor is embedded in the CANdle device.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Since version HW2.0 a resistor is embedded in the hardware of each MD80 controller. Please check out the <a class="reference internal" href="Software.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command for more information on how to use it.</p>
@@ -480,11 +503,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Software.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="OD.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Software Pack</p>
+            <p class="prev-next-title">Object Dictionary</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Downloads.html" title="next page">

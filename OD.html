@@ -1,0 +1,3018 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Object Dictionary &#8212; MD80 x CANdle Manual</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Common Issues and FAQ" href="FAQ.html" />
+    <link rel="prev" title="CANopen" href="CANopen.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MD80 x CANdle Manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    MD80 x CANdle Manual
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="QuickStartGuide.html">
+   Quick Start Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Ecosystem.html">
+   MD80 x CANdle Ecosystem overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MD80.html">
+   MD80 controller
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CANdle.html">
+   CANdle and CANdle HAT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Software.html">
+   Software package
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="canProtocol.html">
+   MD80 FDCAN protocol
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="CANopen.html">
+   MD80 CANopen
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Object Dictionary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FAQ.html">
+   Common problems and FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Downloads.html">
+   Downloads
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FOD.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/OD.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communication-area">
+   1. Communication Area
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1000-device-type">
+     0x1000 - Device type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1001-error-register">
+     0x1001 - Error Register
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1008-manufacturer-device-name">
+     0x1008 - Manufacturer Device Name
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1010-store-parameters">
+     0x1010 - Store Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1017-producer-heartbeat-time">
+     0x1017 - Producer Heartbeat Time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1600-receive-pdo1-mapping">
+     0x1600 - Receive PDO1 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1601-receive-pdo2-mapping">
+     0x1601 - Receive PDO2 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1602-receive-pdo3-mapping">
+     0x1602 - Receive PDO3 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1603-receive-pdo4-mapping">
+     0x1603 - Receive PDO4 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a00-transmit-pdo1-mapping">
+     0x1A00 - Transmit PDO1 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a01-transmit-pdo2-mapping">
+     0x1A01 - Transmit PDO2 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a02-transmit-pdo3-mapping">
+     0x1A02 - Transmit PDO3 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a03-transmit-pdo4-mapping">
+     0x1A03 - Transmit PDO4 mapping
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manufacturer-specific-area">
+   2. Manufacturer Specific Area
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2000-motor-settings">
+     0x2000 - Motor Settings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2001-velocity-pid-controller">
+     0x2001 - Velocity PID Controller
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2002-position-pid-controller">
+     0x2002 - Position PID Controller
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2003-system-command">
+     0x2003 - System Command
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2004-system-status">
+     0x2004 - System Status
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2005-output-encoder">
+     0x2005 - Output Encoder
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profile-specific-area">
+   3. Profile Specific Area
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6040-control-word">
+     0x6040 - Control Word
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6041-status-word">
+     0x6041 - Status Word
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6060-modes-of-operation">
+     0x6060 - Modes Of Operation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6061-modes-of-operation">
+     0x6061 - Modes Of Operation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6062-position-demand-value">
+     0x6062 - Position Demand Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6064-position-actual-value">
+     0x6064 - Position Actual Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6067-position-window">
+     0x6067 - Position Window
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x606b-velocity-demand-value">
+     0x606B - Velocity Demand Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x606c-velocity-actual-value">
+     0x606C - Velocity Actual Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x606d-velocity-window">
+     0x606D - Velocity Window
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6072-max-torque">
+     0x6072 - Max Torque
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6073-max-current">
+     0x6073 - Max Current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6075-motor-rated-current">
+     0x6075 - Motor Rated Current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6072-motor-rated-torque">
+     0x6072 - Motor Rated Torque
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6077-torque-actual-value">
+     0x6077 - Torque Actual Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6079-dc-link-circuit-voltage">
+     0x6079 - DC Link Circuit Voltage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x607a-target-position">
+     0x607A - Target Position
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x607d-software-position-limit">
+     0x607D - Software Position Limit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6080-max-motor-speed">
+     0x6080 - Max Motor Speed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6081-profile-velocity">
+     0x6081 - Profile Velocity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6083-profile-acceleration">
+     0x6083 - Profile Acceleration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6084-profile-deceleration">
+     0x6084 - Profile Deceleration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x60ff-target-velocity">
+     0x60FF - Target Velocity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6502-supported-drive-modes">
+     0x6502 - Supported Drive Modes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Object Dictionary</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communication-area">
+   1. Communication Area
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1000-device-type">
+     0x1000 - Device type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1001-error-register">
+     0x1001 - Error Register
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1008-manufacturer-device-name">
+     0x1008 - Manufacturer Device Name
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1010-store-parameters">
+     0x1010 - Store Parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1017-producer-heartbeat-time">
+     0x1017 - Producer Heartbeat Time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1600-receive-pdo1-mapping">
+     0x1600 - Receive PDO1 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1601-receive-pdo2-mapping">
+     0x1601 - Receive PDO2 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1602-receive-pdo3-mapping">
+     0x1602 - Receive PDO3 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1603-receive-pdo4-mapping">
+     0x1603 - Receive PDO4 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a00-transmit-pdo1-mapping">
+     0x1A00 - Transmit PDO1 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a01-transmit-pdo2-mapping">
+     0x1A01 - Transmit PDO2 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a02-transmit-pdo3-mapping">
+     0x1A02 - Transmit PDO3 mapping
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x1a03-transmit-pdo4-mapping">
+     0x1A03 - Transmit PDO4 mapping
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manufacturer-specific-area">
+   2. Manufacturer Specific Area
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2000-motor-settings">
+     0x2000 - Motor Settings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2001-velocity-pid-controller">
+     0x2001 - Velocity PID Controller
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2002-position-pid-controller">
+     0x2002 - Position PID Controller
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2003-system-command">
+     0x2003 - System Command
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2004-system-status">
+     0x2004 - System Status
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2005-output-encoder">
+     0x2005 - Output Encoder
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profile-specific-area">
+   3. Profile Specific Area
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6040-control-word">
+     0x6040 - Control Word
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6041-status-word">
+     0x6041 - Status Word
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6060-modes-of-operation">
+     0x6060 - Modes Of Operation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6061-modes-of-operation">
+     0x6061 - Modes Of Operation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6062-position-demand-value">
+     0x6062 - Position Demand Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6064-position-actual-value">
+     0x6064 - Position Actual Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6067-position-window">
+     0x6067 - Position Window
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x606b-velocity-demand-value">
+     0x606B - Velocity Demand Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x606c-velocity-actual-value">
+     0x606C - Velocity Actual Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x606d-velocity-window">
+     0x606D - Velocity Window
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6072-max-torque">
+     0x6072 - Max Torque
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6073-max-current">
+     0x6073 - Max Current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6075-motor-rated-current">
+     0x6075 - Motor Rated Current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6072-motor-rated-torque">
+     0x6072 - Motor Rated Torque
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6077-torque-actual-value">
+     0x6077 - Torque Actual Value
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6079-dc-link-circuit-voltage">
+     0x6079 - DC Link Circuit Voltage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x607a-target-position">
+     0x607A - Target Position
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x607d-software-position-limit">
+     0x607D - Software Position Limit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6080-max-motor-speed">
+     0x6080 - Max Motor Speed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6081-profile-velocity">
+     0x6081 - Profile Velocity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6083-profile-acceleration">
+     0x6083 - Profile Acceleration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6084-profile-deceleration">
+     0x6084 - Profile Deceleration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x60ff-target-velocity">
+     0x60FF - Target Velocity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x6502-supported-drive-modes">
+     0x6502 - Supported Drive Modes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="object-dictionary">
+<h1>Object Dictionary<a class="headerlink" href="#object-dictionary" title="Permalink to this headline">#</a></h1>
+<p>Object dictionary holds CAN objects that can be accessed using SDOs and in some cases by PDOs. There are three main groups in which the address space is divided into:</p>
+<ol class="simple">
+<li><p>Communication Area</p></li>
+<li><p>Manufacturer Specific Area</p></li>
+<li><p>Profile Specific Area</p></li>
+</ol>
+<section id="communication-area">
+<h2>1. Communication Area<a class="headerlink" href="#communication-area" title="Permalink to this headline">#</a></h2>
+<p>The communication area describes the CANopen objects compliant with CiA301 standard.</p>
+<section id="x1000-device-type">
+<h3>0x1000 - Device type<a class="headerlink" href="#x1000-device-type" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x1000</td>
+			<td>0x00</td>
+			<td>Device type</td>
+     		<td>UINT32</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00020192</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1001-error-register">
+<h3>0x1001 - Error Register<a class="headerlink" href="#x1001-error-register" title="Permalink to this headline">#</a></h3>
+<p>Indicates whether an error has occured. Currently, only the 0th bit is implemented, that indicates a general error. For a more verbose error and warning status, please see 0x2004 System Status.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x1001</td>
+			<td>0x00</td>
+			<td>Error Register</td>
+     		<td>UINT8</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Bit</b></td>
+			<td> <b>Meaning</b></td>
+		</tr>
+		<tr>
+      		<td>0</td>
+			<td>General Error</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1008-manufacturer-device-name">
+<h3>0x1008 - Manufacturer Device Name<a class="headerlink" href="#x1008-manufacturer-device-name" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x1008</td>
+			<td>0x00</td>
+			<td>Manufacturer Device Name</td>
+     		<td>STR</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>"MD80"</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1010-store-parameters">
+<span id="store-parameters"></span><h3>0x1010 - Store Parameters<a class="headerlink" href="#x1010-store-parameters" title="Permalink to this headline">#</a></h3>
+<p>Use this object for saving parameters in non-volatile memory. Works only in “switch on disabled” state. To avoid saving parameters by mistake a value of 0x65766173 has to be explicitly written to 0x1010:1.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x1010</td>
+			<td>0x01</td>
+			<td>Store Parameters</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>-</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1017-producer-heartbeat-time">
+<h3>0x1017 - Producer Heartbeat Time<a class="headerlink" href="#x1017-producer-heartbeat-time" title="Permalink to this headline">#</a></h3>
+<p>Defines the period of heartbeat message sent by the MD80.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x1017</td>
+			<td>0x00</td>
+			<td>Producer Heartbeat Time</td>
+     		<td>UINT16</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>-</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1600-receive-pdo1-mapping">
+<h3>0x1600 - Receive PDO1 mapping<a class="headerlink" href="#x1600-receive-pdo1-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1600</td>
+			<td>-</td>
+			<td>Receive PDO1 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1600:1</td>
+			<td>0x6040</td>
+			<td>ControlWord</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1601-receive-pdo2-mapping">
+<h3>0x1601 - Receive PDO2 mapping<a class="headerlink" href="#x1601-receive-pdo2-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1601</td>
+			<td>-</td>
+			<td>Receive PDO2 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1601:1</td>
+			<td>0x6040</td>
+			<td>ControlWord</td>
+		</tr>
+		<tr>
+      		<td>0x1601:2</td>
+			<td>0x6060</td>
+			<td>Modes Of Operation</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1602-receive-pdo3-mapping">
+<h3>0x1602 - Receive PDO3 mapping<a class="headerlink" href="#x1602-receive-pdo3-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1602</td>
+			<td>-</td>
+			<td>Receive PDO3 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1602:1</td>
+			<td>0x6040</td>
+			<td>ControlWord</td>
+		</tr>
+		<tr>
+      		<td>0x1602:2</td>
+			<td>0x607A</td>
+			<td>Target Position</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1603-receive-pdo4-mapping">
+<h3>0x1603 - Receive PDO4 mapping<a class="headerlink" href="#x1603-receive-pdo4-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1603</td>
+			<td>-</td>
+			<td>Receive PDO4 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1603:1</td>
+			<td>0x6040</td>
+			<td>ControlWord</td>
+		</tr>
+		<tr>
+      		<td>0x1603:2</td>
+			<td>0x60FF</td>
+			<td>Target Velocity</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1a00-transmit-pdo1-mapping">
+<h3>0x1A00 - Transmit PDO1 mapping<a class="headerlink" href="#x1a00-transmit-pdo1-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1A00</td>
+			<td>-</td>
+			<td>Transmit PDO1 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1A00:1</td>
+			<td>0x6041</td>
+			<td>StatusWord</td>
+		</tr>
+		<tr>
+      		<td>0x1A00:2</td>
+			<td>0x6061</td>
+			<td>Modes Of Operation Display</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1a01-transmit-pdo2-mapping">
+<h3>0x1A01 - Transmit PDO2 mapping<a class="headerlink" href="#x1a01-transmit-pdo2-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1A01</td>
+			<td>-</td>
+			<td>Transmit PDO2 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1A01:1</td>
+			<td>0x6041</td>
+			<td>StatusWord</td>
+		</tr>
+		<tr>
+      		<td>0x1A01:2</td>
+			<td>0x6064</td>
+			<td>Position Actual Value</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1a02-transmit-pdo3-mapping">
+<h3>0x1A02 - Transmit PDO3 mapping<a class="headerlink" href="#x1a02-transmit-pdo3-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1A02</td>
+			<td>-</td>
+			<td>Transmit PDO3 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1A02:1</td>
+			<td>0x6041</td>
+			<td>StatusWord</td>
+		</tr>
+		<tr>
+      		<td>0x1A02:2</td>
+			<td>0x606C</td>
+			<td>Velocity Actual Value</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x1a03-transmit-pdo4-mapping">
+<h3>0x1A03 - Transmit PDO4 mapping<a class="headerlink" href="#x1a03-transmit-pdo4-mapping" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>PDO Index</b></td>
+			<td> <b>Name</b></td>
+		</tr>
+		<tr>
+      		<td>0x1A03</td>
+			<td>-</td>
+			<td>Transmit PDO4 mapping</td>
+		</tr>
+		<tr>
+      		<td>0x1A03:1</td>
+			<td>0x6041</td>
+			<td>StatusWord</td>
+		</tr>
+		<tr>
+      		<td>0x1A03:2</td>
+			<td>0x6077</td>
+			<td>Torque Actual Value</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+</section>
+<section id="manufacturer-specific-area">
+<h2>2. Manufacturer Specific Area<a class="headerlink" href="#manufacturer-specific-area" title="Permalink to this headline">#</a></h2>
+<p>The manufacturer specific area describes the custom CANopen objects, valid only for MD80s.</p>
+<section id="x2000-motor-settings">
+<h3>0x2000 - Motor Settings<a class="headerlink" href="#x2000-motor-settings" title="Permalink to this headline">#</a></h3>
+<p>Configures the most important motor settings. This object is especially useful when you want to configure or reconfigure an MD80 for a particular motor. Be sure to save after modification using 0x1010 Store Parameters.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x01</td>
+			<td>Pole Pairs</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>[2;255]</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x02</td>
+			<td>Torque constant</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>Nm/A</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x03</td>
+			<td>Phase Inductance</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>[5nH-100mH]</td>
+            <td>0</td>
+            <td>H</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x04</td>
+			<td>Phase Resistance</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>[5mOhm-20Ohm]</td>
+            <td>0</td>
+            <td>Ohm</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x05</td>
+			<td>Torque Bandwidth</td>
+     		<td>UINT16</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>50-2500</td>
+            <td>0</td>
+            <td>Hz</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x06</td>
+			<td>Motor Name</td>
+     		<td>STR(20)</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x07</td>
+			<td>Motor Shutdown Temperature</td>
+     		<td>UINT8</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>10-80</td>
+            <td>0</td>
+            <td>*C</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x08</td>
+			<td>Gear Ratio</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x09</td>
+			<td>Calibration Mode</td>
+     		<td>UINT8</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>FULL = 0, NOPPDET = 1</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0A</td>
+			<td>Can ID</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1 - 31</td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x2001-velocity-pid-controller">
+<h3>0x2001 - Velocity PID Controller<a class="headerlink" href="#x2001-velocity-pid-controller" title="Permalink to this headline">#</a></h3>
+<p>Configures the Velocity PID controller gains. Be sure to save after modification using 0x1010 Store Parameters.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2001</td>
+			<td>0x01</td>
+			<td>Kp</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2001</td>
+			<td>0x02</td>
+			<td>Ki</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2001</td>
+			<td>0x03</td>
+			<td>Kd</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2001</td>
+			<td>0x04</td>
+			<td>Integral Limit</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>Nm</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<figure class="align-center">
+<img alt="_images/velocity_pid_CANopen.png" src="_images/velocity_pid_CANopen.png" />
+</figure>
+</section>
+<section id="x2002-position-pid-controller">
+<h3>0x2002 - Position PID Controller<a class="headerlink" href="#x2002-position-pid-controller" title="Permalink to this headline">#</a></h3>
+<p>Configures the Position PID controller gains. Be sure to save after modification using 0x1010 Store Parameters.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2002</td>
+			<td>0x01</td>
+			<td>Kp</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2002</td>
+			<td>0x02</td>
+			<td>Ki</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2002</td>
+			<td>0x03</td>
+			<td>Kd</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2002</td>
+			<td>0x04</td>
+			<td>Integral Limit</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>rad/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<figure class="align-center">
+<img alt="_images/position_pid_CANopen.png" src="_images/position_pid_CANopen.png" />
+</figure>
+</section>
+<section id="x2003-system-command">
+<span id="system-command"></span><h3>0x2003 - System Command<a class="headerlink" href="#x2003-system-command" title="Permalink to this headline">#</a></h3>
+<p>Allows to issue a system command. Write a non-zero value to start a specific action.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x01</td>
+			<td>Blink LEDs</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x02</td>
+			<td>Reset Controller</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x03</td>
+			<td>Run Calibration</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x04</td>
+			<td>Run Output Encoder Calibration</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x05</td>
+			<td>Set Zero</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x06</td>
+			<td>Calibrate Current PI Gains</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<!-- <tr>
+      		<td>0x2003</td>
+			<td>0x07</td>
+			<td>Test Output Encoder</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x08</td>
+			<td>Test Main Encoder</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr> -->
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x2004-system-status">
+<h3>0x2004 - System Status<a class="headerlink" href="#x2004-system-status" title="Permalink to this headline">#</a></h3>
+<p>Allows to read System status. Each specific status is a UINT32, where lower bits (0-15) indicate errors, and higher bits (16-31) indicate warnings. Please see the <a class="reference internal" href="MD80.html#error-codes"><span class="std std-ref">Error Codes</span></a> section to see how to decode the status to individual fields.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2004</td>
+			<td>0x01</td>
+			<td>Main Encoder Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x02</td>
+			<td>Output Encoder Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x03</td>
+			<td>Calibration Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x04</td>
+			<td>Bridge Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x05</td>
+			<td>Hardware Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x02</td>
+			<td>Homing Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x02</td>
+			<td>Motion Status</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x2005-output-encoder">
+<h3>0x2005 - Output Encoder<a class="headerlink" href="#x2005-output-encoder" title="Permalink to this headline">#</a></h3>
+<p>Output encoder settings.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2005</td>
+			<td>0x01</td>
+			<td>Type</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1 (AS5047_CENTER), 2 (AS5047_OFFAXIS), 3 (MB053SFA17BENT00)</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x02</td>
+			<td>Calibration Mode</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>FULL = 0, DIRONLY = 1</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x03</td>
+			<td>Mode</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>NONE = 0, STARTUP = 1, MOTION = 2, REPORT = 3</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+</section>
+<section id="profile-specific-area">
+<h2>3. Profile Specific Area<a class="headerlink" href="#profile-specific-area" title="Permalink to this headline">#</a></h2>
+<p>The profile specific area describes the CANopen objects compliant with CiA402 standard.</p>
+<section id="x6040-control-word">
+<h3>0x6040 - Control Word<a class="headerlink" href="#x6040-control-word" title="Permalink to this headline">#</a></h3>
+<p>Control word is used to change the state of the internal CiA402 state machine implemented on the drive.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6040</td>
+			<td>0x00</td>
+			<td>Control Word</td>
+     		<td>UINT16</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<p>The state machine is defined as follows:</p>
+<figure class="align-center">
+<img alt="_images/CIA402_state_machine_docs.png" class="no-scaled-link" src="_images/CIA402_state_machine_docs.png" />
+</figure>
+<p>All the transitions are based on the control word. The current state can be read using the status word (0x6041).</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Command</b></td>
+			<td> <b>Reset Fault (bit 7)</b></td>
+     		<td> <b>Enable Operation (bit 3)</b></td>
+			<td> <b>Quick Stop (bit 2)</b></td>
+			<td> <b>Disable Voltage (bit 1)</b></td>
+			<td> <b>Switch On (bit 0)</b></td>
+			<td> <b>Decimal value</b></td>
+		</tr>
+		<tr>
+            <td>Shutdown</td>
+      		<td>0</td>
+			<td>X</td>
+     		<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+        <tr>
+            <td>Switch on</td>
+      		<td>0</td>
+			<td>0</td>
+     		<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+        <tr>
+            <td>Switch on and Enable Operation</td>
+      		<td>0</td>
+			<td>1</td>
+     		<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>15</td>
+		</tr>
+        <tr>
+            <td>Disable Voltage</td>
+      		<td>0</td>
+			<td>X</td>
+     		<td>X</td>
+			<td>0</td>
+			<td>X</td>
+			<td>0</td>
+		</tr>
+        <tr>
+            <td>Quick Stop</td>
+      		<td>0</td>
+			<td>X</td>
+     		<td>0</td>
+			<td>1</td>
+			<td>X</td>
+			<td>2</td>
+		</tr>
+        <tr>
+            <td>Disable operation</td>
+      		<td>0</td>
+			<td>0</td>
+     		<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+        <tr>
+            <td>Enable operation</td>
+      		<td>0</td>
+			<td>1</td>
+     		<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>15</td>
+		</tr>
+        <tr>
+            <td>Fault reset</td>
+      		<td>0->1</td>
+			<td>X</td>
+     		<td>X</td>
+			<td>X</td>
+			<td>X</td>
+			<td>128</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<p>X means “do not care”</p>
+<p>Example:</p>
+<p>To put the drive into operational mode set:</p>
+<ol class="simple">
+<li><p>Control word = 6 (dec) (Shutdown cmd)</p></li>
+<li><p>Control word = 15 (dec) (Switch on and Enable Operation cmds)</p></li>
+</ol>
+<p>The events and respective transitions are gathered in the table below:</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Transition</b></td>
+			<td> <b>Event</b></td>
+     		<td> <b>Internal action</b></td>
+		</tr>
+		<tr>
+            <td>0</td>
+      		<td>Automatic transition after power up</td>
+			<td>Drive internal initialization</td>
+		</tr>
+        <tr>
+            <td>1</td>
+      		<td>Automatic transition after drives internal initialization</td>
+			<td>Object dictionary is initalized with NVM data</td>
+		</tr>
+        <tr>
+            <td>2</td>
+      		<td>Shutdown command received</td>
+			<td>None</td>
+		</tr>
+        <tr>
+            <td>3</td>
+      		<td>Switch on command received</td>
+			<td>None</td>
+		</tr>
+        <tr>
+            <td>4</td>
+      		<td>Enable operation command received</td>
+			<td>Current controllers are on, power is applied to the motor</td>
+		</tr>
+        <tr>
+            <td>5</td>
+      		<td>Disable operation command received</td>
+			<td>Current controllers are off, power is not applied to the motor</td>
+		</tr>
+        <tr>
+            <td>6</td>
+      		<td>Shutdown command received</td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>7</td>
+      		<td>Quick stop command received</td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>8</td>
+      		<td>Shutdown command received</td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>9</td>
+      		<td>Disable voltage command received</td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>10</td>
+      		<td>Disable voltage / Quick stop command received</td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>11</td>
+      		<td>Quick stop command received</td>
+			<td>Quick stop action is enabled. The drive decelerates and transits to SWITCH ON DISABLED</td>
+		</tr>
+        <tr>
+            <td>12</td>
+      		<td>Automatic transition when quick stop is completed </td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>13</td>
+      		<td>Fault ocurred</td>
+			<td>Current controllers are turned off</td>
+		</tr>
+        <tr>
+            <td>14</td>
+      		<td>Automatic transition to fault state </td>
+			<td>None</td>
+		</tr>
+        <tr>
+            <td>15</td>
+      		<td>Fault reset command received</td>
+			<td>Fault is cleared if not critical</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6041-status-word">
+<h3>0x6041 - Status Word<a class="headerlink" href="#x6041-status-word" title="Permalink to this headline">#</a></h3>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6041</td>
+			<td>0x00</td>
+			<td>Status Word</td>
+     		<td>UINT16</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Status Word</b></td>
+			<td> <b>State Machine State</b></td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x0xx 0000</td>
+			<td>Not ready to switch on</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x1xx 0000</td>
+			<td>Switch on disabled</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x01x 0001</td>
+			<td>Ready to switch on</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x01x 0011</td>
+			<td>Switched on</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x01x 0111</td>
+			<td>Operation Enabled</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x00x 0111</td>
+			<td>Quick stop active</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x0xx 1111</td>
+			<td>Fault reaction active</td>
+		</tr>
+		<tr>
+      		<td>xxxx xxxx x0xx 1000</td>
+			<td>Quick stop active</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<p>bit 10 of the statusword indicates the current target has been reached (1) or not (0). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a 0x6067 Position Window margin), and in velocity mode that a velocity target has been reached (within 0x606D Velocity Window).</p>
+<p>bit 11 of the statusword indicates whether any of the internal limits was active during current power up - for more information on which limit is active, check the 0x2004:7 Motion Status.</p>
+</section>
+<section id="x6060-modes-of-operation">
+<h3>0x6060 - Modes Of Operation<a class="headerlink" href="#x6060-modes-of-operation" title="Permalink to this headline">#</a></h3>
+<p>Use this object to request a motion mode change. The actual mode is reflected in 0x6061 Modes Of Operation Display.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6060</td>
+			<td>0x00</td>
+			<td>Modes Of Operation</td>
+     		<td>INT8</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Value</b></td>
+			<td> <b>Mode</b></td>
+		</tr>
+		<tr>
+      		<td>-2</td>
+			<td>Calibration</td>
+		</tr>
+		<tr>
+      		<td>0</td>
+			<td>Idle</td>
+		</tr>
+		<tr>
+      		<td>1</td>
+			<td>Profile Position</td>
+		</tr>
+		<tr>
+      		<td>3</td>
+			<td>Profile Velocity</td>
+		</tr>
+		<tr>
+      		<td>8</td>
+			<td>Cyclic Sync Position</td>
+		</tr>
+		<tr>
+      		<td>9</td>
+			<td>Cyclic Sync Velocity</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6061-modes-of-operation">
+<h3>0x6061 - Modes Of Operation<a class="headerlink" href="#x6061-modes-of-operation" title="Permalink to this headline">#</a></h3>
+<p>Use this object to read current motion mode</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6060</td>
+			<td>0x00</td>
+			<td>Modes Of Operation</td>
+     		<td>INT8</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Value</b></td>
+			<td> <b>Mode</b></td>
+		</tr>
+		<tr>
+      		<td>-2</td>
+			<td>Calibration</td>
+		</tr>
+		<tr>
+      		<td>0</td>
+			<td>Idle</td>
+		</tr>
+		<tr>
+      		<td>1</td>
+			<td>Profile Position</td>
+		</tr>
+		<tr>
+      		<td>3</td>
+			<td>Profile Velocity</td>
+		</tr>
+		<tr>
+      		<td>8</td>
+			<td>Cyclic Sync Position</td>
+		</tr>
+		<tr>
+      		<td>9</td>
+			<td>Cyclic Sync Velocity</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6062-position-demand-value">
+<h3>0x6062 - Position Demand Value<a class="headerlink" href="#x6062-position-demand-value" title="Permalink to this headline">#</a></h3>
+<p>This object provides the target position for Position PID controller, after the limits have been applied. Expressed in encoder increments.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6062</td>
+			<td>0x00</td>
+			<td>Position Demand Value</td>
+     		<td>INT32</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>INC</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6064-position-actual-value">
+<h3>0x6064 - Position Actual Value<a class="headerlink" href="#x6064-position-actual-value" title="Permalink to this headline">#</a></h3>
+<p>Provides the actual position value read from the encoder, expressed in the output shaft reference frame. Expressed in encoder increments.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6064</td>
+			<td>0x00</td>
+			<td>Position Actual Value</td>
+     		<td>INT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>INC</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6067-position-window">
+<h3>0x6067 - Position Window<a class="headerlink" href="#x6067-position-window" title="Permalink to this headline">#</a></h3>
+<p>Sets the size of the position window within which the target position is considered to have been reached. This value is symmetrically added to both sides of the target position value. Expressed in encoder increments.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6067</td>
+			<td>0x00</td>
+			<td>Position Window</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>INC</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x606b-velocity-demand-value">
+<h3>0x606B - Velocity Demand Value<a class="headerlink" href="#x606b-velocity-demand-value" title="Permalink to this headline">#</a></h3>
+<p>Provides the target velocity value for the Velocity PID controller, after the limits have been applied. Expressed in RPM.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x606B</td>
+			<td>0x00</td>
+			<td>Velocity Demand Value</td>
+     		<td>INT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>RPM</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x606c-velocity-actual-value">
+<h3>0x606C - Velocity Actual Value<a class="headerlink" href="#x606c-velocity-actual-value" title="Permalink to this headline">#</a></h3>
+<p>Provides the actual velocity value read from the encoder, expressed in the output shaft reference frame. Expressed in RPM.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x606C</td>
+			<td>0x00</td>
+			<td>Velocity Actual Value</td>
+     		<td>INT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>RPM</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x606d-velocity-window">
+<h3>0x606D - Velocity Window<a class="headerlink" href="#x606d-velocity-window" title="Permalink to this headline">#</a></h3>
+<p>Sets the size of the velocity window within which the target velocity is considered to have been reached. This value is symmetrically added to both sides of the target velocity value. Expressed in RPM.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x606D</td>
+			<td>0x00</td>
+			<td>Velocity Window</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>RPM</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6072-max-torque">
+<h3>0x6072 - Max Torque<a class="headerlink" href="#x6072-max-torque" title="Permalink to this headline">#</a></h3>
+<p>Configures the maximum allowed torque in the motor. The value is expressed in permille of rated torque. Example: rated torque of the motor is 1Nm, and the maximum is 2Nm. The Max Torque object should equal to 2000.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6072</td>
+			<td>0x00</td>
+			<td>Max Torque</td>
+     		<td>UNT16</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>yes</td>
+			<td>32767</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6073-max-current">
+<h3>0x6073 - Max Current<a class="headerlink" href="#x6073-max-current" title="Permalink to this headline">#</a></h3>
+<p>Configures the maximum allowed phase current in the motor. The value is expressed in permille of rated current. Example: rated current of the motor is 15A, and the maximum is 30A. The Max Current object should equal to 2000.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6073</td>
+			<td>0x00</td>
+			<td>Max Current</td>
+     		<td>UNT16</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>yes</td>
+			<td>50000</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6075-motor-rated-current">
+<h3>0x6075 - Motor Rated Current<a class="headerlink" href="#x6075-motor-rated-current" title="Permalink to this headline">#</a></h3>
+<p>Configures the motor rated current expressed in mA. This object is a reference for parameters such as 0x6073 Max Current. The value should be taken from the motor’s datasheet.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6075</td>
+			<td>0x00</td>
+			<td>Motor Rated Current</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1000000</td>
+            <td>0x00</td>
+            <td>mA</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6072-motor-rated-torque">
+<h3>0x6072 - Motor Rated Torque<a class="headerlink" href="#x6072-motor-rated-torque" title="Permalink to this headline">#</a></h3>
+<p>Configures the motor rated torque expressed in mNm. This object is a reference for parameters such as 0x6072 Max Torque. The value should be taken from the motor’s datasheet.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6072</td>
+			<td>0x00</td>
+			<td>Motor Rated Torque</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1000000</td>
+            <td>0x00</td>
+            <td>mA</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6077-torque-actual-value">
+<h3>0x6077 - Torque Actual Value<a class="headerlink" href="#x6077-torque-actual-value" title="Permalink to this headline">#</a></h3>
+<p>Provides the actual velocity value read from the encoder, expressed in the output shaft reference frame. Expressed in permille of 0x6076 Motor Rated Torque.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6077</td>
+			<td>0x00</td>
+			<td>Torque Actual Value</td>
+     		<td>INT16</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6079-dc-link-circuit-voltage">
+<h3>0x6079 - DC Link Circuit Voltage<a class="headerlink" href="#x6079-dc-link-circuit-voltage" title="Permalink to this headline">#</a></h3>
+<p>Provides the bus voltage measured by the motor controller in mV.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6079</td>
+			<td>0x00</td>
+			<td>DC Link Circuit Voltage</td>
+     		<td>UNT32</td>
+			<td>RO</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>mV</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x607a-target-position">
+<h3>0x607A - Target Position<a class="headerlink" href="#x607a-target-position" title="Permalink to this headline">#</a></h3>
+<p>Sets the target position for all motion modes.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x607A</td>
+			<td>0x00</td>
+			<td>Target Position</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>inc</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x607d-software-position-limit">
+<h3>0x607D - Software Position Limit<a class="headerlink" href="#x607d-software-position-limit" title="Permalink to this headline">#</a></h3>
+<p>Configures software limits that each new target position is checked against, and clipped if needed.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x607D</td>
+			<td>0x01</td>
+			<td>Min Position Limit</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>inc</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x607D</td>
+			<td>0x02</td>
+			<td>Max Position Limit</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0x00</td>
+            <td>inc</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6080-max-motor-speed">
+<h3>0x6080 - Max Motor Speed<a class="headerlink" href="#x6080-max-motor-speed" title="Permalink to this headline">#</a></h3>
+<p>Sets the maximum allowed velocity of the actuator’s output shaft in both directions.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6080</td>
+			<td>0x00</td>
+			<td>Max Motor Speed</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>1000</td>
+            <td>RPM</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6081-profile-velocity">
+<h3>0x6081 - Profile Velocity<a class="headerlink" href="#x6081-profile-velocity" title="Permalink to this headline">#</a></h3>
+<p>Configures the target velocity for the profile position mode. If this value is greater than 0x6080 Max Motor Speed, it will be limited to Max Motor Speed.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6081</td>
+			<td>0x00</td>
+			<td>Profile Velocity</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6083-profile-acceleration">
+<h3>0x6083 - Profile Acceleration<a class="headerlink" href="#x6083-profile-acceleration" title="Permalink to this headline">#</a></h3>
+<p>Configures the acceleration for profile position and profile velocity modes.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6083</td>
+			<td>0x00</td>
+			<td>Profile Acceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6084-profile-deceleration">
+<h3>0x6084 - Profile Deceleration<a class="headerlink" href="#x6084-profile-deceleration" title="Permalink to this headline">#</a></h3>
+<p>Configures the deceleration for profile position and profile velocity modes.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6084</td>
+			<td>0x00</td>
+			<td>Profile Deceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x60ff-target-velocity">
+<h3>0x60FF - Target Velocity<a class="headerlink" href="#x60ff-target-velocity" title="Permalink to this headline">#</a></h3>
+<p>Sets the target velocity for all motion modes.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x60FF</td>
+			<td>0x00</td>
+			<td>Target Velocity</td>
+     		<td>INT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x6502-supported-drive-modes">
+<h3>0x6502 - Supported Drive Modes<a class="headerlink" href="#x6502-supported-drive-modes" title="Permalink to this headline">#</a></h3>
+<p>Indicates the supported drive modes (binary value).</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x60FF</td>
+			<td>0x00</td>
+			<td>Target Velocity</td>
+     		<td>INT32</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>647</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="CANopen.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">CANopen</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="FAQ.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Common Issues and FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By MAB Robotics<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
