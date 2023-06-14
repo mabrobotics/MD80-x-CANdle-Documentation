@@ -355,6 +355,16 @@ title="Print to PDF"
    Setting up a new motor
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-an-external-encoder">
+   Setting up an external encoder
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-and-calibrating">
+   Saving and Calibrating
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -377,6 +387,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setting-up-a-new-motor">
    Setting up a new motor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-an-external-encoder">
+   Setting up an external encoder
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-and-calibrating">
+   Saving and Calibrating
   </a>
  </li>
 </ul>
@@ -431,17 +451,45 @@ title="Print to PDF"
 <li><p>0x6081 - Profile Velocity</p></li>
 <li><p>0x6083 - Profile Acceleration</p></li>
 <li><p>0x6084 - Profile Deceleration</p></li>
+<li><p>0x6085 - Quick Stop Deceleration</p></li>
 </ul>
-<p><strong>5. (Optional) Output encoder setup:</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to save the parameters - please see the last chapter</p>
+</div>
+</section>
+<section id="setting-up-an-external-encoder">
+<h2>Setting up an external encoder<a class="headerlink" href="#setting-up-an-external-encoder" title="Permalink to this headline">#</a></h2>
+<p>Setup of the external encoder should be done after the motor has been configured, as suggested in previous paragraph. To setup the output encoder the following fields need to be filled:</p>
 <ul class="simple">
-<li><p>0x2005:1 - Output Encoder Type</p></li>
-<li><p>0x2005:2 - Calibration Mode</p></li>
-<li><p>0x2005:3 - Mode</p></li>
+<li><p>0x2005:1 - Output Encoder Type (please see <a class="reference internal" href="MD80.html#output-encoder"><span class="std std-ref">output encoder</span></a>)</p></li>
+<li><p>0x2005:2 - Calibration Mode (please see <a class="reference internal" href="MD80.html#output-encoder-calibration"><span class="std std-ref">output encoder calibration</span></a>)</p></li>
+<li><p>0x2005:3 - Mode (please see <a class="reference internal" href="MD80.html#output-encoder"><span class="std std-ref">output encoder</span></a>)</p></li>
 </ul>
-<p><strong>After filling up the registers listed above there are two crucial steps:</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to save the parameters - please see the last chapter</p>
+</div>
+</section>
+<section id="saving-and-calibrating">
+<h2>Saving and Calibrating<a class="headerlink" href="#saving-and-calibrating" title="Permalink to this headline">#</a></h2>
+<p>After the parameters have been filled there are two more steps to follow - save to non-volatile memory and calibrate:</p>
 <ol class="simple">
-<li><p>Run <a class="reference internal" href="OD.html#store-parameters"><span class="std std-ref">store parameters</span></a> routine using 0x1010:1</p></li>
-<li><p>Run <a class="reference internal" href="OD.html#system-command"><span class="std std-ref">calibration routine</span></a> using 0x2003:3 (and output encoder calibration routine 0x2003:4 if output encoder is present)</p></li>
+<li><p>Run <a class="reference internal" href="OD.html#store-parameters"><span class="std std-ref">store parameters</span></a> routine using 0x1010:1:</p>
+<ul class="simple">
+<li><p>make sure the state machine is in “switch on disabled” state (write 0x8 to controlword 0x6040)</p></li>
+<li><p>write 0x65766173 to 0x1010:1</p></li>
+<li><p>wait for the drive to reboot</p></li>
+</ul>
+</li>
+<li><p>Run <a class="reference internal" href="OD.html#system-command"><span class="std std-ref">calibration routine</span></a> using 0x2003:3 (and output encoder calibration routine 0x2003:4 if output encoder is present)</p>
+<ul class="simple">
+<li><p>make sure the state machine is in “switch on disabled” state (write 0x8 to controlword 0x6040)</p></li>
+<li><p>make sure the drive is in “service” operation mode (write -2 to Modes Of Operation 0x6060)</p></li>
+<li><p>write 1 to 0x2003:3 to start the calibration</p></li>
+<li><p>wait for the drive to reboot</p></li>
+</ul>
+</li>
 </ol>
 </section>
 <div class="toctree-wrapper compound">

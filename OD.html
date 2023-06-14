@@ -457,6 +457,11 @@ title="Print to PDF"
      0x2005 - Output Encoder
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2006-temperature">
+     0x2006 - Temperature
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -478,10 +483,42 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#x6060-modes-of-operation">
      0x6060 - Modes Of Operation
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#service">
+       Service
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#idle">
+       Idle
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#profile-position">
+       Profile position
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#profile-velocity">
+       Profile velocity
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cyclic-sync-position">
+       Cyclic Sync Position
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cyclic-sync-velocity">
+       Cyclic Sync Velocity
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x6061-modes-of-operation">
-     0x6061 - Modes Of Operation
+    <a class="reference internal nav-link" href="#x6061-modes-of-operation-display">
+     0x6061 - Modes Of Operation Display
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -530,8 +567,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x6072-motor-rated-torque">
-     0x6072 - Motor Rated Torque
+    <a class="reference internal nav-link" href="#x6076-motor-rated-torque">
+     0x6076 - Motor Rated Torque
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -712,6 +749,11 @@ title="Print to PDF"
      0x2005 - Output Encoder
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#x2006-temperature">
+     0x2006 - Temperature
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -733,10 +775,42 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#x6060-modes-of-operation">
      0x6060 - Modes Of Operation
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#service">
+       Service
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#idle">
+       Idle
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#profile-position">
+       Profile position
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#profile-velocity">
+       Profile velocity
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cyclic-sync-position">
+       Cyclic Sync Position
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cyclic-sync-velocity">
+       Cyclic Sync Velocity
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x6061-modes-of-operation">
-     0x6061 - Modes Of Operation
+    <a class="reference internal nav-link" href="#x6061-modes-of-operation-display">
+     0x6061 - Modes Of Operation Display
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -785,8 +859,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#x6072-motor-rated-torque">
-     0x6072 - Motor Rated Torque
+    <a class="reference internal nav-link" href="#x6076-motor-rated-torque">
+     0x6076 - Motor Rated Torque
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1403,7 +1477,7 @@ title="Print to PDF"
 <p></p>
 </section>
 <section id="x2001-velocity-pid-controller">
-<h3>0x2001 - Velocity PID Controller<a class="headerlink" href="#x2001-velocity-pid-controller" title="Permalink to this headline">#</a></h3>
+<span id="velocity-pid-controller"></span><h3>0x2001 - Velocity PID Controller<a class="headerlink" href="#x2001-velocity-pid-controller" title="Permalink to this headline">#</a></h3>
 <p>Configures the Velocity PID controller gains. Be sure to save after modification using 0x1010 Store Parameters.</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -1471,11 +1545,11 @@ title="Print to PDF"
 </table>
 <p></p>
 <figure class="align-center">
-<img alt="_images/velocity_pid_CANopen.png" src="_images/velocity_pid_CANopen.png" />
+<a class="reference internal image-reference" href="_images/velocity_pid_CANopen.png"><img alt="_images/velocity_pid_CANopen.png" src="_images/velocity_pid_CANopen.png" style="width: 1000px;" /></a>
 </figure>
 </section>
 <section id="x2002-position-pid-controller">
-<h3>0x2002 - Position PID Controller<a class="headerlink" href="#x2002-position-pid-controller" title="Permalink to this headline">#</a></h3>
+<span id="position-pid-controller"></span><h3>0x2002 - Position PID Controller<a class="headerlink" href="#x2002-position-pid-controller" title="Permalink to this headline">#</a></h3>
 <p>Configures the Position PID controller gains. Be sure to save after modification using 0x1010 Store Parameters.</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -1542,13 +1616,11 @@ title="Print to PDF"
 	</tbody>
 </table>
 <p></p>
-<figure class="align-center">
-<img alt="_images/position_pid_CANopen.png" src="_images/position_pid_CANopen.png" />
-</figure>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/position_pid_CANopen.png"><img alt="_images/position_pid_CANopen.png" class="bg-primary mb-1 align-center" src="_images/position_pid_CANopen.png" style="width: 1000px;" /></a>
 </section>
 <section id="x2003-system-command">
 <span id="system-command"></span><h3>0x2003 - System Command<a class="headerlink" href="#x2003-system-command" title="Permalink to this headline">#</a></h3>
-<p>Allows to issue a system command. Write a non-zero value to start a specific action.</p>
+<p>Allows to issue a system command. Write a non-zero value to start a specific action. Actions work only in “switch on disabled” state and “service” (-2) operation mode.</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
 		<tr>
@@ -1770,7 +1842,7 @@ title="Print to PDF"
 </section>
 <section id="x2005-output-encoder">
 <h3>0x2005 - Output Encoder<a class="headerlink" href="#x2005-output-encoder" title="Permalink to this headline">#</a></h3>
-<p>Output encoder settings.</p>
+<p>Output encoder related record.</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
 		<tr>
@@ -1819,6 +1891,75 @@ title="Print to PDF"
 			<td>yes</td>
 			<td>NONE = 0, STARTUP = 1, MOTION = 2, REPORT = 3</td>
             <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x04</td>
+			<td>Position</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
+            <td>rad</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x05</td>
+			<td>Velocity</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
+            <td>rad/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x2006-temperature">
+<h3>0x2006 - Temperature<a class="headerlink" href="#x2006-temperature" title="Permalink to this headline">#</a></h3>
+<p>Motor and mosfet temperature readout record.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2006</td>
+			<td>0x01</td>
+			<td>Motor Temperature</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2006</td>
+			<td>0x02</td>
+			<td>Mosfet Temperature</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
             <td>-</td>
 		</tr>
 	</tbody>
@@ -2166,7 +2307,7 @@ title="Print to PDF"
 		</tr>
 		<tr>
       		<td>-2</td>
-			<td>Calibration</td>
+			<td>Service</td>
 		</tr>
 		<tr>
       		<td>0</td>
@@ -2191,9 +2332,39 @@ title="Print to PDF"
 	</tbody>
 </table>
 <p></p>
+<section id="service">
+<h4>Service<a class="headerlink" href="#service" title="Permalink to this headline">#</a></h4>
+<p>Mode in which <a class="reference internal" href="#system-command"><span class="std std-ref">System Commands</span></a> can be issued.</p>
 </section>
-<section id="x6061-modes-of-operation">
-<h3>0x6061 - Modes Of Operation<a class="headerlink" href="#x6061-modes-of-operation" title="Permalink to this headline">#</a></h3>
+<section id="idle">
+<h4>Idle<a class="headerlink" href="#idle" title="Permalink to this headline">#</a></h4>
+<p>Default state of the drive. No torque is produced, motor phases are shorted to GND which causes a damping sensation on the shaft.</p>
+</section>
+<section id="profile-position">
+<h4>Profile position<a class="headerlink" href="#profile-position" title="Permalink to this headline">#</a></h4>
+<p>Profile position mode uses a trapeziodal trajectory generator on top of the <a class="reference internal" href="#position-pid-controller"><span class="std std-ref">Position PID controller</span></a>. Allows to perform smooth point-to-point movements.</p>
+<figure class="align-default">
+<img alt="_images/position_profile_generator_CANopen.png" src="_images/position_profile_generator_CANopen.png" />
+</figure>
+</section>
+<section id="profile-velocity">
+<h4>Profile velocity<a class="headerlink" href="#profile-velocity" title="Permalink to this headline">#</a></h4>
+<p>Profile velocity mode uses a trapeziodal trajectory generator on top of the <a class="reference internal" href="#velocity-pid-controller"><span class="std std-ref">Velocity PID controller</span></a>. Allows to reach a certain velocity with a constant acceleration / deceleration.</p>
+<figure class="align-default">
+<img alt="_images/velocity_profile_generator_CANopen.png" src="_images/velocity_profile_generator_CANopen.png" />
+</figure>
+</section>
+<section id="cyclic-sync-position">
+<h4>Cyclic Sync Position<a class="headerlink" href="#cyclic-sync-position" title="Permalink to this headline">#</a></h4>
+<p>Raw position PID controller. Target position is reached as fast as possible, respecting the position range limits, max velocity, and max torque limit. To achieve smooth trajectories new setpoints need to be sent with high frequency.</p>
+</section>
+<section id="cyclic-sync-velocity">
+<h4>Cyclic Sync Velocity<a class="headerlink" href="#cyclic-sync-velocity" title="Permalink to this headline">#</a></h4>
+<p>Raw velocity PID controller. Target velocity is reached as fast as possible, respecting the max velocity limit, and max torque limit. To achieve smooth acceleration new velocity setpoints need to be sent with high frequency.</p>
+</section>
+</section>
+<section id="x6061-modes-of-operation-display">
+<h3>0x6061 - Modes Of Operation Display<a class="headerlink" href="#x6061-modes-of-operation-display" title="Permalink to this headline">#</a></h3>
 <p>Use this object to read current motion mode</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -2210,9 +2381,9 @@ title="Print to PDF"
             <td> <b>Units</b></td>
 		</tr>
 		<tr>
-      		<td>0x6060</td>
+      		<td>0x6061</td>
 			<td>0x00</td>
-			<td>Modes Of Operation</td>
+			<td>Modes Of Operation Display</td>
      		<td>INT8</td>
 			<td>RO</td>
 			<td>TX</td>
@@ -2232,7 +2403,7 @@ title="Print to PDF"
 		</tr>
 		<tr>
       		<td>-2</td>
-			<td>Calibration</td>
+			<td>Service</td>
 		</tr>
 		<tr>
       		<td>0</td>
@@ -2555,8 +2726,8 @@ title="Print to PDF"
 </table>
 <p></p>
 </section>
-<section id="x6072-motor-rated-torque">
-<h3>0x6072 - Motor Rated Torque<a class="headerlink" href="#x6072-motor-rated-torque" title="Permalink to this headline">#</a></h3>
+<section id="x6076-motor-rated-torque">
+<h3>0x6076 - Motor Rated Torque<a class="headerlink" href="#x6076-motor-rated-torque" title="Permalink to this headline">#</a></h3>
 <p>Configures the motor rated torque expressed in mNm. This object is a reference for parameters such as 0x6072 Max Torque. The value should be taken from the motor’s datasheet.</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -2573,7 +2744,7 @@ title="Print to PDF"
             <td> <b>Units</b></td>
 		</tr>
 		<tr>
-      		<td>0x6072</td>
+      		<td>0x6076</td>
 			<td>0x00</td>
 			<td>Motor Rated Torque</td>
      		<td>INT32</td>
@@ -2582,7 +2753,7 @@ title="Print to PDF"
 			<td>yes</td>
 			<td>1000000</td>
             <td>0x00</td>
-            <td>mA</td>
+            <td>mNm</td>
 		</tr>
 	</tbody>
 </table>
@@ -2932,9 +3103,9 @@ title="Print to PDF"
             <td> <b>Units</b></td>
 		</tr>
 		<tr>
-      		<td>0x60FF</td>
+      		<td>0x6502</td>
 			<td>0x00</td>
-			<td>Target Velocity</td>
+			<td>Supported Drive Modes</td>
      		<td>INT32</td>
 			<td>RO</td>
 			<td>-</td>
