@@ -562,7 +562,7 @@ Configures the most important motor settings. This object is especially useful w
 </table>
 <p></p>
 
-
+(velocity_pid_controller)=
 ### 0x2001 - Velocity PID Controller
 
 Configures the Velocity PID controller gains. Be sure to save after modification using 0x1010 Store Parameters. 
@@ -635,8 +635,9 @@ Configures the Velocity PID controller gains. Be sure to save after modification
 
 ```{figure} images/velocity_pid_CANopen.png
 :align: center
+:width: 1000px
 ```
-
+(position_pid_controller)=
 ### 0x2002 - Position PID Controller
 
 Configures the Position PID controller gains. Be sure to save after modification using 0x1010 Store Parameters. 
@@ -707,14 +708,16 @@ Configures the Position PID controller gains. Be sure to save after modification
 </table>
 <p></p>
 
-```{figure} images/position_pid_CANopen.png
+```{image} images/position_pid_CANopen.png
+:class: bg-primary mb-1
+:width: 1000px
 :align: center
 ```
 
 (system_command)=
 ### 0x2003 - System Command
 
-Allows to issue a system command. Write a non-zero value to start a specific action.
+Allows to issue a system command. Write a non-zero value to start a specific action. Actions work only in "switch on disabled" state and "service" (-2) operation mode. 
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -938,7 +941,7 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
 
 ### 0x2005 - Output Encoder
 
-Output encoder settings. 
+Output encoder related record.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -988,6 +991,76 @@ Output encoder settings.
 			<td>yes</td>
 			<td>NONE = 0, STARTUP = 1, MOTION = 2, REPORT = 3</td>
             <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x04</td>
+			<td>Position</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
+            <td>rad</td>
+		</tr>
+		<tr>
+      		<td>0x2003</td>
+			<td>0x05</td>
+			<td>Velocity</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
+            <td>rad/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+### 0x2006 - Temperature 
+
+Motor and mosfet temperature readout record.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x2006</td>
+			<td>0x01</td>
+			<td>Motor Temperature</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2006</td>
+			<td>0x02</td>
+			<td>Mosfet Temperature</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>TX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0.0</td>
             <td>-</td>
 		</tr>
 	</tbody>
@@ -1352,7 +1425,7 @@ Use this object to request a motion mode change. The actual mode is reflected in
 		</tr>
 		<tr>
       		<td>-2</td>
-			<td>Calibration</td>
+			<td>Service</td>
 		</tr>
 		<tr>
       		<td>0</td>
@@ -1378,7 +1451,38 @@ Use this object to request a motion mode change. The actual mode is reflected in
 </table>
 <p></p>
 
-### 0x6061 - Modes Of Operation 
+#### Service
+
+Mode in which [System Commands](system_command) can be issued. 
+
+#### Idle 
+
+Default state of the drive. No torque is produced, motor phases are shorted to GND which causes a damping sensation on the shaft.
+
+#### Profile position 
+
+Profile position mode uses a trapeziodal trajectory generator on top of the [Position PID controller](position_pid_controller). Allows to perform smooth point-to-point movements. 
+
+```{figure} images/position_profile_generator_CANopen.png
+```
+
+#### Profile velocity
+
+Profile velocity mode uses a trapeziodal trajectory generator on top of the [Velocity PID controller](velocity_pid_controller). Allows to reach a certain velocity with a constant acceleration / deceleration. 
+
+```{figure} images/velocity_profile_generator_CANopen.png
+```
+
+#### Cyclic Sync Position
+
+Raw position PID controller. Target position is reached as fast as possible, respecting the position range limits, max velocity, and max torque limit. To achieve smooth trajectories new setpoints need to be sent with high frequency.
+
+#### Cyclic Sync Velocity
+
+Raw velocity PID controller. Target velocity is reached as fast as possible, respecting the max velocity limit, and max torque limit. To achieve smooth acceleration new velocity setpoints need to be sent with high frequency. 
+
+
+### 0x6061 - Modes Of Operation Display
 
 Use this object to read current motion mode
 
@@ -1397,9 +1501,9 @@ Use this object to read current motion mode
             <td> <b>Units</b></td>
 		</tr>
 		<tr>
-      		<td>0x6060</td>
+      		<td>0x6061</td>
 			<td>0x00</td>
-			<td>Modes Of Operation</td>
+			<td>Modes Of Operation Display</td>
      		<td>INT8</td>
 			<td>RO</td>
 			<td>TX</td>
@@ -1420,7 +1524,7 @@ Use this object to read current motion mode
 		</tr>
 		<tr>
       		<td>-2</td>
-			<td>Calibration</td>
+			<td>Service</td>
 		</tr>
 		<tr>
       		<td>0</td>
@@ -1754,7 +1858,7 @@ Configures the motor rated current expressed in mA. This object is a reference f
 </table>
 <p></p>
 
-### 0x6072 - Motor Rated Torque
+### 0x6076 - Motor Rated Torque
 
 Configures the motor rated torque expressed in mNm. This object is a reference for parameters such as 0x6072 Max Torque. The value should be taken from the motor's datasheet. 
 
@@ -1773,7 +1877,7 @@ Configures the motor rated torque expressed in mNm. This object is a reference f
             <td> <b>Units</b></td>
 		</tr>
 		<tr>
-      		<td>0x6072</td>
+      		<td>0x6076</td>
 			<td>0x00</td>
 			<td>Motor Rated Torque</td>
      		<td>INT32</td>
@@ -1782,7 +1886,7 @@ Configures the motor rated torque expressed in mNm. This object is a reference f
 			<td>yes</td>
 			<td>1000000</td>
             <td>0x00</td>
-            <td>mA</td>
+            <td>mNm</td>
 		</tr>
 	</tbody>
 </table>
@@ -2146,9 +2250,9 @@ Indicates the supported drive modes (binary value).
             <td> <b>Units</b></td>
 		</tr>
 		<tr>
-      		<td>0x60FF</td>
+      		<td>0x6502</td>
 			<td>0x00</td>
-			<td>Target Velocity</td>
+			<td>Supported Drive Modes</td>
      		<td>INT32</td>
 			<td>RO</td>
 			<td>-</td>
