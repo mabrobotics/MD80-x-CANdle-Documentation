@@ -31,6 +31,12 @@ mdtool bus <SPI/UART/USB>
 ```
 to configure MDtool for the desired communication bus before first use, if you're using CANdle HAT and SPI or UART bus. 
 
+In case the CANdle device still doesn't work, make sure a /dev/ttyACM0 device is listed when you call: 
+```
+ls /dev/ttyACM*
+```
+
+
 ```{note}
 For the command prompt to work after the installation you have to restart the terminal window
 ```
@@ -132,7 +138,7 @@ This command is used to read the motor internal parameters. Use 'all' keyword at
 :align: center
 :class: no-scaled-link
 ```
-Reading the errors is the easiest way of debugging possible problems with the drive. For errors description please visit the [error codes](error_codes) section. 
+Reading the errors is the easiest way of debugging possible problems with the drive. For errors description please visit the [status](status) section. 
 
 (mdtool_blink)=
 #### `mdtool blink <ID>`
@@ -148,7 +154,7 @@ This command is used to test the PC<>CANdle communication speed which greatly af
 
 (mdtool_test_encoder)=
 #### `mdtool test encoder <type> <ID>`
-This command is used to check how accurate a praticular encoder was calibrated. The 'type' argument can be either 'main' for onboard encoder, or 'output' for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the [`mdtool setup info`](mdtool_setup_info) command. 
+This command is used to check how accurate a praticular encoder was calibrated. The 'type' argument can be either 'main' for onboard encoder, or 'output' for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the [`mdtool setup info all`](mdtool_setup_info) command. 
 
 ```{warning}
 Main encoder errors can be larger for non-sinusoidal motors (BLDC motors) because of their back-emf waveform shape. If you care about very precise positioning we advise using PMSM motors (sinusoidal).

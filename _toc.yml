@@ -10,6 +10,12 @@ chapters:
   title: MD80 x CANdle Ecosystem overview
 - file: MD80
   title: MD80 controller
+  sections:
+    - file: MD80 controller/Measurements
+    - file: MD80 controller/Output encoder
+    - file: MD80 controller/Motion modes
+    - file: MD80 controller/Safety limits
+    - file: MD80 controller/Status codes
 - file: CANdle
   title: CANdle and CANdle HAT
 - file: Software

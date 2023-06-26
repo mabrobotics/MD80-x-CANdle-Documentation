@@ -57,37 +57,6 @@ Main stable releases:
 </table>
 <p></p>
 
-<!-- ## Software (devel)
-
-Table below summarizes the devel software releases. These revisions may have some bugs, however they include the latest features
-
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-			<td> <b>Date</b></td>
-			<td> <b>CANdle lib</b></td>
-			<td> <b>MDtool</b></td>
-			<td> <b>pyCANdle</b></td>
-			<td> <b>CANdle ROS</b></td>
-			<td> <b>CANdle ROS2</b></td>
-			<td> <b>CANdle device</b></td>
-			<td> <b>MD80</b></td>
-		</tr>
-		<tr>
-			<td>21.03.2023</td>
-			<td><a href = https://github.com/mabrobotics/candle/tree/f59c1a647b95afefa30ac0ba64b2caf6553a5095 >3.2.3.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1LQJMENE0Vx6TyeI4RKZ9BIhXe1nI901-?usp=share_link >1.2.4.d</a></td>
-     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.3.31</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/tree/efc19882ea115dc762e4b293c7fc570214a0b53a >1.2.1.d</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/c3c36ee014093b9b64b28bd9a29415ddd1308be2 >1.2.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1FnShMgwSF55qew5ycVoGetr83XWlPmr7?usp=share_link >2.1.2.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1S0qrE8BpZ620tOoTm4aA-zVxHHDNQZ0R?usp=share_link >2.1.2.d</a></td>
-		</tr>
-	</tbody>
-</table>
-<p></p> -->
-
 ## MD80 update tool - MAB CAN Flasher 
 
 MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.

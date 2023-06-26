@@ -143,7 +143,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 
 * When succeeded, the motor is set up correctly and now’s the time to calibrate it using [`mdtool setup calibration <ID>`](mdtool_setup_calibration). Please follow the [calibration](calibration) guidelines for more information on the calibration process itself.
 
-* After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the [`mdtool setup info <ID>`](mdtool_setup_info). This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error's description and try the recommended action to clear it [error section](error_codes). 
+* After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the [`mdtool setup info <ID>`](mdtool_setup_info). This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error's description and try the recommended action to clear it [status](status). 
 
 Correct after-calibration mdtool setup info command output may look like this:
 
