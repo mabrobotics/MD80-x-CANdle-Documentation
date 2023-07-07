@@ -98,7 +98,7 @@ The velocity profile motion mode uses trapezoidal velocity profiles to achieve s
 
 # Position Profile
 
-The position profile motion mode uses trapezoidal velocity profiles to achieve smooth position changes with predefined acceleration, deceleration, and velocity. The trajectory generator module interpolates between two position setpoints to achieve constant acceleration, and linearly changing valocity.
+The position profile motion mode uses trapezoidal velocity profiles to achieve smooth position changes with predefined acceleration, deceleration, and velocity. The trajectory generator module interpolates between two position setpoints to achieve constant acceleration, and linearly changing velocity.
 
 ```{figure} ../images/Candle_motion_modes/position_profile_generator_CANdle.png
 :alt: candle
@@ -137,7 +137,7 @@ float mab_controller_performImpedanceController(Impedance_controller *c, float p
 # Motion controller tuning
 
 ```{hint}
-The best way to get started with tuning is to copy the [default gains](https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf) and tweak them. You can treat this section as our recommendation for tuning the controllers, but online articles can be useful as well [(link)](https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/)
+The best way to get started with tuning is to copy the [default gains](https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf) and tweak them. You can treat this section as our recommendation for tuning the controllers, but [online articles](https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/) can be useful as well 
 ```
 
 The first step to correctly set up the gains is to start with our [default gains](https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf). There are three sets of default gains that are set on each motor power up and thus they allow for restoring the actuator to a default state in case some gains were set incorrectly by the user. These gains are also a great starting point for user modifications when the actuator has to be used in a specific application requiring high positioning accuracy or very dynamic movements.

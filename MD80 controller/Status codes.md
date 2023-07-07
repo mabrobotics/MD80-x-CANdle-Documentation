@@ -273,6 +273,12 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td> <b>Error description</b></td>
       		<td> <b>Action to clear it</b></td>
 		</tr>
+		<tr>
+			<td>ERROR_POSITION_OUTSIDE_LIMITS</td>
+			<td>0</td>
+			<td>Current shaft position is outside the <min position : max position> limits from the config file</td>
+      		<td>Re-home the actuator, set a temporary zero to move it back into the limits, or increase the limit range</td>
+		</tr>
     	<tr>
 			<td>WARNING_TORQUE_CLIPPED</td>
 			<td>25</td>
@@ -290,12 +296,6 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>27</td>
 			<td>Position command was clipped to either max or min position at least once</td>
       		<td>Check position limits</td>
-		</tr>
-    	<tr>
-			<td>WARNING_START_OUTSIDE_LIMITS</td>
-			<td>28</td>
-			<td>Attempted to move when motor shaft was outside the position limits</td>
-      		<td>Check position limits and current shaft position</td>
 		</tr>
   </tbody>
 </table>

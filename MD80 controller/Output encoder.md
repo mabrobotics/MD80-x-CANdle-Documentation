@@ -130,5 +130,5 @@ At this point some errors will be present as the setup is not yet calibrated.
 * Calibrate the MD80 using [`mdtool setup calibration`](mdtool_setup_calibration) command 
 * Calibrate the output encoder using [`mdtool setup calibration_out`](mdtool_setup_calibration_out) command
 * Test the encoders using [`mdtool test encoder`](mdtool_test_encoder) command.
-* Use the [`mdtool setup info`](mdtool_setup_info) command to make sure there are no errors and the test results (min, max and stddev errors) are within your expectations.
+* Use the [`mdtool setup info all`](mdtool_setup_info) command to make sure there are no errors and the test results (min, max and stddev errors) are within your expectations.
 * The external encoder is ready to use! For more information on external encoder parameters please see the [output encoder calibration](output_encoder_calibration) section.

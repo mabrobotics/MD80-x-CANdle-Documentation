@@ -1,7 +1,7 @@
 (safety_limits)=
 # Safety limits
 
-Safety limits are implemented to limit the actuator parameters, to protect the controller or motor from overheating, as well as the surrounding environment from too-powerful actuator movements. Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and motor.
+Safety limits are implemented to limit the actuator parameters, to protect the controller or motor from overheating, as well as the surrounding environment from too-powerful actuator movements. Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and the motor.
 
 ```{warning}
 Setting the max current limit to above the maximum continuous current may damage the MD80 controller if the maximum torque is commanded for a prolonged period.
@@ -79,5 +79,5 @@ Position limit is respected only in Impedance / Position PID / Profile Position 
 MD80 features an FDCAN Watchdog Timer. This timer will shut down the drive stage when no FDCAN frame has been received in a specified time. This is to protect the drive and its surroundings in an event of loss of communications, for example by physical damage to the wiring. By default, the watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms using [`mdtool config can`](mdtool_config_can) command. When the watchdog is set to 0, it will disable the timer, however, this can lead to dangerous situations, and it is not a recommended way of operating MD80. 
 
 ```{warning}
-we do not recommend disabling the CAN watchdog timer.
+We do not recommend disabling the CAN watchdog timer.
 ```
