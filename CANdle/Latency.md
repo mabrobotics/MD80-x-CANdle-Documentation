@@ -1,5 +1,5 @@
 (latency)=
-## Latency
+# Latency
 
 The latency was measured using the [`mdtool test latency 8M`](mdtool_test_latency) command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD80. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus. 
 

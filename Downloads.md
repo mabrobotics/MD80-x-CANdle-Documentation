@@ -22,6 +22,7 @@ Main stable releases:
 			<td> <b>CANdle ROS2</b></td>
 			<td> <b>CANdle device</b></td>
 			<td> <b>MD80</b></td>
+			<td> <b>Manual</b></td>
 		</tr>
 		<tr>
 			<td>earlier</td>
@@ -31,6 +32,7 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.1 >1.1.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1>1.1.0</a></td>
 			<td>1.4</td>
+			<td>1.0</td>
 			<td>1.0</td>
 		</tr>
     	<tr>
@@ -42,9 +44,10 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
+			<td>1.1.0</td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>05.04.2023 (latest)</b></td>
+			<td><b>05.04.2023</b></td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.3.0 >3.3.0</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.3.0 >1.3.0</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.4.0/ >1.4.0</a></td>
@@ -52,6 +55,18 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.0>1.3.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>05.08.2023 (latest)</b></td>
+			<td><a href =  >3.4.0</a></td>
+			<td><a href =  >1.4.0</a></td>
+     		<td><a href =  >1.4.0</a></td>
+			<td><a href =  >1.3.0</a></td>
+			<td><a href =  >1.3.0</a></td>
+			<td><a href =  >2.2.0</a></td>
+			<td><a href =  >2.2.0</a></td>
+			<td>this document</td>
 		</tr>
 	</tbody>
 </table>

@@ -3,6 +3,8 @@
 
 When an abnormal situation takes place the controller sets an error bit indicating a particular error or warning. The table below lists all available error and warning codes and their descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the CANdle lib getQuickStatus() function.
 
+Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note taht all warnings and only non-critical errors can be cleared. 
+
 ## Quick Status 
 
 Quick status provides a general info about errors in each category of statuses. No warnings are indicated here. Last bit indicatest whether the current target (position or velocity) has been reached.
@@ -37,12 +39,16 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>5</td>
 			<td>Communication errors</td>
 		</tr>
-   		 <tr>
+   		<tr>
 			<td>6</td>
 			<td>Motion errors</td>
 		</tr>
+		<tr>
+			<td>7</td>
+			<td>Homing Errors</td>
+		</tr>
        	<tr>
-			<td>7-14</td>
+			<td>8-14</td>
 			<td>RESERVED</td>
 		</tr>
 		</tr>
@@ -181,7 +187,7 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>ERROR_BRIDGE_OC</td>
 			<td>1</td>
 			<td>The bridge detected overcurrent</td>
-      		<td>Lower the current limit, restart the drives</td>
+      		<td>Lower the current limit, clear the error or restart the drives</td>
 		</tr>
     	<tr>
 			<td>ERROR_BRIDGE_GENERAL_FAULT</td>
@@ -206,7 +212,7 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>ERROR_OVER_CURRENT</td>
 			<td>0</td>
 			<td>Overcurrent detected</td>
-      		<td>Lower the current limit, restart the drives</td>
+      		<td>Lower the current limit, clear the error or restart the drive</td>
 		</tr>
     	<tr>
 			<td>ERROR_OVER_VOLTAGE</td>
@@ -256,7 +262,7 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>WARNING_CAN_WD</td>
 			<td>30</td>
 			<td>Indicates the communication with the host was ended by the watchdog</td>
-      		<td>make sure candle.end() is called in your script</td>
+      		<td>make sure candle.end() is called in your script, clear using mdtool</td>
 		</tr>
   </tbody>
 </table>
@@ -277,29 +283,88 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>ERROR_POSITION_OUTSIDE_LIMITS</td>
 			<td>0</td>
 			<td>Current shaft position is outside the <min position : max position> limits from the config file</td>
-      		<td>Re-home the actuator, set a temporary zero to move it back into the limits, or increase the limit range</td>
+      		<td>Re-home the actuator, set a temporary zero to move it back into the limits, or increase the limit range, clear using mdtool</td>
+		</tr>
+		<tr>
+			<td>ERROR_VELOCITY_OUTSIDE_LIMITS</td>
+			<td>1</td>
+			<td>Velocity exceeded the max velocty param</td>
+      		<td>Ensure the velocity limit is set to a proper value, clear using mdtool</td>
+		</tr>
+		<tr>
+			<td>WARNING_ACCELERATION_CLIPPED</td>
+			<td>24</td>
+			<td>Acceleration command was clipped to max acceleration at least once</td>
+      		<td>Check acceleration limits, clear using mdtool</td>
 		</tr>
     	<tr>
 			<td>WARNING_TORQUE_CLIPPED</td>
 			<td>25</td>
 			<td>Torque command was clipped to max torque at least once</td>
-      		<td>Check torque limits</td>
+      		<td>Check torque limits, clear using mdtool</td>
 		</tr>
     	<tr>
 			<td>WARNING_VELOCITY_CLIPPED</td>
 			<td>26</td>
 			<td>Velocity command was clipped to max velocity at least once</td>
-      		<td>Check velocity limits</td>
+      		<td>Check velocity limits, clear using mdtool</td>
 		</tr>
     	<tr>
 			<td>WARNING_POSITON_CLIPPED</td>
 			<td>27</td>
 			<td>Position command was clipped to either max or min position at least once</td>
-      		<td>Check position limits</td>
+      		<td>Check position limits, clear using mdtool</td>
 		</tr>
   </tbody>
 </table>
 <p></p>
+
+
+(homing_status)=
+## Homing status
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_HOMING_LIMIT_REACHED</td>
+			<td>0</td>
+			<td>Motor position while homing has exceeded the homing max travel </td>
+      		<td>Ensure a proper homing max travel has been set</td>
+		</tr>
+    	<tr>
+			<td>ERROR_HOMING_SEQUENCE</td>
+			<td>1</td>
+			<td>Set when motor is stuck, or trying to home a motor within a single rotation</td>
+      		<td>Check physical setup, rerun homing</td>
+		</tr>
+    	<tr>
+			<td>ERROR_HOMING_REQUIRED</td>
+			<td>2</td>
+			<td>Homing is required. No motion is allowed until homed.</td>
+      		<td>Run homing</td>
+		</tr>
+    	<tr>
+			<td>ERROR_HOMING_SETUP</td>
+			<td>3</td>
+			<td>Set if any homing parameter is invalid</td>
+      		<td>Check homing settings</td>
+		</tr>
+		<tr>
+			<td>ERROR_HOMING_ABORTED</td>
+			<td>4</td>
+			<td>Motion mode was changed during homing</td>
+      		<td>Homing was aborted by the user. Rerun Homing</td>
+		</tr>
+  </tbody>
+</table>
+<p></p>
+
 
 
 

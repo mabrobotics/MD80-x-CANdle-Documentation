@@ -1,156 +1,5 @@
-# MD80
-
-## General parameters
-
-MD80 is a brushless motor controller. It can work with a variety of motors and reducers that can be precisely matched to the users’ specifications. All MD80 variants are using an advanced motor control algorithm (FOC), a high-resolution encoder, a high-speed FDCAN communication bus, and a common communication interface. The servo drives have an integrated high-frequency position PID controller, velocity PID controller, and impedance controller, as well as a direct torque controller. MD80 also features a daisy-chaining mechanism, for easy connection of many drives in a single control network.
-
-```{hint}
-You can easily check your MD80 version using the [`mdtool setup info`](mdtool_setup_info) command.
-```
-(ratings)=
-**General parameters table for MD80 HW1.1, HV1.3 and older:**
-
-```{list-table}
-:header-rows: 1
-
-* - Parameter
-  - Value
-* - Input Voltage
-  - 18 - 28 VDC
-* - Nominal Input Voltage
-  - 24 VDC
-* - Max Input Current
-  - 10 A
-* - Max Continuous Phase Current
-  - 20 A
-* - Max Peak Phase Current (t = 4 s)
-  - 40 A
-* - FDCAN Baudrate (adjustable)
-  - 1/2/5/8 Mbps
-* - Position PID Controller Execution Frequency
-  - 1 kHz
-* - Velocity PID Controller Execution Frequency
-  - 5 kHz
-* - Impedance Controller ExecutionFrequency
-  - 40 kHz
-* - Torque Control Execution Frequency
-  - 40 kHz
-* - Torque Bandwidth (adjustable)
-  - 50 Hz - 2.5 kHz
-```
-
-
-**General parameters table for MD80 V2.0:**
-
-```{list-table}
-:header-rows: 1
-
-* - Parameter
-  - Value
-* - <b><font color="#008000">Input Voltage</font></b>
-  - <b><font color="#008000">10 - 48 VDC</font></b>
-* - Nominal Input Voltage
-  - 24 VDC
-* - Max Input Current
-  - 10 A
-* - Max Continuous Phase Current
-  - 20 A
-* - <b><font color="#008000">Max Peak Phase Current (t = 2 s)</font></b>
-  - <b><font color="#008000">80 A</font></b>
-* - <b><font color="#008000">Built-in software-controlled termination resistor</font></b>
-  - <b><font color="#008000">optional</font></b>
-* - FDCAN Baudrate (adjustable)
-  - 1/2/5/8 Mbps
-* - Position PID Controller Execution Frequency
-  - 1 kHz
-* - Velocity PID Controller Execution Frequency
-  - 5 kHz
-* - Impedance Controller ExecutionFrequency
-  - 40 kHz
-* - Torque Control Execution Frequency
-  - 40 kHz
-* - Torque Bandwidth (adjustable)
-  - 50 Hz - 2.5 kHz
-* - <b><font color="#008000">External encoder connector (SPI, RS422)</font></b>
-  - <b><font color="#008000">yes</font></b>
-* - <b><font color="#008000">External 5V power supply max current</font></b>
-  - <b><font color="#008000">150 mA</font></b>
-```
-
-## Connectors pinout
-
-The connectors used in the system on the CAN FD side are MOLEX Micro-Fit series 3.0. Both connectors are connected in parallel for easy daisy-chaining. The connector pinout is presented below:
-
-```{figure} images/can_connector_output.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-```{figure} images/motor_connectors.jpg
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-The colors of the corresponding wires in the Molex socket, as supplied by MAB (looking from the side of the wires):
-
-```{figure} images/cable_colors.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-```{warning}
-<font color='red'> Always make sure CAN bus lines are not shorted to the positive power rail. Applying supply voltage to these pins will cause permanent damage to the controller! </font> 
-```
-
-All MD80 versions have the capability to measure the MOSFET and motor temperature. This is to ensure the safe operation of the driver and motor. The motor shutdown temperature is configurable up to 140$^\circ$C max with a hysteresis of 20$^\circ$C. The driver shutdown temperature is fixed at 100$^\circ$C with a hysteresis of 20$^\circ$C. 
-
-The connectors in the case of the HW1.1 and HV1.3 versions are located as follows:
-
-```{figure} images/HW11_thermistor.png
-:alt: candle
-:scale: 30%
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-In the case of the MD80 HW V2.0 the MOSFET thermistor is built-in directly under the power stage and only the motor thermistor connector is available:
-
-```{figure} images/HW20_thermistor.png
-:alt: candle
-:scale: 50%
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-```{note}
-We recommend using NTCMHP100K thermistors, as internally the MD80s are using a lookup table compatible with these sensors. Using other thermistors may result in imprecise temperature readout.
-```
-
-Since version HW V2.0 the PCB is equipped with an auxiliary connector (picoblade series connector 53048-0650 compatible with 797580006 and 510210600) for communication with [output encoders](output_encoder). The connector pinout is available below:
-
-```{figure} images/aux_pinout.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-```{warning}
-<font color='red'>The auxiliary connector pins are 3.3V tolerant. Applying 5V to these pins will cause permanent damage to the controller! </font> 
-```
-
-External connector pin functions (RS422 / SPI) are selectable using resistors on the bottom PCB side. We are able to integrate custom functions such as GPIOs for external sensors and indicators. For more information please contact us: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact)
-
-
 (calibration)=
-## Calibration
+# Calibration
 
 Calibration should be performed when the MD80 controller is first mounted to the motor or when anything changes in the motor-controller assembly. It has three main stages during which specific parameters of the setup are measured and saved. 
 
@@ -158,19 +7,20 @@ Calibration should be performed when the MD80 controller is first mounted to the
 The calibration has to be performed on a motor that is free to rotate with no load attached to its output shaft. If the calibration fails, you will see errors when executing the [`mdtool setup info`](mdtool_setup_info) command. If the failure is essential to the motor’s operation the MD80 will remain disabled till the next calibration attempt.
 ```
 
-### Pole pairs detection
+## Pole pairs detection
 
 In the first stage the motor will execute one full motor rotor rotation in order to check if the pole pair count is correctly configured. If the detected number of pole pairs is not consistent with the number that was typed in the *.cfg file during motor setup the calibration will fail and an error ERROR_POLE_PAIR_DET will be shown until the next calibration attempt. If you are unsure about the number of pole pairs (you can check it by counting magnets and dividing it by 2) just place zero in the *.cfg file. Then the pole pairs will be automatically detected. 
 
-### Encoder eccentricity
+## Encoder eccentricity
 
 Encoder eccentricity is the second measurement that takes place. During this part, the motor performs a slow single rotation in both directions to assess the amount of error due to non-axial encoder placement. 
 
-### Motor resistance and inductance
+## Motor resistance and inductance
 
 Motor parameters - resistance and inductance are measured in order to calculate the correct current PI controller gains to achieve a certain torque bandwidth (please see the section below). The parameters are measured in the DQ reference frame meaning the resultant resistance and inductance values have to be transformed from either line-to-line quantities or phase quantities. 
 
-### Torque bandwidth
+(torque_bandwidth)=
+## Torque bandwidth
 
 Even though the torque command on MD80 controllers seems to be applied instantaneously, in reality, it’s not the case. As in every system, there’s a response to the command which depends on the system itself and the controller gains. A parameter called bandwidth was introduced to describe how fast the output of a system reacts to the changing input. Calibrating the motor for a certain torque bandwidth requires measuring motor parameters. This happens in the last calibration stage and manifests as an audible sound (beep). 
 The torque bandwidth default setting is set using the motor config file. It can be set to anywhere from 50 Hz to 2.5 kHz, however it is important to note that higher torque bandwidth causes a higher audible noise level. Please see the [`mdtool setup calibration`](mdtool_setup_calibration) command for more details on calibrating the actuators. 
@@ -187,7 +37,7 @@ The full calibration routine rotates the actuators output shaft by more than one
 
 In case your setup is not able to complete a full rotation due to mechanical constraints you can set the `output encoder calibration mode` to `DIRONLY` in your *.cfg file in the [output encoder] section. This way the calibration will end on the first stage - checking the correct direction of rotation, so only 1/4 of a full rotation is needed. Please note that this is not possible using off-axis encoder - it requires a full calibration routine. 
 
-```{figure} images/output_calibration_requirements.png
+```{figure} images/Calibration/output_calibration_requirements.png
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -195,7 +45,7 @@ In case your setup is not able to complete a full rotation due to mechanical con
 
 To run the routine, use the [`mdtool setup calibration_out`](mdtool_setup_calibration_out) command. After completing the routine the MD80 will reboot and after that it is recommended to run the mdtool setup info command in order to make sure the setup reports no errors:
 
-```{figure} images/mdtool_setup_info_allok.png
+```{figure} images/Calibration/mdtool_setup_info_allok.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -206,7 +56,7 @@ The output encoder parameters are rather straightforward, except the “output e
 
 Example errors for AS5047_CENTER:
 
-```{figure} images/errors_encoder_center.png
+```{figure} images/Calibration/errors_encoder_center.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -215,7 +65,7 @@ Example errors for AS5047_CENTER:
 
 Example errors for AS5047_OFFAXIS:
 
-```{figure} images/errors_encoder_offaxis.png
+```{figure} images/Calibration/errors_encoder_offaxis.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -224,7 +74,7 @@ Example errors for AS5047_OFFAXIS:
 
 As can be seen, the non-axial encoder features larger errors, and thus can be utilized only for initial position determination rather than output shaft control. In case the errors get too large they will turn yellow after running [`mdtool test encoder output`](mdtool_test_encoder) command indicating there might be a problem with your setup:
 
-```{figure} images/errors_yellow.png
+```{figure} images/Calibration/errors_yellow.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
