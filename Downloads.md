@@ -6,6 +6,39 @@
 
 Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found [here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
 
+
+
+## Software (devel)
+
+Devel releases contain the latest features, however they might have some bugs:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Date</b></td>
+			<td> <b>CANdle lib</b></td>
+			<td> <b>MDtool</b></td>
+     		<td> <b>pyCANdle</b></td>
+			<td> <b>CANdle ROS</b></td>
+			<td> <b>CANdle ROS2</b></td>
+			<td> <b>CANdle device</b></td>
+			<td> <b>MD80</b></td>
+			<td> <b>Manual</b></td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>05.08.2023 (latest)</b></td>
+			<td><a href =  >3.3.1.d</a></td>
+			<td><a href =  >1.4.0</a></td>
+     		<td><a href =  >1.4.0</a></td>
+			<td><a href =  >1.3.0</a></td>
+			<td><a href =  >1.3.0</a></td>
+			<td><a href =  >2.2.0</a></td>
+			<td><a href =  >2.2.0</a></td>
+			<td>this document</td>
+		</tr>
+	</tbody>
+</table>
+
 (software_downloads)=
 ## Software (stable)
 
@@ -56,17 +89,6 @@ Main stable releases:
 			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
-		</tr>
-		<tr>
-			<td style="color:green;"><b>05.08.2023 (latest)</b></td>
-			<td><a href =  >3.4.0</a></td>
-			<td><a href =  >1.4.0</a></td>
-     		<td><a href =  >1.4.0</a></td>
-			<td><a href =  >1.3.0</a></td>
-			<td><a href =  >1.3.0</a></td>
-			<td><a href =  >2.2.0</a></td>
-			<td><a href =  >2.2.0</a></td>
-			<td>this document</td>
 		</tr>
 	</tbody>
 </table>

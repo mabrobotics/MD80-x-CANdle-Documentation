@@ -5,6 +5,7 @@ When an abnormal situation takes place the controller sets an error bit indicati
 
 Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note taht all warnings and only non-critical errors can be cleared. 
 
+(quick_status)=
 ## Quick Status 
 
 Quick status provides a general info about errors in each category of statuses. No warnings are indicated here. Last bit indicatest whether the current target (position or velocity) has been reached.

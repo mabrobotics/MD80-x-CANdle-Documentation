@@ -50,6 +50,8 @@ where:
   - for axially placed AS5047 encoder
 * - AS5047_OFFAXIS
   - for non-axially placed AS5047
+* - MB053SFA17BENT00
+  - Renishaw RS422 17-bit RLS encoder
 ```
 
 ```{list-table}
@@ -68,7 +70,9 @@ where:
 * - REPORT
   - initial position from <b><font color="#008000">main encoder</font></b>,
     report <b><font color="#FFBF00">output encoder</font></b> values,
-    motion based on <b><font color="#008000">main encoder</font></b>,
+    motion based on <b><font color="#008000">main encoder</font></b>
+* - MAIN
+  - <b><font color="#FFBF00">output encoder</font></b> is used as the <b><font color="#008000">main encoder</font></b>. All <b><font color="#FFBF00">output encoder</font></b> measurements are mapped as <b><font color="#008000">main encoder</font></b> values. 
 ```
 
 ```{warning}
@@ -84,11 +88,14 @@ Not all modes are recommended for every encoder. The non-axially placed AS5047 e
   - Valid modes
   - Description
 * - AS5047_CENTER 
-  - STARTUP / MOTION / REPORT
+  - STARTUP / MOTION / REPORT / MAIN
   - \-
 * - AS5047_OFFAXIS
   - STARTUP
   - the configuration is much more noisy than the axial placement
+* - MB053SFA17BENT00 
+  - STARTUP / MOTION / REPORT / MAIN
+  - \-
 ```
 
 Steps to add an external encoder to the MD80 setup:

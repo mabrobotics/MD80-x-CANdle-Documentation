@@ -15,7 +15,7 @@ Let’s start with the max current limit:
 :align: center
 ```
 
-This setting limits the maximum current (and thus torque) the motor can output. It is the last user-configurable limit in the control scheme. The maximum current is set using the [`mdtool config current`](mdtool_config_current) command, and by default, it is usually set to 10A. This setting can be saved in the non-volatile memory so that it is always loaded on the actuator power-up. To estimate the maximum current setting for a particular motor, you should use the following formula:
+This setting limits the maximum current (and thus torque) the motor controller can output. It is the last user-configurable limit in the control scheme. The maximum current is set using the [`mdtool config current`](mdtool_config_current) command, and by default, it is usually set to 10A. This setting can be saved in the non-volatile memory so that it is always loaded on the actuator power-up. To estimate the maximum current setting for a particular motor, you should use the following formula:
 
 $$I [A] = \frac{\tau [Nm] \frac{1}{G_r}}{K_t[\frac{Nm}{A}]}$$
 

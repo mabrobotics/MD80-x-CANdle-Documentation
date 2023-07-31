@@ -167,3 +167,25 @@ This command is used to start the homing routine. Please make sure the actuator 
 (mdtool_encoder)=
 ### `mdtool encoder <ID>`
 This command is useful when one wants to measure the position of the actuator in the current setup (without writing a custom script). After the command is executed the screen shows the current position of the actuator’s shaft and it does so until you press Ctrl + C. 
+
+(mdtool_clear_error)=
+### `mdtool clear error <ID>`
+This command is used to clear non-critical MD80 errors.
+
+(mdtool_clear_warning)=
+### `mdtool clear warning <ID>`
+This command is used to clear all MD80 warnings.
+
+(mdtool_register_read)=
+### `mdtool register read <ID> <regID>`
+This command is used to read a register from MD80 controller. 
+
+(mdtool_register_write)=
+### `mdtool register write <ID> <regID> <value>`
+This command is used to write a register with `value` param. 
+
+(mdtool_reset)=
+### `mdtool reset <ID>`
+This command is used to reset an MD80 controller.
+
+
