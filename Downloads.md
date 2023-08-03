@@ -10,7 +10,7 @@ Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found [
 
 ## Software (devel)
 
-Devel releases contain the latest features, however they might have some bugs:
+Devel releases are packed with new features, however they might contain some bugs:
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -28,12 +28,12 @@ Devel releases contain the latest features, however they might have some bugs:
 		<tr>
 			<td style="color:green;"><b>05.08.2023 (latest)</b></td>
 			<td><a href =  >3.3.1.d</a></td>
-			<td><a href =  >1.4.0</a></td>
-     		<td><a href =  >1.4.0</a></td>
+			<td><a href =  >1.3.1.d</a></td>
+     		<td><a href =  >1.4.1.d</a></td>
 			<td><a href =  >1.3.0</a></td>
 			<td><a href =  >1.3.0</a></td>
-			<td><a href =  >2.2.0</a></td>
-			<td><a href =  >2.2.0</a></td>
+			<td><a href =  >2.3.0.d</a></td>
+			<td><a href =  >2.3.0.d</a></td>
 			<td>this document</td>
 		</tr>
 	</tbody>
@@ -80,7 +80,7 @@ Main stable releases:
 			<td>1.1.0</td>
 		</tr>
 		<tr>
-			<td><b>05.04.2023</b></td>
+			<td>05.04.2023</td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.3.0 >3.3.0</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.3.0 >1.3.0</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.4.0/ >1.4.0</a></td>
