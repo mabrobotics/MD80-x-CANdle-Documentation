@@ -312,7 +312,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RO</td>
       <td>float</td>
       <td>-</td>
-      <td>output encoder velocity in rad/s (read in 5kHz loop)</td>
+      <td>output encoder position in rad (read in 5kHz loop)</td>
     </tr>
     <tr>
       <td>outputEncoderMode</td>
@@ -456,7 +456,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RO</td>
       <td>float</td>
       <td>-</td>
-      <td>main encoder velocity in rad/s (read in 40kHz loop)</td>
+      <td>main encoder position in rad (read in 40kHz loop)</td>
     </tr>
     <tr>
       <td>motorTorque</td>
@@ -488,7 +488,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>float</td>
       <td>-</td>
-      <td>max allowable movmement in rad/s during homing</td>
+      <td>max allowable movmement in rad during homing</td>
     </tr>
     <tr>
       <td>homingVelocity</td>
@@ -496,7 +496,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>float</td>
       <td>-</td>
-      <td>velocity during homing movement</td>
+      <td>velocity in rad/s during homing movement</td>
     </tr>
     <tr>
       <td>homingTorque</td>
@@ -504,7 +504,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>float</td>
       <td>-</td>
-      <td>maximum and threshold torque for sensorless homing</td>
+      <td>maximum and threshold torque for sensorless homing in Nm</td>
     </tr>
     <tr>
       <td></td>

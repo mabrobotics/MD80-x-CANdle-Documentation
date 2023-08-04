@@ -27,13 +27,13 @@ Devel releases are packed with new features, however they might contain some bug
 		</tr>
 		<tr>
 			<td style="color:green;"><b>05.08.2023 (latest)</b></td>
-			<td><a href =  >3.3.1.d</a></td>
-			<td><a href =  >1.3.1.d</a></td>
-     		<td><a href =  >1.4.1.d</a></td>
-			<td><a href =  >1.3.0</a></td>
-			<td><a href =  >1.3.0</a></td>
-			<td><a href =  >2.3.0.d</a></td>
-			<td><a href =  >2.3.0.d</a></td>
+			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.3.1.d</a></td>
+			<td><a href = https://github.com/mabrobotics/mdtool/tree/devel >1.3.1.d</a></td>
+     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.4.1.d</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros/tree/devel>1.3.0</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/devel>1.3.0</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1HQ1F3aweu8UeKx80IEZlfq6OKQAHy0nG?usp=sharing>2.2.1.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1uYcNJdr9ytfdGqEdwwGN6n3KLi6LWMhY?usp=sharing>2.3.0.d</a></td>
 			<td>this document</td>
 		</tr>
 	</tbody>
