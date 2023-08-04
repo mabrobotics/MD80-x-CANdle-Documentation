@@ -136,6 +136,10 @@ This command is used to read the motor internal parameters. Use an optional 'all
 ```
 Reading the errors is the easiest way of debugging possible problems with the drive. For errors description please visit the [status](status) section. 
 
+(mdtool_setup_homing)=
+### `mdtool setup homing <ID>`
+This command is used to start the homing routine. Please make sure the actuator is properly configured for homing.
+
 (mdtool_blink)=
 ### `mdtool blink <ID>`
 This command is mostly used to find an MD80 drive on a long CAN bus using its ID – the command makes the drive flash its onboard LEDs for easy identification.
@@ -159,10 +163,6 @@ This command is used to check how accurate a praticular encoder was calibrated. 
 ```{warning}
 Main encoder errors can be larger for non-sinusoidal motors (BLDC motors) because of their back-emf waveform shape. If you care about very precise positioning we advise using PMSM motors (sinusoidal).
 ```
-
-(mdtool_test_homing)=
-### `mdtool test homing <ID>`
-This command is used to start the homing routine. Please make sure the actuator is properly configured for homing.
 
 (mdtool_encoder)=
 ### `mdtool encoder <ID>`
