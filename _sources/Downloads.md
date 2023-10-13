@@ -10,7 +10,12 @@ Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found [
 
 ## Software (devel)
 
-Devel releases are packed with new features, however they might contain some bugs:
+Devel releases are packed with new features, however they might contain some bugs.
+
+```{note}
+To install a particular pyCandle version please use the following command: 
+`pip install -i https://test.pypi.org/simple/ pyCandleMAB==X` and replace `X` with proper version for example `1.4.2`
+```
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -26,14 +31,14 @@ Devel releases are packed with new features, however they might contain some bug
 			<td> <b>Manual</b></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>05.08.2023 (latest)</b></td>
-			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.3.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1EQCotJ2xeTwOUwlsEtLIcd0AGH-ik_VF?usp=sharing >1.3.1.d</a></td>
-     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.4.1.d</a></td>
+			<td style="color:green;"><b>12.10.2023 (latest)</b></td>
+			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.3.2.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/13gq9qMHGUZ_4YGqJf7etCYwb5d2dL_DD?usp=sharing>1.3.2.d</a></td>
+     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.4.2.d</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros/tree/devel>1.3.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/devel>1.3.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1HQ1F3aweu8UeKx80IEZlfq6OKQAHy0nG?usp=sharing>2.2.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1uYcNJdr9ytfdGqEdwwGN6n3KLi6LWMhY?usp=sharing>2.3.0.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1TwelCCSyQY8ki_L3E2tf0m60pHA8eidn?usp=sharing>2.2.1.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1yt0MSkYQzO47k8kcAn2oKaK5WjTJKZBp?usp=sharing>2.3.0.d</a></td>
 			<td>this document</td>
 		</tr>
 	</tbody>
