@@ -172,11 +172,38 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="QuickStartGuide.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ecosystem.html">MD80 x CANdle Ecosystem overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MD80.html">MD80 controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Software.html">Software package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MD80%20controller/MD80.html">MD80 controller</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Safety%20limits.html">Safety limits</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Output%20encoder.html">Output Encoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Motion%20modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Homing.html">Homing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Config.html">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Status%20codes.html">Status</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="CANdle/Principle.html">Principle of operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CANdle/Using%20CANdle.html">Using CANdle and CANdle HAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CANdle/Latency.html">Latency</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Software.html">Software package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Software%20package/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="canProtocol.html">MD80 FDCAN protocol</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="OD.html">Object Dictionary</a></li>
 </ul>
 </li>
@@ -375,6 +402,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md80-is-not-detected-on-mdtool-ping-all-command">MD80 is not detected on “mdtool ping all” command</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-check-if-my-motor-is-operating-properly">How to check if my motor is operating properly</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">Motor terminals not soldered properly</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-calibration">Failed calibration</a></li>
@@ -394,9 +422,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="common-issues-and-faq">
 <h1>Common Issues and FAQ<a class="headerlink" href="#common-issues-and-faq" title="Permalink to this heading">#</a></h1>
+<section id="md80-is-not-detected-on-mdtool-ping-all-command">
+<h2>MD80 is not detected on “mdtool ping all” command<a class="headerlink" href="#md80-is-not-detected-on-mdtool-ping-all-command" title="Permalink to this heading">#</a></h2>
+<p>There might be several reasons why MD80 is not showing up in the mdtool ping all command output. Please ensure you’ve check the things listed below:</p>
+<ol class="arabic simple">
+<li><p>Check the power supply - when powered the MD80’s onboard LEDs should be blinking. The LEDs are located under the connectors near the PCB edge.</p></li>
+<li><p>Check the LED blink pattern - if red and green LEDs are blinking one after another quickly in 4s intervals this means you need to download the firmare using <a class="reference internal" href="Downloads.html#mab-can-flasher"><span class="std std-ref">MB_CAN_Flasher</span></a> program. If the red led is on and the green one is blinking in 1s intervals this means there is an error in the setup that can be chacked using <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref">mdtool setup info</span></a>. If only the green LED is blinking in 1s intervals the MD80 should operate and be discovered without issues. In case it’s not please check the cabling one more time.</p></li>
+</ol>
+</section>
 <section id="how-to-check-if-my-motor-is-operating-properly">
 <h2>How to check if my motor is operating properly<a class="headerlink" href="#how-to-check-if-my-motor-is-operating-properly" title="Permalink to this heading">#</a></h2>
-<p>First thing to check is the <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span></code></span></a> command output. If there are no errors (meaning the error field are empty or show ‘ALL OK” message) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating. You can check it using <a class="reference internal" href="Software.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span></code></span></a> command - for example by commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the <a class="reference internal" href="Software.html#mdtool-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span></code></span></a> command output. If any of these quantities look suspicious feel free to contact us using: <a class="reference external" href="https://www.mabrobotics.pl/contact">contact&#64;mabrobotics.pl</a>.</p>
+<p>First thing to check is the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span></code></span></a> command output. If there are no errors (meaning the error field are empty or show ‘ALL OK” message) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating. You can check it using <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span></code></span></a> command - for example by commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span></code></span></a> command output. If any of these quantities look suspicious feel free to contact us using: <a class="reference external" href="https://www.mabrobotics.pl/contact">contact&#64;mabrobotics.pl</a>.</p>
 </section>
 <section id="motor-terminals-not-soldered-properly">
 <h2>Motor terminals not soldered properly<a class="headerlink" href="#motor-terminals-not-soldered-properly" title="Permalink to this heading">#</a></h2>
@@ -416,16 +452,16 @@ document.write(`
 <p>Proper termination on the FDCAN bus is crucial, especially when the string of actuators is long. In case you see some communication errors, or the drives connected to your FDCAN bus string are not discovered correctly using MDtool be sure to check if the termination is present and working (the resistance between CANH and CANL lines should be 60 Ohms - two 120 Ohm resistors in parallel). Please remember, you only need to place a single termination resistor on the end of the string when using CANdle. The other resistor is embedded in the CANdle device.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Since version HW2.0 a resistor is embedded in the hardware of each MD80 controller. Please check out the <a class="reference internal" href="Software.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command for more information on how to use it.</p>
+<p>Since version HW2.0 a resistor is embedded in the hardware of each MD80 controller. Please check out the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command for more information on how to use it.</p>
 </div>
 </section>
 <section id="different-fdcan-speeds-between-actuators">
 <h2>Different FDCAN speeds between actuators<a class="headerlink" href="#different-fdcan-speeds-between-actuators" title="Permalink to this heading">#</a></h2>
-<p>MD80 x CANdle ecosystem is not adopted for working with actuators of different FDCAN baudrates. Trying to control actuators with different baud rates on a common FDCAN bus can cause the communication to fail or not start at all. This is why it is crucial to make sure when you call the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command, all discovered MD80 controllers lie in a single baudrate category. If that’s not the case, use the <a class="reference internal" href="Software.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command to fix it.</p>
+<p>MD80 x CANdle ecosystem is not adopted for working with actuators of different FDCAN baudrates. Trying to control actuators with different baud rates on a common FDCAN bus can cause the communication to fail or not start at all. This is why it is crucial to make sure when you call the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command, all discovered MD80 controllers lie in a single baudrate category. If that’s not the case, use the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command to fix it.</p>
 </section>
 <section id="too-low-torque-bandwidth-setting">
 <h2>Too-low torque bandwidth setting<a class="headerlink" href="#too-low-torque-bandwidth-setting" title="Permalink to this heading">#</a></h2>
-<p>When the torque bandwidth is set to a too-low value it can cause the motor to behave improperly in highly dynamic scenarios, for example, impacts. Because with low torque bandwidth, the torque controller gains are set so that the controller is slow, it might not be able to keep up with the changing setpoint value. In order to fix this issue, you can calibrate the motor for a higher torque bandwidth frequency using <a class="reference internal" href="Software.html#mdtool-config-bandwidth"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span></code></span></a> command. This has a disadvantage connected to it - the higher the bandwidth the more audible noise you will hear coming from the motor.</p>
+<p>When the torque bandwidth is set to a too-low value it can cause the motor to behave improperly in highly dynamic scenarios, for example, impacts. Because with low torque bandwidth, the torque controller gains are set so that the controller is slow, it might not be able to keep up with the changing setpoint value. In order to fix this issue, you can calibrate the motor for a higher torque bandwidth frequency using <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-config-bandwidth"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span></code></span></a> command. This has a disadvantage connected to it - the higher the bandwidth the more audible noise you will hear coming from the motor.</p>
 </section>
 </section>
 
@@ -492,6 +528,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md80-is-not-detected-on-mdtool-ping-all-command">MD80 is not detected on “mdtool ping all” command</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-check-if-my-motor-is-operating-properly">How to check if my motor is operating properly</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">Motor terminals not soldered properly</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-calibration">Failed calibration</a></li>
