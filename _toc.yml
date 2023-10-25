@@ -8,12 +8,32 @@ chapters:
   title: Quick Start Guide
 - file: Ecosystem
   title: MD80 x CANdle Ecosystem overview
-- file: MD80
+- file: MD80 controller/MD80
   title: MD80 controller
+  sections:
+    - file: MD80 controller/Measurements
+    - file: MD80 controller/Safety limits
+    - file: MD80 controller/Output encoder
+    - file: MD80 controller/Calibration
+    - file: MD80 controller/Motion modes
+    - file: MD80 controller/Homing
+    - file: MD80 controller/Config
+    - file: MD80 controller/Status codes
 - file: CANdle
   title: CANdle and CANdle HAT
+  sections:
+    - file: CANdle/Principle
+    - file: CANdle/Using CANdle
+    - file: CANdle/Latency
 - file: Software
   title: Software package
+  sections:
+    - file: Software package/MDTOOL
+    - file: Software package/Candle C++ library
+    - file: Software package/Candle Python library
+    - file: Software package/Candle ROS nodes
+    - file: Software package/Quick startup guide ROS
+    - file: Software package/Quick startup guide ROS2
 - file: canProtocol
   title: MD80 FDCAN protocol
 - file: CANopen
