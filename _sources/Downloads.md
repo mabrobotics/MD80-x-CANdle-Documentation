@@ -6,44 +6,6 @@
 
 Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found [here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
 
-
-
-## Software (devel)
-
-Devel releases are packed with new features, however they might contain some bugs.
-
-```{note}
-To install a particular pyCandle version please use the following command: 
-`pip install -i https://test.pypi.org/simple/ pyCandleMAB==X` and replace `X` with proper version for example `1.4.2`
-```
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Date</b></td>
-			<td> <b>CANdle lib</b></td>
-			<td> <b>MDtool</b></td>
-     		<td> <b>pyCANdle</b></td>
-			<td> <b>CANdle ROS</b></td>
-			<td> <b>CANdle ROS2</b></td>
-			<td> <b>CANdle device</b></td>
-			<td> <b>MD80</b></td>
-			<td> <b>Manual</b></td>
-		</tr>
-		<tr>
-			<td style="color:green;"><b>12.10.2023 (latest)</b></td>
-			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.3.2.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/13gq9qMHGUZ_4YGqJf7etCYwb5d2dL_DD?usp=sharing>1.3.2.d</a></td>
-     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.4.2.d</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/tree/devel>1.3.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/devel>1.3.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1TwelCCSyQY8ki_L3E2tf0m60pHA8eidn?usp=sharing>2.2.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1yt0MSkYQzO47k8kcAn2oKaK5WjTJKZBp?usp=sharing>2.3.0.d</a></td>
-			<td>this document</td>
-		</tr>
-	</tbody>
-</table>
-
 (software_downloads)=
 ## Software (stable)
 
@@ -60,7 +22,6 @@ Main stable releases:
 			<td> <b>CANdle ROS2</b></td>
 			<td> <b>CANdle device</b></td>
 			<td> <b>MD80</b></td>
-			<td> <b>Manual</b></td>
 		</tr>
 		<tr>
 			<td>earlier</td>
@@ -70,7 +31,6 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.1 >1.1.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1>1.1.0</a></td>
 			<td>1.4</td>
-			<td>1.0</td>
 			<td>1.0</td>
 		</tr>
     	<tr>
@@ -82,10 +42,9 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
-			<td>1.1.0</td>
 		</tr>
 		<tr>
-			<td>05.04.2023</td>
+			<td style="color:green;"><b>05.04.2023 (latest)</b></td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.3.0 >3.3.0</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.3.0 >1.3.0</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.4.0/ >1.4.0</a></td>
@@ -93,16 +52,45 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.0>1.3.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
 
-(mab_can_flasher)=
+<!-- ## Software (devel)
+
+Table below summarizes the devel software releases. These revisions may have some bugs, however they include the latest features
+
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Date</b></td>
+			<td> <b>CANdle lib</b></td>
+			<td> <b>MDtool</b></td>
+			<td> <b>pyCANdle</b></td>
+			<td> <b>CANdle ROS</b></td>
+			<td> <b>CANdle ROS2</b></td>
+			<td> <b>CANdle device</b></td>
+			<td> <b>MD80</b></td>
+		</tr>
+		<tr>
+			<td>21.03.2023</td>
+			<td><a href = https://github.com/mabrobotics/candle/tree/f59c1a647b95afefa30ac0ba64b2caf6553a5095 >3.2.3.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1LQJMENE0Vx6TyeI4RKZ9BIhXe1nI901-?usp=share_link >1.2.4.d</a></td>
+     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.3.31</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros/tree/efc19882ea115dc762e4b293c7fc570214a0b53a >1.2.1.d</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/c3c36ee014093b9b64b28bd9a29415ddd1308be2 >1.2.1.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1FnShMgwSF55qew5ycVoGetr83XWlPmr7?usp=share_link >2.1.2.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1S0qrE8BpZ620tOoTm4aA-zVxHHDNQZ0R?usp=share_link >2.1.2.d</a></td>
+		</tr>
+	</tbody>
+</table>
+<p></p> -->
+
 ## MD80 update tool - MAB CAN Flasher 
 
-MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle that can be downloaded at the top of this page. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.
+MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.
 
 ```{note}
 Make sure the MAB_CAN_Flasher can be executed. If not use the `sudo chmod +x ./MAB_CAN_Flasher` command.

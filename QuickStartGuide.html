@@ -172,38 +172,11 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ecosystem.html">MD80 x CANdle Ecosystem overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="MD80%20controller/MD80.html">MD80 controller</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Measurements.html">Measurements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Safety%20limits.html">Safety limits</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Output%20encoder.html">Output Encoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Calibration.html">Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Motion%20modes.html">Motion modes</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Homing.html">Homing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Config.html">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Status%20codes.html">Status</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Principle.html">Principle of operation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Using%20CANdle.html">Using CANdle and CANdle HAT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Latency.html">Latency</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Software.html">Software package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="MD80.html">MD80 controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Software.html">Software package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canProtocol.html">MD80 FDCAN protocol</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="OD.html">Object Dictionary</a></li>
 </ul>
 </li>
@@ -423,7 +396,7 @@ document.write(`
 <p>Here are some things to look out for while playing with the MD80 x CANdle ecosystem for the first time:</p>
 <ol class="arabic simple">
 <li><p>Always stay cautious when dealing with actuators. Even though they don’t seem like it, they may severely hurt you when unintentional movement occurs. It’s recommended to fix the actuator to the workbench.</p></li>
-<li><p>Get accustomed to the <a class="reference internal" href="MD80%20controller/Safety%20limits.html#safety-limits"><span class="std std-ref">safety limits</span></a> section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you’re doing - increase the limits.</p></li>
+<li><p>Get accustomed to the <a class="reference internal" href="MD80.html#safety-limits"><span class="std std-ref">safety limits</span></a> section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you’re doing - increase the limits.</p></li>
 <li><p>We recommend using power supply sources that can work in two quadrants - meaning they can supply and dissipate some of the energy produced by the motor in case it works as a generator. Old trafo-based power supplies usually block current coming into the power supply, causing overvoltage events on the MD80s. The best choice is to use LiPo batteries or at least SMPS power supplies.</p></li>
 </ol>
 </section>
@@ -443,7 +416,7 @@ document.write(`
 <p>MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Steps presented in this section are performed on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the <a class="reference internal" href="MD80%20controller/MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> before applying voltage to the controller.</p>
+<p>Steps presented in this section are performed on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> before applying voltage to the controller.</p>
 </div>
 <ul class="simple">
 <li><p>First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power).</p></li>
@@ -475,7 +448,7 @@ document.write(`
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the <a class="reference internal" href="MD80%20controller/Calibration.html#calibration"><span class="std std-ref">calibration</span></a>. Each modification in wire order should be followed by a full motor <a class="reference internal" href="MD80%20controller/Calibration.html#calibration"><span class="std std-ref">calibration</span></a>.</p>
+<p>The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a>. Each modification in wire order should be followed by a full motor <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a>.</p>
 </div>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/soldering.jpg" />
@@ -493,7 +466,7 @@ document.write(`
 </div>
 <ul class="simple">
 <li><p>Connect CANdle to the PC using a USB type-C cable.</p></li>
-<li><p>Ensure you’ve got the latest <a class="reference external" href="https://github.com/mabrobotics/mdtool/releases">MDtool</a>. For the MDtool installation guide refer to the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool"><span class="std std-ref">MDtool</span></a> section.</p></li>
+<li><p>Ensure you’ve got the latest <a class="reference external" href="https://github.com/mabrobotics/mdtool/releases">MDtool</a>. For the MDtool installation guide refer to the <a class="reference internal" href="Software.html#mdtool"><span class="std std-ref">MDtool</span></a> section.</p></li>
 <li><p>Please upgrade the setup software if any of your devices (MD80 or CANdle device) is older than the one from “latest” row in the <a class="reference internal" href="Downloads.html#downloads"><span class="std std-ref">releases table</span></a>.</p></li>
 <li><p>Once installed and run the MDtool will create an MDtool directory in <b>~/.config</b>  directory.</p></li>
 </ul>
@@ -510,32 +483,32 @@ document.write(`
 </figure>
 <p>Feel free to add a new *.cfg file for your custom motors in there. Use the already existing files as a reference, especially the AK60-6.cfg which contains some additional comments.</p>
 <ul class="simple">
-<li><p>Check if the MD80 controller can be discovered properly using the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command</p></li>
+<li><p>Check if the MD80 controller can be discovered properly using the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_ping_all.png" />
 </figure>
 <ul class="simple">
-<li><p>To setup the MD80 controller simply call <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
+<li><p>To setup the MD80 controller simply call <a class="reference internal" href="Software.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_motor_EX.png" />
 </figure>
 <ul class="simple">
-<li><p>Do not worry if at this point there are many errors after calling <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a> command (like below). They should be cleared after a successful calibration.</p></li>
+<li><p>Do not worry if at this point there are many errors after calling <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a> command (like below). They should be cleared after a successful calibration.</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/after_setup_EX8108.png" />
 </figure>
 <ul class="simple">
-<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-setup-calibration"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. Please follow the <a class="reference internal" href="MD80%20controller/Calibration.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information on the calibration process itself.</p></li>
-<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error’s description and try the recommended action to clear it <a class="reference internal" href="MD80%20controller/Status%20codes.html#status"><span class="std std-ref">status</span></a>.</p></li>
+<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using <a class="reference internal" href="Software.html#mdtool-setup-calibration"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. Please follow the <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information on the calibration process itself.</p></li>
+<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the <a class="reference internal" href="Software.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error’s description and try the recommended action to clear it <a class="reference internal" href="MD80.html#error-codes"><span class="std std-ref">error section</span></a>.</p></li>
 </ul>
 <p>Correct after-calibration mdtool setup info command output may look like this:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_info_correct.png" />
 </figure>
-<p>Your actuator should be now ready to go! To make it move you can try the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;pos&gt;</span></code></span></a> command, or try the <a class="reference external" href="https://github.com/mabrobotics/candle">CANdle lib</a> C++ or Python examples.</p>
+<p>Your actuator should be now ready to go! To make it move you can try the <a class="reference internal" href="Software.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;pos&gt;</span></code></span></a> command, or try the <a class="reference external" href="https://github.com/mabrobotics/candle">CANdle lib</a> C++ or Python examples.</p>
 </section>
 </section>
 

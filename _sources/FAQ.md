@@ -1,12 +1,5 @@
 # Common Issues and FAQ
 
-## MD80 is not detected on "mdtool ping all" command
-
-There might be several reasons why MD80 is not showing up in the mdtool ping all command output. Please ensure you've check the things listed below: 
-
-1. Check the power supply - when powered the MD80's onboard LEDs should be blinking. The LEDs are located under the connectors near the PCB edge.
-2. Check the LED blink pattern - if red and green LEDs are blinking one after another quickly in 4s intervals this means you need to download the firmare using [MB_CAN_Flasher](mab_can_flasher) program. If the red led is on and the green one is blinking in 1s intervals this means there is an error in the setup that can be chacked using [mdtool setup info](mdtool_setup_info). If only the green LED is blinking in 1s intervals the MD80 should operate and be discovered without issues. In case it's not please check the cabling one more time. 
-
 ## How to check if my motor is operating properly
 
 First thing to check is the [`mdtool setup info`](mdtool_setup_info) command output. If there are no errors (meaning the error field are empty or show 'ALL OK" message) the drive did not detect any issues by itself. The other thing is to make sure that the actuator runs smoothly - such that there is no excessive cogging torque when rotating. You can check it using [`mdtool test move`](mdtool_test_move) command - for example by commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last thing to check is the motion parameters - position velocity and torque. You can check them by looking at the [`mdtool encoder`](mdtool_encoder) command output. If any of these quantities look suspicious feel free to contact us using: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact).

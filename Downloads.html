@@ -171,38 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="QuickStartGuide.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ecosystem.html">MD80 x CANdle Ecosystem overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="MD80%20controller/MD80.html">MD80 controller</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Measurements.html">Measurements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Safety%20limits.html">Safety limits</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Output%20encoder.html">Output Encoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Calibration.html">Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Motion%20modes.html">Motion modes</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Homing.html">Homing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Config.html">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Status%20codes.html">Status</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Principle.html">Principle of operation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Using%20CANdle.html">Using CANdle and CANdle HAT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Latency.html">Latency</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Software.html">Software package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="MD80.html">MD80 controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Software.html">Software package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canProtocol.html">MD80 FDCAN protocol</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="OD.html">Object Dictionary</a></li>
 </ul>
 </li>
@@ -402,7 +375,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-devel">Software (devel)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-stable">Software (stable)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">MD80 update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
@@ -426,41 +398,6 @@ document.write(`
 <span id="hardware-downloads"></span><h2>3D models<a class="headerlink" href="#d-models" title="Permalink to this heading">#</a></h2>
 <p>Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found <a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing">here</a>.</p>
 </section>
-<section id="software-devel">
-<h2>Software (devel)<a class="headerlink" href="#software-devel" title="Permalink to this heading">#</a></h2>
-<p>Devel releases are packed with new features, however they might contain some bugs.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>To install a particular pyCandle version please use the following command:
-<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-i</span> <span class="pre">https://test.pypi.org/simple/</span> <span class="pre">pyCandleMAB==X</span></code> and replace <code class="docutils literal notranslate"><span class="pre">X</span></code> with proper version for example <code class="docutils literal notranslate"><span class="pre">1.4.2</span></code></p>
-</div>
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Date</b></td>
-			<td> <b>CANdle lib</b></td>
-			<td> <b>MDtool</b></td>
-     		<td> <b>pyCANdle</b></td>
-			<td> <b>CANdle ROS</b></td>
-			<td> <b>CANdle ROS2</b></td>
-			<td> <b>CANdle device</b></td>
-			<td> <b>MD80</b></td>
-			<td> <b>Manual</b></td>
-		</tr>
-		<tr>
-			<td style="color:green;"><b>12.10.2023 (latest)</b></td>
-			<td><a href = https://github.com/mabrobotics/candle/tree/devel >3.3.2.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/13gq9qMHGUZ_4YGqJf7etCYwb5d2dL_DD?usp=sharing>1.3.2.d</a></td>
-     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.4.2.d</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/tree/devel>1.3.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/devel>1.3.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1TwelCCSyQY8ki_L3E2tf0m60pHA8eidn?usp=sharing>2.2.1.d</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1yt0MSkYQzO47k8kcAn2oKaK5WjTJKZBp?usp=sharing>2.3.0.d</a></td>
-			<td>this document</td>
-		</tr>
-	</tbody>
-</table>
-</section>
 <section id="software-stable">
 <span id="software-downloads"></span><h2>Software (stable)<a class="headerlink" href="#software-stable" title="Permalink to this heading">#</a></h2>
 <p>Main stable releases:</p>
@@ -475,7 +412,6 @@ document.write(`
 			<td> <b>CANdle ROS2</b></td>
 			<td> <b>CANdle device</b></td>
 			<td> <b>MD80</b></td>
-			<td> <b>Manual</b></td>
 		</tr>
 		<tr>
 			<td>earlier</td>
@@ -485,7 +421,6 @@ document.write(`
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.1 >1.1.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1>1.1.0</a></td>
 			<td>1.4</td>
-			<td>1.0</td>
 			<td>1.0</td>
 		</tr>
     	<tr>
@@ -497,10 +432,9 @@ document.write(`
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
-			<td>1.1.0</td>
 		</tr>
 		<tr>
-			<td>05.04.2023</td>
+			<td style="color:green;"><b>05.04.2023 (latest)</b></td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.3.0 >3.3.0</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.3.0 >1.3.0</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.4.0/ >1.4.0</a></td>
@@ -508,15 +442,44 @@ document.write(`
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.0>1.3.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
+<!-- ## Software (devel)
+
+Table below summarizes the devel software releases. These revisions may have some bugs, however they include the latest features
+
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Date</b></td>
+			<td> <b>CANdle lib</b></td>
+			<td> <b>MDtool</b></td>
+			<td> <b>pyCANdle</b></td>
+			<td> <b>CANdle ROS</b></td>
+			<td> <b>CANdle ROS2</b></td>
+			<td> <b>CANdle device</b></td>
+			<td> <b>MD80</b></td>
+		</tr>
+		<tr>
+			<td>21.03.2023</td>
+			<td><a href = https://github.com/mabrobotics/candle/tree/f59c1a647b95afefa30ac0ba64b2caf6553a5095 >3.2.3.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1LQJMENE0Vx6TyeI4RKZ9BIhXe1nI901-?usp=share_link >1.2.4.d</a></td>
+     		<td><a href = https://test.pypi.org/project/pyCandleMAB/ >1.3.31</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros/tree/efc19882ea115dc762e4b293c7fc570214a0b53a >1.2.1.d</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros2/tree/c3c36ee014093b9b64b28bd9a29415ddd1308be2 >1.2.1.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1FnShMgwSF55qew5ycVoGetr83XWlPmr7?usp=share_link >2.1.2.d</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1S0qrE8BpZ620tOoTm4aA-zVxHHDNQZ0R?usp=share_link >2.1.2.d</a></td>
+		</tr>
+	</tbody>
+</table>
+<p></p> -->
 </section>
 <section id="md80-update-tool-mab-can-flasher">
-<span id="mab-can-flasher"></span><h2>MD80 update tool - MAB CAN Flasher<a class="headerlink" href="#md80-update-tool-mab-can-flasher" title="Permalink to this heading">#</a></h2>
-<p>MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle that can be downloaded at the top of this page. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="Software%20package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
+<h2>MD80 update tool - MAB CAN Flasher<a class="headerlink" href="#md80-update-tool-mab-can-flasher" title="Permalink to this heading">#</a></h2>
+<p>MAB_CAN_Flasher is a console application used to update the MD80 controller software using CANdle. When an update is released our engineers will prepare a MAB_CAN_Flasher application and send it to you. The MD80 firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD80 controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="Software.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Make sure the MAB_CAN_Flasher can be executed. If not use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./MAB_CAN_Flasher</span></code> command.</p>
@@ -610,7 +573,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-devel">Software (devel)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-stable">Software (stable)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md80-update-tool-mab-can-flasher">MD80 update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>

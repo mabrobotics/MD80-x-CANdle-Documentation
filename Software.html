@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/logo32x32.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MDtool" href="Software%20package/MDTOOL.html" />
-    <link rel="prev" title="Latency" href="CANdle/Latency.html" />
+    <link rel="next" title="MD80 FDCAN communication" href="canProtocol.html" />
+    <link rel="prev" title="CANdle and CANdle HAT" href="CANdle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,38 +172,11 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="QuickStartGuide.html">Quick Start Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ecosystem.html">MD80 x CANdle Ecosystem overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="MD80%20controller/MD80.html">MD80 controller</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Measurements.html">Measurements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Safety%20limits.html">Safety limits</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Output%20encoder.html">Output Encoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Calibration.html">Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Motion%20modes.html">Motion modes</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Homing.html">Homing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Config.html">Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MD80%20controller/Status%20codes.html">Status</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Principle.html">Principle of operation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Using%20CANdle.html">Using CANdle and CANdle HAT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CANdle/Latency.html">Latency</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Software package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Software%20package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="MD80.html">MD80 controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CANdle.html">CANdle and CANdle HAT</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Software package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="canProtocol.html">MD80 FDCAN protocol</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD80 CANopen</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="OD.html">Object Dictionary</a></li>
 </ul>
 </li>
@@ -379,7 +352,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -395,6 +370,58 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool">MDtool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-bus-bus-device"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">bus</span> <span class="pre">&lt;bus&gt;</span> <span class="pre">&lt;device&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-ping-baud"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">&lt;baud&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-zero-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">zero</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-can-current-id-new-id-baud-watchdog-period-ms-termination"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span> <span class="pre">&lt;current</span> <span class="pre">ID&gt;</span> <span class="pre">&lt;new</span> <span class="pre">ID&gt;</span> <span class="pre">&lt;baud&gt;</span> <span class="pre">&lt;watchdog</span> <span class="pre">period</span> <span class="pre">[ms]&gt;</span> <span class="pre">&lt;termination&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-current-id-current"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;current&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-bandwidth-id-torque-bandwidth-in-hz"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;torque</span> <span class="pre">bandwidth</span> <span class="pre">in</span> <span class="pre">Hz&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-save-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">save</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-calibration-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-calibration-out-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration_out</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-motor-id-cfg"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-info-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-blink-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">blink</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-test-move-id-position"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;position&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-test-latency-baudrate"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">latency</span> <span class="pre">&lt;baudrate&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-test-encoder-type-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">&lt;type&gt;</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-encoder-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-c-library">CANdle C++ library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-as-a-static-lib">Building as a static lib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-python-library">CANdle Python library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-ros-ros2-nodes">CANdle ROS/ROS2 nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-startup-guide-ros">Quick startup guide - ROS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-drives">Adding drives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-mode">Set mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-zero">Set Zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-disabling-drives">Enabling/Disabling drives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-drives">Controlling drives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start-ros2">Quick start - ROS2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Set mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Set Zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Enabling/Disabling drives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Controlling drives</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -407,8 +434,413 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="software-pack">
 <h1>Software Pack<a class="headerlink" href="#software-pack" title="Permalink to this heading">#</a></h1>
 <p>The MD80 x CANdle software pack consists of a few modules. All of them are based on the main CANdle C++ library which takes care of the low-level communication and provides API for high-level software.</p>
-<div class="toctree-wrapper compound">
+<section id="mdtool">
+<span id="id1"></span><h2>MDtool<a class="headerlink" href="#mdtool" title="Permalink to this heading">#</a></h2>
+<p><strong>MDtool</strong> is a console application for configuring and performing basic diagnostics on MD80 drives via CANdle. It is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.</p>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
+<p>The easiest way to install the MDtool is to select the appropriate *.deb package from the <a class="reference external" href="https://github.com/mabrobotics/mdtool/releases">MDtool GitHub repo releases page</a> (compliant with your system’s architecture). To install after the download simply call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">./</span><span class="n">mdtool_xx</span><span class="o">-</span><span class="n">x_xx</span><span class="o">.</span><span class="n">deb</span>
+</pre></div>
 </div>
+<p>After the install please make sure the current user is added to the dialout group using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="o">&lt;</span><span class="n">current</span> <span class="n">user</span><span class="o">&gt;</span> <span class="n">dialout</span> 
+</pre></div>
+</div>
+<p>if it wasn’t, please reboot the PC</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+<p>It is also recommended to install the setserial package which allows for higher communication speeds:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">setserial</span>
+</pre></div>
+</div>
+<p>Be sure to call</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mdtool</span> <span class="n">bus</span> <span class="o">&lt;</span><span class="n">SPI</span><span class="o">/</span><span class="n">UART</span><span class="o">/</span><span class="n">USB</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>to configure MDtool for the desired communication bus before first use, if you’re using CANdle HAT and SPI or UART bus.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the command prompt to work after the installation you have to restart the terminal window</p>
+</div>
+</section>
+<section id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">#</a></h3>
+<section id="mdtool-bus-bus-device">
+<span id="mdtool-bus"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">bus</span> <span class="pre">&lt;bus&gt;</span> <span class="pre">&lt;device&gt;</span></code><a class="headerlink" href="#mdtool-bus-bus-device" title="Permalink to this heading">#</a></h4>
+<p>MDtool is able to work with CANdle and CANdle HAT. This is why before the first use it has to be configured for a particular communication bus. Use the bus command to set it to USB, SPI, or UART, based on which device you own. The default bus setting is USB. You don’t have to repeat this setting unless you want to change the current communication bus. The device parameter is optional and can be used in case of the UART and SPI bus, if the default device (/dev/spidev0.0 in case of SPI or /dev/ttyAMA0 in case of UART) is not suitable for your application.</p>
+</section>
+<section id="mdtool-ping-baud">
+<span id="mdtool-ping"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">&lt;baud&gt;</span></code><a class="headerlink" href="#mdtool-ping-baud" title="Permalink to this heading">#</a></h4>
+<p>MDtool is able to discover the drives that are connected to the CAN bus. You can ping the drives at a specific speed (1M/2M/5M/8M) or just use the ‘all’ keyword for pinging all speeds in one go.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CANdle does not support working with drives configured with different CAN speeds on the same CAN bus – please make sure when “mdtool ping all” command is executed, all discovered drives lie in a single speed category.</p>
+</div>
+</section>
+<section id="mdtool-config-zero-id">
+<span id="mdtool-config-zero"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">zero</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-config-zero-id" title="Permalink to this heading">#</a></h4>
+<p>This command sets the current motor position to zero - from the moment this command is called all encoder measurements are referenced from the current position.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This setting has to be saved to be preserved after power down! Please see the config save <ID> command.</p>
+</div>
+</section>
+<section id="mdtool-config-can-current-id-new-id-baud-watchdog-period-ms-termination">
+<span id="mdtool-config-can"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span> <span class="pre">&lt;current</span> <span class="pre">ID&gt;</span> <span class="pre">&lt;new</span> <span class="pre">ID&gt;</span> <span class="pre">&lt;baud&gt;</span> <span class="pre">&lt;watchdog</span> <span class="pre">period</span> <span class="pre">[ms]&gt;</span> <span class="pre">&lt;termination&gt;</span></code><a class="headerlink" href="#mdtool-config-can-current-id-new-id-baud-watchdog-period-ms-termination" title="Permalink to this heading">#</a></h4>
+<p>This command is used to change MD80’s parameters such as CAN ID, CAN speed, and CAN watchdog.</p>
+<ul class="simple">
+<li><p>CAN IDs should be in range &lt;10:2000&gt;</p></li>
+<li><p>Baud should be one of the available speeds (1M/2M/5M/8M)</p></li>
+<li><p>Watchdog period should be in range &lt;1:2000&gt; ms, 0 disables the watchdog. For more information on CAN watchdog please refer to section FDCAN Watchdog Timer.</p></li>
+<li><p>Termination should be either 1 to turn the termination on or 0 to turn the termination off.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Software-controlled termination is available since version HW V2.0. It is an optional setting - when not typed in the command this setting will default to zero (off).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This setting has to be saved to be preserved after power down! Please see the mdtool config save <ID> command.</p>
+</div>
+</section>
+<section id="mdtool-config-current-id-current">
+<span id="mdtool-config-current"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;current&gt;</span></code><a class="headerlink" href="#mdtool-config-current-id-current" title="Permalink to this heading">#</a></h4>
+<p>This command is used to set the maximum phase current that is allowed to flow through the motor when high torques are commanded. By default, the maximum current is set to a rather low value that will not lead to motor or driver burnout. However, this also limits the motor’s maximum torque capabilities. Using the config current command one can increase the maximum current. For the absolute maximum please refer to <a class="reference internal" href="MD80.html#ratings"><span class="std std-ref">maximum ratings</span></a> section.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The warranty does not include burnout actions due to too high current settings. For max continuous driver current please refer to the general parameters and safety limits sections.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This setting has to be saved to be preserved after power down! Please see the config save <ID> command.</p>
+</div>
+</section>
+<section id="mdtool-config-bandwidth-id-torque-bandwidth-in-hz">
+<span id="mdtool-config-bandwidth"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;torque</span> <span class="pre">bandwidth</span> <span class="pre">in</span> <span class="pre">Hz&gt;</span></code><a class="headerlink" href="#mdtool-config-bandwidth-id-torque-bandwidth-in-hz" title="Permalink to this heading">#</a></h4>
+<p>This command can be used to change the torque bandwidth without recalibrating the actuator. For more information on the torque bandwidth please see the section about <a class="reference internal" href="MD80.html#calibration"><span class="std std-ref">calibration</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This setting has to be saved to be preserved after power down! Please see the config save <ID> command.</p>
+</div>
+</section>
+<section id="mdtool-config-save-id">
+<span id="mdtool-config-save"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">save</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-config-save-id" title="Permalink to this heading">#</a></h4>
+<p>For the config commands to take action after the next power cycle a save command has to be executed. This command saves the current drive’s settings to the non-volatile FLASH memory.</p>
+</section>
+<section id="mdtool-setup-calibration-id">
+<span id="mdtool-setup-calibration"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-calibration-id" title="Permalink to this heading">#</a></h4>
+<p>This command runs the basic calibration routine. During calibration, the drive has to be able to rotate freely and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the calibration section.</p>
+</section>
+<section id="mdtool-setup-calibration-out-id">
+<span id="mdtool-setup-calibration-out"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration_out</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-calibration-out-id" title="Permalink to this heading">#</a></h4>
+<p>This command runs the output encoder calibration routine. During output encoder calibration, the drive has to be able to rotate for at least two full rotations of the output shaft and the power supply should be able to deliver at least 1A of current. For more detail on the calibration process please refer to the <a class="reference internal" href="MD80.html#output-encoder-calibration"><span class="std std-ref">output encoder calibration</span></a> section.</p>
+</section>
+<section id="mdtool-setup-motor-id-cfg">
+<span id="mdtool-setup-motor"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code><a class="headerlink" href="#mdtool-setup-motor-id-cfg" title="Permalink to this heading">#</a></h4>
+<p>This command is used to write a new motor config. For the config file argument one of the *.cfg files from ~/.config/mtool/mdtool_motors/ directory should be passed. Check out the description below for more information on the respective config fields:</p>
+<figure class="align-center">
+<img alt="_images/config_AK60.png" class="no-scaled-link" src="_images/config_AK60.png" />
+</figure>
+</section>
+<section id="mdtool-setup-info-id">
+<span id="mdtool-setup-info"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-setup-info-id" title="Permalink to this heading">#</a></h4>
+<p>This command is used to read the motor internal parameters. Use ‘all’ keyword at the end of the command to read full parameter set. An example command output might look like this:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/mdtool_setup_info_allok.png" />
+</figure>
+<p>Reading the errors is the easiest way of debugging possible problems with the drive. For errors description please visit the <a class="reference internal" href="MD80.html#error-codes"><span class="std std-ref">error codes</span></a> section.</p>
+</section>
+<section id="mdtool-blink-id">
+<span id="mdtool-blink"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">blink</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-blink-id" title="Permalink to this heading">#</a></h4>
+<p>This command is mostly used to find an MD80 drive on a long CAN bus using its ID – the command makes the drive flash its onboard LEDs for easy identification.</p>
+</section>
+<section id="mdtool-test-move-id-position">
+<span id="mdtool-test-move"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;position&gt;</span></code><a class="headerlink" href="#mdtool-test-move-id-position" title="Permalink to this heading">#</a></h4>
+<p>This command is used to test the actuator movement in impedance mode. It helps to assess if the calibration was successful and if there are no issues visible to the naked eye. The position argument is always the amount of position for the motor to be moved from the current position.</p>
+</section>
+<section id="mdtool-test-latency-baudrate">
+<span id="mdtool-test-latency"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">latency</span> <span class="pre">&lt;baudrate&gt;</span></code><a class="headerlink" href="#mdtool-test-latency-baudrate" title="Permalink to this heading">#</a></h4>
+<p>This command is used to test the PC&lt;&gt;CANdle communication speed which greatly affects the PC&lt;&gt;MD80 communication speed. The higher the measured frequency the better.</p>
+</section>
+<section id="mdtool-test-encoder-type-id">
+<span id="mdtool-test-encoder"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">&lt;type&gt;</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-test-encoder-type-id" title="Permalink to this heading">#</a></h4>
+<p>This command is used to check how accurate a praticular encoder was calibrated. The ‘type’ argument can be either ‘main’ for onboard encoder, or ‘output’ for output encoder. This command runs a routine that makes one full rotation of the shaft (either motor or output shaft, depending on the chosen encoder type) and after completing fills up the max, min and standard deviation errors that can be accessed using the <a class="reference internal" href="#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span></code></span></a> command.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Main encoder errors can be larger for non-sinusoidal motors (BLDC motors) because of their back-emf waveform shape. If you care about very precise positioning we advise using PMSM motors (sinusoidal).</p>
+</div>
+</section>
+<section id="mdtool-encoder-id">
+<span id="mdtool-encoder"></span><h4><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span> <span class="pre">&lt;ID&gt;</span></code><a class="headerlink" href="#mdtool-encoder-id" title="Permalink to this heading">#</a></h4>
+<p>This command is useful when one wants to measure the position of the actuator in the current setup (without writing a custom script). After the command is executed the screen shows the current position of the actuator’s shaft and it does so until you press Ctrl + C.</p>
+</section>
+</section>
+</section>
+<section id="candle-c-library">
+<h2>CANdle C++ library<a class="headerlink" href="#candle-c-library" title="Permalink to this heading">#</a></h2>
+<p>CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD80 controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD80 controllers.</p>
+<section id="quick-start">
+<h3>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading">#</a></h3>
+<p>The quick startup guide includes cloning the repo, building and running the examples. First, you should clone the candle repo from the MAB Robotics GitHub page to your local machine. Then, make sure you’re in the main directory candle/ and run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">build</span>
+<span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">make</span> 
+</pre></div>
+</div>
+<p>starting from the top one these commands: create a build directory, go into the build directory, generate makefiles using CMake and compile the source code using make. After executing these commands you should be able to see the compiled examples in the candle/build/ directory. To run one of them use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">exampleX</span> 
+</pre></div>
+</div>
+<p>where X is the number of the example.</p>
+</section>
+<section id="building-as-a-static-lib">
+<h3>Building as a static lib<a class="headerlink" href="#building-as-a-static-lib" title="Permalink to this heading">#</a></h3>
+<p>Candle C++ library can be built as a static or shared object library. In the quick startup guide, we used the default settings, thus the library was compiled to a shared object file. In case you’d like to build it for a static lib you should pass additional arguments to the cmake .. command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCANDLE_BUILD_STATIC</span><span class="o">=</span><span class="n">TRUE</span>
+</pre></div>
+</div>
+<p>After executing this command you should be able to see the following CMake output:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candle_build_static.png" />
+</figure>
+<p>In case you’d like to go back to shared lib just call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">..</span> <span class="o">-</span><span class="n">DCANDLE_BUILD_STATIC</span><span class="o">=</span><span class="n">FALSE</span>
+</pre></div>
+</div>
+<p>or delete the build directory contents and call cmake .. again (the default library type is shared). This is what the cmake output looks like when reconfiguring for shared lib:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candle_build_shared.png" />
+</figure>
+</section>
+</section>
+<section id="candle-python-library">
+<h2>CANdle Python library<a class="headerlink" href="#candle-python-library" title="Permalink to this heading">#</a></h2>
+<p>CANdle Python library is a translated version of the C++ library using pybind11. The package can be found on PyPi: <a class="reference external" href="https://pypi.org/project/pyCandleMAB/">https://pypi.org/project/pyCandleMAB/</a> and installed using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pyCandleMAB</span>
+</pre></div>
+</div>
+<p>It can be used to quickly start playing with the actuators, without the need to build the C++ software pack. Example usage of Python examples is shown in the <a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;t=1s">getting started guide</a>. To achieve the best performance in low latency systems we advise using the C++ libraries directly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We distribute the binaries as well as sources - in case your platform is not recognized with the available binaries pip will try to build and install the library from the source.</p>
+</div>
+</section>
+<section id="candle-ros-ros2-nodes">
+<h2>CANdle ROS/ROS2 nodes<a class="headerlink" href="#candle-ros-ros2-nodes" title="Permalink to this heading">#</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>TL;DR: <a class="reference external" href="https://www.youtube.com/watch?v=6sLQNaJKuJY&amp;t=3s">MD80 x CANdle - ROS/ROS2 startup guide</a></p>
+</div>
+<p>While C++ API is the most flexible way of interfacing with CANdle/MD80, ROS/ROS2 APIs are also available. These have been designed as standalone C++ nodes that use the CANdle library on the backend. The nodes are designed to be used with already configured drives, thus functions such as setting FDCAN parameters are unavailable via ROS/2 API. We recommend configuring all drives first using MDtool or C++/Python API.</p>
+<p>Nodes use ROS/2 services to perform initialization and enable/disable the drives.
+The initialization services available are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">add_md80s</span>
+<span class="o">/</span><span class="n">zero_md80s</span>
+<span class="o">/</span><span class="n">set_mode_md80s</span>
+</pre></div>
+</div>
+<p>There are also two additional services for enabling/disabling the drives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">enable_md80s</span>
+<span class="o">/</span><span class="n">disable_md80s</span>
+</pre></div>
+</div>
+<p>Once the drives are enabled via <code class="docutils literal notranslate"><span class="pre">enable_md80s</span></code> service, the nodes will ignore all calls to services other than <code class="docutils literal notranslate"><span class="pre">disable_md80s</span></code>.
+When enabled, communication switches from service-based to topic-based. The nodes will publish to the topic:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">joint_states</span>
+</pre></div>
+</div>
+<p>And will subscribe to topics:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">motion_command</span>
+<span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">impedance_command</span>
+<span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">velocity_pid_command</span>
+<span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">position_pid_command</span>
+</pre></div>
+</div>
+</section>
+<section id="quick-startup-guide-ros">
+<h2>Quick startup guide - ROS<a class="headerlink" href="#quick-startup-guide-ros" title="Permalink to this heading">#</a></h2>
+<p>Let’s run a simple example of the candle ROS node. In order to run the node, clone it into your local ROS workspace in the src folder. After that, build it with ‘catkin’ and run using the ‘rosrun’ command. Be sure to source your workspace with source devel/setup.sh prior to running the package, and in each new terminal window you’re going to send commands related to the node.</p>
+<p>First, start the roscore with the roscore command. Then run the node with arguments that fit your MD80 x CANdle setup. The general syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosrun</span> <span class="n">candle_ros</span> <span class="n">candle_ros_node</span> <span class="o">&lt;</span><span class="n">BUS</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">FDCAN</span> <span class="n">baud</span><span class="o">&gt;</span> 
+</pre></div>
+</div>
+<p>for more information on how to run the node you can call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosrun</span> <span class="n">candle_ros</span> <span class="n">candle_ros_node</span> <span class="o">--</span><span class="n">help</span> 
+</pre></div>
+</div>
+<p>Example output from the terminal after launching the node:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candleros_usb8m.png" />
+</figure>
+<p>In this example, we will be working with USB bus and 8M FDCAN baudrate.</p>
+<section id="adding-drives">
+<h3>Adding drives<a class="headerlink" href="#adding-drives" title="Permalink to this heading">#</a></h3>
+<p>Firstly, the node should be informed which drives should be present on the FDCAN bus. This can be done via <code class="docutils literal notranslate"><span class="pre">/add_md80s</span> <span class="pre">service</span></code>.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">add_md80s</span> <span class="s2">&quot;drive_ids: [200, 800]&quot;</span>
+</pre></div>
+</div>
+<p>Should produce the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drives_success</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="n">total_number_of_drives</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>informing, that both drives (ids: 200 and 800), have been successfully contacted, and were added to the node’s drives list.
+You can also look for status messages in the terminal window where the node was started:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candle_ros_added_drives.png" />
+</figure>
+<p>According to the status messages we have added two MD80 actuators.</p>
+</section>
+<section id="set-mode">
+<h3>Set mode<a class="headerlink" href="#set-mode" title="Permalink to this heading">#</a></h3>
+<p>Next the desired control mode should be selected. This is accomplished with <code class="docutils literal notranslate"><span class="pre">/set_mode_md80s</span></code> service.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">set_mode_md80s</span> <span class="s2">&quot;{drive_ids: [200, 800], mode:[&quot;</span><span class="n">IMPEDANCE</span><span class="s2">&quot;, &quot;</span><span class="n">IMPEDANCE</span><span class="s2">&quot;]}&quot;</span>
+</pre></div>
+</div>
+<p>Should produce:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drives_success</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Informing that for both drives mode has been set correctly.</p>
+</section>
+<section id="set-zero">
+<h3>Set Zero<a class="headerlink" href="#set-zero" title="Permalink to this heading">#</a></h3>
+<p>Often when starting, setting a current position to zero is desired. This can be accomplished with a call to <code class="docutils literal notranslate"><span class="pre">/zero_md80s</span></code> service.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">zero_md80s</span> <span class="s2">&quot;{drive_ids:[200, 800]}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="enabling-disabling-drives">
+<h3>Enabling/Disabling drives<a class="headerlink" href="#enabling-disabling-drives" title="Permalink to this heading">#</a></h3>
+<p>Using services <code class="docutils literal notranslate"><span class="pre">/enable_md80s</span></code> and <code class="docutils literal notranslate"><span class="pre">/disable_md80s</span></code> the drives and the node publishers and subscribers can be enabled/disabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After calling <code class="docutils literal notranslate"><span class="pre">/enable_md80s</span></code> service, no calls to services other than <code class="docutils literal notranslate"><span class="pre">/disable_md80s</span></code> should be done.</p>
+</div>
+<p>After enabling, the node will publish current joint states to <code class="docutils literal notranslate"><span class="pre">/joint_states</span></code> at a frequency dependent on a currently chosen communication bus and speed mode. Joint names are generated based on drive ID, for example, a drive with id 546 will be called <code class="docutils literal notranslate"><span class="pre">Joint</span> <span class="pre">546</span></code>.</p>
+<p>The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the md80 mode set before enabling.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">enable_md80s</span> <span class="s2">&quot;{drive_ids:[200, 800]}&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">disable_md80s</span> <span class="s2">&quot;{drive_ids:[200, 800]}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="controlling-drives">
+<h3>Controlling drives<a class="headerlink" href="#controlling-drives" title="Permalink to this heading">#</a></h3>
+<p>Controlling the drives is done via the four topics listed above. For commands to be viable, all fields of each message must be filled properly. For example, to set up custom gains for IMPEDANCE mode use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rostopic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">impedance_command</span> <span class="n">candle_ros</span><span class="o">/</span><span class="n">ImpedanceCommand</span> <span class="s2">&quot;{drive_ids:[200, 800], kp:[0.25, 1.0], kd:[0.1, 0.05], max_output:[2.0, 2.0]}&quot;</span>
+</pre></div>
+</div>
+<p>Example set up of custom gains for POSITION PID mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rostopic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">position_command</span> <span class="n">candle_ros</span><span class="o">/</span><span class="n">PositionPidCommand</span> <span class="s2">&quot;{drive_ids: [200, 800], position_pid: [{kp: 40.0, ki: 0.5, kd: 0.0, i_windup: 10, max_output: 3.0},{kp: 20.0, ki: 0.5, kd: 0.0, i_windup: 10, max_output: 3.0}], velocity_pid: [{kp: 0.2, ki: 0.3, kd: 0.0, i_windup: 2.0, max_output: 2.0}, {kp: 0.1, ki: 0.1, kd: 0.0, i_windup: 1, max_output: 2.0}]}&quot;</span> 
+</pre></div>
+</div>
+<p>Example set up of custom gains for VELOCITY PID mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rostopic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">velocity_command</span> <span class="n">candle_ros</span><span class="o">/</span><span class="n">VelocityPidCommand</span> <span class="s2">&quot;{drive_ids: [200, 800], velocity_pid: [{kp: 0.2, ki: 0.3, kd: 0.0, i_windup: 2.0, max_output: 2.0}, {kp: 0.1, ki: 0.1, kd: 0.0, i_windup: 1, max_output: 2.0}]}&quot;</span>
+</pre></div>
+</div>
+<p>Setting desired position, velocity, and torque is done via /md80/motion_command topic. Note that for it to take effect, all fields in the message should be correctly filled. For example, to move the drives in impedance mode, it is possible to use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rostopic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">motion_command</span> <span class="n">candle_ros</span><span class="o">/</span><span class="n">MotionCommand</span> <span class="s2">&quot;{drive_ids:[81,97], target_position:[3.0, -3.0], target_velocity:[0.0, 0.0], target_torque:[0, 0]}&quot;</span> 
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quick-start-ros2">
+<h2>Quick start - ROS2<a class="headerlink" href="#quick-start-ros2" title="Permalink to this heading">#</a></h2>
+<p>Let’s run a simple example of the candle ROS2 node. In order to run the node, clone it into your local ROS2 workspace. After that, build it with <code class="docutils literal notranslate"><span class="pre">colcon</span></code> and run using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> command. Be sure to source your workspace with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">install/setup.bash</span></code> prior to running the package, and in each new terminal window you’re going to send commands related to the node.</p>
+<p>First, let’s run the node with arguments that fit your MD80 x CANdle setup. The general syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">candle_ros2</span> <span class="n">candle_ros2_node</span> <span class="o">&lt;</span><span class="n">BUS</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">FDCAN</span> <span class="n">baud</span><span class="o">&gt;</span> 
+</pre></div>
+</div>
+<p>for more information on how to run the node you can call</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">candle_ros2</span> <span class="n">candle_ros2_node</span> <span class="o">--</span><span class="n">help</span><span class="o">.</span> 
+</pre></div>
+</div>
+<p>Example output from the terminal after launching the node:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candleros2_usb8m.png" />
+</figure>
+<p>In this example, we will be working with a USB bus and 8M FDCAN baudrate.</p>
+<p>Adding drives
+Firstly, the node should be informed which drives should be present on the FDCAN bus. This can be done via <code class="docutils literal notranslate"><span class="pre">/candle_ros2_node/add_md80s</span></code> service. Note: Do not forget to source your ros2 workspace in new terminal window
+For example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">service</span> <span class="n">call</span> <span class="o">/</span><span class="n">candle_ros2_node</span><span class="o">/</span><span class="n">add_md80s</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">AddMd80s</span> <span class="s2">&quot;{drive_ids: [200,800]}&quot;</span>
+</pre></div>
+</div>
+<p>Should produce the following output:
+response:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candle_ros2</span><span class="o">.</span><span class="n">srv</span><span class="o">.</span><span class="n">AddMd80s_Response</span><span class="p">(</span><span class="n">drives_success</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="n">total_number_of_drives</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>informing, that both drives (ids: 200 and 800), have been successfully contacted, and were added to the node’s drives list.
+You can also look for status messages in the terminal window where the node was started:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="_images/candle_ros2_added_drives.png" />
+</figure>
+<p>According to the status messages we have added two MD80 actuators.</p>
+<section id="id2">
+<h3>Set mode<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Next the desired control mode should be selected. This is accomplished with /candle_ros2_node/set_mode_md80s service.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">service</span> <span class="n">call</span> <span class="o">/</span><span class="n">candle_ros2_node</span><span class="o">/</span><span class="n">set_mode_md80s</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">SetModeMd80s</span> <span class="s2">&quot;{drive_ids: [200, 800], mode:[&quot;</span><span class="n">IMPEDANCE</span><span class="s2">&quot;, &quot;</span><span class="n">IMPEDANCE</span><span class="s2">&quot;]}&quot;</span>
+</pre></div>
+</div>
+<p>Should produce:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">response</span><span class="p">:</span>
+<span class="n">candle_ros2</span><span class="o">.</span><span class="n">srv</span><span class="o">.</span><span class="n">SetModeMd80s_Response</span><span class="p">(</span><span class="n">drives_success</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Informing that for both drives mode has been set correctly.</p>
+</section>
+<section id="id3">
+<h3>Set Zero<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Often when starting, setting a current position to zero is desired. This can be accomplished with a call to <code class="docutils literal notranslate"><span class="pre">/candle_ros2_node/zero_md80s</span></code> service.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">service</span> <span class="n">call</span> <span class="o">/</span><span class="n">candle_ros2_node</span><span class="o">/</span><span class="n">zero_md80s</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">GenericMd80Msg</span> <span class="s2">&quot;{drive_ids:[200,800]}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Enabling/Disabling drives<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Using services <code class="docutils literal notranslate"><span class="pre">/candle_ros2_node/enable_md80s</span></code> and <code class="docutils literal notranslate"><span class="pre">/candle_ros2_node/disable_md80s</span></code> the drives and the node publishers and subscribers can be enabled/disabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After calling <code class="docutils literal notranslate"><span class="pre">/candle_ros2_node/enable_md80s</span></code> service, no calls to services other than <code class="docutils literal notranslate"><span class="pre">/candle_ros2_node/disable_md80s</span></code> should be done.</p>
+</div>
+<p>After enabling, the node will publish current joint states to <code class="docutils literal notranslate"><span class="pre">/joint_states</span></code> at a frequency dependent on a currently chosen communication bus and speed mode. Joint names are generated based on drivie ID, for example, drive with id 546 will be called <code class="docutils literal notranslate"><span class="pre">Joint</span> <span class="pre">546</span></code>.</p>
+<p>The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the md80 mode set before enabling.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">service</span> <span class="n">call</span> <span class="o">/</span><span class="n">candle_ros2_node</span><span class="o">/</span><span class="n">enable_md80s</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">GenericMd80Msg</span> <span class="s2">&quot;{drive_ids:[200, 800]}&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">service</span> <span class="n">call</span> <span class="o">/</span><span class="n">candle_ros2_node</span><span class="o">/</span><span class="n">disable_md80s</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">GenericMd80Msg</span> <span class="s2">&quot;{drive_ids:[200, 800]}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Controlling drives<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Controlling the drives is done via the four topics listed above. For commands to be viable, all field of each message must be filled properly. For example, to set up custom gains for IMPEDANCE mode use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">topic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">impedance_command</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">ImpedanceCommand</span> <span class="s2">&quot;{drive_ids: [200, 800], kp: [1.0,1.0]], kd: [0.001,0.001], max_output: [1.0, 1.0]}&quot;</span>
+</pre></div>
+</div>
+<p>Example set up of custom gains for POSITION PID mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">topic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">position_pid_command</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PositionPidCommand</span> <span class="s2">&quot;{drive_ids: [150, 350], position_pid: [{kp: 40.0, ki: 0.5, kd: 0.0, i_windup: 10, max_output: 3.0},{kp: 20.0, ki: 0.5, kd: 0.0, i_windup: 10, max_output: 3.0}], velocity_pid: [{kp: 0.2, ki: 0.3, kd: 0.0, i_windup: 2.0, max_output: 2.0}, {kp: 0.1, ki: 0.1, kd: 0.0, i_windup: 1, max_output: 2.0}]}&quot;</span> 
+</pre></div>
+</div>
+<p>Example set up of custom gains for VELOCITY PID mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">topic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">velocity_pid_command</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">VelocityPidCommand</span> <span class="s2">&quot;{drive_ids: [200, 800], velocity_pid: [{kp: 0.2, ki: 0.3, kd: 0.0, i_windup: 2.0, max_output: 2.0}, {kp: 0.1, ki: 0.1, kd: 0.0, i_windup: 1, max_output: 2.0}]}&quot;</span>
+</pre></div>
+</div>
+<p>Setting desired position, velocity, and torque is done via <code class="docutils literal notranslate"><span class="pre">/md80/motion_command</span></code> topic. Note that for it to take effect, all fields in the message should be correctly filled. For example, to move the drives in impedance mode, it is possible to use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">topic</span> <span class="n">pub</span> <span class="o">/</span><span class="n">md80</span><span class="o">/</span><span class="n">motion_command</span> <span class="n">candle_ros2</span><span class="o">/</span><span class="n">MotionCommand</span> <span class="s2">&quot;{drive_ids: [200, 800], target_position: [3.0, 3.0], target_velocity: [0.0, 0.0], target_torque: [0.0, 0.0]}&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -442,20 +874,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="CANdle/Latency.html"
+       href="CANdle.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Latency</p>
+        <p class="prev-next-title">CANdle and CANdle HAT</p>
       </div>
     </a>
     <a class="right-next"
-       href="Software%20package/MDTOOL.html"
+       href="canProtocol.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MDtool</p>
+        <p class="prev-next-title">MD80 FDCAN communication</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -465,6 +897,64 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool">MDtool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-bus-bus-device"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">bus</span> <span class="pre">&lt;bus&gt;</span> <span class="pre">&lt;device&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-ping-baud"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">&lt;baud&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-zero-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">zero</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-can-current-id-new-id-baud-watchdog-period-ms-termination"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span> <span class="pre">&lt;current</span> <span class="pre">ID&gt;</span> <span class="pre">&lt;new</span> <span class="pre">ID&gt;</span> <span class="pre">&lt;baud&gt;</span> <span class="pre">&lt;watchdog</span> <span class="pre">period</span> <span class="pre">[ms]&gt;</span> <span class="pre">&lt;termination&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-current-id-current"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;current&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-bandwidth-id-torque-bandwidth-in-hz"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">bandwidth</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;torque</span> <span class="pre">bandwidth</span> <span class="pre">in</span> <span class="pre">Hz&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-config-save-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">save</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-calibration-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-calibration-out-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration_out</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-motor-id-cfg"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-setup-info-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-blink-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">blink</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-test-move-id-position"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;position&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-test-latency-baudrate"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">latency</span> <span class="pre">&lt;baudrate&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-test-encoder-type-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">&lt;type&gt;</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool-encoder-id"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">encoder</span> <span class="pre">&lt;ID&gt;</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-c-library">CANdle C++ library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-as-a-static-lib">Building as a static lib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-python-library">CANdle Python library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-ros-ros2-nodes">CANdle ROS/ROS2 nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-startup-guide-ros">Quick startup guide - ROS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-drives">Adding drives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-mode">Set mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-zero">Set Zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-disabling-drives">Enabling/Disabling drives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-drives">Controlling drives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start-ros2">Quick start - ROS2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Set mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Set Zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Enabling/Disabling drives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Controlling drives</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

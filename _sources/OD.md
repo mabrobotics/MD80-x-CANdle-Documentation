@@ -835,7 +835,7 @@ Allows to issue a system command. Write a non-zero value to start a specific act
 
 ### 0x2004 - System Status
 
-Allows to read System status. Each specific status is a UINT32, where lower bits (0-15) indicate errors, and higher bits (16-31) indicate warnings. Please see the [Status ](status) section to see how to decode the status to individual fields. 
+Allows to read System status. Each specific status is a UINT32, where lower bits (0-15) indicate errors, and higher bits (16-31) indicate warnings. Please see the [Error Codes](error_codes) section to see how to decode the status to individual fields. 
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
