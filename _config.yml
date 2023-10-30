@@ -37,4 +37,4 @@ html:
 sphinx:
   config:
     html_context:
-      default_mode: dark
+      default_mode: light
