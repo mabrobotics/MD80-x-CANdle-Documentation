@@ -323,7 +323,7 @@ Quick status provides a general info about errors in each category of statuses. 
 
 The following table shows when warnings and errors are issued based on the mode the controller is currently in:
 
-```{figure} ../images/status_vs_motion_mode.png
+```{figure} images/Status/status_vs_motion_mode.png
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
