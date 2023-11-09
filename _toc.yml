@@ -41,7 +41,7 @@ chapters:
   sections:
     - file: md80_canopen/OD
       title: Object Dictionary
-- file: FAQ
+- file: common_problems_and_faq/FAQ
   title: Common problems and FAQ
-- file: Downloads
+- file: Downloads/Downloads
   title: Downloads
