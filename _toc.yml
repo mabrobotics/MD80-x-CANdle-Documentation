@@ -25,15 +25,15 @@ chapters:
     - file: candle_and_candle_hat/Principle
     - file: candle_and_candle_hat/Using CANdle
     - file: candle_and_candle_hat/Latency
-- file: Software
+- file: software_package/Software
   title: Software package
   sections:
-    - file: Software package/MDTOOL
-    - file: Software package/Candle C++ library
-    - file: Software package/Candle Python library
-    - file: Software package/Candle ROS nodes
-    - file: Software package/Quick startup guide ROS
-    - file: Software package/Quick startup guide ROS2
+    - file: software_package/MDTOOL
+    - file: software_package/Candle C++ library
+    - file: software_package/Candle Python library
+    - file: software_package/Candle ROS nodes
+    - file: software_package/Quick startup guide ROS
+    - file: software_package/Quick startup guide ROS2
 - file: canProtocol
   title: MD80 FDCAN protocol
 - file: CANopen
