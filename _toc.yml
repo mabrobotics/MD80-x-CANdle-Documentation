@@ -19,12 +19,12 @@ chapters:
     - file: MD80_controller/Homing
     - file: MD80_controller/Config
     - file: MD80_controller/Status codes
-- file: CANdle
+- file: candle_and_candle_hat/CANdle
   title: CANdle and CANdle HAT
   sections:
-    - file: CANdle/Principle
-    - file: CANdle/Using CANdle
-    - file: CANdle/Latency
+    - file: candle_and_candle_hat/Principle
+    - file: candle_and_candle_hat/Using CANdle
+    - file: candle_and_candle_hat/Latency
 - file: Software
   title: Software package
   sections:
