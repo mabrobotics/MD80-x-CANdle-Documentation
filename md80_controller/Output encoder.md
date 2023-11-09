@@ -3,7 +3,7 @@
 
 Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually useful for geared motors where the output shaft position after startup cannot be determined unambiguously using the MD80’s onboard encoder due to the gearbox. By using an output encoder one can make sure that the output shaft position is always known at startup. 
 
-```{figure} ../images/output_encoders.jpg
+```{figure} ./images/output_encoders.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -13,7 +13,7 @@ Output encoder is a position sensor that can be attached to the output shaft of 
 Currently we support one encoder type with two placement configurations: 
 * AS5047 placed axially on the output shaft with a regular diametrically magnetized magnet
 
-```{figure} ../images/output_encoder_axial.jpg
+```{figure} ./images/output_encoder_axial.jpg
 :width: 300px
 :class: bg-primary mb-1
 :align: center
@@ -22,7 +22,7 @@ Currently we support one encoder type with two placement configurations:
 
 * AS5047 placed non-axially together with a diametrically magnetized ring magnet 
 
-```{figure} ../images/output_encoder_offaxis.jpg
+```{figure} ./images/output_encoder_offaxis.jpg
 :width: 300px
 :class: bg-primary mb-1
 :align: center
@@ -102,7 +102,7 @@ Steps to add an external encoder to the MD80 setup:
 
 * make sure the encoder sensor is placed correctly: 
 
-```{figure} ../images/output_encoder_cross.png
+```{figure} ./images/output_encoder_cross.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -115,7 +115,7 @@ Steps to add an external encoder to the MD80 setup:
 * Connect the MD80 with the encoder using a picoblade series cable assembly and apply voltage to the MD80. 
 * Modify the motor config file according to your setup and save it to the MD80 using [mdtool](mdtool)
 
-```{figure} ../images/setup_output_encoder.png
+```{figure} ./images/setup_output_encoder.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -124,7 +124,7 @@ Steps to add an external encoder to the MD80 setup:
 
 You can confirm the setup using the [`mdtool setup info`](mdtool_setup_info) command to make sure all parameters are correct: 
 
-```{figure} ../images/mdtool_setup_info_errors.png
+```{figure} ./images/mdtool_setup_info_errors.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center

@@ -6,7 +6,7 @@ When in Update mode the communication speed is dictated by the number of drives 
 
 Generally, a program using CANdle should follow the workflow below:
 
-```{figure} ../images/candle_workflow.png
+```{figure}./images/candle_workflow.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center

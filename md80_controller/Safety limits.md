@@ -10,7 +10,7 @@ Setting the max current limit to above the maximum continuous current may damage
 ## Current Limit
 Let’s start with the max current limit:
 
-```{figure} ../images/Candle_motion_modes/current_limit.png
+```{figure} ./images/current_limit.png
 :width: 1000px
 :align: center
 ```
@@ -47,7 +47,7 @@ Now, to save this value into the MD80 please refer to [`mdtool config current`](
 
 The next limit is the max torque limit which can be set using the CANdle script. This limit applies to maximum torque and is expressed in Nm. It is respected in all motion modes. When target torque, set either by either of the controllers, exceeds the `max torque` param the target torque is limited and a [motion warning](motion_status) is generated. 
 
-```{figure} ../images/Candle_motion_modes/torque_limit.png
+```{figure} ./images/torque_limit.png
 :width: 1000px
 :align: center
 ```
@@ -60,7 +60,7 @@ if the torque bandwidth is set to a low value it is possible to read torque valu
 
 Velocity limit is respected only in Velocity PID / Profile Velocity and Impedance / Position PID / Profile Position modes. When target velocity, set either by the user or the Position PID, exceeds the `max velocity` param the target is limited, and a [motion warning](motion_status) is generated. 
 
-```{figure} ../images/Candle_motion_modes/velocity_limit.png
+```{figure} ./images/velocity_limit.png
 :width: 1000px
 :align: center
 ```
@@ -69,7 +69,7 @@ Velocity limit is respected only in Velocity PID / Profile Velocity and Impedanc
 
 Position limit is respected only in Impedance / Position PID / Profile Position modes. When target position, set by the user, exceeds the `<position limit min : position limit max>` param range the target is limited to that range, and a [motion warning](motion_status) is generated. Attempt to start the motor outside the range will generate a motion error. 
 
-```{figure} ../images/Candle_motion_modes/position_limit.png
+```{figure} ./images/position_limit.png
 :width: 1000px
 :align: center
 ```
