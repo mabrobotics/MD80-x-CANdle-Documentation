@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-- file: QuickStartGuide
+- file: quick_start_guide/QuickStartGuide.md
   title: Quick Start Guide
 - file: Ecosystem
   title: MD80 x CANdle Ecosystem overview
