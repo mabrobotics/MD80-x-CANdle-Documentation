@@ -34,12 +34,12 @@ chapters:
     - file: software_package/Candle ROS nodes
     - file: software_package/Quick startup guide ROS
     - file: software_package/Quick startup guide ROS2
-- file: canProtocol
+- file: md80_fdcan_protocol/canProtocol
   title: MD80 FDCAN protocol
-- file: CANopen
+- file: md80_canopen/CANopen
   title: MD80 CANopen
   sections:
-    - file: OD
+    - file: md80_canopen/OD
       title: Object Dictionary
 - file: FAQ
   title: Common problems and FAQ
