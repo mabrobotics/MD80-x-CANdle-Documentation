@@ -8,7 +8,7 @@ The main requirement for the host system is to be equipped with an FDCAN periphe
 
 The communication stack is based on a register access using two frames - register read and register write. The list of available registers can be found at the end of this chapter. All fields are little-endian - least significant byte first, and all float fields are 4 bytes long encoded in IEEE-754 standard. 
 
-## Default response
+### Default response
 
 The default response is sent by the drive in case a register write operation was successfull. 
 
@@ -65,7 +65,7 @@ The default response is sent by the drive in case a register write operation was
 
 In case the operation initiated by a frame was unsuccessful the MD80 will not respond. 
 
-### WRITE REGISTER FRAME
+### Write register frame
 
 Write register frame is used to modify values of the user-modifiable registers. Only registers with write access can be modified.
 
@@ -106,7 +106,7 @@ Params:
 
 When all registers write operations succeed the drive will respond with default response.
 
-### READ REGISTER FRAME
+### Read Register Frame
 
 Read register command is used to retrieve certain register values. The actuator will respond with a frame consisting of the addresses and values of the registers issued in the master request. The master request should have the following form: 
 
@@ -140,7 +140,7 @@ Read register command is used to retrieve certain register values. The actuator 
 
 When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MD80 controller. Maximum payload should not exceed 64 bytes. 
 
-### 16. Available registers
+### Available registers
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
   <thead>
@@ -288,7 +288,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>uint8_t</td>
       <td>[0;1;2;3]</td>
-      <td>NONE = 0, AMS5047_CENTER = 1, AMS5047_OFFAXIS = 2, MB053SFA17BENT00 = 3 </td>
+      <td>NONE = 0, AS5047_CENTER = 1, AS5047_OFFAXIS = 2, MB053SFA17BENT00 = 3, CM_OFFAXIS = 4, M24B_CENTER = 5, M24B_OFFAXIS = 6</td>
     </tr>
     <tr>
       <td>outputEncoderDefaultBaud</td>

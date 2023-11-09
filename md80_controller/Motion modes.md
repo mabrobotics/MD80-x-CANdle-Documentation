@@ -8,7 +8,7 @@ TL;DR: [MD80 x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zr
 To control the motor shaft with the user’s command MD80 is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.
 
 
-```{figure} ../images/limiters.png
+```{figure} ./images/limiters.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -24,7 +24,7 @@ Velocity PID controller calculates velocity error based on target velocity (set 
 * kD (derivative gain)
 * I windup (maximal output of an integral part in[Nm])
 
-```{figure} ../images/velocity_pid.png
+```{figure} ./images/velocity_pid.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -53,7 +53,7 @@ For Velocity PID:
 
 To properly tune the controller, it is recommended to first tune the velocity controller (in velocity PID mode), and then the position PID. The controller can be described with a diagram:
 
-```{figure} ../images/position_pid.png
+```{figure} ./images/position_pid.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -78,7 +78,7 @@ Example use case: In legged robots, force control can be achieved by advanced co
 
 The impedance controller is relatively simple and works according to the schematic below:
 
-```{figure} ../images/impedance.png
+```{figure} ./images/impedance.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -89,7 +89,7 @@ The impedance controller is relatively simple and works according to the schemat
 
 The velocity profile motion mode uses trapezoidal velocity profiles to achieve smooth velocity changes with predefined acceleration and deceleration. The trajectory generator module interpolates between two velocity setpoints to achieve constant acceleration.
 
-```{figure} ../images/Candle_motion_modes/velocity_profile_generator_CANdle.png
+```{figure} ./images/velocity_profile_generator_CANdle.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -100,7 +100,7 @@ The velocity profile motion mode uses trapezoidal velocity profiles to achieve s
 
 The position profile motion mode uses trapezoidal velocity profiles to achieve smooth position changes with predefined acceleration, deceleration, and velocity. The trajectory generator module interpolates between two position setpoints to achieve constant acceleration, and linearly changing velocity.
 
-```{figure} ../images/Candle_motion_modes/position_profile_generator_CANdle.png
+```{figure} ./images/position_profile_generator_CANdle.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
