@@ -8,17 +8,17 @@ chapters:
   title: Quick Start Guide
 - file: md80_x_candle_ecosystem_overview/Ecosystem.md
   title: MD80 x CANdle Ecosystem overview
-- file: MD80_controller/MD80
+- file: md80_controller/MD80
   title: MD80 controller
   sections:
-    - file: MD80_controller/Measurements
-    - file: MD80_controller/Safety limits
-    - file: MD80_controller/Output encoder
-    - file: MD80_controller/Calibration
-    - file: MD80_controller/Motion modes
-    - file: MD80_controller/Homing
-    - file: MD80_controller/Config
-    - file: MD80_controller/Status codes
+    - file: md80_controller/Measurements
+    - file: md80_controller/Safety limits
+    - file: md80_controller/Output encoder
+    - file: md80_controller/Calibration
+    - file: md80_controller/Motion modes
+    - file: md80_controller/Homing
+    - file: md80_controller/Config
+    - file: md80_controller/Status codes
 - file: candle_and_candle_hat/CANdle
   title: CANdle and CANdle HAT
   sections:
