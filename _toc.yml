@@ -6,7 +6,7 @@ root: intro
 chapters:
 - file: quick_start_guide/QuickStartGuide.md
   title: Quick Start Guide
-- file: Ecosystem
+- file: md80_x_candle_ecosystem_overview/Ecosystem.md
   title: MD80 x CANdle Ecosystem overview
 - file: MD80_controller/MD80
   title: MD80 controller
