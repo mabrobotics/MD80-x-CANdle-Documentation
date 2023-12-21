@@ -65,7 +65,7 @@ After the parameters have been filled there are two more steps to follow - save 
     - wait for the drive to reboot
 
 2. Run [calibration routine](system_command) using 0x2003:3 (and output encoder calibration routine 0x2003:4 if output encoder is present)
-    - make sure the state machine is in "switch on disabled" state (write 0x8 to controlword 0x6040)
+    - make sure the state machine is in "operational" state (write sequentially 0x8, 0x6, 0xf to controlword 0x6040, and check if the statusword 0x6041 is 0x39)
     - make sure the drive is in "service" operation mode (write -2 to Modes Of Operation 0x6060)
     - write 1 to 0x2003:3 to start the calibration
     - wait for the drive to reboot
