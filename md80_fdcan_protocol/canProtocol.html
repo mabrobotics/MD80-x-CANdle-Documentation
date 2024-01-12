@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -79,7 +79,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -122,12 +122,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -421,7 +429,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="md80-fdcan-communication">
 <h1>MD80 FDCAN communication<a class="headerlink" href="#md80-fdcan-communication" title="Permalink to this heading">#</a></h1>
@@ -939,7 +947,7 @@ document.write(`
       <td>0x080</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>save non-volatle memory</td>
     </tr>
     <tr>
@@ -947,7 +955,7 @@ document.write(`
       <td>0x081</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs main encoder test routine</td>
     </tr>
     <tr>
@@ -955,7 +963,7 @@ document.write(`
       <td>0x082</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs output encoder test routine</td>
     </tr>
     <tr>
@@ -963,7 +971,7 @@ document.write(`
       <td>0x083</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs main calibration routine</td>
     </tr>
     <tr>
@@ -971,7 +979,7 @@ document.write(`
       <td>0x084</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs output encoder calibration routine</td>
     </tr>
     <tr>
@@ -979,7 +987,7 @@ document.write(`
       <td>0x085</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs current PI loop calibration routine</td>
     </tr>
     <tr>
@@ -987,7 +995,7 @@ document.write(`
       <td>0x086</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs homing</td>
     </tr>
     <tr>
@@ -995,7 +1003,7 @@ document.write(`
       <td>0x087</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>reverts config to factory state</td>
     </tr>
     <tr>
@@ -1003,7 +1011,7 @@ document.write(`
       <td>0x088</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>resets the controller</td>
     </tr>
     <tr>
@@ -1011,7 +1019,7 @@ document.write(`
       <td>0x089</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>clears all warnings</td>
     </tr>
     <tr>
@@ -1019,7 +1027,7 @@ document.write(`
       <td>0x08A</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>clears non-critical errors</td>
     </tr>
     <tr>
@@ -1027,7 +1035,7 @@ document.write(`
       <td>0x08B</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>blinks onboard leds</td>
     </tr>
     <tr>
@@ -1035,7 +1043,7 @@ document.write(`
       <td>0x08C</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>sets new zero position</td>
     </tr>
     <tr>
@@ -1043,7 +1051,7 @@ document.write(`
       <td>0x08D</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>reinits can peripheral</td>
     </tr>
     <tr>
@@ -1250,7 +1258,7 @@ document.write(`
       <td>RW</td>
       <td>uint16_t</td>
       <td>-</td>
-      <td>returns the internal state machine state of the controller</td>
+      <td>returns the internal <a href=../md80_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
     </tr>
     <tr>
       <td></td>
@@ -1530,6 +1538,7 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1592,8 +1601,8 @@ By MAB Robotics
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>
