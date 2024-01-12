@@ -519,7 +519,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x080</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>save non-volatle memory</td>
     </tr>
     <tr>
@@ -527,7 +527,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x081</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs main encoder test routine</td>
     </tr>
     <tr>
@@ -535,7 +535,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x082</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs output encoder test routine</td>
     </tr>
     <tr>
@@ -543,7 +543,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x083</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs main calibration routine</td>
     </tr>
     <tr>
@@ -551,7 +551,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x084</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs output encoder calibration routine</td>
     </tr>
     <tr>
@@ -559,7 +559,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x085</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs current PI loop calibration routine</td>
     </tr>
     <tr>
@@ -567,7 +567,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x086</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>runs homing</td>
     </tr>
     <tr>
@@ -575,7 +575,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x087</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>reverts config to factory state</td>
     </tr>
     <tr>
@@ -583,7 +583,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x088</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>resets the controller</td>
     </tr>
     <tr>
@@ -591,7 +591,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x089</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>clears all warnings</td>
     </tr>
     <tr>
@@ -599,7 +599,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x08A</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>clears non-critical errors</td>
     </tr>
     <tr>
@@ -607,7 +607,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x08B</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>blinks onboard leds</td>
     </tr>
     <tr>
@@ -615,7 +615,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x08C</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>sets new zero position</td>
     </tr>
     <tr>
@@ -623,7 +623,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>0x08D</td>
       <td>WO</td>
       <td>uint8_t</td>
-      <td>any value to run</td>
+      <td>other than 0 to run</td>
       <td>reinits can peripheral</td>
     </tr>
     <tr>
@@ -830,7 +830,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>uint16_t</td>
       <td>-</td>
-      <td>returns the internal state machine state of the controller</td>
+      <td>returns the internal <a href=../md80_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
     </tr>
     <tr>
       <td></td>
