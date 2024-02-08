@@ -96,14 +96,14 @@ Main stable releases:
 			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
 		</tr>
 		<tr>
-			<td>02.02.2024</td>
+			<td style="color:green;"><b>02.02.2024 (latest)</b></td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.4.0 >3.4.0</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.4.0 >1.4.0</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.5.0/ >1.5.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.3.2>1.3.2</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.2>1.3.2</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1iLx-2KV4Cg57oAxH690rDtHau0f8aIYJ?usp=sharing>2.3.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1tJbVmp8I0RanLpE6IjjeLPY1rWF1pP9r?usp=sharing>2.4.0</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1iLx-2KV4Cg57oAxH690rDtHau0f8aIYJ?usp=sharing>2.2.1</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1tJbVmp8I0RanLpE6IjjeLPY1rWF1pP9r?usp=sharing>2.3.0</a></td>
 			<td>this document</td>
 		</tr>
 	</tbody>
