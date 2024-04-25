@@ -16,7 +16,7 @@ MD80 is a highly integrated brushless motor controller. It can be interfaced wit
 
 ## CANdle and CANdle HAT
 
-CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus. 
+CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle and CANdle HAT devices are fitted with a switch for enabling and disabling the built-in termination resistor.
 
 ```{image} images/candle.jpg
 :alt: candle
@@ -60,7 +60,7 @@ CAN bus topology is a single-line network structure. A typical hardware connecti
 ```{hint} In case you’d like to read more about the recommended lengths of the bus segments we suggest the [elektormotus guide](https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf). 
 ```
 
-The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (`mdtool config can` command) on each controller. Termination should be always turned on or attached to the last controller in a string. 
+The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor. Termination should be always be attached to the last controller in a string. 
 
 ```{figure} images/hardware_setup_candle.jpg
 :alt: candle

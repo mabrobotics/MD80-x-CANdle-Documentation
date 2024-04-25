@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -438,7 +438,7 @@ document.write(`
 </section>
 <section id="candle-and-candle-hat">
 <h2>CANdle and CANdle HAT<a class="headerlink" href="#candle-and-candle-hat" title="Link to this heading">#</a></h2>
-<p>CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus.</p>
+<p>CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle and CANdle HAT devices are fitted with a switch for enabling and disabling the built-in termination resistor.</p>
 <img alt="candle" class="no-scaled-link align-center" src="../_images/candle.jpg" style="width: 400px;" />
 </section>
 <section id="safety-information">
@@ -475,7 +475,7 @@ document.write(`
 <p class="admonition-title">Hint</p>
 <p>In case you’d like to read more about the recommended lengths of the bus segments we suggest the <a class="reference external" href="https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf">elektormotus guide</a>.</p>
 </div>
-<p>The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor for MD80 versions older than HW V2.0.For MD80 HW V2.0 and newer, the termination resistor is built-in and can be turned on and off using software (<code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code> command) on each controller. Termination should be always turned on or attached to the last controller in a string.</p>
+<p>The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor. Termination should be always be attached to the last controller in a string.</p>
 <figure class="align-center" id="id2">
 <img alt="candle" class="no-scaled-link" src="../_images/hardware_setup_candle.jpg" />
 <figcaption>
