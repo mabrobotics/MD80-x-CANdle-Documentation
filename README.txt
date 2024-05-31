@@ -6,10 +6,6 @@ and run:
 `jupyter-book build md80-x-candle-documentation/`
 
 Push to gh-pages:
-ghp-import -n -p -f _build/html 
-
-add:
- -r <remote name> 
-when push to other remote is required
+when pushed to devel actions pipeline publishes changes automatically
 
 
