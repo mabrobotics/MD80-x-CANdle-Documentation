@@ -63,6 +63,7 @@ Impedance PID default gains (used at every startup, then can be modified using t
 - `homing velocity` - velocity with which the homing is performed. The acceleration used in the process is `profile acceleration`.
 - `homing torque` - the maximum torque a motor can safely produce during motion, and at the same time the torque that is used to detect a limit.
 
-
-
+```{note}
+The config can be saved to non-volatile memory in the controller by issuing the save command. Note that this procedure **always** reboots the driver.
+```
 

@@ -96,10 +96,10 @@ Main stable releases:
 			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>31.05.2024 (latest)</b></td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.4.0 >3.4.0</a></td>
+			<td style="color:green;"><b>26.06.2024 (latest)</b></td>
+			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.4.1 >3.4.1</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.4.1 >1.4.1</a></td>
-     		<td><a href = https://pypi.org/project/pyCandleMAB/1.5.0/ >1.5.0</a></td>
+     		<td><a href = https://pypi.org/project/pyCandleMAB/1.5.1/ >1.5.1</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.3.2>1.3.2</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.2>1.3.2</a></td>
 			<td><a href = https://drive.google.com/drive/folders/1iLx-2KV4Cg57oAxH690rDtHau0f8aIYJ?usp=sharing>2.2.1</a></td>
@@ -135,11 +135,11 @@ Make sure the MAB_CAN_Flasher can be executed. If not use the `sudo chmod +x ./M
 :class: no-scaled-link
 ```
 
-In case the update process is interrupted and the md80 controller seems to be broken, you can disconnect the power supply, call:
+In case the update process is interrupted or the red and green leds flash in quick succesion, you can disconnect the power supply, call:
 ```
 ./MAB_CAN_Flasher --id 9 --baud 1M --wait 
 ```
-and while the command is running connect the power supply. This command will wait for the bootloader response and try to recover the firmware. If the flashing does not occur in the first power cycle you can repeat it until the bootloader is detected. An example output of the wait option for the ak80-64 motor is shown below:
+and while the command is running connect the power supply. This command will wait for the bootloader response and try to recover the firmware. If the flashing does not occur in the first power cycle you can repeat it until the bootloader is detected. If using that procedure **only one driver** may be present on the can bus. An example output of the wait option for the ak80-64 motor is shown below:
 
 ```{figure} images/flashing3_wait.png
 :class: bg-primary mb-1
