@@ -515,6 +515,10 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">homing</span> <span class="pre">velocity</span></code> - velocity with which the homing is performed. The acceleration used in the process is <code class="docutils literal notranslate"><span class="pre">profile</span> <span class="pre">acceleration</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">homing</span> <span class="pre">torque</span></code> - the maximum torque a motor can safely produce during motion, and at the same time the torque that is used to detect a limit.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The config can be saved to non-volatile memory in the controller by issuing the save command. Note that this procedure <strong>always</strong> reboots the driver.</p>
+</div>
 </section>
 </section>
 

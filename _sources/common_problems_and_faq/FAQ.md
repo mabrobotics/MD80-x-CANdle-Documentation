@@ -5,7 +5,7 @@
 There might be several reasons why MD80 is not showing up in the mdtool ping all command output. Please ensure you've check the things listed below: 
 
 1. Check the power supply - when powered the MD80's onboard LEDs should be blinking. The LEDs are located under the connectors near the PCB edge.
-2. Check the LED blink pattern - if red and green LEDs are blinking one after another quickly in 4s intervals this means you need to download the firmware using [MB_CAN_Flasher](mab_can_flasher) program. If the red led is on and the green one is blinking in 1s intervals this means there is an error in the setup that can be chacked using [mdtool setup info](mdtool_setup_info). If only the green LED is blinking in 1s intervals the MD80 should operate and be discovered without issues. In case it's not please check the cabling one more time. 
+2. Check the LED blink pattern - if red and green LEDs are blinking one after another quickly in 4s intervals this means you need to download the firmware using [MAB_CAN_Flasher](mab_can_flasher) program with `id 9` and `wait` flag, ex.: `./MAB_CAN_Flasher --id 9 --baud 1M --wait`. If the red led is on and the green one is blinking in 1s intervals this means there is an error in the setup that can be chacked using [mdtool setup info](mdtool_setup_info). If only the green LED is blinking in 1s intervals the MD80 should operate and be discovered without issues. In case it's not please check the cabling one more time. 
 
 ## How to check if my motor is operating properly
 

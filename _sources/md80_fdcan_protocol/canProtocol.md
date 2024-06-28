@@ -138,7 +138,34 @@ Read register command is used to retrieve certain register values. The actuator 
 </table>
 <p></p>
 
-When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MD80 controller. Maximum payload should not exceed 64 bytes. 
+When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MD80 controller as shown in the example below. Maximum payload should not exceed 64 bytes. 
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>FRAME NAME</b></td>
+			<td> <b>ID</b></td>
+			<td> <b>LENGTH</b></td>
+			<td> <b>BYTE 0 [ID]</b></td>
+      <td> <b>BYTE 1 </b></td>
+      <td> <b>BYTE 2-3 </b></td>
+      <td> <b>BYTE 4-X </b></td>
+      <td> <b>BYTE X+1-X+2 </b></td>
+      <td> <b>BYTE X+4-X+Y </b></td>
+		</tr>
+		<tr>
+			<td>READ_REGISTER</td>
+			<td>0x41</td>
+			<td>X (64 max)</td>
+			<td>0x41</td>
+      <td>0x00</td>
+      <td>reg ID</td>
+      <td>reg content</td>
+      <td>reg ID</td>
+      <td>reg content</td>
+		</tr>
+	</tbody>
+</table>
 
 ### Available registers
 

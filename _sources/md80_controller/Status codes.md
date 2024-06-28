@@ -3,7 +3,7 @@
 
 When an abnormal situation takes place the controller sets an error bit indicating a particular error or warning. The table below lists all available error and warning codes and their descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the CANdle lib getQuickStatus() function.
 
-Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note taht all warnings and only non-critical errors can be cleared. 
+Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note that all warnings and only non-critical errors can be cleared. 
 
 (quick_status)=
 ## Quick Status 

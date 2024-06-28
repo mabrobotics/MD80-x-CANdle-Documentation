@@ -437,7 +437,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="status">
 <span id="id1"></span><h1>Status<a class="headerlink" href="#status" title="Link to this heading">#</a></h1>
 <p>When an abnormal situation takes place the controller sets an error bit indicating a particular error or warning. The table below lists all available error and warning codes and their descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use the CANdle lib register access and read the statuses, or decode the general “Quick Status” using the CANdle lib getQuickStatus() function.</p>
-<p>Errors and warnings can be cleared by register access, or using <code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">clear</span></code> command. Please note taht all warnings and only non-critical errors can be cleared.</p>
+<p>Errors and warnings can be cleared by register access, or using <code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">clear</span></code> command. Please note that all warnings and only non-critical errors can be cleared.</p>
 <section id="quick-status">
 <span id="id2"></span><h2>Quick Status<a class="headerlink" href="#quick-status" title="Link to this heading">#</a></h2>
 <p>Quick status provides a general info about errors in each category of statuses. No warnings are indicated here. Last bit indicatest whether the current target (position or velocity) has been reached.</p>
