@@ -900,6 +900,22 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td></td>
     </tr>
     <tr>
+      <td>brakeMode</td>
+      <td>0x160</td>
+      <td>RW</td>
+      <td>uint8_t</td>
+      <td>-</td>
+      <td>0 - OFF, 1 - AUTO</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
       <td>reverseDirection</td>
       <td>0x600</td>
       <td>RW</td>
