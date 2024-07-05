@@ -1,0 +1,8 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": [{
+            "cmd": "jupyter-book build ${workspaceFolder}"
+        }]
+    }
+    
+}
