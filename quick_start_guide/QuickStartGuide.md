@@ -2,7 +2,7 @@
 
 ## Before first use
 
-Here are some things to look out for while playing with the MD80 x CANdle ecosystem for the first time:
+Here are some things to look out for while playing with the MD x CANdle ecosystem for the first time:
 1. Always stay cautious when dealing with actuators. Even though they don't seem like it, they may severely hurt you when unintentional movement occurs. It’s recommended to fix the actuator to the workbench. 
 2. Get accustomed to the [safety limits](safety_limits) section of this document. While developing your application be sure to keep the limits low, and only if you are sure you know what you're doing - increase the limits. 
 3. We recommend using power supply sources that can work in two quadrants - meaning they can supply and dissipate some of the energy produced by the motor in case it works as a generator. Old trafo-based power supplies usually block current coming into the power supply, causing overvoltage events on the MD80s. The best choice is to use LiPo batteries or at least SMPS power supplies. 
@@ -10,11 +10,11 @@ Here are some things to look out for while playing with the MD80 x CANdle ecosys
 ## Video tutorials
 
 Check out our video tutorials if you prefer this way of presentation:
-1. Guide on how to set up a new MD80 to work with a motor of your choice: [MD80 x CANdle - Brushless Motor Setup Guide](https://www.youtube.com/watch?v=74zTUlJ2hmo&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=5)
-2. Quick startup guide - watch when your motor is already configured and you'd like to try the examples: [MD80 x CANdle - Getting Started Tutorial](https://www.youtube.com/watch?v=bIZuhFpFtus&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=1) 
-3. MDtool guide - a short introduction to MDtool and its basic commands (at this point the MDtool has evolved, however, the main principles are the same) [MD80 x CANdle - MDtool](https://www.youtube.com/watch?v=BrojxsU8oD8&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=2)
-4. Motion modes guide - an introduction to motion modes available on MD80 [MD80 x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=3)
-5. ROS/ROS2 startup guide - an introduction to ROS/ROS2 drivers for MD80 [MD80 x CANdle - ROS/ROS2 startup guide](https://www.youtube.com/watch?v=6sLQNaJKuJY&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=4)
+1. Guide on how to set up a new MD80 to work with a motor of your choice: [MD x CANdle - Brushless Motor Setup Guide](https://www.youtube.com/watch?v=74zTUlJ2hmo&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=5)
+2. Quick startup guide - watch when your motor is already configured and you'd like to try the examples: [MD x CANdle - Getting Started Tutorial](https://www.youtube.com/watch?v=bIZuhFpFtus&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=1) 
+3. MDtool guide - a short introduction to MDtool and its basic commands (at this point the MDtool has evolved, however, the main principles are the same) [MD x CANdle - MDtool](https://www.youtube.com/watch?v=BrojxsU8oD8&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=2)
+4. Motion modes guide - an introduction to motion modes available on MD80 [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=3)
+5. ROS/ROS2 startup guide - an introduction to ROS/ROS2 drivers for MD80 [MD x CANdle - ROS/ROS2 startup guide](https://www.youtube.com/watch?v=6sLQNaJKuJY&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=4)
 
 (configuring_MD80_for_new_motor)=
 ## Configuring the MD80 controller for a new motor

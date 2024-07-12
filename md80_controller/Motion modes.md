@@ -2,7 +2,7 @@
 # Motion modes
 
 ```{hint}
-TL;DR: [MD80 x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&t=0s)
+TL;DR: [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&t=0s)
 ```
 
 To control the motor shaft with the user’s command MD80 is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.

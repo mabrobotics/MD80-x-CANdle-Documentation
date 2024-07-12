@@ -6,8 +6,8 @@ root: intro
 chapters:
 - file: quick_start_guide/QuickStartGuide.md
   title: Quick Start Guide
-- file: md80_x_candle_ecosystem_overview/Ecosystem.md
-  title: MD80 x CANdle Ecosystem overview
+- file: md_x_candle_ecosystem_overview/Ecosystem.md
+  title: MD x CANdle Ecosystem overview
 - file: md80_controller/MD80
   title: MD80 controller
   sections:
@@ -19,6 +19,8 @@ chapters:
     - file: md80_controller/Homing
     - file: md80_controller/Config
     - file: md80_controller/Status codes
+- file: md20_controller/MD20
+  title: MD20 controller
 - file: candle_and_candle_hat/CANdle
   title: CANdle and CANdle HAT
   sections:

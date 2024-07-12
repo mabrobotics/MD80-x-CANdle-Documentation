@@ -2,7 +2,7 @@
 
 Let’s run a simple example of the candle ROS2 node. In order to run the node, clone it into your local ROS2 workspace. After that, build it with `colcon` and run using the `ros2 run` command. Be sure to source your workspace with `source install/setup.bash` prior to running the package, and in each new terminal window you're going to send commands related to the node. 
 
-First, let’s run the node with arguments that fit your MD80 x CANdle setup. The general syntax is:
+First, let’s run the node with arguments that fit your MD x CANdle setup. The general syntax is:
 ```
 ros2 run candle_ros2 candle_ros2_node <BUS> <FDCAN baud> 
 ```

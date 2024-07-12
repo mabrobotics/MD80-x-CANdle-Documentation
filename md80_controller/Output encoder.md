@@ -52,6 +52,8 @@ where:
   - for non-axially placed AS5047
 * - MB053SFA17BENT00
   - Renishaw RS422 17-bit RLS encoder
+* - CM_OFFAXIS
+  - CubeMars motors offaxis encoder
 ```
 
 ```{list-table}

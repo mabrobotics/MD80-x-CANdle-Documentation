@@ -1,6 +1,6 @@
 # Ecosystem overview 
 
-MD80 x CANdle is a system of brushless actuator controllers (MD80) and translator devices (CANdle) used for interfacing with them. MD80-based actuators can be used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and many more. 
+MD x CANdle is a system of brushless actuator controllers (MD80) and translator devices (CANdle) used for interfacing with them. MD80-based actuators can be used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and many more. 
 
 ## MD80
 

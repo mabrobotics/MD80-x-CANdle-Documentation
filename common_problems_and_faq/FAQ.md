@@ -35,7 +35,7 @@ Since version HW2.0 a resistor is embedded in the hardware of each MD80 controll
 
 ##  Different FDCAN speeds between actuators
 
-MD80 x CANdle ecosystem is not adopted for working with actuators of different FDCAN baudrates. Trying to control actuators with different baud rates on a common FDCAN bus can cause the communication to fail or not start at all. This is why it is crucial to make sure when you call the [`mdtool ping all`](mdtool_ping) command, all discovered MD80 controllers lie in a single baudrate category. If that’s not the case, use the [`mdtool config can`](mdtool_config_can) command to fix it. 
+MD x CANdle ecosystem is not adopted for working with actuators of different FDCAN baudrates. Trying to control actuators with different baud rates on a common FDCAN bus can cause the communication to fail or not start at all. This is why it is crucial to make sure when you call the [`mdtool ping all`](mdtool_ping) command, all discovered MD80 controllers lie in a single baudrate category. If that’s not the case, use the [`mdtool config can`](mdtool_config_can) command to fix it. 
 
 ##  Too-low torque bandwidth setting
 

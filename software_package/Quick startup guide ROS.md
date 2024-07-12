@@ -2,7 +2,7 @@
 
 Let’s run a simple example of the candle ROS node. In order to run the node, clone it into your local ROS workspace in the src folder. After that, build it with 'catkin' and run using the 'rosrun' command. Be sure to source your workspace with source devel/setup.sh prior to running the package, and in each new terminal window you're going to send commands related to the node. 
 
-First, start the roscore with the roscore command. Then run the node with arguments that fit your MD80 x CANdle setup. The general syntax is:
+First, start the roscore with the roscore command. Then run the node with arguments that fit your MD x CANdle setup. The general syntax is:
 ```
 rosrun candle_ros candle_ros_node <BUS> <FDCAN baud> 
 ```
