@@ -19,15 +19,15 @@ Check out our video tutorials if you prefer this way of presentation:
 (configuring_MD80_for_new_motor)=
 ## Configuring the MD80 controller for a new motor
 
-MDtool is used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor.
+MDtool can be used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor.
 
 ```{warning}
 Steps presented in this section are performed on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the [maximum ratings](ratings) before applying voltage to the controller. 
 ```
 
-* First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors (high resistance ones) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 2kW peak power). 
+* First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors ( with high phase resistance) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 500W peak power). 
 
-* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-magnet) on the motor shaft and mount the MD80 controller firmly centered above the magnet. 
+* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-magnet) on the motor shaft and mount the MD80 controller firmly, centered above the magnet. 
 
 ```{figure} images/magnet_encoder_asm.png
 :alt: candle

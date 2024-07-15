@@ -1,12 +1,12 @@
 # Principle of operation
 
-CANdle can work in two different modes: CONFIG and UPDATE. When in CONFIG mode, it works as a traditional translator device between two selected buses - USB/SPI/UART and FDCAN. This mode is used to set up the drives and prepare them for a low-latency operation in the UPDATE mode. When the configuration is done the user calls `candle.begin()` which starts a low-latency continuous connection with the MD80 controllers. In the UPDATE mode, you are not allowed to call the config functions. To make them easier to recognize, each config function starts with a config keyword. The user exits the UPDATE mode using `candle.end()` method.
+CANdle can work in two different modes: CONFIG and UPDATE. When in CONFIG mode, it works as a traditional translator device between two selected buses - USB/SPI/UART and FDCAN. This mode is used to set up the drives and prepare them for a low-latency operation in the UPDATE mode. When the configuration is done the user calls `candle.begin()` which starts a low-latency continuous connection with the MD controllers. In the UPDATE mode, you are not allowed to call the config functions. To make them easier to recognize, each config function starts with a config keyword. The user exits the UPDATE mode using `candle.end()` method.
 
 When in Update mode the communication speed is dictated by the number of drives attached to the bus. Please see the [latency section](latency) for maximum communication speeds.
 
 Generally, a program using CANdle should follow the workflow below:
 
-```{figure}./images/candle_workflow.png
+```{figure} ./images/candle_workflow.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -20,7 +20,7 @@ Now the configuration of the drives can be done. As a rule of thumb, all class m
 ```{note}
 This is also a good place to call `Candle::ping()`, this will trigger the CANdle device to send an FDCAN frame to all valid FDCAN IDs. The method will return a vector of all IDs that have responded. This can be used to check if all the drives have power and if all communication is set up correctly. 
 ```
-The next step is adding MD80s to the update list. To do so, use Candle::addMd80() method, with an FDCAN ID (drive ID) as an argument. This will trigger CANdle to quickly check if the drive is available on the bus at the ID, and if it is, the CANdle device will add the drive to its internal list and send an acknowledgment to the CANdle lib. If the drive is successfully added the addMd80() method will add this particular MD80 to its internal vector for future use and return true.
+The next step is adding MDs to the update list. To do so, use Candle::addMd80() method, with an FDCAN ID (drive ID) as an argument. This will trigger CANdle to quickly check if the drive is available on the bus at the ID, and if it is, the CANdle device will add the drive to its internal list and send an acknowledgment to the CANdle lib. If the drive is successfully added the addMd80() method will add this particular MD80 to its internal vector for future use and return true.
 
 When all drives have been added, the drives should be ready to move. This can be done with methods starting with the “control(...)” keyword. Firstly the control mode should be set, then the zero position set (if desired), and finally the drives can be enabled by using `Candle::controlMd80Enable()` method.
 

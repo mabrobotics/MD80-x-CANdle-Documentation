@@ -18,7 +18,7 @@ MD80 is a highly integrated brushless motor controller. It can be interfaced wit
 
 CANdle (CAN + dongle) is a translator device between the host controller and the MD80 drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle and CANdle HAT devices are fitted with a switch for enabling and disabling the built-in termination resistor.
 
-```{image} images/candle.jpg
+```{image} images/candle.webp
 :alt: candle
 :class: bg-primary mb-1
 :width: 400px

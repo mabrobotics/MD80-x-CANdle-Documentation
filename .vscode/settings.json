@@ -1,0 +1,21 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "cmd": "jupyter-book build ${workspaceFolder}/",
+                "isAsync": true
+            }
+        ]
+    },
+    "cSpell.words": [
+        "bootloader",
+        "Brushless",
+        "devel",
+        "gridlines",
+        "mdtool",
+        "overvoltage",
+        "pinout",
+        "SMPS",
+        "UART"
+    ]
+}
