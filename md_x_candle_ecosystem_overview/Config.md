@@ -1,7 +1,7 @@
 (config)=
 # Config
 
-MD80 config allows for configuring the controller for a specific motor and the application it is used in. This section will cover the parameters that are used in config files. 
+MDxx's config allows for configuring the controller for a specific motor and the application it is used in. This section will cover the parameters that are used in config files. 
 
 ## [motor] section
 
@@ -34,8 +34,8 @@ These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.
 ## [output encoder] section
 For more information please refer to [output encoder](output_encoder) section. 
 
-- `output encoder` - valid types: AS5047_CENTER, AS5047_OFFAXIS, MB053SFA17BENT00
-- `output encoder mode` - valid modes: STARTUP, MOTION, REPORT
+- `output encoder` - valid types: AS5047_CENTER, AS5047_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS
+- `output encoder mode` - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT
 
 ## [position PID] section
 Position PID default gains (used at every startup, then can be modified using the C++/Python script, or register access)
@@ -55,14 +55,3 @@ Velocity PID default gains (used at every startup, then can be modified using th
 Impedance PID default gains (used at every startup, then can be modified using the C++/Python script, or register access)
 - `kp` - proportional gain
 - `kd` - derivative gain
-
-(homing_config)=
-## [homing] section
-- `homing mode` - controls in which homing mode the controller currently is in - valid options are OFF and SENSORLESS
-- `homing max travel` - maximum distance in [rad] that a motor can travel from any starting position to a limit - basically this parameter should be set to the valid motion range of the motor between limit switches. When exceeded the motor will stop. 
-- `homing velocity` - velocity with which the homing is performed. The acceleration used in the process is `profile acceleration`.
-- `homing torque` - the maximum torque a motor can safely produce during motion, and at the same time the torque that is used to detect a limit.
-
-
-
-

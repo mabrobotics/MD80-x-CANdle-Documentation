@@ -22,7 +22,7 @@ Check out our video tutorials if you prefer this way of presentation:
 MDtool can be used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor.
 
 ```{warning}
-Steps presented in this section are performed on HW 2.0 unit. These steps are universal between the controller hardware revisions, however, be sure to always check the [maximum ratings](ratings) before applying voltage to the controller. 
+These steps are universal between the controller hardware versions, however, be sure to always check the [maximum ratings](ratings) before applying voltage to the controller. 
 ```
 
 * First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors ( with high phase resistance) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 500W peak power). 
@@ -40,7 +40,7 @@ Magnet - encoder placement cross section
 
 The optimal height between the magnet and the encoder IC is 1mm. The magnet and the encoder must be on the same rotation axis.
 
-MD80 V2.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The PCB 3D models for both V2.0, HW1.1, and HV1.3 can be found on the [downloads](hardware_downloads) page. 
+MD80 V3.0 is equipped with seven mounting holes. Please refer to the technical drawing below to find out the hole dimensions and their placement. The 3D model of the driver can be found in the [downloads](hardware_downloads) section. 
 
 ```{figure} images/PCB_drawing.png
 :class: bg-primary mb-1
@@ -63,7 +63,7 @@ Always make sure the head of the screw is inside the white hole outline. Otherwi
 :class: no-scaled-link
 ```
 
-* Solder the motor wires to the PCB making sure all the individual motor wires within a single phase are connected (in case the motor is wound with more than one wire on each phase). It is possible to solder the motor from the bottom, however, soldering the wires on the top is also acceptable. Make sure that the phase wires are connected only to their respective polygons. 
+* Solder the motor wires to the PCB making sure all the individual motor wires within a single phase are connected (in case the motor is wound with more than one wire on each phase). It is possible to solder the motor from the bottom, however, soldering the wires on the top is also acceptable. Make sure that the phase wires are connected only to their respective pads. 
 
 ```{warning}
 The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the [calibration](calibration). Each modification in wire order should be followed by a full motor [calibration](calibration). 
@@ -76,7 +76,7 @@ The order of the cables does not matter (does not change the rotation direction)
 :class: no-scaled-link
 ```
 ```{hint}
-Sometimes it may be difficult due to the high-temperature enamel on the copper wires. In that case, try to apply solder at high temperatures using flux until the solder sticks to all wires nicely. 
+Sometimes soldering may be difficult due to the high-temperature enamel on the copper wires. In that case, try to apply solder at high temperatures using flux until the solder sticks to all wires nicely. 
 ```
 
 * Connect the power supply to the controller through the CANdle device as specified in [this section](hardware_setup). When powered the controller should blink shortly with a green LED once a second. If the red LED is fully on there are some errors that should be cleared after the calibration. 

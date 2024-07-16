@@ -14,7 +14,6 @@ chapters:
     - file: md_x_candle_ecosystem_overview/Output encoder
     - file: md_x_candle_ecosystem_overview/Calibration
     - file: md_x_candle_ecosystem_overview/Motion modes
-    - file: md_x_candle_ecosystem_overview/Homing
     - file: md_x_candle_ecosystem_overview/Config
     - file: md_x_candle_ecosystem_overview/Status codes
 - file: controllers/Controllers

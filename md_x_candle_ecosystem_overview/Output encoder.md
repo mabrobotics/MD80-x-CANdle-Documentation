@@ -1,7 +1,7 @@
 (output_encoder)=
 # Output Encoder
 
-Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually useful for geared motors where the output shaft position after startup cannot be determined unambiguously using the MD80’s onboard encoder due to the gearbox. By using an output encoder one can make sure that the output shaft position is always known at startup. 
+Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually useful for geared motors where the output shaft position after startup cannot be determined unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can make sure that the output shaft position is always known at startup. 
 
 ```{figure} ./images/output_encoders.jpg
 :alt: candle
@@ -72,13 +72,19 @@ where:
 * - REPORT
   - initial position from <b><font color="#008000">main encoder</font></b>,
     report <b><font color="#FFBF00">output encoder</font></b> values,
-    motion based on <b><font color="#008000">main encoder</font></b>
+    motion based on <b><font color="#008000">main encoder</font></b>,
+    calibration of the <b><font color="#FFBF00">output encoder</font></b>  is impossible
 * - MAIN
   - <b><font color="#FFBF00">output encoder</font></b> is used as the <b><font color="#008000">main encoder</font></b>. All <b><font color="#FFBF00">output encoder</font></b> measurements are mapped as <b><font color="#008000">main encoder</font></b> values. 
+* - CALIBRATED_REPORT
+  - initial position from <b><font color="#008000">main encoder</font></b>,
+    report <b><font color="#FFBF00">output encoder</font></b> values,
+    motion based on <b><font color="#008000">main encoder</font></b>,
+    calibration of the <b><font color="#FFBF00">output encoder</font></b> is possible
 ```
 
 ```{warning}
-The non-axial configuration outputs a nonlinear position values. This means it requires a [full calibration](output_encoder_calibration) (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in high level software
+The non-axial configuration outputs a nonlinear position values. This means it requires a [full calibration](output_encoder_calibration) (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host's software
 ```
 
 Not all modes are recommended for every encoder. The non-axially placed AS5047 encoder is inherently more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to the table below: 
@@ -90,17 +96,20 @@ Not all modes are recommended for every encoder. The non-axially placed AS5047 e
   - Valid modes
   - Description
 * - AS5047_CENTER 
-  - STARTUP / MOTION / REPORT / MAIN
+  - STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT
   - \-
 * - AS5047_OFFAXIS
   - STARTUP
-  - the configuration is much more noisy than the axial placement
+  - This configuration is much more noisy than the axial placement
 * - MB053SFA17BENT00 
-  - STARTUP / MOTION / REPORT / MAIN
+  - STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT
   - \-
+* - CM_OFFAXIS
+  - STARTUP
+  - Only offaxis configuration is supported
 ```
 
-Steps to add an external encoder to the MD80 setup:
+Steps to add an external encoder to the driver setup:
 
 * make sure the encoder sensor is placed correctly: 
 
@@ -114,8 +123,8 @@ Steps to add an external encoder to the MD80 setup:
   * in case of axially placed sensors make sure they are placed in center at correct height above the magnet (1 mm is usually optimal)
   * in case of non-axial configuration make sure the magnet is close to the ring magnet (<0.5mm) and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.
 
-* Connect the MD80 with the encoder using a picoblade series cable assembly and apply voltage to the MD80. 
-* Modify the motor config file according to your setup and save it to the MD80 using [mdtool](mdtool)
+* Connect the MDxx with the encoder using a picoblade series cable assembly and connect power to the MDxx. 
+* Modify the motor config file according to your setup and save it to the MDxx using [mdtool](mdtool)
 
 ```{figure} ./images/setup_output_encoder.png
 :alt: candle
@@ -136,7 +145,7 @@ You can confirm the setup using the [`mdtool setup info`](mdtool_setup_info) com
 At this point some errors will be present as the setup is not yet calibrated. 
 ```
 
-* Calibrate the MD80 using [`mdtool setup calibration`](mdtool_setup_calibration) command 
+* Calibrate the MDxx using [`mdtool setup calibration`](mdtool_setup_calibration) command 
 * Calibrate the output encoder using [`mdtool setup calibration_out`](mdtool_setup_calibration_out) command
 * Test the encoders using [`mdtool test encoder`](mdtool_test_encoder) command.
 * Use the [`mdtool setup info all`](mdtool_setup_info) command to make sure there are no errors and the test results (min, max and stddev errors) are within your expectations.

@@ -1,7 +1,7 @@
 (mdtool)=
 # MDtool
 
-**MDtool** is a console application for configuring and performing basic diagnostics on MD80 drives via CANdle. It is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.
+**MDtool** is a console application for configuring and performing basic diagnostics on MD drives via CANdle. It is designed as a complementary tool for APIs, reducing the overhead when setting up the drives for the first time or reconfiguring them. It uses the CANdle C++ library on its backend.
 
 ## Installation
 
@@ -65,7 +65,7 @@ This setting has to be saved to be preserved after power down! Please see the co
 (mdtool_config_can)=
 ### `mdtool config can <current ID> <new ID> <baud> <watchdog period [ms]> <termination>`
 
-This command is used to change MD80’s parameters such as CAN ID, CAN speed, and CAN watchdog.
+This command is used to change MD parameters such as CAN ID, CAN speed, and CAN watchdog.
 * CAN IDs should be in range <10:2000>
 * Baud should be one of the available speeds (1M/2M/5M/8M)
 * Watchdog period should be in range <1:2000> ms, 0 disables the watchdog. For more information on CAN watchdog please refer to section FDCAN Watchdog Timer.
@@ -136,13 +136,9 @@ This command is used to read the motor internal parameters. Use an optional 'all
 ```
 Reading the errors is the easiest way of debugging possible problems with the drive. For errors description please visit the [status](status) section. 
 
-(mdtool_setup_homing)=
-### `mdtool setup homing <ID>`
-This command is used to start the homing routine. Please make sure the actuator is properly configured for homing.
-
 (mdtool_blink)=
 ### `mdtool blink <ID>`
-This command is mostly used to find an MD80 drive on a long CAN bus using its ID – the command makes the drive flash its onboard LEDs for easy identification.
+This command is mostly used to find an MD drive on a long CAN bus using its ID – the command makes the drive flash its onboard LEDs for easy identification.
 
 (mdtool_test_move)=
 ### `mdtool test move <ID> <position>`
@@ -150,11 +146,11 @@ This command is used to test the actuator movement in impedance mode. It helps t
 
 (mdtool_test_move_absolute)=
 ### `mdtool test move absolute <ID> <target position> <velocity> <acceleration> <deceleration>`
-This command is used to test the actuator movement in profile position mode. The motor is going to use `acceleration` parameter to speed up to `velocity` parameter and then `deceleration` parameter to slow down and reach the `target position`. The move is absolute to the currently set zero position. By providing only the `ID` and `target_velocity` the MD80 will use the default acceleration, deceleration and velocity parameters. 
+This command is used to test the actuator movement in profile position mode. The motor is going to use `acceleration` parameter to speed up to `velocity` parameter and then `deceleration` parameter to slow down and reach the `target position`. The move is absolute to the currently set zero position. By providing only the `ID` and `target_velocity` the MDxx will use the default acceleration, deceleration and velocity parameters. 
 
 (mdtool_test_latency)=
 ### `mdtool test latency <baudrate>`
-This command is used to test the PC<>CANdle communication speed which greatly affects the PC<>MD80 communication speed. The higher the measured frequency the better. 
+This command is used to test the PC<>CANdle communication speed which greatly affects the PC<>MD communication speed. The higher the measured frequency the better. 
 
 (mdtool_test_encoder)=
 ### `mdtool test encoder <type> <ID>`
@@ -170,15 +166,15 @@ This command is useful when one wants to measure the position of the actuator in
 
 (mdtool_clear_error)=
 ### `mdtool clear error <ID>`
-This command is used to clear non-critical MD80 errors.
+This command is used to clear non-critical MDxx errors.
 
 (mdtool_clear_warning)=
 ### `mdtool clear warning <ID>`
-This command is used to clear all MD80 warnings.
+This command is used to clear all MDxx warnings.
 
 (mdtool_register_read)=
 ### `mdtool register read <ID> <regID>`
-This command is used to read a register from MD80 controller. 
+This command is used to read a register from MDxx controller. 
 
 (mdtool_register_write)=
 ### `mdtool register write <ID> <regID> <value>`
@@ -186,6 +182,6 @@ This command is used to write a register with `value` param.
 
 (mdtool_reset)=
 ### `mdtool reset <ID>`
-This command is used to reset an MD80 controller.
+This command is used to reset an MDxx controller.
 
 

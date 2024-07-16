@@ -914,18 +914,6 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
 		<tr>
       		<td>0x2003</td>
 			<td>0x02</td>
-			<td>Homing Status</td>
-     		<td>UINT32</td>
-			<td>RW</td>
-			<td>-</td>
-			<td>-</td>
-			<td>-</td>
-            <td>0</td>
-            <td>-</td>
-		</tr>
-		<tr>
-      		<td>0x2003</td>
-			<td>0x02</td>
 			<td>Motion Status</td>
      		<td>UINT32</td>
 			<td>RW</td>

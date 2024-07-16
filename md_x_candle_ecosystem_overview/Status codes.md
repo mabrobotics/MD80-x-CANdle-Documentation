@@ -3,7 +3,7 @@
 
 When an abnormal situation takes place the controller sets an error bit indicating a particular error or warning. The table below lists all available error and warning codes and their descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the CANdle lib getQuickStatus() function.
 
-Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note taht all warnings and only non-critical errors can be cleared. 
+Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note that all warnings and only non-critical errors can be cleared. 
 
 (quick_status)=
 ## Quick Status 
@@ -44,10 +44,6 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>6</td>
 			<td>Motion errors</td>
 		</tr>
-		<tr>
-			<td>7</td>
-			<td>Homing Errors</td>
-		</tr>
        	<tr>
 			<td>8-14</td>
 			<td>RESERVED</td>
@@ -74,7 +70,7 @@ Quick status provides a general info about errors in each category of statuses. 
 		<tr>
 			<td>ERROR_COMMUNICATION </td>
 			<td>0</td>
-			<td>MD80 could not communicate with the encoder </td>
+			<td>MDxx could not communicate with the encoder </td>
       		<td>Check connections </td>
 		</tr>
     	<tr>
@@ -117,7 +113,7 @@ Quick status provides a general info about errors in each category of statuses. 
 			<td>WARNING_LOW_ACCURACY</td>
 			<td>30</td>
 			<td>Encoder position readout accuracy may be lower than specified</td>
-			<td>Check endcoder physical setup and reboot the MD80</td>
+			<td>Check endcoder physical setup and reboot the MDxx</td>
 		</tr>
 	</tbody>
 </table>
@@ -236,8 +232,8 @@ Quick status provides a general info about errors in each category of statuses. 
     	<tr>
 			<td>ERROR_MOSFET_TEMP</td>
 			<td>4</td>
-			<td>MD80 power side exceeded the limit of 100*C</td>
-      		<td>wait for the MD80 to cool down</td>
+			<td>MDxx power side exceeded the limit of 100*C</td>
+      		<td>wait for the MDxx to cool down</td>
 		</tr>
      	<tr>
 			<td>ERROR_ADC_CURRENT_OFFSETS</td>
@@ -329,50 +325,6 @@ The following table shows when warnings and errors are issued based on the mode 
 :class: no-scaled-link
 ```
 
-(homing_status)=
-## Homing status
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-			<td> <b>Error name</b></td>
-			<td> <b>Error bit</b></td>
-			<td> <b>Error description</b></td>
-      		<td> <b>Action to clear it</b></td>
-		</tr>
-		<tr>
-			<td>ERROR_HOMING_LIMIT_REACHED</td>
-			<td>0</td>
-			<td>Motor position while homing has exceeded the homing max travel </td>
-      		<td>Ensure a proper homing max travel has been set</td>
-		</tr>
-    	<tr>
-			<td>ERROR_HOMING_SEQUENCE</td>
-			<td>1</td>
-			<td>Set when motor is stuck, or trying to home a motor within a single rotation</td>
-      		<td>Check physical setup, rerun homing</td>
-		</tr>
-    	<tr>
-			<td>ERROR_HOMING_REQUIRED</td>
-			<td>2</td>
-			<td>Homing is required. No motion is allowed until homed.</td>
-      		<td>Run homing</td>
-		</tr>
-    	<tr>
-			<td>ERROR_HOMING_SETUP</td>
-			<td>3</td>
-			<td>Set if any homing parameter is invalid</td>
-      		<td>Check homing settings</td>
-		</tr>
-		<tr>
-			<td>ERROR_HOMING_ABORTED</td>
-			<td>4</td>
-			<td>Motion mode was changed during homing</td>
-      		<td>Homing was aborted by the user. Rerun Homing</td>
-		</tr>
-  </tbody>
-</table>
-<p></p>
 
 
 

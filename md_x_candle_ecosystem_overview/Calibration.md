@@ -1,19 +1,19 @@
 (calibration)=
 # Calibration
 
-Calibration should be performed when the MD80 controller is first mounted to the motor or when anything changes in the motor-controller assembly. It has three main stages during which specific parameters of the setup are measured and saved. 
+Calibration should be performed when the MDxx controller is first mounted to the motor or when anything changes in the motor-controller assembly. It has three main stages during which specific parameters of the setup are measured and saved. 
 
 ```{note}
-The calibration has to be performed on a motor that is free to rotate with no load attached to its output shaft. If the calibration fails, you will see errors when executing the [`mdtool setup info`](mdtool_setup_info) command. If the failure is essential to the motor’s operation the MD80 will remain disabled till the next calibration attempt.
+The calibration has to be performed on a motor that is free to rotate with no load attached to its output shaft. If the calibration fails, you will see errors when executing the [`mdtool setup info`](mdtool_setup_info) command. If the failure is critical the MDxx will remain disabled until the next calibration attempt.
 ```
 
 ## Pole pairs detection
 
-In the first stage the motor will execute one full motor rotor rotation in order to check if the pole pair count is correctly configured. If the detected number of pole pairs is not consistent with the number that was typed in the *.cfg file during motor setup the calibration will fail and an error ERROR_POLE_PAIR_DET will be shown until the next calibration attempt. If you are unsure about the number of pole pairs (you can check it by counting magnets and dividing it by 2) just place zero in the *.cfg file. Then the pole pairs will be automatically detected. 
+In the first stage the motor will execute one full rotor revolution in order to check if the pole pair count is correctly configured. If the detected number of pole pairs is not consistent with the number that was typed in the *.cfg file during motor setup the calibration will fail and an error ERROR_POLE_PAIR_DET will be shown until the next calibration attempt. If you are unsure about the number of pole pairs (you can check it by counting magnets and dividing it by 2) just place zero in the *.cfg file. Then the pole pairs will be automatically detected. 
 
 ## Encoder eccentricity
 
-Encoder eccentricity is the second measurement that takes place. During this part, the motor performs a slow single rotation in both directions to assess the amount of error due to non-axial encoder placement. 
+Encoder eccentricity is the second measurement that takes place. During this part, the motor performs a slow single rotation in both directions to assess the amount of error due to non-axial encoder placement and external magnetic disturbances. 
 
 ## Motor resistance and inductance
 
@@ -22,7 +22,7 @@ Motor parameters - resistance and inductance are measured in order to calculate 
 (torque_bandwidth)=
 ## Torque bandwidth
 
-Even though the torque command on MD80 controllers seems to be applied instantaneously, in reality, it’s not the case. As in every system, there’s a response to the command which depends on the system itself and the controller gains. A parameter called bandwidth was introduced to describe how fast the output of a system reacts to the changing input. Calibrating the motor for a certain torque bandwidth requires measuring motor parameters. This happens in the last calibration stage and manifests as an audible sound (beep). 
+Even though the torque command on MD controllers seems to be applied instantaneously, in reality, it’s not the case. As in every system, there’s a response to the command which depends on the system itself and the controller gains. A parameter called bandwidth was introduced to describe how fast the output of a system reacts to the changing input. Calibrating the motor for a certain torque bandwidth requires measuring motor parameters. This happens in the last calibration stage and manifests as an audible sound (beep). 
 The torque bandwidth default setting is set using the motor config file. It can be set to anywhere from 50 Hz to 2.5 kHz, however it is important to note that higher torque bandwidth causes a higher audible noise level. Please see the [`mdtool setup calibration`](mdtool_setup_calibration) command for more details on calibrating the actuators. 
 When the system that you’re designing is a highly dynamic one, you want the torque bandwidth to be higher than the default setting of 50 Hz. Start by calibrating the drives for 1 kHz torque bandwidth, and if you see this is still not enough you can increase it further.  
 
@@ -43,7 +43,7 @@ In case your setup is not able to complete a full rotation due to mechanical con
 :class: no-scaled-link
 ```
 
-To run the routine, use the [`mdtool setup calibration_out`](mdtool_setup_calibration_out) command. After completing the routine the MD80 will reboot and after that it is recommended to run the mdtool setup info command in order to make sure the setup reports no errors:
+To run the routine, use the [`mdtool setup calibration_out`](mdtool_setup_calibration_out) command. After completing the routine the MDxx will reboot and after that it is recommended to run the mdtool setup info command in order to make sure the setup reports no errors:
 
 ```{figure} images/Calibration/mdtool_setup_info_allok.png
 :alt: candle

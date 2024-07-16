@@ -15,12 +15,12 @@ Generally, a program using CANdle should follow the workflow below:
 
 Creating a Candle object creates a class that will hold all the data and provides an API for the user. During the creation of the class, the software will attach itself to the ttyACMx port used by the CANdle, or SPI/UART bus if CANdle HAT is considered. It will also perform a reset operation on the device and set up basic parameters. This ensures that the device is in the known state at the start of the program. When an object is created, the CANdle is in the CONFIG state. 
 
-Now the configuration of the drives can be done. As a rule of thumb, all class methods starting with the word ‘config’ can be used here. They do not require adding MD80 to the update list, just require an ID of the drive to talk to. This is a good place to set current limits, change FDCAN parameters, or save data to flash. 
+Now the configuration of the drives can be done. As a rule of thumb, all class methods starting with the word ‘config’ can be used here. They do not require adding MDxx to the update list, just require an ID of the drive to talk to. This is a good place to set current limits, change FDCAN parameters, or save data to flash. 
 
 ```{note}
 This is also a good place to call `Candle::ping()`, this will trigger the CANdle device to send an FDCAN frame to all valid FDCAN IDs. The method will return a vector of all IDs that have responded. This can be used to check if all the drives have power and if all communication is set up correctly. 
 ```
-The next step is adding MDs to the update list. To do so, use Candle::addMd80() method, with an FDCAN ID (drive ID) as an argument. This will trigger CANdle to quickly check if the drive is available on the bus at the ID, and if it is, the CANdle device will add the drive to its internal list and send an acknowledgment to the CANdle lib. If the drive is successfully added the addMd80() method will add this particular MD80 to its internal vector for future use and return true.
+The next step is adding MDs to the update list. To do so, use Candle::addMd80() method, with an FDCAN ID (drive ID) as an argument. This will trigger CANdle to quickly check if the drive is available on the bus at the ID, and if it is, the CANdle device will add the drive to its internal list and send an acknowledgment to the CANdle lib. If the drive is successfully added the addMd80() method will add this particular MDxx to its internal vector for future use and return true.
 
 When all drives have been added, the drives should be ready to move. This can be done with methods starting with the “control(...)” keyword. Firstly the control mode should be set, then the zero position set (if desired), and finally the drives can be enabled by using `Candle::controlMd80Enable()` method.
 
@@ -28,7 +28,7 @@ When all drives have been added, the drives should be ready to move. This can be
 Sending an ENABLE frame will start the CAN Watchdog Timer. If no commands follow, the drive will shut itself down.
 ```
 
-When all drives are enabled, `Candle::begin()` can be called. This will set the CANdle (both device and library) to UPDATE state. The device will immediately start sending command frames to the MD80s. From now on the library will no longer accept config* methods. Right now it is up to the user to decide what to do. After the first 10 milliseconds, the whole MD80 vector will be updated with the most recent data from MD80s and the control code can be executed to start moving the drives. 
+When all drives are enabled, `Candle::begin()` can be called. This will set the CANdle (both device and library) to UPDATE state. The device will immediately start sending command frames to the MDs. From now on the library will no longer accept config* methods. Right now it is up to the user to decide what to do. After the first 10 milliseconds, the whole MDxx vector will be updated with the most recent data from MDs and the control code can be executed to start moving the drives. 
 Individual drives can be accessed via Candle::md80s vector. The vector holds instances of ‘Md80’ class, with methods giving access to every md80 control mode. Latest data from md80’s responses can be accessed with `Md80::getPosition()`, `Md80::getVelocity()`, `Md80::getTorque()`, `Md80::getErrorVector()`.
 
 ```{note}

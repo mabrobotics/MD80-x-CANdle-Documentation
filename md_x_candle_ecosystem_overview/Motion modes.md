@@ -5,7 +5,7 @@
 TL;DR: [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&t=0s)
 ```
 
-To control the motor shaft with the user’s command MD80 is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.
+To control the motor shaft with the user’s command MDxx is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.
 
 
 ```{figure} ./images/limiters.png
@@ -33,7 +33,7 @@ Velocity PID controller calculates velocity error based on target velocity (set 
 
 ## Position PID
 
-Position PID mode is the most common controller mode used in industrial servo applications. In MD80, it is implemented as a cascaded PID controller. This means that the controller is working in two stages, firstly the position error is calculated, and it is then passed to the Position PID, which outputs the target velocity. This value is then passed as an input to the Velocity PID controller, which outputs commanded torque. This mode uses both Position PID and Velocity PID and thus needs the following parameters:
+Position PID mode is the most common controller mode used in industrial servo applications. In MDxx, it is implemented as a cascaded PID controller. This means that the controller is working in two stages, firstly the position error is calculated, and it is then passed to the Position PID, which outputs the target velocity. This value is then passed as an input to the Velocity PID controller, which outputs commanded torque. This mode uses both Position PID and Velocity PID and thus needs the following parameters:
 
 For Position PID:
 
@@ -151,7 +151,7 @@ When something does go wrong during the tuning process just power-cycle the actu
 ```
 
 ```{warning}
-Always keep your safety limits low when experimenting with gains. Gains not suitable for your system may cause oscillations and unstable operation of the MD80-based actuators
+Always keep your safety limits low when experimenting with gains. Gains not suitable for your system may cause oscillations and unstable operation of the MD-based actuators
 ```
 
 ## Velocity PID / Velocity Profile 

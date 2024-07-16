@@ -1,6 +1,6 @@
 # CANdle and CANdle HAT
 
-CANdle is a translator device used to communicate between MD controllers and the host device. Currently, there are two CANdle versions - CANdle and CANdle HAT.
+CANdle is a converter used to communicate between MD controllers and the host device. Currently, there are two CANdle versions - CANdle and CANdle HAT.
 
 ```{figure} images/CANdle_joined.webp
 :alt: candle
@@ -19,8 +19,7 @@ The first one is a simple version that uses only the USB bus to communicate with
 :class: no-scaled-link
 ```
 
-
-To achieve the fastest communication speeds you should aim for the SPI bus. For more details on the latency topic please check out the [latency section](latency).
+To achieve the fastest communication speeds you should aim for the USB bus. For more details on the latency topic please check out the [latency section](latency).
 
 ```{important}
 Currently CANdle supports only Linux operating systems.

@@ -6,7 +6,7 @@ MD x CANdle is a system of brushless actuator controllers (MD80) and translator 
 
 MD80 is a highly integrated brushless motor controller. It can be interfaced with a great variety of motors to turn them into advanced servo actuators. MD80 can work with both direct drive (no gearbox) and geared motors.
 
-```{image} images/md80.jpg
+```{image} images/md80.webp
 :alt: MD80
 :class: bg-primary mb-1
 :width: 400px

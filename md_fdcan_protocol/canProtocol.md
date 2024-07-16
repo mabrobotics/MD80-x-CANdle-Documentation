@@ -475,38 +475,6 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td></td>
     </tr>
     <tr>
-      <td>homingMode</td>
-      <td>0x070</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1]</td>
-      <td>0 - OFF, 1 - SENSORLESS</td>
-    </tr>
-    <tr>
-      <td>homingMaxTravel</td>
-      <td>0x071</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>max allowable movmement in rad during homing</td>
-    </tr>
-    <tr>
-      <td>homingVelocity</td>
-      <td>0x072</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity in rad/s during homing movement</td>
-    </tr>
-    <tr>
-      <td>homingTorque</td>
-      <td>0x073</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum and threshold torque for sensorless homing in Nm</td>
-    </tr>
-    <tr>
       <td></td>
       <td></td>
       <td></td>
@@ -561,14 +529,6 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>uint8_t</td>
       <td>other than 0 to run</td>
       <td>runs current PI loop calibration routine</td>
-    </tr>
-    <tr>
-      <td>runHoming</td>
-      <td>0x086</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs homing</td>
     </tr>
     <tr>
       <td>runRestoreFactoryConfig</td>
@@ -1023,14 +983,6 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>uint32_t</td>
       <td>-</td>
       <td>communication errors</td>
-    </tr>
-    <tr>
-      <td>homingErrors</td>
-      <td>0x80F</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>homing errors</td>
     </tr>
     <tr>
       <td>motionErrors</td>
