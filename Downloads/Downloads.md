@@ -81,7 +81,7 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2 >1.2.0</a></td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
+			<td><a href = ../MAB_CAN_Flasher_ea1d72f2_V2.0.0 >2.0</a></td>
 			<td>1.1.0</td>
 		</tr>
 		<tr>

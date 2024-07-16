@@ -38,3 +38,4 @@ sphinx:
   config:
     html_context:
       default_mode: light
+    html_extra_path: "./dwn"
