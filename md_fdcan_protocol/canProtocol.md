@@ -10,7 +10,7 @@ The communication stack is based on a register access using two frames - registe
 
 ### Default response
 
-The default response is sent by the drive in case a register write operation was successfull. 
+The default response is sent by the drive in case a register write operation was successful. 
 
 <p></p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -232,10 +232,10 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>float</td>
       <td>-</td>
-      <td>actuator gear ratio (ex 2:1 should be 0.5) <1 - reductors >1 - multiplicators</td>
+      <td>actuator gear ratio (ex 2:1 should be 0.5) <1 - reducer >1 - multiplier</td>
     </tr>
     <tr>
-      <td>motorTorgueBandwidth</td>
+      <td>motorTorqueBandwidth</td>
       <td>0x018</td>
       <td>RW</td>
       <td>uint16_t</td>
@@ -488,7 +488,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>WO</td>
       <td>uint8_t</td>
       <td>other than 0 to run</td>
-      <td>save non-volatle memory</td>
+      <td>save non-volatile memory</td>
     </tr>
     <tr>
       <td>runTestMainEncoderCmd</td>
@@ -515,7 +515,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>runs main calibration routine</td>
     </tr>
     <tr>
-      <td>runCalibrateOutpuEncoderCmd</td>
+      <td>runCalibrateOutputEncoderCmd</td>
       <td>0x084</td>
       <td>WO</td>
       <td>uint8_t</td>
@@ -568,7 +568,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>WO</td>
       <td>uint8_t</td>
       <td>other than 0 to run</td>
-      <td>blinks onboard leds</td>
+      <td>blinks onboard LEDs</td>
     </tr>
     <tr>
       <td>runZero</td>
@@ -584,7 +584,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>WO</td>
       <td>uint8_t</td>
       <td>other than 0 to run</td>
-      <td>reinits can peripheral</td>
+      <td>reinitializes can peripheral</td>
     </tr>
     <tr>
       <td></td>
@@ -768,7 +768,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>WO</td>
       <td>uint8_t</td>
       <td>-</td>
-      <td>commans a motion mode change: IDLE = 0x00,
+      <td>commands a motion mode change: IDLE = 0x00,
           POSITION_PID = 0x01,
           VELOCITY_PID = 0x02,
           RAW_TORQUE = 0x03,
