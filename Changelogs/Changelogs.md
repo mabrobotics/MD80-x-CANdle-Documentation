@@ -1,12 +1,13 @@
-# CHANGELOGS
+# Changelogs
 
-## Latest [release date will be here]
+# Latest [23.07.2024]
 
 ### MD Firmware
 
 - Removed homing feature for safety, will be brought back in future releases
 - Added GPIO general functionality - `GPIO Input`
 - Relabeled Brake Mode as a GPIO mode, address and values stayed the same
+- Added support for MD20 driver
 
 ### CANdle lib
 
@@ -17,6 +18,7 @@
     - `runCalibrateOutpuEncoderCmd` &rarr; `runCalibrateOutputEncoderCmd`
     - `motorTorgueBandwidth` &rarr; `motorTorqueBandwidth`
     - `motorStiction` &rarr; `motorStriction`
+- Added support for MD20 driver
 
 ### MDtool
 
