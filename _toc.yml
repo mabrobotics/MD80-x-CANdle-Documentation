@@ -16,6 +16,7 @@ chapters:
     - file: md_x_candle_ecosystem_overview/Motion modes
     - file: md_x_candle_ecosystem_overview/Config
     - file: md_x_candle_ecosystem_overview/Status codes
+    - file: md_x_candle_ecosystem_overview/Utilities
 - file: controllers/Controllers
   title: Controllers
   sections:
@@ -49,3 +50,5 @@ chapters:
   title: Common problems and FAQ
 - file: Downloads/Downloads
   title: Downloads
+- file: Changelogs/Changelogs
+  title: Changelogs

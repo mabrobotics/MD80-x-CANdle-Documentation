@@ -10,6 +10,7 @@
     "cSpell.words": [
         "autodetected",
         "Baudrate",
+        "baudrates",
         "bibfiles",
         "bibtex",
         "bootloader",
@@ -17,10 +18,12 @@
         "CANH",
         "CANL",
         "canopen",
+        "controlword",
         "DCANDLE",
         "devel",
         "DIRONLY",
         "fdcan",
+        "Gpio",
         "gridlines",
         "makefiles",
         "Mbps",
@@ -33,7 +36,9 @@
         "pinout",
         "Reinit",
         "reinitializes",
+        "setpoint",
         "SMPS",
+        "statusword",
         "targetname",
         "UART"
     ]

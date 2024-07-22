@@ -45,7 +45,7 @@ You can also look for status messages in the terminal window where the node was 
 :align: center
 :class: no-scaled-link
 ```
-According to the status messages we have added two MD80 actuators.
+According to the status messages we have added two MD series actuators.
 
 ## Set mode
 Next the desired control mode should be selected. This is accomplished with `/set_mode_md80s` service.
@@ -75,7 +75,7 @@ After calling `/enable_md80s` service, no calls to services other than `/disable
 
 After enabling, the node will publish current joint states to `/joint_states` at a frequency dependent on a currently chosen communication bus and speed mode. Joint names are generated based on drive ID, for example, a drive with id 546 will be called `Joint 546`.
 
-The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the md80 mode set before enabling.
+The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the MD controller mode set before enabling.
 ```
 rosservice call /enable_md80s "{drive_ids:[200, 800]}"
 ```

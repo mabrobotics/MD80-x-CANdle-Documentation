@@ -29,7 +29,7 @@ Sending an ENABLE frame will start the CAN Watchdog Timer. If no commands follow
 ```
 
 When all drives are enabled, `Candle::begin()` can be called. This will set the CANdle (both device and library) to UPDATE state. The device will immediately start sending command frames to the MDs. From now on the library will no longer accept config* methods. Right now it is up to the user to decide what to do. After the first 10 milliseconds, the whole MDxx vector will be updated with the most recent data from MDs and the control code can be executed to start moving the drives. 
-Individual drives can be accessed via Candle::md80s vector. The vector holds instances of ‘Md80’ class, with methods giving access to every md80 control mode. Latest data from md80’s responses can be accessed with `Md80::getPosition()`, `Md80::getVelocity()`, `Md80::getTorque()`, `Md80::getErrorVector()`.
+Individual drives can be accessed via Candle::md80s vector. The vector holds instances of ‘Md80’ class, with methods giving access to every MD series motor controller control mode. Latest data from md80’s responses can be accessed with `Md80::getPosition()`, `Md80::getVelocity()`, `Md80::getTorque()`, `Md80::getErrorVector()`.
 
 ```{note}
 As the communication is done in the background, it is up to the user to take care of the software timing here. If you for example set a position command, but don’t put any delay after it, the program will get to an end, disabling the communication and the servo drives, without you seeing any movement!
@@ -47,7 +47,7 @@ We highly recommend using the USB bus set up for the first run.
 
 ## SPI bus
 
-The SPI bus is only available on CANdle HAT devices. It’s the fastest possible bus that can be used to communicate with the MD80 controllers using CANdle HAT. Together with the RT-PATCH'ed kernel of the system, you will get the best performance. 
+The SPI bus is only available on CANdle HAT devices. It’s the fastest possible bus that can be used to communicate with the MD series motor controller controllers using CANdle HAT. Together with the RT-PATCH'ed kernel of the system, you will get the best performance. 
 
 ```{hint}
 CANdle HAT in SPI mode works with all FDCAN speeds, however, we advise setting it to 8M for the best performance. 

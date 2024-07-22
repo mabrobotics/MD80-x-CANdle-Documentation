@@ -422,7 +422,7 @@ The manufacturer specific area describes the custom CANopen objects, valid only 
 
 ### 0x2000 - Motor Settings
 
-Configures the most important motor settings. This object is especially useful when you want to configure or reconfigure an MD80 for a particular motor. Be sure to save after modification using 0x1010 Store Parameters. 
+Configures the most important motor settings. This object is especially useful when you want to configure or reconfigure an MD series motor controller for a particular motor. Be sure to save after modification using 0x1010 Store Parameters. 
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -864,7 +864,7 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2004</td>
 			<td>0x02</td>
 			<td>Output Encoder Status</td>
      		<td>UINT32</td>
@@ -876,7 +876,7 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2004</td>
 			<td>0x03</td>
 			<td>Calibration Status</td>
      		<td>UINT32</td>
@@ -888,7 +888,7 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2004</td>
 			<td>0x04</td>
 			<td>Bridge Status</td>
      		<td>UINT32</td>
@@ -900,7 +900,7 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2004</td>
 			<td>0x05</td>
 			<td>Hardware Status</td>
      		<td>UINT32</td>
@@ -912,7 +912,7 @@ Allows to read System status. Each specific status is a UINT32, where lower bits
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2004</td>
 			<td>0x02</td>
 			<td>Motion Status</td>
      		<td>UINT32</td>
@@ -958,7 +958,7 @@ Output encoder related record.
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2005</td>
 			<td>0x02</td>
 			<td>Calibration Mode</td>
      		<td>UINT32</td>
@@ -970,7 +970,7 @@ Output encoder related record.
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2005</td>
 			<td>0x03</td>
 			<td>Mode</td>
      		<td>UINT32</td>
@@ -982,7 +982,7 @@ Output encoder related record.
             <td>-</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2005</td>
 			<td>0x04</td>
 			<td>Position</td>
      		<td>FLOAT32</td>
@@ -994,7 +994,7 @@ Output encoder related record.
             <td>rad</td>
 		</tr>
 		<tr>
-      		<td>0x2003</td>
+      		<td>0x2005</td>
 			<td>0x05</td>
 			<td>Velocity</td>
      		<td>FLOAT32</td>

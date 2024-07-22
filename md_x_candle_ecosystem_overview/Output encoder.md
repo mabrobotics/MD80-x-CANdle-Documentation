@@ -31,7 +31,7 @@ Currently we support one encoder type with two placement configurations:
 
 ## Configuration
 
-The output encoder configuration is performed in the motor config files and saved to the MD80 using the [`mdtool setup motor`](mdtool_setup_motor) command. There are only two parameters used in output encoder setup: 
+The output encoder configuration is performed in the motor config files and saved to the MD series motor controller using the [`mdtool setup motor`](mdtool_setup_motor) command. There are only two parameters used in output encoder setup: 
 
 ```
 [output encoder]

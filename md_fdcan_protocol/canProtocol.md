@@ -1,8 +1,12 @@
-# MD80 FDCAN communication
-The easiest way to communicate with an MD80 controller is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD80 controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD80 actuators from your custom FDCAN-capable master controller.
+# MD FDCAN communication
+The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD actuators from your custom FDCAN-capable master controller.
 
 ## Hardware requirements
-The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Currently, the differential side of the transceiver (the CANH and CANL lines) is supplied with 5V. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus (MD80 controllers from version 2.0 can be upgraded to software controlled termination. Please contact us for more information).
+The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus.
+
+```{note}
+ MD controllers from version 2.0 can be upgraded to software controlled termination. Please contact us for more information
+ ```
 
 ## Communication Structure
 
@@ -63,7 +67,7 @@ The default response is sent by the drive in case a register write operation was
 </table>
 <p></p>
 
-In case the operation initiated by a frame was unsuccessful the MD80 will not respond. 
+In case the operation initiated by a frame was unsuccessful the MDxx will not respond. 
 
 ### Write register frame
 
@@ -73,7 +77,7 @@ Write register frame is used to modify values of the user-modifiable registers. 
 	<tbody>
 		<tr>
 			<td> <b>FRAME NAME</b></td> 
-			<td> <b>ID</b></td>
+			<td> <b>DRIVE ID</b></td>
 			<td> <b>LENGTH</b></td>
 			<td> <b>BYTE 0 [ID]</b></td>
       <td> <b>BYTE 1 </b></td>
@@ -84,7 +88,7 @@ Write register frame is used to modify values of the user-modifiable registers. 
 		</tr>
 		<tr>
 			<td>WRITE_REGISTER</td>
-			<td>0x40</td>
+			<td>10-999</td>
 			<td>X (64 max)</td>
 			<td>0x40</td>
       <td>0x00</td>
@@ -114,7 +118,7 @@ Read register command is used to retrieve certain register values. The actuator 
 	<tbody>
 		<tr>
 			<td> <b>FRAME NAME</b></td>
-			<td> <b>ID</b></td>
+			<td> <b>DRIVE ID</b></td>
 			<td> <b>LENGTH</b></td>
 			<td> <b>BYTE 0 [ID]</b></td>
       <td> <b>BYTE 1 </b></td>
@@ -125,7 +129,7 @@ Read register command is used to retrieve certain register values. The actuator 
 		</tr>
 		<tr>
 			<td>READ_REGISTER</td>
-			<td>0x41</td>
+			<td>10-999</td>
 			<td>X (64 max)</td>
 			<td>0x41</td>
       <td>0x00</td>
@@ -138,7 +142,40 @@ Read register command is used to retrieve certain register values. The actuator 
 </table>
 <p></p>
 
-When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MD80 controller. Maximum payload should not exceed 64 bytes. 
+When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MDxx controller.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>FRAME NAME</b></td>
+			<td> <b>DRIVE ID</b></td>
+			<td> <b>LENGTH</b></td>
+			<td> <b>BYTE 0 [ID]</b></td>
+      <td> <b>BYTE 1 </b></td>
+      <td> <b>BYTE 2-3 </b></td>
+      <td> <b>BYTE 4-X </b></td>
+      <td> <b>BYTE X+1-X+2 </b></td>
+      <td> <b>BYTE X+4-X+Y </b></td>
+		</tr>
+    <tr>
+      <td>Response to register read</td>
+      <td>10-999</td>
+      <td>X (64 max)</td>
+      <td>0x41</td>
+      <td>0x00</td>
+      <td>reg ID</td>
+      <td>reg value</td>
+      <td>reg ID</td>
+      <td>reg value</td>
+    </tr>
+	</tbody>
+</table>
+<p></p>
+
+
+```{warning}
+Frame payload length must not exceed 64 bytes. 
+```
 
 ### Available registers
 
@@ -219,6 +256,30 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>motor torque constant</td>
     </tr>
     <tr>
+      <td>motorKt_a</td>
+      <td>0x013</td>
+      <td>RW</td>
+      <td>float</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>motorKt_b</td>
+      <td>0x014</td>
+      <td>RW</td>
+      <td>float</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>motorKt_c</td>
+      <td>0x015</td>
+      <td>RW</td>
+      <td>float</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td>motorIMax</td>
       <td>0x016</td>
       <td>RW</td>
@@ -241,6 +302,22 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>uint16_t</td>
       <td>[50-2500]</td>
       <td>torque bandwidth in Hz</td>
+    </tr>
+    <tr>
+      <td>motorFriction</td>
+      <td>0x019</td>
+      <td>not found</td>
+      <td>not found</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>motorStriction</td>
+      <td>0x01A</td>
+      <td>not found</td>
+      <td>not found</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>motorResistance</td>
@@ -275,6 +352,14 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>FULL = 0, NOPPDET = 1</td>
     </tr>
     <tr>
+      <td>motorThermistorType</td>
+      <td>0x01F</td>
+      <td>RW</td>
+      <td>uint8_t</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td></td>
       <td></td>
       <td></td>
@@ -289,6 +374,14 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>uint8_t</td>
       <td>[0;1;2;3]</td>
       <td>NONE = 0, AS5047_CENTER = 1, AS5047_OFFAXIS = 2, MB053SFA17BENT00 = 3, CM_OFFAXIS = 4, M24B_CENTER = 5, M24B_OFFAXIS = 6</td>
+    </tr>
+    <tr>
+      <td>outputEncoderDir</td>
+      <td>0x021</td>
+      <td>RW</td>
+      <td>float</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>outputEncoderDefaultBaud</td>
@@ -656,7 +749,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>float</td>
       <td>-</td>
-      <td>minimum valid position</td>
+      <td>maximum valid position</td>
     </tr>
     <tr>
       <td>positionLimitMin</td>
@@ -664,7 +757,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>float</td>
       <td>-</td>
-      <td>maximum valid position</td>
+      <td>minimum valid position</td>
     </tr>
     <tr>
       <td>maxTorque</td>
@@ -833,6 +926,38 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td></td>
     </tr>
     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>userGpioConfiguration</td>
+      <td>0x160</td>
+      <td>RW</td>
+      <td>uint8_t</td>
+      <td>-</td>
+      <td>0 - OFF, 1 - AUTO-BRAKE, 2 - GPIO INPUT</td>
+    </tr>
+    <tr>
+      <td>userGpioState</td>
+      <td>0x161</td>
+      <td>RO</td>
+      <td>uint16_t</td>
+      <td>-</td>
+      <td>GPIO input state</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
       <td>reverseDirection</td>
       <td>0x600</td>
       <td>RW</td>
@@ -934,7 +1059,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
       <td>RW</td>
       <td>uint8_t</td>
       <td>-</td>
-      <td>temperature at which the md80 will enter IDLE mode</td>
+      <td>temperature at which the MD series motor controller will enter IDLE mode</td>
     </tr>
     <tr>
       <td>mainEncoderErrors</td>

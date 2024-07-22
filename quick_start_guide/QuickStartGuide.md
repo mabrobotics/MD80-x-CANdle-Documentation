@@ -10,24 +10,24 @@ Here are some things to look out for while playing with the MD x CANdle ecosyste
 ## Video tutorials
 
 Check out our video tutorials if you prefer this way of presentation:
-1. Guide on how to set up a new MD80 to work with a motor of your choice: [MD x CANdle - Brushless Motor Setup Guide](https://www.youtube.com/watch?v=74zTUlJ2hmo&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=5)
+1. Guide on how to set up a new MD series motor controller to work with a motor of your choice: [MD x CANdle - Brushless Motor Setup Guide](https://www.youtube.com/watch?v=74zTUlJ2hmo&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=5)
 2. Quick startup guide - watch when your motor is already configured and you'd like to try the examples: [MD x CANdle - Getting Started Tutorial](https://www.youtube.com/watch?v=bIZuhFpFtus&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=1) 
 3. MDtool guide - a short introduction to MDtool and its basic commands (at this point the MDtool has evolved, however, the main principles are the same) [MD x CANdle - MDtool](https://www.youtube.com/watch?v=BrojxsU8oD8&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=2)
-4. Motion modes guide - an introduction to motion modes available on MD80 [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=3)
-5. ROS/ROS2 startup guide - an introduction to ROS/ROS2 drivers for MD80 [MD x CANdle - ROS/ROS2 startup guide](https://www.youtube.com/watch?v=6sLQNaJKuJY&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=4)
+4. Motion modes guide - an introduction to motion modes available on MD series motor controller [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=3)
+5. ROS/ROS2 startup guide - an introduction to ROS/ROS2 drivers for MD series motor controller [MD x CANdle - ROS/ROS2 startup guide](https://www.youtube.com/watch?v=6sLQNaJKuJY&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=4)
 
 (configuring_MD80_for_new_motor)=
-## Configuring the MD80 controller for a new motor
+## Configuring the MD series controller for a new motor
 
-MDtool can be used to set up a new motor to work with the MD80 controller. This approach simplifies the configuration process so that the end user can reconfigure the MD80 driver to work with almost any brushless motor.
+MDtool can be used to set up a new motor to work with the MD series motor controller controller. This approach simplifies the configuration process so that the end user can reconfigure the MD series controller driver to work with almost any brushless motor.
 
 ```{warning}
 These steps are universal between the controller hardware versions, however, be sure to always check the [maximum ratings](ratings) before applying voltage to the controller. 
 ```
 
-* First, make sure the MD80 controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors ( with high phase resistance) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 500W peak power). 
+* First, make sure the MD controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors ( with high phase resistance) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 500W peak power). 
 
-* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-magnet) on the motor shaft and mount the MD80 controller firmly, centered above the magnet. 
+* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-magnet) on the motor shaft and mount the MD controller firmly, centered above the magnet. 
 
 ```{figure} images/magnet_encoder_asm.png
 :alt: candle
@@ -82,13 +82,13 @@ Sometimes soldering may be difficult due to the high-temperature enamel on the c
 * Connect the power supply to the controller through the CANdle device as specified in [this section](hardware_setup). When powered the controller should blink shortly with a green LED once a second. If the red LED is fully on there are some errors that should be cleared after the calibration. 
 
 ```{warning}
-<font color='red'>Always make sure that the polarity of the power supply is correct. MD80 controllers do not have reverse polarity protection so connecting the power supply in reverse polarity will cause permanent damage to the controller.</font> 
+<font color='red'>Always make sure that the polarity of the power supply is correct. MD controllers do not have reverse polarity protection so connecting the power supply in reverse polarity will cause permanent damage to the controller.</font> 
 ```
 * Connect CANdle to the PC using a USB type-C cable. 
 
 * Ensure you've got the latest [MDtool](https://github.com/mabrobotics/mdtool/releases). For the MDtool installation guide refer to the [MDtool](mdtool) section. 
 
-* Please upgrade the setup software if any of your devices (MD80 or CANdle device) is older than the one from "latest" row in the [releases table](downloads). 
+* Please upgrade the setup software if any of your devices (MD or CANdle device) is older than the one from "latest" row in the [releases table](downloads). 
 
 * Once installed and run the MDtool will create an MDtool directory in <b>~/.config</b>  directory.
 
@@ -114,7 +114,7 @@ There, you will find a mdtool.ini file which contains factory settings and **sho
 Feel free to add a new *.cfg file for your custom motors in there. Use the already existing files as a reference, especially the AK60-6.cfg which contains some additional comments.  
 
 
-* Check if the MD80 controller can be discovered properly using the [`mdtool ping all`](mdtool_ping) command
+* Check if the MD controller can be discovered properly using the [`mdtool ping all`](mdtool_ping) command
 
 ```{figure} images/mdtool_ping_all.png
 :alt: candle
@@ -123,7 +123,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 :class: no-scaled-link
 ```
 
-* To setup the MD80 controller simply call [`mdtool setup motor <ID> <*.cfg>`](mdtool_setup_motor) where the ID is the ID that shows up after the [`mdtool ping`](mdtool_ping) command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again. 
+* To setup the MD series controller simply call [`mdtool setup motor <ID> <*.cfg>`](mdtool_setup_motor) where the ID is the ID that shows up after the [`mdtool ping`](mdtool_ping) command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again. 
 
 ```{figure} images/mdtool_setup_motor_EX.png
 :alt: candle
@@ -143,7 +143,7 @@ Feel free to add a new *.cfg file for your custom motors in there. Use the alrea
 
 * When succeeded, the motor is set up correctly and now’s the time to calibrate it using [`mdtool setup calibration <ID>`](mdtool_setup_calibration). Please follow the [calibration](calibration) guidelines for more information on the calibration process itself.
 
-* After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD80 info using the [`mdtool setup info <ID>`](mdtool_setup_info). This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error's description and try the recommended action to clear it [status](status). 
+* After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD series motor controller info using the [`mdtool setup info <ID>`](mdtool_setup_info). This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error's description and try the recommended action to clear it [status](status). 
 
 Correct after-calibration mdtool setup info command output may look like this:
 

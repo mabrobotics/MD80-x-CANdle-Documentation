@@ -1,8 +1,8 @@
 # CANopen
-MD80 controllers are capable of supporting CANopen communication protocol accoriding the CiA402 device profile. For further details, please examine the Object Dictionary chapter that contains the communication objects that are used to exchange data. 
+MD controllers are capable of supporting CANopen communication protocol according the CiA402 device profile. For further details, please examine the Object Dictionary chapter that contains the communication objects that are used to exchange data. 
 
 ```{note}
-Make sure you've contacted MABRobotics for the aproperiate software update, as the default MD80 flasher only supports CANdle protocol. 
+Make sure you've contacted MABRobotics for the appropriate software update, as the default MD flasher only supports CANdle protocol. 
 ```
 
 ## Setting up a new motor

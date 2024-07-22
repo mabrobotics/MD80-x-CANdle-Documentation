@@ -42,7 +42,7 @@ You can also look for status messages in the terminal window where the node was 
 :class: no-scaled-link
 ```
 
-According to the status messages we have added two MD80 actuators.
+According to the status messages we have added two MD actuators.
 
 ## Set mode
 
@@ -76,7 +76,7 @@ After calling `/candle_ros2_node/enable_md80s` service, no calls to services oth
 
 After enabling, the node will publish current joint states to `/joint_states` at a frequency dependent on a currently chosen communication bus and speed mode. Joint names are generated based on drivie ID, for example, drive with id 546 will be called `Joint 546`.
 
-The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the md80 mode set before enabling.
+The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the MD controller mode set before enabling.
 ```
 ros2 service call /candle_ros2_node/enable_md80s candle_ros2/srv/GenericMd80Msg "{drive_ids:[200, 800]}"
 ```
