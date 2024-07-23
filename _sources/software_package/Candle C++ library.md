@@ -1,6 +1,6 @@
 # CANdle C++ library 
 
-CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD80 controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD80 controllers. 
+CANdle C++ library is the base module of software that all other modules are based on. It takes care of low-level communication between the host and the MD controllers. Using the CANdle C++ library directly is the best option to reach the full performance of the drives when it comes to communication frequency between the host and MD controllers. 
 
 ## Quick start
 

@@ -1,7 +1,7 @@
 (latency)=
 # Latency
 
-The latency was measured using the [`mdtool test latency 8M`](mdtool_test_latency) command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD80. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus. 
+The latency was measured using the [`mdtool test latency 8M`](mdtool_test_latency) command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus. 
 
 ```{figure} ./images/MD80_latency.png
 :alt: candle
@@ -30,5 +30,5 @@ sudo chrt -f -p ${CONTROL_PRIORITY} ${CONTROL_PID}
 During testing on Raspberry PI SBCs we have found out that isolating a CPU core (isolcpus) specifically for the CANdle process did not result in a performance increase - rather made it less performant. 
 
 ```{note}
-When dealing with the MD80x CANdle ecosystem for the first time we advise using the USB bus that is available on both CANdle and CANdle HAT devices.
+When dealing with the MD x CANdle ecosystem for the first time we advise using the USB bus that is available on both CANdle and CANdle HAT devices.
 ```

@@ -2,7 +2,7 @@
 
 Let’s run a simple example of the candle ROS2 node. In order to run the node, clone it into your local ROS2 workspace. After that, build it with `colcon` and run using the `ros2 run` command. Be sure to source your workspace with `source install/setup.bash` prior to running the package, and in each new terminal window you're going to send commands related to the node. 
 
-First, let’s run the node with arguments that fit your MD80 x CANdle setup. The general syntax is:
+First, let’s run the node with arguments that fit your MD x CANdle setup. The general syntax is:
 ```
 ros2 run candle_ros2 candle_ros2_node <BUS> <FDCAN baud> 
 ```
@@ -42,7 +42,7 @@ You can also look for status messages in the terminal window where the node was 
 :class: no-scaled-link
 ```
 
-According to the status messages we have added two MD80 actuators.
+According to the status messages we have added two MD actuators.
 
 ## Set mode
 
@@ -76,7 +76,7 @@ After calling `/candle_ros2_node/enable_md80s` service, no calls to services oth
 
 After enabling, the node will publish current joint states to `/joint_states` at a frequency dependent on a currently chosen communication bus and speed mode. Joint names are generated based on drivie ID, for example, drive with id 546 will be called `Joint 546`.
 
-The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the md80 mode set before enabling.
+The node will also listen for the messages on topics for controlling the drives. All of the above topics are listened to all the time, but currently applied settings are dependent on the MD controller mode set before enabling.
 ```
 ros2 service call /candle_ros2_node/enable_md80s candle_ros2/srv/GenericMd80Msg "{drive_ids:[200, 800]}"
 ```
