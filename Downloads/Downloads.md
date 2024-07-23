@@ -70,13 +70,13 @@ Main stable releases:
 		</tr>
 		<tr>
 			<td style="color:green;"><b>23.07.2024 (latest)</b></td>
-			<td><a>3.4.0</a></td>
-			<td><a>1.4.1</a></td>
-     		<td><a>1.5.0</a></td>
-			<td><a>1.3.2</a></td>
-			<td><a>1.3.2</a></td>
-			<td><a>2.2.1</a></td>
-			<td><a>2.3.1</a></td>
+			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.0>3.5.0</a></td>
+			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.0>1.5.0</a></td>
+     		<td><a>1.6.0</a></td>
+			<td><a>1.4.0</a></td>
+			<td><a>1.4.0</a></td>
+			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.4.0.zip>2.4.0</a></td>
 			<td>this document</td>
 		</tr>
 	</tbody>
