@@ -717,7 +717,7 @@ Configures the Position PID controller gains. Be sure to save after modification
 (system_command)=
 ### 0x2003 - System Command
 
-Allows to issue a system command. Write a non-zero value to start a specific action. Actions work only in "switch on disabled" state and "service" (-2) operation mode. 
+Allows to issue a system command. Write a non-zero value to start a specific action. Actions work only in "switch on disabled" state and "service" (-1) operation mode. 
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -1412,7 +1412,7 @@ Use this object to request a motion mode change. The actual mode is reflected in
 			<td> <b>Mode</b></td>
 		</tr>
 		<tr>
-      		<td>-2</td>
+      		<td>-1</td>
 			<td>Service</td>
 		</tr>
 		<tr>
@@ -1511,7 +1511,7 @@ Use this object to read current motion mode
 			<td> <b>Mode</b></td>
 		</tr>
 		<tr>
-      		<td>-2</td>
+      		<td>-1</td>
 			<td>Service</td>
 		</tr>
 		<tr>

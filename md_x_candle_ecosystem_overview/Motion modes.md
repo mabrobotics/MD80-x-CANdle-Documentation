@@ -75,6 +75,7 @@ Example use case: a variable suspension for a wheeled robot, where suspension st
 * <b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents to the torque command.
 Example use case: In legged robots, force control can be achieved by advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to stabilize the robot but too slow to avoid vibrations. Knowing desired robot's joint positions, velocities, and torques, drives can be set to produce the proper torque and hold the position/velocity with small gains. This would compensate for any high-frequency oscillations (vibrations) that may occur, as the impedance controller works at 40kHz (much faster than <100 Hz).
 * <b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to the output controller torque. 
+* <b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the motor shaft will be free to rotate. When the drive is disabled it connects all the windings together for safety. This mode can be useful for enabling free rotation of the shaft, but the rotational energy shoudl not be too high as the voltages induced in the motor windings coudl break the driver. 
 
 The impedance controller is relatively simple and works according to the schematic below:
 
