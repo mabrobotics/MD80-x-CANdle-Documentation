@@ -1,8 +1,45 @@
 {
     "emeraldwalk.runonsave": {
-        "commands": [{
-            "cmd": "jupyter-book build ${workspaceFolder}"
-        }]
-    }
-    
+        "commands": [
+            {
+                "cmd": "jupyter-book build ${workspaceFolder}/",
+                "isAsync": true
+            }
+        ]
+    },
+    "cSpell.words": [
+        "autodetected",
+        "Baudrate",
+        "baudrates",
+        "bibfiles",
+        "bibtex",
+        "bootloader",
+        "Brushless",
+        "CANH",
+        "CANL",
+        "canopen",
+        "controlword",
+        "DCANDLE",
+        "devel",
+        "DIRONLY",
+        "fdcan",
+        "Gpio",
+        "gridlines",
+        "makefiles",
+        "Mbps",
+        "mdtool",
+        "mosfet",
+        "NOPPDET",
+        "OFFAXIS",
+        "overvoltage",
+        "picoblade",
+        "pinout",
+        "Reinit",
+        "reinitializes",
+        "setpoint",
+        "SMPS",
+        "statusword",
+        "targetname",
+        "UART"
+    ]
 }

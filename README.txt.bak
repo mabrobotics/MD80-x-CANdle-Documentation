@@ -1,4 +1,4 @@
-# MABRobotics MD80 x CANdle Documentation
+# MABRobotics MD x CANdle Documentation
 
 To build install jupyter-book package:
 `pip3 install -U jupyter-book`

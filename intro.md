@@ -1,4 +1,4 @@
-# MD80 x CANdle Manual
+# MD x CANdle Manual
 
 ```{figure} images/md80_actuators.jpg
 :class: bg-primary mb-1

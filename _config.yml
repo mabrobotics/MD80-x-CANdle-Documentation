@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: MD80 x CANdle Manual
+title: MD x CANdle Manual
 author: MAB Robotics
 logo: logo.png
 
@@ -21,9 +21,8 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/mabrobotics/MD80-x-CANdle-Documentation  # Online location of your book
+  branch: devel  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -38,4 +37,4 @@ sphinx:
   config:
     html_context:
       default_mode: light
-    html_extra_path: "./dwn"
+    html_extra_path: "./includes"
