@@ -72,7 +72,7 @@ Main stable releases:
 			<td style="color:green;"><b>23.07.2024 (latest)</b></td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.0>3.5.0</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.0>1.5.0</a></td>
-     		<td><a>1.6.0</a></td>
+     		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
 			<td><a>1.4.0</a></td>
 			<td><a>1.4.0</a></td>
 			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
