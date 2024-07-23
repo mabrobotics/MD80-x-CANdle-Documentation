@@ -17,7 +17,6 @@
 - Fixed typos in register names:
     - `runCalibrateOutpuEncoderCmd` &rarr; `runCalibrateOutputEncoderCmd`
     - `motorTorgueBandwidth` &rarr; `motorTorqueBandwidth`
-    - `motorStiction` &rarr; `motorStriction`
 - Added support for MD20 driver
 
 ### MDtool
