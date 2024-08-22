@@ -1,6 +1,18 @@
 # Changelogs
 
-# Latest [23.07.2024]
+## Latest [22.08.2024]
+
+### CANdle lib
+
+- Changed license to MIT
+- Minor bug-fixes
+
+### MDtool
+
+- Changed license to MIT
+- Minor bug-fixes
+
+## [23.07.2024]
 
 ### MD Firmware
 

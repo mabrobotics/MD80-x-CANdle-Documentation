@@ -69,9 +69,9 @@ Main stable releases:
 			<td><a href = ../docs/1.2.1.pdf>1.2.1</a></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>23.07.2024 (latest)</b></td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.0>3.5.0</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.0>1.5.0</a></td>
+			<td style="color:green;"><b>22.08.2024 (latest)</b></td>
+			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.1>3.5.1</a></td>
+			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.1>1.5.1</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
 			<td><a>1.4.0</a></td>
 			<td><a>1.4.0</a></td>
