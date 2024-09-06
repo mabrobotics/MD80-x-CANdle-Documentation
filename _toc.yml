@@ -46,6 +46,8 @@ chapters:
   sections:
     - file: md_canopen/OD
       title: Object Dictionary
+    - file: md_canopen/TransitionProcedure
+      title: Migration to and from CANopen
 - file: common_problems_and_faq/FAQ
   title: Common problems and FAQ
 - file: Downloads/Downloads
