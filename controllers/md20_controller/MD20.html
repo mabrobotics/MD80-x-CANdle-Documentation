@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css?v=b6314eea" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css?v=11d49ae1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -220,6 +220,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../md_canopen/CANopen.html">MD CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
@@ -423,6 +424,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-data">Mechanical data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-specification">Thermal specification</a></li>
 </ul>
             </nav>
         </div>
@@ -516,6 +518,623 @@ document.write(`
 <img alt="candle" class="no-scaled-link" src="../../_images/Adnotations_8_pin.png" style="width: 627.0px; height: 471.0px;" />
 </figure>
 </section>
+<section id="thermal-specification">
+<h2>Thermal specification<a class="headerlink" href="#thermal-specification" title="Link to this heading">#</a></h2>
+<p><strong>Thermal performance and efficiency</strong></p>
+<p>MD20 is a tiny but high-power, highly integrated motor controller. It creates challenges related to heat management and thermal performance. Taking this in mind, the design of the PCB is 6 layers to achieve excellent performance even without any cooling. The used components include small and efficient power converters and MOSFETs with best-in-class FOM(figure of merit).</p>
+<p>The motor controller is only a part of the actuator, so we have done tests in the worst scenarios in a real setup, to provide valuable and relevant information about performance in the assembled actuator, instead of the idealized or simulated one.</p>
+<p><strong>Power losses and system efficiency</strong></p>
+<p>To understand the charts below, we need to distinguish between mechanical power efficiency and electrical power conversion efficiency.</p>
+<p>Mechanical power is the torque exerted by the motor (𝛕) multiplied by the angular velocity (𝝎) of the shaft. If the shaft is locked in place, the mechanical power will be zero, and thus, the mechanical power efficiency will also be zero in that scenario.</p>
+<p>Electrical power conversion can be explained as the ratio between the power delivered to the electric motor and the total electric power consumed by the system. In this case, even though the motor’s mechanical power is zero, the efficiency of the driver can still be greater than zero due to the conversion of power to heat within the motor.</p>
+<p>The scenario where mechanical power is zero is the worst-case scenario for electrical power conversion efficiency. In this case, all of the energy gets converted into heat.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image11.png" style="width: 1085.0px; height: 682.5px;" />
+</figure>
+<p>As can be seen in the figure, the measured IQ is equal to the Ic current because the motor shaft was blocked.</p>
+<p>Ia, Ib, and Ic are motor phase currents, and Iq is the virtual quantity, which can be understood as the current in an old-fashioned brushed motor. Two quantities are important to analyze the inverter efficiency and losses: input power to the motor controller and the energy transferred from the inverter to the motor windings. Those quantities are the base that tells almost everything about the influence of the motor controller on the actuator system performance. There is only one exception connected to the inverter efficiency and the whole system efficiency - its switching frequency. Tuning this parameter can increase the torque generated from the motor phase current by reducing phase currents THD, but also increase switching losses. Detailed analysis of these effects is out of the scope of the documentation, as it is motor-dependent on the system level. The gearbox/torque transfer efficiency as well.</p>
+<p>Returning to the inverter, various losses are mainly related to transistor conduction and switching. Keeping as the rule to avoid theory and mathematical models, for the MD20 motor controller, which has a switching frequency of 40 kHz, at 24VDC supply total losses were measured the way described below.</p>
+<p>The motor driver was supplied by the SIGLENT SPS5000X Digital power supply. Measurements of input Current, Voltage, and Power consumed by the whole setup were taken from this device. The power of the motor itself was calculated using discrete data of currents and voltages in each phase measured by the MD20 in each FOC cycle to ensure sampling at the same frequency as the control loop.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image7.png" style="width: 670.5999999999999px; height: 342.29999999999995px;" />
+</figure>
+<p>at various currents are collected in the table below:</p>
+<table>
+  <tr class=default-white>
+   <td class=default-padding>Input current[A]
+   </td>
+   <td class=default-padding>Input power[W]
+   </td>
+   <td class=default-padding>Respective peak <br/> phase current [ A ]
+   </td>
+   <td class=default-padding>Output power[W]
+   </td>
+   <td class=default-padding>Losses[W]
+   </td>
+   <td class=default-padding>Efficiency[%]
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,05
+   </td>
+   <td class=default-padding>1,25
+   </td>
+   <td class=default-padding>1
+   </td>
+   <td class=default-padding>0,63
+   </td>
+   <td class=default-padding>0,62
+   </td>
+   <td class=default-padding>50,40%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,10
+   </td>
+   <td class=default-padding>2,34
+   </td>
+   <td class=default-padding>2
+   </td>
+   <td class=default-padding>1,92
+   </td>
+   <td class=default-padding>0,42
+   </td>
+   <td class=default-padding>82,05%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,17
+   </td>
+   <td class=default-padding>4,12
+   </td>
+   <td class=default-padding>3
+   </td>
+   <td class=default-padding>3,79
+   </td>
+   <td class=default-padding>0,33
+   </td>
+   <td class=default-padding>91,99%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,29
+   </td>
+   <td class=default-padding>7,06
+   </td>
+   <td class=default-padding>4
+   </td>
+   <td class=default-padding>6,58
+   </td>
+   <td class=default-padding>0,48
+   </td>
+   <td class=default-padding>93,20%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,47
+   </td>
+   <td class=default-padding>11,35
+   </td>
+   <td class=default-padding>5
+   </td>
+   <td class=default-padding>10,6
+   </td>
+   <td class=default-padding>0,75
+   </td>
+   <td class=default-padding>93,39%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,70
+   </td>
+   <td class=default-padding>16,87
+   </td>
+   <td class=default-padding>6
+   </td>
+   <td class=default-padding>15,6
+   </td>
+   <td class=default-padding>1,27
+   </td>
+   <td class=default-padding>92,47%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>1,05
+   </td>
+   <td class=default-padding>25,17
+   </td>
+   <td class=default-padding>7
+   </td>
+   <td class=default-padding>23,2
+   </td>
+   <td class=default-padding>1,97
+   </td>
+   <td class=default-padding>92,17%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>1,46
+   </td>
+   <td class=default-padding>35,1
+   </td>
+   <td class=default-padding>8
+   </td>
+   <td class=default-padding>32
+   </td>
+   <td class=default-padding>3,1
+   </td>
+   <td class=default-padding>91,17%
+   </td>
+  </tr>
+</table>
+<p>During the analysis the idle power consumption of the board came out to be about 0,5W.</p>
+<p>Because the input data for the table was taken when all parameters became stable ( due to the temperature interia ) we were not able to measure phase currents over 8A because the motor</p>
+<p>was overheated.</p>
+<p>Input power was measured by the digital power source Siglent SPS5000X. The output power was computed based on the phase voltages and currents measured with the oscilloscope. Losses were computed as the difference between input and output power.</p>
+<p>The table above shows the losses. The tests described below present how the MD20 handles it.</p>
+<p><strong>Thermal tests</strong></p>
+<p>To cover all potential cases, three cooling scenarios have been performed:</p>
+<ul class="simple">
+<li><p>No additional cooling</p></li>
+<li><p>Passive cooling</p></li>
+<li><p>Active air cooling</p></li>
+</ul>
+<p>In each test, the <strong>MD20</strong> motor driver was coupled with the MN4004-21 BLDC Motor.</p>
+<p>MN4004-21 Motor parameters:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image4.png" style="width: 835.0999999999999px; height: 224.7px;" />
+</figure>
+<p>To maximize the convection effect and thus simulate the “worst case” of the setup position, the motor was mounted horizontally, under the MD20 so the heat dissipated by the motor additionally heats the driver PCB. We did our best to provide usable and relevant data about the performance.</p>
+<p>To ensure constant DC current in the motor phases, its shaft was blocked and the control loop was tweaked so that the current was equally distributed to each phase of the motor.</p>
+<p>In each scenario, the tests were repeated for various cases of phase currents. from 0,5A to 5A with the step of 0,5A, and from 5A to the maximum current (that does not overheat the driver) with the step of 1A. For each current, the setup was tested until the temperature reached a stable value.</p>
+<p>All tests were performed in constant environment conditions, in still air at 25 C ambient temperature.</p>
+<p>Before each particular test, the device was powered on and preheated itself to the idle temperature of about 39°C.</p>
+<p>MD20 Temperature was measured with the usage of an onboard thermistor placed on the bottom layer of the PCB, directly below the MOSFETs.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image2.png" style="width: 371.0px; height: 179.2px;" />
+</figure>
+<p><strong>Test scenario I - no additional cooling.</strong></p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image13.png" style="width: 373.0px; height: 217.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image14.jpg" style="width: 340.8px; height: 253.20000000000002px;" />
+</figure>
+<p>Temperature vs Time characteristic:</p>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image6.png"><img alt="candle" class="bg-primary mb-1" src="../../_images/image6.png" style="width: 999.5px; height: 617.0px;" /></a>
+</figure>
+<p>Summary table:</p>
+<table>
+  <tr class=header-white>
+   <td class=default-padding colspan="3">No cooling thermal test summary
+   </td>
+  </tr>
+  <tr  class=header-deep-blue>
+   <td class=default-padding >Maximum <br/> continuous current
+   </td>
+   <td class=default-padding colspan="2" >4,5A
+   </td>
+  </tr>
+  <tr class=header-blue>
+   <td class=default-padding>Current
+   </td>
+   <td class=default-padding>Stable temperature
+   </td>
+   <td class=default-padding>Time to reach
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1A
+   </td>
+   <td class=default-padding>46°C
+   </td>
+   <td class=default-padding rowspan="8" >~ 1250 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1,5A
+   </td>
+   <td class=default-padding>51°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2A
+   </td>
+   <td class=default-padding>56°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2,5A
+   </td>
+   <td class=default-padding>62°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3A
+   </td>
+   <td class=default-padding>68°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3,5A
+   </td>
+   <td class=default-padding>78°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4A
+   </td>
+   <td class=default-padding>83°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4,5A
+   </td>
+   <td class=default-padding>92°C
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>5A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 980 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>6A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 440 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>7A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 250 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>8A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 120 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>9A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 95 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>10A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 70 s
+   </td>
+  </tr>
+</table>
+<p><strong>Test scenario II - passive cooling.</strong></p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image10.png" style="width: 376.0px; height: 188.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image12.jpg" style="width: 599.6999999999999px; height: 450.0px;" />
+</figure>
+<p>Temperature vs Time characteristic:</p>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image3.png"><img alt="candle" class="bg-primary mb-1" src="../../_images/image3.png" style="width: 999.5px; height: 618.0px;" /></a>
+</figure>
+<p>Summary table:</p>
+<table>
+  <tr class=header-white>
+   <td class=default-padding colspan="3" >Passive cooling thermal test summary
+   </td>
+  </tr>
+  <tr class=header-deep-blue>
+   <td class=default-padding>Maximum <br/> continuous current
+   </td>
+   <td class=default-padding colspan="2" >5A
+   </td>
+  </tr>
+  <tr  class=header-blue>
+   <td class=default-padding>Current
+   </td>
+   <td class=default-padding>Stable temperature
+   </td>
+   <td class=default-padding>Time to reach
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1 A
+   </td>
+   <td class=default-padding>46,5°C
+   </td>
+   <td class=default-padding>~ 2100 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1,5A
+   </td>
+   <td class=default-padding>48,2°C
+   </td>
+   <td class=default-padding>~ 2100 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2A
+   </td>
+   <td class=default-padding>53.8°C
+   </td>
+   <td class=default-padding>~ 2000 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2,5A
+   </td>
+   <td class=default-padding>59,5°C
+   </td>
+   <td class=default-padding>~ 2000 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3A
+   </td>
+   <td class=default-padding>66,3 °C
+   </td>
+   <td class=default-padding>~ 2000 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3,5A
+   </td>
+   <td class=default-padding>72,1°C
+   </td>
+   <td class=default-padding>~ 2800 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4A
+   </td>
+   <td class=default-padding>79,7°C
+   </td>
+   <td class=default-padding>~ 2600 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4,5A
+   </td>
+   <td class=default-padding>88,9°C
+   </td>
+   <td class=default-padding>~ 2600 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>5A
+   </td>
+   <td class=default-padding>95,1°C
+   </td>
+   <td class=default-padding>~ 1850 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>6A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 800 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>7A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 480 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>8A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 325 s
+   </td>
+  </tr>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During the tests in this scenario, the motor windings were getting warmer much faster than the MD20 PCB so the tests were stopped after 8A to avoid damaging the motor. The motor started to produce smoke before the motor controller reached 100 degrees C, so the test was finished on the 8A.</p>
+</div>
+<p><strong>Test scenario III - active cooling</strong></p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image9.png" style="width: 376.0px; height: 188.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../_images/image1.jpg" style="width: 399.8px; height: 300.0px;" />
+</figure>
+<p>Temperature vs Time characteristic (note that this characteristic was splitted into two current ranges):</p>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image8.png"><img alt="candle" class="bg-primary mb-1" src="../../_images/image8.png" style="width: 999.5px; height: 618.5px;" /></a>
+</figure>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image5.png"><img alt="candle" class="bg-primary mb-1" src="../../_images/image5.png" style="width: 999.5px; height: 618.5px;" /></a>
+</figure>
+<p>Summary table:</p>
+<table>
+  <tr class=header-white>
+   <td class=default-padding colspan="3" >Active cooling thermal test summary
+   </td>
+  </tr>
+  <tr class=header-deep-blue>
+   <td class=default-padding>Maximum <br/> continuous current
+   </td>
+   <td class=default-padding colspan="2" >13A
+   </td>
+  </tr>
+  <tr class=header-blue>
+   <td class=default-padding>Current
+   </td>
+   <td class=default-padding>Stable temperature
+   </td>
+   <td class=default-padding>Time to reach
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1 A
+   </td>
+   <td class=default-padding>33,2°C
+   </td>
+   <td class=default-padding>~ 170 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1,5 A
+   </td>
+   <td class=default-padding>33,6°C
+   </td>
+   <td class=default-padding>~ 170 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2 A
+   </td>
+   <td class=default-padding>34°C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2,5 A
+   </td>
+   <td class=default-padding>34,6°C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3 A
+   </td>
+   <td class=default-padding>35,4 °C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3,5 A
+   </td>
+   <td class=default-padding>36,4 °C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4 A
+   </td>
+   <td class=default-padding>37,3 °C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4,5 A
+   </td>
+   <td class=default-padding>38,5 °C
+   </td>
+   <td class=default-padding>~ 200 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>5 A
+   </td>
+   <td class=default-padding>40°C
+   </td>
+   <td class=default-padding>~ 230 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>6 A
+   </td>
+   <td class=default-padding>43,5°C
+   </td>
+   <td class=default-padding>~ 400 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>7 A
+   </td>
+   <td class=default-padding>47,5°C
+   </td>
+   <td class=default-padding>~ 490 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>8 A
+   </td>
+   <td class=default-padding>51,5°C
+   </td>
+   <td class=default-padding>~ 580 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>9 A
+   </td>
+   <td class=default-padding>58,5°C
+   </td>
+   <td class=default-padding>~ 630 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>10 A
+   </td>
+   <td class=default-padding>73°C
+   </td>
+   <td class=default-padding>~ 430 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>11 A
+   </td>
+   <td class=default-padding>78°C
+   </td>
+   <td class=default-padding>~ 420 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>12 A
+   </td>
+   <td class=default-padding>84,9°C
+   </td>
+   <td class=default-padding>~ 540 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>13 A
+   </td>
+   <td class=default-padding>94,9°C
+   </td>
+   <td class=default-padding>~ 540 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>14 A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 280 s
+   </td>
+  </tr>
+</table>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -585,6 +1204,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-data">Mechanical data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-specification">Thermal specification</a></li>
 </ul>
   </nav></div>
 

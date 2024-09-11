@@ -1,9 +1,47 @@
 table {
-    border: solid 1px #aaa999;
-  }
-  table tr th {
-    border: solid 1px #aaa999;
-  }
-  table tr td {
-    border: solid 1px #aaa999;
-  }
+  border: solid 1px #aaa999;
+}
+
+table tr th {
+  border: solid 1px #aaa999;
+}
+
+table tr td {
+  border: solid 1px #aaa999;
+}
+
+.stable-temp-green {
+  background-color: lightgreen;
+  text-align: center;
+}
+
+.stable-temp-yellow {
+  background-color: lightyellow;
+  text-align: center;
+}
+
+.header-blue {
+  background-color: lightblue;
+  text-align: center;
+  font-weight: bold;
+}
+
+.header-deep-blue {
+  background-color: rgb(151, 165, 232);
+  text-align: center;
+  font-weight: bold;
+}
+
+.header-white {
+  text-align: center;
+  font-weight: bold;
+}
+
+.default-white {
+
+  text-align: center;
+}
+
+.default-padding {
+  padding: 5px;
+}
