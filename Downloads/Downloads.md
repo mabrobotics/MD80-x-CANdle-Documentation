@@ -147,4 +147,16 @@ Candle and CandleHAT devices do not support CANopen protocol.
 
 Versions:
 
-- <a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip>2.4.0</a>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Date</b></td>
+			<td> <b>MD Firmware (CANopen)</b></td>
+		</tr>
+		<tr>
+			<td><b>22.08.2024 (latest)</b></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip>2.4.0</a></td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
