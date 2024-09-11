@@ -136,5 +136,15 @@ Make sure the MAB_USB_Flasher can be executed. If not use the `sudo chmod +x ./M
 ```
 
 After a successful update, the CANdle device is ready. 
+(canopen-flashers)=
+## CANopen Flashers
 
+Those flashers are intended to be used with CANopen controllers.
 
+```{important}
+Candle and CandleHAT devices do not support CANopen protocol.
+```
+
+Versions:
+
+- <a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip>2.4.0</a>
