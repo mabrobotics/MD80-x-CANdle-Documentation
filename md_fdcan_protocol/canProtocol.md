@@ -260,24 +260,24 @@ Frame payload length must not exceed 64 bytes.
       <td>0x013</td>
       <td>RW</td>
       <td>float</td>
-      <td>-</td>
-      <td>-</td>
+      <td>>0</td>
+      <td>optional parameter for phase specific torque constant</td>
     </tr>
     <tr>
       <td>motorKt_b</td>
       <td>0x014</td>
       <td>RW</td>
       <td>float</td>
-      <td>-</td>
-      <td>-</td>
+      <td>>0</td>
+      <td>optional parameter for phase specific torque constant</td>
     </tr>
     <tr>
       <td>motorKt_c</td>
       <td>0x015</td>
       <td>RW</td>
       <td>float</td>
-      <td>-</td>
-      <td>-</td>
+      <td>>0</td>
+      <td>optional parameter for phase specific torque constant</td>
     </tr>
     <tr>
       <td>motorIMax</td>
@@ -306,18 +306,18 @@ Frame payload length must not exceed 64 bytes.
     <tr>
       <td>motorFriction</td>
       <td>0x019</td>
-      <td>not found</td>
-      <td>not found</td>
+      <td>RO</td>
+      <td>float32</td>
       <td>-</td>
-      <td>-</td>
+      <td>UNUSED</td>
     </tr>
     <tr>
-      <td>motorStriction</td>
+      <td>motorStiction</td>
       <td>0x01A</td>
-      <td>not found</td>
-      <td>not found</td>
+      <td>RO</td>
+      <td>float32</td>
       <td>-</td>
-      <td>-</td>
+      <td>UNUSED</td>
     </tr>
     <tr>
       <td>motorResistance</td>
@@ -379,17 +379,17 @@ Frame payload length must not exceed 64 bytes.
       <td>outputEncoderDir</td>
       <td>0x021</td>
       <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>-</td>
+      <td>uint8_t</td>
+      <td>0</td>
+      <td>RESERVED</td>
     </tr>
     <tr>
       <td>outputEncoderDefaultBaud</td>
       <td>0x022</td>
       <td>RW</td>
       <td>uint32_t</td>
-      <td>-</td>
-      <td>output encoder default baudrate</td>
+      <td>115200</td>
+      <td>optional parameter for setting default output encoder baudrate</td>
     </tr>
     <tr>
       <td>outputEncoderVelocity</td>
