@@ -474,6 +474,14 @@
 </tbody>
 </table>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The MD20 is equipped with a custom shunt resistor suited for more precise current sensing. As a result all the configuration files (.cfg) dedicated for MD20 <strong>MUST</strong> contain <code class="docutils literal notranslate"><span class="pre">[hardware]</span></code> section with <code class="docutils literal notranslate"><span class="pre">shunt</span> <span class="pre">resistance</span></code> parameter equal to 0.004, ie.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">hardware</span><span class="p">]</span>
+<span class="n">shunt</span> <span class="n">resistance</span> <span class="o">=</span> <span class="mf">0.004</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="mechanical-data">
 <h2>Mechanical data<a class="headerlink" href="#mechanical-data" title="Link to this heading">#</a></h2>

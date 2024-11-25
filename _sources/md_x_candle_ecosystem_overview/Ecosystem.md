@@ -18,6 +18,11 @@ MD series motor controller is a highly integrated brushless motor controller. It
 
 CANdle (CAN + dongle) is a translator device between the host controller and the MD series motor controller drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle and CANdle HAT devices are fitted with a switch for enabling and disabling the built-in termination resistor.
 
+
+```{note}
+We officially support Linux x86-64 and ARMv8-A architecture hosts.
+```
+
 ```{image} images/candle.webp
 :alt: candle
 :class: bg-primary mb-1
