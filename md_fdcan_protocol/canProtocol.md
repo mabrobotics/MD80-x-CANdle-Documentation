@@ -883,7 +883,7 @@ Frame payload length must not exceed 64 bytes.
       <td>RW</td>
       <td>uint16_t</td>
       <td>-</td>
-      <td>returns the internal <a href=../md80_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
+      <td>returns the internal <a href=../md_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
     </tr>
     <tr>
       <td></td>
