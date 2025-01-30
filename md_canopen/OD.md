@@ -977,7 +977,7 @@ Output encoder related record.
 			<td>RW</td>
 			<td>-</td>
 			<td>yes</td>
-			<td>1 (AS5047_CENTER), 2 (AS5047_OFFAXIS), 3 (MB053SFA17BENT00)</td>
+			<td>1 (ME_AS_CENTER), 2 (ME_AS_OFFAXIS), 3 (MB053SFA17BENT00), 4 (CM_OFFAXIS), 5 (M24B_CENTER), 6 (M24B_OFFAXIS)</td>
             <td>0</td>
             <td>-</td>
 		</tr>
