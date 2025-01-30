@@ -1,6 +1,24 @@
 # Changelogs
 
-## Latest [22.08.2024]
+## Latest [30.01.2025]
+
+### CANdle lib
+
+- GPIO status was not updating values in diagnostics, fixed by downloading value from the controller when diagnostics called
+
+### MDtool
+
+- Encoder names changed
+- Added DualRLS encoder mode
+- Added MA-hs config
+
+### MD Firmware
+
+- Brake power now constant due to relationship with power supply voltage measurement
+- Watchdog now changes w/o reset
+- Added support for MD80HV (with 0,5 mOhm shunt resistors)
+
+## [22.08.2024]
 
 ### CANdle lib
 

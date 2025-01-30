@@ -11,7 +11,7 @@ Output encoder is a position sensor that can be attached to the output shaft of 
 ```
 
 Currently we support one encoder type with two placement configurations: 
-* AS5047 placed axially on the output shaft with a regular diametrically magnetized magnet
+* ME AS placed axially on the output shaft with a regular diametrically magnetized magnet
 
 ```{figure} ./images/output_encoder_axial.jpg
 :width: 300px
@@ -20,7 +20,7 @@ Currently we support one encoder type with two placement configurations:
 :class: no-scaled-link
 ```
 
-* AS5047 placed non-axially together with a diametrically magnetized ring magnet 
+* ME AS placed non-axially together with a diametrically magnetized ring magnet 
 
 ```{figure} ./images/output_encoder_offaxis.jpg
 :width: 300px
@@ -46,10 +46,10 @@ where:
 
 * - \<encoder type\> 
   - Description
-* - AS5047_CENTER 
-  - for axially placed AS5047 encoder
-* - AS5047_OFFAXIS
-  - for non-axially placed AS5047
+* - ME_AS_CENTER 
+  - for axially placed ME AS encoder
+* - ME_AS_OFFAXIS
+  - for non-axially placed ME AS
 * - MB053SFA17BENT00
   - Renishaw RS422 17-bit RLS encoder
 * - CM_OFFAXIS
@@ -87,7 +87,7 @@ where:
 The non-axial configuration outputs a nonlinear position values. This means it requires a [full calibration](output_encoder_calibration) (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host's software
 ```
 
-Not all modes are recommended for every encoder. The non-axially placed AS5047 encoder is inherently more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to the table below: 
+Not all modes are recommended for every encoder. The non-axially placed ME AS encoder is inherently more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to the table below: 
 
 ```{list-table}
 :header-rows: 1
@@ -95,10 +95,10 @@ Not all modes are recommended for every encoder. The non-axially placed AS5047 e
 * - \<encoder type\> 
   - Valid modes
   - Description
-* - AS5047_CENTER 
+* - ME_AS_CENTER 
   - STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT
   - \-
-* - AS5047_OFFAXIS
+* - ME_AS_OFFAXIS
   - STARTUP
   - This configuration is much more noisy than the axial placement
 * - MB053SFA17BENT00 

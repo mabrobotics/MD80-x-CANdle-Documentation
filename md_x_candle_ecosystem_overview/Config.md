@@ -34,7 +34,7 @@ These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.
 ## [output encoder] section
 For more information please refer to [output encoder](output_encoder) section. 
 
-- `output encoder` - valid types: AS5047_CENTER, AS5047_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS
+- `output encoder` - valid types: ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS
 - `output encoder mode` - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT
 
 ## [position PID] section
