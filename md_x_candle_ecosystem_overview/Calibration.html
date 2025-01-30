@@ -464,11 +464,11 @@ When the system that you’re designing is a highly dynamic one, you want the to
 <img alt="candle" class="no-scaled-link" src="../_images/mdtool_setup_info_allok.png" />
 </figure>
 <p>The output encoder parameters are rather straightforward, except the “output encoder last check” errors. These values are filled during the output encoder check routine, which can be run using <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-test-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">output</span></code></span></a>. These params represent the output encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the PCB. This means that if there are large inaccuracies during the calibration, or the output encoder moves in your setup, you can always check how accurate it is by running the check_aux routine.</p>
-<p>Example errors for AS5047_CENTER:</p>
+<p>Example errors for ME_AS_CENTER:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/errors_encoder_center.png" />
 </figure>
-<p>Example errors for AS5047_OFFAXIS:</p>
+<p>Example errors for ME_AS_OFFAXIS:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/errors_encoder_offaxis.png" />
 </figure>

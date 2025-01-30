@@ -54,7 +54,7 @@ To run the routine, use the [`mdtool setup calibration_out`](mdtool_setup_calibr
 
 The output encoder parameters are rather straightforward, except the “output encoder last check” errors. These values are filled during the output encoder check routine, which can be run using [`mdtool test encoder output`](mdtool_test_encoder). These params represent the output encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the PCB. This means that if there are large inaccuracies during the calibration, or the output encoder moves in your setup, you can always check how accurate it is by running the check_aux routine.
 
-Example errors for AS5047_CENTER:
+Example errors for ME_AS_CENTER:
 
 ```{figure} images/Calibration/errors_encoder_center.png
 :alt: candle
@@ -63,7 +63,7 @@ Example errors for AS5047_CENTER:
 :class: no-scaled-link
 ```
 
-Example errors for AS5047_OFFAXIS:
+Example errors for ME_AS_OFFAXIS:
 
 ```{figure} images/Calibration/errors_encoder_offaxis.png
 :alt: candle

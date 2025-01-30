@@ -406,15 +406,21 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-22-08-2024">Latest [22.08.2024]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-30-01-2025">Latest [30.01.2025]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-lib">CANdle lib</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool">MDtool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-firmware">MD Firmware</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">[23.07.2024]</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-firmware">MD Firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">[22.08.2024]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">CANdle lib</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">MDtool</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">[23.07.2024]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">MD Firmware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">CANdle lib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">MDtool</a></li>
 </ul>
 </li>
 </ul>
@@ -430,27 +436,52 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="changelogs">
 <h1>Changelogs<a class="headerlink" href="#changelogs" title="Link to this heading">#</a></h1>
-<section id="latest-22-08-2024">
-<h2>Latest [22.08.2024]<a class="headerlink" href="#latest-22-08-2024" title="Link to this heading">#</a></h2>
+<section id="latest-30-01-2025">
+<h2>Latest [30.01.2025]<a class="headerlink" href="#latest-30-01-2025" title="Link to this heading">#</a></h2>
 <section id="candle-lib">
 <h3>CANdle lib<a class="headerlink" href="#candle-lib" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Changed license to MIT</p></li>
-<li><p>Minor bug-fixes</p></li>
+<li><p>GPIO status was not updating values in diagnostics, fixed by downloading value from the controller when diagnostics called</p></li>
 </ul>
 </section>
 <section id="mdtool">
 <h3>MDtool<a class="headerlink" href="#mdtool" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>Encoder names changed</p></li>
+<li><p>Added DualRLS encoder mode</p></li>
+<li><p>Added MA-hs config</p></li>
+</ul>
+</section>
+<section id="md-firmware">
+<h3>MD Firmware<a class="headerlink" href="#md-firmware" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Brake power now constant due to relationship with power supply voltage measurement</p></li>
+<li><p>Watchdog now changes w/o reset</p></li>
+<li><p>Added support for MD80HV (with 0,5 mOhm shunt resistors)</p></li>
+</ul>
+</section>
+</section>
+<section id="id1">
+<h2>[22.08.2024]<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h3>CANdle lib<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Changed license to MIT</p></li>
+<li><p>Minor bug-fixes</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>MDtool<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
 <li><p>Changed license to MIT</p></li>
 <li><p>Minor bug-fixes</p></li>
 </ul>
 </section>
 </section>
-<section id="id1">
-<h2>[23.07.2024]<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="md-firmware">
-<h3>MD Firmware<a class="headerlink" href="#md-firmware" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h2>[23.07.2024]<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>MD Firmware<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Removed homing feature for safety, will be brought back in future releases</p></li>
 <li><p>Added GPIO general functionality - <code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">Input</span></code></p></li>
@@ -458,8 +489,8 @@
 <li><p>Added support for MD20 driver</p></li>
 </ul>
 </section>
-<section id="id2">
-<h3>CANdle lib<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>CANdle lib<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Removed homing feature support for safety, will be brought back in future releases</p></li>
 <li><p>Added GPIO general functionality support</p></li>
@@ -473,8 +504,8 @@
 <li><p>Added support for MD20 driver</p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>MDtool<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3>MDtool<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Added compatibility with the newest CANdle lib functionalities</p></li>
 </ul>
@@ -538,15 +569,21 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-22-08-2024">Latest [22.08.2024]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-30-01-2025">Latest [30.01.2025]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-lib">CANdle lib</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mdtool">MDtool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-firmware">MD Firmware</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">[23.07.2024]</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-firmware">MD Firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">[22.08.2024]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">CANdle lib</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">MDtool</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">[23.07.2024]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">MD Firmware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">CANdle lib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">MDtool</a></li>
 </ul>
 </li>
 </ul>
