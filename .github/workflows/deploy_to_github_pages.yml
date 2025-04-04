@@ -3,7 +3,7 @@ run-name: Build and push to gh-pages
 on:
    push:
      branches:
-       - devel
+       - main
 permissions:
   contents: write
 
