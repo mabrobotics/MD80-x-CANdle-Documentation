@@ -48,6 +48,15 @@ chapters:
       title: Object Dictionary
     - file: md_canopen/TransitionProcedure
       title: Migration to and from CANopen
+- file: pds/pds
+  title: PDS Power Distribution System
+  sections:
+    - file: pds/pds_qsg
+      title: Quick Start Guide
+    - file: pds/pds_sdk_examples
+      title: CANdleSDK PDS Software Examples
+- file: candletool/candletool
+  title: CANdleTool
 - file: common_problems_and_faq/FAQ
   title: Common problems and FAQ
 - file: Downloads/Downloads

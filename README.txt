@@ -1,11 +1,17 @@
 # MABRobotics MD x CANdle Documentation
 
-To build install jupyter-book package:
-`pip3 install -U jupyter-book`
-and run: 
-`jupyter-book build md80-x-candle-documentation/`
+## Bootstrap repository
 
-Push to gh-pages:
+```
+python3 -m venv .venv # Create python virtual environment
+. .venv/bin/activate # Activate viruatl environment 
+pip install -r requirements.txt # Install requirements
+```
+
+## Building jupyter book
+jupyter-book build .
+
+## Push to gh-pages:
 when pushed to devel actions pipeline publishes changes automatically
 
 
