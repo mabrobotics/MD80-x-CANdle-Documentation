@@ -65,9 +65,7 @@ CANdle or CANdle HAT should be connected to the CAN port of the Control board mo
 :width: 500px
 :align: center
 ```
-```{warning}
-Please note that CAN interface on the PDS Control board is not connected to the Sockets on the Power Stage module. User should provide CAN lines connection to both the Control Board and the Drivers powered by the Power Stage module. 
-```
+
 ## **Host SBC**
 
 Prepare the wires to connect Your host SBC like RaspberryPI or NVidia Jetson with power output from the IC submodule. Ensure proper polarization before turning on the power supply to prevent damage to the load.
@@ -79,7 +77,9 @@ Below is the example wiring of the PDS IC module with computers:
 :width: 500px
 :align: center
 ```
-## MD Drivers
+## **MD Drivers**
+
+Use the Power Stage output connectors to supply MD Drives ( or other load ).
 
 
 ```{image} ./images/md_connections.png
@@ -88,3 +88,61 @@ Below is the example wiring of the PDS IC module with computers:
 :width: 500px
 :align: center
 ```
+
+```{image} ./images/md_connections_example_1.png
+:alt: SBC Connection example 
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+
+```{image} ./images/md_connections_example_2.png
+:alt: SBC Connection example 
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+
+````{warning}
+Please note that CAN interface on the PDS **Control board** is **NOT** connected to the sockets on the **Power Stage** module. User should provide CAN lines connection to both the **Control Board** and the Drivers powered by the **Power Stage** module. 
+
+It is also important that CAN FD lines are not shared between MicroFit connectors. They only share power lines.
+
+Please take a look at the diagram below for better understanding how to properly connect CAN lines to the PDS and Drivers powered by Power Stage.
+
+```{image} ./images/canfd_bus_distribution.png
+:alt: SBC Connection example 
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+
+````
+
+## Power supply
+
+Prepare a safe ( fused ) connection between power source and the power bus bar. PDS device set is equipped with the power cable and M5 screws to make connection with the power bus bar.
+
+```{warning}
+This cable attached can be used for start-up and test. It’s maximum current is 16A. For the final integration ensure that the used wire diameter/AWG can handle the current drawn by the load from power source.
+```
+
+```{image} ./images/power_supply.png
+:alt: SBC Connection example 
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+
+## Enable the PDS device
+
+After connecting power supply the device is ready to operate. To turn it on press the power button for 2 seconds until it turns purple to indicate boot up procedure.
+After boot-up the PDS device will start it's normal operating mode and RGB Button will indicate battery level ( Green / Yellow / Red ).
+```{note}
+Default voltage levels for the battery monitor feature are set to 0V so the Button will indicate fully charged battery (Green)
+```
+Now the device is ready to receive FD CAN Commands and perform its routines.
+
+## Basic usage
+
+For basic usage refer to the [**CANdleSDK software examples**](./pds_sdk_examples.md) for PDS device or make use of our swiss-knife [**CANdleTOOL**](../candletool/candletool.md) CLI application.
