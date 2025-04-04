@@ -454,7 +454,8 @@ document.write(`
 <h2>Current Limit<a class="headerlink" href="#current-limit" title="Link to this heading">#</a></h2>
 <p>Let’s start with the max current limit:</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/current_limit.png"><img alt="../_images/current_limit.png" src="../_images/current_limit.png" style="width: 1000px;" /></a>
+<a class="reference internal image-reference" href="../_images/current_limit.png"><img alt="../_images/current_limit.png" src="../_images/current_limit.png" style="width: 1000px;" />
+</a>
 </figure>
 <p>This setting limits the maximum current (and thus torque) the motor controller can output. It is the last user-configurable limit in the control scheme. The maximum current is set using the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-current"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span></code></span></a> command, and by default, it is usually set to 10A. This setting can be saved in the non-volatile memory so that it is always loaded on the actuator power-up. To estimate the maximum current setting for a particular motor, you should use the following formula:</p>
 <div class="math notranslate nohighlight">
@@ -482,7 +483,8 @@ document.write(`
 <h2>Torque Limit<a class="headerlink" href="#torque-limit" title="Link to this heading">#</a></h2>
 <p>The next limit is the max torque limit which can be set using the CANdle script. This limit applies to maximum torque and is expressed in Nm. It is respected in all motion modes. When target torque, set either by either of the controllers, exceeds the <code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">torque</span></code> param the target torque is limited and a <a class="reference internal" href="Status%20codes.html#motion-status"><span class="std std-ref">motion warning</span></a> is generated.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/torque_limit.png"><img alt="../_images/torque_limit.png" src="../_images/torque_limit.png" style="width: 1000px;" /></a>
+<a class="reference internal image-reference" href="../_images/torque_limit.png"><img alt="../_images/torque_limit.png" src="../_images/torque_limit.png" style="width: 1000px;" />
+</a>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -493,14 +495,16 @@ document.write(`
 <h2>Velocity Limit<a class="headerlink" href="#velocity-limit" title="Link to this heading">#</a></h2>
 <p>Velocity limit is respected only in Velocity PID / Profile Velocity and Impedance / Position PID / Profile Position modes. When target velocity, set either by the user or the Position PID, exceeds the <code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">velocity</span></code> param the target is limited, and a <a class="reference internal" href="Status%20codes.html#motion-status"><span class="std std-ref">motion warning</span></a> is generated.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/velocity_limit.png"><img alt="../_images/velocity_limit.png" src="../_images/velocity_limit.png" style="width: 1000px;" /></a>
+<a class="reference internal image-reference" href="../_images/velocity_limit.png"><img alt="../_images/velocity_limit.png" src="../_images/velocity_limit.png" style="width: 1000px;" />
+</a>
 </figure>
 </section>
 <section id="position-limit">
 <h2>Position Limit<a class="headerlink" href="#position-limit" title="Link to this heading">#</a></h2>
 <p>Position limit is respected only in Impedance / Position PID / Profile Position modes. When target position, set by the user, exceeds the <code class="docutils literal notranslate"><span class="pre">&lt;position</span> <span class="pre">limit</span> <span class="pre">min</span> <span class="pre">:</span> <span class="pre">position</span> <span class="pre">limit</span> <span class="pre">max&gt;</span></code> param range the target is limited to that range, and a <a class="reference internal" href="Status%20codes.html#motion-status"><span class="std std-ref">motion warning</span></a> is generated. Attempt to start the motor outside the range will generate a motion error.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/position_limit.png"><img alt="../_images/position_limit.png" src="../_images/position_limit.png" style="width: 1000px;" /></a>
+<a class="reference internal image-reference" href="../_images/position_limit.png"><img alt="../_images/position_limit.png" src="../_images/position_limit.png" style="width: 1000px;" />
+</a>
 </figure>
 </section>
 </section>
