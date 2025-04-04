@@ -6,7 +6,13 @@
 
 ## **RGB SWITCH**:
 
-![rgb_switch_image](images/rgb_switch.png)
+
+```{image} ./images/rgb_switch.png
+:alt: SBC Connection example 
+:class: bg-primary mb-1
+:width: 40%
+:align: center
+```
 
 After connecting, the switch can be used to enable the PDS and monitor its state. Please remember to set the thresholds if the visual battery monitoring is needed.
 
@@ -26,7 +32,10 @@ Example wired system can look like below:
 ![sto_connection_example](images/sto_connection_example.png)
 
 Beside STO inputs, there is presented connection to the PDS_IC module. Such cable is not included in the set, but the housing is. The E-stop button is also NOT included.
-Please note that the proposed solution is for reference only - the safety considerations has to be evaluated and analyzed properly to ensure that the solution match the requirements. Usage of the voltage from the IC module for supplying the E-stop circuits can be acceptable in the end application or not, dependly on the system architecture and needs.
+
+```{note}
+The proposed solution is for reference only - the safety considerations has to be evaluated and analyzed properly to ensure that the solution match the requirements. Usage of the voltage from the IC module for supplying the E-stop circuits can be acceptable in the end application or not, dependly on the system architecture and needs.
+```
 
 The last step is configuration of the STO switch. The schematic diagram of the STO configuration is presented below:
 
