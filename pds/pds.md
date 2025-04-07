@@ -7,21 +7,21 @@ With the MAB PDS, robotic researchers, engineers, and system integrators can foc
 
 The MAB PDS is built on a modular philosophy designed to meet the core needs of every robot:
 
-high-power bus for motors with on/off control,
-safe power bus for the computers and sensors with on/off control,
-handling regenerative energy from motors,
-monitoring all the parameters related to power supplies and energy consumption,
-power switch to enable/disable the robot,
-fast and reliable handling of safety triggers,
-fast telemetry and control from a higher-level controller,
-scalability for flexible system expansion.
+* High-power bus for motors with on/off control,
+* Safe power bus for the computers and sensors with on/off control,
+* Handling regenerative energy from motors,
+* Monitoring all the parameters related to power supplies and energy consumption,
+* Power switch to enable/disable the robot,
+* Fast and reliable handling of safety triggers,
+* Fast telemetry and control from a higher-level controller,
+* Scalability for flexible system expansion.
 
 ## Modules
 To handle all these features, the MAB PDS is split into four different types of modules:
-control (CTRL) - master module of the system, 
-isolated DC/DC converter (IC) - a module with an isolated DC/DC converter for peripherals like computers and sensors, 
-power stage (PS) - a module that handles high-power delivery to the motors,
-brake resistor (BR) - complementary subsystem with the Power Stage module
+* control (CTRL) - master module of the system, 
+* isolated DC/DC converter (IC) - a module with an isolated DC/DC converter for peripherals like computers and sensors, 
+* power stage (PS) - a module that handles high-power delivery to the motors,
+* brake resistor (BR) - complementary subsystem with the Power Stage module
 
 The overview of what exactly the PDS slave modules do is presented in the simple scheme below:
 
@@ -29,4 +29,6 @@ The overview of what exactly the PDS slave modules do is presented in the simple
 
 The master (CTRL) module manages ENABLE signals, acquires current/voltage measurements, and communicates with external systems.
 
+```{important}
 For detailed description refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a>
+```
