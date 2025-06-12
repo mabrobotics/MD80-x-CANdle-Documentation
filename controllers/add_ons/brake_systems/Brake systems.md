@@ -67,6 +67,7 @@ Logical controls are galvanically isolated from the power circuitry, unless the 
 :scale: 30%
 ```
 
+
 With each shipping of MBC and SLIM brake we include necessary wiring:
 
 - **Power cable (10 cm)** - <span style='color: red'>**Red**</span> and **Black** wire pair ending with a black J1 connector are intended power supply for the brake. It can be provided via external tri-connectors or directly from power supply. 
