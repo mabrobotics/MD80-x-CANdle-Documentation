@@ -67,6 +67,8 @@ Logical controls are galvanically isolated from the power circuitry, unless the 
 :scale: 30%
 ```
 
+TODO: change photographs here
+
 
 With each shipping of MBC and SLIM brake we include necessary wiring:
 
