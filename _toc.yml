@@ -11,7 +11,6 @@ chapters:
   sections:
     - file: md_x_candle_ecosystem_overview/Measurements
     - file: md_x_candle_ecosystem_overview/Safety limits
-    - file: md_x_candle_ecosystem_overview/Output encoder
     - file: md_x_candle_ecosystem_overview/Calibration
     - file: md_x_candle_ecosystem_overview/Motion modes
     - file: md_x_candle_ecosystem_overview/Config
@@ -24,6 +23,13 @@ chapters:
       title: MD80 controller  
     - file: controllers/md20_controller/MD20
       title: MD20 controller
+    - file: controllers/add_ons/Add-ons
+      title: Controller add-ons
+      sections:
+        - file: controllers/add_ons/aux_encoders/Auxiliary Encoder.md
+          title: Auxiliary Encoder
+        - file: controllers/add_ons/brake_systems/Brake systems.md
+          title: Brake Systems
 - file: candle_and_candle_hat/CANdle
   title: CANdle and CANdle HAT
   sections:
@@ -48,6 +54,15 @@ chapters:
       title: Object Dictionary
     - file: md_canopen/TransitionProcedure
       title: Migration to and from CANopen
+- file: pds/pds
+  title: PDS Power Distribution System
+  sections:
+    - file: pds/pds_qsg
+      title: Quick Start Guide
+    - file: pds/pds_sdk_examples
+      title: CANdleSDK PDS Software Examples
+- file: candletool/candletool
+  title: CANdleTool
 - file: common_problems_and_faq/FAQ
   title: Common problems and FAQ
 - file: Downloads/Downloads
