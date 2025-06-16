@@ -188,7 +188,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Safety%20limits.html">Safety limits</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="Output%20encoder.html">Output Encoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Motion%20modes.html">Motion modes</a></li>
 
@@ -202,6 +201,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../controllers/Controllers.html">Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../controllers/md80_controller/MD80.html">MD80 controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../controllers/md20_controller/MD20.html">MD20 controller</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../controllers/add_ons/Add-ons.html">Controller add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../controllers/add_ons/aux_encoders/Auxiliary%20Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../controllers/add_ons/brake_systems/Brake%20systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,6 +229,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pds/pds.html">PDS Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pds/pds_qsg.html">Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -445,7 +455,7 @@ document.write(`
 <p>To measure the position of the rotor the MD driver uses an internal magnetic encoder. The resolution of the encoder is 14 bits (16384 counts per rotation). The drive aggregates all the measurements to provide <strong>multi-rotation positional feedback</strong>. The reference position (0.0 rad) is set by the user and stored in the non-volatile memory. Please see <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-zero"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">zero</span></code></span></a> command for more information on how to set the desired zero position.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When using geared actuators with gear ratios above 1:1 it is not possible to determine the position after startup unambiguously, since the motor completes multiple rotations per single rotation of the output shaft. For example, for a 2:1 gearbox, there are two sections within a single output shaft rotation where the motor shaft is in the same position. Unless the motor is placed in the wrong “section” during startup the absolute encoder functionality will work. To deal with this issue please see the <a class="reference internal" href="Output%20encoder.html#output-encoder"><span class="std std-ref">output encoder</span></a>.</p>
+<p>When using geared actuators with gear ratios above 1:1 it is not possible to determine the position after startup unambiguously, since the motor completes multiple rotations per single rotation of the output shaft. For example, for a 2:1 gearbox, there are two sections within a single output shaft rotation where the motor shaft is in the same position. Unless the motor is placed in the wrong “section” during startup the absolute encoder functionality will work. To deal with this issue please see the <a class="reference internal" href="../controllers/add_ons/aux_encoders/Auxiliary%20Encoder.html#output-encoder"><span class="std std-ref">output encoder</span></a>.</p>
 </div>
 </section>
 <section id="velocity">

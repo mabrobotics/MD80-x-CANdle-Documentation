@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Auxiliary Encoder &#8212; MD x CANdle Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'controllers/add_ons/aux_encoders/Auxiliary Encoder';</script>
+    <link rel="icon" href="../../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Brake Systems" href="../brake_systems/Brake%20systems.html" />
+    <link rel="prev" title="MD Add-ons" href="../Add-ons.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="MD x CANdle Manual - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="MD x CANdle Manual - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    MD x CANdle Manual
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Ecosystem.html">MD x CANdle Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Safety%20limits.html">Safety limits</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Motion%20modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Config.html">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Status%20codes.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../Controllers.html">Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../md80_controller/MD80.html">MD80 controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../md20_controller/MD20.html">MD20 controller</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../Add-ons.html">Controller add-ons</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Auxiliary Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../brake_systems/Brake%20systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Principle.html">Principle of operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Using%20CANdle.html">Using CANdle and CANdle HAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Latency.html">Latency</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../software_package/Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_package/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_package/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../md_canopen/CANopen.html">MD CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../pds/pds.html">PDS Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pds/pds_qsg.html">Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../candletool/candletool.html">CANdleTool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/Downloads.html">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Changelogs/Changelogs.html">Changelogs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fcontrollers/add_ons/aux_encoders/Auxiliary Encoder.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/controllers/add_ons/aux_encoders/Auxiliary Encoder.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Auxiliary Encoder</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="auxiliary-encoder">
+<span id="output-encoder"></span><h1>Auxiliary Encoder<a class="headerlink" href="#auxiliary-encoder" title="Link to this heading">#</a></h1>
+<p>Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually useful for geared motors where the output shaft position after startup cannot be determined unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can make sure that the output shaft position is always known at startup.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/output_encoders.jpg" />
+</figure>
+<p>Currently we support one encoder type with two placement configurations:</p>
+<ul class="simple">
+<li><p>ME AS placed axially on the output shaft with a regular diametrically magnetized magnet</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/output_encoder_axial.jpg" class="no-scaled-link" src="../../../_images/output_encoder_axial.jpg" style="width: 300px;" />
+</figure>
+<ul class="simple">
+<li><p>ME AS placed non-axially together with a diametrically magnetized ring magnet</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/output_encoder_offaxis.jpg" class="no-scaled-link" src="../../../_images/output_encoder_offaxis.jpg" style="width: 300px;" />
+</figure>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<p>The output encoder configuration is performed in the motor config files and saved to the MD series motor controller using the <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span></code></span></a> command. There are only two parameters used in output encoder setup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">output</span> <span class="n">encoder</span><span class="p">]</span>
+<span class="n">output</span> <span class="n">encoder</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">encoder</span> <span class="nb">type</span><span class="o">&gt;</span>
+<span class="n">output</span> <span class="n">encoder</span> <span class="n">mode</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">encoder</span> <span class="n">mode</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>&lt;encoder type&gt;</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ME_AS_CENTER</p></td>
+<td><p>for axially placed ME AS encoder</p></td>
+</tr>
+<tr class="row-odd"><td><p>ME_AS_OFFAXIS</p></td>
+<td><p>for non-axially placed ME AS</p></td>
+</tr>
+<tr class="row-even"><td><p>MB053SFA17BENT00</p></td>
+<td><p>Renishaw RS422 17-bit RLS encoder</p></td>
+</tr>
+<tr class="row-odd"><td><p>CM_OFFAXIS</p></td>
+<td><p>CubeMars motors offaxis encoder</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>&lt;encoder mode&gt;</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STARTUP</p></td>
+<td><p>initial position from <b><font color="#FFBF00">output encoder</font></b>,
+report <b><font color="#008000">main encoder</font></b> values,
+motion based on <b><font color="#008000">main encoder</font></b></p></td>
+</tr>
+<tr class="row-odd"><td><p>MOTION</p></td>
+<td><p>initial position from <b><font color="#FFBF00">output encoder</font></b>,
+report <b><font color="#FFBF00">output encoder</font></b> values,
+motion based on <b><font color="#FFBF00">output encoder</font></b></p></td>
+</tr>
+<tr class="row-even"><td><p>REPORT</p></td>
+<td><p>initial position from <b><font color="#008000">main encoder</font></b>,
+report <b><font color="#FFBF00">output encoder</font></b> values,
+motion based on <b><font color="#008000">main encoder</font></b>,
+calibration of the <b><font color="#FFBF00">output encoder</font></b>  is impossible</p></td>
+</tr>
+<tr class="row-odd"><td><p>MAIN</p></td>
+<td><p><b><font color="#FFBF00">output encoder</font></b> is used as the <b><font color="#008000">main encoder</font></b>. All <b><font color="#FFBF00">output encoder</font></b> measurements are mapped as <b><font color="#008000">main encoder</font></b> values.</p></td>
+</tr>
+<tr class="row-even"><td><p>CALIBRATED_REPORT</p></td>
+<td><p>initial position from <b><font color="#008000">main encoder</font></b>,
+report <b><font color="#FFBF00">output encoder</font></b> values,
+motion based on <b><font color="#008000">main encoder</font></b>,
+calibration of the <b><font color="#FFBF00">output encoder</font></b> is possible</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The non-axial configuration outputs a nonlinear position values. This means it requires a <a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Calibration.html#output-encoder-calibration"><span class="std std-ref">full calibration</span></a> (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host’s software</p>
+</div>
+<p>Not all modes are recommended for every encoder. The non-axially placed ME AS encoder is inherently more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to the table below:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>&lt;encoder type&gt;</p></th>
+<th class="head"><p>Valid modes</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ME_AS_CENTER</p></td>
+<td><p>STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>ME_AS_OFFAXIS</p></td>
+<td><p>STARTUP</p></td>
+<td><p>This configuration is much more noisy than the axial placement</p></td>
+</tr>
+<tr class="row-even"><td><p>MB053SFA17BENT00</p></td>
+<td><p>STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>CM_OFFAXIS</p></td>
+<td><p>STARTUP</p></td>
+<td><p>Only offaxis configuration is supported</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Steps to add an external encoder to the driver setup:</p>
+<ul class="simple">
+<li><p>make sure the encoder sensor is placed correctly:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/output_encoder_cross.png" />
+</figure>
+<ul class="simple">
+<li><ul>
+<li><p>in case of axially placed sensors make sure they are placed in center at correct height above the magnet (1 mm is usually optimal)</p></li>
+<li><p>in case of non-axial configuration make sure the magnet is close to the ring magnet (&lt;0.5mm) and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.</p></li>
+</ul>
+</li>
+<li><p>Connect the MDxx with the encoder using a picoblade series cable assembly and connect power to the MDxx.</p></li>
+<li><p>Modify the motor config file according to your setup and save it to the MDxx using <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool"><span class="std std-ref">mdtool</span></a></p></li>
+</ul>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/setup_output_encoder.png" />
+</figure>
+<p>You can confirm the setup using the <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span></code></span></a> command to make sure all parameters are correct:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/mdtool_setup_info_errors.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this point some errors will be present as the setup is not yet calibrated.</p>
+</div>
+<ul class="simple">
+<li><p>Calibrate the MDxx using <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool-setup-calibration"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span></code></span></a> command</p></li>
+<li><p>Calibrate the output encoder using <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool-setup-calibration-out"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration_out</span></code></span></a> command</p></li>
+<li><p>Test the encoders using <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool-test-encoder"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">encoder</span></code></span></a> command.</p></li>
+<li><p>Use the <a class="reference internal" href="../../../software_package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">all</span></code></span></a> command to make sure there are no errors and the test results (min, max and stddev errors) are within your expectations.</p></li>
+<li><p>The external encoder is ready to use! For more information on external encoder parameters please see the <a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Calibration.html#output-encoder-calibration"><span class="std std-ref">output encoder calibration</span></a> section.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./controllers/add_ons/aux_encoders"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Add-ons.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MD Add-ons</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../brake_systems/Brake%20systems.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Brake Systems</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

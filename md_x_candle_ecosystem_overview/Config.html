@@ -186,7 +186,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Measurements.html">Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Safety%20limits.html">Safety limits</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="Output%20encoder.html">Output Encoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Calibration.html">Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Motion%20modes.html">Motion modes</a></li>
 
@@ -200,6 +199,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../controllers/Controllers.html">Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../controllers/md80_controller/MD80.html">MD80 controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../controllers/md20_controller/MD20.html">MD20 controller</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../controllers/add_ons/Add-ons.html">Controller add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../controllers/add_ons/aux_encoders/Auxiliary%20Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../controllers/add_ons/brake_systems/Brake%20systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -223,6 +227,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pds/pds.html">PDS Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pds/pds_qsg.html">Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -478,7 +488,7 @@ document.write(`
 </section>
 <section id="output-encoder-section">
 <h2>[output encoder] section<a class="headerlink" href="#output-encoder-section" title="Link to this heading">#</a></h2>
-<p>For more information please refer to <a class="reference internal" href="Output%20encoder.html#output-encoder"><span class="std std-ref">output encoder</span></a> section.</p>
+<p>For more information please refer to <a class="reference internal" href="../controllers/add_ons/aux_encoders/Auxiliary%20Encoder.html#output-encoder"><span class="std std-ref">output encoder</span></a> section.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">encoder</span></code> - valid types: ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">encoder</span> <span class="pre">mode</span></code> - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT</p></li>
