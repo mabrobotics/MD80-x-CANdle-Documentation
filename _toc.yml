@@ -39,6 +39,14 @@ chapters:
 - file: software_package/Software
   title: Software package
   sections:
+    - file: software_package/CANdleSDK.md
+      sections:
+      - file: software_package/CANdleSDK/CANdleTool.md
+        sections:
+        - file: software_package/CANdleSDK/CANdletool/Overview.md
+      - file: software_package/CANdleSDK/CANdlelib.md
+        sections:
+        - file: software_package/CANdleSDK/CANdlelib/Overview.md
     - file: software_package/MDTOOL
     - file: software_package/Candle C++ library
     - file: software_package/Candle Python library
@@ -61,8 +69,6 @@ chapters:
       title: Quick Start Guide
     - file: pds/pds_sdk_examples
       title: CANdleSDK PDS Software Examples
-- file: candletool/candletool
-  title: CANdleTool
 - file: common_problems_and_faq/FAQ
   title: Common problems and FAQ
 - file: Downloads/Downloads
