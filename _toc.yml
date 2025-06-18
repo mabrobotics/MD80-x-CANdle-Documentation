@@ -47,12 +47,15 @@ chapters:
       - file: software_package/CANdleSDK/CANdlelib.md
         sections:
         - file: software_package/CANdleSDK/CANdlelib/Overview.md
-    - file: software_package/MDTOOL
-    - file: software_package/Candle C++ library
-    - file: software_package/Candle Python library
-    - file: software_package/Candle ROS nodes
-    - file: software_package/Quick startup guide ROS
-    - file: software_package/Quick startup guide ROS2
+    - file: software_package/Legacy.md
+      title: Legacy software package
+      sections:
+        - file: software_package/legacy/MDTOOL.md
+        - file: software_package/legacy/Candle C++ library.md
+        - file: software_package/legacy/Candle Python library.md
+        - file: software_package/legacy/Candle ROS nodes.md
+        - file: software_package/legacy/Quick startup guide ROS.md
+        - file: software_package/legacy/Quick startup guide ROS2.md
 - file: md_fdcan_protocol/canProtocol
   title: MD FDCAN protocol
 - file: md_canopen/CANopen

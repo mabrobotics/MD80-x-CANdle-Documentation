@@ -118,7 +118,7 @@ This command runs the output encoder calibration routine. During output encoder 
 
 This command is used to write a new motor config. For the config file argument one of the *.cfg files from ~/.config/mtool/mdtool_motors/ directory should be passed. Check out the description below for more information on the respective config fields:
 
-```{figure} ./images/config_AK60.png
+```{figure} ../images/config_AK60.png
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -128,7 +128,7 @@ This command is used to write a new motor config. For the config file argument o
 ### `mdtool setup info <ID> [all]`
 This command is used to read the motor internal parameters. Use an optional 'all' keyword at the end of the command to read full parameter set. An example command output might look like this:
 
-```{figure} ./images/mdtool_setup_info_allok.png
+```{figure} ../images/mdtool_setup_info_allok.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
