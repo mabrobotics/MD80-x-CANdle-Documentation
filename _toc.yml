@@ -44,9 +44,15 @@ chapters:
       - file: software_package/CANdleSDK/CANdleTool.md
         sections:
         - file: software_package/CANdleSDK/CANdletool/Overview.md
+        - file: software_package/CANdleSDK/CANdletool/Installation.md
+        - file: software_package/CANdleSDK/CANdletool/Commands.md
+        - file: software_package/CANdleSDK/CANdletool/ConfigurationFiles.md
       - file: software_package/CANdleSDK/CANdlelib.md
         sections:
         - file: software_package/CANdleSDK/CANdlelib/Overview.md
+        - file: software_package/CANdleSDK/CANdlelib/CANdleModule.md
+        - file: software_package/CANdleSDK/CANdlelib/MDModule.md
+        - file: software_package/CANdleSDK/CANdlelib/PDSModule.md
     - file: software_package/Legacy.md
       title: Legacy software package
       sections:
