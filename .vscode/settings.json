@@ -2,7 +2,7 @@
     "emeraldwalk.runonsave": {
         "commands": [
             {
-                "cmd": "jupyter-book build ${workspaceFolder}/",
+                "cmd": "./venv/bin/jupyter-book build ${workspaceFolder}/",
                 "isAsync": true
             }
         ]
