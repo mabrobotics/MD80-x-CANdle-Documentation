@@ -75,20 +75,20 @@ CANdle or CANdle HAT should be connected to the CAN port of the Control board mo
 :align: center
 ```
 
-## **Host SBC**
+## **Computers and Sensors**
 
-Prepare the wires to connect Your host SBC like RaspberryPI or NVidia Jetson with power output from the IC submodule. Ensure proper polarization before turning on the power supply to prevent damage to the load.
-Below is the example wiring of the PDS IC module with computers:
+Prepare the wires to connect your SBCs and sensor packages with power output from the IC submodule. Ensure proper polarization before turning on the power supply to prevent damage to the load.
+Below is the example wiring of the PDS IC module with computers and sensors:
 
 ```{image} ./images/sbc_connection.png
 :alt: SBC Connection example
-:class: bg-primary mb-1
+:class: mb-1
 :width: 500px
 :align: center
 ```
-## **MD Drivers**
+## **High-power Loads**
 
-Use the Power Stage output connectors to supply MD Drives ( or other load ).
+Use the **Power Stage (PS)** output connectors to supply **drives or other load**.
 
 
 ```{image} ./images/md_connections.png
