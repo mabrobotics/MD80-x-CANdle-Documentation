@@ -4,7 +4,7 @@
 
 2. Prepare all the harnesses delivered with PDS and connect them to PDS_CTRL:
 
-## **RGB SWITCH**:
+## **ON/OFF SWITCH**:
 
 
 ```{image} ./images/rgb_switch.png
