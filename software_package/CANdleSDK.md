@@ -5,7 +5,7 @@
 CANdleSDK is a software package with tools to help user configure, test and integrate MAB devices into their systems.
 
 ## Supported platforms
-CANdle Tool supports all of the platforms supported by CANdlelib:
+CANdleTool supports all of the platforms supported by CANdlelib:
 
 - Linux based OS-es 
 - Windows (from Windows 10)
