@@ -7,13 +7,6 @@
 ## **ON/OFF SWITCH**:
 
 
-```{image} ./images/rgb_switch.png
-:alt: SBC Connection example 
-:class: bg-primary mb-1
-:width: 40%
-:align: center
-```
-
 After connecting, the switch can be used to enable the PDS and monitor its state. Please remember to set the thresholds if the visual battery monitoring is needed.
 
 The switch need to be connected as below:
