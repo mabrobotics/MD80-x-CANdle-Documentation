@@ -432,7 +432,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-ctrl">Control (CTRL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isolated-dc-dc-converter-ic">Isolated DC/DC converter (IC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-stage-ps">Power stage (PS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brake-resistor-br">Brake resistor (BR)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -466,12 +472,29 @@ document.write(`
 <section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
 <p>To handle all these features, the MAB PDS is split into four different types of modules:</p>
-<ul class="simple">
-<li><p>control (CTRL) - master module of the system,</p></li>
-<li><p>isolated DC/DC converter (IC) - a module with an isolated DC/DC converter for peripherals like computers and sensors,</p></li>
-<li><p>power stage (PS) - a module that handles high-power delivery to the motors,</p></li>
-<li><p>brake resistor (BR) - complementary subsystem with the Power Stage module</p></li>
-</ul>
+<section id="control-ctrl">
+<h3>Control (CTRL)<a class="headerlink" href="#control-ctrl" title="Link to this heading">#</a></h3>
+<p>Master module of the system.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/CTRL.JPG"><img alt="CRTL" class="bg-primary mb-1 align-center" src="../_images/CTRL.JPG" style="width: 300px;" />
+</a>
+</section>
+<section id="isolated-dc-dc-converter-ic">
+<h3>Isolated DC/DC converter (IC)<a class="headerlink" href="#isolated-dc-dc-converter-ic" title="Link to this heading">#</a></h3>
+<p>A module with an isolated DC/DC converter for peripherals like computers and sensors.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/IC.JPG"><img alt="IC" class="bg-primary mb-1 align-center" src="../_images/IC.JPG" style="width: 300px;" />
+</a>
+</section>
+<section id="power-stage-ps">
+<h3>Power stage (PS)<a class="headerlink" href="#power-stage-ps" title="Link to this heading">#</a></h3>
+<p>A module that handles high-power delivery to the motors.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/PS.JPG"><img alt="PS" class="bg-primary mb-1 align-center" src="../_images/PS.JPG" style="width: 300px;" />
+</a>
+</section>
+<section id="brake-resistor-br">
+<h3>Brake resistor (BR)<a class="headerlink" href="#brake-resistor-br" title="Link to this heading">#</a></h3>
+<p>Complementary subsystem with the Power Stage module.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/BR.JPG"><img alt="BR" class="bg-primary mb-1 align-center" src="../_images/BR.JPG" style="width: 300px;" />
+</a>
 <p>The overview of what exactly the PDS slave modules do is presented in the simple scheme below:</p>
 <p><img alt="PDS_system_scheme" src="../_images/PDS_modules_scheme.png" /></p>
 <p>The master (CTRL) module manages ENABLE signals, acquires current/voltage measurements, and communicates with external systems.</p>
@@ -479,6 +502,7 @@ document.write(`
 <p class="admonition-title">Important</p>
 <p>For detailed description refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a></p>
 </div>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -549,7 +573,13 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-ctrl">Control (CTRL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isolated-dc-dc-converter-ic">Isolated DC/DC converter (IC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-stage-ps">Power stage (PS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brake-resistor-br">Brake resistor (BR)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
