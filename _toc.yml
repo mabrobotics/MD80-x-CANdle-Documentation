@@ -53,7 +53,7 @@ chapters:
         - file: software_package/CANdleSDK/CANdletool/Installation.md
         - file: software_package/CANdleSDK/CANdletool/Commands.md
         - file: software_package/CANdleSDK/CANdletool/ConfigurationFiles.md
-        - file: sortware_package/CANdleSDK/CANdletool/MABFirmwareFiles.md      
+        - file: software_package/CANdleSDK/CANdletool/MABFwFiles.md
     - file: software_package/Legacy.md
       title: Legacy software package
       sections:
