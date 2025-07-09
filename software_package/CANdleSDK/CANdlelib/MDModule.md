@@ -19,7 +19,7 @@ Main features of MD module include:
 
 ## Code Examples
 
-### [Impedance](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/md_example_impedance.cpp)
+### [Impedance](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/md_example_impedance.cpp)
 
 This example shows use case of MD module in which we connect with CANdle device, scan the CAN network in search of MDs, than we zero the drive, set its mode to impedance (can be any other mode within the enum) and start the control loop.
 
@@ -27,12 +27,12 @@ This example shows use case of MD module in which we connect with CANdle device,
 One of the important things to remember when using MD module is to be mindful of MDs internal timeout mechanic which after not receiving messages for some time, if not disabled, will set MD back to idle state. More information on that [here](watchdog).
 ```
 
-### [Dual Channel](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/md_example_dual_chanel.cpp)
+### [Dual Channel](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/md_example_dual_chanel.cpp)
 
 This example shows how to attach a unique CANdle to the MD device (in case two or more candles are needed for latency improvements over CAN).
 
 It also show how to manually connect the bus interface to CANdle.
 
-### [Diagnostics](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/md_example_diagnostics.cpp)
+### [Diagnostics](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/md_example_diagnostics.cpp)
 
 This example shows how to read arbitrary registers during MD operation. List of available registers can be found [here](registers).

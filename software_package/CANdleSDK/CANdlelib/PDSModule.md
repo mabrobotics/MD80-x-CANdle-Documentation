@@ -29,11 +29,11 @@ This example shows how to gather basic information via PDS properties like:
 - OT threshold
 - Bus voltage
 
-### [Battery monitor and configuration](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_battery_monitor_and_config_save.cpp)
+### [Battery monitor and configuration](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/pds_example_battery_monitor_and_config_save.cpp)
 
 This example shows how to interact with properties of the PDS and save the configuration to the persistent memory.
 
-### [Submodules Access](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_submodules.cpp)
+### [Submodules Access](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/pds_example_submodules.cpp)
 
 This example shows how to set parameters for specific modules. 
 
