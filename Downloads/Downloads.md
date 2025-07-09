@@ -8,7 +8,7 @@ Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found [
 
 ## CANdleSDK
 
-Please visit [**releases**]() page for all of the CANdleSDK binary releases.
+Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the CANdleSDK binary releases.
 
 ## MAB Firmware
 
