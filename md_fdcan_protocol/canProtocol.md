@@ -1,3 +1,4 @@
+(fd_can_protocol)=
 # MD FDCAN communication
 The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD actuators from your custom FDCAN-capable master controller.
 

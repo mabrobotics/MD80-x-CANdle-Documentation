@@ -25,7 +25,7 @@ cmake .. -DCANDLE_BUILD_STATIC=TRUE
 ```
 After executing this command you should be able to see the following CMake output:
 
-```{figure} ./images/candle_build_static.png
+```{figure} ../images/candle_build_static.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -37,7 +37,7 @@ In case you’d like to go back to shared lib just call:
 cmake .. -DCANDLE_BUILD_STATIC=FALSE
 ```
 or delete the build directory contents and call cmake .. again (the default library type is shared). This is what the cmake output looks like when reconfiguring for shared lib: 
-```{figure} ./images/candle_build_shared.png
+```{figure} ../images/candle_build_shared.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center

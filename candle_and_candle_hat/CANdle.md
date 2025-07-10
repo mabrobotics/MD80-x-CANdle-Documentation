@@ -1,3 +1,4 @@
+(candle_and_hat)=
 # CANdle and CANdle HAT
 
 CANdle is a converter used to communicate between MD controllers and the host device. Currently, there are two CANdle versions - CANdle and CANdle HAT.

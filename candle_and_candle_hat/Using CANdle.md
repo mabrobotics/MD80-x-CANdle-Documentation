@@ -29,15 +29,13 @@ When using SBCs other than Raspberry the process may vary and should be performe
 ## SPI
 To enable the SPI bus you should call:
 ```
-sudo nano /boot/config.txt
+sudo raspi-config .
 ```
-uncomment the following line, save the file
-```
-dtparam=spi=on
-```
+This will open the Raspberry PI configuration menu. Navigate to `Interfacing Options` and select `SPI`. Then select `Yes` to enable SPI. After that, you can exit the configuration tool.
+
 and reboot:
 ```
-sudo reboot
+sudo reboot now
 ```
 to make sure SPI is enabled call:
 ```

@@ -14,7 +14,7 @@ rosrun candle_ros candle_ros_node --help
 
 Example output from the terminal after launching the node:
 
-```{figure} ./images/candleros_usb8m.png
+```{figure} ../images/candleros_usb8m.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -39,7 +39,7 @@ total_number_of_drives: 2
 informing, that both drives (ids: 200 and 800), have been successfully contacted, and were added to the node's drives list.
 You can also look for status messages in the terminal window where the node was started:
 
-```{figure} ./images/candle_ros_added_drives.png
+```{figure} ../images/candle_ros_added_drives.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
