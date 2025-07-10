@@ -213,12 +213,33 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../software_package/Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/CANdleSDK.html">CANdleSDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Commands.html">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/ConfigurationFiles.html">Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/MABFwFiles.html">MAB Firmware Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/Legacy.html">Legacy software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
@@ -232,7 +253,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -435,7 +455,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="latency">
 <span id="id1"></span><h1>Latency<a class="headerlink" href="#latency" title="Link to this heading">#</a></h1>
-<p>The latency was measured using the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-test-latency"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">latency</span> <span class="pre">8M</span></code></span></a> command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus.</p>
+<p>The latency was measured using the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-test-latency"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">latency</span> <span class="pre">8M</span></code></span></a> command. Since the CAN frames are synchronized with master device frames the update rate of the master is the same as MD. The setup was tested on a PC using only USB bus (PC Ideapad Gaming 3 AMD Ryzen 7 4800H) and Raspberry PI 3b+ with RT PATCH (4.19.71-rt24-v7+) on USB, SPI, and UART bus.</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/MD80_latency.png" />
 </figure>

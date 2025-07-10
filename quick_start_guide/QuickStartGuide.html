@@ -213,12 +213,33 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../software_package/Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/CANdleSDK.html">CANdleSDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Commands.html">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/ConfigurationFiles.html">Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/MABFwFiles.html">MAB Firmware Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/Legacy.html">Legacy software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
@@ -232,7 +253,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -522,7 +542,7 @@ document.write(`
 </div>
 <ul class="simple">
 <li><p>Connect CANdle to the PC using a USB type-C cable.</p></li>
-<li><p>Ensure you’ve got the latest <a class="reference external" href="https://github.com/mabrobotics/mdtool/releases">MDtool</a>. For the MDtool installation guide refer to the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool"><span class="std std-ref">MDtool</span></a> section.</p></li>
+<li><p>Ensure you’ve got the latest <a class="reference external" href="https://github.com/mabrobotics/mdtool/releases">MDtool</a>. For the MDtool installation guide refer to the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool"><span class="std std-ref">MDtool</span></a> section.</p></li>
 <li><p>Please upgrade the setup software if any of your devices (MD or CANdle device) is older than the one from “latest” row in the <a class="reference internal" href="../Downloads/Downloads.html#downloads"><span class="std std-ref">releases table</span></a>.</p></li>
 <li><p>Once installed and run the MDtool will create an MDtool directory in <b>~/.config</b>  directory.</p></li>
 </ul>
@@ -539,32 +559,32 @@ document.write(`
 </figure>
 <p>Feel free to add a new *.cfg file for your custom motors in there. Use the already existing files as a reference, especially the AK60-6.cfg which contains some additional comments.</p>
 <ul class="simple">
-<li><p>Check if the MD controller can be discovered properly using the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command</p></li>
+<li><p>Check if the MD controller can be discovered properly using the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/mdtool_ping_all.png" />
 </figure>
 <ul class="simple">
-<li><p>To setup the MD series controller simply call <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
+<li><p>To setup the MD series controller simply call <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-setup-motor"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">motor</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;*.cfg&gt;</span></code></span></a> where the ID is the ID that shows up after the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span></code></span></a> command is called, and the *.cfg is one of the files existing in the mdtool_motors directory (press tab to list available config files). If anything fails during the process be sure to check your setup and try again.</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/mdtool_setup_motor_EX.png" />
 </figure>
 <ul class="simple">
-<li><p>Do not worry if at this point there are many errors after calling <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a> command (like below). They should be cleared after a successful calibration.</p></li>
+<li><p>Do not worry if at this point there are many errors after calling <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a> command (like below). They should be cleared after a successful calibration.</p></li>
 </ul>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/after_setup_EX8108.png" />
 </figure>
 <ul class="simple">
-<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-setup-calibration"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. Please follow the <a class="reference internal" href="../md_x_candle_ecosystem_overview/Calibration.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information on the calibration process itself.</p></li>
-<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD series motor controller info using the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error’s description and try the recommended action to clear it <a class="reference internal" href="../md_x_candle_ecosystem_overview/Status%20codes.html#status"><span class="std std-ref">status</span></a>.</p></li>
+<li><p>When succeeded, the motor is set up correctly and now’s the time to calibrate it using <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-setup-calibration"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">calibration</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. Please follow the <a class="reference internal" href="../md_x_candle_ecosystem_overview/Calibration.html#calibration"><span class="std std-ref">calibration</span></a> guidelines for more information on the calibration process itself.</p></li>
+<li><p>After the calibration the motor should be ready to use - the best way to find out everything was completed without errors is to check the MD series motor controller info using the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-setup-info"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">setup</span> <span class="pre">info</span> <span class="pre">&lt;ID&gt;</span></code></span></a>. This command lists all the important parameters of the actuator. Errors are shown in red on the bottom if anything has failed during the process. If there are still errors after the calibration be sure to check out the error’s description and try the recommended action to clear it <a class="reference internal" href="../md_x_candle_ecosystem_overview/Status%20codes.html#status"><span class="std std-ref">status</span></a>.</p></li>
 </ul>
 <p>Correct after-calibration mdtool setup info command output may look like this:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/mdtool_setup_info_correct.png" />
 </figure>
-<p>Your actuator should be now ready to go! To make it move you can try the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;pos&gt;</span></code></span></a> command, or try the <a class="reference external" href="https://github.com/mabrobotics/candle">CANdle lib</a> C++ or Python examples.</p>
+<p>Your actuator should be now ready to go! To make it move you can try the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-test-move"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">test</span> <span class="pre">move</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;pos&gt;</span></code></span></a> command, or try the <a class="reference external" href="https://github.com/mabrobotics/candle">CANdle lib</a> C++ or Python examples.</p>
 </section>
 </section>
 

@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Commands &#8212; MD x CANdle Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software_package/CANdleSDK/CANdletool/Commands';</script>
+    <link rel="icon" href="../../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Configuration Files" href="ConfigurationFiles.html" />
+    <link rel="prev" title="Installation" href="Installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="MD x CANdle Manual - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="MD x CANdle Manual - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    MD x CANdle Manual
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Ecosystem.html">MD x CANdle Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Safety%20limits.html">Safety limits</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Calibration.html">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Motion%20modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Config.html">Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Status%20codes.html">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../controllers/Controllers.html">Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../controllers/md80_controller/MD80.html">MD80 controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../controllers/md20_controller/MD20.html">MD20 controller</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../controllers/add_ons/Add-ons.html">Controller add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../controllers/add_ons/aux_encoders/Auxiliary%20Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../controllers/add_ons/brake_systems/Brake%20systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Principle.html">Principle of operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Using%20CANdle.html">Using CANdle and CANdle HAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Latency.html">Latency</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../Software.html">Software package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../CANdleSDK.html">CANdleSDK</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../CANdlelib/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CANdlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CANdlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../CANdlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="../CANdleTool.html">CANdleTool</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ConfigurationFiles.html">Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MABFwFiles.html">MAB Firmware Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../Legacy.html">Legacy software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legacy/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legacy/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legacy/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legacy/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legacy/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../md_canopen/CANopen.html">MD CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../pds/pds.html">PDS Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pds/pds_qsg.html">Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/Downloads.html">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Changelogs/Changelogs.html">Changelogs</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fsoftware_package/CANdleSDK/CANdletool/Commands.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/software_package/CANdleSDK/CANdletool/Commands.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Commands</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-parameters">Global parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle"><strong>candle</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">Update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md"><strong>md</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blink">blink</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can">can</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">calibration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clear">clear</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#config">config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discover">discover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save">save</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#info">info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register">register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test">test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds"><strong>pds</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-module">Main module</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="commands">
+<span id="candletool-commands"></span><h1>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h1>
+<p>CANdleTool CLI tree is build around each of devices provided by MAB. There it is split into actions that can be performed. Most of the commands are described below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some commands are not listed in this document. You can explore all of the commands in the branch by issuing <code class="docutils literal notranslate"><span class="pre">-h</span></code> flag.</p>
+</div>
+<section id="global-parameters">
+<h2>Global parameters<a class="headerlink" href="#global-parameters" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">**-h,</span> <span class="pre">--help**</span></code> - Display help.</p>
+<p><code class="docutils literal notranslate"><span class="pre">**-d,</span> <span class="pre">--datarate**</span></code> - Sets a datarate of CAN network when using CANdle device.</p>
+<p><code class="docutils literal notranslate"><span class="pre">**-v,</span> <span class="pre">--verbosity**</span></code> - Sets printing verbosity of the CANdleTool. Supported values are 0,1,2,3.</p>
+<p><code class="docutils literal notranslate"><span class="pre">**-s,</span> <span class="pre">--silent**</span></code> - Turns off output of CANdletool logger.</p>
+<p><code class="docutils literal notranslate"><span class="pre">**--version**</span></code> - Prints a version of CANdleSDK used.</p>
+</section>
+<section id="candle">
+<h2><strong>candle</strong><a class="headerlink" href="#candle" title="Link to this heading">#</a></h2>
+<section id="update">
+<span id="candletool-update"></span><h3>Update<a class="headerlink" href="#update" title="Link to this heading">#</a></h3>
+<p>Updates firmware on the CANdle device using provided <a class="reference internal" href="MABFwFiles.html#mab-files"><span class="std std-ref">MAB firmware file</span></a>.</p>
+</section>
+</section>
+<section id="md">
+<h2><strong>md</strong><a class="headerlink" href="#md" title="Link to this heading">#</a></h2>
+<p>Branch of CLI dedicated for <a class="reference internal" href="../../../controllers/Controllers.html#md"><span class="std std-ref">MD</span></a> devices. Most of the commands use <code class="docutils literal notranslate"><span class="pre">--id</span></code> parameter to specify which MD drive to operate on.</p>
+<section id="blink">
+<h3>blink<a class="headerlink" href="#blink" title="Link to this heading">#</a></h3>
+<p>Blink built-in LEDs on MD drive.</p>
+</section>
+<section id="can">
+<h3>can<a class="headerlink" href="#can" title="Link to this heading">#</a></h3>
+<p>Configure CAN network parameters id, datarate and timeout with corresponding flags. <code class="docutils literal notranslate"><span class="pre">--save</span></code> flag can be used to save the configuration to flash memory.</p>
+</section>
+<section id="calibration">
+<h3>calibration<a class="headerlink" href="#calibration" title="Link to this heading">#</a></h3>
+<p>Calibrate the MD drive. If no options are provided the command will perform all of the necessary calibrations. Type of calibration can be specified using <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag (main or aux). <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag can be used to perform tests after calibration. The results of the test are printed in the <code class="docutils literal notranslate"><span class="pre">info</span></code> command output.</p>
+</section>
+<section id="clear">
+<h3>clear<a class="headerlink" href="#clear" title="Link to this heading">#</a></h3>
+<p>Clear MD drive errors and warnings.</p>
+</section>
+<section id="config">
+<h3>config<a class="headerlink" href="#config" title="Link to this heading">#</a></h3>
+<p>Configure MD drive using (MAB configuration file)[md_config_file]. Config can also be downloaded from the MD drive using <code class="docutils literal notranslate"><span class="pre">md</span> <span class="pre">config</span> <span class="pre">download</span> <span class="pre">&lt;file&gt;</span></code> command.</p>
+</section>
+<section id="discover">
+<h3>discover<a class="headerlink" href="#discover" title="Link to this heading">#</a></h3>
+<p>Discover MD drives on the network. This command does not require any parameters. It will print a list of all MD drives connected to the CANdle device on the selected CAN datarate.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This command will not work if the MD drives are not powered on, nor when they are configured to use different CAN datarate than the one set in the <code class="docutils literal notranslate"><span class="pre">candletool</span></code> command.</p>
+</div>
+</section>
+<section id="save">
+<h3>save<a class="headerlink" href="#save" title="Link to this heading">#</a></h3>
+<p>Save MD drive configuration to flash memory.</p>
+</section>
+<section id="info">
+<h3>info<a class="headerlink" href="#info" title="Link to this heading">#</a></h3>
+<p>Get debug information about the MD drive.</p>
+</section>
+<section id="register">
+<h3>register<a class="headerlink" href="#register" title="Link to this heading">#</a></h3>
+<p>Register operations for MD drive. They can be written or read using <code class="docutils literal notranslate"><span class="pre">write</span></code> or <code class="docutils literal notranslate"><span class="pre">read</span></code> subcommands. Specifying register can be done using either address or name. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">register</span> <span class="n">read</span> <span class="mh">0x010</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">register</span> <span class="n">read</span> <span class="n">motorName</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>All of the available registers can be found in the <a class="reference internal" href="../../../md_fdcan_protocol/canProtocol.html#registers"><span class="std std-ref">MD registers</span></a> section of this document.</p>
+</section>
+<section id="test">
+<h3>test<a class="headerlink" href="#test" title="Link to this heading">#</a></h3>
+<p>Test the MD drive movement. The movement can be done in positional relative (impedance) or positional absolute mode (position profile).</p>
+</section>
+<section id="id1">
+<h3>update<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Update firmware on MD drive using <a class="reference internal" href="MABFwFiles.html#mab-files"><span class="std std-ref">MAB firmware file</span></a>.</p>
+</section>
+</section>
+<section id="pds">
+<h2><strong>pds</strong><a class="headerlink" href="#pds" title="Link to this heading">#</a></h2>
+<p>Branch of CLI dedicated for <a class="reference internal" href="../../../pds/pds.html#pds"><span class="std std-ref">PDS</span></a> device.</p>
+<section id="main-module">
+<h3>Main module<a class="headerlink" href="#main-module" title="Link to this heading">#</a></h3>
+<p>When issuing <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span></code> command, the user can operate on the PDS device. All of the commands here are tied to the main PDS module.</p>
+<p>Main commands for the PDS control module are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code> - Get information about the PDS device.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update</span></code> - Update firmware on the PDS device using <a class="reference internal" href="MABFwFiles.html#mab-files"><span class="std std-ref">MAB firmware file</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">can</span></code> - Configure CAN network parameters id, datarate and timeout with corresponding flags.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save</span></code> - Save PDS configuration to flash memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disable</span></code> - Shutdown the PDS device with timeout specified in the configuration file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup_cfg</span></code> - Setup PDS configuration file. This command will create a configuration file in the current directory.</p></li>
+</ul>
+<p>To access submodules, the user can use <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">&lt;module_name&gt;</span> <span class="pre">&lt;module_socket_number&gt;</span></code> command.</p>
+<p>Module names are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ps</span></code> - Power supply module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">br</span></code> - Brake resistor module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ic</span></code> - Isolated power converter module.</p></li>
+</ul>
+<p>Main submodule commands are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code> - Get information about the PDS module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable</span></code> - Enable the PDS module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disable</span></code> - Disable the PDS module.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./software_package/CANdleSDK/CANdletool"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Installation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ConfigurationFiles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Configuration Files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-parameters">Global parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle"><strong>candle</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">Update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md"><strong>md</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blink">blink</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can">can</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">calibration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clear">clear</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#config">config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discover">discover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save">save</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#info">info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register">register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test">test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds"><strong>pds</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-module">Main module</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

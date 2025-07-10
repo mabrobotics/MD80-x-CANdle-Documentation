@@ -215,12 +215,33 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../software_package/Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/CANdleSDK.html">CANdleSDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Commands.html">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/ConfigurationFiles.html">Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/MABFwFiles.html">MAB Firmware Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/Legacy.html">Legacy software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
@@ -234,7 +255,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -452,7 +472,7 @@ document.write(`
 <p>MD drivers are equipped with sensors that allow for measuring the motor position, velocity, and torque. Whether the motor has an integrated gearbox or not, <strong>the position, velocity, and torque</strong> are in the output shaft reference frame. This means that changing the position from 0.0 to 2<span class="math notranslate nohighlight">\(\pi\)</span> radians, will result in approximately one rotation of the motor for direct-drive (gearless) servos and approximately one rotation of the gearbox output shaft for geared motors.</p>
 <section id="position">
 <h2>Position<a class="headerlink" href="#position" title="Link to this heading">#</a></h2>
-<p>To measure the position of the rotor the MD driver uses an internal magnetic encoder. The resolution of the encoder is 14 bits (16384 counts per rotation). The drive aggregates all the measurements to provide <strong>multi-rotation positional feedback</strong>. The reference position (0.0 rad) is set by the user and stored in the non-volatile memory. Please see <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-zero"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">zero</span></code></span></a> command for more information on how to set the desired zero position.</p>
+<p>To measure the position of the rotor the MD driver uses an internal magnetic encoder. The resolution of the encoder is 14 bits (16384 counts per rotation). The drive aggregates all the measurements to provide <strong>multi-rotation positional feedback</strong>. The reference position (0.0 rad) is set by the user and stored in the non-volatile memory. Please see <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-config-zero"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">zero</span></code></span></a> command for more information on how to set the desired zero position.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When using geared actuators with gear ratios above 1:1 it is not possible to determine the position after startup unambiguously, since the motor completes multiple rotations per single rotation of the output shaft. For example, for a 2:1 gearbox, there are two sections within a single output shaft rotation where the motor shaft is in the same position. Unless the motor is placed in the wrong “section” during startup the absolute encoder functionality will work. To deal with this issue please see the <a class="reference internal" href="../controllers/add_ons/aux_encoders/Auxiliary%20Encoder.html#output-encoder"><span class="std std-ref">output encoder</span></a>.</p>

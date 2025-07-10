@@ -213,12 +213,33 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../software_package/Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/CANdleSDK.html">CANdleSDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Commands.html">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/ConfigurationFiles.html">Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/MABFwFiles.html">MAB Firmware Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/Legacy.html">Legacy software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
@@ -232,7 +253,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -432,13 +452,17 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-stable">Software (stable)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-update-tool-mab-can-flasher">MD update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mab-firmware">MAB Firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-software">Legacy software</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-update-tool-mab-can-flasher">MD update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">CANdle update tool - MAB USB Flasher</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-flashers">CANopen Flashers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">CANdle update tool - MAB USB Flasher</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-flashers">CANopen Flashers</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -456,8 +480,19 @@ document.write(`
 <span id="hardware-downloads"></span><h2>3D models<a class="headerlink" href="#d-models" title="Link to this heading">#</a></h2>
 <p>Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found <a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing">here</a>.</p>
 </section>
-<section id="software-stable">
-<span id="software-downloads"></span><h2>Software (stable)<a class="headerlink" href="#software-stable" title="Link to this heading">#</a></h2>
+<section id="candlesdk">
+<h2>CANdleSDK<a class="headerlink" href="#candlesdk" title="Link to this heading">#</a></h2>
+<p>Please visit <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/releases"><strong>releases</strong></a> page for all of the CANdleSDK binary releases.</p>
+</section>
+<section id="mab-firmware">
+<h2>MAB Firmware<a class="headerlink" href="#mab-firmware" title="Link to this heading">#</a></h2>
+<p>Until the release of the new firmware files please use flashers listed below.</p>
+<!-- 
+| MD  | PDS  | CANdle  |
+|-----|------|---------| -->
+</section>
+<section id="legacy-software">
+<span id="software-downloads"></span><h2>Legacy software<a class="headerlink" href="#legacy-software" title="Link to this heading">#</a></h2>
 <p>Main stable releases:</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -541,16 +576,15 @@ document.write(`
 	</tbody>
 </table>
 <p></p>
-</section>
 <section id="md-update-tool-mab-can-flasher">
-<span id="mab-can-flasher"></span><h2>MD update tool - MAB CAN Flasher<a class="headerlink" href="#md-update-tool-mab-can-flasher" title="Link to this heading">#</a></h2>
-<p>MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
+<span id="mab-can-flasher"></span><h3>MD update tool - MAB CAN Flasher<a class="headerlink" href="#md-update-tool-mab-can-flasher" title="Link to this heading">#</a></h3>
+<p>MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Make sure the MAB_CAN_Flasher can be executed. If not use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./MAB_CAN_Flasher</span></code> command.</p>
 </div>
 <section id="example-use-cases">
-<h3>Example use cases<a class="headerlink" href="#example-use-cases" title="Link to this heading">#</a></h3>
+<h4>Example use cases<a class="headerlink" href="#example-use-cases" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--id</span> <span class="pre">150</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update the MDxx controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:</p>
 <figure class="align-center">
 <img alt="../_images/flashing1.png" class="no-scaled-link" src="../_images/flashing1.png" />
@@ -573,7 +607,7 @@ document.write(`
 </section>
 </section>
 <section id="candle-update-tool-mab-usb-flasher">
-<h2>CANdle update tool - MAB USB Flasher<a class="headerlink" href="#candle-update-tool-mab-usb-flasher" title="Link to this heading">#</a></h2>
+<h3>CANdle update tool - MAB USB Flasher<a class="headerlink" href="#candle-update-tool-mab-usb-flasher" title="Link to this heading">#</a></h3>
 <p><strong>MAB_USB_Flasher</strong> is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). To update, first turn off all applications that may be using CANdle, and simply run <code class="docutils literal notranslate"><span class="pre">./MAB_USB_Flasher</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -585,7 +619,7 @@ document.write(`
 <p>After a successful update, the CANdle device is ready.</p>
 </section>
 <section id="canopen-flashers">
-<span id="id2"></span><h2>CANopen Flashers<a class="headerlink" href="#canopen-flashers" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h3>CANopen Flashers<a class="headerlink" href="#canopen-flashers" title="Link to this heading">#</a></h3>
 <p>Those flashers are intended to be used with CANopen controllers.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -612,6 +646,7 @@ document.write(`
 	</tbody>
 </table>
 <p></p></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -679,13 +714,17 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-stable">Software (stable)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-update-tool-mab-can-flasher">MD update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mab-firmware">MAB Firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-software">Legacy software</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-update-tool-mab-can-flasher">MD update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">CANdle update tool - MAB USB Flasher</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-flashers">CANopen Flashers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">CANdle update tool - MAB USB Flasher</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-flashers">CANopen Flashers</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -13,7 +13,7 @@ ros2 run candle_ros2 candle_ros2_node --help.
 
 Example output from the terminal after launching the node:
 
-```{figure} ./images/candleros2_usb8m.png
+```{figure} ../images/candleros2_usb8m.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -35,7 +35,7 @@ candle_ros2.srv.AddMd80s_Response(drives_success=[True, True], total_number_of_d
 informing, that both drives (ids: 200 and 800), have been successfully contacted, and were added to the node's drives list.
 You can also look for status messages in the terminal window where the node was started:
 
-```{figure} ./images/candle_ros2_added_drives.png
+```{figure} ../images/candle_ros2_added_drives.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center

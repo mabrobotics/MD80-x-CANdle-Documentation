@@ -1,6 +1,11 @@
 # Changelogs
 
-## Latest [30.01.2025]
+## Latest 
+
+- Released CANdle-SDK 1.0
+- PDS information added
+
+## [30.01.2025]
 
 ### CANdle lib
 

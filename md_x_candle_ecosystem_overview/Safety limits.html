@@ -215,12 +215,33 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../software_package/Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/MDTOOL.html">MDtool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20Python%20library.html">CANdle Python library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../software_package/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/CANdleSDK.html">CANdleSDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../software_package/CANdleSDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Overview.html">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/Commands.html">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/ConfigurationFiles.html">Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_package/CANdleSDK/CANdletool/MABFwFiles.html">MAB Firmware Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/Legacy.html">Legacy software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20C%2B%2B%20library.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20Python%20library.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Candle%20ROS%20nodes.html">CANdle ROS/ROS2 nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/Quick%20startup%20guide%20ROS2.html">Quick start - ROS2</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
@@ -234,7 +255,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../pds/pds_sdk_examples.html">CANdleSDK PDS Software Examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../candletool/candletool.html">CANdleTool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
@@ -467,7 +487,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/current_limit.png"><img alt="../_images/current_limit.png" src="../_images/current_limit.png" style="width: 1000px;" />
 </a>
 </figure>
-<p>This setting limits the maximum current (and thus torque) the motor controller can output. It is the last user-configurable limit in the control scheme. The maximum current is set using the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-current"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span></code></span></a> command, and by default, it is usually set to 10A. This setting can be saved in the non-volatile memory so that it is always loaded on the actuator power-up. To estimate the maximum current setting for a particular motor, you should use the following formula:</p>
+<p>This setting limits the maximum current (and thus torque) the motor controller can output. It is the last user-configurable limit in the control scheme. The maximum current is set using the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-config-current"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span></code></span></a> command, and by default, it is usually set to 10A. This setting can be saved in the non-volatile memory so that it is always loaded on the actuator power-up. To estimate the maximum current setting for a particular motor, you should use the following formula:</p>
 <div class="math notranslate nohighlight">
 \[I [A] = \frac{\tau [Nm] \frac{1}{G_r}}{K_t[\frac{Nm}{A}]}\]</div>
 <p>where</p>
@@ -487,7 +507,7 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Usually this limit should be set to the highest peak torque that is allowed in the system so that it doesn’t limit the actuator performance.</p>
 </div>
-<p>Now, to save this value into the MDxx please refer to <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-current"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span></code></span></a> command. Don’t forget to save it with the <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-save"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">save</span></code></span></a> command.</p>
+<p>Now, to save this value into the MDxx please refer to <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-config-current"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">current</span></code></span></a> command. Don’t forget to save it with the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-config-save"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">save</span></code></span></a> command.</p>
 </section>
 <section id="torque-limit">
 <h2>Torque Limit<a class="headerlink" href="#torque-limit" title="Link to this heading">#</a></h2>
@@ -519,8 +539,8 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="fdcan-watchdog">
-<h1>FDCAN Watchdog<a class="headerlink" href="#fdcan-watchdog" title="Link to this heading">#</a></h1>
-<p>MD drivers feature an FDCAN Watchdog Timer. This timer will shut down the drive stage when no FDCAN frame has been received in a specified time. This is to protect the drive and its surroundings in an event of loss of communications, for example by physical damage to the wiring. By default, the watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms using <a class="reference internal" href="../software_package/MDTOOL.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command. When the watchdog is set to 0, it will disable the timer, however, this can lead to dangerous situations, and it is not a recommended way of operating MDxx.</p>
+<span id="watchdog"></span><h1>FDCAN Watchdog<a class="headerlink" href="#fdcan-watchdog" title="Link to this heading">#</a></h1>
+<p>MD drivers feature an FDCAN Watchdog Timer. This timer will shut down the drive stage when no FDCAN frame has been received in a specified time. This is to protect the drive and its surroundings in an event of loss of communications, for example by physical damage to the wiring. By default, the watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms using <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-config-can"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">config</span> <span class="pre">can</span></code></span></a> command. When the watchdog is set to 0, it will disable the timer, however, this can lead to dangerous situations, and it is not a recommended way of operating MDxx.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>We do not recommend disabling the CAN watchdog timer.</p>
