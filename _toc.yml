@@ -39,12 +39,30 @@ chapters:
 - file: software_package/Software
   title: Software package
   sections:
-    - file: software_package/MDTOOL
-    - file: software_package/Candle C++ library
-    - file: software_package/Candle Python library
-    - file: software_package/Candle ROS nodes
-    - file: software_package/Quick startup guide ROS
-    - file: software_package/Quick startup guide ROS2
+    - file: software_package/CANdleSDK.md
+      sections:
+      - file: software_package/CANdleSDK/CANdlelib.md
+        sections:
+        - file: software_package/CANdleSDK/CANdlelib/Overview.md
+        - file: software_package/CANdleSDK/CANdlelib/CANdleModule.md
+        - file: software_package/CANdleSDK/CANdlelib/MDModule.md
+        - file: software_package/CANdleSDK/CANdlelib/PDSModule.md
+      - file: software_package/CANdleSDK/CANdleTool.md
+        sections:
+        - file: software_package/CANdleSDK/CANdletool/Overview.md
+        - file: software_package/CANdleSDK/CANdletool/Installation.md
+        - file: software_package/CANdleSDK/CANdletool/Commands.md
+        - file: software_package/CANdleSDK/CANdletool/ConfigurationFiles.md
+        - file: software_package/CANdleSDK/CANdletool/MABFwFiles.md
+    - file: software_package/Legacy.md
+      title: Legacy software package
+      sections:
+        - file: software_package/legacy/MDTOOL.md
+        - file: software_package/legacy/Candle C++ library.md
+        - file: software_package/legacy/Candle Python library.md
+        - file: software_package/legacy/Candle ROS nodes.md
+        - file: software_package/legacy/Quick startup guide ROS.md
+        - file: software_package/legacy/Quick startup guide ROS2.md
 - file: md_fdcan_protocol/canProtocol
   title: MD FDCAN protocol
 - file: md_canopen/CANopen
@@ -61,8 +79,6 @@ chapters:
       title: Quick Start Guide
     - file: pds/pds_sdk_examples
       title: CANdleSDK PDS Software Examples
-- file: candletool/candletool
-  title: CANdleTool
 - file: common_problems_and_faq/FAQ
   title: Common problems and FAQ
 - file: Downloads/Downloads

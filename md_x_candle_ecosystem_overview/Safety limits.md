@@ -74,6 +74,7 @@ Position limit is respected only in Impedance / Position PID / Profile Position 
 :align: center
 ```
 
+(watchdog)=
 # FDCAN Watchdog
 
 MD drivers feature an FDCAN Watchdog Timer. This timer will shut down the drive stage when no FDCAN frame has been received in a specified time. This is to protect the drive and its surroundings in an event of loss of communications, for example by physical damage to the wiring. By default, the watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms using [`mdtool config can`](mdtool_config_can) command. When the watchdog is set to 0, it will disable the timer, however, this can lead to dangerous situations, and it is not a recommended way of operating MDxx. 
