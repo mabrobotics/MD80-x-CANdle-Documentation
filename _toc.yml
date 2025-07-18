@@ -5,8 +5,9 @@ format: jb-book
 root: intro
 
 chapters:
+
 - file: MD/intro
-  title: MD - motor controllers
+  title: MD - Motor Controllers
   sections:
     - file: MD/MD80
       title: MD80
@@ -16,10 +17,12 @@ chapters:
       title: Encoders
     - file: MD/brakes
       title: Brakes
+    - file: MD/safety
+      title: Safety
+    - file: MD/motion
+      title: Motion Control
     - file: MD/config_calibration
       title: Configuration & Calibration
-    - file: MD/safety_motion
-      title: Safety & Motion
     - file: MD/status_utility
       title: Status & Utilities
     - file: MD/Communication/intro
@@ -29,6 +32,8 @@ chapters:
          title: FDCAN 
        - file: MD/Communication/canopen
          title: CANOpen
+         sections:
+          - file: MD/Communication/canopen_od
 - file: PDS/intro
   title: PDS - Power Distribution System
   sections:
@@ -36,14 +41,70 @@ chapters:
       title: Quick start guide
 - file: CANdle/intro.md
   title: CANdle and CANdleHAT
+  sections:
+    - file: CANdle/Principle
+      title: Principle Of Operation (OUTDATED)
+    - file: CANdle/usingCandle
+      title: Using Candle (OUTDATED)
 - file: CANdle-SDK/intro.md
   title: Software - CANdle-SDK
   sections:
-    - file: CANdle-SDK/CANdleTool
     - file: CANdle-SDK/CANdlelib
-- file: FAQ/intro.md
+      sections:
+       - file: CANdle-SDK/candlelib/CANdleModule
+       - file: CANdle-SDK/candlelib/MDModule
+       - file: CANdle-SDK/candlelib/PDSModule
+    - file: CANdle-SDK/CANdleTool
+      sections:
+        - file: CANdle-SDK/candletool/Installation
+        - file: CANdle-SDK/candletool/Commands
+        - file: CANdle-SDK/candletool/ConfigurationFiles
+        - file: CANdle-SDK/candletool/MABFwFiles
+- file: FAQ/intro
   title: FAQ
-- file: Downloads/intro.md
+- file: Downloads/intro
   title: Downloads
-- file: candlelib/intro.md
+- file: candlelib/intro
   title: Software - mdtool [LEGACY] 
+  sections:
+  - file: candlelib/quick_start_guide/QuickStartGuide
+  - file: candlelib/md_x_candle_ecosystem_overview/Ecosystem
+    sections:
+      - file: candlelib/md_x_candle_ecosystem_overview/Calibration
+      - file: candlelib/md_x_candle_ecosystem_overview/Config
+      - file: candlelib/md_x_candle_ecosystem_overview/Measurements
+      - file: candlelib/md_x_candle_ecosystem_overview/Motion_modes
+      - file: candlelib/md_x_candle_ecosystem_overview/Safety_limits
+      - file: candlelib/md_x_candle_ecosystem_overview/Status_codes
+      - file: candlelib/md_x_candle_ecosystem_overview/Utilities
+  - file: candlelib/controllers/Controllers
+    sections:
+    - file: candlelib/controllers/md80_controller/MD80
+    - file: candlelib/controllers/md20_controller/MD20
+    - file: candlelib/controllers/add_ons/Add-ons
+      sections:
+        - file: candlelib/controllers/add_ons/aux_encoders/Auxiliary_Encoder
+        - file: candlelib/controllers/add_ons/brake_systems/Brake_systems
+  - file: candlelib/candle_and_candle_hat/CANdle
+    sections:
+      - file: candlelib/candle_and_candle_hat/Latency
+      - file: candlelib/candle_and_candle_hat/Principle
+      - file: candlelib/candle_and_candle_hat/Using_CANdle
+  - file: candlelib/software_package/Software
+    sections:
+      - file: candlelib/software_package/Legacy
+      - file: candlelib/software_package/legacy/MDTOOL
+      - file: candlelib/software_package/legacy/cpp
+      - file: candlelib/software_package/legacy/python
+      - file: candlelib/software_package/legacy/quick_startup_ros2
+      - file: candlelib/software_package/legacy/quick_startup_ros
+      - file: candlelib/software_package/legacy/ros_nodes
+  - file: candlelib/md_fdcan_protocol/canProtocol
+  - file: candlelib/md_canopen/CANopen
+    sections:
+      - file: candlelib/md_canopen/OD
+      - file: candlelib/md_canopen/TransitionProcedure
+  - file: candlelib/Downloads/Downloads
+  - file: candlelib/common_problems_and_faq/FAQ
+  - file: candlelib/Changelogs/Changelogs
+
