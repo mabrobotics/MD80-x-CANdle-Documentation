@@ -1,4 +1,4 @@
-(fd_can_protocol)=
+(fd_can_protocol_legacy)=
 # MD FDCAN communication
 The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD actuators from your custom FDCAN-capable master controller.
 
@@ -103,9 +103,9 @@ Write register frame is used to modify values of the user-modifiable registers. 
 <p></p>
 
 Params:
-- regID (uint16_t) - first register ID (please see the end of this section)
+- regID (uint16_t_legacy) - first register ID (please see the end of this section)
 - value (uint8_t/uint16_t/uint32_t/float/char[]) - first register value to be written
-- regID (uint16_t) - second register ID (please see the end of this section)
+- regID (uint16_t_legacy) - second register ID (please see the end of this section)
 - value (uint8_t/uint16_t/uint32_t/float/char[]) - second register value to be written
 - ... (up to 64 bytes total)
 
@@ -178,7 +178,7 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
 Frame payload length must not exceed 64 bytes. 
 ```
 
-(registers)=
+(registers_legacy)=
 ### Available registers
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">

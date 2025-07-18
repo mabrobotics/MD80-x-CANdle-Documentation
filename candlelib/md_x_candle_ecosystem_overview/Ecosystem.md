@@ -1,6 +1,6 @@
 # Ecosystem overview 
 
-MD x CANdle is a system of brushless actuator controllers (MD series motor controller) and translator devices (CANdle) used for interfacing with them. MD series controller actuators can be used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and many more. 
+MD x CANdle is a system of brushless actuator controllers (MD series motor controller) and translator devices (CANdle_legacy) used for interfacing with them. MD series controller actuators can be used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and many more. 
 
 ## MD series motor controller
 
@@ -40,18 +40,18 @@ Even though the MD series motor controller is a small brushless controller it ca
 
 ```{list-table}
 
-* - Ambient Temperature (Operating)
+* - Ambient Temperature (Operating_legacy)
   - 0°C - 40°C
-* - Ambient Temperature (non-operating)
+* - Ambient Temperature (non-operating_legacy)
   - 0°C - 60°C
-* - Maximum Humidity (Operating)
+* - Maximum Humidity (Operating_legacy)
   - up to 95%, non-condensing at 40 ºC
-* - Maximum Humidity (Non-Operating)
+* - Maximum Humidity (Non-Operating_legacy)
   - up to 95%, non-condensing at 60 ºC
-* - Altitude (Operating)
+* - Altitude (Operating_legacy)
   - -400 m to 2000 m
 ```
-(hardware_setup)=
+(hardware_setup_legacy)=
 ## Hardware setup 
 
 CAN bus topology is a single-line network structure. A typical hardware connection/wiring scheme for CANdle x MD ecosystem is presented in the picture below:

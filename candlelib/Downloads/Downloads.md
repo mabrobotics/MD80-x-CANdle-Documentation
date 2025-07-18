@@ -1,10 +1,10 @@
-(downloads)=
+(downloads_legacy)=
 # Downloads
 
-(hardware_downloads)=
+(hardware_downloads_legacy)=
 ## 3D models
 
-Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found [here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
+Simplified (lightweight_legacy) 3D *.STEP models of MABRobotics products can be found [here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
 
 ## CANdleSDK
 
@@ -18,7 +18,7 @@ Until the release of the new firmware files please use flashers listed below.
 |-----|------|---------| -->
 
 
-(software_downloads)=
+(software_downloads_legacy)=
 ## Legacy software
 Main stable releases:
 
@@ -91,7 +91,7 @@ Main stable releases:
 			<td><a href = ../docs/1.2.2.pdf>1.2.2</a></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>30.01.2025 (latest)</b></td>
+			<td style="color:green;"><b>30.01.2025 (latest_legacy)</b></td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.3>3.5.3</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.3>1.5.3</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
@@ -105,10 +105,10 @@ Main stable releases:
 </table>
 <p></p>
 
-(mab_can_flasher)=
+(mab_can_flasher_legacy)=
 ### MD update tool - MAB CAN Flasher 
 
-MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.
+MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD controller(s_legacy), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping_legacy) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.
 
 ```{note}
 Make sure the MAB_CAN_Flasher can be executed. If not use the `sudo chmod +x ./MAB_CAN_Flasher` command.
@@ -158,7 +158,7 @@ Make sure the MAB_USB_Flasher can be executed. If not use the `sudo chmod +x ./M
 ```
 
 After a successful update, the CANdle device is ready. 
-(canopen-flashers)=
+(canopen-flashers_legacy)=
 ### CANopen Flashers
 
 Those flashers are intended to be used with CANopen controllers.
@@ -173,7 +173,7 @@ Versions:
 	<tbody>
 		<tr>
       		<td> <b>Date</b></td>
-			<td> <b>MD Firmware (CANopen)</b></td>
+			<td> <b>MD Firmware (CANopen_legacy)</b></td>
 			<td> <b>EDS file for MD</b></td>
 		</tr>
 		<tr>
@@ -182,7 +182,7 @@ Versions:
 			<td>-</td>
 		</tr>
 		<tr>
-			<td><b>30.01.2025 (latest)</b></td>
+			<td><b>30.01.2025 (latest_legacy)</b></td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip>2.4.1</a></td>
 			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
 		</tr>

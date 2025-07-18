@@ -47,9 +47,9 @@ Remember to save the parameters - please see the last chapter
 
 Setup of the external encoder should be done after the motor has been configured, as suggested in previous paragraph. To setup the output encoder the following fields need to be filled: 
 
-- 0x2005:1 - Output Encoder Type (please see [output encoder](output_encoder))
-- 0x2005:2 - Calibration Mode (please see [output encoder calibration](output_encoder_calibration))
-- 0x2005:3 - Mode (please see [output encoder](output_encoder))
+- 0x2005:1 - Output Encoder Type (please see [output encoder](output_encoder_legacy))
+- 0x2005:2 - Calibration Mode (please see [output encoder calibration](output_encoder_calibration_legacy))
+- 0x2005:3 - Mode (please see [output encoder](output_encoder_legacy))
 
 ```{note}
 Remember to save the parameters - please see the last chapter 
@@ -59,12 +59,12 @@ Remember to save the parameters - please see the last chapter
 
 After the parameters have been filled there are two more steps to follow - save to non-volatile memory and calibrate:
 
-1. Run [store parameters](store_parameters) routine using 0x1010:1:
+1. Run [store parameters](store_parameters_legacy) routine using 0x1010:1:
     - make sure the state machine is in "switch on disabled" state (write 0x8 to controlword 0x6040)
     - write 0x65766173 to 0x1010:1 
     - wait for the drive to reboot
 
-2. Run [calibration routine](system_command) using 0x2003:3 (and output encoder calibration routine 0x2003:4 if output encoder is present)
+2. Run [calibration routine](system_command_legacy) using 0x2003:3 (and output encoder calibration routine 0x2003:4 if output encoder is present)
     - make sure the state machine is in "operational" state (write sequentially 0x8, 0x6, 0xf to controlword 0x6040, and check if the statusword 0x6041 is 0x39)
     - make sure the drive is in "service" operation mode (write -2 to Modes Of Operation 0x6060)
     - write 1 to 0x2003:3 to start the calibration

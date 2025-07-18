@@ -1,4 +1,4 @@
-(md_old)=
+(md_old_legacy)=
 # Controllers
 
 ## [MD80](./md80_controller/MD80.md)

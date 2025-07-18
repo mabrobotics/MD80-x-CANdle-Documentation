@@ -3,8 +3,8 @@
 ### Preparation
 
 Download flasher programs from here:
-- [MD CANopen](canopen-flashers) 
-- [MD FDCAN Protocol](software_downloads)
+- [MD CANopen](canopen-flashers_legacy) 
+- [MD FDCAN Protocol](software_downloads_legacy)
 
 The migration is performed via flashing appropriate firmware onto the MD device. Necessary components for this procedure are:
 - Candle or Candle HAT device

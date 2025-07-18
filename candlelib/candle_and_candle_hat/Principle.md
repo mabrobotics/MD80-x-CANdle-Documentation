@@ -2,7 +2,7 @@
 
 CANdle can work in two different modes: CONFIG and UPDATE. When in CONFIG mode, it works as a traditional translator device between two selected buses - USB/SPI/UART and FDCAN. This mode is used to set up the drives and prepare them for a low-latency operation in the UPDATE mode. When the configuration is done the user calls `candle.begin()` which starts a low-latency continuous connection with the MD controllers. In the UPDATE mode, you are not allowed to call the config functions. To make them easier to recognize, each config function starts with a config keyword. The user exits the UPDATE mode using `candle.end()` method.
 
-When in Update mode the communication speed is dictated by the number of drives attached to the bus. Please see the [latency section](latency) for maximum communication speeds.
+When in Update mode the communication speed is dictated by the number of drives attached to the bus. Please see the [latency section](latency_legacy) for maximum communication speeds.
 
 Generally, a program using CANdle should follow the workflow below:
 

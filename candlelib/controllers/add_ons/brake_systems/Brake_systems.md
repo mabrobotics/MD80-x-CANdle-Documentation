@@ -1,4 +1,4 @@
-(brake_systems)=
+(brake_systems_legacy)=
 # Brake Systems
 
 ## Introduction
@@ -51,7 +51,7 @@ The board can be fastened in place using 2 mounting points with M2 DIN 912 screw
 :class: no-scaled-link
 ```
 
-The product has an open-drain output in the form of two solderable pads (J3) for control of the brake state. Output's state is directly controlled via input PWM signal provided on the pin 1 of the control logic connector (J2) with return path provided on pin 2.
+The product has an open-drain output in the form of two solderable pads (J3_legacy) for control of the brake state. Output's state is directly controlled via input PWM signal provided on the pin 1 of the control logic connector (J2_legacy) with return path provided on pin 2.
 
 Output state is high-impedance when the PWM pin is set low. Low-impedance when the PWM pin is set high.
 
@@ -96,5 +96,5 @@ This requires the jumper at the bottom of the MBC to be soldered in closed posit
 which in over-current scenarios can possibly destroy the driver.
 ```
 
-In order for the MD to utilize SLIM system the driver must be properly configured. See [GPIO](GPIO) and [User Gpio Configuration register](registers) section for more details.
+In order for the MD to utilize SLIM system the driver must be properly configured. See [GPIO](GPIO_legacy) and [User Gpio Configuration register](registers_legacy) section for more details.
 

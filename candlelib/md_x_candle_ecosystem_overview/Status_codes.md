@@ -1,11 +1,11 @@
-(status)=
+(status_legacy)=
 # Status
 
 When an abnormal situation takes place the controller sets an error bit indicating a particular error or warning. The table below lists all available error and warning codes and their descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the CANdle lib getQuickStatus() function.
 
 Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note that all warnings and only non-critical errors can be cleared. 
 
-(quick_status)=
+(quick_status_legacy)=
 ## Quick Status 
 
 Quick status provides a general info about errors in each category of statuses. No warnings are indicated here. Last bit indicatest whether the current target (position or velocity) has been reached.
@@ -265,7 +265,7 @@ Quick status provides a general info about errors in each category of statuses. 
 </table>
 <p></p>
 
-(motion_status)=
+(motion_status_legacy)=
 ## Motion status
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">

@@ -1,4 +1,4 @@
-(config)=
+(config_legacy)=
 # Config
 
 MDxx's config allows for configuring the controller for a specific motor and the application it is used in. This section will cover the parameters that are used in config files. 
@@ -11,7 +11,7 @@ MDxx's config allows for configuring the controller for a specific motor and the
 - `torque constant` - motor torque constant in Nm/A
 - `gear ratio` - gear ratio -> example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2
 - `max current` - maximum allowable phase (not power supply) current
-- `torque bandwidth` - [torque bandwidth](torque_bandwidth) setting
+- `torque bandwidth` - [torque bandwidth](torque_bandwidth_legacy) setting
 - `shutdown temp` - temperature threshold in [*C] of the motor that will cause a overtemperature stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0*C when mdtool setup info is called, the thremistor is not populated or is not working.
 
 ## [limits] section
@@ -32,7 +32,7 @@ These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.
 - `velocity` - profile velocity in rad/s
 
 ## [output encoder] section
-For more information please refer to [output encoder](output_encoder) section. 
+For more information please refer to [output encoder](output_encoder_legacy) section. 
 
 - `output encoder` - valid types: ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS
 - `output encoder mode` - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT

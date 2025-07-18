@@ -1,11 +1,11 @@
-(motion_modes)=
+(motion_modes_legacy)=
 # Motion modes
 
 ```{hint}
 TL;DR: [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&t=0s)
 ```
 
-To control the motor shaft with the user’s command MDxx is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.
+To control the motor shaft with the user’s command MDxx is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup_legacy) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.
 
 
 ```{figure} ./images/limiters.png
@@ -71,9 +71,9 @@ Impedance Control mode is a popular choice for mobile or legged robots, as well 
 
 The torque output is proportional to the position error and velocity error and additionally supplemented with a torque command from the user. Here are some of the most common applications for this control mode:
 * <b>Spring-damper mechanism</b> - when velocity target is set to 0, impedance controllers kP gain acts as the virtual spring stiffness and kD as its damping coefficient. 
-Example use case: a variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP, damping by kD, and height (clearance) by changing the target position;
+Example use case: a variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP, damping by kD, and height (clearance_legacy) by changing the target position;
 * <b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents to the torque command.
-Example use case: In legged robots, force control can be achieved by advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to stabilize the robot but too slow to avoid vibrations. Knowing desired robot's joint positions, velocities, and torques, drives can be set to produce the proper torque and hold the position/velocity with small gains. This would compensate for any high-frequency oscillations (vibrations) that may occur, as the impedance controller works at 40kHz (much faster than <100 Hz).
+Example use case: In legged robots, force control can be achieved by advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to stabilize the robot but too slow to avoid vibrations. Knowing desired robot's joint positions, velocities, and torques, drives can be set to produce the proper torque and hold the position/velocity with small gains. This would compensate for any high-frequency oscillations (vibrations_legacy) that may occur, as the impedance controller works at 40kHz (much faster than <100 Hz).
 * <b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to the output controller torque. 
 * <b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the motor shaft will be free to rotate. When the drive is disabled it connects all the windings together for safety. This mode can be useful for enabling free rotation of the shaft, but the rotational energy shoudl not be too high as the voltages induced in the motor windings coudl break the driver. 
 
@@ -134,7 +134,7 @@ float mab_controller_performImpedanceController(Impedance_controller *c, float p
 	return c->output;
 }
 ```
-(Motion_controller_tuning)=
+(Motion_controller_tuning_legacy)=
 # Motion controller tuning
 
 ```{hint}

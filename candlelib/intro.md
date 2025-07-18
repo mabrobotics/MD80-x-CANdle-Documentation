@@ -34,7 +34,6 @@ Any new features and requests will be added to the new software stack CANdle-SDK
     - [CANOpen](md_canopen/CANopen)
         - [OD](md_canopen/OD) 
         - [Migration to/from CANOpen](md_canopen/TransitionProcedure)
-7. [PDS - Power Distribution System](pds/pds_qsg)
 8. [FAQ](common_problems_and_faq/FAQ)
 8. [Downloads](Downloads/Downloads)
 

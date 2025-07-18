@@ -125,7 +125,7 @@ Indicates whether an error has occured. Currently, only the 0th bit is implement
 </table>
 <p></p>
 
-(store_parameters)=
+(store_parameters_legacy)=
 ### 0x1010 - Store Parameters
 
 Use this object for saving parameters in non-volatile memory. Works only in "switch on disabled" state. To avoid saving parameters by mistake a value of 0x65766173 has to be explicitly written to 0x1010:1.
@@ -502,7 +502,7 @@ Configures the most important motor settings. This object is especially useful w
       		<td>0x2000</td>
 			<td>0x06</td>
 			<td>Motor Name</td>
-     		<td>STR(20)</td>
+     		<td>STR(20_legacy)</td>
 			<td>RW</td>
 			<td>-</td>
 			<td>yes</td>
@@ -562,7 +562,7 @@ Configures the most important motor settings. This object is especially useful w
 </table>
 <p></p>
 
-(velocity_pid_controller)=
+(velocity_pid_controller_legacy)=
 ### 0x2001 - Velocity PID Controller
 
 Configures the Velocity PID controller gains. Be sure to save after modification using 0x1010 Store Parameters.
@@ -637,7 +637,7 @@ Configures the Velocity PID controller gains. Be sure to save after modification
 :align: center
 :width: 1000px
 ```
-(position_pid_controller)=
+(position_pid_controller_legacy)=
 ### 0x2002 - Position PID Controller
 
 Configures the Position PID controller gains. Be sure to save after modification using 0x1010 Store Parameters.
@@ -714,10 +714,10 @@ Configures the Position PID controller gains. Be sure to save after modification
 :align: center
 ```
 
-(system_command)=
+(system_command_legacy)=
 ### 0x2003 - System Command
 
-Allows to issue a system command. Write a non-zero value to start a specific action. Actions work only in "switch on disabled" state and "service" (-2) operation mode.
+Allows to issue a system command. Write a non-zero value to start a specific action. Actions work only in "switch on disabled" state and "service" (-2_legacy) operation mode.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -835,7 +835,7 @@ Allows to issue a system command. Write a non-zero value to start a specific act
 
 ### 0x2004 - System Status
 
-Allows to read System status. Each specific status is a UINT32, where lower bits (0-15) indicate errors, and higher bits (16-31) indicate warnings. Please see the [Status ](status) section to see how to decode the status to individual fields.
+Allows to read System status. Each specific status is a UINT32, where lower bits (0-15_legacy) indicate errors, and higher bits (16-31_legacy) indicate warnings. Please see the [Status ](status_legacy) section to see how to decode the status to individual fields.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -977,7 +977,7 @@ Output encoder related record.
 			<td>RW</td>
 			<td>-</td>
 			<td>yes</td>
-			<td>1 (ME_AS_CENTER), 2 (ME_AS_OFFAXIS), 3 (MB053SFA17BENT00), 4 (CM_OFFAXIS), 5 (M24B_CENTER), 6 (M24B_OFFAXIS)</td>
+			<td>1 (ME_AS_CENTER_legacy), 2 (ME_AS_OFFAXIS_legacy), 3 (MB053SFA17BENT00_legacy), 4 (CM_OFFAXIS_legacy), 5 (M24B_CENTER_legacy), 6 (M24B_OFFAXIS_legacy)</td>
             <td>0</td>
             <td>-</td>
 		</tr>
@@ -1124,7 +1124,7 @@ The state machine is defined as follows:
 :class: no-scaled-link
 ```
 
-All the transitions are based on the control word. The current state can be read using the status word (0x6041).
+All the transitions are based on the control word. The current state can be read using the status word (0x6041_legacy).
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -1218,8 +1218,8 @@ X means "do not care"
 Example:
 
 To put the drive into operational mode set:
-1. Control word = 6 (dec) (Shutdown cmd)
-2. Control word = 15 (dec) (Switch on and Enable Operation cmds)
+1. Control word = 6 (dec_legacy) (Shutdown cmd)
+2. Control word = 15 (dec_legacy) (Switch on and Enable Operation cmds)
 
 
 The events and respective transitions are gathered in the table below:
@@ -1390,7 +1390,7 @@ The events and respective transitions are gathered in the table below:
 </table>
 <p></p>
 
-bit 10 of the statusword indicates the current target has been reached (1) or not (0). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a 0x6067 Position Window margin), and in velocity mode that a velocity target has been reached (within 0x606D Velocity Window).
+bit 10 of the statusword indicates the current target has been reached (1_legacy) or not (0_legacy). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a 0x6067 Position Window margin), and in velocity mode that a velocity target has been reached (within 0x606D Velocity Window).
 
 bit 11 of the statusword indicates whether any of the internal limits was active during current power up - for more information on which limit is active, check the 0x2004:7 Motion Status.
 
@@ -1465,7 +1465,7 @@ Use this object to request a motion mode change. The actual mode is reflected in
 
 #### Service
 
-Mode in which [System Commands](system_command) can be issued.
+Mode in which [System Commands](system_command_legacy) can be issued.
 
 #### Idle
 
@@ -1473,14 +1473,14 @@ Default state of the drive. No torque is produced, motor phases are shorted to G
 
 #### Profile position
 
-Profile position mode uses a trapeziodal trajectory generator on top of the [Position PID controller](position_pid_controller). Allows to perform smooth point-to-point movements.
+Profile position mode uses a trapeziodal trajectory generator on top of the [Position PID controller](position_pid_controller_legacy). Allows to perform smooth point-to-point movements.
 
 ```{figure} images/position_profile_generator_CANopen.png
 ```
 
 #### Profile velocity
 
-Profile velocity mode uses a trapeziodal trajectory generator on top of the [Velocity PID controller](velocity_pid_controller). Allows to reach a certain velocity with a constant acceleration / deceleration.
+Profile velocity mode uses a trapeziodal trajectory generator on top of the [Velocity PID controller](velocity_pid_controller_legacy). Allows to reach a certain velocity with a constant acceleration / deceleration.
 
 ```{figure} images/velocity_profile_generator_CANopen.png
 ```
