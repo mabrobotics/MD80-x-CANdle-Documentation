@@ -18,7 +18,7 @@ idna==3.10
 imagesize==1.4.1
 importlib_metadata==8.6.1
 ipykernel==6.29.5
-ipython==9.0.2
+ipython==8.37.0
 ipython_pygments_lexers==1.1.1
 jedi==0.19.2
 Jinja2==3.1.6

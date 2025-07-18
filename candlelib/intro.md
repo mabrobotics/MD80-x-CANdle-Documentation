@@ -1,4 +1,7 @@
 # MD x CANdle Manual
+This is a LEGACY software documentation for CANdle library, mdtool. This documentation and software is 
+provided "as is". Will not be further updated and remains as an archive of what used to be. 
+Any new features and requests will be added to the new software stack CANdle-SDK.
 
 1. [Quick Start Guide](quick_start_guide/QuickStartGuide.md)
 2. [MD x CANdle Ecosystem overview](md_x_candle_ecosystem_overview/Ecosystem.md)

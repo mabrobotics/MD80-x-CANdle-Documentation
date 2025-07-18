@@ -3,85 +3,47 @@
 
 format: jb-book
 root: intro
+
 chapters:
-- file: quick_start_guide/QuickStartGuide.md
-  title: Quick Start Guide
-- file: md_x_candle_ecosystem_overview/Ecosystem.md
-  title: MD x CANdle Ecosystem overview
+- file: MD/intro
+  title: MD - motor controllers
   sections:
-    - file: md_x_candle_ecosystem_overview/Measurements
-    - file: md_x_candle_ecosystem_overview/Safety limits
-    - file: md_x_candle_ecosystem_overview/Calibration
-    - file: md_x_candle_ecosystem_overview/Motion modes
-    - file: md_x_candle_ecosystem_overview/Config
-    - file: md_x_candle_ecosystem_overview/Status codes
-    - file: md_x_candle_ecosystem_overview/Utilities
-- file: controllers/Controllers
-  title: Controllers
-  sections:
-    - file: controllers/md80_controller/MD80
-      title: MD80 controller  
-    - file: controllers/md20_controller/MD20
-      title: MD20 controller
-    - file: controllers/add_ons/Add-ons
-      title: Controller add-ons
+    - file: MD/MD80
+      title: MD80
+    - file: MD/MD20
+      title: MD20
+    - file: MD/encoders
+      title: Encoders
+    - file: MD/brakes
+      title: Brakes
+    - file: MD/config_calibration
+      title: Configuration & Calibration
+    - file: MD/safety_motion
+      title: Safety & Motion
+    - file: MD/status_utility
+      title: Status & Utilities
+    - file: MD/Communication/intro
+      title: Communication
       sections:
-        - file: controllers/add_ons/aux_encoders/Auxiliary Encoder.md
-          title: Auxiliary Encoder
-        - file: controllers/add_ons/brake_systems/Brake systems.md
-          title: Brake Systems
-- file: candle_and_candle_hat/CANdle
-  title: CANdle and CANdle HAT
+       - file: MD/Communication/fdcan
+         title: FDCAN 
+       - file: MD/Communication/canopen
+         title: CANOpen
+- file: PDS/intro
+  title: PDS - Power Distribution System
   sections:
-    - file: candle_and_candle_hat/Principle
-    - file: candle_and_candle_hat/Using CANdle
-    - file: candle_and_candle_hat/Latency
-- file: software_package/Software
-  title: Software package
+    - file: PDS/quickstart
+      title: Quick start guide
+- file: CANdle/intro.md
+  title: CANdle and CANdleHAT
+- file: CANdle-SDK/intro.md
+  title: Software - CANdle-SDK
   sections:
-    - file: software_package/CANdleSDK.md
-      sections:
-      - file: software_package/CANdleSDK/CANdlelib.md
-        sections:
-        - file: software_package/CANdleSDK/CANdlelib/Overview.md
-        - file: software_package/CANdleSDK/CANdlelib/CANdleModule.md
-        - file: software_package/CANdleSDK/CANdlelib/MDModule.md
-        - file: software_package/CANdleSDK/CANdlelib/PDSModule.md
-      - file: software_package/CANdleSDK/CANdleTool.md
-        sections:
-        - file: software_package/CANdleSDK/CANdletool/Overview.md
-        - file: software_package/CANdleSDK/CANdletool/Installation.md
-        - file: software_package/CANdleSDK/CANdletool/Commands.md
-        - file: software_package/CANdleSDK/CANdletool/ConfigurationFiles.md
-        - file: software_package/CANdleSDK/CANdletool/MABFwFiles.md
-    - file: software_package/Legacy.md
-      title: Legacy software package
-      sections:
-        - file: software_package/legacy/MDTOOL.md
-        - file: software_package/legacy/Candle C++ library.md
-        - file: software_package/legacy/Candle Python library.md
-        - file: software_package/legacy/Candle ROS nodes.md
-        - file: software_package/legacy/Quick startup guide ROS.md
-        - file: software_package/legacy/Quick startup guide ROS2.md
-- file: md_fdcan_protocol/canProtocol
-  title: MD FDCAN protocol
-- file: md_canopen/CANopen
-  title: MD CANopen
-  sections:
-    - file: md_canopen/OD
-      title: Object Dictionary
-    - file: md_canopen/TransitionProcedure
-      title: Migration to and from CANopen
-- file: pds/pds
-  title: PDS Power Distribution System
-  sections:
-    - file: pds/pds_qsg
-      title: Quick Start Guide
-    - file: pds/pds_sdk_examples
-      title: CANdleSDK PDS Software Examples
-- file: common_problems_and_faq/FAQ
-  title: Common problems and FAQ
-- file: Downloads/Downloads
+    - file: CANdle-SDK/CANdleTool
+    - file: CANdle-SDK/CANdlelib
+- file: FAQ/intro.md
+  title: FAQ
+- file: Downloads/intro.md
   title: Downloads
-- file: Changelogs/Changelogs
-  title: Changelogs
+- file: candlelib/intro.md
+  title: Software - mdtool [LEGACY] 

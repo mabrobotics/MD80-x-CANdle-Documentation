@@ -1,5 +1,4 @@
-(output_encoder)=
-# Auxiliary Encoder
+# Auxiliary Encoders
 
 Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually useful for geared motors where the output shaft position after startup cannot be determined unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can make sure that the output shaft position is always known at startup. 
 
@@ -7,7 +6,7 @@ Output encoder is a position sensor that can be attached to the output shaft of 
 :alt: candle
 :class: bg-primary mb-1
 :align: center
-:class: no-scaled-link
+:class: no-scaled-link/
 ```
 
 Currently we support one encoder type with two placement configurations: 
