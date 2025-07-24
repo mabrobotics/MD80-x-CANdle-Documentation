@@ -1,21 +1,34 @@
 (fd_can_protocol_legacy)=
+
 # MD FDCAN communication
-The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD actuators from your custom FDCAN-capable master controller.
+
+The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even
+though we are aware some customers want to integrate the MD controllers in their product with
+minimal setup to reduce the costs and the system’s complexity. This manual will guide you through
+the process of communicating with MD actuators from your custom FDCAN-capable master controller.
 
 ## Hardware requirements
-The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus.
+
+The main requirement for the host system is to be equipped with an FDCAN peripheral (either a
+built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower
+maximum speed transceivers can be used as well, however for the cost of limited update rates.
+Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on
+both ends of your CAN bus.
 
 ```{note}
  MD controllers from version 2.0 can be upgraded to software controlled termination. Please contact us for more information
- ```
+```
 
 ## Communication Structure
 
-The communication stack is based on a register access using two frames - register read and register write. The list of available registers can be found at the end of this chapter. All fields are little-endian - least significant byte first, and all float fields are 4 bytes long encoded in IEEE-754 standard. 
+The communication stack is based on a register access using two frames - register read and register
+write. The list of available registers can be found at the end of this chapter. All fields are
+little-endian - least significant byte first, and all float fields are 4 bytes long encoded in
+IEEE-754 standard.
 
 ### Default response
 
-The default response is sent by the drive in case a register write operation was successful. 
+The default response is sent by the drive in case a register write operation was successful.
 
 <p></p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -68,11 +81,12 @@ The default response is sent by the drive in case a register write operation was
 </table>
 <p></p>
 
-In case the operation initiated by a frame was unsuccessful the MDxx will not respond. 
+In case the operation initiated by a frame was unsuccessful the MDxx will not respond.
 
 ### Write register frame
 
-Write register frame is used to modify values of the user-modifiable registers. Only registers with write access can be modified.
+Write register frame is used to modify values of the user-modifiable registers. Only registers with
+write access can be modified.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -103,6 +117,7 @@ Write register frame is used to modify values of the user-modifiable registers. 
 <p></p>
 
 Params:
+
 - regID (uint16_t_legacy) - first register ID (please see the end of this section)
 - value (uint8_t/uint16_t/uint32_t/float/char[]) - first register value to be written
 - regID (uint16_t_legacy) - second register ID (please see the end of this section)
@@ -113,7 +128,9 @@ When all registers write operations succeed the drive will respond with default 
 
 ### Read Register Frame
 
-Read register command is used to retrieve certain register values. The actuator will respond with a frame consisting of the addresses and values of the registers issued in the master request. The master request should have the following form: 
+Read register command is used to retrieve certain register values. The actuator will respond with a
+frame consisting of the addresses and values of the registers issued in the master request. The
+master request should have the following form:
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -143,7 +160,8 @@ Read register command is used to retrieve certain register values. The actuator 
 </table>
 <p></p>
 
-When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MDxx controller.
+When all read operations succeed the 0x00 fields will be filled with appropriate register data when
+transmitted back to master by the MDxx controller.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -173,12 +191,12 @@ When all read operations succeed the 0x00 fields will be filled with appropriate
 </table>
 <p></p>
 
-
 ```{warning}
 Frame payload length must not exceed 64 bytes. 
 ```
 
 (registers_legacy)=
+
 ### Available registers
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">

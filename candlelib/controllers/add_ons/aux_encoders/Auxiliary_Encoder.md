@@ -1,7 +1,11 @@
 (output_encoder_legacy)=
+
 # Auxiliary Encoder
 
-Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually useful for geared motors where the output shaft position after startup cannot be determined unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can make sure that the output shaft position is always known at startup. 
+Output encoder is a position sensor that can be attached to the output shaft of the actuator. It is
+usually useful for geared motors where the output shaft position after startup cannot be determined
+unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can
+make sure that the output shaft position is always known at startup.
 
 ```{figure} ./images/output_encoders.jpg
 :alt: candle
@@ -10,8 +14,9 @@ Output encoder is a position sensor that can be attached to the output shaft of 
 :class: no-scaled-link
 ```
 
-Currently we support one encoder type with two placement configurations: 
-* ME AS placed axially on the output shaft with a regular diametrically magnetized magnet
+Currently we support one encoder type with two placement configurations:
+
+- ME AS placed axially on the output shaft with a regular diametrically magnetized magnet
 
 ```{figure} ./images/output_encoder_axial.jpg
 :width: 300px
@@ -20,7 +25,7 @@ Currently we support one encoder type with two placement configurations:
 :class: no-scaled-link
 ```
 
-* ME AS placed non-axially together with a diametrically magnetized ring magnet 
+- ME AS placed non-axially together with a diametrically magnetized ring magnet
 
 ```{figure} ./images/output_encoder_offaxis.jpg
 :width: 300px
@@ -31,7 +36,9 @@ Currently we support one encoder type with two placement configurations:
 
 ## Configuration
 
-The output encoder configuration is performed in the motor config files and saved to the MD series motor controller using the [`mdtool setup motor`](mdtool_setup_motor_legacy) command. There are only two parameters used in output encoder setup: 
+The output encoder configuration is performed in the motor config files and saved to the MD series
+motor controller using the [`mdtool setup motor`](mdtool_setup_motor_legacy) command. There are only
+two parameters used in output encoder setup:
 
 ```
 [output encoder]
@@ -87,7 +94,9 @@ where:
 The non-axial configuration outputs a nonlinear position values. This means it requires a [full calibration](output_encoder_calibration_legacy) (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host's software
 ```
 
-Not all modes are recommended for every encoder. The non-axially placed ME AS encoder is inherently more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to the table below: 
+Not all modes are recommended for every encoder. The non-axially placed ME AS encoder is inherently
+more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to
+the table below:
 
 ```{list-table}
 :header-rows: 1
@@ -111,7 +120,7 @@ Not all modes are recommended for every encoder. The non-axially placed ME AS en
 
 Steps to add an external encoder to the driver setup:
 
-* make sure the encoder sensor is placed correctly: 
+- make sure the encoder sensor is placed correctly:
 
 ```{figure} ./images/output_encoder_cross.png
 :alt: candle
@@ -119,12 +128,17 @@ Steps to add an external encoder to the driver setup:
 :align: center
 :class: no-scaled-link
 ```
-*
-  * in case of axially placed sensors make sure they are placed in center at correct height above the magnet (1 mm is usually optimal)
-  * in case of non-axial configuration make sure the magnet is close to the ring magnet (<0.5mm) and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.
 
-* Connect the MDxx with the encoder using a picoblade series cable assembly and connect power to the MDxx. 
-* Modify the motor config file according to your setup and save it to the MDxx using [mdtool](mdtool_legacy)
+- - in case of axially placed sensors make sure they are placed in center at correct height above
+    the magnet (1 mm is usually optimal)
+  - in case of non-axial configuration make sure the magnet is close to the ring magnet (\<0.5mm)
+    and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.
+
+- Connect the MDxx with the encoder using a picoblade series cable assembly and connect power to the
+  MDxx.
+
+- Modify the motor config file according to your setup and save it to the MDxx using
+  [mdtool](mdtool_legacy)
 
 ```{figure} ./images/setup_output_encoder.png
 :alt: candle
@@ -133,7 +147,8 @@ Steps to add an external encoder to the driver setup:
 :class: no-scaled-link
 ```
 
-You can confirm the setup using the [`mdtool setup info`](mdtool_setup_info_legacy) command to make sure all parameters are correct: 
+You can confirm the setup using the [`mdtool setup info`](mdtool_setup_info_legacy) command to make
+sure all parameters are correct:
 
 ```{figure} ./images/mdtool_setup_info_errors.png
 :alt: candle
@@ -141,12 +156,16 @@ You can confirm the setup using the [`mdtool setup info`](mdtool_setup_info_lega
 :align: center
 :class: no-scaled-link
 ```
+
 ```{note}
 At this point some errors will be present as the setup is not yet calibrated. 
 ```
 
-* Calibrate the MDxx using [`mdtool setup calibration`](mdtool_setup_calibration_legacy) command 
-* Calibrate the output encoder using [`mdtool setup calibration_out`](mdtool_setup_calibration_out_legacy) command
-* Test the encoders using [`mdtool test encoder`](mdtool_test_encoder_legacy) command.
-* Use the [`mdtool setup info all`](mdtool_setup_info_legacy) command to make sure there are no errors and the test results (min, max and stddev errors) are within your expectations.
-* The external encoder is ready to use! For more information on external encoder parameters please see the [output encoder calibration](output_encoder_calibration_legacy) section.
+- Calibrate the MDxx using [`mdtool setup calibration`](mdtool_setup_calibration_legacy) command
+- Calibrate the output encoder using
+  [`mdtool setup calibration_out`](mdtool_setup_calibration_out_legacy) command
+- Test the encoders using [`mdtool test encoder`](mdtool_test_encoder_legacy) command.
+- Use the [`mdtool setup info all`](mdtool_setup_info_legacy) command to make sure there are no
+  errors and the test results (min, max and stddev errors) are within your expectations.
+- The external encoder is ready to use! For more information on external encoder parameters please
+  see the [output encoder calibration](output_encoder_calibration_legacy) section.

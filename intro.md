@@ -7,15 +7,15 @@
 ```
 
 **CANdle Ecosystem** is a system of brushless actuator controllers (MD series motor controller) and
-translator devices (CANdle) used for interfacing with them. MD series controller actuators can be used
-in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons, gimbals, and
-many more.
+translator devices (CANdle) used for interfacing with them. MD series controller actuators can be
+used in advanced robotic projects like quadrupedal robots, robotic manipulators, exoskeletons,
+gimbals, and many more.
 
 ## MD series motor controller
 
-MD series motor controller is a highly integrated brushless motor controller. It can be interfaced with
-a great variety of motors to turn them into advanced servo actuators. MD series motor controller can
-work with both direct drive (no gearbox) and geared motors.
+MD series motor controller is a highly integrated brushless motor controller. It can be interfaced
+with a great variety of motors to turn them into advanced servo actuators. MD series motor
+controller can work with both direct drive (no gearbox) and geared motors.
 
 ```{image} images/mds.jpg
 :alt: MD80
@@ -28,9 +28,9 @@ work with both direct drive (no gearbox) and geared motors.
 ## CANdle and CANdle HAT
 
 CANdle (CAN + dongle) is a translator device between the host controller and the MD series motor
-controller drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT with
-SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle and CANdle HAT devices are
-fitted with a switch for enabling and disabling the built-in termination resistor.
+controller drivers. It is possible to interface CANdle with a regular PC over USB bus or CANdle HAT
+with SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle and CANdle HAT devices
+are fitted with a switch for enabling and disabling the built-in termination resistor.
 
 ```{image} CANdle/images/CANdle_joined.webp
 :alt: candle
@@ -45,6 +45,7 @@ We officially support Linux x86-64 and ARMv8-A architecture hosts.
 ```
 
 (hardware_setup)=
+
 ## Hardware setup
 
 CAN bus topology is a single-line network structure. A typical hardware connection/wiring scheme for
@@ -56,13 +57,15 @@ CANdle x MD ecosystem is presented in the picture below:
 :align: center
 :class: no-scaled-link
 ```
+
 ```{hint} In case you’d like to read more about the recommended lengths of the bus segments we suggest the [elektormotus guide](https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf).
 ```
 
-The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor. Termination should
-be always be attached to the first and last device in a string. CAN bus is very robust protocol, and
-can usually work on low speeds with just one terminator, however if you are expiriencing any problems,
-we recommend you use a ful terminator setup.
+The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor. Termination
+should be always be attached to the first and last device in a string. CAN bus is very robust
+protocol, and can usually work on low speeds with just one terminator, however if you are
+expiriencing any problems, we recommend you use a ful terminator setup.
+
 ```{hint} Both CANdle and CANdleHAT feature a termination circuit, that can be enabled with a switch.
 ```
 
@@ -76,7 +79,6 @@ Jetson as host computer, all connected in a single communication string.
 :class: no-scaled-link
 ```
 
-
 And here we have motor control scenario with CANdle and 3 MD80 based actuators.
 
 ```{figure} images/hardware_setup_candleHAT.jpg
@@ -89,6 +91,7 @@ CANdle HAT MD-actuator string (SPI bus using Raspberry Pi)
 ```
 
 To learn more about MAB Ecosystem, check out one of the categories below:
+
 # Table of contents
 
 ```{tableofcontents}

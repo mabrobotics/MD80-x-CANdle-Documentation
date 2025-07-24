@@ -1,22 +1,28 @@
 # CANdleTool
 
-CANdleTool is a program with a set of utilities intended to help the user in configuration and testing of MD products.
+CANdleTool is a program with a set of utilities intended to help the user in configuration and
+testing of MD products.
 
 ## Main Features
+
 CANdleTool main features
+
 - Updating software in all of MAB devices.
 - Downloading debug information and configurations from the target device.
 - Uploading configuration to the device.
 - Testing device functionalities.
 
-
 ## Distribution
 
-We distribute whole CANdle-SDK package as free and open source software via [github](https://github.com/mabrobotics/CANdle-SDK) with MIT license.
+We distribute whole CANdle-SDK package as free and open source software via
+[github](https://github.com/mabrobotics/CANdle-SDK) with MIT license.
 
-We also provide binaries for the CANdleTool package via releases on github and in the [downloads](downloads) section of this document.
+We also provide binaries for the CANdleTool package via releases on github and in the
+[downloads](downloads) section of this document.
 
-We distribute packages for apt package manager for architectures x86_64, arm64 and armhf (not recommended), as well as an installer for Windows x86_64. All of them can be found on [release pages](https://github.com/mabrobotics/CANdle-SDK/releases).
+We distribute packages for apt package manager for architectures x86_64, arm64 and armhf (not
+recommended), as well as an installer for Windows x86_64. All of them can be found on
+[release pages](https://github.com/mabrobotics/CANdle-SDK/releases).
 
 ## Usage
 
@@ -26,7 +32,8 @@ CANdleTool is a CLI program. You can issue commands using CLI interface, for exa
 candletool md test relative 10.0 --id 100
 ```
 
-This command will make a MD driver connected to the CANdle device move 10.0 radians counter-clockwise.
+This command will make a MD driver connected to the CANdle device move 10.0 radians
+counter-clockwise.
 
 To explore different commands the user can always use `-h` option.
 

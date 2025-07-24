@@ -1,6 +1,6 @@
 # Changelogs
 
-## Latest 
+## Latest
 
 - Released CANdle-SDK 1.0
 - PDS information added
@@ -9,7 +9,8 @@
 
 ### CANdle lib
 
-- GPIO status was not updating values in diagnostics, fixed by downloading value from the controller when diagnostics called
+- GPIO status was not updating values in diagnostics, fixed by downloading value from the controller
+  when diagnostics called
 
 ### MDtool
 
@@ -50,10 +51,10 @@
 - Added GPIO general functionality support
 - Relabeled Brake Mode as a GPIO mode, address and values stayed the same
 - Fixed typos in register names:
-    - `runCalibrateOutpuEncoderCmd` &rarr; `runCalibrateOutputEncoderCmd`
-    - `motorTorgueBandwidth` &rarr; `motorTorqueBandwidth`
+  - `runCalibrateOutpuEncoderCmd` → `runCalibrateOutputEncoderCmd`
+  - `motorTorgueBandwidth` → `motorTorqueBandwidth`
 - Added support for MD20 driver
 
 ### MDtool
 
-- Added compatibility with the newest CANdle lib functionalities 
+- Added compatibility with the newest CANdle lib functionalities

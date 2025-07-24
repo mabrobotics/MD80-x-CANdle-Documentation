@@ -1,14 +1,23 @@
 (status)=
+
 # Status
 
-When an abnormal situation takes place the controller sets an error bit indicating a particular error or warning. The table below lists all available error and warning codes and their descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the CANdle lib getQuickStatus() function.
+When an abnormal situation takes place the controller sets an error bit indicating a particular
+error or warning. The table below lists all available error and warning codes and their
+descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use
+the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the
+CANdle lib getQuickStatus() function.
 
-Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note that all warnings and only non-critical errors can be cleared. 
+Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note
+that all warnings and only non-critical errors can be cleared.
 
 (quick_status)=
-### Quick Status 
 
-Quick status provides a general info about errors in each category of statuses. No warnings are indicated here. Last bit indicatest whether the current target (position or velocity) has been reached.
+### Quick Status
+
+Quick status provides a general info about errors in each category of statuses. No warnings are
+indicated here. Last bit indicatest whether the current target (position or velocity) has been
+reached.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -119,7 +128,6 @@ Quick status provides a general info about errors in each category of statuses. 
 </table>
 <p></p>
 
-
 ### Calibration Errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -197,6 +205,7 @@ Quick status provides a general info about errors in each category of statuses. 
 <p></p>
 
 ### Hardware errors
+
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
 		<tr>
@@ -266,6 +275,7 @@ Quick status provides a general info about errors in each category of statuses. 
 <p></p>
 
 (motion_status)=
+
 ### Motion status
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -316,8 +326,8 @@ Quick status provides a general info about errors in each category of statuses. 
 </table>
 <p></p>
 
-
-The following table shows when warnings and errors are issued based on the mode the controller is currently in:
+The following table shows when warnings and errors are issued based on the mode the controller is
+currently in:
 
 ```{figure} images/Status/status_vs_motion_mode.png
 :class: bg-primary mb-1
@@ -326,13 +336,18 @@ The following table shows when warnings and errors are issued based on the mode 
 ```
 
 ## Utilities
+
 (GPIO)=
+
 ### GPIO
 
 All of the MD controllers have two multi-purpose GPIO pins. Currently they have two functionalities:
 
-- Auto Brake - in this mode MDxx will automatically engage MAB Robotics's provided braking systems via GPIO A pin, see [brake systems](brake_systems) and [registers section](registers) for more details.
-- GPIO input - in this mode MDxx will output GPIO pin states to state register (*userGpioState 0x161*)
+- Auto Brake - in this mode MDxx will automatically engage MAB Robotics's provided braking systems
+  via GPIO A pin, see [brake systems](brake_systems) and [registers section](registers) for more
+  details.
+- GPIO input - in this mode MDxx will output GPIO pin states to state register (*userGpioState
+  0x161*)
 
 ```{important}
 
@@ -341,6 +356,3 @@ The GPIO are connected directly to board's MCU. **DO NOT** drive this pins highe
 Also the GPIO pins are floating so if you want to use those pins as an external function switches, do so with proper pull-up/down resistor or push-pull circuitry.
 
 ```
-
-
-

@@ -2,12 +2,14 @@
 
 ## Overview
 
-[CANdleSDK](https://github.com/mabrobotics/CANdle-SDK) is a software package with tools to help user configure, test and integrate MAB devices into their systems.
+[CANdleSDK](https://github.com/mabrobotics/CANdle-SDK) is a software package with tools to help user
+configure, test and integrate MAB devices into their systems.
 
 ## Supported platforms
+
 CANdleTool supports all of the platforms supported by CANdlelib:
 
-- Linux based OS-es 
+- Linux based OS-es
 - Windows (from Windows 10)
 
 ```{note}
@@ -36,4 +38,5 @@ Recommended requirements:
 
 ## Installation
 
-For installation and integration instructions checkout [README](https://github.com/mabrobotics/CANdle-SDK) file of the main repository.
+For installation and integration instructions checkout
+[README](https://github.com/mabrobotics/CANdle-SDK) file of the main repository.

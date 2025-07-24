@@ -1,25 +1,31 @@
 (downloads_legacy)=
+
 # Downloads
 
 (hardware_downloads_legacy)=
+
 ## 3D models
 
-Simplified (lightweight_legacy) 3D *.STEP models of MABRobotics products can be found [here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
+Simplified (lightweight_legacy) 3D \*.STEP models of MABRobotics products can be found
+[here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
 
 ## CANdleSDK
 
-Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the CANdleSDK binary releases.
+Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the
+CANdleSDK binary releases.
 
 ## MAB Firmware
 
 Until the release of the new firmware files please use flashers listed below.
+
 <!-- 
 | MD  | PDS  | CANdle  |
 |-----|------|---------| -->
 
-
 (software_downloads_legacy)=
+
 ## Legacy software
+
 Main stable releases:
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -106,29 +112,43 @@ Main stable releases:
 <p></p>
 
 (mab_can_flasher_legacy)=
-### MD update tool - MAB CAN Flasher 
 
-MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD controller(s_legacy), and apply the power supply. You can make sure all the controllers are functional using MDtool and the [`mdtool ping all`](mdtool_ping_legacy) command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available options.
+### MD update tool - MAB CAN Flasher
+
+MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that
+can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher
+application itself. To update the firmware connect the CANdle to the PC and the MD
+controller(s_legacy), and apply the power supply. You can make sure all the controllers are
+functional using MDtool and the [`mdtool ping all`](mdtool_ping_legacy) command before you proceed
+to update the controllers. After that, you are ready to run the update tool. We highly advise you to
+call `./MAB_CAN_Flasher --help` command on the first use to get acquainted with the available
+options.
 
 ```{note}
 Make sure the MAB_CAN_Flasher can be executed. If not use the `sudo chmod +x ./MAB_CAN_Flasher` command.
 ```
 
-#### Example use cases 
-`./MAB_CAN_Flasher --id 150 --baud 1M` - update the MDxx controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:
+#### Example use cases
+
+`./MAB_CAN_Flasher --id 150 --baud 1M` - update the MDxx controller with id equal to 150, which
+current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64
+motor:
 
 ```{figure} images/flashing1.png
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
-`./MAB_CAN_Flasher --all --baud 1M` - update all available MDxx controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two MD controllers:
+
+`./MAB_CAN_Flasher --all --baud 1M` - update all available MDxx controllers, whose current CAN speed
+is 1M (all controllers need to have the same speed). Example command output for two MD controllers:
 
 ```{figure} images/flashing2.png
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
+
 ````{important}
 In case the update process is interrupted or the MD controller seems to be not functioning (fast periodical flashing of the LEDs), you can disconnect the power supply, call:
 ```
@@ -145,7 +165,10 @@ While the command is running connect the power supply. This command will wait fo
 
 ### CANdle update tool - MAB USB Flasher
 
-**MAB_USB_Flasher** is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). To update, first turn off all applications that may be using CANdle, and simply run `./MAB_USB_Flasher`.
+**MAB_USB_Flasher** is a console application used to update the CANdle software using USB bus.
+Currently, only updates over USB are supported (updates over SPI and UART are not supported). To
+update, first turn off all applications that may be using CANdle, and simply run
+`./MAB_USB_Flasher`.
 
 ```{note}
 Make sure the MAB_USB_Flasher can be executed. If not use the `sudo chmod +x ./MAB_USB_Flasher` command.
@@ -157,8 +180,8 @@ Make sure the MAB_USB_Flasher can be executed. If not use the `sudo chmod +x ./M
 :class: no-scaled-link
 ```
 
-After a successful update, the CANdle device is ready. 
-(canopen-flashers_legacy)=
+After a successful update, the CANdle device is ready. (canopen-flashers_legacy)=
+
 ### CANopen Flashers
 
 Those flashers are intended to be used with CANopen controllers.
