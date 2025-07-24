@@ -38,3 +38,11 @@ sphinx:
     html_context:
       default_mode: light
     html_extra_path: "./includes"
+
+myst:
+  enable_extensions: ["colon_fence", "attrs_inline", "attrs_block"]
+
+exclude_patterns:
+  - venv/*
+  - .venv/*
+
