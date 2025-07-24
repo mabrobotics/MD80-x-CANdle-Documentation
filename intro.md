@@ -1,4 +1,4 @@
-# MD, PDS, CANdle Ecosystem
+# MAB Ecosystem
 
 ```{figure} images/md80_actuators.jpg
 :class: bg-primary mb-1
@@ -17,10 +17,10 @@ MD series motor controller is a highly integrated brushless motor controller. It
 a great variety of motors to turn them into advanced servo actuators. MD series motor controller can
 work with both direct drive (no gearbox) and geared motors.
 
-```{image} MD/images/MD80/md80.webp
+```{image} images/mds.jpg
 :alt: MD80
 :class: bg-primary mb-1
-:width: 400px
+:width: 700px
 :align: center
 :class: no-scaled-link
 ```
@@ -35,7 +35,7 @@ fitted with a switch for enabling and disabling the built-in termination resisto
 ```{image} CANdle/images/CANdle_joined.webp
 :alt: candle
 :class: bg-primary mb-1
-:width: 400px
+:width: 700px
 :align: center
 :class: no-scaled-link
 ```
@@ -50,7 +50,7 @@ We officially support Linux x86-64 and ARMv8-A architecture hosts.
 CAN bus topology is a single-line network structure. A typical hardware connection/wiring scheme for
 CANdle x MD ecosystem is presented in the picture below:
 
-```{image} images/hardware_setup.png
+```{image} images/ecosystem_diagram.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -60,16 +60,24 @@ CANdle x MD ecosystem is presented in the picture below:
 ```
 
 The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor. Termination should
-be always be attached to the last controller in a string.
+be always be attached to the first and last device in a string. CAN bus is very robust protocol, and
+can usually work on low speeds with just one terminator, however if you are expiriencing any problems,
+we recommend you use a ful terminator setup.
+```{hint} Both CANdle and CANdleHAT feature a termination circuit, that can be enabled with a switch.
+```
 
-```{figure} images/hardware_setup_candle.jpg
+Here is an example setup of CANdle Ecosystem, with PDS, two MD based actuators, CANdle, and NVidia
+Jetson as host computer, all connected in a single communication string.
+
+```{image} images/ecosystem.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
-
-CANdle MD-actuator string (USB bus)
 ```
+
+
+And here we have motor control scenario with CANdle and 3 MD80 based actuators.
 
 ```{figure} images/hardware_setup_candleHAT.jpg
 :alt: candle
@@ -77,9 +85,10 @@ CANdle MD-actuator string (USB bus)
 :align: center
 :class: no-scaled-link
 
-CANdle HAT MD-actuator string (SPI/UART bus using Raspberry Pi 4)
+CANdle HAT MD-actuator string (SPI bus using Raspberry Pi)
 ```
 
+To learn more about MAB Ecosystem, check out one of the categories below:
 # Table of contents
 
 ```{tableofcontents}
