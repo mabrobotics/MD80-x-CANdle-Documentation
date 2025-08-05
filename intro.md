@@ -18,7 +18,20 @@ with a great variety of motors to turn them into advanced servo actuators. MD se
 controller can work with both direct drive (no gearbox) and geared motors.
 
 ```{image} images/mds.jpg
-:alt: MD80
+:alt: MDs
+:class: bg-primary mb-1
+:width: 700px
+:align: center
+:class: no-scaled-link
+```
+## PDS - Power Distribution System
+
+PDS is a highly modular power management system, that aims to provide everything that a mobile robot
+needs. It allows for safe and reliable power distribution with diagnostics, and can be easly accessed
+via CANFD bus and CANdle.
+
+```{image} images/pds.jpg
+:alt: PDS
 :class: bg-primary mb-1
 :width: 700px
 :align: center
@@ -33,7 +46,7 @@ with SBCs (such as Raspberry PI) over USB, SPI or UART bus. The latest CANdle an
 are fitted with a switch for enabling and disabling the built-in termination resistor.
 
 ```{image} CANdle/images/CANdle_joined.webp
-:alt: candle
+:alt: CANdles
 :class: bg-primary mb-1
 :width: 700px
 :align: center
@@ -41,7 +54,7 @@ are fitted with a switch for enabling and disabling the built-in termination res
 ```
 
 ```{note}
-We officially support Linux x86-64 and ARMv8-A architecture hosts.
+We officially support Linux x86-64, Windows 11 and ARM64 architecture hosts via CANdleSDK.
 ```
 
 (hardware_setup)=
@@ -52,7 +65,7 @@ CAN bus topology is a single-line network structure. A typical hardware connecti
 CANdle x MD ecosystem is presented in the picture below:
 
 ```{image} images/ecosystem_diagram.jpg
-:alt: candle
+:alt: ecosystem_diagram 
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -73,7 +86,7 @@ Here is an example setup of CANdle Ecosystem, with PDS, two MD based actuators, 
 Jetson as host computer, all connected in a single communication string.
 
 ```{image} images/ecosystem.jpg
-:alt: candle
+:alt: ecosystem
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -82,7 +95,7 @@ Jetson as host computer, all connected in a single communication string.
 And here we have motor control scenario with CANdle and 3 MD80 based actuators.
 
 ```{figure} images/hardware_setup_candleHAT.jpg
-:alt: candle
+:alt: candlehat_system 
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
