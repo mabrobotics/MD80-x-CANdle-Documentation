@@ -2,32 +2,21 @@
 
 (watchdog)=
 
-## FDCAN Watchdog
+## Communication Watchdog
 
-MD drivers feature an FDCAN Watchdog Timer. This timer will shut down the drive stage when no FDCAN
+MD drivers feature an Communication Watchdog Timer. This timer will shut down the drive stage when no FDCAN
 frame has been received in a specified time. This is to protect the drive and its surroundings in an
 event of loss of communications, for example by physical damage to the wiring. By default, the
 watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms using
-[`mdtool config can`](mdtool_config_can) command. When the watchdog is set to 0, it will disable the
+`candletool md config can` command. When the watchdog is set to 0, it will disable the
 timer, however, this can lead to dangerous situations, and it is not a recommended way of operating
-MDxx.
+MD.
 
 ```{warning}
-We do not recommend disabling the CAN watchdog timer.
+We do not recommend disabling the CAN watchdog timer!
 ```
 
 (safety_limits)=
-
-## Safety limits
-
-Safety limits are implemented to limit the actuator parameters, to protect the controller or motor
-from overheating, as well as the surrounding environment from too-powerful actuator movements.
-Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and the
-motor.
-
-```{warning}
-Setting the max current limit to above the maximum continuous current may damage the MDxx controller if the maximum torque is commanded for a prolonged period.
-```
 
 ## Current Limit
 
@@ -70,9 +59,16 @@ $ I [A] \\approx 2.44A $
 Usually this limit should be set to the highest peak torque that is allowed in the system so that it doesn't limit the actuator performance.
 ```
 
-Now, to save this value into the MDxx please refer to
-[`mdtool config current`](mdtool_config_current) command. Don’t forget to save it with the
-[`mdtool config save`](mdtool_config_save) command.
+## Safety limits
+
+Safety limits are implemented to limit the actuator parameters, to protect the controller or motor
+from overheating, as well as the surrounding environment from too-powerful actuator movements.
+Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and the
+motor.
+
+```{warning}
+Setting the max current limit to above the maximum continuous current may damage the MD controller if the maximum torque is commanded for a prolonged period.
+```
 
 ## Torque Limit
 
@@ -112,3 +108,4 @@ start the motor outside the range will generate a motion error.
 :width: 1000px
 :align: center
 ```
+
