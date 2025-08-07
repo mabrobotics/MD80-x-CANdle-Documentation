@@ -1,12 +1,17 @@
 # Brake System
 
-## Introduction
+```{figure} ./images/brake/slim_md80.jpg
+:alt: md slim 
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 The **MAB SLIM** is a series of ultra thin brake systems designed for mobile robotics applications.
 Brakes are holding when power is off, relieving motors from power consumption on holding static
 loads. The series is compatible with **MD** Series drivers controllers and has to be used as a **MD
 add-on** in a form of the MAB brake controller (**MBC**). Brakes can operate in 24-60VDC power
-supply range and their modularity allows for choosing a holding torque from a wide range of 0.06-38
+supply range and their modularity allows for choosing a holding torque from a wide range of up to 38
 Nm.
 
 For more information on picking particular brake for your application see our product page
@@ -15,26 +20,34 @@ For more information on picking particular brake for your application see our pr
 ## MBC
 
 MD Brake Controller is a device dedicated to control MAB SLIM Electromagnetic Brakes via PWM
-controlled signal provided by MD board.
+controlled signal provided by MD Aux connector.
 
-### ABSOLUTE MAXIMUM RATINGS
+### Parameters 
 
-| Characteristic | Rating | Unit | Notes | | --------------------------- | ------ | ---- | ------- |
-| Supply Input Voltage | 60 | V | | | Control Logic Input Voltage | 24 | V | | | Brake Circuit
-Current | 2.3 | A | at 25°C | | Ambient Temperature | 80 | °C | | | Duty Cycle | 90 | % | |
+```{list-table}
+:header-rows: 1
 
-### Electrical Characteristic
-
-| Characteristic | Rating | Unit | Notes | | ----------------------------- | ------ | ---- |
---------------- | | Nominal Supply Input Voltages | 24/48 | V | | | Nominal Control Logic Voltage |
-3.3 | V | | | Typical PWM Frequency | 20 | kHz | at 10%-90% fill | | Logic Input Current | 7 | mA |
-at 3.3V |
-
-<div style="page-break-after: always;"></div>
+* - Parameter
+  - Value
+* - Nominal Input Voltage Range
+  - 24 - 48 VDC
+* - Maximum Input Voltage Range
+  - 10 - 60 VDC
+* - Brake Current
+  - 2.3 A @ 25°C
+* - Operating Temperature Range: 
+  - 0 - 80°C
+* - PWM Frequency 
+  - 20 kHz
+* - PWM Duty Cycle
+  - 10 - 90%
+* - Current consumption (Logic)
+  - 7 mA
+```
 
 ### Mechanical Specification
 
-```{figure} images/brake_pcb.png
+```{figure} images/brake/brake_pcb.png
 :alt: brake_pcb.png
 :class: bg-primary mb-1
 :align: center
@@ -66,15 +79,13 @@ soldered.
 
 ## Connection and Integration of SLIM
 
-```{figure} images/MBC_connected.png
+```{figure} images/brake/MBC_connected.png
 :alt: Connections.png
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 :scale: 30%
 ```
-
-TODO: change photographs here
 
 With each shipping of MBC and SLIM brake we include necessary wiring:
 
