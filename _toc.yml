@@ -13,6 +13,8 @@ chapters:
       title: MD80
     - file: MD/MD20
       title: MD20
+    - file: MD/MD80HV
+      title: MD80HV
     - file: MD/encoders
       title: Encoders
     - file: MD/brakes
