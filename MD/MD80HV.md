@@ -1,25 +1,18 @@
-(md80)=
+# MD80 HV
 
-# MD80
-
-```{figure} ./images/md80.webp
+```{figure} ./images/md80hv.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
-:width: 600px
 :class: no-scaled-link
 ```
 
 ## General parameters
 
-MD80 is a brushless motor controller. It can work with a variety of motors and reducers that can be
-precisely matched to the users’ specifications. All MD80 variants are using an advanced motor
-control algorithm (FOC), a high-resolution encoder, a high-speed FDCAN communication bus, and a
-common communication interface. The controller feratures position PID, velocity PID, impedance,
-profile position and profile velocity operation modes. MD80 can be easily daisy-chained, for easy
-connection of many drives in a single control network.
+MD80HV is high voltage variant of MD80, designed to work well with 12S lithium batteries. It has all
+functionalities and features of regular MD80, for more information, please refer to [MD80](#md80)
 
-**General parameters table for MD80 V3.0+:**
+**General parameters table for MD80HV:**
 
 ```{list-table}
 :header-rows: 1
@@ -27,15 +20,15 @@ connection of many drives in a single control network.
 * - Parameter
   - Value
 * - Nominal Input Voltage Range
-  - 24 - 42 VDC
+  - 48 VDC
 * - Maximum Input Voltage Range
-  - 10 - 48 VDC
+  - 12 - 60 VDC
 * - Max Input Current (connector)
   - 10.0 A (RMS)
 * - Max Continuous Phase Current w/o cooling
-  - 20 A
+  - 12 A
 * - Max Peak Phase Current (t = 2 s)
-  - 80 A
+  - 40 A
 * - Built-in software-controlled termination resistor
   - optional
 * - FDCAN Baudrate (adjustable)
@@ -55,43 +48,6 @@ connection of many drives in a single control network.
 * - External 5V power supply max current
   - 150 mA
 ```
-
-```{warning}
-MD80 is not suited for woring of 12S lithium batteries, as their fully charged voltage exeeds maximum input voltage. MAB recommends to use MD80 with up to 10S batteries, for safe and reliable operation. For 12S and bigger batteries, please refer to MD80HV, that can operate up to 60V.
-```
-
-(ratings)=
-
-````{dropdown} **General parameters table for MD80 HW1.1, HV1.3 and older:**
-
-```{list-table}
-:header-rows: 1
-
-* - Parameter
-  - Value
-* - Input Voltage
-  - 18 - 28 VDC
-* - Nominal Input Voltage
-  - 24 VDC
-* - Max Input Current (RMS)
-  - 10 A
-* - Max Continuous Phase Current 
-  - 20 A
-* - Max Peak Phase Current (t = 4 s) 
-  - 40 A
-* - FDCAN Baudrate (adjustable)
-  - 1/2/5/8 Mbps
-* - Position PID Controller Execution Frequency
-  - 1 kHz
-* - Velocity PID Controller Execution Frequency
-  - 5 kHz
-* - Impedance Controller Execution Frequency
-  - 40 kHz
-* - Torque Control Execution Frequency
-  - 40 kHz
-* - Torque Bandwidth (adjustable)
-  - 50 Hz - 2.5 kHz
-````
 
 ```{figure} ./images/MD80/mount_cross_section.png
 :alt: candle

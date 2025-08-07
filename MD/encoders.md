@@ -1,22 +1,22 @@
 # Auxiliary Encoders
 
-Encoder is a position sensor that can be attached to the output shaft of the actuator. It is
-usually useful for geared motors where the output shaft position after startup cannot be determined
-unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can
-make sure that the output shaft position is always known at startup.
-
-```{figure} ./images/encoders.jpg
+```{figure} ./images/encoder/encoders.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link/
 ```
 
+Encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually
+useful for geared motors where the output shaft position after startup cannot be determined
+unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can
+make sure that the output shaft position is always known at startup.
+
 Currently we support one encoder type with two placement configurations:
 
 - ME AS placed axially on the output shaft with a regular diametrically magnetized magnet
 
-```{figure} ./images/output_encoder_axial.jpg
+```{figure} ./images/encoder/output_encoder_axial.jpg
 :width: 300px
 :class: bg-primary mb-1
 :align: center
@@ -25,41 +25,24 @@ Currently we support one encoder type with two placement configurations:
 
 - ME AS placed non-axially together with a diametrically magnetized ring magnet
 
-```{figure} ./images/output_encoder_offaxis.jpg
+```{figure} ./images/encoder/output_encoder_offaxis.jpg
 :width: 300px
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
-## Configuration
+```{note}
+MD can also work with encoders supplied in most CubeMars motors (such as AK10-9) and be paired with custom encoder such as RLS Aksim2 series on demand. Many of MABs MA series actuators use these for high precision applications.
 
-The output encoder configuration is performed in the motor config files and saved to the MD series
-motor controller using the [`mdtool setup motor`](mdtool_setup_motor) command. There are only two
-parameters used in output encoder setup:
-
-```
-[output encoder]
-output encoder = <encoder type>
-output encoder mode = <encoder mode>
+If you want to pair an encoder other than MA AS, please contact us support@mabrobotics.pl.
 ```
 
-where:
+## Encoder Modes
 
-```{list-table}
-:header-rows: 1
-
-* - \<encoder type\> 
-  - Description
-* - ME_AS_CENTER 
-  - for axially placed ME AS encoder
-* - ME_AS_OFFAXIS
-  - for non-axially placed ME AS
-* - MB053SFA17BENT00
-  - Renishaw RS422 17-bit RLS encoder
-* - CM_OFFAXIS
-  - CubeMars motors offaxis encoder
-```
+With Aux encoder connected, MD can use its data in a few different ways. For most applications,
+where the encoder is used to determine absolute position of the shaft after a gearbox, STARTUP mode
+is the most suitable.
 
 ```{list-table}
 :header-rows: 1
@@ -67,25 +50,25 @@ where:
 * - \<encoder mode\> 
   - Description
 * - STARTUP
-  - initial position from <b><font color="#FFBF00">output encoder</font></b>, 
+  - initial position from <b><font color="#FF6900">output encoder</font></b>, 
     report <b><font color="#008000">main encoder</font></b> values, 
     motion based on <b><font color="#008000">main encoder</font></b>
 * - MOTION
-  - initial position from <b><font color="#FFBF00">output encoder</font></b>,
-    report <b><font color="#FFBF00">output encoder</font></b> values,
-    motion based on <b><font color="#FFBF00">output encoder</font></b>
+  - initial position from <b><font color="#FF6900">output encoder</font></b>,
+    report <b><font color="#FF6900">output encoder</font></b> values,
+    motion based on <b><font color="#FF6900">output encoder</font></b>
 * - REPORT
   - initial position from <b><font color="#008000">main encoder</font></b>,
-    report <b><font color="#FFBF00">output encoder</font></b> values,
+    report <b><font color="#FF6900">output encoder</font></b> values,
     motion based on <b><font color="#008000">main encoder</font></b>,
-    calibration of the <b><font color="#FFBF00">output encoder</font></b>  is impossible
+    calibration of the <b><font color="#FF6900">output encoder</font></b>  is impossible
 * - MAIN
-  - <b><font color="#FFBF00">output encoder</font></b> is used as the <b><font color="#008000">main encoder</font></b>. All <b><font color="#FFBF00">output encoder</font></b> measurements are mapped as <b><font color="#008000">main encoder</font></b> values. 
+  - <b><font color="#FF6900">output encoder</font></b> is used as the <b><font color="#008000">main encoder</font></b>. All <b><font color="#FF6900">output encoder</font></b> measurements are mapped as <b><font color="#008000">main encoder</font></b> values. 
 * - CALIBRATED_REPORT
   - initial position from <b><font color="#008000">main encoder</font></b>,
-    report <b><font color="#FFBF00">output encoder</font></b> values,
+    report <b><font color="#FF6900">output encoder</font></b> values,
     motion based on <b><font color="#008000">main encoder</font></b>,
-    calibration of the <b><font color="#FFBF00">output encoder</font></b> is possible
+    calibration of the <b><font color="#FF6900">output encoder</font></b> is possible
 ```
 
 ```{warning}
@@ -116,11 +99,13 @@ the table below:
   - Only offaxis configuration is supported
 ```
 
-Steps to add an external encoder to the driver setup:
+## Attaching an encoder
+
+How to add an encoder to the driver setup:
 
 - make sure the encoder sensor is placed correctly:
 
-```{figure} ./images/output_encoder_cross.png
+```{figure} ./images/encoder/output_encoder_cross.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -128,42 +113,26 @@ Steps to add an external encoder to the driver setup:
 ```
 
 - - in case of axially placed sensors make sure they are placed in center at correct height above
-    the magnet (1 mm is usually optimal)
+    the magnet (1 mm is usually optimal),
   - in case of non-axial configuration make sure the magnet is close to the ring magnet (\<0.5mm)
     and the sensor IC is at least 2mm above or below the ring magnet horizontal plane.
 
-- Connect the MDxx with the encoder using a picoblade series cable assembly and connect power to the
-  MDxx.
+- Connect the MD with the encoder using a picoblade series cable assembly and connect power to the
+  MD,
 
-- Modify the motor config file according to your setup and save it to the MDxx using
-  [mdtool](mdtool)
+- Modify the motor config file, or directly access registers, according to your setup and save it to
+  the MD,
 
-```{figure} ./images/setup_output_encoder.png
+```{figure} ./images/encoder/setup_output_encoder.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
-You can confirm the setup using the [`mdtool setup info`](mdtool_setup_info) command to make sure
-all parameters are correct:
-
-```{figure} ./images/mdtool_setup_info_errors.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-```{note}
-At this point some errors will be present as the setup is not yet calibrated. 
-```
-
-- Calibrate the MDxx using [`mdtool setup calibration`](mdtool_setup_calibration) command
-- Calibrate the output encoder using [`mdtool setup calibration_out`](mdtool_setup_calibration_out)
-  command
-- Test the encoders using [`mdtool test encoder`](mdtool_test_encoder) command.
-- Use the [`mdtool setup info all`](mdtool_setup_info) command to make sure there are no errors and
-  the test results (min, max and stddev errors) are within your expectations.
-- The external encoder is ready to use! For more information on external encoder parameters please
-  see the [output encoder calibration](output_encoder_calibration) section.
+- Calibrate the MD using `candletool md calibration` command,
+- (if applicable) Calibrate the output encoder using `candletool md calibration -e aux` command
+- Test the encoders using `candletool test encoder` command.
+- Use the `candletool md info` command to make sure there are no errors and the test results (min,
+  max and stddev errors) are within your expectations.
+- The external encoder is ready to use!

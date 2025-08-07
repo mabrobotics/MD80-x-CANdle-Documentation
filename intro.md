@@ -24,11 +24,12 @@ controller can work with both direct drive (no gearbox) and geared motors.
 :align: center
 :class: no-scaled-link
 ```
+
 ## PDS - Power Distribution System
 
 PDS is a highly modular power management system, that aims to provide everything that a mobile robot
-needs. It allows for safe and reliable power distribution with diagnostics, and can be easly accessed
-via CANFD bus and CANdle.
+needs. It allows for safe and reliable power distribution with diagnostics, and can be easly
+accessed via CANFD bus and CANdle.
 
 ```{image} images/pds.jpg
 :alt: PDS
