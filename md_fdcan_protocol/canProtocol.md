@@ -1,21 +1,385 @@
 (fd_can_protocol)=
 # MD FDCAN communication
-The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD actuators from your custom FDCAN-capable master controller.
+The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even though we are aware some customers want to integrate the MD controllers in their product with minimal setup to reduce the costs and the system’s complexity. This manual will guide you through the process of communicating with MD actuators from your custom CAN master controller.
 
 ## Hardware requirements
+From firmware version 2.5.0 upwards, MDs are capable of either FDCAN mode communication or CAN2.0 compatibile mode. FDCAN is a preffered protocol to use, as it allows for far greater flexibility and bandwidth. CAN2.0 is supported but not recommended, as the protocol was not optimized for it, and basic operations and control may require multiple CAN frames to be exchanged, significantly reducing the bandwidth, especially with multiple actuators on a single bus.
+
+### FDCAN
 The main requirement for the host system is to be equipped with an FDCAN peripheral (either a built-in one or an external one) and an FDCAN transceiver capable of speeds up to 8Mbps. Lower maximum speed transceivers can be used as well, however for the cost of limited update rates. Depending on your custom setup you should be able to integrate a 120 ohm terminating resistor on both ends of your CAN bus.
 
+### CAN2.0
+While MD was designed with FDCAN protocol in mind, CAN2.0 compability was introduced. In CAN2.0 mode, the driver can only operate in 1M baudrate, and some registers (that are more than 4 bytes in size) are not available for modification, i.e motorName register. Additionally only some of the [Frame Types](frame-types) are supported in this mode - **READ_REGISTER_CAN2.0** and **WRITE_REGISTER_CAN2.0**. In most cases, access in 2.0 mode has to happen 1 register at a time (one register per can frame), with an exception of accessing two U8 type registers. Apart from maximum frame length, the contents of the frames will be the same as in FDCAN version of protocol. 
+
 ```{note}
- MD controllers from version 2.0 can be upgraded to software controlled termination. Please contact us for more information
+ MD controllers can be upgraded to software controlled termination on demand. Please contact us for more information before placing your order.
  ```
 
 ## Communication Structure
 
-The communication stack is based on a register access using two frames - register read and register write. The list of available registers can be found at the end of this chapter. All fields are little-endian - least significant byte first, and all float fields are 4 bytes long encoded in IEEE-754 standard. 
+Comminication with MD, happen is a strict Master-Slave structure. The MD itself will never produce a CAN frame by itself, it will only respond to direct commands from a host. Each MD device has configurable **CAN ID**, that serves as its unique identifier on the CAN bus. There may never be more than one MD with the same CAN ID, as this will lead to conflicts and errors. 
 
-### Default response
+All communication with the particular drive will happen only via messeges with particular ID. For example:
 
-The default response is sent by the drive in case a register write operation was successful. 
+```{note}
+Host sends a request (command) to drive with Id *100*, the drive will execute the command and respond with a CAN frame that also has the ID of *100*
+```
+
+The communication stack is based on a register access using two frames - **register read and register write**. The list of [available registers](registers) can be found at the end of this chapter. All fields are little-endian - least significant byte first, and all float fields are 4 bytes long (32 bit) encoded in IEEE-754 standard. 
+
+```{warning}
+Wrong access, incorrect data values or other communication errors are not reported explicitly. **Command that failed (regardless of the reason), will result in the drive not producing any response.** Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command, the host may consider the command has failed.
+```
+
+### Frame Structure
+All frames (FDCAN and CAN2.0) are composed in the same fasion. The first byte is a [Frame Type](frame-types), then a padding byte, followed by the contents of a message.
+
+Message contents are similar in both read and write operations. They follow a pattern of repeating sequence: register id (2 bytes) and register value (1-24 bytes depending on a register). The number of registers to be accessed is only limited by a size of message - 64 bytes for FDCAN, and 8 bytes for CAN2.0. 
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-X </b></td>
+            <td> <b>BYTE X+1-X+2 </b></td>
+            <td> <b>BYTE X+4-X+Y </b></td>
+            <td> <b> ... </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> REG ID 1 </td>
+            <td> VALUE 1  </td>
+            <td> REG ID 2 </td>
+            <td> VALUE 2  </td>
+            <td> ...      </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+For example, a frame that would read a value of the current position, velocity and torque from a drive, would, have a length of 20 bytes, and look like the following:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-7 </b></td>
+            <td> <b>BYTE 8-9 </b></td>
+            <td> <b>BYTE 10-13 </b></td>
+            <td> <b>BYTE 14-15 </b></td>
+            <td> <b>BYTE 16-19 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - mainEncoderPosition </td>
+            <td> PADDING </td>
+            <td> regId - mainEncoderVelocity </td>
+            <td> PADDING </td>
+            <td> regId - motorTorque </td>
+            <td> PADDING </td>
+		</tr>
+		<tr>
+			<td> 0x41 </td>
+            <td> 0x00 </td>
+            <td> 0x0062 </td>
+            <td> 0x00 00 00 00 </td>
+            <td> 0x0063 </td>
+            <td> 0x00 00 00 00 </td>
+            <td> 0x0064 </td>
+            <td> 0x00 00 00 00 </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+(frame-types)=
+### Frame Types
+Although there are basically only two possible genres of frames - read and write register - the frames can trigger different behaviours, apart of reading and writing. Here is a brief description of the frame behaviours by their id:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+            <td> Frame ID </td>
+            <td> Name </td>
+            <td> Description </td>
+		</tr>
+		<tr>
+			<td> 0x40 </td>
+            <td> WRITE_REGISTER_LEGACY</td>
+            <td> performs write operation, and makes the drive respond with <a href="#legacy-response">legacy response</a>. This is sometimes usefull in high frequency control loops, to minimize number of frames exchanged. For frame contents, refer to <a href="write-register"> Write Register Frame </a>. </td>
+		</tr>
+		<tr>
+			<td> 0x41 </td>
+            <td> READ_REGISTER</td>
+            <td> performs read operation, and responds with state of the registers. Refer to  <a href="read-register"> Read Register Frame </a> </td>
+		</tr>
+		<tr>
+			<td> 0x42 </td>
+            <td> WRITE_REGISTER</td>
+            <td> performs write operation, and responds with state of the registers AFTER operation. Usefull for verification of write operation. For more info, refer to <a href="write-register"> Write Register Frame </a> </td>
+		</tr>
+		<tr>
+			<td> 0x43 </td>
+            <td> READ_REGISTER_CAN2.0 </td>
+            <td> performs read operation, and responds with state of the registers. Works same as <a href="read-register"> Read Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatibile response. </td>
+		</tr>
+		<tr>
+			<td> 0x44 </td>
+            <td> WRITE_REGISTER_CAN2.0 </td>
+            <td> performs write operation, and responds with state of the registers AFTER operation. Usefull for verification of write operation. Works same as <a href="write-register"> Write Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatibile response.</td>
+		</tr>
+		<tr>
+			<td> 0x0A </td>
+            <td> LEGACY_RESPONE </td>
+            <td> RESPONSE ONLY. A response produced as a result of some frames. Contains data, most commonly required in fast control loops - <a href="#legacy-response">more info here.</a> </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+(write-register)=
+### Write register frame
+
+Write register frame is used to modify values of the user-modifiable registers. Only registers with write access can be modified.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>FRAME NAME</b></td> 
+			<td> <b>DRIVE ID</b></td>
+			<td> <b>LENGTH</b></td>
+			<td> <b>BYTE 0 [ID]</b></td>
+      <td> <b>BYTE 1 </b></td>
+      <td> <b>BYTE 2-3 </b></td>
+      <td> <b>BYTE 4-X </b></td>
+      <td> <b>BYTE X+1-X+2 </b></td>
+      <td> <b>BYTE X+4-X+Y </b></td>
+		</tr>
+		<tr>
+			<td>WRITE_REGISTER</td>
+			<td>10-1000</td>
+			<td>X (64 max)</td>
+			<td>0x42</td>
+      <td>0x00</td>
+      <td>reg ID</td>
+      <td>value</td>
+      <td>reg ID</td>
+      <td>value</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+Params:
+- regID (uint16_t) - first register ID (please see the end of this section)
+- value (uint8_t/uint16_t/uint32_t/float/char[]) - first register value to be written
+- regID (uint16_t) - second register ID (please see the end of this section)
+- value (uint8_t/uint16_t/uint32_t/float/char[]) - second register value to be written
+- ... (up to 64 bytes total)
+
+```{dropdown} **EXAMPLE** Write target position and velocity
+Command, send from host to MD:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-7 </b></td>
+            <td> <b>BYTE 8-9 </b></td>
+            <td> <b>BYTE 10-13 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - targetPosition </td>
+            <td> (float) 0.25 </td>
+            <td> regId - targetVelocity </td>
+            <td> (float) -7.4 </td>
+		</tr>
+		<tr>
+			<td> 0x42 </td>
+            <td> 0x00 </td>
+            <td> 0x0150 </td>
+            <td> 0x3E 80 00 00 </td>
+            <td> 0x0151 </td>
+            <td> 0xC0 EC CC CD </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
+
+Response, send from MD to Host:
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-7 </b></td>
+            <td> <b>BYTE 8-9 </b></td>
+            <td> <b>BYTE 10-13 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - targetPosition </td>
+            <td> (float) 0.25 </td>
+            <td> regId - targetVelocity </td>
+            <td> (float) -7.4 </td>
+		</tr>
+		<tr>
+			<td> 0x42 </td>
+            <td> 0x00 </td>
+            <td> 0x0150 </td>
+            <td> 0x3E 80 00 00 </td>
+            <td> 0x0151 </td>
+            <td> 0xC0 EC CC CD </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
+```
+
+(read-register)=
+### Read Register Frame
+
+Read register command is used to retrieve certain register values. The actuator will respond with a frame consisting of the addresses and values of the registers issued in the master request. The master request should have the following form: 
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>FRAME NAME</b></td>
+			<td> <b>DRIVE ID</b></td>
+			<td> <b>LENGTH</b></td>
+			<td> <b>BYTE 0 [ID]</b></td>
+      <td> <b>BYTE 1 </b></td>
+      <td> <b>BYTE 2-3 </b></td>
+      <td> <b>BYTE 4-X </b></td>
+      <td> <b>BYTE X+1-X+2 </b></td>
+      <td> <b>BYTE X+4-X+Y </b></td>
+		</tr>
+		<tr>
+			<td>READ_REGISTER</td>
+			<td>10-2000</td>
+			<td>X (64 max)</td>
+			<td>0x41</td>
+      <td>0x00</td>
+      <td>reg ID</td>
+      <td>0x00</td>
+      <td>reg ID</td>
+      <td>0x00</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MDxx controller.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>FRAME NAME</b></td>
+			<td> <b>DRIVE ID</b></td>
+			<td> <b>LENGTH</b></td>
+			<td> <b>BYTE 0 [ID]</b></td>
+      <td> <b>BYTE 1 </b></td>
+      <td> <b>BYTE 2-3 </b></td>
+      <td> <b>BYTE 4-X </b></td>
+      <td> <b>BYTE X+1-X+2 </b></td>
+      <td> <b>BYTE X+4-X+Y </b></td>
+		</tr>
+    <tr>
+      <td>Response to register read</td>
+      <td>10-2000</td>
+      <td>X (64 max)</td>
+      <td>0x41</td>
+      <td>0x00</td>
+      <td>reg ID</td>
+      <td>reg value</td>
+      <td>reg ID</td>
+      <td>reg value</td>
+    </tr>
+	</tbody>
+</table>
+<p></p>
+
+```{dropdown} **EXAMPLE** Read MD status and position
+Command, send from host to MD:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-5 </b></td>
+            <td> <b>BYTE 6-7 </b></td>
+            <td> <b>BYTE 8-11 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - quickStatus </td>
+            <td> PADDING (2 bytes) </td>
+            <td> regId - mainEncoderPosition </td>
+            <td> PADDING (4 bytes) </td>
+		</tr>
+		<tr>
+			<td> 0x41 </td>
+            <td> 0x00 </td>
+            <td> 0x0805 </td>
+            <td> 0x00 00  </td>
+            <td> 0x0062 </td>
+            <td> 0x00 00 00 00 </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: 0x41 00 08 05 00 00 00 62 00 00 00 00
+
+Response, send from MD to Host:
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-5 </b></td>
+            <td> <b>BYTE 6-7 </b></td>
+            <td> <b>BYTE 8-11 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - quickStatus </td>
+            <td> status (u16) </td>
+            <td> regId - mainEncoderPosition </td>
+            <td> 16.74 (float) </td>
+		</tr>
+		<tr>
+			<td> 0x41 </td>
+            <td> 0x00 </td>
+            <td> 0x0805 </td>
+            <td> 0x80 00  </td>
+            <td> 0x0062 </td>
+            <td> 0x41 85 EB 85 </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
+```
+### Legacy response
 
 <p></p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -67,116 +431,6 @@ The default response is sent by the drive in case a register write operation was
 	</tbody>
 </table>
 <p></p>
-
-In case the operation initiated by a frame was unsuccessful the MDxx will not respond. 
-
-### Write register frame
-
-Write register frame is used to modify values of the user-modifiable registers. Only registers with write access can be modified.
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-			<td> <b>FRAME NAME</b></td> 
-			<td> <b>DRIVE ID</b></td>
-			<td> <b>LENGTH</b></td>
-			<td> <b>BYTE 0 [ID]</b></td>
-      <td> <b>BYTE 1 </b></td>
-      <td> <b>BYTE 2-3 </b></td>
-      <td> <b>BYTE 4-X </b></td>
-      <td> <b>BYTE X+1-X+2 </b></td>
-      <td> <b>BYTE X+4-X+Y </b></td>
-		</tr>
-		<tr>
-			<td>WRITE_REGISTER</td>
-			<td>10-999</td>
-			<td>X (64 max)</td>
-			<td>0x40</td>
-      <td>0x00</td>
-      <td>reg ID</td>
-      <td>value</td>
-      <td>reg ID</td>
-      <td>value</td>
-		</tr>
-	</tbody>
-</table>
-<p></p>
-
-Params:
-- regID (uint16_t) - first register ID (please see the end of this section)
-- value (uint8_t/uint16_t/uint32_t/float/char[]) - first register value to be written
-- regID (uint16_t) - second register ID (please see the end of this section)
-- value (uint8_t/uint16_t/uint32_t/float/char[]) - second register value to be written
-- ... (up to 64 bytes total)
-
-When all registers write operations succeed the drive will respond with default response.
-
-### Read Register Frame
-
-Read register command is used to retrieve certain register values. The actuator will respond with a frame consisting of the addresses and values of the registers issued in the master request. The master request should have the following form: 
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-			<td> <b>FRAME NAME</b></td>
-			<td> <b>DRIVE ID</b></td>
-			<td> <b>LENGTH</b></td>
-			<td> <b>BYTE 0 [ID]</b></td>
-      <td> <b>BYTE 1 </b></td>
-      <td> <b>BYTE 2-3 </b></td>
-      <td> <b>BYTE 4-X </b></td>
-      <td> <b>BYTE X+1-X+2 </b></td>
-      <td> <b>BYTE X+4-X+Y </b></td>
-		</tr>
-		<tr>
-			<td>READ_REGISTER</td>
-			<td>10-999</td>
-			<td>X (64 max)</td>
-			<td>0x41</td>
-      <td>0x00</td>
-      <td>reg ID</td>
-      <td>0x00</td>
-      <td>reg ID</td>
-      <td>0x00</td>
-		</tr>
-	</tbody>
-</table>
-<p></p>
-
-When all read operations succeed the 0x00 fields will be filled with appropriate register data when transmitted back to master by the MDxx controller.
-
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-			<td> <b>FRAME NAME</b></td>
-			<td> <b>DRIVE ID</b></td>
-			<td> <b>LENGTH</b></td>
-			<td> <b>BYTE 0 [ID]</b></td>
-      <td> <b>BYTE 1 </b></td>
-      <td> <b>BYTE 2-3 </b></td>
-      <td> <b>BYTE 4-X </b></td>
-      <td> <b>BYTE X+1-X+2 </b></td>
-      <td> <b>BYTE X+4-X+Y </b></td>
-		</tr>
-    <tr>
-      <td>Response to register read</td>
-      <td>10-999</td>
-      <td>X (64 max)</td>
-      <td>0x41</td>
-      <td>0x00</td>
-      <td>reg ID</td>
-      <td>reg value</td>
-      <td>reg ID</td>
-      <td>reg value</td>
-    </tr>
-	</tbody>
-</table>
-<p></p>
-
-
-```{warning}
-Frame payload length must not exceed 64 bytes. 
-```
 
 (registers)=
 ### Available registers
