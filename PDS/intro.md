@@ -2,7 +2,7 @@
 
 # PDS - Power Distribution System
 
-![PDS_stack_image](images/PDS_stack.png)
+![PDS_stack_image](../images/pds.jpg)
 
 ## Overview
 

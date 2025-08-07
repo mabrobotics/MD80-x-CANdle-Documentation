@@ -39,8 +39,8 @@ chapters:
 - file: PDS/intro
   title: PDS - Power Distribution System
   sections:
-    - file: PDS/quickstart
-      title: Quick start guide
+    - file: PDS/overview
+      title: Overview
 - file: CANdle/intro.md
   title: CANdle and CANdleHAT
   sections:

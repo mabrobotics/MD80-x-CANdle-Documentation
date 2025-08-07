@@ -1,8 +1,4 @@
-# PDS :: Quick Start Guide
-
-1. Mount PDS device to the frame
-
-1. Prepare all the harnesses delivered with PDS and connect them to PDS_CTRL:
+# Overview
 
 ## **ON/OFF SWITCH**:
 
