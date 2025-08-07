@@ -26,10 +26,10 @@ chapters:
     - file: MD/status_utility
       title: Status & Utilities
     - file: MD/Communication/intro
-      title: Communication
+      title: CAN Communication
       sections:
        - file: MD/Communication/fdcan
-         title: FDCAN 
+         title: MD Protocol 
        - file: MD/Communication/canopen
          title: CANOpen
          sections:
