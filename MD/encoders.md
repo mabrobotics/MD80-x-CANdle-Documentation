@@ -122,14 +122,6 @@ How to add an encoder to the driver setup:
 
 - Modify the motor config file, or directly access registers, according to your setup and save it to
   the MD,
-
-```{figure} ./images/encoder/setup_output_encoder.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
 - Calibrate the MD using `candletool md calibration` command,
 - (if applicable) Calibrate the output encoder using `candletool md calibration -e aux` command
 - Test the encoders using `candletool test encoder` command.
