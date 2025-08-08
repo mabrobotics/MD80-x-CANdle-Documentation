@@ -100,7 +100,7 @@ For example, a frame that would read a value of the current position, velocity a
 
 (frame-types)=
 ### Frame Types
-Although there are basically only two possible genres of frames - read and write register - the frames can trigger different behaviours, apart of reading and writing. Here is a brief description of the frame behaviours by their id:
+Although there are basically only two possible variants of frames - read and write register - the frames can trigger different behaviours, apart of reading and writing. Here is a brief description of the frame behaviours by their id:
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -163,7 +163,7 @@ Write register frame is used to modify values of the user-modifiable registers. 
 		</tr>
 		<tr>
 			<td>WRITE_REGISTER</td>
-			<td>10-1000</td>
+			<td>10-2000</td>
 			<td>X (64 max)</td>
 			<td>0x42</td>
       <td>0x00</td>
