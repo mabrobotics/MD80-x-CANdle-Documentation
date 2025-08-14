@@ -12,31 +12,100 @@ It can be used using the following header inclusion:
 ## Functionalities
 Main features of PDS module include:
 
-- Creating PDS instances tied to particular CAN node ID and CANdle device.
-- Manage parameters of each module via individual references in each pds object.
+- Creating PDS instances tied to particular CAN node ID and CANdle device
+- Manage parameters of each module via individual references in each pds object
 - Manage global modular properties like for example: ``shutdown()``, ``reboot()``,``getBusVoltage()``
 
 ## Examples
 
-### [Basic](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_basic.cpp)
+### [Ping and status](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
 
-This example shows how to gather basic information via PDS properties like:
+This example shows how to gather basic system diagnostics and configuration from the PDS.
 
-- Modules connected
-- Status of the device
-- Voltage and temperature
-- STO status
-- OT threshold
-- Bus voltage
+- Firmware and hardware version
+- Connected submodules
+- Over-temperature status
+- Device status (enabled, faults, STO, etc.)
+- Shutdown time
+- Braking resistor configuration
+- Bus voltage and battery levels
 
-### [Battery monitor and configuration](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/pds_example_battery_monitor_and_config_save.cpp)
 
-This example shows how to interact with properties of the PDS and save the configuration to the persistent memory.
+### [Power stage and braking resistor](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
 
-### [Submodules Access](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/pds_example_submodules.cpp)
+This example demonstrates how to configure and monitor a Power Stage and Braking Resistor using the PDS.
+Connect to a specific Power Stage socket
 
-This example shows how to set parameters for specific modules. 
+- Connect to a specific Power Stage socket
+- Configure:
+  - Overcurrent Detection (OCD) limit and delay
+  - Temperature limits
+  - Braking resistor trigger voltage
+- Bind a Braking resistor to the power stage
+- Enable the power stage
+- Read runtime status:
+  - Voltage, current, temperature, and protection states
+- Gracefully disable the power stage
 
 ```{note}
-This example is setup specific and must be adjusted to user's module stack.
+- Ensure correct socket assignments (`SOCKET_1`, `SOCKET_3`) match your physical wiring.
+- You must call `powerStage->enable()` before attempting to monitor runtime data.
+```
+
+### [Isolated converter](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+
+This example demonstrates how to configure and monitor an Isolated Converter using the PDS.
+
+
+- Connect to a specific Isolated Converter socket
+- Configure:
+  - Temperature limit
+  - Overcurrent Detection (OCD) level
+- Enable the isolated converter
+- Read runtime status:
+  - Output voltage
+  - Load current
+  - Temperature
+  - OCD configuration
+- Gracefully disable the converter
+
+```{note}
+- Ensure the socket assignment (`SOCKET_2`) matches your hardware setup.
+- Call `enable()` before attempting to monitor data.
+- All values are converted to human-readable units (V, A, °C) for logging.
+```
+
+### [Braking resistor](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+
+This example demonstrates how to configure and monitor a **Braking Resistor** connected to the PDS.
+
+- Attach to a specific **Braking Resistor** socket
+- Configure:
+  - Temperature limit
+- Read runtime status:
+  - Enabled state
+  - Current temperature
+  - Configured temperature limit
+
+```{note}
+- The brake resistor is **normally enabled automatically** by the **Power Stage** module.
+- This example focuses on standalone monitoring and configuration of the resistor.
+- Socket index used: `SOCKET_3`
+```
+
+### [Battery monitor and config save](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+
+This example demonstrates how to configure battery voltage levels and configuration save on the PDS.
+
+- Connect to a specific **PDS Control Board** via CAN
+- Configure:
+  - Battery voltage thresholds
+  - Shutdown timeout
+- Save configuration to non-volatile memory
+- Initiate and monitor shutdown sequence
+
+```{note}
+- Always save the configuration using `saveConfig()` to make settings persistent across reboots.
+- The shutdown process is asynchronous; status is polled until `SHUTDOWN_SCHEDULED` is reported.
+- If you don't see the shutdown happening, check wiring and STO (Safe Turn Off) status.
 ```
