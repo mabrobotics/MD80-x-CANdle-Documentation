@@ -102,7 +102,7 @@ Main stable releases:
 			<td>this document</td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>29.07.2025 (latest)</b></td>
+			<td>29.07.2025</td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.4>3.5.4</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.4>1.5.4</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
@@ -110,6 +110,17 @@ Main stable releases:
 			<td><a>1.4.0</a></td>
 			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.0.zip>2.5.0</a></td>
+			<td>this document</td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>11.08.2025 (latest)</b></td>
+			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.4>3.5.4</a></td>
+			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.4>1.5.4</a></td>
+     		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
+			<td><a>1.4.0</a></td>
+			<td><a>1.4.0</a></td>
+			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.1.zip>2.5.1</a></td>
 			<td>this document</td>
 		</tr>
 	</tbody>
@@ -188,13 +199,18 @@ Versions:
 			<td> <b>EDS file for MD</b></td>
 		</tr>
 		<tr>
-			<td><b>22.08.2024</b></td>
+			<td>22.08.2024</td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip>2.4.0</a></td>
 			<td>-</td>
 		</tr>
 		<tr>
-			<td><b>30.01.2025 (latest)</b></td>
+			<td>30.01.2025</td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip>2.4.1</a></td>
+			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
+		</tr>
+		<tr>
+			<td><b>11.08.2025 (latest)</b></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.5.1.zip>2.5.1</a></td>
 			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
 		</tr>
 	</tbody>
