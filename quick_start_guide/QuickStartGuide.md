@@ -27,7 +27,7 @@ These steps are universal between the controller hardware versions, however, be 
 
 * First, make sure the MD controller can work with your motor. A vast majority of hobby motors will be suitable, although too big motors in terms of power and gimbal motors ( with high phase resistance) might not work as expected. Be sure to contact us before you proceed with a gimbal or high-power motor (over 500W peak power). 
 
-* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-magnet) on the motor shaft and mount the MD controller firmly, centered above the magnet. 
+* Place the [diametrically magnetized magnet](https://www.mabrobotics.pl/product-page/encoder-on-axis-magnet) on the motor shaft and mount the MD controller firmly, centered above the magnet. 
 
 ```{figure} images/magnet_encoder_asm.png
 :alt: candle
