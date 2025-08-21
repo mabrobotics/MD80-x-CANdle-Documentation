@@ -4,7 +4,7 @@
 ## Introduction
 The **MAB SLIM** is a series of ultra thin brake systems designed for mobile robotics applications. Brakes are holding when power is off, relieving motors from power consumption on holding static loads. The series is compatible with **MD** Series drivers controllers and has to be used as a **MD add-on** in a form of the MAB brake controller (**MBC**). Brakes can operate in 24-60VDC power supply range and their modularity allows for choosing a holding torque from a wide range of 0.06-38 Nm.
 
-For more information on picking particular brake for your application see our product page [here](https://www.mabrobotics.pl/product-page/mab-slim-electromagnetic-brake). 
+For more information on picking particular brake for your application see our product page [here](https://www.mabrobotics.pl/slim). 
 
 ## MBC
 
