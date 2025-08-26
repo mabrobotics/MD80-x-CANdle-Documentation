@@ -9,7 +9,7 @@ Make sure you've contacted MABRobotics for the appropriate software update, as t
 only supports CANdle protocol. 
 ```
 
-## [Objecct Dictionary](./canopen_od.md)
+## [Object Dictionary](./canopen_od.md)
 
 MD controllers follow an object dictionary, that is consistent with CIA402 device profile. You can
 see full documentation, along with corresponding .eds files in the

@@ -27,16 +27,10 @@ Only one device can be connected on the can line during the procedure, so all th
 
 When switching to CANopen the driver ID must be within the range of valid nodeIDs in CANopen. To set
 this up we usually use the lowest valid nodeID in our protocol which is 10. So the first command
-issued should be:
+issued should be for example:
 
 ```
-mdtool config can <previous_id> <new_id> <baudrate> <watchdog>
-```
-
-Example:
-
-```
-mdtool config can 100 10 1M 200
+candletool md can --id 100 --new_id 10
 ```
 
 ### Second step
@@ -44,13 +38,7 @@ mdtool config can 100 10 1M 200
 It is necessary to save this new ID to the persistent memory using save command as follows:
 
 ```
-mdtool config save <id>
-```
-
-Example:
-
-```
-mdtool config save 10
+candletool md save --id 100
 ```
 
 ### Third step
@@ -73,13 +61,33 @@ Using the recovery procedure, the driver can be reverted to version with MD FDCA
 recovery command looks like this:
 
 ```
+candletool md update --id 9 --recovery ./path_to_mab_file.mab
+```
+
+Example:
+
+```
+candletool md update --id 9 --recovery ./md_3_X_X_xxxxxxx.mab
+```
+
+After starting this command, the driver needs to be restarted (power cycled) manually and then the
+recovery re-flashing procedure will begin. The driver should then operate in MD FDCAN protocol mode.
+
+If the nodeID was lower than 10 the driver should automatically assign itself an ID of 10.
+
+## Migration from CANopen to Legacy firmware
+
+Using the recovery procedure, the driver can be reverted to version with MD FDCAN protocol. The
+recovery command looks like this:
+
+```
 <path_to_fdcan_protocol_flasher> --id 9 --baud 1M --wait
 ```
 
 Example:
 
 ```
-./MAB_CAN_Flasher --id 9 --baud 1M --wait
+./MAB_CAN_Flasher_xxxxxxx --id 9 --baud 1M --wait
 ```
 
 After starting this command, the driver needs to be restarted manually and then the recovery

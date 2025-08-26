@@ -1422,6 +1422,14 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
       <td>motion errors</td>
     </tr>
     <tr>
+      <td>dcBusVoltage</td>
+      <td>0x811</td>
+      <td>RO</td>
+      <td>float32</td>
+      <td>0 - 60V</td>
+      <td>voltage measured on the DC bus</td>
+    </tr>
+    <tr>
       <td></td>
       <td></td>
       <td></td>

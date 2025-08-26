@@ -22,7 +22,7 @@ For more information on picking particular brake for your application see our pr
 MD Brake Controller is a device dedicated to control MAB SLIM Electromagnetic Brakes via PWM
 controlled signal provided by MD Aux connector.
 
-### Parameters 
+### Parameters
 
 ```{list-table}
 :header-rows: 1

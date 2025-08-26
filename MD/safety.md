@@ -4,13 +4,12 @@
 
 ## Communication Watchdog
 
-MD drivers feature an Communication Watchdog Timer. This timer will shut down the drive stage when no FDCAN
-frame has been received in a specified time. This is to protect the drive and its surroundings in an
-event of loss of communications, for example by physical damage to the wiring. By default, the
-watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms using
-`candletool md config can` command. When the watchdog is set to 0, it will disable the
-timer, however, this can lead to dangerous situations, and it is not a recommended way of operating
-MD.
+MD drivers feature an Communication Watchdog Timer. This timer will shut down the drive stage when
+no FDCAN frame has been received in a specified time. This is to protect the drive and its
+surroundings in an event of loss of communications, for example by physical damage to the wiring. By
+default, the watchdog is set to 250ms. This time can be set to any value in the range of 1 to 2000ms
+using `candletool md config can` command. When the watchdog is set to 0, it will disable the timer,
+however, this can lead to dangerous situations, and it is not a recommended way of operating MD.
 
 ```{warning}
 We do not recommend disabling the CAN watchdog timer!
@@ -34,28 +33,26 @@ This setting can be saved in the non-volatile memory so that it is always loaded
 power-up. To estimate the maximum current setting for a particular motor, you should use the
 following formula:
 
-$$
-I [A] = \frac{\tau [Nm] \frac{1}{G_r}}{K_t[\frac{Nm}{A}]}
-$$
+$$ I [A] = \\frac{\\tau [Nm] \\frac{1}{G_r}}{K_t[\\frac{Nm}{A}]} $$
 
 where
 
 - $ I[A] $ - calculated current in Amps
-- $ \tau $ - desired maximum torque
+- $ \\tau $ - desired maximum torque
 - $ G_r $ - gear ratio
 - $ K_t $ - motor’s torque constant
 
 for example let’s calculate the max current limit for AK80-9 motor, for a 2Nm max torque:
 
-$\tau = 2 Nm$
+$\\tau = 2 Nm$
 
 $G_r = 9:1 -> 9$
 
 $K_t = 0.091 Nm/A$
 
-$ I [A] = \frac{2[Nm] \cdot \frac{1}{9}}{0.091[\frac{Nm}{A}]} $
+$ I [A] = \\frac{2[Nm] \\cdot \\frac{1}{9}}{0.091[\\frac{Nm}{A}]} $
 
-$ I [A] \approx 2.44A $
+$ I [A] \\approx 2.44A $
 
 ```{note}
 Usually this limit should be set to the highest peak torque that is allowed in the system so that it doesn't limit the actuator performance.
@@ -110,4 +107,3 @@ start the motor outside the range will generate a motion error.
 :width: 1000px
 :align: center
 ```
-
