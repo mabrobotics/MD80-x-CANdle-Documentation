@@ -5,7 +5,6 @@ format: jb-book
 root: intro
 
 chapters:
-
 - file: MD/intro
   title: MD - Motor Controllers
   sections:
@@ -19,6 +18,8 @@ chapters:
       title: Encoders
     - file: MD/brakes
       title: Brakes
+    - file: MD/measurements
+      title: Measurements
     - file: MD/safety
       title: Safety
     - file: MD/motion
@@ -41,13 +42,10 @@ chapters:
   sections:
     - file: PDS/overview
       title: Overview
+    - file: PDS/pds_sdk_examples
+      title: Examples
 - file: CANdle/intro.md
   title: CANdle and CANdleHAT
-  sections:
-    - file: CANdle/Principle
-      title: Principle Of Operation (OUTDATED)
-    - file: CANdle/usingCandle
-      title: Using Candle (OUTDATED)
 - file: CANdle-SDK/intro.md
   title: Software - CANdle-SDK
   sections:

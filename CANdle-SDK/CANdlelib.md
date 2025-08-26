@@ -23,9 +23,9 @@ Our [MAB FDCAN protocol](/MD/Communication/fdcan) is fully open-source and docum
 
 Access to devices is split into corresponding modules:
 
-- [CANdle Module](CANdlelib/CANdleModule.md)
-- [MD Module](CANdlelib/MDModule.md)
-- [PDS Module](CANdlelib/PDSModule.md)
+- [CANdle Module](candlelib/CANdleModule.md)
+- [MD Module](candlelib/MDModule.md)
+- [PDS Module](candlelib/PDSModule.md)
 
 Each module, groups functions and helper-wrapper methods for interacting with devices. For example
 of use, see \[EXAMPLES\](TODO TODO TODO) section.
