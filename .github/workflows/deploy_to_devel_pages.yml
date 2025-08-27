@@ -29,7 +29,7 @@ jobs:
 
       - name: Build the book
         run: |
-          jupyter-book build .
+          jupyter-book build . --config _config_devel.yml
 
       - name: Deploy to mab-documentation-devel-deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.3
@@ -38,3 +38,4 @@ jobs:
           branch: gh-pages
           folder: _build/html
           token: ${{ secrets.PAGES_DEVEL_PAT }}
+          clean: true
