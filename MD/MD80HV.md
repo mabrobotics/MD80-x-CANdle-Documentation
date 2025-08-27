@@ -92,9 +92,8 @@ only the motor thermistor connector is available:
 ```
 
 ````{dropdown} The connectors in the case of the HW1.1 and HV1.3
-```{figure} ./images/HW11_thermistor.png
+```{figure} ./images/HW11_thermistor.jpg
 :alt: candle
-:scale: 30%
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -122,7 +121,7 @@ encoder connection via the SPI *530480650 Molex PicoBlade* connectors is provide
 <font color='red'>The auxiliary connector pins are 3.3V tolerant. Applying 5V to these pins will cause permanent damage to the controller! </font> 
 ```
 
-```{figure} ./images/MD80/aux1_connector_pinout_HW2.1.png
+```{figure} ./images/MD80/aux1_connector_pinout_HW2.1.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -137,7 +136,7 @@ brakes. Enabling of this mode is done via `userGpioConfiguration` register. When
 automatically disengage the brake when enabled. For external encoder connection via the RS422 and
 the GPIO pins utilization *530480810 Molex PicoBlade* connectors could be used.
 
-```{figure} ./images/MD80/aux2_connector_pinout.png
+```{figure} ./images/MD80/aux2_connector_pinout.jpg
 :alt: candle
 :class: bg-primary mb-1
 :align: center
