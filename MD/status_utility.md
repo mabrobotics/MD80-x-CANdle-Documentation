@@ -344,8 +344,7 @@ currently in:
 All of the MD controllers have two multi-purpose GPIO pins. Currently they have two functionalities:
 
 - Auto Brake - in this mode MDxx will automatically engage MAB Robotics's provided braking systems
-  via GPIO A pin, see [brake systems](brake_systems) and [registers section](registers) for more
-  details.
+  via GPIO A pin, see [brake systems](brakes) and [registers section](registers) for more details.
 - GPIO input - in this mode MDxx will output GPIO pin states to state register (*userGpioState
   0x161*)
 

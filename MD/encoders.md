@@ -1,3 +1,5 @@
+(aux_encoders)=
+
 # Auxiliary Encoders
 
 ```{figure} ./images/encoder/encoders.jpg
@@ -72,7 +74,7 @@ is the most suitable.
 ```
 
 ```{warning}
-The non-axial configuration outputs a nonlinear position values. This means it requires a [full calibration](output_encoder_calibration) (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host's software
+The non-axial configuration outputs a nonlinear position values. This means it requires a [full calibration](aux_encoder_calibration) (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host's software
 ```
 
 Not all modes are recommended for every encoder. The non-axially placed ME AS encoder is inherently

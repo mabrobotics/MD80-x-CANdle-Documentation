@@ -4,8 +4,8 @@
 
 Download flasher programs from here:
 
-- [MD CANopen](canopen-flashers)
-- [MD FDCAN Protocol](software_downloads)
+- [MD CANopen](canopen-flashers_legacy)
+- [MD FDCAN Protocol](downloads)
 
 The migration is performed via flashing appropriate firmware onto the MD device. Necessary
 components for this procedure are:

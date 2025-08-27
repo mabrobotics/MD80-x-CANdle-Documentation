@@ -63,9 +63,9 @@ Remember to save the parameters - please see the last chapter
 Setup of the external encoder should be done after the motor has been configured, as suggested in
 previous paragraph. To setup the output encoder the following fields need to be filled:
 
-- 0x2005:1 - Output Encoder Type (please see [output encoder](output_encoder))
-- 0x2005:2 - Calibration Mode (please see [output encoder calibration](output_encoder_calibration))
-- 0x2005:3 - Mode (please see [output encoder](output_encoder))
+- 0x2005:1 - Output Encoder Type (please see [output encoder](aux_encoders))
+- 0x2005:2 - Calibration Mode (please see [output encoder calibration](aux_encoder_calibration))
+- 0x2005:3 - Mode (please see [output encoder](aux_encoders))
 
 ```{note}
 Remember to save the parameters - please see the last chapter 

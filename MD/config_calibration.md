@@ -2,7 +2,7 @@
 
 ## Config
 
-MDxx's config allows for configuring the controller for a specific motor and the application it is
+MD's config allows for configuring the controller for a specific motor and the application it is
 used in. This section will cover the parameters that are used in config files.
 
 ### [motor] section
@@ -10,15 +10,15 @@ used in. This section will cover the parameters that are used in config files.
 - `name` - actuator name. Max 20 characters
 - `pole pairs` - the number of rotor magnets divided by 2. If you are unsure type zero here - during
   calibration it will be autodetected. Later on it is advised to retype it after the calibration to
-  the config file. It can be accessed using mdtool setup info or by register access.
+  the config file. It can be accessed using candletool md info or by register access.
 - `KV` - declated KV of the motor - its used when torque constant is set to zero.
 - `torque constant` - motor torque constant in Nm/A
 - `gear ratio` - gear ratio -> example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2
 - `max current` - maximum allowable phase (not power supply) current
-- `torque bandwidth` - [torque bandwidth](torque_bandwidth) setting
+- `torque bandwidth` - torque bandwidth setting
 - `shutdown temp` - temperature threshold in \[*C\] of the motor that will cause a overtemperature
   stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0*C
-  when mdtool setup info is called, the thremistor is not populated or is not working.
+  when candletool md info is called, the thremistor is not populated or is not working.
 
 ### [limits] section
 
@@ -41,7 +41,7 @@ These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.
 
 ### [output encoder] section
 
-For more information please refer to [output encoder](output_encoder) section.
+For more information please refer to [aux encoder](aux_encoders) section.
 
 - `output encoder` - valid types: ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS
 - `output encoder mode` - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT
@@ -76,12 +76,12 @@ script, or register access)
 
 ## Calibration
 
-Calibration should be performed when the MDxx controller is first mounted to the motor or when
+Calibration should be performed when the MD controller is first mounted to the motor or when
 anything changes in the motor-controller assembly. It has three main stages during which specific
 parameters of the setup are measured and saved.
 
 ```{note}
-The calibration has to be performed on a motor that is free to rotate with no load attached to its output shaft. If the calibration fails, you will see errors when executing the [`mdtool setup info`](mdtool_setup_info) command. If the failure is critical the MDxx will remain disabled until the next calibration attempt.
+The calibration has to be performed on a motor that is free to rotate with no load attached to its output shaft. If the calibration fails, you will see errors when executing the [`candletool md info`](candletool_commands) command. If the failure is critical the MD will remain disabled until the next calibration attempt.
 ```
 
 ### Pole pairs detection
@@ -116,10 +116,12 @@ bandwidth requires measuring motor parameters. This happens in the last calibrat
 manifests as an audible sound (beep). The torque bandwidth default setting is set using the motor
 config file. It can be set to anywhere from 50 Hz to 2.5 kHz, however it is important to note that
 higher torque bandwidth causes a higher audible noise level. Please see the
-[`mdtool setup calibration`](mdtool_setup_calibration) command for more details on calibrating the
+[`candletool md calibration`](candletool_commands) command for more details on calibrating the
 actuators. When the system that you’re designing is a highly dynamic one, you want the torque
 bandwidth to be higher than the default setting of 50 Hz. Start by calibrating the drives for 1 kHz
 torque bandwidth, and if you see this is still not enough you can increase it further.
+
+(aux_encoder_calibration)=
 
 ### Output Encoder Calibration
 
@@ -143,11 +145,12 @@ off-axis encoder - it requires a full calibration routine.
 :class: no-scaled-link
 ```
 
-To run the routine, use the [`mdtool setup calibration_out`](mdtool_setup_calibration_out) command.
-After completing the routine the MDxx will reboot and after that it is recommended to run the mdtool
+To run the routine, use the [`candletool md calibration -e aux`](candletool_commands) command. fter
+completing the routine the MD will reboot and after that it is recommended to run the candletool md
 setup info command in order to make sure the setup reports no errors:
 
 ```{figure} images/Calibration/mdtool_setup_info_allok.png
+
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -156,10 +159,10 @@ setup info command in order to make sure the setup reports no errors:
 
 The output encoder parameters are rather straightforward, except the “output encoder last check”
 errors. These values are filled during the output encoder check routine, which can be run using
-[`mdtool test encoder output`](mdtool_test_encoder). These params represent the output encoder
-errors (max, min and standard deviation) with respect to the main encoder mounted on the PCB. This
-means that if there are large inaccuracies during the calibration, or the output encoder moves in
-your setup, you can always check how accurate it is by running the check_aux routine.
+[`candletool md test encoder -e aux`](candletool_commands). These params represent the output
+encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the
+PCB. This means that if there are large inaccuracies during the calibration, or the output encoder
+moves in your setup, you can always check how accurate it is by running the check_aux routine.
 
 Example errors for ME_AS_CENTER:
 
@@ -181,8 +184,8 @@ Example errors for ME_AS_OFFAXIS:
 
 As can be seen, the non-axial encoder features larger errors, and thus can be utilized only for
 initial position determination rather than output shaft control. In case the errors get too large
-they will turn yellow after running [`mdtool test encoder output`](mdtool_test_encoder) command
-indicating there might be a problem with your setup:
+they will turn yellow after running [`candletool md test encoder -e aux`](candletool_commands)
+command indicating there might be a problem with your setup:
 
 ```{figure} images/Calibration/errors_yellow.png
 :alt: candle

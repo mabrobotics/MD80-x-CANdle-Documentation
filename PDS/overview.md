@@ -169,5 +169,4 @@ Now the device is ready to receive FD CAN Commands and perform its routines.
 ## Basic usage
 
 For basic usage refer to the [**CANdleSDK software examples**](./pds_sdk_examples.md) for PDS device
-or make use of our swiss-knife [**CANdleTOOL**](../CANdle-SDK/candletool/candletool.md) CLI
-application.
+or make use of our swiss-knife [**CANdleTOOL**](candletool) CLI application.
