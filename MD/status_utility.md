@@ -13,7 +13,7 @@ that all warnings and only non-critical errors can be cleared.
 
 (quick_status)=
 
-### Quick Status
+## Quick Status
 
 Quick status provides a general info about errors in each category of statuses. No warnings are
 indicated here. Last bit indicatest whether the current target (position or velocity) has been
@@ -66,7 +66,7 @@ reached.
 </table>
 <p></p>
 
-### Main / Output Encoder Errors
+## Main / Output Encoder Errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -128,7 +128,7 @@ reached.
 </table>
 <p></p>
 
-### Calibration Errors
+## Calibration Errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -172,7 +172,7 @@ reached.
 </table>
 <p></p>
 
-### Bridge errors
+## Bridge errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -204,7 +204,7 @@ reached.
 </table>
 <p></p>
 
-### Hardware errors
+## Hardware errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -254,7 +254,7 @@ reached.
 </table>
 <p></p>
 
-### Comunication errors
+## Comunication errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -276,7 +276,7 @@ reached.
 
 (motion_status)=
 
-### Motion status
+## Motion status
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>

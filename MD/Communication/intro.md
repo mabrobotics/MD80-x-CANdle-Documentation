@@ -1,6 +1,6 @@
 # Migration to and from CANopen
 
-### Preparation
+## Preparation
 
 Download flasher programs from here:
 

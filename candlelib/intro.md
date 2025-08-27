@@ -1,4 +1,4 @@
-## MD x CANdle Manual
+# MD x CANdle Manual
 
 This is a LEGACY software documentation for CANdle library and mdtool. This documentation and
 software is provided "as is". It will most likely not be be updated and remains as an archive of

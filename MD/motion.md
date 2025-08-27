@@ -19,7 +19,7 @@ and ‘D’ parts of the controller.
 :class: no-scaled-link
 ```
 
-### Velocity PID
+## Velocity PID
 
 Velocity PID controller calculates velocity error based on target velocity (set by user) and
 estimated velocity read from the encoder. Its output is a torque command for the internal
@@ -38,7 +38,7 @@ current/torque controller. The parameters of the controller are:
 :class: no-scaled-link
 ```
 
-### Position PID
+## Position PID
 
 Position PID mode is the most common controller mode used in industrial servo applications. In MDxx,
 it is implemented as a cascaded PID controller. This means that the controller is working in two
@@ -73,7 +73,7 @@ velocity PID mode), and then the position PID. The controller can be described w
 :class: no-scaled-link
 ```
 
-### Impedance PD
+## Impedance PD
 
 Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant
 mechanism. The main idea behind it is to mimic the behavior of a torsional spring with variable
@@ -118,7 +118,7 @@ The impedance controller is relatively simple and works according to the schemat
 :class: no-scaled-link
 ```
 
-### Velocity Profile
+## Velocity Profile
 
 The velocity profile motion mode uses trapezoidal velocity profiles to achieve smooth velocity
 changes with predefined acceleration and deceleration. The trajectory generator module interpolates
@@ -131,7 +131,7 @@ between two velocity setpoints to achieve constant acceleration.
 :class: no-scaled-link
 ```
 
-### Position Profile
+## Position Profile
 
 The position profile motion mode uses trapezoidal velocity profiles to achieve smooth position
 changes with predefined acceleration, deceleration, and velocity. The trajectory generator module

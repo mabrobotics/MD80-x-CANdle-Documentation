@@ -14,14 +14,6 @@ Simplified (lightweight_legacy) 3D \*.STEP models of MABRobotics products can be
 Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the
 CANdleSDK binary releases.
 
-## MAB Firmware
-
-Until the release of the new firmware files please use flashers listed below.
-
-<!-- 
-| MD  | PDS  | CANdle  |
-|-----|------|---------| -->
-
 (software_downloads_legacy)=
 
 ## Legacy software
@@ -181,6 +173,8 @@ Make sure the MAB_USB_Flasher can be executed. If not use the `sudo chmod +x ./M
 ```
 
 After a successful update, the CANdle device is ready. (canopen-flashers_legacy)=
+
+(canopen-flashers_legacy)=
 
 ### CANopen Flashers
 
