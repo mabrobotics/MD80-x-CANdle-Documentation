@@ -29,14 +29,16 @@ MD Module functionality is based around reading and writing registers efficientl
 ### Basic Setup
 
 Basically every program using CANdlelib and MD has the following workflow:
+
 1. Create CANdle object
-2. Create MD objects
-3. Setup Motion Mode, Limits etc.
-4. Enable MD
-5. Enter a loop, with regular read/writes of registers.
-6. Disable MD, free CANdle
+1. Create MD objects
+1. Setup Motion Mode, Limits etc.
+1. Enable MD
+1. Enter a loop, with regular read/writes of registers.
+1. Disable MD, free CANdle
 
 Simple working example would look something like this:
+
 ```
 #include "candle.hpp"
 #include "MD.hpp"
