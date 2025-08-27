@@ -21,7 +21,10 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/mab-documentation-devel-deploy  # Online location of your book
+  url: https://github.com/mabrobotics/mab-documentation-devel-deploy
+  path_to_book: .
+  branch: gh-pages
+  repository_provider: github
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
