@@ -17,7 +17,7 @@ CANdleTool main features
 ## Distribution
 
 We distribute whole CANdle-SDK package as free and open source software via
-[github](https://github.com/mabrobotics/CANdle-SDK) with MIT license.
+[github](https://github.com/mabrobotics/CANdle-SDK) under MIT license.
 
 We also provide binaries for the CANdleTool package via releases on github and in the
 [downloads](downloads) section of this document.
@@ -31,17 +31,23 @@ recommended), as well as an installer for Windows x86_64. All of them can be fou
 CANdleTool is a CLI program. You can issue commands using CLI interface, for example:
 
 ```
+candletool md blink --id 100
+```
+
+will blink built-in LEDs on MD controller.
+
+```
 candletool md test relative 10.0 --id 100
 ```
 
 This command will make a MD driver connected to the CANdle device move 10.0 radians
-counter-clockwise.
+counter-clockwise using Impedance Mode motion controller.
 
 To explore different commands the user can always use `-h` option.
 
-For example`candletool -h` prints the following message:
-
 ```
+$ candletool -h
+
    ___     _     _  _      _   _         _____               _
   / __|   /_\   | \| |  __| | | |  ___  |_   _|  ___   ___  | |
  | (__   / _ \  | .` | / _` | | | / -_)   | |   / _ \ / _ \ | |

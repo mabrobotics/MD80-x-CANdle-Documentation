@@ -21,6 +21,53 @@ Main features of MD module include:
 - Provides helper functions for managing MDs, for example: `getPosition()`, `zero()`,
   `setTargetPosition()`
 
+## How-To
+
+MD FDCAN protocol is based around accessing data on the drive via registers. Keeping that in mind,
+MD Module functionality is based around reading and writing registers efficiently via CANdle.
+
+### Basic Setup
+
+Basically every program using CANdlelib and MD has the following workflow:
+1. Create CANdle object
+2. Create MD objects
+3. Setup Motion Mode, Limits etc.
+4. Enable MD
+5. Enter a loop, with regular read/writes of registers.
+6. Disable MD, free CANdle
+
+Simple working example would look something like this:
+```
+#include "candle.hpp"
+#include "MD.hpp"
+
+int main()
+{
+    mab::Candle* candle = mab::attachCandle(mab::CANdleBaudrate_E::CAN_BAUD_1M, mab::candleTypes::busTypes_t::USB);
+
+    mab::MD md(100, candle);    
+
+    md.setMotionMode(mab::MdMode_E::IMPEDANCE);
+    md.setImpedanceParams(0., 1.);
+    md.setTargetVelocity(3.0);
+
+    md.enable();
+
+    mab::MDRegisters_S regs;
+    for (u16 i = 0; i < 100; i++)
+    {
+        md.readRegisters(regs.mainEncoderPosition, regs.mainEncoderVelocity);
+        usleep(100'000);
+    }
+    md.setTargetVelocity(0.);
+    usleep(100'000);
+
+    md.disable();  
+    mab::detachCandle(candle);
+    return EXIT_SUCCESS;
+}
+```
+
 ## Code Examples
 
 ### [Impedance](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/md_example_impedance.cpp)

@@ -11,15 +11,15 @@ Some commands are not listed in this document. You can explore all of the comman
 
 ## Global parameters
 
-`**-h, --help**` - Display help.
+`-h, --help` - Display help.
 
-`**-d, --datarate**` - Sets a datarate of CAN network when using CANdle device.
+`-d, --datarate` - Sets a datarate of CAN network when using CANdle device.
 
-`**-v, --verbosity**` - Sets printing verbosity of the CANdleTool. Supported values are 0,1,2,3.
+`-v, --verbosity` - Sets printing verbosity of the CANdleTool. Supported values are 0,1,2,3.
 
-`**-s, --silent**` - Turns off output of CANdletool logger.
+`-s, --silent` - Turns off output of CANdletool logger.
 
-`**--version**` - Prints a version of CANdleSDK used.
+`--version` - Prints a version of CANdleSDK used.
 
 ## **candle**
 
@@ -27,7 +27,7 @@ Some commands are not listed in this document. You can explore all of the comman
 
 ### Update
 
-Updates firmware on the CANdle device using provided [MAB firmware file](mab_files).
+Updates firmware on the CANdle device using provided .mab file.
 
 ## **md**
 
@@ -101,7 +101,7 @@ positional absolute mode (position profile).
 
 ### update
 
-Update firmware on MD drive using [MAB firmware file](mab_files).
+Update firmware on MD drive using MABs firmware file (.mab).
 
 ## **pds**
 
@@ -115,7 +115,7 @@ here are tied to the main PDS module.
 Main commands for the PDS control module are:
 
 - `info` - Get information about the PDS device.
-- `update` - Update firmware on the PDS device using [MAB firmware file](mab_files).
+- `update` - Update firmware on the PDS device using .mab files.
 - `can` - Configure CAN network parameters id, datarate and timeout with corresponding flags.
 - `save` - Save PDS configuration to flash memory.
 - `disable` - Shutdown the PDS device with timeout specified in the configuration file.

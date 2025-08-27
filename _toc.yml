@@ -59,7 +59,6 @@ chapters:
         - file: CANdle-SDK/candletool/Installation
         - file: CANdle-SDK/candletool/Commands
         - file: CANdle-SDK/candletool/ConfigurationFiles
-        - file: CANdle-SDK/candletool/MABFwFiles
 - file: FAQ/intro
   title: FAQ
 - file: Downloads/intro
