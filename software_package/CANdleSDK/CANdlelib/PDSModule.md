@@ -18,7 +18,7 @@ Main features of PDS module include:
 
 ## Examples
 
-### [Ping and status](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+### [Ping and status](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_ping_and_status.cpp)
 
 This example shows how to gather basic system diagnostics and configuration from the PDS.
 
@@ -31,12 +31,11 @@ This example shows how to gather basic system diagnostics and configuration from
 - Bus voltage and battery levels
 
 
-### [Power stage and braking resistor](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+### [Power stage and braking resistor](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_power_stage.cpp)
 
-This example demonstrates how to configure and monitor a Power Stage and Braking Resistor using the PDS.
-Connect to a specific Power Stage socket
+This example demonstrates how to configure and monitor a **Power Stage** and **Braking Resistor** using the PDS.
 
-- Connect to a specific Power Stage socket
+- Connect to a specific **Power Stage** socket
 - Configure:
   - Overcurrent Detection (OCD) limit and delay
   - Temperature limits
@@ -52,12 +51,12 @@ Connect to a specific Power Stage socket
 - You must call `powerStage->enable()` before attempting to monitor runtime data.
 ```
 
-### [Isolated converter](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+### [Isolated converter](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_isolated_converter.cpp)
 
-This example demonstrates how to configure and monitor an Isolated Converter using the PDS.
+This example demonstrates how to configure and monitor an **Isolated Converter** using the PDS.
 
 
-- Connect to a specific Isolated Converter socket
+- Connect to a specific **Isolated Converter** socket
 - Configure:
   - Temperature limit
   - Overcurrent Detection (OCD) level
@@ -70,12 +69,11 @@ This example demonstrates how to configure and monitor an Isolated Converter usi
 - Gracefully disable the converter
 
 ```{note}
-- Ensure the socket assignment (`SOCKET_2`) matches your hardware setup.
-- Call `enable()` before attempting to monitor data.
 - All values are converted to human-readable units (V, A, °C) for logging.
+- Socket index used: `SOCKET_2`
 ```
 
-### [Braking resistor](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
+### [Braking resistor](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples/cpp/pds_example_braking_resistor.cpp)
 
 This example demonstrates how to configure and monitor a **Braking Resistor** connected to the PDS.
 
@@ -91,21 +89,4 @@ This example demonstrates how to configure and monitor a **Braking Resistor** co
 - The brake resistor is **normally enabled automatically** by the **Power Stage** module.
 - This example focuses on standalone monitoring and configuration of the resistor.
 - Socket index used: `SOCKET_3`
-```
-
-### [Battery monitor and config save](https://github.com/mabrobotics/CANdle-SDK/blob/devel/examples)
-
-This example demonstrates how to configure battery voltage levels and configuration save on the PDS.
-
-- Connect to a specific **PDS Control Board** via CAN
-- Configure:
-  - Battery voltage thresholds
-  - Shutdown timeout
-- Save configuration to non-volatile memory
-- Initiate and monitor shutdown sequence
-
-```{note}
-- Always save the configuration using `saveConfig()` to make settings persistent across reboots.
-- The shutdown process is asynchronous; status is polled until `SHUTDOWN_SCHEDULED` is reported.
-- If you don't see the shutdown happening, check wiring and STO (Safe Turn Off) status.
 ```
