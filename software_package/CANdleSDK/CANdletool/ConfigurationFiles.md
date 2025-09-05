@@ -58,6 +58,7 @@ The `[motor]` section represent hardware motor that the MD is connected to. The 
 PDS devices configuration depends on the modules that they are equipped with. 
 
 Exemplary configuration files can be found below:
+```
 [control_board]
 can id = 120
 can baud = 1M
@@ -88,5 +89,5 @@ type = NO MODULE
 type = NO MODULE
 [socket 6]
 type = NO MODULE
-
+```
 A template configuration file can be created using the `candletool pds read_cfg` command. The modified configuration file can be used to configure the PDS device using the `candletool pds setup_cfg` command.
