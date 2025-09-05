@@ -519,37 +519,39 @@ document.write(`
 <section id="configuration-files-for-pds-device">
 <h2>Configuration files for PDS device<a class="headerlink" href="#configuration-files-for-pds-device" title="Link to this heading">#</a></h2>
 <p>PDS devices configuration depends on the modules that they are equipped with.</p>
-<p>Exemplary configuration files can be found below:
-[control_board]
-can id = 120
-can baud = 1M
-shutdown time = 5000  ; Shutdown time [ ms ]
-battery level 1 = 20000  ; Battery monitor lvl 1 [ mV ]
-battery level 2 = 24000  ; Battery monitor lvl 2 [ mV ]
-br socket = 0  ; Socket index where corresponding Brake Resistor is connected
-br trigger voltage = 100000  ; Brake resistor trigger voltage [ mV ]
-[socket 1]
-type = ISOLATED_CONVERTER
-temperature limit = 80.0  ; Temperature limit [ ^C ]
-ocd level = 45000  ; Over-current detection level [ mA ]
-ocd delay = 1000  ; Over-current detection delay [ ms ]
-[socket 2]
-type = POWER_STAGE
-temperature limit = 80.0  ; Temperature limit [ ^C ]
-ocd level = 45000  ; Over-current detection level [ mA ]
-ocd delay = 1000  ; Over-current detection delay [ ms ]
-br socket = 0  ; Socket index where corresponding Brake Resistor is connected
-br trigger voltage = 100000  ; Brake resistor trigger voltage [ mV ]
-autostart = OFF
-[socket 3]
-type = BRAKE_RESISTOR
-temperature limit = 80.0  ; Temperature limit [ ^C ]
-[socket 4]
-type = NO MODULE
-[socket 5]
-type = NO MODULE
-[socket 6]
-type = NO MODULE</p>
+<p>Exemplary configuration files can be found below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">control_board</span><span class="p">]</span>
+<span class="n">can</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">can</span> <span class="n">baud</span> <span class="o">=</span> <span class="mi">1</span><span class="n">M</span>
+<span class="n">shutdown</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">5000</span>  <span class="p">;</span> <span class="n">Shutdown</span> <span class="n">time</span> <span class="p">[</span> <span class="n">ms</span> <span class="p">]</span>
+<span class="n">battery</span> <span class="n">level</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">20000</span>  <span class="p">;</span> <span class="n">Battery</span> <span class="n">monitor</span> <span class="n">lvl</span> <span class="mi">1</span> <span class="p">[</span> <span class="n">mV</span> <span class="p">]</span>
+<span class="n">battery</span> <span class="n">level</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">24000</span>  <span class="p">;</span> <span class="n">Battery</span> <span class="n">monitor</span> <span class="n">lvl</span> <span class="mi">2</span> <span class="p">[</span> <span class="n">mV</span> <span class="p">]</span>
+<span class="n">br</span> <span class="n">socket</span> <span class="o">=</span> <span class="mi">0</span>  <span class="p">;</span> <span class="n">Socket</span> <span class="n">index</span> <span class="n">where</span> <span class="n">corresponding</span> <span class="n">Brake</span> <span class="n">Resistor</span> <span class="ow">is</span> <span class="n">connected</span>
+<span class="n">br</span> <span class="n">trigger</span> <span class="n">voltage</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="p">;</span> <span class="n">Brake</span> <span class="n">resistor</span> <span class="n">trigger</span> <span class="n">voltage</span> <span class="p">[</span> <span class="n">mV</span> <span class="p">]</span>
+<span class="p">[</span><span class="n">socket</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">ISOLATED_CONVERTER</span>
+<span class="n">temperature</span> <span class="n">limit</span> <span class="o">=</span> <span class="mf">80.0</span>  <span class="p">;</span> <span class="n">Temperature</span> <span class="n">limit</span> <span class="p">[</span> <span class="o">^</span><span class="n">C</span> <span class="p">]</span>
+<span class="n">ocd</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">45000</span>  <span class="p">;</span> <span class="n">Over</span><span class="o">-</span><span class="n">current</span> <span class="n">detection</span> <span class="n">level</span> <span class="p">[</span> <span class="n">mA</span> <span class="p">]</span>
+<span class="n">ocd</span> <span class="n">delay</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="p">;</span> <span class="n">Over</span><span class="o">-</span><span class="n">current</span> <span class="n">detection</span> <span class="n">delay</span> <span class="p">[</span> <span class="n">ms</span> <span class="p">]</span>
+<span class="p">[</span><span class="n">socket</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">POWER_STAGE</span>
+<span class="n">temperature</span> <span class="n">limit</span> <span class="o">=</span> <span class="mf">80.0</span>  <span class="p">;</span> <span class="n">Temperature</span> <span class="n">limit</span> <span class="p">[</span> <span class="o">^</span><span class="n">C</span> <span class="p">]</span>
+<span class="n">ocd</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">45000</span>  <span class="p">;</span> <span class="n">Over</span><span class="o">-</span><span class="n">current</span> <span class="n">detection</span> <span class="n">level</span> <span class="p">[</span> <span class="n">mA</span> <span class="p">]</span>
+<span class="n">ocd</span> <span class="n">delay</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="p">;</span> <span class="n">Over</span><span class="o">-</span><span class="n">current</span> <span class="n">detection</span> <span class="n">delay</span> <span class="p">[</span> <span class="n">ms</span> <span class="p">]</span>
+<span class="n">br</span> <span class="n">socket</span> <span class="o">=</span> <span class="mi">0</span>  <span class="p">;</span> <span class="n">Socket</span> <span class="n">index</span> <span class="n">where</span> <span class="n">corresponding</span> <span class="n">Brake</span> <span class="n">Resistor</span> <span class="ow">is</span> <span class="n">connected</span>
+<span class="n">br</span> <span class="n">trigger</span> <span class="n">voltage</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="p">;</span> <span class="n">Brake</span> <span class="n">resistor</span> <span class="n">trigger</span> <span class="n">voltage</span> <span class="p">[</span> <span class="n">mV</span> <span class="p">]</span>
+<span class="n">autostart</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="p">[</span><span class="n">socket</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">BRAKE_RESISTOR</span>
+<span class="n">temperature</span> <span class="n">limit</span> <span class="o">=</span> <span class="mf">80.0</span>  <span class="p">;</span> <span class="n">Temperature</span> <span class="n">limit</span> <span class="p">[</span> <span class="o">^</span><span class="n">C</span> <span class="p">]</span>
+<span class="p">[</span><span class="n">socket</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">NO</span> <span class="n">MODULE</span>
+<span class="p">[</span><span class="n">socket</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">NO</span> <span class="n">MODULE</span>
+<span class="p">[</span><span class="n">socket</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">NO</span> <span class="n">MODULE</span>
+</pre></div>
+</div>
 <p>A template configuration file can be created using the <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">read_cfg</span></code> command. The modified configuration file can be used to configure the PDS device using the <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">setup_cfg</span></code> command.</p>
 </section>
 </section>
