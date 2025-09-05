@@ -35,16 +35,9 @@ This example shows how to gather basic system diagnostics and configuration from
 
 This example demonstrates how to configure and monitor a **Power Stage** and **Braking Resistor** using the PDS.
 
-- Connect to a specific **Power Stage** socket
-- Configure:
-  - Overcurrent Detection (OCD) limit and delay
-  - Temperature limits
-  - Braking resistor trigger voltage
+- Configure: Overcurrent Detection (OCD) limit and delay, temperature limits, braking resistor trigger voltage
 - Bind a Braking resistor to the power stage
-- Enable the power stage
-- Read runtime status:
-  - Voltage, current, temperature, and protection states
-- Gracefully disable the power stage
+- Read runtime status: voltage, current, temperature, and protection states
 
 ```{note}
 - Ensure correct socket assignments (`SOCKET_1`, `SOCKET_3`) match your physical wiring.
@@ -55,18 +48,8 @@ This example demonstrates how to configure and monitor a **Power Stage** and **B
 
 This example demonstrates how to configure and monitor an **Isolated Converter** using the PDS.
 
-
-- Connect to a specific **Isolated Converter** socket
-- Configure:
-  - Temperature limit
-  - Overcurrent Detection (OCD) level
-- Enable the isolated converter
-- Read runtime status:
-  - Output voltage
-  - Load current
-  - Temperature
-  - OCD configuration
-- Gracefully disable the converter
+- Configure: temperature limit, OCD level
+- Read runtime status: Output voltage, load current, temperature, OCD configuration
 
 ```{note}
 - All values are converted to human-readable units (V, A, °C) for logging.
@@ -77,13 +60,8 @@ This example demonstrates how to configure and monitor an **Isolated Converter**
 
 This example demonstrates how to configure and monitor a **Braking Resistor** connected to the PDS.
 
-- Attach to a specific **Braking Resistor** socket
-- Configure:
-  - Temperature limit
-- Read runtime status:
-  - Enabled state
-  - Current temperature
-  - Configured temperature limit
+- Configure: temperature limit
+- Read runtime status: enabled state, current temperature, configured temperature limit
 
 ```{note}
 - The brake resistor is **normally enabled automatically** by the **Power Stage** module.
