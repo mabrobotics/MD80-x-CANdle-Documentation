@@ -49,7 +49,7 @@ This example demonstrates how to configure and monitor a **Power Stage** and **B
 This example demonstrates how to configure and monitor an **Isolated Converter** using the PDS.
 
 - Configure: temperature limit, OCD level
-- Read runtime status: Output voltage, load current, temperature, OCD configuration
+- Read runtime status: output voltage, load current, temperature, OCD configuration
 
 ```{note}
 - All values are converted to human-readable units (V, A, °C) for logging.
