@@ -51,7 +51,7 @@ SDO messages are carried using **CAN-ID 0x600 + Node-ID** for **client → serve
 
 | **CAN-ID** | **CS** | **Index** | **Subindex** | **Data** |
 |------------|--------|-----------|--------------|----------|
-| 0x605      | 0x23   | 0x6040    | 0x00         | 0x34 0x12 |
+| 0x605      | 0x23   | 0x40 0x60  | 0x00         | 0x34 0x12 |
 
 **Read the same object:**
 
