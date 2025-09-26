@@ -453,6 +453,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-devices">Configuration files for MD devices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-pds-device">Configuration files for PDS device</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-device-with-can-open-communication">Configuration files for MD device with CAN open communication</a></li>
 </ul>
             </nav>
         </div>
@@ -554,6 +555,57 @@ document.write(`
 </div>
 <p>A template configuration file can be created using the <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">read_cfg</span></code> command. The modified configuration file can be used to configure the PDS device using the <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">setup_cfg</span></code> command.</p>
 </section>
+<section id="configuration-files-for-md-device-with-can-open-communication">
+<h2>Configuration files for MD device with CAN open communication<a class="headerlink" href="#configuration-files-for-md-device-with-can-open-communication" title="Link to this heading">#</a></h2>
+<p>MD using can open communication need to have special config file.</p>
+<p>Exemplary configuration files can be found below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">motor</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">AK10</span><span class="o">-</span><span class="mi">9</span>
+<span class="n">pole</span> <span class="n">pairs</span> <span class="o">=</span> <span class="mf">21.0</span>
+<span class="n">kv</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">torque</span> <span class="n">constant</span> <span class="o">=</span> <span class="mf">0.095</span>
+<span class="n">gear</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.11111</span>
+<span class="n">torque</span> <span class="n">bandwidth</span> <span class="o">=</span> <span class="mf">500.0</span>
+<span class="n">shutdown</span> <span class="n">temp</span> <span class="o">=</span> <span class="mf">80.0</span>
+
+<span class="p">[</span><span class="n">limits</span><span class="p">]</span>
+<span class="n">rated</span> <span class="n">torque</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="nb">max</span> <span class="n">torque</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">rated</span> <span class="n">current</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="nb">max</span> <span class="n">current</span> <span class="o">=</span> <span class="mi">22000</span>
+<span class="nb">max</span> <span class="n">velocity</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">max</span> <span class="n">position</span> <span class="o">=</span> <span class="mi">2147483647</span>
+<span class="nb">min</span> <span class="n">position</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2147483648</span>
+<span class="nb">max</span> <span class="n">acceleration</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="nb">max</span> <span class="n">deceleration</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+<span class="p">[</span><span class="n">profile</span><span class="p">]</span>
+<span class="n">acceleration</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">deceleration</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">20.0</span>
+
+<span class="p">[</span><span class="n">output</span> <span class="n">encoder</span><span class="p">]</span>
+<span class="n">output</span> <span class="n">encoder</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">output</span> <span class="n">encoder</span> <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="p">[</span><span class="n">position</span> <span class="n">pid</span><span class="p">]</span>
+<span class="n">kp</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="n">ki</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">kd</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">windup</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="p">[</span><span class="n">velocity</span> <span class="n">pid</span><span class="p">]</span>
+<span class="n">kp</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">ki</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">kd</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">windup</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="p">[</span><span class="n">impedance</span> <span class="n">pd</span><span class="p">]</span>
+<span class="n">kp</span> <span class="o">=</span> <span class="mf">3.5</span>
+<span class="n">kd</span> <span class="o">=</span> <span class="mf">0.25</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -622,6 +674,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-devices">Configuration files for MD devices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-pds-device">Configuration files for PDS device</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-device-with-can-open-communication">Configuration files for MD device with CAN open communication</a></li>
 </ul>
   </nav></div>
 

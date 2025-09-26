@@ -36,7 +36,7 @@ For example`candletool -h` prints the following message:
  | (__   / _ \  | .` | / _` | | | / -_)   | |   / _ \ / _ \ | |
   \___| /_/ \_\ |_|\_| \__,_| |_| \___|   |_|   \___/ \___/ |_|
                                                                
-For more information please refer to the manual: https://mabrobotics.github.io/MD80-x-CANdle-Documentation
+For more information please refer to the manual: https://mabrobotics.pl/servos/manual 
 
 
 
@@ -60,6 +60,7 @@ SUBCOMMANDS:
   candle                      CANdle device commands. 
   md                          MD commands. 
   pds                         Tweak the PDS device 
+  mdco                        Send CANopen command instead of CAN FD. 
 ```
 
 For more details visit [Commands](candletool_commands) section.

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CANdle Module &#8212; MD x CANdle Manual</title>
+    <title>MDCO Module &#8212; MD x CANdle Manual</title>
   
   
   
@@ -59,12 +59,10 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'software_package/CANdleSDK/CANdlelib/CANdleModule';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software_package/CANdleSDK/CANdlelib/MDCOModule';</script>
     <link rel="icon" href="../../../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="MD Module" href="MDModule.html" />
-    <link rel="prev" title="Overview" href="Overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Ecosystem.html">MD x CANdle Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
@@ -212,11 +212,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../candle_and_candle_hat/Latency.html">Latency</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../Software.html">Software package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../CANdleSDK.html">CANdleSDK</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="../CANdlelib.html">CANdlelib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Software.html">Software package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../CANdleSDK.html">CANdleSDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="Overview.html">Overview</a></li>
-<li class="toctree-l4 current active"><a class="current reference internal" href="#">CANdle Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="MDModule.html">MD Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="PDSModule.html">PDS Module</a></li>
 </ul>
@@ -327,7 +327,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fsoftware_package/CANdleSDK/CANdlelib/CANdleModule.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fsoftware_package/CANdleSDK/CANdlelib/MDCOModule.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +357,7 @@
       
       
       
-      <li><a href="../../../_sources/software_package/CANdleSDK/CANdlelib/CANdleModule.md" target="_blank"
+      <li><a href="../../../_sources/software_package/CANdleSDK/CANdlelib/MDCOModule.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -441,7 +441,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CANdle Module</h1>
+    <h1>MDCO Module</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -451,7 +451,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-roles">Main Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features">Main Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">Code Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-detection">ID detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-register">Read &amp; write register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speed-loop">Speed loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat">Heartbeat</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -463,16 +472,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="candle-module">
-<h1>CANdle Module<a class="headerlink" href="#candle-module" title="Link to this heading">#</a></h1>
-<p>CANdle module provides API necessary to operate <a class="reference internal" href="../../../candle_and_candle_hat/CANdle.html#candle-and-hat"><span class="std std-ref">CANdle devices</span></a>.</p>
-<section id="main-roles">
-<h2>Main Roles<a class="headerlink" href="#main-roles" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="mdco-module">
+<h1>MDCO Module<a class="headerlink" href="#mdco-module" title="Link to this heading">#</a></h1>
+<p>The <strong>MDCO module</strong> stands for <em>Motor Drive CANopen</em> and mainly hosts the <code class="docutils literal notranslate"><span class="pre">MDCO</span></code> class, which represents physical <a class="reference internal" href="#mdco"><span class="xref myst">MDCO</span></a> drivers using the CANopen communication layer instead of CAN-FD.</p>
+<p>The <strong>CANdle</strong> now supports communication with drivers through the <strong>CANopen</strong> protocol.<br />
+This feature enables simpler and standardized integration into industrial or robotic systems that use CANopen as their primary protocol.</p>
+<p>It can be included in your project via the header file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MDCO.hpp&quot;</span>
+</pre></div>
+</div>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Before using MDCO module you should migrate the motor driver in CANopen, cf: <a class="reference external" href="https://mabrobotics.github.io/MD80-x-CANdle-Documentation/md_canopen/TransitionProcedure.html">https://mabrobotics.github.io/MD80-x-CANdle-Documentation/md_canopen/TransitionProcedure.html</a>. If you want to use candle features don’t forget to update your candle with the latest version available.</p>
+</section>
+<section id="main-features">
+<h2>Main Features<a class="headerlink" href="#main-features" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Provides seamless CAN messages transfer between host computer and the CAN network with master-slave architecture.</p></li>
-<li><p>Provides CAN data-rate management.</p></li>
-<li><p>Provides interface socket for different CANdle access ports (USB, SPI, etc.).</p></li>
+<li><p><strong>CANopen compatibility</strong>: Supports the CiA 301 standard communication profile.</p></li>
+<li><p><strong>SDO/PDO exchanges</strong>: Read and write driver object dictionary entries.</p></li>
+<li><p><strong>Node detection and management</strong>: Automatic identification of devices on the CAN bus.</p></li>
+<li><p><strong>Synchronization</strong>: Use of SYNC frames to align real-time communication.</p></li>
+<li><p><strong>NMT state management</strong>: Transition between <em>Pre-operational</em>, <em>Operational</em>, and <em>Stopped</em> modes.</p></li>
+<li><p><strong>EMCY management</strong>: Handling of emergency messages.</p></li>
+<li><p><strong>TIME-STAMP management</strong>: Handling of messages containing the <em>TIME_OF_DAY</em> object (cf. CiA 301).</p></li>
+<li><p><strong>Heartbeat management</strong>: Handling of heartbeat messages.</p></li>
 </ul>
+</section>
+<section id="code-examples">
+<h2>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading">#</a></h2>
+<p>All codes examples are available in python or c++</p>
+<section id="id-detection">
+<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_id_motor_detection.cpp">ID detection</a><a class="headerlink" href="#id-detection" title="Link to this heading">#</a></h3>
+<p>This is the simplest example to use and the recommended starting point.</p>
+<p>The program displays the IDs of all motors connected to the CANdle via CANopen and makes the drivers’ LEDs blink one by one, allowing the user to identify which motor corresponds to which ID.</p>
+</section>
+<section id="read-write-register">
+<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_read_write_register.cpp">Read &amp; write register</a><a class="headerlink" href="#read-write-register" title="Link to this heading">#</a></h3>
+<p>This example demonstrates the different ways to communicate with the MD80 using the CANopen protocol.</p>
+<ul class="simple">
+<li><p>Send <strong>SDO expedited transfer</strong> requests to write and read values contained in most registers.</p></li>
+<li><p>Use <strong>PDOs</strong> for faster communication.</p></li>
+<li><p>Use <strong>SDO segmented transfers</strong> for registers larger than 4 bytes.</p></li>
+<li><p>Use <strong>NMT (Network Management)</strong> to easily manage the motor driver’s state machine (cf. CiA 301).</p></li>
+</ul>
+</section>
+<section id="speed-loop">
+<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_speed_loop.cpp">Speed loop</a><a class="headerlink" href="#speed-loop" title="Link to this heading">#</a></h3>
+<p>This example shows how to run the motor using only <strong>SDO expedited transfers</strong>.</p>
+<p>You must first configure the registers (Max current, Max torque, etc.). Once the registers are set, you can create a loop to run your motor at the desired speed.</p>
+</section>
+<section id="impedance">
+<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_impedance.cpp">Impedance</a><a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
+<p>This example shows a use case of the MD module where we connect to the CANdle device, scan the CAN network for MDs, set its mode to <em>impedance</em> (or any other available mode from the enum), and start the control loop.</p>
+<blockquote>
+<div><p><strong>Warning</strong><br />
+Be careful using this mode, raw torque can be dangerous.</p>
+</div></blockquote>
+</section>
+<section id="heartbeat">
+<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_heartbeat.cpp">Heartbeat</a><a class="headerlink" href="#heartbeat" title="Link to this heading">#</a></h3>
+<p>The <strong>Heartbeat protocol</strong> is used to monitor the nodes in the network and verify that they are alive.<br />
+A heartbeat producer (usually a slave device) periodically sends a message with its node ID (<code class="docutils literal notranslate"><span class="pre">0x700</span> <span class="pre">+</span> <span class="pre">node</span> <span class="pre">ID</span></code>).</p>
+<p>This example shows how to use the heartbeat protocol:</p>
+<ol class="arabic simple">
+<li><p>The program first listens to the motor driver to check if it is sending heartbeats correctly.</p></li>
+<li><p>Then, a second test is performed where the motor driver is set as a heartbeat listener and the CANdle sends it heartbeat messages. After a few iterations, the CANdle stops sending heartbeat messages, and the motor driver should switch to <em>stop mode</em> in the NMT state machine.</p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -506,24 +572,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Overview.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Overview</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="MDModule.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MD Module</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -540,7 +588,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-roles">Main Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features">Main Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">Code Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-detection">ID detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-register">Read &amp; write register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speed-loop">Speed loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat">Heartbeat</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

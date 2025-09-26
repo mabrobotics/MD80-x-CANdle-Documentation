@@ -13,7 +13,7 @@ To set up a new motor make sure the drive is in the "switch on disabled" state. 
 - 0x6075:0 - Rated Current 
 - 0x6076:0 - Rated Torque
 - 0x6072:0 - Max Torque
-- 0x6072:0 - Max Current
+- 0x6073:0 - Max Current
 - 0x6080:0 - Max Speed
 - 0x2000:1 - Pole Pairs
 - 0x2000:2 - Torque Constant

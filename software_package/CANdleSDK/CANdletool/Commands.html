@@ -474,6 +474,25 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-module">Main module</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdco"><strong>MDCO</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">blink</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">clear</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eds">EDS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder">encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat">heartbeat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nmt">nmt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo">pdo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ping">ping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset">reset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sync">sync</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmented">segmented</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time">time</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -597,6 +616,82 @@ document.write(`
 </ul>
 </section>
 </section>
+<section id="mdco">
+<h2><strong>MDCO</strong><a class="headerlink" href="#mdco" title="Link to this heading">#</a></h2>
+<p>Branch of CLI dedicated for <a class="reference internal" href="#mdco"><span class="xref myst">MDCO</span></a> device.</p>
+<section id="id2">
+<h3>blink<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Blink built-in LEDs on MD drive.</p>
+</section>
+<section id="id3">
+<h3>clear<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Clear Errors and Warnings.</p>
+</section>
+<section id="id4">
+<h3>config<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Configure CAN network parameters id, datarate and timeout with corresponding subcommands. Don’t forget to save your modification before shunting down your driver.</p>
+</section>
+<section id="eds">
+<h3>EDS<a class="headerlink" href="#eds" title="Link to this heading">#</a></h3>
+<p>EDS file analizer and generator.</p>
+</section>
+<section id="encoder">
+<h3>encoder<a class="headerlink" href="#encoder" title="Link to this heading">#</a></h3>
+<p>Display MD motor position.</p>
+</section>
+<section id="heartbeat">
+<h3>heartbeat<a class="headerlink" href="#heartbeat" title="Link to this heading">#</a></h3>
+<p>Test heartbeat detection of a device.</p>
+</section>
+<section id="nmt">
+<h3>nmt<a class="headerlink" href="#nmt" title="Link to this heading">#</a></h3>
+<p>Send NMT commands. Usefull for changing NMT state of the MD state machine</p>
+</section>
+<section id="pdo">
+<h3>pdo<a class="headerlink" href="#pdo" title="Link to this heading">#</a></h3>
+<p>Try to send pdo can frame instead of sdo.</p>
+</section>
+<section id="ping">
+<h3>ping<a class="headerlink" href="#ping" title="Link to this heading">#</a></h3>
+<p>Discover MD drives on CAN bus.</p>
+<p>This command will not work if the MD drives are not powered on, nor when they are configured to use different CAN datarate than the one set in the <code class="docutils literal notranslate"><span class="pre">candletool</span></code> command.</p>
+</section>
+<section id="id5">
+<h3>register<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Access MD drive via register read/write. Specifying register can be done using either address + subaddress or name. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">register</span> <span class="n">read</span> <span class="mi">10</span> <span class="mh">0x2000</span> <span class="mh">0x06</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">register</span> <span class="n">read</span> <span class="mi">10</span> <span class="n">motorName</span> 
+</pre></div>
+</div>
+</section>
+<section id="reset">
+<h3>reset<a class="headerlink" href="#reset" title="Link to this heading">#</a></h3>
+<p>Reset MD drive.</p>
+</section>
+<section id="setup">
+<h3>setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
+<p>Setup MD using (MAB configuration file), and calibrate.</p>
+</section>
+<section id="sync">
+<h3>sync<a class="headerlink" href="#sync" title="Link to this heading">#</a></h3>
+<p>Send a sync CANopen message. This type of message is used for avoiding future CAN message collision.</p>
+</section>
+<section id="segmented">
+<h3>segmented<a class="headerlink" href="#segmented" title="Link to this heading">#</a></h3>
+<p>Send a message using SDO segmented transfer. Segmented are usefull for register with more than 4 bytes of data (e.g. Motor Name).</p>
+</section>
+<section id="id6">
+<h3>test<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Basic MD drive testing routines like moving the motor.</p>
+</section>
+<section id="time">
+<h3>time<a class="headerlink" href="#time" title="Link to this heading">#</a></h3>
+<p>Send a time stamp message to the MD using the computer’s clock.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -684,6 +779,25 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds"><strong>pds</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-module">Main module</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdco"><strong>MDCO</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">blink</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">clear</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eds">EDS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder">encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat">heartbeat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nmt">nmt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo">pdo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ping">ping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset">reset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sync">sync</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmented">segmented</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time">time</a></li>
 </ul>
 </li>
 </ul>

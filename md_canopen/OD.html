@@ -475,12 +475,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2004-system-status">0x2004 - System Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2005-output-encoder">0x2005 - Output Encoder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2006-temperature">0x2006 - Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200c-impedance-pd-controller">0x200C - Impedance PD Controller</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-specific-area">3. Profile Specific Area</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6040-control-word">0x6040 - Control Word</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6041-status-word">0x6041 - Status Word</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6060-modes-of-operation">0x6060 - Modes Of Operation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-mode">Impedance Mode</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#service">Service</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#idle">Idle</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-position">Profile position</a></li>
@@ -508,6 +510,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6081-profile-velocity">0x6081 - Profile Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6083-profile-acceleration">0x6083 - Profile Acceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6084-profile-deceleration">0x6084 - Profile Deceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c5-max-acceleration">0x60C5 - Max Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c6-max-deceleration">0x60C6 - Max Deceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60ff-target-velocity">0x60FF - Target Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6502-supported-drive-modes">0x6502 - Supported Drive Modes</a></li>
 </ul>
@@ -1578,6 +1582,55 @@ document.write(`
 </table>
 <p></p>
 </section>
+<section id="x200c-impedance-pd-controller">
+<h3>0x200C - Impedance PD Controller<a class="headerlink" href="#x200c-impedance-pd-controller" title="Link to this heading">#</a></h3>
+<p>Configures the impedance PD controller gains. Be sure to save after modification using 0x1010 Store Parameters. <strong>BE CAREFUL</strong>, raw torque can be dangerous.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x200C</td>
+			<td>0x01</td>
+			<td>Kp</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x200C</td>
+			<td>0x02</td>
+			<td>Kd</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/impedance.png"><img alt="../_images/impedance.png" src="../_images/impedance.png" style="width: 1000px;" />
+</a>
+</figure>
+</section>
 </section>
 <section id="profile-specific-area">
 <h2>3. Profile Specific Area<a class="headerlink" href="#profile-specific-area" title="Link to this heading">#</a></h2>
@@ -1918,6 +1971,10 @@ document.write(`
 			<td> <b>Mode</b></td>
 		</tr>
 		<tr>
+      		<td>-3</td>
+			<td>Impedance Mode</td>
+		</tr>
+		<tr>
       		<td>-2</td>
 			<td>Service</td>
 		</tr>
@@ -1944,6 +2001,10 @@ document.write(`
 	</tbody>
 </table>
 <p></p>
+<section id="impedance-mode">
+<h4>Impedance Mode<a class="headerlink" href="#impedance-mode" title="Link to this heading">#</a></h4>
+<p>Mode in which the motor is mimic the behavior of a torsional spring with variable stiffness and damping. <a class="reference internal" href="#impedance-pd"><span class="xref myst">Impedance-pd</span></a></p>
+</section>
 <section id="service">
 <h4>Service<a class="headerlink" href="#service" title="Link to this heading">#</a></h4>
 <p>Mode in which <a class="reference internal" href="#system-command"><span class="std std-ref">System Commands</span></a> can be issued.</p>
@@ -2664,6 +2725,72 @@ document.write(`
 </table>
 <p></p>
 </section>
+<section id="x60c5-max-acceleration">
+<h3>0x60C5 - Max Acceleration<a class="headerlink" href="#x60c5-max-acceleration" title="Link to this heading">#</a></h3>
+<p>Configures the maximum acceleration for profile position and profile velocity modes.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x60C5</td>
+			<td>0x00</td>
+			<td>Max Acceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="x60c6-max-deceleration">
+<h3>0x60C6 - Max Deceleration<a class="headerlink" href="#x60c6-max-deceleration" title="Link to this heading">#</a></h3>
+<p>Configures the maximum deceleration for profile position and profile velocity modes.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6084</td>
+			<td>0x00</td>
+			<td>Max Deceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
 <section id="x60ff-target-velocity">
 <h3>0x60FF - Target Velocity<a class="headerlink" href="#x60ff-target-velocity" title="Link to this heading">#</a></h3>
 <p>Sets the target velocity for all motion modes.</p>
@@ -2821,12 +2948,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2004-system-status">0x2004 - System Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2005-output-encoder">0x2005 - Output Encoder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2006-temperature">0x2006 - Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200c-impedance-pd-controller">0x200C - Impedance PD Controller</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-specific-area">3. Profile Specific Area</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6040-control-word">0x6040 - Control Word</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6041-status-word">0x6041 - Status Word</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6060-modes-of-operation">0x6060 - Modes Of Operation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-mode">Impedance Mode</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#service">Service</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#idle">Idle</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-position">Profile position</a></li>
@@ -2854,6 +2983,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6081-profile-velocity">0x6081 - Profile Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6083-profile-acceleration">0x6083 - Profile Acceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6084-profile-deceleration">0x6084 - Profile Deceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c5-max-acceleration">0x60C5 - Max Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c6-max-deceleration">0x60C6 - Max Deceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60ff-target-velocity">0x60FF - Target Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6502-supported-drive-modes">0x6502 - Supported Drive Modes</a></li>
 </ul>

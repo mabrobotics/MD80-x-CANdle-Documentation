@@ -94,3 +94,80 @@ Main submodule commands are:
 - `info` - Get information about the PDS module.
 - `enable` - Enable the PDS module.
 - `disable` - Disable the PDS module.
+
+## **MDCO**
+
+Branch of CLI dedicated for [MDCO](mdco) device.
+
+### blink
+
+Blink built-in LEDs on MD drive. 
+
+### clear
+
+Clear Errors and Warnings.
+
+### config
+
+Configure CAN network parameters id, datarate and timeout with corresponding subcommands. Don't forget to save your modification before shunting down your driver.
+
+### EDS
+
+EDS file analizer and generator.
+
+### encoder
+
+Display MD motor position.
+
+### heartbeat
+
+Test heartbeat detection of a device.
+
+### nmt
+
+Send NMT commands. Usefull for changing NMT state of the MD state machine
+
+### pdo
+
+Try to send pdo can frame instead of sdo.
+
+### ping
+
+Discover MD drives on CAN bus.
+
+This command will not work if the MD drives are not powered on, nor when they are configured to use different CAN datarate than the one set in the `candletool` command.
+
+### register
+
+Access MD drive via register read/write. Specifying register can be done using either address + subaddress or name. For example:
+```
+candletool mdco register read 10 0x2000 0x06
+```
+or
+```
+candletool mdco register read 10 motorName 
+```
+
+### reset
+
+Reset MD drive. 
+
+### setup
+
+Setup MD using (MAB configuration file), and calibrate.
+
+### sync
+
+Send a sync CANopen message. This type of message is used for avoiding future CAN message collision.
+
+### segmented
+
+Send a message using SDO segmented transfer. Segmented are usefull for register with more than 4 bytes of data (e.g. Motor Name).
+
+### test
+
+Basic MD drive testing routines like moving the motor. 
+
+### time
+
+Send a time stamp message to the MD using the computer's clock.

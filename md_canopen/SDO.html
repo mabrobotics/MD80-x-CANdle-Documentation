@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Downloads &#8212; MD x CANdle Manual</title>
+    <title>CANopen SDO Overview &#8212; MD x CANdle Manual</title>
   
   
   
@@ -59,12 +59,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Downloads/Downloads';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_canopen/SDO';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Changelogs" href="../Changelogs/Changelogs.html" />
-    <link rel="prev" title="Common Issues and FAQ" href="../common_problems_and_faq/FAQ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../md_x_candle_ecosystem_overview/Ecosystem.html">MD x CANdle Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
@@ -243,9 +243,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">MD FDCAN protocol</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../md_canopen/CANopen.html">MD CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../md_canopen/OD.html">Object Dictionary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CANopen.html">MD CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="OD.html">Object Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TransitionProcedure.html">Migration to and from CANopen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pds/pds.html">PDS Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -254,7 +254,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common problems and FAQ</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
 </ul>
 
@@ -327,7 +327,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FDownloads/Downloads.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fmd_canopen/SDO.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +357,7 @@
       
       
       
-      <li><a href="../_sources/Downloads/Downloads.md" target="_blank"
+      <li><a href="../_sources/md_canopen/SDO.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -441,7 +441,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Downloads</h1>
+    <h1>CANopen SDO Overview</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -451,18 +451,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mab-firmware">MAB Firmware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-software">Legacy software</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-update-tool-mab-can-flasher">MD update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">CANdle update tool - MAB USB Flasher</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-flashers">CANopen Flashers</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-communication-concept">2. SDO Communication Concept</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-message-structure">3. SDO Message Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-commands-command-specifiers">4. SDO Commands (Command Specifiers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-sdo-transfer">5. Example of SDO Transfer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-sdo">6. Advantages of SDO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -474,189 +469,164 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="downloads">
-<span id="id1"></span><h1>Downloads<a class="headerlink" href="#downloads" title="Link to this heading">#</a></h1>
-<section id="d-models">
-<span id="hardware-downloads"></span><h2>3D models<a class="headerlink" href="#d-models" title="Link to this heading">#</a></h2>
-<p>Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found <a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing">here</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="canopen-sdo-overview">
+<h1>CANopen SDO Overview<a class="headerlink" href="#canopen-sdo-overview" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p><strong>SDOs (Service Data Objects)</strong> in CANopen provide a <strong>request/response mechanism</strong> to access and configure any object in the <strong>Object Dictionary</strong>.<br />
+Unlike PDOs, SDOs are <strong>slower</strong> but allow reading/writing large or complex data structures.</p>
 </section>
-<section id="candlesdk">
-<h2>CANdleSDK<a class="headerlink" href="#candlesdk" title="Link to this heading">#</a></h2>
-<p>Please visit <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/releases"><strong>releases</strong></a> page for all of the CANdleSDK binary releases.</p>
+<hr class="docutils" />
+<section id="sdo-communication-concept">
+<h2>2. SDO Communication Concept<a class="headerlink" href="#sdo-communication-concept" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>SDO communication is always between a <strong>client</strong> and a <strong>server</strong>.</p></li>
+<li><p>The <strong>client</strong> initiates the transfer (read or write), and the <strong>server</strong> responds.</p></li>
+<li><p>SDOs can transfer data <strong>up to 4 GB</strong> using segmented communication if needed.</p></li>
+</ul>
 </section>
-<section id="mab-firmware">
-<h2>MAB Firmware<a class="headerlink" href="#mab-firmware" title="Link to this heading">#</a></h2>
-<p>Until the release of the new firmware files please use flashers listed below.</p>
-<!-- 
-| MD  | PDS  | CANdle  |
-|-----|------|---------| -->
-</section>
-<section id="legacy-software">
-<span id="software-downloads"></span><h2>Legacy software<a class="headerlink" href="#legacy-software" title="Link to this heading">#</a></h2>
-<p>Main stable releases:</p>
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Date</b></td>
-			<td> <b>CANdle lib</b></td>
-			<td> <b>MDtool</b></td>
-     		<td> <b>pyCANdle</b></td>
-			<td> <b>CANdle ROS</b></td>
-			<td> <b>CANdle ROS2</b></td>
-			<td> <b>CANdle device</b></td>
-			<td> <b>MD Firmware</b></td>
-			<td> <b>Manual</b></td>
-		</tr>
-		<tr>
-			<td>earlier</td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.0 > 3.0 </a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.1 > 1.1.0 </a></td>
-      		<td><a href = https://pypi.org/project/pyCandleMAB/1.2.0/ >1.2.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.1 >1.1.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.1>1.1.0</a></td>
-			<td>1.4</td>
-			<td>1.0</td>
-			<td>1.0</td>
-		</tr>
-    	<tr>
-			<td>12.12.2022</td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.1_hotfix >3.1</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.2.1 >1.2.1</a></td>
-      		<td><a href = https://pypi.org/project/pyCandleMAB/ >1.3.1</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.2 >1.2.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.2 >1.2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
-			<td><a href = ../MAB_CAN_Flasher_ea1d72f2_V2.0.0 >2.0</a></td>
-			<td>1.1.0</td>
-		</tr>
-		<tr>
-			<td>05.04.2023</td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.3.0 >3.3.0</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.3.0 >1.3.0</a></td>
-     		<td><a href = https://pypi.org/project/pyCandleMAB/1.4.0/ >1.4.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.3.0>1.3.0</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.0>1.3.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1mxcU9kXTvOaDagToViuQLT_6AWqyEF4M?usp=sharing>1.2.0</a></td>
-		</tr>
-		<tr>
-			<td>31.05.2024</td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.4.0 >3.4.0</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.4.1 >1.4.1</a></td>
-     		<td><a href = https://pypi.org/project/pyCandleMAB/1.5.1/ >1.5.1</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros/releases/tag/v1.3.2>1.3.2</a></td>
-			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.3.2>1.3.2</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1iLx-2KV4Cg57oAxH690rDtHau0f8aIYJ?usp=sharing>2.2.1</a></td>
-			<td><a href = https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing>2.3.1</a></td>
-			<td><a href = ../docs/1.2.1.pdf>1.2.1</a></td>
-		</tr>
-		<tr>
-			<td>22.08.2024</td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.1>3.5.1</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.1>1.5.1</a></td>
-     		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.4.0.zip>2.4.0</a></td>
-			<td><a href = ../docs/1.2.2.pdf>1.2.2</a></td>
-		</tr>
-		<tr>
-			<td>30.01.2025</td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.3>3.5.3</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.3>1.5.3</a></td>
-     		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.4.1.zip>2.4.1</a></td>
-			<td>this document</td>
-		</tr>
-		<tr>
-			<td style="color:green;"><b>29.07.2025 (latest)</b></td>
-			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.4>3.5.4</a></td>
-			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.4>1.5.4</a></td>
-     		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.0.zip>2.5.0</a></td>
-			<td>this document</td>
-		</tr>
-	</tbody>
+<hr class="docutils" />
+<section id="sdo-message-structure">
+<h2>3. SDO Message Structure<a class="headerlink" href="#sdo-message-structure" title="Link to this heading">#</a></h2>
+<p>SDO messages are carried using <strong>CAN-ID 0x600 + Node-ID</strong> for <strong>client → server</strong>, and <strong>0x580 + Node-ID</strong> for <strong>server → client</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Field</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CAN-ID</p></td>
+<td><p>0x600 + Node-ID for requests, 0x580 + Node-ID for responses</p></td>
+</tr>
+<tr class="row-odd"><td><p>Command Specifier (CS)</p></td>
+<td><p>Defines the type of operation: upload, download, segment, abort</p></td>
+</tr>
+<tr class="row-even"><td><p>Index / Subindex</p></td>
+<td><p>Identifies the object in the Object Dictionary</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data</p></td>
+<td><p>Up to 4 bytes (or segmented for longer data)</p></td>
+</tr>
+</tbody>
 </table>
-<p></p>
-<section id="md-update-tool-mab-can-flasher">
-<span id="mab-can-flasher"></span><h3>MD update tool - MAB CAN Flasher<a class="headerlink" href="#md-update-tool-mab-can-flasher" title="Link to this heading">#</a></h3>
-<p>MAB_CAN_Flasher is a console application used to update the MD controller software using CANdle that can be downloaded at the top of this page. The MD firmware is contained in the MAB_CAN_Flasher application itself. To update the firmware connect the CANdle to the PC and the MD controller(s), and apply the power supply. You can make sure all the controllers are functional using MDtool and the <a class="reference internal" href="../software_package/legacy/MDTOOL.html#mdtool-ping"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">ping</span> <span class="pre">all</span></code></span></a> command before you proceed to update the controllers. After that, you are ready to run the update tool. We highly advise you to call <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--help</span></code> command on the first use to get acquainted with the available options.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Make sure the MAB_CAN_Flasher can be executed. If not use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./MAB_CAN_Flasher</span></code> command.</p>
-</div>
-<section id="example-use-cases">
-<h4>Example use cases<a class="headerlink" href="#example-use-cases" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--id</span> <span class="pre">150</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update the MDxx controller with id equal to 150, which current CAN speed is 1M (the default CAN speed is 1M). Example output of this command for an ak80-64 motor:</p>
-<figure class="align-center">
-<img alt="../_images/flashing1.png" class="no-scaled-link" src="../_images/flashing1.png" />
-</figure>
-<p><code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher</span> <span class="pre">--all</span> <span class="pre">--baud</span> <span class="pre">1M</span></code> - update all available MDxx controllers, whose current CAN speed is 1M (all controllers need to have the same speed). Example command output for two MD controllers:</p>
-<figure class="align-center">
-<img alt="../_images/flashing2.png" class="no-scaled-link" src="../_images/flashing2.png" />
-</figure>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>In case the update process is interrupted or the MD controller seems to be not functioning (fast periodical flashing of the LEDs), you can disconnect the power supply, call:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span> <span class="o">--</span><span class="n">wait</span> 
-</pre></div>
-</div>
-<p>While the command is running connect the power supply. This command will wait for the bootloader response and try to recover the firmware. If the flashing does not occur in the first power cycle you can repeat it until the bootloader is detected. If using that procedure <strong>only one driver</strong> may be present on the can bus. An example output of the wait option for the ak80-64 motor is shown below:</p>
-<figure class="align-center">
-<img alt="../_images/flashing3_wait.png" class="no-scaled-link" src="../_images/flashing3_wait.png" />
-</figure>
 </div>
 </section>
-</section>
-<section id="candle-update-tool-mab-usb-flasher">
-<h3>CANdle update tool - MAB USB Flasher<a class="headerlink" href="#candle-update-tool-mab-usb-flasher" title="Link to this heading">#</a></h3>
-<p><strong>MAB_USB_Flasher</strong> is a console application used to update the CANdle software using USB bus. Currently, only updates over USB are supported (updates over SPI and UART are not supported). To update, first turn off all applications that may be using CANdle, and simply run <code class="docutils literal notranslate"><span class="pre">./MAB_USB_Flasher</span></code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Make sure the MAB_USB_Flasher can be executed. If not use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./MAB_USB_Flasher</span></code> command.</p>
-</div>
-<figure class="align-center">
-<img alt="../_images/mab_usb_flasher.png" class="no-scaled-link" src="../_images/mab_usb_flasher.png" />
-</figure>
-<p>After a successful update, the CANdle device is ready.</p>
-</section>
-<section id="canopen-flashers">
-<span id="id2"></span><h3>CANopen Flashers<a class="headerlink" href="#canopen-flashers" title="Link to this heading">#</a></h3>
-<p>Those flashers are intended to be used with CANopen controllers.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Candle and CandleHAT devices do not support CANopen protocol.</p>
-</div>
-<p>Versions:</p>
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Date</b></td>
-			<td> <b>MD Firmware (CANopen)</b></td>
-			<td> <b>EDS file for MD</b></td>
-		</tr>
-		<tr>
-			<td><b>22.08.2024</b></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip>2.4.0</a></td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td><b>30.01.2025 (latest)</b></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip>2.4.1</a></td>
-			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
-		</tr>
-	</tbody>
+<hr class="docutils" />
+<section id="sdo-commands-command-specifiers">
+<h2>4. SDO Commands (Command Specifiers)<a class="headerlink" href="#sdo-commands-command-specifiers" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Command</strong></p></th>
+<th class="head"><p><strong>Hex Value</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Initiate Download (Expedited)</p></td>
+<td><p>0x2x</p></td>
+<td><p>Write up to 4 bytes in one message</p></td>
+</tr>
+<tr class="row-odd"><td><p>Initiate Upload (Expedited)</p></td>
+<td><p>0x4x</p></td>
+<td><p>Read up to 4 bytes in one message</p></td>
+</tr>
+<tr class="row-even"><td><p>Initiate Download (Segmented)</p></td>
+<td><p>0x2x</p></td>
+<td><p>Start writing more than 4 bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Initiate Upload (Segmented)</p></td>
+<td><p>0x60</p></td>
+<td><p>Start reading more than 4 bytes</p></td>
+</tr>
+<tr class="row-even"><td><p>Segment Download / Upload</p></td>
+<td><p>0x00 / 0x01</p></td>
+<td><p>Transfer next 7 bytes segment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Abort Transfer</p></td>
+<td><p>0x80</p></td>
+<td><p>Stop current transfer in case of error</p></td>
+</tr>
+</tbody>
 </table>
-<p></p></section>
+</div>
+<blockquote>
+<div><p>Note: x =&gt; second bytes depend on the length of the data</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: Expedited SDO is used for <strong>small data</strong> (≤ 4 bytes), segmented SDO is used for <strong>larger data</strong> (&gt; 4 bytes).</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="example-of-sdo-transfer">
+<h2>5. Example of SDO Transfer<a class="headerlink" href="#example-of-sdo-transfer" title="Link to this heading">#</a></h2>
+<p><strong>Write 16-bit value 0x1234 to object 0x6040:00 (Controlword) on node 0x05:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>CAN-ID</strong></p></th>
+<th class="head"><p><strong>CS</strong></p></th>
+<th class="head"><p><strong>Index</strong></p></th>
+<th class="head"><p><strong>Subindex</strong></p></th>
+<th class="head"><p><strong>Data</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x605</p></td>
+<td><p>0x23</p></td>
+<td><p>0x40 0x60</p></td>
+<td><p>0x00</p></td>
+<td><p>0x34 0x12</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Read the same object:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>CAN-ID</strong></p></th>
+<th class="head"><p><strong>CS</strong></p></th>
+<th class="head"><p><strong>Index</strong></p></th>
+<th class="head"><p><strong>Subindex</strong></p></th>
+<th class="head"><p><strong>Data</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x605</p></td>
+<td><p>0x40</p></td>
+<td><p>0x40 0x60</p></td>
+<td><p>0x00</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x585</p></td>
+<td><p>0x43</p></td>
+<td><p>0x40 0x60</p></td>
+<td><p>0x00</p></td>
+<td><p>0x34 0x12</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Warning: The index and the data must be send in little-endian</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="advantages-of-sdo">
+<h2>6. Advantages of SDO<a class="headerlink" href="#advantages-of-sdo" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Access <strong>any object</strong> in the Object Dictionary</p></li>
+<li><p>Supports <strong>large data transfers</strong> with segmentation</p></li>
+<li><p>Ensures <strong>reliable request/response communication</strong></p></li>
+<li><p>Essential for <strong>configuration, diagnostics, and parameterization</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h2>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>SDOs complement PDOs in CANopen by allowing <strong>flexible and reliable data access</strong>, especially for configuration and larger or less time-critical data.</p>
+<p>✅ Use SDOs for reading/writing configuration parameters<br />
+✅ Use PDOs for real-time process data<br />
+✅ Combine both for a fully functional CANopen system</p>
 </section>
 </section>
 
@@ -673,7 +643,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Downloads"
+            path: "./md_canopen"
         },
         predefinedOutput: true
     }
@@ -690,24 +660,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../common_problems_and_faq/FAQ.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Common Issues and FAQ</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../Changelogs/Changelogs.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Changelogs</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -724,18 +676,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mab-firmware">MAB Firmware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-software">Legacy software</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-update-tool-mab-can-flasher">MD update tool - MAB CAN Flasher</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-cases">Example use cases</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-update-tool-mab-usb-flasher">CANdle update tool - MAB USB Flasher</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-flashers">CANopen Flashers</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-communication-concept">2. SDO Communication Concept</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-message-structure">3. SDO Message Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-commands-command-specifiers">4. SDO Commands (Command Specifiers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-sdo-transfer">5. Example of SDO Transfer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-sdo">6. Advantages of SDO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
 </ul>
   </nav></div>
 
