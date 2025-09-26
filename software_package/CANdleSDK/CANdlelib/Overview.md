@@ -5,6 +5,7 @@
 - Provides API for communicating via CANdle device with:
     - [MAB Drivers (MD)](md)
     - [Power Distribution Systems (PDS)](pds)
+    - [MAB Drivers Can Open (MDCO)](mdco)
 - Provides helper functions for most of the tasks tied to motor control in robotics and automation.
 - Provides usage examples for the devices.
 
