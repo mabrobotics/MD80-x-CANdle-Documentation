@@ -141,11 +141,11 @@ This command will not work if the MD drives are not powered on, nor when they ar
 
 Access MD drive via register read/write. Specifying register can be done using either address + subaddress or name. For example:
 ```
-candletool mdco register read 10 0x2000 0x06
+candletool mdco register read --id 10 --index 0x2000 --subindex 0x06
 ```
 or
 ```
-candletool mdco register read 10 motorName 
+candletool mdco register read --id 10 --value motorName 
 ```
 
 ### reset
