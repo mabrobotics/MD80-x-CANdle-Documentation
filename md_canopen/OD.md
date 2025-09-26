@@ -2269,6 +2269,74 @@ Configures the deceleration for profile position and profile velocity modes.
 </table>
 <p></p>
 
+### 0x60C5 - Max Acceleration
+
+Configures the maximum acceleration for profile position and profile velocity modes.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x60C5</td>
+			<td>0x00</td>
+			<td>Max Acceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+### 0x60C6 - Max Deceleration
+
+Configures the maximum deceleration for profile position and profile velocity modes.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6084</td>
+			<td>0x00</td>
+			<td>Max Deceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
 ### 0x60FF - Target Velocity
 
 Sets the target velocity for all motion modes.
