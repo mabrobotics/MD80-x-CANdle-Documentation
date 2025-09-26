@@ -46,7 +46,9 @@ chapters:
         - file: software_package/CANdleSDK/CANdlelib/Overview.md
         - file: software_package/CANdleSDK/CANdlelib/CANdleModule.md
         - file: software_package/CANdleSDK/CANdlelib/MDModule.md
+        - file: software_package/CANdleSDK/CANdlelib/MDCOModule.md
         - file: software_package/CANdleSDK/CANdlelib/PDSModule.md
+        - file: software_package/CANdleSDK/CANdlelib/EDSModule.md
       - file: software_package/CANdleSDK/CANdleTool.md
         sections:
         - file: software_package/CANdleSDK/CANdletool/Overview.md
@@ -70,6 +72,12 @@ chapters:
   sections:
     - file: md_canopen/OD
       title: Object Dictionary
+    - file: md_canopen/NMT
+      title: NMT messages
+    - file: md_canopen/SDO
+      title: SDO messages
+    - file: md_canopen/PDO
+      title: PDO messages
     - file: md_canopen/TransitionProcedure
       title: Migration to and from CANopen
 - file: pds/pds

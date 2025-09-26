@@ -1,3 +1,4 @@
+(mdco)=
 # MDCO Module
 
 The **MDCO module** stands for *Motor Drive CANopen* and mainly hosts the `MDCO` class, which represents physical [MDCO](mdco) drivers using the CANopen communication layer instead of CAN-FD.
