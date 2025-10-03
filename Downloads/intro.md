@@ -14,7 +14,7 @@ Simplified (lightweight) 3D \*.STEP models of MABRobotics products can be found
 Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the
 CANdleSDK binary releases.
 
-## MAB Firmware
+<!--## MAB Firmware
 
 Firmware update of MABs products is release in form of propriatary `.mab` files. These files can be
 uploaded to devices using [CANdleTool](candletool)
@@ -29,19 +29,59 @@ For example:
 
 ```
 candletool md update -i 100 ./md_3_0_0_abcdefa.mab
-```
+```-->
 
-Below is the list of the most recent releases, that are currently being supported, for each device:
+## Device Firmware
 
-## TODO TODO TODO TODO TODO TODO
+Main stable releases:
 
-<!-- 
-| MD  | PDS  | CANdle  |
-|-----|------|---------| -->
-
-## Legacy software
-
-For updating older MD and CANdle revisions - products shipped before November 2025 (MD firmware
-version up to v2.5.1) - the upload process is possible only via Linux based (x86, x64, arm64)
-applications - MAB_CAN_Flashers. The procedure is descriped in the
-[legacy section of documentationo](downloads_legacy)
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Date</b></td>
+			<td> <b>CANdle device</b></td>
+			<td> <b>MD Firmware</b></td>
+		</tr>
+		<tr>
+			<td>earlier</td>
+			<td>1.4</td>
+			<td>1.0</td>
+		</tr>
+    	<tr>
+			<td>12.12.2022</td>
+			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
+			<td><a href = ../MAB_CAN_Flasher_ea1d72f2_V2.0.0 >2.0</a></td>
+		</tr>
+		<tr>
+			<td>05.04.2023</td>
+			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
+			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
+		</tr>
+		<tr>
+			<td>31.05.2024</td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing>2.3.1</a></td>
+		</tr>
+		<tr>
+			<td>22.08.2024</td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../_static/firmware/md_2.4.0.zip>2.4.0</a></td>
+		</tr>
+		<tr>/
+			<td>30.01.2025</td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../_static/firmware/md_2.4.1.zip>2.4.1</a></td>
+		</tr>
+		<tr>
+			<td>29.07.2025</td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../_static/firmware/md_2.5.0.zip>2.5.0</a></td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>11.08.2025 (latest)</b></td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../_static/firmware/md_2.5.1.zip>2.5.1</a></td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
