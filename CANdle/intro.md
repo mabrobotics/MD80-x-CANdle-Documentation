@@ -45,8 +45,10 @@ motion-control solution.
 This means that it is usually not possible to fully unravel the potential of some of our products,
 when accessing them exclusively throught CANdle. We are constatnly working on improving the
 performance of the Ecosystem, but due to many factors that are out of our control (operating system
-latency, user space limitations, kernel behaviour, unknown host hardware etc.), we are not able to
-deliver out of the box solution for high-performance, production-ready systems.
+latency, user space limitations, kernel behaviour, unknown host hardware etc.), CANdle may not be
+sufficiently fast for some applications. In this case,
+[MAB team](https://www.mabrobotics.pl/contact) will be happy to assist you with engineering advise
+or prepare a custom high-speed communication solution.
 
 Where CANdle will work great as is:
 

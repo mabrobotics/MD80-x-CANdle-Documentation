@@ -1,4 +1,5 @@
 _build
 .venv
 venv
-
+*.DS_Store
+tags

@@ -35,7 +35,7 @@ Currently we support one encoder type with two placement configurations:
 ```
 
 ```{note}
-MD can also work with encoders supplied in most CubeMars motors (such as AK10-9) and be paired with custom encoder such as RLS Aksim2 series on demand. Many of MABs MA series actuators use these for high precision applications.
+MD can also work with encoders supplied in most CubeMars motors (such as AK10-9) and be paired with custom encoder such as [RLS Aksim2](https://www.mabrobotics.pl/product-page/rls-aksim-2) series on demand. Many of MABs MA series actuators use these for high precision applications.
 
 If you want to pair an encoder other than MA AS, please contact us support@mabrobotics.pl.
 ```
@@ -93,7 +93,7 @@ the table below:
 * - ME_AS_OFFAXIS
   - STARTUP
   - This configuration is much more noisy than the axial placement
-* - MB053SFA17BENT00 
+* - [MB053SFA17BENT00](https://www.mabrobotics.pl/product-page/rls-aksim-2) 
   - STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT
   - \-
 * - CM_OFFAXIS
