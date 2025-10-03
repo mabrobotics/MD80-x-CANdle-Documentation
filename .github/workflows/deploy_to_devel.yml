@@ -1,0 +1,39 @@
+name: Deploy to devel
+run-name: Build and push to devel deploy repo
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - devel
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build the book
+        run: |
+          jupyter-book build . --config _config_devel.yml
+
+      - name: Deploy to mab-documentation-devel-deploy
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          repository-name: mabrobotics/mab-documentation-devel-deploy
+          branch: gh-pages
+          folder: _build/html
+          token: ${{ secrets.PAGES_DEVEL_PAT }}
+          clean: true
