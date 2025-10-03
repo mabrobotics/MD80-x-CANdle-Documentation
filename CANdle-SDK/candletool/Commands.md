@@ -21,15 +21,15 @@ Some commands are not listed in this document. You can explore all of the comman
 
 `--version` - Prints a version of CANdleSDK used.
 
-## **candle**
+## **candletool candle ...**
 
 (candletool_update)=
 
-### Update
+### update
 
 Updates firmware on the CANdle device using provided .mab file.
 
-## **md**
+## **candletool md ...**
 
 Branch of CLI dedicated for [MD](/MD/intro) devices. Most of the commands use `--id` parameter to
 specify which MD drive to operate on.
@@ -103,16 +103,14 @@ positional absolute mode (position profile).
 
 Update firmware on MD drive using MABs firmware file (.mab).
 
-## **pds**
+## **candletool pds ...**
 
 Branch of CLI dedicated for [PDS](pds) device.
 
-### Main module
-
 When issuing `candletool pds` command, the user can operate on the PDS device. All of the commands
-here are tied to the main PDS module.
+here are tied to the main PDS command module (CTRL).
 
-Main commands for the PDS control module are:
+Commands for the PDS control module are:
 
 - `info` - Get information about the PDS device.
 - `update` - Update firmware on the PDS device using .mab files.

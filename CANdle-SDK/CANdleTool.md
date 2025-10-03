@@ -26,6 +26,15 @@ We distribute packages for apt package manager for architectures x86_64, arm64 a
 recommended), as well as an installer for Windows x86_64. All of them can be found on
 [release pages](https://github.com/mabrobotics/CANdle-SDK/releases).
 
+## Installation
+
+For installation and integration instructions checkout
+[README](https://github.com/mabrobotics/CANdle-SDK) file of the main repository.
+
+```{note}
+Checkout the [release pages](https://github.com/mabrobotics/CANdle-SDK/releases) for binaries for apt and windows.
+```
+
 ## Usage
 
 CANdleTool is a CLI program. You can issue commands using CLI interface, for example:

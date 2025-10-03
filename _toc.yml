@@ -60,7 +60,6 @@ chapters:
        - file: CANdle-SDK/candlelib/PDSModule
     - file: CANdle-SDK/CANdleTool
       sections:
-        - file: CANdle-SDK/candletool/Installation
         - file: CANdle-SDK/candletool/Commands
         - file: CANdle-SDK/candletool/ConfigurationFiles
 - file: FAQ/intro
