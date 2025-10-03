@@ -196,6 +196,8 @@ Defines the period of heartbeat message sent by the MD80.
 </table>
 <p></p>
 
+(receive_pdo1_mapping)=
+
 ### 0x1600 - Receive PDO1 mapping
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -1089,6 +1091,58 @@ Motor and mosfet temperature readout record.
 </table>
 <p></p>
 
+### 0x200C - Impedance PD Controller
+
+Configures the impedance PD controller gains. Be sure to save after modification using 0x1010 Store
+Parameters. **BE CAREFUL**, raw torque can be dangerous.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x200C</td>
+			<td>0x01</td>
+			<td>Kp</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x200C</td>
+			<td>0x02</td>
+			<td>Kd</td>
+     		<td>FLOAT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+```{figure} ../images/impedance.png
+:align: center
+:width: 1000px
+```
+
 ## 3. Profile Specific Area
 
 The profile specific area describes the CANopen objects compliant with CiA402 standard.
@@ -1452,6 +1506,10 @@ Operation Display.
 			<td> <b>Mode</b></td>
 		</tr>
 		<tr>
+      		<td>-3</td>
+			<td>Impedance Mode</td>
+		</tr>
+		<tr>
       		<td>-2</td>
 			<td>Service</td>
 		</tr>
@@ -1478,6 +1536,11 @@ Operation Display.
 	</tbody>
 </table>
 <p></p>
+
+#### Impedance Mode
+
+Mode in which the motor is mimic the behavior of a torsional spring with variable stiffness and
+damping. [Impedance-pd](impedance-pd)
 
 #### Service
 
@@ -2232,6 +2295,74 @@ Configures the deceleration for profile position and profile velocity modes.
       		<td>0x6084</td>
 			<td>0x00</td>
 			<td>Profile Deceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+### 0x60C5 - Max Acceleration
+
+Configures the maximum acceleration for profile position and profile velocity modes.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x60C5</td>
+			<td>0x00</td>
+			<td>Max Acceleration</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>RX</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>RPM/s</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+### 0x60C6 - Max Deceleration
+
+Configures the maximum deceleration for profile position and profile velocity modes.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x6084</td>
+			<td>0x00</td>
+			<td>Max Deceleration</td>
      		<td>UINT32</td>
 			<td>RW</td>
 			<td>RX</td>

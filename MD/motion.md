@@ -73,6 +73,8 @@ velocity PID mode), and then the position PID. The controller can be described w
 :class: no-scaled-link
 ```
 
+(impedance-pd)=
+
 ## Impedance PD
 
 Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant

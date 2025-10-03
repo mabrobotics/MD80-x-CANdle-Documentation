@@ -37,6 +37,10 @@ chapters:
          title: CANOpen
          sections:
           - file: MD/Communication/canopen_od
+          - file: MD/Communication/canopen_nmt
+          - file: MD/Communication/canopen_sdo
+          - file: MD/Communication/canopen_pdo
+
 - file: PDS/intro
   title: PDS - Power Distribution System
   sections:

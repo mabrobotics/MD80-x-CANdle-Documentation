@@ -5,15 +5,8 @@ profile. For further details, please examine the Object Dictionary chapter that 
 communication objects that are used to exchange data.
 
 ```{note}
-Make sure you've contacted MABRobotics for the appropriate software update, as the default MD flasher
-only supports CANdle protocol. 
+Make sure you've contacted MABRobotics for the appropriate software update, as the default MD flasher only supports CANdle protocol. 
 ```
-
-## [Object Dictionary](./canopen_od.md)
-
-MD controllers follow an object dictionary, that is consistent with CIA402 device profile. You can
-see full documentation, along with corresponding .eds files in the
-[Object Dictionary section of the documentation](./canopen.md)
 
 ## Setting up a new motor
 
@@ -25,7 +18,7 @@ you set up the following registers:
 - 0x6075:0 - Rated Current
 - 0x6076:0 - Rated Torque
 - 0x6072:0 - Max Torque
-- 0x6072:0 - Max Current
+- 0x6073:0 - Max Current
 - 0x6080:0 - Max Speed
 - 0x2000:1 - Pole Pairs
 - 0x2000:2 - Torque Constant
