@@ -42,11 +42,6 @@ Main stable releases:
 			<td> <b>CANdle device</b></td>
 			<td> <b>MD Firmware</b></td>
 		</tr>
-		<tr>
-			<td>earlier</td>
-			<td>1.4</td>
-			<td>1.0</td>
-		</tr>
     	<tr>
 			<td>12.12.2022</td>
 			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
@@ -81,6 +76,25 @@ Main stable releases:
 			<td style="color:green;"><b>11.08.2025 (latest)</b></td>
 			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../_static/firmware/md_2.5.1.zip>2.5.1</a></td>
+		</tr>
+	</tbody>
+</table>
+
+## CANOpen EDS file
+
+Here is CANOpen EDS file for MD series motor drivers, compatibile with MD20, MD80 and MD80HV.
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Date</b></td>
+			<td> <b>MD CANOpen firmware version</b></td>
+			<td> <b>Compatibile EDS file</b></td>
+		</tr>
+    	<tr>
+			<td>11.08.2025</td>
+			<td><a href = ../_static/firmware/md_2.5.1.zip > 2.5.1 </a></td>
+			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
 		</tr>
 	</tbody>
 </table>
