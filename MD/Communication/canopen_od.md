@@ -196,8 +196,6 @@ Defines the period of heartbeat message sent by the MD80.
 </table>
 <p></p>
 
-(receive_pdo1_mapping)=
-
 ### 0x1600 - Receive PDO1 mapping
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -559,6 +557,42 @@ modification using 0x1010 Store Parameters.
 			<td>yes</td>
 			<td>1 - 31</td>
             <td>1</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0B</td>
+			<td>Can Baudrate</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0C</td>
+			<td>Can Watchdog</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1 </td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0D</td>
+			<td>Reverse Direction</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>false</td>
             <td>-</td>
 		</tr>
 	</tbody>
@@ -1091,6 +1125,40 @@ Motor and mosfet temperature readout record.
 </table>
 <p></p>
 
+### 0x200A - Firmware info
+
+Information about the current firmware of the motor drive
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x200A</td>
+			<td>0x01</td>
+			<td>Commit Hash</td>
+     		<td>String</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
 ### 0x200C - Impedance PD Controller
 
 Configures the impedance PD controller gains. Be sure to save after modification using 0x1010 Store
@@ -1142,6 +1210,40 @@ Parameters. **BE CAREFUL**, raw torque can be dangerous.
 :align: center
 :width: 1000px
 ```
+
+### 0x200E - DC Bus Voltage
+
+Voltage value applied to the motor driver
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x200E</td>
+			<td>0x00</td>
+			<td>DC bus voltage</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
 
 ## 3. Profile Specific Area
 
