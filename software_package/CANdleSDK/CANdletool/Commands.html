@@ -663,11 +663,11 @@ document.write(`
 <section id="id5">
 <h3>register<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Access MD drive via register read/write. Specifying register can be done using either address + subaddress or name. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">register</span> <span class="n">read</span> <span class="mi">10</span> <span class="mh">0x2000</span> <span class="mh">0x06</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">register</span> <span class="n">read</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">10</span> <span class="o">--</span><span class="n">index</span> <span class="mh">0x2000</span> <span class="o">--</span><span class="n">subindex</span> <span class="mh">0x06</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">register</span> <span class="n">read</span> <span class="mi">10</span> <span class="n">motorName</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">register</span> <span class="n">read</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">10</span> <span class="o">--</span><span class="n">value</span> <span class="n">motorName</span> 
 </pre></div>
 </div>
 </section>

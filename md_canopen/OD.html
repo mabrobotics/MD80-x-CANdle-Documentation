@@ -479,7 +479,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2004-system-status">0x2004 - System Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2005-output-encoder">0x2005 - Output Encoder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2006-temperature">0x2006 - Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200a-firmware-info">0x200A - Firmware info</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200c-impedance-pd-controller">0x200C - Impedance PD Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200e-dc-bus-voltage">0x200E - DC Bus Voltage</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-specific-area">3. Profile Specific Area</a><ul class="nav section-nav flex-column">
@@ -1078,6 +1080,42 @@ document.write(`
             <td>1</td>
             <td>-</td>
 		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0B</td>
+			<td>Can Baudrate</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0C</td>
+			<td>Can Watchdog</td>
+     		<td>UINT32</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>1 </td>
+            <td>1</td>
+            <td>-</td>
+		</tr>
+		<tr>
+      		<td>0x2000</td>
+			<td>0x0D</td>
+			<td>Reverse Direction</td>
+     		<td>BOOL</td>
+			<td>RW</td>
+			<td>-</td>
+			<td>yes</td>
+			<td>-</td>
+            <td>false</td>
+            <td>-</td>
+		</tr>
 	</tbody>
 </table>
 <p></p>
@@ -1586,6 +1624,39 @@ document.write(`
 </table>
 <p></p>
 </section>
+<section id="x200a-firmware-info">
+<h3>0x200A - Firmware info<a class="headerlink" href="#x200a-firmware-info" title="Link to this heading">#</a></h3>
+<p>Information about the current firmware of the motor drive</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x200A</td>
+			<td>0x01</td>
+			<td>Commit Hash</td>
+     		<td>String</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
 <section id="x200c-impedance-pd-controller">
 <h3>0x200C - Impedance PD Controller<a class="headerlink" href="#x200c-impedance-pd-controller" title="Link to this heading">#</a></h3>
 <p>Configures the impedance PD controller gains. Be sure to save after modification using 0x1010 Store Parameters. <strong>BE CAREFUL</strong>, raw torque can be dangerous.</p>
@@ -1634,6 +1705,39 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/impedance.png"><img alt="../_images/impedance.png" src="../_images/impedance.png" style="width: 1000px;" />
 </a>
 </figure>
+</section>
+<section id="x200e-dc-bus-voltage">
+<h3>0x200E - DC Bus Voltage<a class="headerlink" href="#x200e-dc-bus-voltage" title="Link to this heading">#</a></h3>
+<p>Voltage value applied to the motor driver</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+      		<td> <b>Index</b></td>
+			<td> <b>Sub Index</b></td>
+			<td> <b>Name</b></td>
+     		<td> <b>Data Type</b></td>
+			<td> <b>SDO</b></td>
+			<td> <b>PDO</b></td>
+			<td> <b>NVM</b></td>
+			<td> <b>Range</b></td>
+            <td> <b>Default</b></td>
+            <td> <b>Units</b></td>
+		</tr>
+		<tr>
+      		<td>0x200E</td>
+			<td>0x00</td>
+			<td>DC bus voltage</td>
+     		<td>FLOAT32</td>
+			<td>RO</td>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+            <td>0</td>
+            <td>-</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
 </section>
 </section>
 <section id="profile-specific-area">
@@ -2952,7 +3056,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2004-system-status">0x2004 - System Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2005-output-encoder">0x2005 - Output Encoder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2006-temperature">0x2006 - Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200a-firmware-info">0x200A - Firmware info</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200c-impedance-pd-controller">0x200C - Impedance PD Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x200e-dc-bus-voltage">0x200E - DC Bus Voltage</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-specific-area">3. Profile Specific Area</a><ul class="nav section-nav flex-column">
