@@ -102,7 +102,7 @@ Main stable releases:
 			<td>this document</td>
 		</tr>
 		<tr>
-			<td><b>29.07.2025</b></td>
+			<td>29.07.2025</td>
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.4>3.5.4</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.4>1.5.4</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
@@ -204,7 +204,7 @@ Versions:
 			<td>-</td>
 		</tr>
 		<tr>
-			<td><b>30.01.2025</b></td>
+			<td>30.01.2025</td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip>2.4.1</a></td>
 			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
 		</tr>
