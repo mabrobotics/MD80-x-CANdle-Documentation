@@ -204,8 +204,13 @@ Versions:
 			<td>-</td>
 		</tr>
 		<tr>
-			<td><b>30.01.2025 (latest)</b></td>
+			<td><b>30.01.2025</b></td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip>2.4.1</a></td>
+			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
+		</tr>
+		<tr>
+			<td><b>11.08.2025 (latest)</b></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.5.1.zip>2.5.1</a></td>
 			<td><a href = ../eds/MDv1.0.0.eds>MDv1.0.0.eds</a></td>
 		</tr>
 	</tbody>
