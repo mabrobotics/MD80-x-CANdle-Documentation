@@ -142,6 +142,132 @@ the GPIO pins utilization *530480810 Molex PicoBlade* connectors could be used.
 :align: center
 :class: no-scaled-link
 ```
+## Thermal characteristics
+
+**Test Conditions and Setup**
+
+To cover all potential cases, three cooling scenarios have been performed:
+
+* No additional cooling
+* Passive cooling
+* Active air cooling
+
+MD80HV driver was tested using coupled inductors (each 22uH) - simulating a motor.
+
+The circuit of the test station is visible below.
+
+```{figure} images/thermal/MD_test.png
+:alt: MD testing station
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+In this way driver is set up for the worst case when there is no shaft and all the power is converted to heat.
+
+In each scenario, tests were conducted for a range of phase currents, varying from 2 A to 78 A in 4 A increments. For each current level, the setup was operated until the temperature stabilized, with a target duration of 120 seconds.
+
+All tests were performed in constant environment conditions, in still air at 25°C ambient temperature.
+
+The temperature was measured using an onboard thermistor placed on the bottom layer of the PCB, directly below the MOSFETs.
+
+Tests were performed using voltage levels of 14V, 24V, 36V, 48V and  60V.
+
+**Test scenario I - no cooling**
+```{figure} images/thermal/MD80HV/no_cooling/14V.png
+:alt: MD80HV no cooling 14V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/no_cooling/24V.png
+:alt: MD80HV no cooling 24V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/no_cooling/36V.png
+:alt: MD80HV no cooling 36V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/no_cooling/48V.png
+:alt: MD80HV no cooling 48V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/no_cooling/60V.png
+:alt: MD80HV no cooling 60V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+**Test scenario II - passive cooling**
+```{figure} images/thermal/MD80HV/passive_cooling/14V.png
+:alt: MD80HV passive cooling 14V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/passive_cooling/24V.png
+:alt: MD80HV passive cooling 24V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/passive_cooling/36V.png
+:alt: MD80HV passive cooling 36V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/passive_cooling/48V.png
+:alt: MD80HV passive cooling 48V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/passive_cooling/60V.png
+:alt: MD80HV passive cooling 60V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+**Test scenario III - active air cooling**
+```{figure} images/thermal/MD80HV/active_air_cooling/14V.png
+:alt: MD80HV active air cooling 14V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/active_air_cooling/24V.png
+:alt: MD80HV active air cooling 24V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/active_air_cooling/36V.png
+:alt: MD80HV active air cooling 36V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/active_air_cooling/48V.png
+:alt: MD80HV active air cooling 48V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+```{figure} images/thermal/MD80HV/active_air_cooling/60V.png
+:alt: MD80HV active air cooling 60V
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 We are able to integrate custom functions such as GPIOs for external sensors and indicators. For
 more information please contact us: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact)
