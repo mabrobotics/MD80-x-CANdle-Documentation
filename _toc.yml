@@ -46,8 +46,21 @@ chapters:
   sections:
     - file: PDS/overview
       title: Overview
+    - file: PDS/control_board
+      title: Control Board
+    - file: PDS/power_stage
+      title: Power Stage
+    - file: PDS/isolated_converter
+      title: Isolated Converter
+    - file: PDS/brake_resistor
+      title: Brake Resistor
+    - file: PDS/architecture
+      title: FDCAN Architecture
+    - file: PDS/status_and_utillities
+      title: Status & Utillities
     - file: PDS/pds_sdk_examples
       title: Examples
+
 - file: CANdle/intro.md
   title: CANdle and CANdleHAT
 - file: CANdle-SDK/intro.md
