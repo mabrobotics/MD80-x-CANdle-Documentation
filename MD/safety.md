@@ -106,3 +106,7 @@ start the motor outside the range will generate a motion error.
 :width: 1000px
 :align: center
 ```
+
+```{note}
+Setting both Positoin limit min and max, to 0.0, will disable the limiters completely.
+```

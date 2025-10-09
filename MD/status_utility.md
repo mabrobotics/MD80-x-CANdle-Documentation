@@ -60,10 +60,16 @@ reached.
 		</tr>
 			<tr>
 			<td>15</td>
-			<td>Target position (in Position PID / Profile position mode) or velocity ( in Velocity PID / Velocity profile mode) reached within position or velocity window <td>
+			<td>Target position or velocity reached* <td>
 		</tr>
 	</tbody>
 </table>
+
+\*This bit is only set in the according to following conditions:
+
+- in Position PID and Profile Position modes, when position was reached within position window,
+- in Velocity PID and Profile Velocity modes, when velocity was reached within velocity window.
+
 <p></p>
 
 ## Main / Output Encoder Errors
