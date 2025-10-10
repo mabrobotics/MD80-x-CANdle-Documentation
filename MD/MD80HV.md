@@ -92,7 +92,7 @@ only the motor thermistor connector is available:
 :class: no-scaled-link
 ```
 
-```
+```{note}
 We recommend using [NTCMHP10K thermistors](https://www.mabrobotics.pl/product-page/thermistor) . Using other thermistors may result in imprecise temperature readout.
 ```
 
