@@ -37,7 +37,7 @@ presented below:
 ![sto_dip_switch](images/sto_dip_switch.png)
 
 The switch determines what happens with the connected modules after STO triggering. If set to 0
-(left positon), module remains on. If set to 1 (right position), the power is cut off from
+(left position), module remains on. If set to 1 (right position), the power is cut off from
 particular module. Table below shows the effects of setting the switch in position 1 for different
 modules:
 

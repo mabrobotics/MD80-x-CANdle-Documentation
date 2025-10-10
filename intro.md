@@ -16,7 +16,7 @@ gimbals, and many more.
 MD series motor controller is a highly integrated brushless motor controller. It can be interfaced
 with a great variety of motors to turn them into advanced servo actuators. MD series motor
 controller can work with both direct drive (no gearbox) and geared motors. All MD series motor
-controllers, feature built-in absolute encoder, FOC based control algorithm and variaty of motion
+controllers, feature built-in absolute encoder, FOC based control algorithm and variety of motion
 control modes. MDs can also be equipped with additional encoders and brakes, for many application
 scenarios.
 
@@ -31,7 +31,7 @@ scenarios.
 ## PDS - Power Distribution System
 
 PDS is a highly modular power management system, that aims to provide everything that a mobile robot
-needs. It allows for safe and reliable power distribution with diagnostics, and can be easly
+needs. It allows for safe and reliable power distribution with diagnostics, and can be easily
 accessed via CANFD bus and CANdle.
 
 ```{image} images/pds.jpg
@@ -83,7 +83,7 @@ CANdle x MD ecosystem is presented in the picture below:
 The CAN bus termination is a single Molex connector with an embedded 120Ohm resistor. Termination
 should be always be attached to the first and last device in a string. CAN bus is very robust
 protocol, and can usually work on low speeds with just one terminator, however if you are
-expiriencing any problems, we recommend you use a ful terminator setup.
+experiencing any problems, we recommend you use a full terminator setup.
 
 ```{hint} Both CANdle and CANdleHAT feature a termination circuit, that can be enabled with a switch.
 ```

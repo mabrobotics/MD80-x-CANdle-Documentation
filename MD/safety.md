@@ -108,5 +108,5 @@ start the motor outside the range will generate a motion error.
 ```
 
 ```{note}
-Setting both Positoin limit min and max, to 0.0, will disable the limiters completely.
+Setting both Position limit min and max, to 0.0, will disable the limiters completely.
 ```

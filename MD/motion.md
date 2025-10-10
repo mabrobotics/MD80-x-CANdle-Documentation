@@ -108,7 +108,7 @@ this control mode:
 - <b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the
   motor shaft will be free to rotate. When the drive is disabled it connects all the windings
   together for safety. This mode can be useful for enabling free rotation of the shaft, but the
-  rotational energy shoudl not be too high as the voltages induced in the motor windings coudl break
+  rotational energy should not be too high as the voltages induced in the motor windings could break
   the driver.
 
 The impedance controller is relatively simple and works according to the schematic below:
@@ -222,8 +222,8 @@ Always keep your safety limits low when experimenting with gains. Gains not suit
 
 1. Increase kp to the point you're satisfied with the stiffnes of the output shaft (the spring
    coefficient)
-1. Increase kd to the point youre satified with the damping of the output shaft (the damping
-   coeficient)
+1. Increase kd to the point your satisfied with the damping of the output shaft (the damping
+   coefficient)
 1. Avoid setting kd too high - it may cause severe vibrations.
 
 ### Current PI

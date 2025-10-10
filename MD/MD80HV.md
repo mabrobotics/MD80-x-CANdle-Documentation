@@ -134,7 +134,7 @@ We are able to integrate custom functions such as GPIOs for external sensors and
 more information please contact us: [contact@mabrobotics.pl](https://www.mabrobotics.pl/contact)
 
 ```{warning}
-By default RS422 transciver is not soldered on the MD80 boards. If you plan to use RLS Axim2 encoder with MD80, let us know when ordering the board. This modification will be done free of charge.
+By default RS422 transceiver is not soldered on the MD80 boards. If you plan to use RLS Axim2 encoder with MD80, let us know when ordering the board. This modification will be done free of charge.
 ```
 
 ## Thermal characteristics

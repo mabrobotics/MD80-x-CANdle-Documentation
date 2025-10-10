@@ -116,19 +116,19 @@ reached.
 			<td>ERROR_POSITION_INVALID</td>
 			<td>5</td>
 			<td>Position reading is invalid</td>
-			<td>Check endcoder physical setup, in case of problems contact MABRobotics</td>
+			<td>Check encoder physical setup, in case of problems contact MABRobotics</td>
 		</tr>
 		<tr>
 			<td>ERROR_INIT</td>
 			<td>6</td>
 			<td>Encoder initialization failed</td>
-			<td>Check endcoder setup and connection, in case of problems contact MABRobotics</td>
+			<td>Check encoder setup and connection, in case of problems contact MABRobotics</td>
 		</tr>
 		<tr>
 			<td>WARNING_LOW_ACCURACY</td>
 			<td>30</td>
 			<td>Encoder position readout accuracy may be lower than specified</td>
-			<td>Check endcoder physical setup and reboot the MDxx</td>
+			<td>Check encoder physical setup and reboot the MDxx</td>
 		</tr>
 	</tbody>
 </table>
@@ -260,7 +260,7 @@ reached.
 </table>
 <p></p>
 
-## Comunication errors
+## Communication errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -323,7 +323,7 @@ reached.
       		<td>Check velocity limits, clear using candletool</td>
 		</tr>
     	<tr>
-			<td>WARNING_POSITON_CLIPPED</td>
+			<td>WARNING_POSITION_CLIPPED</td>
 			<td>27</td>
 			<td>Position command was clipped to either max or min position at least once</td>
       		<td>Check position limits, clear using candletool</td>

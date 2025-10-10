@@ -5,3 +5,4 @@ echo "Running formatter..."
 
 echo "Building Jupyter Book..."
 jupyter-book build .
+typos

@@ -11,7 +11,7 @@ used in. This section will cover the parameters that are used in config files.
 - `pole pairs` - the number of rotor magnets divided by 2. If you are unsure type zero here - during
   calibration it will be autodetected. Later on it is advised to retype it after the calibration to
   the config file. It can be accessed using candletool md info or by register access.
-- `KV` - declated KV of the motor - its used when torque constant is set to zero.
+- `KV` - declared KV of the motor - its used when torque constant is set to zero.
 - `torque constant` - motor torque constant in Nm/A
 - `gear ratio` - gear ratio -> example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2
 - `max current` - maximum allowable phase (not power supply) current
@@ -145,7 +145,7 @@ off-axis encoder - it requires a full calibration routine.
 :class: no-scaled-link
 ```
 
-To run the routine, use the [`candletool md calibration -e aux`](candletool_commands) command. fter
+To run the routine, use the [`candletool md calibration -e aux`](candletool_commands) command. after
 completing the routine the MD will reboot and after that it is recommended to run the candletool md
 setup info command in order to make sure the setup reports no errors:
 

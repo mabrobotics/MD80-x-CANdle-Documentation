@@ -14,7 +14,7 @@ Currently, there are two CANdle versions - CANdle and CANdle HAT.
 
 The first one is a simple version that uses USB bus to communicate with the host, whereas the latter
 can communicate using USB or SPI and is easy to integrate with SBCs such as Raspberry PI. The
-communication with MDs and PDS is performed using CAN bus, using either MABs propriatary protocol,
+communication with MDs and PDS is performed using CAN bus, using either MABs proprietary protocol,
 or CANOpen (only MD).
 
 ```{figure} images/hardware_setup2.png
@@ -32,7 +32,7 @@ that can be used to develop applications with MAB products.
 While CANdle and CANdleHAT are very capable devices, their main purpose is to allow the users to
 quickly get onboard with MD and PDS family of produces. While developing CANdle and CANdle-SDK, we
 aim for flexibility, ease-of-use and reliability over performance. **The main purpose of CANdle and
-HAT, is to be a great starting point in product development process**, but not neccessarly a final
+HAT, is to be a great starting point in product development process**, but not necessarily a final
 motion-control solution.
 
 ```{figure} images/ecosystem.jpg
@@ -43,7 +43,7 @@ motion-control solution.
 ```
 
 This means that it is usually not possible to fully unravel the potential of some of our products,
-when accessing them exclusively throught CANdle. We are constatnly working on improving the
+when accessing them exclusively through CANdle. We are constantly working on improving the
 performance of the Ecosystem, but due to many factors that are out of our control (operating system
 latency, user space limitations, kernel behaviour, unknown host hardware etc.), CANdle may not be
 sufficiently fast for some applications. In this case,

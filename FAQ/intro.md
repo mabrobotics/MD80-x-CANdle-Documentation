@@ -88,7 +88,7 @@ more audible noise (hissing) you will hear coming from the motor.
 
 ## Should I use FDCAN Protocol or CANOpen?
 
-While CANOpen is well estabilished industry standard protocol, we generally recommend using FDCAN
+While CANOpen is well established industry standard protocol, we generally recommend using FDCAN
 protocol. CANOpen provides a lot of robustness, it is more complicated and lacks flexibility and
 bandwidth, for many modern control systems. If you dont already use CANOpen, FDCAN protocol will
 likely be a better option.
