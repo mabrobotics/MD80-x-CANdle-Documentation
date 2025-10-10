@@ -51,7 +51,7 @@ is present and working (the resistance between CANH and CANL lines should be 60 
 resistors in parallel, on ends of the bus). The termination resistor is embedded in the CANdle
 device, and can be turned on/off with a physical switch.
 
-## MD is not detected on "mdtool discover" command
+## MD is not detected on "candletool discover" command
 
 There might be several reasons why MD controllers are not showing up during the discovery. Please
 ensure you've check the things listed below:

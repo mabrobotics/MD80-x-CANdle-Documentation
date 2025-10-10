@@ -1,4 +1,4 @@
-# MD80 HV
+# MD80 60V
 
 ```{figure} ./images/md80hv.jpg
 :alt: candle
@@ -9,10 +9,11 @@
 
 ## General parameters
 
-MD80HV is high voltage variant of MD80, designed to work well with 12S lithium batteries. It has all
-functionalities and features of regular MD80, for more information, please refer to [MD80](#md80)
+MD80 60V is high voltage variant of MD80, designed to work well with 12S lithium batteries. It has
+all functionalities and features of regular MD80, for more information, please refer to
+[MD80](#md80)
 
-**General parameters table for MD80HV:**
+**General parameters table for MD80 60V:**
 
 ```{list-table}
 :header-rows: 1
@@ -80,7 +81,7 @@ the safe operation of the driver and motor. The motor shutdown temperature is co
 140°C max with a hysteresis of 20°C. The driver shutdown temperature is fixed at 100°C with a
 hysteresis of 20°C.
 
-In the case of the MD80 HW V2.0 the MOSFET thermistor is built-in directly under the power stage and
+In the case of the MD80 60V the MOSFET thermistor is built-in directly under the power stage and
 only the motor thermistor connector is available:
 
 ```{figure} ./images/HW20_thermistor.png
@@ -91,27 +92,13 @@ only the motor thermistor connector is available:
 :class: no-scaled-link
 ```
 
-````{dropdown} The connectors in the case of the HW1.1 and HV1.3
-```{figure} ./images/HW11_thermistor.jpg
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
 ```
-
-```{note}
-On older (<HW2.2) designs NTCMHP100K is recommended.
-```
-
-````
-
-```{note}
-For the HW2.2+ and HW3.0+ version of the board we recommend using NTCMHP10K thermistors. Using other thermistors may result in imprecise temperature readout.
+We recommend using [NTCMHP10K thermistors](https://www.mabrobotics.pl/product-page/thermistor) . Using other thermistors may result in imprecise temperature readout.
 ```
 
 ### Aux connectors
 
-MD80 HW2.1+ and HW3.0+ feature two accessory connectors.
+MD80 60V feature two accessory connectors.
 
 **Aux 1 connector** is dedicated to connect MABs
 [ME_am](https://www.mabrobotics.pl/product-page/me-am) and other SPI based encoders. For external

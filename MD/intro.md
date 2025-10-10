@@ -15,19 +15,24 @@ MD drivers offer:
 - small size,
 - low weight.
 
-There are two variants of MD motor controllers:
+Current variants of MD motor controllers:
 
 ## [MD80](/MD/MD80)
 
-![MD80](./images/md80_hmd.jpg)
+Suitable for most BLDC motors in 100-500W power range. ![MD80](./images/md80_hmd.jpg)
 
 ## [MD20](/MD/MD20)
 
-![MD20](./images/md20_coin.jpg)
+Best for gimbal BLDC motor, and smaller motors up to 120W. ![MD20](./images/md20_coin.jpg)
+
+## [MD80 60V](/MD/MD80HV)
+
+For high voltage applications.\
+![MD80](./images/md80hv.jpg)
 
 ## Accessories
 
-MD functionality can be further inncreased by connecting auxiliary encoders and brakes
+MD functionality can be further increased by connecting auxiliary encoders and brakes
 
 ### [Auxiliary Encoders](/MD/encoders)
 
@@ -39,13 +44,12 @@ MD functionality can be further inncreased by connecting auxiliary encoders and 
 
 ## Safety information
 
-Even though the MD series motor controller is a small brushless controller it can push a substantial
-amount of current through the motor windings. This means there are many hazards related to the high
-torques that the actuator is able to produce as well as elevated temperatures that may occur close
-to the MD series motor controller controller or the motor. Always make sure the actuator is mounted
-firmly and does not pose a threat to its surroundings. Make sure the power supply current limits are
-set to low values (~1A) as an additional safety measure when you are unsure about the tested
-behavior of the system.
+Even though the MD series motor controller are small, they can push a substantial amount of current
+through the motor windings. This means there are many hazards related to the high torques that the
+actuator is able to produce as well as elevated temperatures that may occur close to the MDs or the
+motor. Always make sure the actuator is mounted firmly and does not pose a threat to its
+surroundings. Make sure the power supply current limits are set to low values (~1A) as an additional
+safety measure when you are unsure about the tested behavior of the system.
 
 ## Principle of operation
 

@@ -13,7 +13,7 @@ chapters:
     - file: MD/MD20
       title: MD20
     - file: MD/MD80HV
-      title: MD80HV
+      title: MD80 60V
     - file: MD/encoders
       title: Encoders
     - file: MD/brakes
