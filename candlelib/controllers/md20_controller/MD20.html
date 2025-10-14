@@ -1,0 +1,1380 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MD20 &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'candlelib/controllers/md20_controller/MD20';</script>
+    <link rel="icon" href="../../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="MD Add-ons" href="../add_ons/Add-ons.html" />
+    <link rel="prev" title="MD80" href="../md80_controller/MD80.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MD/status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../MD/Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../MD/Communication/canopen_od.html">Object Dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/overview.html">Features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../intro.html">Software - mdtool [LEGACY]</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Ecosystem.html">Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Calibration.html">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Config.html">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Motion_modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Safety_limits.html">Safety limits</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Status_codes.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_x_candle_ecosystem_overview/Utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../Controllers.html">Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../md80_controller/MD80.html">MD80</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">MD20</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../add_ons/Add-ons.html">MD Add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../add_ons/aux_encoders/Auxiliary_Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../add_ons/brake_systems/Brake_systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../candle_and_candle_hat/Latency.html">Latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../candle_and_candle_hat/Principle.html">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../candle_and_candle_hat/Using_CANdle.html">Using CANdle and CANdle HAT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../software_package/Software.html">Software Pack</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/Legacy.html">Legacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/legacy/cpp.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/legacy/python.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/legacy/quick_startup_ros2.html">Quick start - ROS2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/legacy/quick_startup_ros.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../software_package/legacy/ros_nodes.html">CANdle ROS/ROS2 nodes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../md_fdcan_protocol/canProtocol.html">Hardware requirements</a></li>
+
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../md_canopen/CANopen.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Downloads/Downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_problems_and_faq/FAQ.html">Common Issues and FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Changelogs/Changelogs.html">Changelogs</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fcandlelib/controllers/md20_controller/MD20.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/candlelib/controllers/md20_controller/MD20.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MD20</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-data">Mechanical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-specification">Thermal specification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="md20">
+<h1>MD20<a class="headerlink" href="#md20" title="Link to this heading">#</a></h1>
+<p>The MD20 is a compact brushless motor controller, ideal for small, precise gimbal motors. It offers
+multiple control modes, including position PID, velocity PID, impedance, raw torque, profile
+position, and profile velocity. The MD20 also supports easy daisy-chaining, allowing seamless
+integration of multiple controllers in a single control network.</p>
+<section id="general-parameters">
+<h2>General parameters<a class="headerlink" href="#general-parameters" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Nominal Input Voltage Range</p></td>
+<td><p>24 - 42 VDC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum Input Voltage Range</p></td>
+<td><p>10 - 48 VDC</p></td>
+</tr>
+<tr class="row-even"><td><p>Max Input Current</p></td>
+<td><p>3.1 A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Continuous Phase Current w/o cooling</p></td>
+<td><p>4.5 A</p></td>
+</tr>
+<tr class="row-even"><td><p>Max Peak Phase Current (t = 2 s)</p></td>
+<td><p>20 A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Built-in software-controlled termination resistor</p></td>
+<td><p>optional</p></td>
+</tr>
+<tr class="row-even"><td><p>FDCAN Baudrate (adjustable_legacy)</p></td>
+<td><p>1/2/5/8 Mbps</p></td>
+</tr>
+<tr class="row-odd"><td><p>Position PID Controller Execution Frequency</p></td>
+<td><p>1 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>Velocity PID Controller Execution Frequency</p></td>
+<td><p>5 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Impedance Controller Execution Frequency</p></td>
+<td><p>40 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>Torque Control Execution Frequency</p></td>
+<td><p>40 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Torque Bandwidth (adjustable_legacy)</p></td>
+<td><p>50 Hz - 2.5 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>External encoder connector (SPI, RS422)</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>External 5V power supply max current</p></td>
+<td><p>150 mA</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The MD20 is equipped with a custom shunt resistor suited for more precise current sensing. As a result all the configuration files (.cfg) dedicated for MD20 <strong>MUST</strong> contain <code class="docutils literal notranslate"><span class="pre">[hardware]</span></code> section with <code class="docutils literal notranslate"><span class="pre">shunt</span> <span class="pre">resistance</span></code> parameter equal to 0.004, ie.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">hardware</span><span class="p">]</span>
+<span class="n">shunt</span> <span class="n">resistance</span> <span class="o">=</span> <span class="mf">0.004</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mechanical-data">
+<h2>Mechanical data<a class="headerlink" href="#mechanical-data" title="Link to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/view1.png" style="width: 504.7px; height: 468.29999999999995px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/mnt1.png" style="width: 736.8000000000001px; height: 444.8px;" />
+</figure>
+</section>
+<section id="connectors-pinout">
+<h2>Connectors pinout<a class="headerlink" href="#connectors-pinout" title="Link to this heading">#</a></h2>
+<p>For power supply and CAN bus connection two <em>2200980471 Molex Micro-lock</em> connectors are available.
+They act as an internal bridge for easy chaining of the drives.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/Adnotations_4_pin1.png" style="width: 496.0px; height: 365.0px;" />
+</figure>
+<p>For external encoder connection via the SPI <em>530480650 Molex PicoBlade</em> connectors is provided.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/Adnotations_6_pin1.png" style="width: 471.0px; height: 251.0px;" />
+</figure>
+<p>For external encoder connection via the RS422 and the GPIO pins utilization <em>530480810 Molex
+PicoBlade</em> connectors could be used.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/Adnotations_8_pin1.png" style="width: 627.0px; height: 471.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/md20_thermistor1.png" style="width: 713.0px; height: 710.0px;" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the current version of the board we recommend using NTCMHP10K thermistors. Using other thermistors may result in imprecise temperature readout.</p>
+</div>
+</section>
+<section id="thermal-specification">
+<h2>Thermal specification<a class="headerlink" href="#thermal-specification" title="Link to this heading">#</a></h2>
+<p><strong>Thermal performance and efficiency</strong></p>
+<p>MD20 is a tiny but high-power, highly integrated motor controller. It creates challenges related to
+heat management and thermal performance. Taking this in mind, the design of the PCB is 6 layers to
+achieve excellent performance even without any cooling. The used components include small and
+efficient power converters and MOSFETs with best-in-class figure of merit.</p>
+<p>The motor controller is only a part of the actuator, so we have done tests in the worst scenarios in
+a real setup, to provide valuable and relevant information about performance in the assembled
+actuator, instead of the idealized or simulated one.</p>
+<p><strong>Power losses and system efficiency</strong></p>
+<p>To understand the charts below, we need to distinguish between mechanical power efficiency and
+electrical power conversion efficiency.</p>
+<p>Mechanical power is the torque exerted by the motor (𝛕) multiplied by the angular velocity (𝝎) of
+the shaft. If the shaft is locked in place, the mechanical power will be zero, and thus, the
+mechanical power efficiency will also be zero in that scenario.</p>
+<p>Electrical power conversion can be explained as the ratio between the power delivered to the
+electric motor and the total electric power consumed by the system. In this case, even though the
+motor’s mechanical power is zero, the efficiency of the driver can still be greater than zero due to
+the conversion of power to heat within the motor.</p>
+<p>The scenario where mechanical power is zero is the worst-case scenario for electrical power
+conversion efficiency. In this case, all of the energy gets converted into heat.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image111.png" style="width: 1085.0px; height: 682.5px;" />
+</figure>
+<p>As can be seen in the figure, the measured IQ is equal to the Ic current because the motor shaft was
+blocked.</p>
+<p>Ia, Ib, and Ic are motor phase currents, and Iq is the virtual quantity, which can be understood as
+the current in an old-fashioned brushed motor. Two quantities are important to analyze the inverter
+efficiency and losses: input power to the motor controller and the energy transferred from the
+inverter to the motor windings. Those quantities are the base that tells almost everything about the
+influence of the motor controller on the actuator system performance. There is only one exception
+connected to the inverter efficiency and the whole system efficiency - its switching frequency.
+Tuning this parameter can increase the torque generated from the motor phase current by reducing
+phase currents THD, but also increase switching losses. Detailed analysis of these effects is out of
+the scope of the documentation, as it is motor-dependent on the system level. The gearbox/torque
+transfer efficiency as well.</p>
+<p>Returning to the inverter, various losses are mainly related to transistor conduction and switching.
+Keeping as the rule to avoid theory and mathematical models, for the MD20 motor controller, which
+has a switching frequency of 40 kHz, at 24VDC supply total losses were measured the way described
+below.</p>
+<p>The motor driver was supplied by the SIGLENT SPS5000X Digital power supply. Measurements of input
+Current, Voltage, and Power consumed by the whole setup were taken from this device. The power of
+the motor itself was calculated using discrete data of currents and voltages in each phase measured
+by the MD20 in each FOC cycle to ensure sampling at the same frequency as the control loop.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image71.png" style="width: 670.5999999999999px; height: 342.29999999999995px;" />
+</figure>
+<p>at various currents are collected in the table below:</p>
+<table>
+  <tr class=default-white>
+   <td class=default-padding>Input current[A]
+   </td>
+   <td class=default-padding>Input power[W]
+   </td>
+   <td class=default-padding>Respective peak <br/> phase current [ A ]
+   </td>
+   <td class=default-padding>Output power[W]
+   </td>
+   <td class=default-padding>Losses[W]
+   </td>
+   <td class=default-padding>Efficiency[%]
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,05
+   </td>
+   <td class=default-padding>1,25
+   </td>
+   <td class=default-padding>1
+   </td>
+   <td class=default-padding>0,63
+   </td>
+   <td class=default-padding>0,62
+   </td>
+   <td class=default-padding>50,40%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,10
+   </td>
+   <td class=default-padding>2,34
+   </td>
+   <td class=default-padding>2
+   </td>
+   <td class=default-padding>1,92
+   </td>
+   <td class=default-padding>0,42
+   </td>
+   <td class=default-padding>82,05%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,17
+   </td>
+   <td class=default-padding>4,12
+   </td>
+   <td class=default-padding>3
+   </td>
+   <td class=default-padding>3,79
+   </td>
+   <td class=default-padding>0,33
+   </td>
+   <td class=default-padding>91,99%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,29
+   </td>
+   <td class=default-padding>7,06
+   </td>
+   <td class=default-padding>4
+   </td>
+   <td class=default-padding>6,58
+   </td>
+   <td class=default-padding>0,48
+   </td>
+   <td class=default-padding>93,20%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,47
+   </td>
+   <td class=default-padding>11,35
+   </td>
+   <td class=default-padding>5
+   </td>
+   <td class=default-padding>10,6
+   </td>
+   <td class=default-padding>0,75
+   </td>
+   <td class=default-padding>93,39%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>0,70
+   </td>
+   <td class=default-padding>16,87
+   </td>
+   <td class=default-padding>6
+   </td>
+   <td class=default-padding>15,6
+   </td>
+   <td class=default-padding>1,27
+   </td>
+   <td class=default-padding>92,47%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>1,05
+   </td>
+   <td class=default-padding>25,17
+   </td>
+   <td class=default-padding>7
+   </td>
+   <td class=default-padding>23,2
+   </td>
+   <td class=default-padding>1,97
+   </td>
+   <td class=default-padding>92,17%
+   </td>
+  </tr>
+  <tr class=default-white>
+   <td class=default-padding>1,46
+   </td>
+   <td class=default-padding>35,1
+   </td>
+   <td class=default-padding>8
+   </td>
+   <td class=default-padding>32
+   </td>
+   <td class=default-padding>3,1
+   </td>
+   <td class=default-padding>91,17%
+   </td>
+  </tr>
+</table>
+<p>During the analysis the idle power consumption of the board came out to be about 0,5W.</p>
+<p>Because the input data for the table was taken when all parameters became stable ( due to the
+temperature interia ) we were not able to measure phase currents over 8A because the motor</p>
+<p>was overheated.</p>
+<p>Input power was measured by the digital power source Siglent SPS5000X. The output power was computed
+based on the phase voltages and currents measured with the oscilloscope. Losses were computed as the
+difference between input and output power.</p>
+<p>The table above shows the losses. The tests described below present how the MD20 handles it.</p>
+<p><strong>Thermal tests</strong></p>
+<p>To cover all potential cases, three cooling scenarios have been performed:</p>
+<ul class="simple">
+<li><p>No additional cooling</p></li>
+<li><p>Passive cooling</p></li>
+<li><p>Active air cooling</p></li>
+</ul>
+<p>In each test, the <strong>MD20</strong> motor driver was coupled with the MN4004-21 BLDC Motor.</p>
+<p>MN4004-21 Motor parameters:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image41.png" style="width: 835.0999999999999px; height: 224.7px;" />
+</figure>
+<p>To maximize the convection effect and thus simulate the “worst case” of the setup position, the
+motor was mounted horizontally, under the MD20 so the heat dissipated by the motor additionally
+heats the driver PCB. We did our best to provide usable and relevant data about the performance.</p>
+<p>To ensure constant DC current in the motor phases, its shaft was blocked and the control loop was
+tweaked so that the current was equally distributed to each phase of the motor.</p>
+<p>In each scenario, the tests were repeated for various cases of phase currents. from 0,5A to 5A with
+the step of 0,5A, and from 5A to the maximum current (that does not overheat the driver) with the
+step of 1A. For each current, the setup was tested until the temperature reached a stable value.</p>
+<p>All tests were performed in constant environment conditions, in still air at 25 C ambient
+temperature.</p>
+<p>Before each particular test, the device was powered on and preheated itself to the idle temperature
+of about 39°C.</p>
+<p>MD20 Temperature was measured with the usage of an onboard thermistor placed on the bottom layer of
+the PCB, directly below the MOSFETs.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image21.png" style="width: 371.0px; height: 179.2px;" />
+</figure>
+<p><strong>Test scenario I - no additional cooling.</strong></p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image131.png" style="width: 373.0px; height: 217.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image141.jpg" style="width: 340.8px; height: 253.20000000000002px;" />
+</figure>
+<p>Temperature vs Time characteristic:</p>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/image61.png"><img alt="candle" class="bg-primary mb-1" src="../../../_images/image61.png" style="width: 999.5px; height: 617.0px;" />
+</a>
+</figure>
+<p>Summary table:</p>
+<table>
+  <tr class=header-white>
+   <td class=default-padding colspan="3">No cooling thermal test summary
+   </td>
+  </tr>
+  <tr  class=header-deep-blue>
+   <td class=default-padding >Maximum <br/> continuous current
+   </td>
+   <td class=default-padding colspan="2" >4,5A
+   </td>
+  </tr>
+  <tr class=header-blue>
+   <td class=default-padding>Current
+   </td>
+   <td class=default-padding>Stable temperature
+   </td>
+   <td class=default-padding>Time to reach
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1A
+   </td>
+   <td class=default-padding>46°C
+   </td>
+   <td class=default-padding rowspan="8" >~ 1250 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1,5A
+   </td>
+   <td class=default-padding>51°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2A
+   </td>
+   <td class=default-padding>56°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2,5A
+   </td>
+   <td class=default-padding>62°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3A
+   </td>
+   <td class=default-padding>68°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3,5A
+   </td>
+   <td class=default-padding>78°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4A
+   </td>
+   <td class=default-padding>83°C
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4,5A
+   </td>
+   <td class=default-padding>92°C
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>5A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 980 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>6A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 440 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>7A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 250 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>8A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 120 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>9A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 95 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>10A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 70 s
+   </td>
+  </tr>
+</table>
+<p><strong>Test scenario II - passive cooling.</strong></p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image101.png" style="width: 376.0px; height: 188.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image121.jpg" style="width: 599.6999999999999px; height: 450.0px;" />
+</figure>
+<p>Temperature vs Time characteristic:</p>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/image31.png"><img alt="candle" class="bg-primary mb-1" src="../../../_images/image31.png" style="width: 999.5px; height: 618.0px;" />
+</a>
+</figure>
+<p>Summary table:</p>
+<table>
+  <tr class=header-white>
+   <td class=default-padding colspan="3" >Passive cooling thermal test summary
+   </td>
+  </tr>
+  <tr class=header-deep-blue>
+   <td class=default-padding>Maximum <br/> continuous current
+   </td>
+   <td class=default-padding colspan="2" >5A
+   </td>
+  </tr>
+  <tr  class=header-blue>
+   <td class=default-padding>Current
+   </td>
+   <td class=default-padding>Stable temperature
+   </td>
+   <td class=default-padding>Time to reach
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1 A
+   </td>
+   <td class=default-padding>46,5°C
+   </td>
+   <td class=default-padding>~ 2100 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1,5A
+   </td>
+   <td class=default-padding>48,2°C
+   </td>
+   <td class=default-padding>~ 2100 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2A
+   </td>
+   <td class=default-padding>53.8°C
+   </td>
+   <td class=default-padding>~ 2000 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2,5A
+   </td>
+   <td class=default-padding>59,5°C
+   </td>
+   <td class=default-padding>~ 2000 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3A
+   </td>
+   <td class=default-padding>66,3 °C
+   </td>
+   <td class=default-padding>~ 2000 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3,5A
+   </td>
+   <td class=default-padding>72,1°C
+   </td>
+   <td class=default-padding>~ 2800 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4A
+   </td>
+   <td class=default-padding>79,7°C
+   </td>
+   <td class=default-padding>~ 2600 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4,5A
+   </td>
+   <td class=default-padding>88,9°C
+   </td>
+   <td class=default-padding>~ 2600 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>5A
+   </td>
+   <td class=default-padding>95,1°C
+   </td>
+   <td class=default-padding>~ 1850 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>6A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 800 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>7A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 480 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>8A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 325 s
+   </td>
+  </tr>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During the tests in this scenario, the motor windings were getting warmer much faster than the MD20 PCB so the tests were stopped after 8A to avoid damaging the motor. The motor started to produce smoke before the motor controller reached 100 degrees C, so the test was finished on the 8A.</p>
+</div>
+<p><strong>Test scenario III - active cooling</strong></p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image91.png" style="width: 376.0px; height: 188.0px;" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../../../_images/image11.jpg" style="width: 399.8px; height: 300.0px;" />
+</figure>
+<p>Temperature vs Time characteristic (note that this characteristic was split into two current
+ranges):</p>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/image81.png"><img alt="candle" class="bg-primary mb-1" src="../../../_images/image81.png" style="width: 999.5px; height: 618.5px;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../../_images/image51.png"><img alt="candle" class="bg-primary mb-1" src="../../../_images/image51.png" style="width: 999.5px; height: 618.5px;" />
+</a>
+</figure>
+<p>Summary table:</p>
+<table>
+  <tr class=header-white>
+   <td class=default-padding colspan="3" >Active cooling thermal test summary
+   </td>
+  </tr>
+  <tr class=header-deep-blue>
+   <td class=default-padding>Maximum <br/> continuous current
+   </td>
+   <td class=default-padding colspan="2" >13A
+   </td>
+  </tr>
+  <tr class=header-blue>
+   <td class=default-padding>Current
+   </td>
+   <td class=default-padding>Stable temperature
+   </td>
+   <td class=default-padding>Time to reach
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1 A
+   </td>
+   <td class=default-padding>33,2°C
+   </td>
+   <td class=default-padding>~ 170 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>1,5 A
+   </td>
+   <td class=default-padding>33,6°C
+   </td>
+   <td class=default-padding>~ 170 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2 A
+   </td>
+   <td class=default-padding>34°C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>2,5 A
+   </td>
+   <td class=default-padding>34,6°C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3 A
+   </td>
+   <td class=default-padding>35,4 °C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>3,5 A
+   </td>
+   <td class=default-padding>36,4 °C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4 A
+   </td>
+   <td class=default-padding>37,3 °C
+   </td>
+   <td class=default-padding>~ 180 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>4,5 A
+   </td>
+   <td class=default-padding>38,5 °C
+   </td>
+   <td class=default-padding>~ 200 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>5 A
+   </td>
+   <td class=default-padding>40°C
+   </td>
+   <td class=default-padding>~ 230 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>6 A
+   </td>
+   <td class=default-padding>43,5°C
+   </td>
+   <td class=default-padding>~ 400 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>7 A
+   </td>
+   <td class=default-padding>47,5°C
+   </td>
+   <td class=default-padding>~ 490 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>8 A
+   </td>
+   <td class=default-padding>51,5°C
+   </td>
+   <td class=default-padding>~ 580 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>9 A
+   </td>
+   <td class=default-padding>58,5°C
+   </td>
+   <td class=default-padding>~ 630 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>10 A
+   </td>
+   <td class=default-padding>73°C
+   </td>
+   <td class=default-padding>~ 430 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>11 A
+   </td>
+   <td class=default-padding>78°C
+   </td>
+   <td class=default-padding>~ 420 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>12 A
+   </td>
+   <td class=default-padding>84,9°C
+   </td>
+   <td class=default-padding>~ 540 s
+   </td>
+  </tr>
+  <tr class=stable-temp-green>
+   <td class=default-padding>13 A
+   </td>
+   <td class=default-padding>94,9°C
+   </td>
+   <td class=default-padding>~ 540 s
+   </td>
+  </tr>
+  <tr class=stable-temp-yellow>
+   <td class=default-padding>14 A
+   </td>
+   <td class=default-padding>100°C
+   </td>
+   <td class=default-padding>~ 280 s
+   </td>
+  </tr>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./candlelib/controllers/md20_controller"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../md80_controller/MD80.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MD80</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../add_ons/Add-ons.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MD Add-ons</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-data">Mechanical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-specification">Thermal specification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

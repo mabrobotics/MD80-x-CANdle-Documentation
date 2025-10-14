@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Status &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'candlelib/md_x_candle_ecosystem_overview/Status_codes';</script>
+    <link rel="icon" href="../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Utilities" href="Utilities.html" />
+    <link rel="prev" title="Safety limits" href="Safety_limits.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD/status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../MD/Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_od.html">Object Dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../PDS/overview.html">Features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../intro.html">Software - mdtool [LEGACY]</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="Ecosystem.html">Ecosystem overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Calibration.html">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Config.html">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Measurements.html">Measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Motion_modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="Safety_limits.html">Safety limits</a></li>
+
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../controllers/Controllers.html">Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../controllers/md80_controller/MD80.html">MD80</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../controllers/md20_controller/MD20.html">MD20</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../controllers/add_ons/Add-ons.html">MD Add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../controllers/add_ons/aux_encoders/Auxiliary_Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controllers/add_ons/brake_systems/Brake_systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candle_and_candle_hat/Latency.html">Latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candle_and_candle_hat/Principle.html">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candle_and_candle_hat/Using_CANdle.html">Using CANdle and CANdle HAT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software_package/Software.html">Software Pack</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/Legacy.html">Legacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/cpp.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/python.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/quick_startup_ros2.html">Quick start - ROS2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/quick_startup_ros.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_package/legacy/ros_nodes.html">CANdle ROS/ROS2 nodes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../md_fdcan_protocol/canProtocol.html">Hardware requirements</a></li>
+
+<li class="toctree-l2 has-children"><a class="reference internal" href="../md_canopen/CANopen.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../Downloads/Downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../common_problems_and_faq/FAQ.html">Common Issues and FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Changelogs/Changelogs.html">Changelogs</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fcandlelib/md_x_candle_ecosystem_overview/Status_codes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/candlelib/md_x_candle_ecosystem_overview/Status_codes.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Status</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-status">Quick Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-output-encoder-errors">Main / Output Encoder Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-errors">Calibration Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-errors">Bridge errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-errors">Hardware errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-errors">Communication errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-status">Motion status</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="status">
+<span id="status-legacy"></span><h1>Status<a class="headerlink" href="#status" title="Link to this heading">#</a></h1>
+<p>When an abnormal situation takes place the controller sets an error bit indicating a particular
+error or warning. The table below lists all available error and warning codes and their
+descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use
+the CANdle lib register access and read the statuses, or decode the general “Quick Status” using the
+CANdle lib getQuickStatus() function.</p>
+<p>Errors and warnings can be cleared by register access, or using <code class="docutils literal notranslate"><span class="pre">mdtool</span> <span class="pre">clear</span></code> command. Please note
+that all warnings and only non-critical errors can be cleared.</p>
+<section id="quick-status">
+<span id="quick-status-legacy"></span><h2>Quick Status<a class="headerlink" href="#quick-status" title="Link to this heading">#</a></h2>
+<p>Quick status provides a general info about errors in each category of statuses. No warnings are
+indicated here. Last bit indicatest whether the current target (position or velocity) has been
+reached.</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>Main encoder error</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Output encoder error</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Calibration encoder error</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>MOSFET bridge error</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Hardware errors</td>
+		</tr>
+    	<tr>
+			<td>5</td>
+			<td>Communication errors</td>
+		</tr>
+   		<tr>
+			<td>6</td>
+			<td>Motion errors</td>
+		</tr>
+       	<tr>
+			<td>8-14</td>
+			<td>RESERVED</td>
+		</tr>
+		</tr>
+			<tr>
+			<td>15</td>
+			<td>Target position (in Position PID / Profile position mode) or velocity ( in Velocity PID / Velocity profile mode) reached within position or velocity window <td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="main-output-encoder-errors">
+<h2>Main / Output Encoder Errors<a class="headerlink" href="#main-output-encoder-errors" title="Link to this heading">#</a></h2>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_COMMUNICATION </td>
+			<td>0</td>
+			<td>MDxx could not communicate with the encoder </td>
+      		<td>Check connections </td>
+		</tr>
+    	<tr>
+			<td>ERROR_WRONG_DIRECTION</td>
+			<td>1</td>
+			<td>Indicates the calibrated output encoder direction is different from the main encoder direction</td>
+      		<td>Recalibrate</td>
+		</tr>
+   		 <tr>
+			<td>ERROR_EMPTY_LUT</td>
+			<td>2</td>
+			<td>Indicates the encoder eccentricity table is empty</td>
+      		<td>Recalibrate</td>
+		</tr>
+    	<tr>
+			<td>ERROR_FAULTY_LUT</td>
+			<td>3</td>
+			<td>Indicates the encoder eccentricity table is faulty (contains too large corrections)</td>
+    		<td>Check the setup and recalibrate</td>
+		</tr>
+    	<tr>
+			<td>ERROR_CALIBRATION_FAILED</td>
+			<td>4</td>
+			<td>Calibration failed due to wrong motor <> encoder setup</td>
+			<td>Check setup, recalibrate in case of problems contact MABRobotics</td>
+		</tr>
+    	<tr>
+			<td>ERROR_POSITION_INVALID</td>
+			<td>5</td>
+			<td>Position reading is invalid</td>
+			<td>Check encoder physical setup, in case of problems contact MABRobotics</td>
+		</tr>
+		<tr>
+			<td>ERROR_INIT</td>
+			<td>6</td>
+			<td>Encoder initialization failed</td>
+			<td>Check encoder setup and connection, in case of problems contact MABRobotics</td>
+		</tr>
+		<tr>
+			<td>WARNING_LOW_ACCURACY</td>
+			<td>30</td>
+			<td>Encoder position readout accuracy may be lower than specified</td>
+			<td>Check encoder physical setup and reboot the MDxx</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="calibration-errors">
+<h2>Calibration Errors<a class="headerlink" href="#calibration-errors" title="Link to this heading">#</a></h2>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_OFFSET_CAL </td>
+			<td>0</td>
+			<td>Problem with the offset determination during calibration </td>
+      		<td>Try recalibrating</td>
+		</tr>
+    	<tr>
+			<td>ERROR_RESISTANCE_IDENT</td>
+			<td>1</td>
+			<td>Problem with resistance identification</td>
+    		<td>Try recalibrating or running the `mdtool config bandwidth` command</td>
+		</tr>
+    	<tr>
+			<td>ERROR_INDUCTANCE_IDENT</td>
+			<td>2</td>
+			<td>Problem with inductance identification</td>
+      		<td>Try recalibrating or running the `mdtool config bandwidth` command</td>
+		</tr>
+    	<tr>
+			<td>ERROR_POLE_PAIR_CAL</td>
+			<td>3</td>
+			<td>Problem with pole pair detection routine</td>
+      		<td>Try recalibrating</td>
+		</tr>
+    	<tr>
+			<td>ERROR_SETUP</td>
+			<td>4</td>
+			<td>Problem with motor config file download, or the setup parameters themselves</td>
+      		<td>Check the config file again and try to upload one more time</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="bridge-errors">
+<h2>Bridge errors<a class="headerlink" href="#bridge-errors" title="Link to this heading">#</a></h2>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_BRIDGE_COM</td>
+			<td>0</td>
+			<td>Communication problem with the bridge</td>
+      		<td>Contact MABRobotics</td>
+		</tr>
+    	<tr>
+			<td>ERROR_BRIDGE_OC</td>
+			<td>1</td>
+			<td>The bridge detected overcurrent</td>
+      		<td>Lower the current limit, clear the error or restart the drives</td>
+		</tr>
+    	<tr>
+			<td>ERROR_BRIDGE_GENERAL_FAULT</td>
+			<td>2</td>
+			<td>Usually indicates a hardware issue</td>
+      		<td>Contact MABRobotics</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+</section>
+<section id="hardware-errors">
+<h2>Hardware errors<a class="headerlink" href="#hardware-errors" title="Link to this heading">#</a></h2>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+   		<tr>
+			<td>ERROR_OVER_CURRENT</td>
+			<td>0</td>
+			<td>Overcurrent detected</td>
+      		<td>Lower the current limit, clear the error or restart the drive</td>
+		</tr>
+    	<tr>
+			<td>ERROR_OVER_VOLTAGE</td>
+			<td>1</td>
+			<td>Overvoltage detected</td>
+      		<td>Lower the system voltage, avoid rapid braking in the system, use a modern PSU, or a LiPo battery</td>
+		</tr>
+    	<tr>
+			<td>ERROR_UNDER_VOLTAGE</td>
+			<td>2</td>
+			<td>Undervoltage detected</td>
+      		<td>Ensure your power supply has enough current capability for your system</td>
+		</tr>
+    	<tr>
+			<td>ERROR_MOTOR_TEMP</td>
+			<td>3</td>
+			<td>Motor temperature exceeded the limit set in the config file</td>
+      		<td>Wait for the motor to cool down</td>
+		</tr>
+    	<tr>
+			<td>ERROR_MOSFET_TEMP</td>
+			<td>4</td>
+			<td>MDxx power side exceeded the limit of 100*C</td>
+      		<td>wait for the MDxx to cool down</td>
+		</tr>
+     	<tr>
+			<td>ERROR_ADC_CURRENT_OFFSETS</td>
+			<td>5</td>
+			<td>Error during adc current offsets calibration</td>
+      		<td>Usually indicates a hardware error - contact MABRobotics</td>
+		</tr> 
+  </tbody>
+</table>
+<p></p>
+</section>
+<section id="communication-errors">
+<h2>Communication errors<a class="headerlink" href="#communication-errors" title="Link to this heading">#</a></h2>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+    	<tr>
+			<td>WARNING_CAN_WD</td>
+			<td>30</td>
+			<td>Indicates the communication with the host was ended by the watchdog</td>
+      		<td>make sure candle.end() is called in your script, clear using mdtool</td>
+		</tr>
+  </tbody>
+</table>
+<p></p>
+</section>
+<section id="motion-status">
+<span id="motion-status-legacy"></span><h2>Motion status<a class="headerlink" href="#motion-status" title="Link to this heading">#</a></h2>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>Error name</b></td>
+			<td> <b>Error bit</b></td>
+			<td> <b>Error description</b></td>
+      		<td> <b>Action to clear it</b></td>
+		</tr>
+		<tr>
+			<td>ERROR_POSITION_OUTSIDE_LIMITS</td>
+			<td>0</td>
+			<td>Current shaft position is outside the <min position : max position> limits from the config file</td>
+      		<td>Re-home the actuator, set a temporary zero to move it back into the limits, or increase the limit range, clear using mdtool</td>
+		</tr>
+		<tr>
+			<td>ERROR_VELOCITY_OUTSIDE_LIMITS</td>
+			<td>1</td>
+			<td>Velocity exceeded the max velocty param</td>
+      		<td>Ensure the velocity limit is set to a proper value, clear using mdtool</td>
+		</tr>
+		<tr>
+			<td>WARNING_ACCELERATION_CLIPPED</td>
+			<td>24</td>
+			<td>Acceleration command was clipped to max acceleration at least once</td>
+      		<td>Check acceleration limits, clear using mdtool</td>
+		</tr>
+    	<tr>
+			<td>WARNING_TORQUE_CLIPPED</td>
+			<td>25</td>
+			<td>Torque command was clipped to max torque at least once</td>
+      		<td>Check torque limits, clear using mdtool</td>
+		</tr>
+    	<tr>
+			<td>WARNING_VELOCITY_CLIPPED</td>
+			<td>26</td>
+			<td>Velocity command was clipped to max velocity at least once</td>
+      		<td>Check velocity limits, clear using mdtool</td>
+		</tr>
+    	<tr>
+			<td>WARNING_POSITION_CLIPPED</td>
+			<td>27</td>
+			<td>Position command was clipped to either max or min position at least once</td>
+      		<td>Check position limits, clear using mdtool</td>
+		</tr>
+  </tbody>
+</table>
+<p></p>
+<p>The following table shows when warnings and errors are issued based on the mode the controller is
+currently in:</p>
+<figure class="align-center">
+<img alt="../../_images/status_vs_motion_mode1.png" class="no-scaled-link" src="../../_images/status_vs_motion_mode1.png" />
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./candlelib/md_x_candle_ecosystem_overview"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Safety_limits.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Safety limits</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Utilities.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Utilities</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-status">Quick Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-output-encoder-errors">Main / Output Encoder Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-errors">Calibration Errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-errors">Bridge errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-errors">Hardware errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-errors">Communication errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-status">Motion status</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
