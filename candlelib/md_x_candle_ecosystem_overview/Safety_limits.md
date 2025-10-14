@@ -16,8 +16,10 @@ Setting the max current limit to above the maximum continuous current may damage
 Let’s start with the max current limit:
 
 ```{figure} ./images/current_limit.png
-:width: 1000px
-:align: center
+---
+width: 1000px
+align: center
+---
 ```
 
 This setting limits the maximum current (and thus torque) the motor controller can output. It is the
@@ -64,8 +66,10 @@ set either by either of the controllers, exceeds the `max torque` param the targ
 and a [motion warning](motion_status_legacy) is generated.
 
 ```{figure} ./images/torque_limit.png
-:width: 1000px
-:align: center
+---
+width: 1000px
+align: center
+---
 ```
 
 ```{note}
@@ -80,8 +84,10 @@ the `max velocity` param the target is limited, and a [motion warning](motion_st
 generated.
 
 ```{figure} ./images/velocity_limit.png
-:width: 1000px
-:align: center
+---
+width: 1000px
+align: center
+---
 ```
 
 ## Position Limit
@@ -92,8 +98,10 @@ target is limited to that range, and a [motion warning](motion_status_legacy) is
 to start the motor outside the range will generate a motion error.
 
 ```{figure} ./images/position_limit.png
-:width: 1000px
-:align: center
+---
+width: 1000px
+align: center
+---
 ```
 
 (watchdog_legacy)=

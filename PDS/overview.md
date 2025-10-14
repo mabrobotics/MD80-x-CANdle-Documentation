@@ -42,8 +42,9 @@ particular module. Table below shows the effects of setting the switch in positi
 modules:
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - Module type
   - Enabled STO effect
 * - Isolated Converter 
@@ -70,17 +71,21 @@ based and only delay comes from the signals propagation delay and the bus capaci
 CANdle or CANdle HAT should be connected to the CAN port of the Control board module.
 
 ```{image} ./images/canfd_connection.png
-:alt: FD CAN Connection
-:class: bg-primary mb-1
-:width: 500px
-:align: center
+---
+alt: FD CAN Connection
+class: bg-primary mb-1
+width: 500px
+align: center
+---
 ```
 
 ```{image} ./images/canfd_connection_example.png
-:alt: FD CAN Connection example
-:class: bg-primary mb-1
-:width: 500px
-:align: center
+---
+alt: FD CAN Connection example
+class: bg-primary mb-1
+width: 500px
+align: center
+---
 ```
 
 ## **Computers and Sensors**
@@ -90,10 +95,12 @@ Ensure proper polarization before turning on the power supply to prevent damage 
 is the example wiring of the PDS IC module with computers and sensors:
 
 ```{image} ./images/sbc_connection.png
-:alt: SBC Connection example
-:class: mb-1
-:width: 500px
-:align: center
+---
+alt: SBC Connection example
+class: mb-1
+width: 500px
+align: center
+---
 ```
 
 ## **High-power Loads**
@@ -101,24 +108,30 @@ is the example wiring of the PDS IC module with computers and sensors:
 Use the **Power Stage (PS)** output connectors to supply **drives or other load**.
 
 ```{image} ./images/md_connections.png
-:alt: SBC Connection example 
-:class: bg-primary mb-1
-:width: 500px
-:align: center
+---
+alt: SBC Connection example
+class: bg-primary mb-1
+width: 500px
+align: center
+---
 ```
 
 ```{image} ./images/md_connections_example_1.png
-:alt: SBC Connection example 
-:class: bg-primary mb-1
-:width: 500px
-:align: center
+---
+alt: SBC Connection example
+class: bg-primary mb-1
+width: 500px
+align: center
+---
 ```
 
 ```{image} ./images/md_connections_example_2.png
-:alt: SBC Connection example 
-:class: bg-primary mb-1
-:width: 500px
-:align: center
+---
+alt: SBC Connection example
+class: bg-primary mb-1
+width: 500px
+align: center
+---
 ```
 
 ````{warning}
@@ -147,10 +160,12 @@ This cable attached can be used for start-up and test. It’s maximum current is
 ```
 
 ```{image} ./images/power_supply.png
-:alt: SBC Connection example 
-:class: bg-primary mb-1
-:width: 500px
-:align: center
+---
+alt: SBC Connection example
+class: bg-primary mb-1
+width: 500px
+align: center
+---
 ```
 
 ## Enable the PDS device
@@ -168,5 +183,5 @@ Now the device is ready to receive FD CAN Commands and perform its routines.
 
 ## Basic usage
 
-For basic usage refer to the [**CANdleSDK software examples**](./pds_sdk_examples.md) for PDS device
+For basic usage refer to the [**CANdleSDK software examples**](/CANdle-SDK/candlelib/PDSModule.md) for PDS device
 or make use of our swiss-knife [**CANdleTOOL**](candletool) CLI application.

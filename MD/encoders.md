@@ -47,8 +47,9 @@ where the encoder is used to determine absolute position of the shaft after a ge
 is the most suitable.
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - \<encoder mode\> 
   - Description
 * - STARTUP
@@ -82,8 +83,9 @@ more noisy and less accurate and thus we recommend using it only in STARTUP mode
 the table below:
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - \<encoder type\> 
   - Valid modes
   - Description

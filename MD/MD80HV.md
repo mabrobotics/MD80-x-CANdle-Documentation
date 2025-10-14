@@ -1,3 +1,5 @@
+(md80_60v)=
+
 # MD80 60V
 
 ```{figure} ./images/md80hv.jpg
@@ -16,8 +18,9 @@ all functionalities and features of regular MD80, for more information, please r
 **General parameters table for MD80 60V:**
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - Parameter
   - Value
 * - Nominal Input Voltage Range
@@ -93,7 +96,7 @@ only the motor thermistor connector is available:
 ```
 
 ```{note}
-We recommend using [NTCMHP10K thermistors](https://www.mabrobotics.pl/product-page/thermistor) . Using other thermistors may result in imprecise temperature readout.
+We recommend using [MABs thermistors](https://www.mabrobotics.pl/product-page/thermistor) . Using other thermistors may result in imprecise temperature readout.
 ```
 
 ### Aux connectors

@@ -37,10 +37,12 @@ To handle all these features, the MAB PDS is split into four different types of 
 Master module of the system.
 
 ```{image} ./images/CTRL.JPG
-:alt: CRTL
-:class: bg-primary mb-1
-:width: 300px
-:align: center
+---
+alt: CRTL
+class: bg-primary mb-1
+width: 300px
+align: center
+---
 ```
 
 ### Isolated DC/DC converter (IC)
@@ -48,10 +50,12 @@ Master module of the system.
 A module with an isolated DC/DC converter for peripherals like computers and sensors.
 
 ```{image} ./images/IC.JPG
-:alt: IC
-:class: bg-primary mb-1
-:width: 300px
-:align: center
+---
+alt: IC
+class: bg-primary mb-1
+width: 300px
+align: center
+---
 ```
 
 ### Power stage (PS)
@@ -59,10 +63,12 @@ A module with an isolated DC/DC converter for peripherals like computers and sen
 A module that handles high-power delivery to the motors.
 
 ```{image} ./images/PS.JPG
-:alt: PS
-:class: bg-primary mb-1
-:width: 300px
-:align: center
+---
+alt: PS
+class: bg-primary mb-1
+width: 300px
+align: center
+---
 ```
 
 ### Brake resistor (BR)
@@ -70,10 +76,12 @@ A module that handles high-power delivery to the motors.
 Complementary subsystem with the Power Stage module.
 
 ```{image} ./images/BR.JPG
-:alt: BR
-:class: bg-primary mb-1
-:width: 300px
-:align: center
+---
+alt: BR
+class: bg-primary mb-1
+width: 300px
+align: center
+---
 ```
 
 The overview of what exactly the PDS slave modules do is presented in the simple scheme below:

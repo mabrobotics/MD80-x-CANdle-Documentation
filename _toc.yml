@@ -45,9 +45,7 @@ chapters:
   title: PDS - Power Distribution System
   sections:
     - file: PDS/overview
-      title: Overview
-    - file: PDS/pds_sdk_examples
-      title: Examples
+      title: Features
 - file: CANdle/intro.md
   title: CANdle and CANdleHAT
 - file: CANdle-SDK/intro.md

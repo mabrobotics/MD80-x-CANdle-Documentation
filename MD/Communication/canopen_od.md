@@ -673,8 +673,10 @@ Parameters.
 <p></p>
 
 ```{figure} images/velocity_pid_CANopen.png
-:align: center
-:width: 1000px
+---
+align: center
+width: 1000px
+---
 ```
 
 (position_pid_controller)=
@@ -751,9 +753,11 @@ Parameters.
 <p></p>
 
 ```{image} images/position_pid_CANopen.png
-:class: bg-primary mb-1
-:width: 1000px
-:align: center
+---
+class: bg-primary mb-1
+width: 1000px
+align: center
+---
 ```
 
 (system_command)=
@@ -1207,8 +1211,10 @@ Parameters. **BE CAREFUL**, raw torque can be dangerous.
 <p></p>
 
 ```{figure} ../images/impedance.png
-:align: center
-:width: 1000px
+---
+align: center
+width: 1000px
+---
 ```
 
 ### 0x200E - DC Bus Voltage

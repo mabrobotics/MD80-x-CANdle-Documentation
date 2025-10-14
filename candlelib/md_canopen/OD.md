@@ -196,6 +196,8 @@ Defines the period of heartbeat message sent by the MD80.
 </table>
 <p></p>
 
+(receive_pdo1_mapping)=
+
 ### 0x1600 - Receive PDO1 mapping
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -637,8 +639,10 @@ Parameters.
 <p></p>
 
 ```{figure} images/velocity_pid_CANopen.png
-:align: center
-:width: 1000px
+---
+align: center
+width: 1000px
+---
 ```
 
 (position_pid_controller_legacy)=
@@ -715,9 +719,11 @@ Parameters.
 <p></p>
 
 ```{image} images/position_pid_CANopen.png
-:class: bg-primary mb-1
-:width: 1000px
-:align: center
+---
+class: bg-primary mb-1
+width: 1000px
+align: center
+---
 ```
 
 (system_command_legacy)=
