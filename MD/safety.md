@@ -64,10 +64,6 @@ from overheating, as well as the surrounding environment from too-powerful actua
 Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and the
 motor.
 
-```{warning}
-Setting the max current limit to above the maximum continuous current may damage the MD controller if the maximum torque is commanded for a prolonged period.
-```
-
 ## Torque Limit
 
 The next limit is the max torque limit which can be set using the CANdle script. This limit applies
@@ -110,3 +106,4 @@ start the motor outside the range will generate a motion error.
 ```{note}
 Setting both Position limit min and max, to 0.0, will disable the limiters completely.
 ```
+

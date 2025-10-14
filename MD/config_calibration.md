@@ -18,7 +18,7 @@ used in. This section will cover the parameters that are used in config files.
 - `torque bandwidth` - torque bandwidth setting
 - `shutdown temp` - temperature threshold in \[*C\] of the motor that will cause a overtemperature
   stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0*C
-  when candletool md info is called, the thremistor is not populated or is not working.
+  when candletool md info is called, the thermistor is not populated or is not working.
 
 ### [limits] section
 
@@ -92,6 +92,11 @@ number that was typed in the \*.cfg file during motor setup the calibration will
 ERROR_POLE_PAIR_DET will be shown until the next calibration attempt. If you are unsure about the
 number of pole pairs (you can check it by counting magnets and dividing it by 2) just place zero in
 the \*.cfg file. Then the pole pairs will be automatically detected.
+
+```{note}
+In some rare cases, when pole pairs are correctly specified in the config, MD may not be able to verify
+that correctly. In this case, refer to [FAQ](failed_calibration), for a quick workaround.
+```
 
 ### Encoder eccentricity
 

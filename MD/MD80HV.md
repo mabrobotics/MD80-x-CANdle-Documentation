@@ -108,7 +108,7 @@ MD80 60V feature two accessory connectors.
 encoder connection via the SPI *530480650 Molex PicoBlade* connectors is provided.
 
 ```{warning}
-<font color='red'>The auxiliary connector pins are 3.3V tolerant. Applying 5V to these pins will cause permanent damage to the controller! </font> 
+<font color='red'>While auxiliary connector pins are 5V tolerant, we recommend using 3.3V logic if possible. </font> 
 ```
 
 ```{figure} ./images/MD80/aux1_connector_pinout_HW2.1.jpg
@@ -150,7 +150,7 @@ To cover all potential cases, three cooling scenarios have been performed:
 - Passive cooling
 - Active air cooling
 
-MD80HV driver was tested using coupled inductors (each 22uH) - simulating a motor.
+MD80 60V driver was tested using coupled inductors (each 22uH) - simulating a motor.
 
 The circuit of the test station is visible below.
 
@@ -179,35 +179,35 @@ Tests were performed using voltage levels of 14V, 24V, 36V, 48V and 60V.
 **Test scenario I - no cooling**
 
 ```{figure} images/thermal/MD80HV/no_cooling/14V.png
-:alt: MD80HV no cooling 14V
+:alt: MD80 60V no cooling 14V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/no_cooling/24V.png
-:alt: MD80HV no cooling 24V
+:alt: MD80 60V no cooling 24V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/no_cooling/36V.png
-:alt: MD80HV no cooling 36V
+:alt: MD80 60V no cooling 36V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/no_cooling/48V.png
-:alt: MD80HV no cooling 48V
+:alt: MD80 60V no cooling 48V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/no_cooling/60V.png
-:alt: MD80HV no cooling 60V
+:alt: MD80 60V no cooling 60V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -216,35 +216,35 @@ Tests were performed using voltage levels of 14V, 24V, 36V, 48V and 60V.
 **Test scenario II - passive cooling**
 
 ```{figure} images/thermal/MD80HV/passive_cooling/14V.png
-:alt: MD80HV passive cooling 14V
+:alt: MD8060V passive cooling 14V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/passive_cooling/24V.png
-:alt: MD80HV passive cooling 24V
+:alt: MD80 60V passive cooling 24V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/passive_cooling/36V.png
-:alt: MD80HV passive cooling 36V
+:alt: MD80 60V passive cooling 36V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/passive_cooling/48V.png
-:alt: MD80HV passive cooling 48V
+:alt: MD80 60V passive cooling 48V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/passive_cooling/60V.png
-:alt: MD80HV passive cooling 60V
+:alt: MD80 60V passive cooling 60V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
@@ -253,35 +253,35 @@ Tests were performed using voltage levels of 14V, 24V, 36V, 48V and 60V.
 **Test scenario III - active air cooling**
 
 ```{figure} images/thermal/MD80HV/active_air_cooling/14V.png
-:alt: MD80HV active air cooling 14V
+:alt: MD80 60V active air cooling 14V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/active_air_cooling/24V.png
-:alt: MD80HV active air cooling 24V
+:alt: MD80 60V active air cooling 24V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/active_air_cooling/36V.png
-:alt: MD80HV active air cooling 36V
+:alt: MD80 60V active air cooling 36V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/active_air_cooling/48V.png
-:alt: MD80HV active air cooling 48V
+:alt: MD80 60V active air cooling 48V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
 
 ```{figure} images/thermal/MD80HV/active_air_cooling/60V.png
-:alt: MD80HV active air cooling 60V
+:alt: MD80 60V active air cooling 60V
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link

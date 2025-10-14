@@ -148,7 +148,7 @@ reached.
 			<td>ERROR_OFFSET_CAL </td>
 			<td>0</td>
 			<td>Problem with the offset determination during calibration </td>
-      		<td>Try recalibrating</td>
+      		<td>Try recalibrating. </td>
 		</tr>
     	<tr>
 			<td>ERROR_RESISTANCE_IDENT</td>
@@ -224,7 +224,7 @@ reached.
 			<td>ERROR_OVER_CURRENT</td>
 			<td>0</td>
 			<td>Overcurrent detected</td>
-      		<td>Lower the current limit, clear the error or restart the drive</td>
+      		<td>Increase the current limit, clear the error or restart the drive</td>
 		</tr>
     	<tr>
 			<td>ERROR_OVER_VOLTAGE</td>
@@ -248,7 +248,7 @@ reached.
 			<td>ERROR_MOSFET_TEMP</td>
 			<td>4</td>
 			<td>MDxx power side exceeded the limit of 100*C</td>
-      		<td>wait for the MDxx to cool down</td>
+      		<td>wait for the MD to cool down</td>
 		</tr>
      	<tr>
 			<td>ERROR_ADC_CURRENT_OFFSETS</td>
@@ -274,7 +274,7 @@ reached.
 			<td>WARNING_CAN_WD</td>
 			<td>30</td>
 			<td>Indicates the communication with the host was ended by the watchdog</td>
-      		<td> - </td>
+      		<td>Send any valid CAN frame to MD. </td>
 		</tr>
   </tbody>
 </table>
@@ -301,7 +301,7 @@ reached.
 		<tr>
 			<td>ERROR_VELOCITY_OUTSIDE_LIMITS</td>
 			<td>1</td>
-			<td>Velocity exceeded the max velocty param</td>
+			<td>Velocity exceeded the max velocity param</td>
       		<td>Ensure the velocity limit is set to a proper value, clear using candletool</td>
 		</tr>
 		<tr>
@@ -349,9 +349,9 @@ currently in:
 
 All of the MD controllers have two multi-purpose GPIO pins. Currently they have two functionalities:
 
-- Auto Brake - in this mode MDxx will automatically engage MAB Robotics's provided braking systems
+- Auto Brake - in this mode MD will automatically engage MABs provided braking systems
   via GPIO A pin, see [brake systems](brakes) and [registers section](registers) for more details.
-- GPIO input - in this mode MDxx will output GPIO pin states to state register (*userGpioState
+- GPIO input - in this mode MD will output GPIO pin states to state register (*userGpioState
   0x161*)
 
 ```{important}
