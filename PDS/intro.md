@@ -83,6 +83,8 @@ The overview of what exactly the PDS slave modules do is presented in the simple
 The master (CTRL) module manages ENABLE signals, acquires current/voltage measurements, and
 communicates with external systems.
 
+<!--
 ```{important}
 For detailed description refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a>
 ```
+-->

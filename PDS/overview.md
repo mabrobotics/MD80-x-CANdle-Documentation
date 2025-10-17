@@ -47,9 +47,9 @@ modules:
 * - Module type
   - Enabled STO effect
 * - Isolated Converter 
-  - The power supply is cut off from the DC/DC converter. The results can be, for example, computers shut down
+  - The power supply is cut off from the DC/DC converter. For example, as a result, connected devices such as computer may shut down
 * - Power Stage
-  - The load is disconnected from the power supply. Example result can be de-energization of the connected actuators - robot will fall down as the torque is no longer generated.
+  - The load is disconnected from the power supply. This can lead to de-energization of connected actuators — for example, a robot may collapse as torque is no longer being generated.
 * - Brake Resistor
   - The energy is no longer dissipated in the resistor, independently of the voltage level on the DC bus.
 ```

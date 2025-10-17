@@ -78,7 +78,7 @@ Key features include:
 </table>
 
 The BRAKE_ENABLE is triggered when an overvoltage condition occurs on the PS module connected to the BR module. In such cases, excess energy is dissipated through the braking resistors. Proper cooling of the BR module is essential to prevent overheating and potential thermal shutdown. 
-<!-- The module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures.-->
+<!-- The module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures. -->
 
 ```{figure} ./images/brake_resistor/brv10.png
 :alt: PDS_CTRL

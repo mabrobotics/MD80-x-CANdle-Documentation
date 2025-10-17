@@ -56,8 +56,8 @@ chapters:
       title: Brake Resistor
     - file: PDS/architecture
       title: FDCAN Architecture
-    - file: PDS/status_and_utillities
-      title: Status & Utillities
+    - file: PDS/properties_and_status
+      title: Properties and status
     - file: PDS/pds_sdk_examples
       title: Examples
 

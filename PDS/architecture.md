@@ -7,7 +7,7 @@ These bridges connect CAN-L and CAN-H to another CAN-L/H of neighbor connector s
 :alt: pds_power_stage_bridges
 :align: center
 
-Placement of the FDCAN bridges
+FDCAN bridge placement
 
 ```
 
@@ -17,7 +17,7 @@ If possible CAN termination should be placed on each ends of CAN circuit as show
 
 ## **Example 1**
 
-In this example there are: CANdle, Control board, two Power Stage modules, six MD actuators (two per Micro-Fit molex connector) and CAN termination. In this example termination on CANdle is set to OFF.
+In this example there are: CANdle, Control board, two Power Stage modules, six MD actuators (two per Micro-Fit molex connector) and CAN termination. In this example, termination on the CANdle is disabled.
 
 ```{figure} images/control_board/PDS_CAN.png
 :alt: PDS_CAN_architecture_example_1
@@ -29,7 +29,7 @@ FDCAN architecture with 2 Power Stage modules
 
 ## **Example 2**
 
-In this example there are: CANdle, Control board, one Power Stage module and six MD actuators (two per Micro-Fit molex connector).This is the type of example that shows how to use all ports of single Power Stage without additional CAN termination. In this example termination on CANdle is set to ON.
+In this example there are: CANdle, Control board, one Power Stage module and six MD actuators (two per Micro-Fit molex connector).This is the type of example that shows how to use all ports of single Power Stage without additional CAN termination. In this example, termination on CANdle is set to ON.
 
 
 ```{figure} images/control_board/PDS_CAN_3port.png
