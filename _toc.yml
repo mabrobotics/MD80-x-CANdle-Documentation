@@ -40,7 +40,6 @@ chapters:
           - file: MD/Communication/canopen_nmt
           - file: MD/Communication/canopen_sdo
           - file: MD/Communication/canopen_pdo
-
 - file: PDS/intro
   title: PDS - Power Distribution System
   sections:
@@ -54,10 +53,8 @@ chapters:
       title: Isolated Converter
     - file: PDS/brake_resistor
       title: Brake Resistor
-    - file: PDS/architecture
-      title: FDCAN Architecture
-    - file: PDS/properties_and_status
-      title: Properties and status
+    - file: PDS/communication
+      title: FDCAN Communication 
 - file: CANdle/intro.md
   title: CANdle and CANdleHAT
 - file: CANdle-SDK/intro.md

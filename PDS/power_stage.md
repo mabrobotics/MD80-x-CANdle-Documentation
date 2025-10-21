@@ -1,3 +1,4 @@
+(pds_ps)=
 # Power Stage
 
 The PDS_PS module is a high-power power path designed to provide a safe and reliable power source

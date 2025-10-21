@@ -1,3 +1,4 @@
+(pds_ctrl)=
 # Control board
 
 ## General specification

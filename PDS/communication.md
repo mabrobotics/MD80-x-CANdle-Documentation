@@ -1,6 +1,64 @@
-# Properties and status
+# Communication FDCAN
 
-## Overview
+There are two FDCAN communication connections, that have to be described. To control the PDS stack,
+one must connect to [PDS_CTRL](pds_ctrl) module, using 3-pin connector. 
+
+There are also 6-pin connectors available on [PDS_PS](pds_ps) module, that allow for connecting MD 
+series motor controllers and other FDCAN devices. However:
+```{warning}
+PDS_CTRL FDCAN is not internally connected to PDS_PS modules. They are independent signal lines, that
+can be connected externally. To allow a single CANdle communicate with PDS and MD on a single string.
+```
+
+
+## PDS_PS module connectors
+
+By default all connectors on [PDS_PS](pds_ps) module, have their CAN_H and CAN_L lines disconnected from 
+each other, to provide only power though 6-pin connectors, allowing for up to 3 independent communication
+strings, to exist on the bus. There are however, bridge pads, located below 6-pin connectors to allow 
+for connecting these buses together.
+
+In order to connect using architecture please solder correct bridges underneath the Micro-Fit molex connector.
+These bridges connect CAN-L and CAN-H to another CAN-L/H of neighbor connector so the connection is transmitted without any adapters.
+
+```{figure} images/power_stage/pds_ps_bridges.jpg
+:alt: pds_power_stage_bridges
+:align: center
+
+FDCAN bridge placement
+
+```
+
+
+Also control board has its own built-in CAN termination. 
+If possible CAN termination should be placed on each ends of CAN circuit as shown below in recommended architecture examples.
+
+### **Example 1**
+
+In this example there are: CANdle, Control board, two Power Stage modules, six MD actuators (two per Micro-Fit molex connector) and CAN termination. In this example, termination on the CANdle is disabled.
+
+```{figure} images/control_board/PDS_CAN.png
+:alt: PDS_CAN_architecture_example_1
+:align: center
+
+FDCAN architecture with 2 Power Stage modules
+
+```
+
+### **Example 2**
+
+In this example there are: CANdle, Control board, one Power Stage module and six MD actuators (two per Micro-Fit molex connector).This is the type of example that shows how to use all ports of single Power Stage without additional CAN termination. In this example, termination on CANdle is set to ON.
+
+
+```{figure} images/control_board/PDS_CAN_3port.png
+:alt: PDS_CAN_architecture_example_2
+:align: center
+
+FDCAN architecture with 1 Power Stage module
+
+```
+
+## Communication Protocol 
 
 Communication with a PDS device is done with the use of the “properties” concept. Each data or
 setting is a property of a module that forms a PDS device stack. Each property has its own underlying
@@ -27,7 +85,7 @@ status code, number of properties and a set of property status / value that corr
 properties set in the request.
 
 
-## Commands
+### Commands
 
 The message frame body depends on the command code that is always placed at the beginning of the
 frame. For simplicity, there are only two command codes supported by the PDS device:
@@ -74,7 +132,7 @@ frame. For simplicity, there are only two command codes supported by the PDS dev
 </table>
 
 
-## Properties
+### Properties
 
 Properties are the values representing some state or parameter of the module like temperature,
 voltage, CAN Baudrade, or module type connected to socket number 5. Obviously, not all properties are
@@ -463,7 +521,7 @@ available on each module and also there are some common properties that each mod
   </tr>
 </table>
 
-## Status and status clear words
+### Status and status clear words
 The terms 'Status' and 'Status Clear' indicate basic binary states or events within a module, such as whether it is enabled or a limit has been exceeded. The U32 bitwise type means that each bit in the value represents a different purpose rather than a singular numerical value. Like properties, status bits are module-specific—each module defines its own set, which may or may not align with those of othermodules.
 
 
@@ -621,7 +679,7 @@ The terms 'Status' and 'Status Clear' indicate basic binary states or events wit
   </tr>
 </table>
 
-## Communication frames
+### Communication frames
 Generic frame body of the “Write property” ( 0x21 ) message:
 <table>
   <tr>
@@ -737,7 +795,7 @@ Generic response to properties read frame body:
   </tr>
 </table>
 
-## Response status codes
+### Response status codes
 
 Response to correct read or write request frames contains two different status code types. The overall
 message status code ( protocol status ) and per property status code ( property status ).
