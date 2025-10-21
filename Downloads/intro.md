@@ -16,7 +16,7 @@ CANdleSDK binary releases.
 
 <!--## MAB Firmware
 
-Firmware update of MABs products is release in form of propriatary `.mab` files. These files can be
+Firmware update of MABs products is release in form of proprietary `.mab` files. These files can be
 uploaded to devices using [CANdleTool](candletool)
 
 ```
@@ -82,14 +82,14 @@ Main stable releases:
 
 ## CANOpen EDS file
 
-Here is CANOpen EDS file for MD series motor drivers, compatibile with MD20, MD80 and MD80HV.
+Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80 and MD80HV.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
 		<tr>
       		<td> <b>Date</b></td>
 			<td> <b>MD CANOpen firmware version</b></td>
-			<td> <b>Compatibile EDS file</b></td>
+			<td> <b>Compatible EDS file</b></td>
 		</tr>
     	<tr>
 			<td>11.08.2025</td>

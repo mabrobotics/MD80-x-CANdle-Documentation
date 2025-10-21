@@ -117,13 +117,13 @@ def main(args):
     # read the file and write the output
     csvArrayRW = ReadStructReversed("} regRW_st;", sourceFile)
     csvArrayRO = ReadStructReversed("} regRO_st;", sourceFile)
-    csvArrayAdress = ReadEnumReversed("} Md80Reg_E;", sourceFile)
+    csvArrayAddress = ReadEnumReversed("} Md80Reg_E;", sourceFile)
 
     sourceFile.close()
 
     dataFrameRW = pd.DataFrame(csvArrayRW)
     dataFrameRO = pd.DataFrame(csvArrayRO)
-    dataFrameAdress = pd.DataFrame(csvArrayAdress)
+    dataFrameAddress = pd.DataFrame(csvArrayAddress)
 
     dataFrameCombinedRWO = pd.concat(
         [dataFrameRW, dataFrameRO], ignore_index=True)
@@ -131,7 +131,7 @@ def main(args):
     dataFrameTable = pd.DataFrame(
         columns=["reg name", "address", "read/write", "size", "limits", "description"])
 
-    for name in dataFrameAdress[0]:
+    for name in dataFrameAddress[0]:
         dataFrameToConcat = pd.DataFrame(
             columns=["reg name", "address", "read/write", "size", "limits", "description"])
         if name != "break":
@@ -146,7 +146,7 @@ def main(args):
                 dataFrameToConcat["read/write"] = "not found"
                 dataFrameToConcat["size"] = "not found"
             dataFrameToConcat["address"] = [
-                matchNameToAddress(name, dataFrameAdress)]
+                matchNameToAddress(name, dataFrameAddress)]
             dataFrameToConcat["limits"] = "-"
             dataFrameToConcat["description"] = "-"
             

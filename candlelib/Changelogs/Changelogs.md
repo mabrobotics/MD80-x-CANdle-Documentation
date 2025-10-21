@@ -51,7 +51,7 @@
 - Added GPIO general functionality support
 - Relabeled Brake Mode as a GPIO mode, address and values stayed the same
 - Fixed typos in register names:
-  - `runCalibrateOutpuEncoderCmd` → `runCalibrateOutputEncoderCmd`
+  - `runCalibrateOutputEncoderCmd` → `runCalibrateOutputEncoderCmd`
   - `motorTorgueBandwidth` → `motorTorqueBandwidth`
 - Added support for MD20 driver
 

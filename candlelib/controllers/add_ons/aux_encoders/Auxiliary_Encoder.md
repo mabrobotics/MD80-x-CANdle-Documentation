@@ -49,8 +49,9 @@ output encoder mode = <encoder mode>
 where:
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - \<encoder type\> 
   - Description
 * - ME_AS_CENTER 
@@ -64,8 +65,9 @@ where:
 ```
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - \<encoder mode\> 
   - Description
 * - STARTUP
@@ -99,8 +101,9 @@ more noisy and less accurate and thus we recommend using it only in STARTUP mode
 the table below:
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - \<encoder type\> 
   - Valid modes
   - Description

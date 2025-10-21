@@ -29,5 +29,4 @@ Access to devices is split into corresponding modules:
 - [MD Module](candlelib/MDModule.md)
 - [PDS Module](candlelib/PDSModule.md)
 
-Each module, groups functions and helper-wrapper methods for interacting with devices. For example
-of use, see \[EXAMPLES\](TODO TODO TODO) section.
+Each module, groups functions and helper-wrapper methods for interacting with devices.

@@ -25,8 +25,9 @@ controlled signal provided by MD Aux connector.
 ### Parameters
 
 ```{list-table}
-:header-rows: 1
-
+---
+header-rows: 1
+---
 * - Parameter
   - Value
 * - Nominal Input Voltage Range

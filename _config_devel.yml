@@ -1,23 +1,19 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: MD x CANdle Manual
+title: MAB Ecosystem
 author: MAB Robotics
 logo: logo.png
 
-# Force re-execution of notebooks on each build.
-# See https://jupyterbook.org/content/execute.html
+# Execution settings
+# https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
 
-# Define the name of the latex output file for PDF builds
+# Define the name of the LaTeX output file for PDF builds
 latex:
   latex_documents:
     targetname: book.tex
-
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
 
 # Information about where the book exists on the web
 repository:
@@ -26,8 +22,8 @@ repository:
   branch: gh-pages
   repository_provider: github
 
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+# HTML-specific settings
+# https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   use_issues_button: true
   use_repository_button: true
@@ -39,4 +35,19 @@ sphinx:
   config:
     html_context:
       default_mode: light
-    html_extra_path: "./includes"
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+myst:
+  enable_extensions:
+    - colon_fence
+    - attrs_inline
+    - attrs_block
+    - dollarmath
+    - amsmath
+
+exclude_patterns:
+  - venv/*
+  - .venv/*
+  - _build/*
+  - Thumbs.db
+  - .DS_Store

@@ -26,6 +26,7 @@ scenario will cause the calibration to fail and in the worst will cause large to
 Operating such an improperly configured motor can lead to hazardous situations for both the operator and the driver. 
 ```
 
+(failed_calibration)=
 ## Failed calibration
 
 The calibration can fail for several reasons, yet the most common one is just improperly soldered
@@ -51,7 +52,7 @@ is present and working (the resistance between CANH and CANL lines should be 60 
 resistors in parallel, on ends of the bus). The termination resistor is embedded in the CANdle
 device, and can be turned on/off with a physical switch.
 
-## MD is not detected on "mdtool discover" command
+## MD is not detected on "candletool discover" command
 
 There might be several reasons why MD controllers are not showing up during the discovery. Please
 ensure you've check the things listed below:
@@ -88,7 +89,7 @@ more audible noise (hissing) you will hear coming from the motor.
 
 ## Should I use FDCAN Protocol or CANOpen?
 
-While CANOpen is well estabilished industry standard protocol, we generally recommend using FDCAN
+While CANOpen is well established industry standard protocol, we generally recommend using FDCAN
 protocol. CANOpen provides a lot of robustness, it is more complicated and lacks flexibility and
 bandwidth, for many modern control systems. If you dont already use CANOpen, FDCAN protocol will
 likely be a better option.

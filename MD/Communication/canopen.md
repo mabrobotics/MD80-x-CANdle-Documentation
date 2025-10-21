@@ -1,3 +1,4 @@
+(md_canopen)=
 # CANopen
 
 MD controllers are capable of supporting CANopen communication protocol according the CiA402 device

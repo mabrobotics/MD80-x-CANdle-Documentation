@@ -72,13 +72,17 @@ out the hole dimensions and their placement. The 3D model of the driver can be f
 [downloads](hardware_downloads_legacy) section.
 
 ```{figure} images/PCB_drawing.png
-:class: bg-primary mb-1
-:align: center
+---
+class: bg-primary mb-1
+align: center
+---
 ```
 
 ```{figure} images/mount_cross_section.png
-:class: bg-primary mb-1
-:align: center
+---
+class: bg-primary mb-1
+align: center
+---
 ```
 
 ```{warning}

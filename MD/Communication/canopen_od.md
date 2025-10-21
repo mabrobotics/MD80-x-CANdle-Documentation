@@ -45,8 +45,8 @@ The communication area describes the CANopen objects compliant with CiA301 stand
 
 ### 0x1001 - Error Register
 
-Indicates whether an error has occured. Currently, only the 0th bit is implemented, that indicates a
-general error. For a more verbose error and warning status, please see 0x2004 System Status.
+Indicates whether an error has occurred. Currently, only the 0th bit is implemented, that indicates
+a general error. For a more verbose error and warning status, please see 0x2004 System Status.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -673,8 +673,10 @@ Parameters.
 <p></p>
 
 ```{figure} images/velocity_pid_CANopen.png
-:align: center
-:width: 1000px
+---
+align: center
+width: 1000px
+---
 ```
 
 (position_pid_controller)=
@@ -751,9 +753,11 @@ Parameters.
 <p></p>
 
 ```{image} images/position_pid_CANopen.png
-:class: bg-primary mb-1
-:width: 1000px
-:align: center
+---
+class: bg-primary mb-1
+width: 1000px
+align: center
+---
 ```
 
 (system_command)=
@@ -1207,8 +1211,10 @@ Parameters. **BE CAREFUL**, raw torque can be dangerous.
 <p></p>
 
 ```{figure} ../images/impedance.png
-:align: center
-:width: 1000px
+---
+align: center
+width: 1000px
+---
 ```
 
 ### 0x200E - DC Bus Voltage
@@ -1408,7 +1414,7 @@ The events and respective transitions are gathered in the table below:
         <tr>
             <td>1</td>
       		<td>Automatic transition after drives internal initialization</td>
-			<td>Object dictionary is initalized with NVM data</td>
+			<td>Object dictionary is initialized with NVM data</td>
 		</tr>
         <tr>
             <td>2</td>
@@ -1467,7 +1473,7 @@ The events and respective transitions are gathered in the table below:
 		</tr>
         <tr>
             <td>13</td>
-      		<td>Fault ocurred</td>
+      		<td>Fault occurred</td>
 			<td>Current controllers are turned off</td>
 		</tr>
         <tr>
@@ -1655,7 +1661,7 @@ damping sensation on the shaft.
 
 #### Profile position
 
-Profile position mode uses a trapeziodal trajectory generator on top of the
+Profile position mode uses a trapezoidal trajectory generator on top of the
 [Position PID controller](position_pid_controller). Allows to perform smooth point-to-point
 movements.
 
@@ -1664,7 +1670,7 @@ movements.
 
 #### Profile velocity
 
-Profile velocity mode uses a trapeziodal trajectory generator on top of the
+Profile velocity mode uses a trapezoidal trajectory generator on top of the
 [Velocity PID controller](velocity_pid_controller). Allows to reach a certain velocity with a
 constant acceleration / deceleration.
 

@@ -10,7 +10,7 @@ the process of communicating with MD actuators from your custom CAN master contr
 ## Hardware requirements
 
 From firmware version 2.5.0 upwards, MDs are capable of either FDCAN mode communication or CAN2.0
-compatibile mode. FDCAN is a preffered protocol to use, as it allows for far greater flexibility and
+compatible mode. FDCAN is a preferred protocol to use, as it allows for far greater flexibility and
 bandwidth. CAN2.0 is supported but not recommended, as the protocol was not optimized for it, and
 basic operations and control may require multiple CAN frames to be exchanged, significantly reducing
 the bandwidth, especially with multiple actuators on a single bus.
@@ -25,7 +25,7 @@ both ends of your CAN bus.
 
 ### CAN2.0
 
-While MD was designed with FDCAN protocol in mind, CAN2.0 compability was introduced. In CAN2.0
+While MD was designed with FDCAN protocol in mind, CAN2.0 compatibility was introduced. In CAN2.0
 mode, the driver can only operate in 1M baudrate, and some registers (that are more than 4 bytes in
 size) are not available for modification, i.e motorName register. Additionally only some of the
 [Frame Types](frame-types) are supported in this mode - **READ_REGISTER_CAN2.0** and
@@ -39,12 +39,12 @@ frame length, the contents of the frames will be the same as in FDCAN version of
 
 ## Communication Structure
 
-Comminication with MD, happen is a strict Master-Slave structure. The MD itself will never produce a
+Communication with MD, happen is a strict Master-Slave structure. The MD itself will never produce a
 CAN frame by itself, it will only respond to direct commands from a host. Each MD device has
 configurable **CAN ID**, that serves as its unique identifier on the CAN bus. There may never be
 more than one MD with the same CAN ID, as this will lead to conflicts and errors.
 
-All communication with the particular drive will happen only via messeges with particular ID. For
+All communication with the particular drive will happen only via messages with particular ID. For
 example:
 
 ```{note}
@@ -62,7 +62,7 @@ Wrong access, incorrect data values or other communication errors are not report
 
 ### Frame Structure
 
-All frames (FDCAN and CAN2.0) are composed in the same fasion. The first byte is a
+All frames (FDCAN and CAN2.0) are composed in the same fashion. The first byte is a
 [Frame Type](frame-types), then a padding byte, followed by the contents of a message.
 
 Message contents are similar in both read and write operations. They follow a pattern of repeating
@@ -151,7 +151,7 @@ of the frame behaviours by their id:
 		<tr>
 			<td> 0x40 </td>
             <td> WRITE_REGISTER_LEGACY</td>
-            <td> performs write operation, and makes the drive respond with <a href="#legacy-response">legacy response</a>. This is sometimes usefull in high frequency control loops, to minimize number of frames exchanged. For frame contents, refer to <a href="write-register"> Write Register Frame </a>. </td>
+            <td> performs write operation, and makes the drive respond with <a href="#legacy-response">legacy response</a>. This is sometimes useful in high frequency control loops, to minimize number of frames exchanged. For frame contents, refer to <a href="write-register"> Write Register Frame </a>. </td>
 		</tr>
 		<tr>
 			<td> 0x41 </td>
@@ -161,21 +161,21 @@ of the frame behaviours by their id:
 		<tr>
 			<td> 0x42 </td>
             <td> WRITE_REGISTER</td>
-            <td> performs write operation, and responds with state of the registers AFTER operation. Usefull for verification of write operation. For more info, refer to <a href="write-register"> Write Register Frame </a> </td>
+            <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. For more info, refer to <a href="write-register"> Write Register Frame </a> </td>
 		</tr>
 		<tr>
 			<td> 0x43 </td>
             <td> READ_REGISTER_CAN2.0 </td>
-            <td> performs read operation, and responds with state of the registers. Works same as <a href="read-register"> Read Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatibile response. </td>
+            <td> performs read operation, and responds with state of the registers. Works same as <a href="read-register"> Read Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response. </td>
 		</tr>
 		<tr>
 			<td> 0x44 </td>
             <td> WRITE_REGISTER_CAN2.0 </td>
-            <td> performs write operation, and responds with state of the registers AFTER operation. Usefull for verification of write operation. Works same as <a href="write-register"> Write Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatibile response.</td>
+            <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. Works same as <a href="write-register"> Write Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response.</td>
 		</tr>
 		<tr>
 			<td> 0x0A </td>
-            <td> LEGACY_RESPONE </td>
+            <td> LEGACY_RESPONSE </td>
             <td> RESPONSE ONLY. A response produced as a result of some frames. Contains data, most commonly required in fast control loops - <a href="#legacy-response">more info here.</a> </td>
 		</tr>
 	</tbody>

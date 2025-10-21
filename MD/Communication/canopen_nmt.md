@@ -24,8 +24,10 @@ A CANopen node can be in one of the following states:
   receive NMT commands.
 
   ```{figure} images/NMT_state_machine.jpg
-  :align: center
-  :width: 1000px
+  ---
+  align: center
+  width: 1000px
+  ---
   ```
 
 ### 2.1. Allowed Communication per State

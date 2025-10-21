@@ -11,14 +11,14 @@ used in. This section will cover the parameters that are used in config files.
 - `pole pairs` - the number of rotor magnets divided by 2. If you are unsure type zero here - during
   calibration it will be autodetected. Later on it is advised to retype it after the calibration to
   the config file. It can be accessed using candletool md info or by register access.
-- `KV` - declated KV of the motor - its used when torque constant is set to zero.
+- `KV` - declared KV of the motor - its used when torque constant is set to zero.
 - `torque constant` - motor torque constant in Nm/A
 - `gear ratio` - gear ratio -> example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2
 - `max current` - maximum allowable phase (not power supply) current
 - `torque bandwidth` - torque bandwidth setting
 - `shutdown temp` - temperature threshold in \[*C\] of the motor that will cause a overtemperature
   stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0*C
-  when candletool md info is called, the thremistor is not populated or is not working.
+  when candletool md info is called, the thermistor is not populated or is not working.
 
 ### [limits] section
 
@@ -93,6 +93,11 @@ ERROR_POLE_PAIR_DET will be shown until the next calibration attempt. If you are
 number of pole pairs (you can check it by counting magnets and dividing it by 2) just place zero in
 the \*.cfg file. Then the pole pairs will be automatically detected.
 
+```{note}
+In some rare cases, when pole pairs are correctly specified in the config, MD may not be able to verify
+that correctly. In this case, refer to [FAQ](failed_calibration), for a quick workaround.
+```
+
 ### Encoder eccentricity
 
 Encoder eccentricity is the second measurement that takes place. During this part, the motor
@@ -145,7 +150,7 @@ off-axis encoder - it requires a full calibration routine.
 :class: no-scaled-link
 ```
 
-To run the routine, use the [`candletool md calibration -e aux`](candletool_commands) command. fter
+To run the routine, use the [`candletool md calibration -e aux`](candletool_commands) command. after
 completing the routine the MD will reboot and after that it is recommended to run the candletool md
 setup info command in order to make sure the setup reports no errors:
 

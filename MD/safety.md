@@ -32,26 +32,26 @@ register. This setting can be saved in the non-volatile memory so that it is alw
 actuator power-up. To estimate the maximum current setting for a particular motor, you should use
 the following formula:
 
-$$ I [A] = \\frac{\\tau [Nm] \\frac{1}{G_r}}{K_t[\\frac{Nm}{A}]} $$
+$$ I [A] = \frac{\tau [Nm] \frac{1}{G_r}}{K_t[\frac{Nm}{A}]} $$
 
 where
 
 - $ I[A] $ - calculated current in Amps
-- $ \\tau $ - desired maximum torque
+- $ \tau $ - desired maximum torque
 - $ G_r $ - gear ratio
 - $ K_t $ - motor’s torque constant
 
 for example let’s calculate the max current limit for AK80-9 motor, for a 2Nm max torque:
 
-$\\tau = 2 Nm$
+$\tau = 2 Nm$
 
 $G_r = 9:1 -> 9$
 
 $K_t = 0.091 Nm/A$
 
-$ I [A] = \\frac{2[Nm] \\cdot \\frac{1}{9}}{0.091[\\frac{Nm}{A}]} $
+$ I [A] = \frac{2[Nm] \cdot \frac{1}{9}}{0.091[\frac{Nm}{A}]} $
 
-$ I [A] \\approx 2.44A $
+$ I [A] \approx 2.44A $
 
 ```{note}
 Usually this limit should be set to the highest peak torque that is allowed in the system so that it doesn't limit the actuator performance.
@@ -63,10 +63,6 @@ Safety limits are implemented to limit the actuator parameters, to protect the c
 from overheating, as well as the surrounding environment from too-powerful actuator movements.
 Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and the
 motor.
-
-```{warning}
-Setting the max current limit to above the maximum continuous current may damage the MD controller if the maximum torque is commanded for a prolonged period.
-```
 
 ## Torque Limit
 
@@ -106,3 +102,8 @@ start the motor outside the range will generate a motion error.
 :width: 1000px
 :align: center
 ```
+
+```{note}
+Setting both Position limit min and max, to 0.0, will disable the limiters completely.
+```
+

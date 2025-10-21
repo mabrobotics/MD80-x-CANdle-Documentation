@@ -4,12 +4,12 @@
 
 When an abnormal situation takes place the controller sets an error bit indicating a particular
 error or warning. The table below lists all available error and warning codes and their
-descriptions. The easiest way to check all statuses is to use mdtool. Another way could be to use
-the CANdle lib register access and read the statuses, or decode the general "Quick Status" using the
-CANdle lib getQuickStatus() function.
+descriptions. The easiest way to check all statuses is to use `candletool md info`. Another way
+could be to use the CANdle lib register access and read the statuses, or decode the general "Quick
+Status" using the CANdle lib getQuickStatus() function.
 
-Errors and warnings can be cleared by register access, or using `mdtool clear` command. Please note
-that all warnings and only non-critical errors can be cleared.
+Errors and warnings can be cleared by register access, or using `candletool md clear` command.
+Please note that all warnings and only non-critical errors can be cleared.
 
 (quick_status)=
 
@@ -60,10 +60,16 @@ reached.
 		</tr>
 			<tr>
 			<td>15</td>
-			<td>Target position (in Position PID / Profile position mode) or velocity ( in Velocity PID / Velocity profile mode) reached within position or velocity window <td>
+			<td>Target position or velocity reached* <td>
 		</tr>
 	</tbody>
 </table>
+
+\*This bit is only set in the according to following conditions:
+
+- in Position PID and Profile Position modes, when position was reached within position window,
+- in Velocity PID and Profile Velocity modes, when velocity was reached within velocity window.
+
 <p></p>
 
 ## Main / Output Encoder Errors
@@ -110,19 +116,19 @@ reached.
 			<td>ERROR_POSITION_INVALID</td>
 			<td>5</td>
 			<td>Position reading is invalid</td>
-			<td>Check endcoder physical setup, in case of problems contact MABRobotics</td>
+			<td>Check encoder physical setup, in case of problems contact MABRobotics</td>
 		</tr>
 		<tr>
 			<td>ERROR_INIT</td>
 			<td>6</td>
 			<td>Encoder initialization failed</td>
-			<td>Check endcoder setup and connection, in case of problems contact MABRobotics</td>
+			<td>Check encoder setup and connection, in case of problems contact MABRobotics</td>
 		</tr>
 		<tr>
 			<td>WARNING_LOW_ACCURACY</td>
 			<td>30</td>
 			<td>Encoder position readout accuracy may be lower than specified</td>
-			<td>Check endcoder physical setup and reboot the MDxx</td>
+			<td>Check encoder physical setup and reboot the MDxx</td>
 		</tr>
 	</tbody>
 </table>
@@ -142,19 +148,19 @@ reached.
 			<td>ERROR_OFFSET_CAL </td>
 			<td>0</td>
 			<td>Problem with the offset determination during calibration </td>
-      		<td>Try recalibrating</td>
+      		<td>Try recalibrating. </td>
 		</tr>
     	<tr>
 			<td>ERROR_RESISTANCE_IDENT</td>
 			<td>1</td>
 			<td>Problem with resistance identification</td>
-    		<td>Try recalibrating or running the `mdtool config bandwidth` command</td>
+    		<td>Try recalibrating or running the `candletool md calibration` command</td>
 		</tr>
     	<tr>
 			<td>ERROR_INDUCTANCE_IDENT</td>
 			<td>2</td>
 			<td>Problem with inductance identification</td>
-      		<td>Try recalibrating or running the `mdtool config bandwidth` command</td>
+      		<td>Try recalibrating or running the `candletool md calibration` command</td>
 		</tr>
     	<tr>
 			<td>ERROR_POLE_PAIR_CAL</td>
@@ -218,7 +224,7 @@ reached.
 			<td>ERROR_OVER_CURRENT</td>
 			<td>0</td>
 			<td>Overcurrent detected</td>
-      		<td>Lower the current limit, clear the error or restart the drive</td>
+      		<td>Increase the current limit, clear the error or restart the drive</td>
 		</tr>
     	<tr>
 			<td>ERROR_OVER_VOLTAGE</td>
@@ -242,7 +248,7 @@ reached.
 			<td>ERROR_MOSFET_TEMP</td>
 			<td>4</td>
 			<td>MDxx power side exceeded the limit of 100*C</td>
-      		<td>wait for the MDxx to cool down</td>
+      		<td>wait for the MD to cool down</td>
 		</tr>
      	<tr>
 			<td>ERROR_ADC_CURRENT_OFFSETS</td>
@@ -254,7 +260,7 @@ reached.
 </table>
 <p></p>
 
-## Comunication errors
+## Communication errors
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -268,7 +274,7 @@ reached.
 			<td>WARNING_CAN_WD</td>
 			<td>30</td>
 			<td>Indicates the communication with the host was ended by the watchdog</td>
-      		<td>make sure candle.end() is called in your script, clear using mdtool</td>
+      		<td>Send any valid CAN frame to MD. </td>
 		</tr>
   </tbody>
 </table>
@@ -290,37 +296,37 @@ reached.
 			<td>ERROR_POSITION_OUTSIDE_LIMITS</td>
 			<td>0</td>
 			<td>Current shaft position is outside the <min position : max position> limits from the config file</td>
-      		<td>Re-home the actuator, set a temporary zero to move it back into the limits, or increase the limit range, clear using mdtool</td>
+      		<td>Re-home the actuator, set a temporary zero to move it back into the limits, or increase the limit range, clear using candletool</td>
 		</tr>
 		<tr>
 			<td>ERROR_VELOCITY_OUTSIDE_LIMITS</td>
 			<td>1</td>
-			<td>Velocity exceeded the max velocty param</td>
-      		<td>Ensure the velocity limit is set to a proper value, clear using mdtool</td>
+			<td>Velocity exceeded the max velocity param</td>
+      		<td>Ensure the velocity limit is set to a proper value, clear using candletool</td>
 		</tr>
 		<tr>
 			<td>WARNING_ACCELERATION_CLIPPED</td>
 			<td>24</td>
 			<td>Acceleration command was clipped to max acceleration at least once</td>
-      		<td>Check acceleration limits, clear using mdtool</td>
+      		<td>Check acceleration limits, clear using candletool</td>
 		</tr>
     	<tr>
 			<td>WARNING_TORQUE_CLIPPED</td>
 			<td>25</td>
 			<td>Torque command was clipped to max torque at least once</td>
-      		<td>Check torque limits, clear using mdtool</td>
+      		<td>Check torque limits, clear using candletool</td>
 		</tr>
     	<tr>
 			<td>WARNING_VELOCITY_CLIPPED</td>
 			<td>26</td>
 			<td>Velocity command was clipped to max velocity at least once</td>
-      		<td>Check velocity limits, clear using mdtool</td>
+      		<td>Check velocity limits, clear using candletool</td>
 		</tr>
     	<tr>
-			<td>WARNING_POSITON_CLIPPED</td>
+			<td>WARNING_POSITION_CLIPPED</td>
 			<td>27</td>
 			<td>Position command was clipped to either max or min position at least once</td>
-      		<td>Check position limits, clear using mdtool</td>
+      		<td>Check position limits, clear using candletool</td>
 		</tr>
   </tbody>
 </table>
@@ -343,9 +349,9 @@ currently in:
 
 All of the MD controllers have two multi-purpose GPIO pins. Currently they have two functionalities:
 
-- Auto Brake - in this mode MDxx will automatically engage MAB Robotics's provided braking systems
+- Auto Brake - in this mode MD will automatically engage MABs provided braking systems
   via GPIO A pin, see [brake systems](brakes) and [registers section](registers) for more details.
-- GPIO input - in this mode MDxx will output GPIO pin states to state register (*userGpioState
+- GPIO input - in this mode MD will output GPIO pin states to state register (*userGpioState
   0x161*)
 
 ```{important}

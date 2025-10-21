@@ -1,4 +1,4 @@
-# Properites and status
+# Properties and status
 
 ## Overview
 
@@ -18,12 +18,13 @@ When the frame is successfully received and processed by the PDS device, its res
 on the message type.
 ```
 
-When the host sends a write request to a module, the module responds with a frame containing the protocol status, the number of properties received, and a status code for each property. If some properties are read-only, they will return a status of ‘NO ACCESS’, while successfully written ones will return ‘OK’. To standardize communication, Control Board is considered as a module with a socket index 0.
-When the host sends a request to read properties the PDS device responds similiary with the protocol
+When the host sends a write request to a module, the module responds with a frame containing the
+protocol status, the number of properties received, and a status code for each property. If some 
+properties are read-only, they will return a status of ‘NO ACCESS’, while successfully written ones will
+return ‘OK’. To standardize communication, Control Board is considered as a module with a socket index 0.
+When the host sends a request to read properties the PDS device responds in similar fashion, the protocol
 status code, number of properties and a set of property status / value that corresponds to the
 properties set in the request.
-
-
 
 
 ## Commands
@@ -410,7 +411,7 @@ available on each module and also there are some common properties that each mod
     <td> 0x41</td>
     <td> RW</td>
     <td> U32</td>
-    <td> The time ( in mS ) that the OCD level has to be excedeed for to turn the module into OCD state</td>
+    <td> The time ( in mS ) that the OCD level has to be exceedeed for to turn the module into OCD state</td>
     <td> ❌</td>
     <td> ✅</td>
     <td> ❌</td>
