@@ -253,7 +253,10 @@ States and transitions on RGB switch
 
 <br>
 
-Battery Level can be set in software using Candletool or CANdle-SDK (`setBatteryVoltageLevels(u32 batteryLvl1, u32 batteryLvl2)`).
+Battery Level can be set in software using Candletool or CANdle-SDK using: 
+```
+setBatteryVoltageLevels(u32 batteryLvl1, u32 batteryLvl2)
+```
 
 ```{figure} ./images/control_board/ind_bar.png
 :alt: PDS_CTRL_BATTERY_LEVELS
