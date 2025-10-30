@@ -146,5 +146,5 @@ Power stage with highlighted ports
 <!-- The module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures.-->
 
 ```{important}
-POWER OUTPUT PORTS 1, 2, and 3 are dedicated to supplying power to actuators and do not support FDCAN communication to the PDS. However, FDCAN connectivity can be shared between MOLEX ports, as illustrated in [FDCAN Architecture](architecture.md) section.
+POWER OUTPUT PORTS 1, 2, and 3 are dedicated to supplying power to actuators and do not support FDCAN communication to the PDS. However, FDCAN connectivity can be shared between MOLEX ports, as illustrated in [FDCAN Architecture](architecture) section.
 ```

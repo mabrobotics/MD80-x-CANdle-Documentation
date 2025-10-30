@@ -139,7 +139,7 @@ Control board with highlighted ports
 
 The CAN FD interface in the PDS is designed to provide essential telemetry data, including information
 on currents, voltages, and temperature, as well as to facilitate the configuration and control of the
-system. Its transceiver is non-isolated with split termination on board and operates up to 8-Mbps. In order to connect FDCAN with PDS system user needs to connect FDCAN directly to Control Board. Please take a look at examples of [recommended architecture](architecture.md).
+system. Its transceiver is non-isolated with split termination on board and operates up to 8-Mbps. In order to connect FDCAN with PDS system user needs to connect FDCAN directly to Control Board. Please take a look at examples of [recommended architecture](architecture).
 
 ## Safety Turn Off
 The PDS includes a safety mechanism for controlled power shut-off, similar to those found in standard motor controllers. It features two input channels, each capable of independently disconnecting power from the connected loads, ensuring safe operation. The inputs are protected against reverse polarity.

@@ -33,6 +33,7 @@ FDCAN bridge placement
 Also control board has its own built-in CAN termination. 
 If possible CAN termination should be placed on each ends of CAN circuit as shown below in recommended architecture examples.
 
+(architecture)=
 ### **Example 1**
 
 In this example there are: CANdle, Control board, two Power Stage modules, six MD actuators (two per Micro-Fit molex connector) and CAN termination. In this example, termination on the CANdle is disabled.
