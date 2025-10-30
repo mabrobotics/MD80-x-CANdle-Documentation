@@ -63,7 +63,7 @@
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CANdle and CANdle HAT" href="../CANdle/intro.html" />
+    <link rel="next" title="Control board" href="control_board.html" />
     <link rel="prev" title="PDS - Power Distribution System" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -206,7 +206,12 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">PDS - Power Distribution System</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Features</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../CANdle/intro.html">CANdle and CANdleHAT</a></li>
@@ -535,10 +540,10 @@ modules:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Isolated Converter</p></td>
-<td><p>The power supply is cut off from the DC/DC converter. The results can be, for example, computers shut down</p></td>
+<td><p>The power supply is cut off from the DC/DC converter. For example, as a result, connected devices such as computer may shut down</p></td>
 </tr>
 <tr class="row-odd"><td><p>Power Stage</p></td>
-<td><p>The load is disconnected from the power supply. Example result can be de-energization of the connected actuators - robot will fall down as the torque is no longer generated.</p></td>
+<td><p>The load is disconnected from the power supply. This can lead to de-energization of connected actuators — for example, a robot may collapse as torque is no longer being generated.</p></td>
 </tr>
 <tr class="row-even"><td><p>Brake Resistor</p></td>
 <td><p>The energy is no longer dissipated in the resistor, independently of the voltage level on the DC bus.</p></td>
@@ -661,11 +666,11 @@ or make use of our swiss-knife <a class="reference internal" href="../CANdle-SDK
       </div>
     </a>
     <a class="right-next"
-       href="../CANdle/intro.html"
+       href="control_board.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CANdle and CANdle HAT</p>
+        <p class="prev-next-title">Control board</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

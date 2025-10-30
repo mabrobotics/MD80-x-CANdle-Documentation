@@ -1,0 +1,1490 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Communication FDCAN &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PDS/communication';</script>
+    <link rel="icon" href="../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CANdle and CANdle HAT" href="../CANdle/intro.html" />
+    <link rel="prev" title="Brake resistor" href="brake_resistor.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../MD/Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_od.html">Object Dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">PDS - Power Distribution System</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">FDCAN Communication</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../candlelib/intro.html">Software - mdtool [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Ecosystem.html">Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Calibration.html">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Config.html">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Motion_modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Safety_limits.html">Safety limits</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Status_codes.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/controllers/Controllers.html">Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/controllers/md80_controller/MD80.html">MD80</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/controllers/md20_controller/MD20.html">MD20</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../candlelib/controllers/add_ons/Add-ons.html">MD Add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../candlelib/controllers/add_ons/aux_encoders/Auxiliary_Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../candlelib/controllers/add_ons/brake_systems/Brake_systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/candle_and_candle_hat/Latency.html">Latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/candle_and_candle_hat/Principle.html">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/candle_and_candle_hat/Using_CANdle.html">Using CANdle and CANdle HAT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/software_package/Software.html">Software Pack</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/Legacy.html">Legacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/cpp.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/python.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/quick_startup_ros2.html">Quick start - ROS2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/quick_startup_ros.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/ros_nodes.html">CANdle ROS/ROS2 nodes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/md_fdcan_protocol/canProtocol.html">Hardware requirements</a></li>
+
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/md_canopen/CANopen.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/Downloads/Downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/common_problems_and_faq/FAQ.html">Common Issues and FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/Changelogs/Changelogs.html">Changelogs</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FPDS/communication.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PDS/communication.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Communication FDCAN</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds-ps-module-connectors">PDS_PS module connectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1"><strong>Example 1</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2"><strong>Example 2</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-protocol">Communication Protocol</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-and-status-clear-words">Status and status clear words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-frames">Communication frames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response-status-codes">Response status codes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="communication-fdcan">
+<h1>Communication FDCAN<a class="headerlink" href="#communication-fdcan" title="Link to this heading">#</a></h1>
+<p>There are two FDCAN communication connections, that have to be described. To control the PDS stack,
+one must connect to <a class="reference internal" href="control_board.html#pds-ctrl"><span class="std std-ref">PDS_CTRL</span></a> module, using 3-pin connector.</p>
+<p>There are also 6-pin connectors available on <a class="reference internal" href="power_stage.html#pds-ps"><span class="std std-ref">PDS_PS</span></a> module, that allow for connecting MD
+series motor controllers and other FDCAN devices. However:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>PDS_CTRL FDCAN is not internally connected to PDS_PS modules. They are independent signal lines, that
+can be connected externally. To allow a single CANdle communicate with PDS and MD on a single string.</p>
+</div>
+<section id="pds-ps-module-connectors">
+<h2>PDS_PS module connectors<a class="headerlink" href="#pds-ps-module-connectors" title="Link to this heading">#</a></h2>
+<p>By default all connectors on <a class="reference internal" href="power_stage.html#pds-ps"><span class="std std-ref">PDS_PS</span></a> module, have their CAN_H and CAN_L lines disconnected from
+each other, to provide only power though 6-pin connectors, allowing for up to 3 independent communication
+strings, to exist on the bus. There are however, bridge pads, located below 6-pin connectors to allow
+for connecting these buses together.</p>
+<p>In order to connect using architecture please solder correct bridges underneath the Micro-Fit molex connector.
+These bridges connect CAN-L and CAN-H to another CAN-L/H of neighbor connector so the connection is transmitted without any adapters.</p>
+<figure class="align-center" id="id1">
+<img alt="pds_power_stage_bridges" src="../_images/pds_ps_bridges.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">FDCAN bridge placement</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Also control board has its own built-in CAN termination.
+If possible CAN termination should be placed on each ends of CAN circuit as shown below in recommended architecture examples.</p>
+<section id="example-1">
+<span id="architecture"></span><h3><strong>Example 1</strong><a class="headerlink" href="#example-1" title="Link to this heading">#</a></h3>
+<p>In this example there are: CANdle, Control board, two Power Stage modules, six MD actuators (two per Micro-Fit molex connector) and CAN termination. In this example, termination on the CANdle is disabled.</p>
+<figure class="align-center" id="id2">
+<img alt="PDS_CAN_architecture_example_1" src="../_images/PDS_CAN.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">FDCAN architecture with 2 Power Stage modules</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="example-2">
+<h3><strong>Example 2</strong><a class="headerlink" href="#example-2" title="Link to this heading">#</a></h3>
+<p>In this example there are: CANdle, Control board, one Power Stage module and six MD actuators (two per Micro-Fit molex connector).This is the type of example that shows how to use all ports of single Power Stage without additional CAN termination. In this example, termination on CANdle is set to ON.</p>
+<figure class="align-center" id="id3">
+<img alt="PDS_CAN_architecture_example_2" src="../_images/PDS_CAN_3port.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">FDCAN architecture with 1 Power Stage module</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="communication-protocol">
+<h2>Communication Protocol<a class="headerlink" href="#communication-protocol" title="Link to this heading">#</a></h2>
+<p>Communication with a PDS device is done with the use of the “properties” concept. Each data or
+setting is a property of a module that forms a PDS device stack. Each property has its own underlying
+data type and access rights. Each property data occupies 4 bytes on the CAN frame. When
+communicating with the PDS, the host controller has to form a request frame that contains:</p>
+<ul class="simple">
+<li><p>Message type ( which indicates what the host device is about to achieve ),</p></li>
+<li><p>Type of the module that the message is addressed to,</p></li>
+<li><p>Socket index where the particular module is connected,</p></li>
+<li><p>Number of properties that it is going to read or write,</p></li>
+<li><p>A set of properties (when reading) or a property/value pairs (when writing).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As in all MAB CAN-based devices, the CAN ID is used to target specific devices. PSD is not an exception.
+When the frame is successfully received and processed by the PDS device, its response body depends
+on the message type.</p>
+</div>
+<p>When the host sends a write request to a module, the module responds with a frame containing the
+protocol status, the number of properties received, and a status code for each property. If some
+properties are read-only, they will return a status of ‘NO ACCESS’, while successfully written ones will
+return ‘OK’. To standardize communication, Control Board is considered as a module with a socket index 0.
+When the host sends a request to read properties the PDS device responds in similar fashion, the protocol
+status code, number of properties and a set of property status / value that corresponds to the
+properties set in the request.</p>
+<section id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h3>
+<p>The message frame body depends on the command code that is always placed at the beginning of the
+frame. For simplicity, there are only two command codes supported by the PDS device:</p>
+<p>Read properties from the PDS module
+Write properties to the PDS module</p>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+    min-width: 600px;
+    margin: 0 auto;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 10px;
+  }
+</style>
+<table>
+  <tr>
+    <th>Command name</th>
+    <th>Command code [HEX]</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Read properties</td>
+    <td>0x20</td>
+    <td>Read properties from the PDS module</td>
+  </tr>
+  <tr>
+    <td>Write properties</td>
+    <td>0x21</td>
+    <td>Write properties to the PDS module</td>
+  </tr>
+</table>
+</section>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<p>Properties are the values representing some state or parameter of the module like temperature,
+voltage, CAN Baudrade, or module type connected to socket number 5. Obviously, not all properties are
+available on each module and also there are some common properties that each module must have.</p>
+<table>
+  <tr>
+    <th rowspan = "2"> NAME</th>
+    <th rowspan = "2"> ID</th>
+    <th rowspan = "2"> ACCESS RIGHTS</th>
+    <th rowspan = "2"> TYPE</th>
+    <th rowspan = "2"> DESCRIPTION </th>
+    <th colspan = "4"> AVAILABILITY ON MODULES</th>
+  </tr>
+  <tr>
+    <th> CB</th>
+    <th> PS</th>
+    <th> BR</th>
+    <th> IC</th>
+  </tr>
+  <tr>
+    <td> STATUS WORD</td>
+    <td> 0x00</td>
+    <td> R</td>
+    <td> U32 - btiwise</td>
+    <td> A register were each bit represent different state of the module</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td> STATUS CLEAR</td>
+    <td> 0x01</td>
+    <td> W</td>
+    <td> U32 - bitwise</td>
+    <td> A register used to clear status bits in the STATUS WORD</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td> ENABLE</td>
+    <td> 0x02</td>
+    <td> RW</td>
+    <td> Boolean</td>
+    <td> Used to enable / disable particular module ( when write ) or simply check if it is enabled / disabled (when read )</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> TEMPERATURE</td>
+    <td> 0x03</td>
+    <td> R</td>
+    <td> Float</td>
+    <td> Module temperature</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> TEMPERATURE LIMIT</td>
+    <td> 0x04</td>
+    <td> RW</td>
+    <td> Float</td>
+    <td> Temperature limit. When module temperature exceeds this value it will become disabled and unable to be enabled back until cooldown</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> BUS VOLTAGE</td>
+    <td> 0x05</td>
+    <td> R</td>
+    <td> U32</td>
+    <td> Power supply input bus voltage on control board / Power output voltage on power stage and Isolated converter</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+  <tr>
+    <td> LOAD CURRENT</td>
+    <td> 0x10</td>
+    <td> R</td>
+    <td> S32</td>
+    <td> Output current of the module</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> LOAD POWER</td>
+    <td> 0x11</td>
+    <td> R</td>
+    <td> S32 </td>
+    <td> Output power of the module</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> TOTAL DELIVERED ENERGY</td>
+    <td> 0x12</td>
+    <td> R</td>
+    <td> U32</td>
+    <td> Total amount of energy ( in WH ) that was consumed by device connected to the module</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> TOTAL RECUPERATED ENERGY</td>
+    <td> 0x13</td>
+    <td> R</td>
+    <td> U32</td>
+    <td> Total amount of energy ( in WH ) that was generated by the device connected to the module</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+  <tr>
+    <td> CAN ID</td>
+    <td> 0x20</td>
+    <td> RW</td>
+    <td> U16</td>
+    <td> CAN ID</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> CAN BAUDRATE</td>
+    <td> 0x21</td>
+    <td> RW</td>
+    <td> ENUM*</td>
+    <td> CAN Baudrate ( 1M / 2M / 5M / 8M )</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SOCKET 1 MODULE</td>
+    <td> 0x22</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> The type of the module that is connected to socket number 1</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SOCKET 2 MODULE</td>
+    <td> 0x23</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> The type of the module that is connected to socket number 2</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SOCKET 3 MODULE</td>
+    <td> 0x24</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> The type of the module that is connected to socket number 3</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SOCKET 4 MODULE</td>
+    <td> 0x25</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> The type of the module that is connected to socket number 4</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SOCKET 5 MODULE</td>
+    <td> 0x26</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> The type of the module that is connected to socket number 5</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SOCKET 6 MODULE</td>
+    <td> 0x27</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> The type of the module that is connected to socket number 6</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> SHUTDOWN_TIME</td>
+    <td> 0x28</td>
+    <td> RW</td>
+    <td> U32</td>
+    <td> The time ( in mS ) that PDS device waits before it turns off after receiving shutdown request (either from power button or from host device )</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> BATTERY_LEVEL_1</td>
+    <td> 0x29</td>
+    <td> RW</td>
+    <td> U32</td>
+    <td rowspan = "2"> Levels ( in mV ) that defines ranges of battery energy available: 0 - L1 :: Almost discharged ( RED indication ), L1 - L2 :: Nominal charge ( YELLOW indication ), L2 < :: Fully charged ( GREEN indication )</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> BATTERY_LEVEL_2</td>
+    <td> 0x2A</td>
+    <td> RW</td>
+    <td> U32</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+  <tr>
+    <td> BR SOCKET INDEX</td>
+    <td> 0x30</td>
+    <td> RW</td>
+    <td> ENUM*</td>
+    <td> Socket index of the brake resistor that we are going to bind with the power stage</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> BR TRIGGER VOLTAGE</td>
+    <td> 0x31</td>
+    <td> RW</td>
+    <td> U32</td>
+    <td> The value of the power stage output voltage above which the brake resistor will be triggered (in mV)</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+  <tr>
+    <td> OCD_LEVEL</td>
+    <td> 0x40</td>
+    <td> RW</td>
+    <td> U32</td>
+    <td> The value of current ( in mA ) above which the module will enter OCD state if this value is exceeded for a time equal or grater than the "OCD Delay" time of the same module.</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> OCD_DELAY</td>
+    <td> 0x41</td>
+    <td> RW</td>
+    <td> U32</td>
+    <td> The time ( in mS ) that the OCD level has to be exceedeed for to turn the module into OCD state</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+  <tr>
+    <td> HW_VERSION</td>
+    <td> 0xFD</td>
+    <td> R</td>
+    <td> ENUM*</td>
+    <td> Hardware version of the module</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> FW_VERSION</td>
+    <td> 0xFE</td>
+    <td> R</td>
+    <td> U32 - bytewise</td>
+    <td> Firmware version of the Control board MCU</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> COMMAND</td>
+    <td> 0xFF</td>
+    <td> W</td>
+    <td> ENUM*</td>
+    <td> Property used to send various commands to the PDS device like ( power off, reboot, etc... ).</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+</table>
+</section>
+<section id="status-and-status-clear-words">
+<h3>Status and status clear words<a class="headerlink" href="#status-and-status-clear-words" title="Link to this heading">#</a></h3>
+<p>The terms ‘Status’ and ‘Status Clear’ indicate basic binary states or events within a module, such as whether it is enabled or a limit has been exceeded. The U32 bitwise type means that each bit in the value represents a different purpose rather than a singular numerical value. Like properties, status bits are module-specific—each module defines its own set, which may or may not align with those of othermodules.</p>
+<table>
+  <tr>
+    <th rowspan = "2"> NAME</th>
+    <th rowspan = "2"> BIT POSITION</th>
+    <th rowspan = "2"> DESCRIPTION</th>
+    <th colspan = "4"> AVAILABILITY ON MODULES</th>
+  </tr>
+  <tr>
+    <th> CB</th>
+    <th> PS</th>
+    <th> BR</th>
+    <th> IC</th>
+  </tr>
+  <tr>
+    <td> Enabled</td>
+    <td> 0</td>
+    <td> Indicates whenever the module is enabled or not. Note that in case of Control board it indicates entire device power on status.</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> Over temperature</td>
+    <td> 1</td>
+    <td> The temperature limit of the module has been exceeded</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> Over current</td>
+    <td> 2</td>
+    <td> The current limit of the module has been exceeded (OCD state )</td>
+    <td> ❌</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ✅</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+  <tr>
+    <td> STO1</td>
+    <td> 10</td>
+    <td> Safe Turn Off at input 1 has been triggered</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> STO2</td>
+    <td> 11</td>
+    <td> Safe Turn Off at input 2 has been triggered</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> FDCAN Timeout</td>
+    <td> 12</td>
+    <td> CAN message processing timeout</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Submodule 1 error</td>
+    <td> 13</td>
+    <td rowspan = "6"> Some error occurs on the module connected to the socket ( 1 - 6 ). Refer to the particular module status word for more details about the issue</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Submodule 2 error</td>
+    <td> 14</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Submodule 3 error</td>
+    <td> 15</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Submodule 4 error</td>
+    <td> 16</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Submodule 5 error</td>
+    <td> 17</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Submodule 6 error</td>
+    <td> 18</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Charger detection</td>
+    <td> 19</td>
+    <td> Indicates whenever charger has been connected to the device</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> Shutdown schedule</td>
+    <td> 20</td>
+    <td> Indicates that the PDS device shutdown has been scheduled and the PDS device is about to be turned off within the time specified in the "Shutdown time" property of the control board.</td>
+    <td> ✅</td>
+    <td> ❌</td>
+    <td> ❌</td>
+    <td> ❌</td>
+  </tr>
+  <tr>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+    <td> ...</td>
+  </tr>
+</table>
+</section>
+<section id="communication-frames">
+<h3>Communication frames<a class="headerlink" href="#communication-frames" title="Link to this heading">#</a></h3>
+<p>Generic frame body of the “Write property” ( 0x21 ) message:</p>
+<table>
+  <tr>
+    <td> nBytes</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 4</td>
+    <td> …</td>
+    <td> 1</td>
+    <td> 4</td>
+    <td> 1</td>
+    <td> 4</td>
+  </tr>
+  <tr>
+    <td> Frame field</td>
+    <td> Write property command code [0x21]</td>
+    <td> Module type</td> 
+    <td> Socket index</td>
+    <td> Number of properties</td>
+    <td> Property 1 type</td>
+    <td> Property 1 value</td>
+    <td> Property 2 type</td>
+    <td> Property 2 value</td>
+    <td> ...</td>
+    <td> Property N-1 type</td>
+    <td> Property N-1 value</td>
+    <td> Property N type</td>
+    <td> Property N value</td>
+  </tr>
+</table>
+Generic response to properties writes frame body:
+<table>
+  <tr>
+    <td> nBytes</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> …</td>
+    <td> 1</td>
+    <td> 1</td>
+  </tr>
+  <tr>
+    <td> Frame field</td>
+    <td> STATUS</td>
+    <td> Number of properties</td>
+    <td> Property 1 Status</td>
+    <td> Property 2 Status</td>
+    <td> ...</td>
+    <td> Property N-1 Status</td>
+    <td> Property N Status</td>
+  </tr>
+</table>
+Generic frame body of the “Read properties” ( 0x20 ) message:
+<table>
+  <tr>
+    <td> nBytes</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> …</td>
+    <td> 1</td>
+    <td> 1</td>
+  </tr>
+  <tr>
+    <td> Frame field</td>
+    <td> Write property command code [0x20]</td>
+    <td> Module type</td> 
+    <td> Socket index</td>
+    <td> Number of properties</td>
+    <td> Property 1 type</td>
+    <td> Property 2 type</td>
+    <td> ...</td>
+    <td> Property N-1 type</td>
+    <td> Property N type</td>
+  </tr>
+</table>
+Generic response to properties read frame body:
+<table>
+  <tr>
+    <td> nBytes</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 1</td>
+    <td> 4</td>
+    <td> 1</td>
+    <td> 4</td>
+    <td> …</td>
+    <td> 1</td>
+    <td> 4</td>
+    <td> 1</td>
+    <td> 4</td>
+  </tr>
+  <tr>
+    <td> Frame field</td>
+    <td> STATUS</td>
+    <td> Number of properties</td>
+    <td> Property 1 Status</td>
+    <td> Property 1 value</td>
+    <td> Property 2 Status</td>
+    <td> Property 2 value</td>
+    <td> ...</td>
+    <td> Property N-1 Status</td>
+    <td> Property N-1 value</td>
+    <td> Property N Status</td>
+    <td> Property N value</td>
+  </tr>
+</table>
+</section>
+<section id="response-status-codes">
+<h3>Response status codes<a class="headerlink" href="#response-status-codes" title="Link to this heading">#</a></h3>
+<p>Response to correct read or write request frames contains two different status code types. The overall
+message status code ( protocol status ) and per property status code ( property status ).</p>
+<p>Overall message status codes:</p>
+<table>
+  <tr>
+    <th> Status</th>
+    <th> Code [ HEX ]</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td> OK</td>
+    <td> 0x00</td>
+    <td> Request frame parsed correctly</td>
+  </tr>
+  <tr>
+    <td> Invalid message length</td>
+    <td> 0x01</td>
+    <td> The received request frame length is incorrect. For example when the number of properties byte indicates 4 properties but only 3 types are provided. Or if the received frame length is less than the expected header.</td>
+  </tr>
+  <tr>
+    <td> Invalid module type</td>
+    <td> 0x02</td>
+    <td> Module type code is out of range</td>
+  </tr>
+  <tr>
+    <td> Invalid socket index</td>
+    <td> 0x03</td>
+    <td> Socket index code is out of range</td>
+  </tr>
+  <tr>
+    <td> No module at socket</td>
+    <td> 0x04</td>
+    <td> There is no module connected to the desired socket index</td>
+  </tr>
+  <tr>
+    <td> Wrong module at the socket</td>
+    <td> 0x05</td>
+    <td> The desired module type does not match the one actually connected to the desired socket</td>
+  </tr>
+</table>
+<p>Properties status codes:</p>
+<table>
+  <tr>
+    <th> Status</th>
+    <th> Code [ HEX ]</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td> OK</td>
+    <td> 0x00</td>
+    <td> Property read/write operation success</td>
+  </tr>
+  <tr>
+    <td> No property</td>
+    <td> 0x01</td>
+    <td> The addressed module does not support the requested property</td>
+  </tr>
+  <tr>
+    <td> Invalid access rights</td>
+    <td> 0x02</td>
+    <td> Requested read operation from write-only property or write operation to read-only property</td>
+  </tr>
+  <tr>
+    <td> Invalid data argument</td>
+    <td> 0x03</td>
+    <td> Given data value during the write operation is invalid. For example when the user is trying to exceed some limit or pass some value that is out of valid enumeration range.</td>
+  </tr>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PDS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="brake_resistor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Brake resistor</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../CANdle/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CANdle and CANdle HAT</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds-ps-module-connectors">PDS_PS module connectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1"><strong>Example 1</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2"><strong>Example 2</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-protocol">Communication Protocol</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-and-status-clear-words">Status and status clear words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-frames">Communication frames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response-status-codes">Response status codes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
