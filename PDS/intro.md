@@ -28,9 +28,9 @@ The MAB PDS is built on a modular philosophy designed to meet the core needs of 
 - Fast telemetry and control from a higher-level controller,
 - Scalability for flexible system expansion.
 
--```{important}
--For reference manual of PDS and all its modules refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a>
--```
+```{important}
+For reference manual of PDS and all its modules refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a>
+```
 
 
 ## Modules
