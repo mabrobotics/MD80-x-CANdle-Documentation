@@ -28,6 +28,11 @@ The MAB PDS is built on a modular philosophy designed to meet the core needs of 
 - Fast telemetry and control from a higher-level controller,
 - Scalability for flexible system expansion.
 
+```{important}
+For reference manual of PDS and all its modules refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a>
+```
+
+
 ## Modules
 
 To handle all these features, the MAB PDS is split into four different types of modules:
@@ -36,52 +41,44 @@ To handle all these features, the MAB PDS is split into four different types of 
 
 Master module of the system.
 
-```{image} ./images/CTRL.JPG
----
-alt: CRTL
-class: bg-primary mb-1
-width: 300px
-align: center
----
+```{image} ./images/control_board/CTRL.JPG
+:alt: CRTL
+:class: bg-primary mb-1
+:width: 300px
+:align: center
 ```
 
 ### Isolated DC/DC converter (IC)
 
 A module with an isolated DC/DC converter for peripherals like computers and sensors.
 
-```{image} ./images/IC.JPG
----
-alt: IC
-class: bg-primary mb-1
-width: 300px
-align: center
----
+```{image} ./images/isolated_converter/IC.JPG
+:alt: IC
+:class: bg-primary mb-1
+:width: 300px
+:align: center
 ```
 
 ### Power stage (PS)
 
 A module that handles high-power delivery to the motors.
 
-```{image} ./images/PS.JPG
----
-alt: PS
-class: bg-primary mb-1
-width: 300px
-align: center
----
+```{image} ./images/power_stage/PS.JPG
+:alt: PS
+:class: bg-primary mb-1
+:width: 300px
+:align: center
 ```
 
 ### Brake resistor (BR)
 
 Complementary subsystem with the Power Stage module.
 
-```{image} ./images/BR.JPG
----
-alt: BR
-class: bg-primary mb-1
-width: 300px
-align: center
----
+```{image} ./images/brake_resistor/BR.JPG
+:alt: BR
+:class: bg-primary mb-1
+:width: 300px
+:align: center
 ```
 
 The overview of what exactly the PDS slave modules do is presented in the simple scheme below:
@@ -91,6 +88,3 @@ The overview of what exactly the PDS slave modules do is presented in the simple
 The master (CTRL) module manages ENABLE signals, acquires current/voltage measurements, and
 communicates with external systems.
 
-```{important}
-For detailed description refer to <a href = ../docs/pds_guide_1.0.pdf>PDS Guide</a>
-```
