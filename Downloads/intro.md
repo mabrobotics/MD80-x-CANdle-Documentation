@@ -73,9 +73,14 @@ Main stable releases:
 			<td><a href = ../_static/firmware/md_2.5.0.zip>2.5.0</a></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>11.08.2025 (latest)</b></td>
+			<td>11.08.2025</td>
 			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../_static/firmware/md_2.5.1.zip>2.5.1</a></td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>17.11.2025 (latest)</b></td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
 		</tr>
 	</tbody>
 </table>
@@ -94,6 +99,11 @@ Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80
     	<tr>
 			<td>11.08.2025</td>
 			<td><a href = ../_static/firmware/md_2.5.1.zip > 2.5.1 </a></td>
+			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
+		</tr>
+    	<tr>
+			<td>17.11.2025</td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip > 2.5.2 </a></td>
 			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
 		</tr>
 	</tbody>
