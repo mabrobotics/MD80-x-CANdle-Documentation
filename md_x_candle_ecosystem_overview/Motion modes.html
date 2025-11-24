@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Downloads &#8212; MAB Ecosystem</title>
+    <title>Motion modes &#8212; MAB Ecosystem</title>
   
   
   
@@ -59,12 +59,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Downloads/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'md_x_candle_ecosystem_overview/Motion modes';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MD x CANdle Manual" href="../candlelib/intro.html" />
-    <link rel="prev" title="Common Issues and FAQ" href="../FAQ/intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
@@ -230,7 +230,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../candlelib/intro.html">Software - mdtool [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../candlelib/quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Ecosystem.html">Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -356,7 +356,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FDownloads/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2Fmd_x_candle_ecosystem_overview/Motion modes.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +386,7 @@
       
       
       
-      <li><a href="../_sources/Downloads/intro.md" target="_blank"
+      <li><a href="../_sources/md_x_candle_ecosystem_overview/Motion modes.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -470,7 +470,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Downloads</h1>
+    <h1>Motion modes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -480,11 +480,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#device-firmware">Device Firmware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-eds-file">CANOpen EDS file</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Motion modes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid">Velocity PID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid">Position PID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-pd">Impedance PD</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-profile">Velocity Profile</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#position-profile">Position Profile</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controller-implementation">Controller implementation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-controller-tuning">Motion controller tuning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-velocity-profile">Velocity PID / Velocity Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-position-profile">Position PID / Position Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Impedance PD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi">Current PI</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -495,115 +510,164 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="downloads">
-<span id="id1"></span><h1>Downloads<a class="headerlink" href="#downloads" title="Link to this heading">#</a></h1>
-<section id="d-models">
-<span id="hardware-downloads"></span><h2>3D models<a class="headerlink" href="#d-models" title="Link to this heading">#</a></h2>
-<p>Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found
-<a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing">here</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="motion-modes">
+<span id="id1"></span><h1>Motion modes<a class="headerlink" href="#motion-modes" title="Link to this heading">#</a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>TL;DR: <a class="reference external" href="https://www.youtube.com/watch?v=XnD8sG22zro&amp;amp;t=0s">MD x CANdle - motion modes</a></p>
+</div>
+<p>To control the motor shaft with the user’s command MDxx is equipped with multiple control loops. All controllers are based on a regular PID controller design with an anti-windup block. The saturator (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’ and ‘D’ parts of the controller.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="md_x_candle_ecosystem_overview/images/limiters.png" />
+</figure>
+<section id="velocity-pid">
+<h2>Velocity PID<a class="headerlink" href="#velocity-pid" title="Link to this heading">#</a></h2>
+<p>Velocity PID controller calculates velocity error based on target velocity (set by user) and estimated velocity read from the encoder. Its output is a torque command for the internal current/torque controller. The parameters of the controller are:</p>
+<ul class="simple">
+<li><p>Velocity Target (in [rad/s])</p></li>
+<li><p>kP (proportional gain)</p></li>
+<li><p>kI (integral gain)</p></li>
+<li><p>kD (derivative gain)</p></li>
+<li><p>I windup (maximal output of an integral part in[Nm])</p></li>
+</ul>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="md_x_candle_ecosystem_overview/images/velocity_pid.png" />
+</figure>
 </section>
-<section id="candlesdk">
-<h2>CANdleSDK<a class="headerlink" href="#candlesdk" title="Link to this heading">#</a></h2>
-<p>Please visit <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/releases"><strong>releases</strong></a> page for all of the
-CANdleSDK binary releases.</p>
-<!--## MAB Firmware
-
-Firmware update of MABs products is release in form of proprietary `.mab` files. These files can be
-uploaded to devices using [CANdleTool](candletool)
-
-```
-candletool md update -i <id> -p ./path/to/mab/file.mab
-candletool pds update -i <id> -p ./path/to/mab/file.mab
-candletool candle update -i <id> -p ./path/to/mab/file.mab
-```
-
-For example:
-
-```
-candletool md update -i 100 -p ./md_3_0_0_abcdefa.mab
-```-->
+<section id="position-pid">
+<h2>Position PID<a class="headerlink" href="#position-pid" title="Link to this heading">#</a></h2>
+<p>Position PID mode is the most common controller mode used in industrial servo applications. In MDxx, it is implemented as a cascaded PID controller. This means that the controller is working in two stages, firstly the position error is calculated, and it is then passed to the Position PID, which outputs the target velocity. This value is then passed as an input to the Velocity PID controller, which outputs commanded torque. This mode uses both Position PID and Velocity PID and thus needs the following parameters:</p>
+<p>For Position PID:</p>
+<ul class="simple">
+<li><p>Position Target (in [rad])</p></li>
+<li><p>kP (proportional gain)</p></li>
+<li><p>kI (integral gain)</p></li>
+<li><p>kD (derivative gain)</p></li>
+<li><p>I windup (maximal output of an integral part in [rad/s])</p></li>
+</ul>
+<p>For Velocity PID:</p>
+<ul class="simple">
+<li><p>Velocity Target (in [rad/s])</p></li>
+<li><p>kP (proportional gain)</p></li>
+<li><p>kI (integral gain)</p></li>
+<li><p>kD (derivative gain)</p></li>
+<li><p>I windup (maximal output of an integral part in[Nm])</p></li>
+</ul>
+<p>To properly tune the controller, it is recommended to first tune the velocity controller (in velocity PID mode), and then the position PID. The controller can be described with a diagram:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="md_x_candle_ecosystem_overview/images/position_pid.png" />
+</figure>
 </section>
-<section id="device-firmware">
-<h2>Device Firmware<a class="headerlink" href="#device-firmware" title="Link to this heading">#</a></h2>
-<p>Main stable releases:</p>
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Date</b></td>
-			<td> <b>CANdle device</b></td>
-			<td> <b>MD Firmware</b></td>
-		</tr>
-    	<tr>
-			<td>12.12.2022</td>
-			<td><a href = https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link >2.0</a></td>
-			<td><a href = ../MAB_CAN_Flasher_ea1d72f2_V2.0.0 >2.0</a></td>
-		</tr>
-		<tr>
-			<td>05.04.2023</td>
-			<td><a href = https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link>2.2.0</a></td>
-			<td><a href = https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link>2.2.0</a></td>
-		</tr>
-		<tr>
-			<td>31.05.2024</td>
-			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
-			<td><a href = https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing>2.3.1</a></td>
-		</tr>
-		<tr>
-			<td>22.08.2024</td>
-			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../_static/firmware/md_2.4.0.zip>2.4.0</a></td>
-		</tr>
-		<tr>
-			<td>30.01.2025</td>
-			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../_static/firmware/md_2.4.1.zip>2.4.1</a></td>
-		</tr>
-		<tr>
-			<td>29.07.2025</td>
-			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../_static/firmware/md_2.5.0.zip>2.5.0</a></td>
-		</tr>
-		<tr>
-			<td>11.08.2025</td>
-			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../_static/firmware/md_2.5.1.zip>2.5.1</a></td>
-		</tr>
-		<tr>
-			<td>17.11.2025</td>
-			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
-		</tr>
-		<tr>
-			<td style="color:green;"><b>24.11.2025 (latest)</b></td>
-			<td><a href = ../candle-firmware/candle_2.4.0.mab>2.4.0</a></td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
-		</tr>
-	</tbody>
-</table>
+<section id="impedance-pd">
+<h2>Impedance PD<a class="headerlink" href="#impedance-pd" title="Link to this heading">#</a></h2>
+<p>Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant mechanism. The main idea behind it is to mimic the behavior of a torsional spring with variable stiffness and damping. The parameters of the controller are:</p>
+<ul class="simple">
+<li><p>Position Target</p></li>
+<li><p>Velocity Target</p></li>
+<li><p>kP (position gain)</p></li>
+<li><p>kD (velocity gain)</p></li>
+<li><p>Torque Feed Forward (Torque FF)</p></li>
+</ul>
+<p>The torque output is proportional to the position error and velocity error and additionally supplemented with a torque command from the user. Here are some of the most common applications for this control mode:</p>
+<ul class="simple">
+<li><p><b>Spring-damper mechanism</b> - when velocity target is set to 0, impedance controllers kP gain acts as the virtual spring stiffness and kD as its damping coefficient.
+Example use case: a variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP, damping by kD, and height (clearance) by changing the target position;</p></li>
+<li><p><b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents to the torque command.
+Example use case: In legged robots, force control can be achieved by advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to stabilize the robot but too slow to avoid vibrations. Knowing desired robot’s joint positions, velocities, and torques, drives can be set to produce the proper torque and hold the position/velocity with small gains. This would compensate for any high-frequency oscillations (vibrations) that may occur, as the impedance controller works at 40kHz (much faster than &lt;100 Hz).</p></li>
+<li><p><b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to the output controller torque.</p></li>
+<li><p><b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the motor shaft will be free to rotate. When the drive is disabled it connects all the windings together for safety. This mode can be useful for enabling free rotation of the shaft, but the rotational energy shoudl not be too high as the voltages induced in the motor windings coudl break the driver.</p></li>
+</ul>
+<p>The impedance controller is relatively simple and works according to the schematic below:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="md_x_candle_ecosystem_overview/images/impedance.png" />
+</figure>
 </section>
-<section id="canopen-eds-file">
-<h2>CANOpen EDS file<a class="headerlink" href="#canopen-eds-file" title="Link to this heading">#</a></h2>
-<p>Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80 and MD80HV.</p>
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-	<tbody>
-		<tr>
-      		<td> <b>Date</b></td>
-			<td> <b>MD CANOpen firmware version</b></td>
-			<td> <b>Compatible EDS file</b></td>
-		</tr>
-    	<tr>
-			<td>11.08.2025</td>
-			<td><a href = ../_static/firmware/md_2.5.1.zip > 2.5.1 </a></td>
-			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
-		</tr>
-    	<tr>
-			<td>17.11.2025</td>
-			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip > 2.5.2 </a></td>
-			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
-		</tr>
-	</tbody>
-</table>
-<p></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="velocity-profile">
+<h1>Velocity Profile<a class="headerlink" href="#velocity-profile" title="Link to this heading">#</a></h1>
+<p>The velocity profile motion mode uses trapezoidal velocity profiles to achieve smooth velocity changes with predefined acceleration and deceleration. The trajectory generator module interpolates between two velocity setpoints to achieve constant acceleration.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="md_x_candle_ecosystem_overview/images/velocity_profile_generator_CANdle.png" />
+</figure>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="position-profile">
+<h1>Position Profile<a class="headerlink" href="#position-profile" title="Link to this heading">#</a></h1>
+<p>The position profile motion mode uses trapezoidal velocity profiles to achieve smooth position changes with predefined acceleration, deceleration, and velocity. The trajectory generator module interpolates between two position setpoints to achieve constant acceleration, and linearly changing velocity.</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="md_x_candle_ecosystem_overview/images/position_profile_generator_CANdle.png" />
+</figure>
+<section id="controller-implementation">
+<h2>Controller implementation<a class="headerlink" href="#controller-implementation" title="Link to this heading">#</a></h2>
+<p>Controller implementation can be useful for simulating the actuators in virtual environments. Please find the PID and impedance C/C++ language implementations below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">mab_controller_performPid</span><span class="p">(</span><span class="n">PID_controller</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="nb">float</span> <span class="n">act_value</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">error_last</span> <span class="o">=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">error</span><span class="p">;</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">error</span> <span class="o">=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">target</span> <span class="o">-</span> <span class="n">act_value</span><span class="p">;</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">integrator</span> <span class="o">+=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">error</span><span class="o">*</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">dt</span><span class="p">;</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">integrator</span> <span class="o">=</span> <span class="n">mab_commons_range</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">integrator</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">integrator_windup</span><span class="p">,</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">integrator_windup</span><span class="p">);</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">de</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">error</span> <span class="o">-</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">error_last</span><span class="p">)</span><span class="o">/</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">dt</span><span class="p">;</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">output</span> <span class="o">=</span> <span class="n">mab_commons_range</span><span class="p">(</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">kp</span> <span class="o">*</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">error</span> <span class="o">+</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">ki</span> <span class="o">*</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">integrator</span> <span class="o">+</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">kd</span> <span class="o">*</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">de</span><span class="p">)</span> <span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">output_max</span><span class="p">,</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">output_max</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">output</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">mab_controller_performImpedanceController</span><span class="p">(</span><span class="n">Impedance_controller</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="nb">float</span> <span class="n">position</span><span class="p">,</span> <span class="nb">float</span> <span class="n">velocity</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">output</span> <span class="o">=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">setTorque</span> <span class="o">+</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">kp</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">positionTarget</span> <span class="o">-</span> <span class="n">position</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">kd</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">velocityTarget</span> <span class="o">-</span> <span class="n">velocity</span><span class="p">);</span>
+	<span class="n">c</span><span class="o">-&gt;</span><span class="n">output</span> <span class="o">=</span> <span class="n">mab_commons_range</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">output</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">outputMax</span><span class="p">,</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">outputMax</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">output</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="motion-controller-tuning">
+<span id="id2"></span><h1>Motion controller tuning<a class="headerlink" href="#motion-controller-tuning" title="Link to this heading">#</a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The best way to get started with tuning is to copy the <a class="reference external" href="https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf">default gains</a> and tweak them. You can treat this section as our recommendation for tuning the controllers, but <a class="reference external" href="https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/">online articles</a> can be useful as well</p>
+</div>
+<p>The first step to correctly set up the gains is to start with our <a class="reference external" href="https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf">default gains</a>. There are three sets of default gains that are set on each motor power up and thus they allow for restoring the actuator to a default state in case some gains were set incorrectly by the user. These gains are also a great starting point for user modifications when the actuator has to be used in a specific application requiring high positioning accuracy or very dynamic movements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default gains are set to work with CANdle examples. This way they can be assumed to be universal but it does not have to always be the case</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When something does go wrong during the tuning process just power-cycle the actuator - the default gains will be restored.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always keep your safety limits low when experimenting with gains. Gains not suitable for your system may cause oscillations and unstable operation of the MD-based actuators</p>
+</div>
+<section id="velocity-pid-velocity-profile">
+<h2>Velocity PID / Velocity Profile<a class="headerlink" href="#velocity-pid-velocity-profile" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Start by slowly increasing kp gain of the controller keeping ki kd and iWindup set to zero</p></li>
+<li><p>increase set iWindup to 1.0 and try increasing ki to see if it helps to reach the setpoint velocity</p></li>
+<li><p>Generally try to avoid using kd</p></li>
+</ol>
+</section>
+<section id="position-pid-position-profile">
+<h2>Position PID / Position Profile<a class="headerlink" href="#position-pid-position-profile" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Tune the Velocity PID first - make sure in Velocity PID mode the actuator is able to follow the setpoints</p></li>
+<li><p>Start by slowly increasing kp gain of the position controller keeping ki kd and iWindup set to zero</p></li>
+<li><p>Increase set iWindup to 1.0 and try increasing ki to see if it helps to reach the setpoint velocity</p></li>
+<li><p>Generally try to avoid using kd</p></li>
+</ol>
+</section>
+<section id="id3">
+<h2>Impedance PD<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Increase kp to the point you’re satisfied with the stiffness of the output shaft (the spring coefficient)</p></li>
+<li><p>Increase kd to the point you’re satisfied with the damping of the output shaft (the damping coefficient)</p></li>
+<li><p>Avoid setting kd too high - it may cause severe vibrations.</p></li>
+</ol>
+</section>
+<section id="current-pi">
+<h2>Current PI<a class="headerlink" href="#current-pi" title="Link to this heading">#</a></h2>
+<p>Current/torque PI is the lowest-level controller. Its gains are not directly user-configurable, however, they can be modified using the bandwidth parameter. Please see the calibration section for more insight on the topic.</p>
 </section>
 </section>
 
@@ -620,7 +684,7 @@ candletool md update -i 100 -p ./md_3_0_0_abcdefa.mab
         },
         kernelOptions: {
             name: "python3",
-            path: "./Downloads"
+            path: "./md_x_candle_ecosystem_overview"
         },
         predefinedOutput: true
     }
@@ -637,24 +701,6 @@ candletool md update -i 100 -p ./md_3_0_0_abcdefa.mab
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../FAQ/intro.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Common Issues and FAQ</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../candlelib/intro.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MD x CANdle Manual</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -671,11 +717,26 @@ candletool md update -i 100 -p ./md_3_0_0_abcdefa.mab
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#device-firmware">Device Firmware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-eds-file">CANOpen EDS file</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Motion modes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid">Velocity PID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid">Position PID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-pd">Impedance PD</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-profile">Velocity Profile</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#position-profile">Position Profile</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controller-implementation">Controller implementation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-controller-tuning">Motion controller tuning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-velocity-profile">Velocity PID / Velocity Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-position-profile">Position PID / Position Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Impedance PD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi">Current PI</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

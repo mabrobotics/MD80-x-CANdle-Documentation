@@ -20,15 +20,15 @@ Firmware update of MABs products is release in form of proprietary `.mab` files.
 uploaded to devices using [CANdleTool](candletool)
 
 ```
-candletool md update -i <id> ./path/to/mab/file.mab
-candletool pds update -i <id> ./path/to/mab/file.mab
-candletool candle update -i <id> ./path/to/mab/file.mab
+candletool md update -i <id> -p ./path/to/mab/file.mab
+candletool pds update -i <id> -p ./path/to/mab/file.mab
+candletool candle update -i <id> -p ./path/to/mab/file.mab
 ```
 
 For example:
 
 ```
-candletool md update -i 100 ./md_3_0_0_abcdefa.mab
+candletool md update -i 100 -p ./md_3_0_0_abcdefa.mab
 ```-->
 
 ## Device Firmware
@@ -62,7 +62,7 @@ Main stable releases:
 			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../_static/firmware/md_2.4.0.zip>2.4.0</a></td>
 		</tr>
-		<tr>/
+		<tr>
 			<td>30.01.2025</td>
 			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../_static/firmware/md_2.4.1.zip>2.4.1</a></td>
@@ -73,9 +73,19 @@ Main stable releases:
 			<td><a href = ../_static/firmware/md_2.5.0.zip>2.5.0</a></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>11.08.2025 (latest)</b></td>
+			<td>11.08.2025</td>
 			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../_static/firmware/md_2.5.1.zip>2.5.1</a></td>
+		</tr>
+		<tr>
+			<td>17.11.2025</td>
+			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>24.11.2025 (latest)</b></td>
+			<td><a href = ../candle-firmware/candle_2.4.0.mab>2.4.0</a></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
 		</tr>
 	</tbody>
 </table>
@@ -94,6 +104,11 @@ Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80
     	<tr>
 			<td>11.08.2025</td>
 			<td><a href = ../_static/firmware/md_2.5.1.zip > 2.5.1 </a></td>
+			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
+		</tr>
+    	<tr>
+			<td>17.11.2025</td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip > 2.5.2 </a></td>
 			<td><a href = ../_static/eds/md_1.0.eds > 1.0 </a></td>
 		</tr>
 	</tbody>
