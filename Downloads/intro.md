@@ -78,8 +78,13 @@ Main stable releases:
 			<td><a href = ../_static/firmware/md_2.5.1.zip>2.5.1</a></td>
 		</tr>
 		<tr>
-			<td style="color:green;"><b>17.11.2025 (latest)</b></td>
+			<td>17.11.2025</td>
 			<td><a href = ../_static/firmware/candle_2.2.1.zip>2.2.1</a></td>
+			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
+		</tr>
+		<tr>
+			<td style="color:green;"><b>24.11.2025 (latest)</b></td>
+			<td><a href = ../candle-firmware/candle_2.4.0.mab>2.4.0</a></td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.5.2.zip>2.5.2</a></td>
 		</tr>
 	</tbody>
