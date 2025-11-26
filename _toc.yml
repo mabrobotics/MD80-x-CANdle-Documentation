@@ -5,6 +5,8 @@ format: jb-book
 root: intro
 
 chapters:
+- file: GettingStarted/GettingStarted.md
+  title: Getting Started
 - file: MD/intro
   title: MD - Motor Controllers
   sections:
