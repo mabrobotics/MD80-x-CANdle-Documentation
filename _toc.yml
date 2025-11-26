@@ -69,6 +69,8 @@ chapters:
       sections:
         - file: CANdle-SDK/candletool/Commands
         - file: CANdle-SDK/candletool/ConfigurationFiles
+- file: CANdleduino/intro.md
+  title: CANdleduino - Arduino library
 - file: FAQ/intro
   title: FAQ
 - file: Downloads/intro
