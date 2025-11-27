@@ -85,6 +85,8 @@ chapters:
         title: Power Stage
       - file: CANdle_ROS2/pds-node/modules/br
         title: Brake Resistor
+- file: CANdleduino/intro.md
+  title: CANdleduino - Arduino library
 - file: FAQ/intro
   title: FAQ
 - file: Downloads/intro
