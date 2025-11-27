@@ -53,6 +53,7 @@ To get started with MAB Driver (MD) systems you will need the following:
 > - MDxx or MAB pre-assembled drive
 > - \> 25W 24V capable power supply
 > - CANdle or CANdle HAT
+> - Installed candletool
 
 ### Installation
 
@@ -124,7 +125,7 @@ Standalone MDs that use FDCAN protocol always come with **CAN ID** set to **100*
 In order to configure the driver we need a configuration file for this particular model. Some of the motors have MAB provided configuration files which can be used as a reference in creating your own. They can be found in the installation directory of candletool. For windows `C://Program Files/candletool/config/motors/` and for Linux `/etc/candletool/config/motors`. They are not ment to be modified so it is best to copy the one you need into your working directory and use that copy.
 
 ```{seealso}
-For more details on configuring your own drive see [Configuration file description](config)
+For more details on configuring your own drive see [configuration file description](config) and [configuration files in CANdle-SDK](config_md).
 ```
 
 When you either created your own config or chosen config file made by MAB you need to run the following command:
@@ -171,10 +172,37 @@ Than you can run save command to make the new id permament
 candletool md --id 'new id' save
 ```
 
+```{seealso}
+For more commands see [candletool commands section](md_commands)
+```
+
 ## With PDS
 
 ### Prerequisites
 
+> - Assembled PDS stack
+> - \> 25W 24V capable power supply
+> - CANdle or CANdle HAT
+> - Installed candletool
+> - PDS accessories provided by MAB
+
 ### Installation
+
+PDS is a modular system that requires diffrent assemblies depending on the modules present in the stack.
+
+```{important}
+For more details on how to assemble the PDS you are using please head to the [PDS overview section](pds_overview).
+```
+
+Following sections describe connections for each of the modules:
+
+> - [Control module (CTRL)](pds_ctrl)
+> - [Power stage module (PS)](pds_ps)
+> - [Isolated converted module (IC)](pds_ic)
+> - [Brake resistor module (BR)](pds_br)
+
+```{seealso}
+[Manual for PDS hardware]
+```
 
 ### First Steps

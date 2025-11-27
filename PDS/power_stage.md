@@ -1,9 +1,11 @@
 (pds_ps)=
+
 # Power Stage
 
 The PDS_PS module is a high-power power path designed to provide a safe and reliable power source
-for robot actuators. 
+for robot actuators.
 Its features include:
+
 - continuous current capacity of up to 50A,
 - isolated voltage and current measurements for precise monitoring,
 - bus-controlled with an electronic high-side switch for efficient power management

@@ -1,7 +1,11 @@
+(pds_ic)=
+
 # Isolated converter
+
 The PDS_IC module features an isolated DC/DC converter, providing a secure and stable power supply
-for sensitive electronic systems, such as computers and subsystems. 
+for sensitive electronic systems, such as computers and subsystems.
 Key characteristics include:
+
 - isolated power line with a configurable output voltage,
 - isolated voltage and current measurements on the isolated bus,
 - temperature monitoring for reliable operation,
@@ -95,4 +99,5 @@ Key characteristics include:
 :width: 600px
 Isolated converter with highlighted ports
 ```
+
 The PDS_IC comes with a factory-assembled thermistor mounted on DC/DC converter. It also includes 2 pcs of 691340500002 without cables.

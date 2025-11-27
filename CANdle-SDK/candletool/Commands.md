@@ -5,8 +5,8 @@
 CANdleTool CLI tree is build around each of devices provided by MAB. There it is split into actions
 that can be performed. Most of the commands are described below.
 
-```{note}
-Some commands are not listed in this document. You can explore all of the commands in the branch by issuing `-h` flag. 
+```{tip}
+Some commands are not listed in this document. You can explore all of the commands in the branch by issuing `-h` flag.
 ```
 
 ## Global parameters
@@ -28,6 +28,8 @@ Some commands are not listed in this document. You can explore all of the comman
 ### update
 
 Updates firmware on the CANdle device using provided .mab file.
+
+(md_commands)=
 
 ## **candletool md ...**
 
