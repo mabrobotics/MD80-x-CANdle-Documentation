@@ -192,6 +192,24 @@ candletool md --id 'new id' save
 For more commands see [candletool commands section](md_commands)
 ```
 
+```{dropdown} **Deprecated video tutorials**
+Tutorials listed here are old and some of the things might not work but they still can give you a concept of how the system shoudl operate. Full video tutorials will come soon.
+1. Guide on how to set up a new MD series motor controller to work with a motor of your choice:
+   [MD x CANdle - Brushless Motor Setup Guide](https://www.youtube.com/watch?v=74zTUlJ2hmo&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=5)
+1. Quick startup guide - watch when your motor is already configured and you'd like to try the
+   examples:
+   [MD x CANdle - Getting Started Tutorial](https://www.youtube.com/watch?v=bIZuhFpFtus&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=1)
+1. MDtool guide - a short introduction to MDtool and its basic commands (at this point the MDtool
+   has evolved, however, the main principles are the same)
+   [MD x CANdle - MDtool](https://www.youtube.com/watch?v=BrojxsU8oD8&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=2)
+1. Motion modes guide - an introduction to motion modes available on MD series motor controller
+   [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=3)
+1. ROS/ROS2 startup guide - an introduction to ROS/ROS2 drivers for MD series motor controller
+   [MD x CANdle - ROS/ROS2 startup guide](https://www.youtube.com/watch?v=6sLQNaJKuJY&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=4)
+
+
+```
+
 ## With PDS
 
 ### Prerequisites
