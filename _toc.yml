@@ -69,6 +69,24 @@ chapters:
       sections:
         - file: CANdle-SDK/candletool/Commands
         - file: CANdle-SDK/candletool/ConfigurationFiles
+- file: CANdle_ROS2/intro
+  title: Software - ROS2
+  sections:
+  - file: CANdle_ROS2/md-node/overview
+    title: MD Node
+  - file: CANdle_ROS2/pds-node/overview
+    title: PDS Node
+    sections:
+      - file: CANdle_ROS2/pds-node/modules/ctrl
+        title: Control Board
+      - file: CANdle_ROS2/pds-node/modules/ic
+        title: Isolated Converter
+      - file: CANdle_ROS2/pds-node/modules/ps
+        title: Power Stage
+      - file: CANdle_ROS2/pds-node/modules/br
+        title: Brake Resistor
+- file: CANdleduino/intro.md
+  title: Software - Arduino
 - file: FAQ/intro
   title: FAQ
 - file: Downloads/intro
