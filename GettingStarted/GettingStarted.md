@@ -1,5 +1,21 @@
 # Getting Started
 
+## Important Notes
+
+Before you start working with the MAB ecosystem, here are some key precautions to keep in mind:
+
+1. **Safety with Actuators**: Unintentional movement can cause serious injury. Always ensure they are securely fixed to a workbench during operation and have enough space to not damage people or goods.
+
+1. **Safety Limits**: Familiarize yourself with the [safety limits](md_safety) section in this document. Keep safety limits low during development, and only increase them once you are confident in your understanding and control of the system.
+
+1. **Electrical Safety**: Though our systems are designed to work with safe voltages it is adviced to be cautious and not touch powered on systems as well as watch out for any shorts which might cause an explosion at high currents present in the devices.
+
+1. **Power Supply Recommendations**: Choose power supply sources that can operate in two quadrants. These supplies should be capable of both supplying and dissipating energy from the motor when it functions as a generator. Avoid using older transformer-based power supplies, as they may block current, leading to dangerous overvoltage events. SMPS power supplies are ideal.
+
+```{danger}
+Before operating the system, be sure to read the full documentation to understand all safety precautions and avoid potential damage to both the system and yourself.
+```
+
 ## With CANdle-SDK
 
 ### Prerequisites
