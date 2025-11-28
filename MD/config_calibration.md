@@ -1,5 +1,7 @@
 # Configuration and Calibration
 
+(config)=
+
 ## Config
 
 MD's config allows for configuring the controller for a specific motor and the application it is
@@ -73,6 +75,8 @@ script, or register access)
 
 - `kp` - proportional gain
 - `kd` - derivative gain
+
+(calibration)=
 
 ## Calibration
 

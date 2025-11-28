@@ -1,9 +1,12 @@
+(pds_br)=
+
 # Brake resistor
 
 The PDS_BR module is a low-profile, high-power resistor with an integrated control and monitoring
 system. It simplifies the management of overvoltage situations in the system, typically caused by
-regenerative braking in motors. 
+regenerative braking in motors.
 Key features include:
+
 - onboard power resistors with a peak nominal power of 420W,
 - built-in temperature monitoring for system safety,
 - transient protection to prevent electrical surges,
@@ -24,7 +27,8 @@ Key features include:
 | Maximum Humidity (Non-operating)              | up to 95%, non-condensing at 60 ℃                                                         |
 | Altitude (Operating)                          | –400 m to 2000 m                                                                          |
 
-The BRAKE_ENABLE is triggered when an overvoltage condition occurs on the PS module connected to the BR module. In such cases, excess energy is dissipated through the braking resistors. Proper cooling of the BR module is essential to prevent overheating and potential thermal shutdown. 
+The BRAKE_ENABLE is triggered when an overvoltage condition occurs on the PS module connected to the BR module. In such cases, excess energy is dissipated through the braking resistors. Proper cooling of the BR module is essential to prevent overheating and potential thermal shutdown.
+
 <!-- The module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures. -->
 
 ```{figure} ./images/brake_resistor/brv10.png

@@ -5,6 +5,8 @@ intended to be used. MAB Robotics uses .cfg files written in TOML format to stor
 of the devices. These files can be used to configure the devices using the `candletool` command line
 interface.
 
+(config_md)=
+
 ## Configuration files for MD devices
 
 Exemplary MD configuration files can be found
@@ -59,6 +61,8 @@ kd = 0.25
 The `[motor]` section represent hardware motor that the MD is connected to. The rest of the
 parameters depend on the application and can be set to different values. The configuration file can
 be used to configure the MD device using the `candletool md config upload` command.
+
+(config_pds)=
 
 ## Configuration files for PDS device
 
