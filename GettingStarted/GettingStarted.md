@@ -202,7 +202,87 @@ Following sections describe connections for each of the modules:
 > - [Brake resistor module (BR)](pds_br)
 
 ```{seealso}
-[Manual for PDS hardware]
+<a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a>
+```
+
+When the PDS has all the connections done turn on the powersupply and hold the power button for 4 seconds. It shoudl light green and stay lit. Than and run the following command:
+
+```bash
+candletool pds discover
+```
+
+In the command output the connected PDS's id shoudl be present.
+
+```{seealso}
+[PDS CLI](pds_commands)
 ```
 
 ### First Steps
+
+Below you can find the basic functionalities presentation for your particular module.
+
+```{important}
+All modules asside from CTRL can have diffrent sockets they are connected to. When running module specific commands it is required to provide the socket number of the module. More info on that can be found inside <a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a>.
+```
+
+#### CTRL module
+
+Run the command bellow for basic status of the module
+
+```bash
+candletool pds --id 'id' info
+```
+
+#### IC module
+
+Run the command bellow for basic status of the module
+
+```bash
+candletool pds --id 'id' ic 'socket id' info
+```
+
+To enable power on the isolated converter's output use:
+
+```bash
+candletool pds --id 'id' ic 'socket id' enable
+```
+
+To disable power on the isolated converter's output use:
+
+```bash
+candletool pds --id 'id' ic 'socket id' disable
+```
+
+#### PS module
+
+Run the command bellow for basic status of the module
+
+```bash
+candletool pds --id 'id' ps 'socket id' info
+```
+
+To enable power on power stage outputs use:
+
+```bash
+candletool pds --id 'id' ps 'socket id' enable
+```
+
+To disable power on the power stage outputs use:
+
+```bash
+candletool pds --id 'id' ps 'socket id' disable
+```
+
+#### BR module
+
+Run the command bellow for basic status of the module
+
+```bash
+candletool pds --id 'id' br 'socket id' info
+```
+
+To check at what temperature the BR module will shutdown use
+
+```bash
+candletool pds --id 'id' br 'socket id' get_temp_limit
+```

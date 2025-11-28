@@ -105,6 +105,8 @@ positional absolute mode (position profile).
 
 Update firmware on MD drive using MABs firmware file (.mab).
 
+(pds_commands)=
+
 ## **candletool pds ...**
 
 Branch of CLI dedicated for [PDS](pds) device.
