@@ -8,7 +8,7 @@ Before you start working with the MAB ecosystem, here are some key precautions t
 
 1. **Safety Limits**: Familiarize yourself with the [safety limits](md_safety) section in this document. Keep safety limits low during development, and only increase them once you are confident in your understanding and control of the system.
 
-1. **Electrical Safety**: Though our systems are designed to work with safe voltages it is adviced to be cautious and not touch powered on systems as well as watch out for any shorts which might cause an explosion at high currents present in the devices.
+1. **Electrical Safety**: Though our systems are designed to work with safe voltages it is advised to be cautious and not touch powered on systems as well as watch out for any shorts which might cause an explosion at high currents present in the devices.
 
 1. **Power Supply Recommendations**: Choose power supply sources that can operate in two quadrants. These supplies should be capable of both supplying and dissipating energy from the motor when it functions as a generator. Avoid using older transformer-based power supplies, as they may block current, leading to dangerous overvoltage events. SMPS power supplies are ideal.
 
@@ -82,7 +82,7 @@ Connection details can be found in the [hardware setup section](hardware_setup).
 For connecting the MD to your BLDC motor checkout the correct MD section of the document for driver specific soldering connections and magnet placement. [MD80](md80) [MD20](md20)
 ```
 
-When the cabeling is connected turn the power on. The green LED on top of the board shoudl be light on and the green LED shoudl flash periodically.
+When the cabeling is connected turn the power on. The green LED on top of the board should be light on and the green LED should flash periodically.
 
 ```{note}
 Red LED on the bottom indicates an error in board operation and is normal for unconfigured drives. You can use `candletool md --id 'id' info` for more details on the errors present.
@@ -90,13 +90,13 @@ Red LED on the bottom indicates an error in board operation and is normal for un
 When both red and green LEDs flash rapidly it means the board is in its bootloader phase. This is normal for the first few seconds of operation but if it does not stop it means that the firmware is corrupted and needs to be recovered via `candletool md --id 'id' update latest -r` where `-r` is a recovery flag.
 ```
 
-When the power is on make sure that the CAN line is properly terminated. CANdle class devices have a switch that enables/disables internal 120 Ohm termination resistor. On the other end of CAN chain there shoudl either be a resistor plugin provided by MAB or PDS control board CAN input which has a CAN termination builtin.
+When the power is on make sure that the CAN line is properly terminated. CANdle class devices have a switch that enables/disables internal 120 Ohm termination resistor. On the other end of CAN chain there should either be a resistor plugin provided by MAB or PDS control board CAN input which has a CAN termination builtin.
 
 ```{note}
-The rest of this section will not work for the CANopen protocol. Currently only FDCAN MAB protocol is supported by the CANdle devices. The drives shoudl be configured in accordance of CiA 402 specification which is not provided by MAB. The .eds files can be found in the [Downloads](downloads) section.
+The rest of this section will not work for the CANopen protocol. Currently only FDCAN MAB protocol is supported by the CANdle devices. The drives should be configured in accordance of CiA 402 specification which is not provided by MAB. The .eds files can be found in the [Downloads](downloads) section.
 ```
 
-To make sure that the installation proces went correctly please try running
+To make sure that the installation process went correctly please try running
 
 ```bash
 candletool md discover
@@ -110,12 +110,12 @@ For troubleshooting please checkout the [FAQ](faq) section of this document.
 
 ### First Steps
 
-#### For the preassebled drive
+#### For the preassembled drive
 
-The MAB motors with MDxx preassebled into them come preconfigured. Their **CAN ID** is set to the **last 3 digits of the warranty sticker** in case of FDCAN MAB protocol and **10** node ID in case of CANopen protocol.
+The MAB motors with MDxx preassembled into them come preconfigured. Their **CAN ID** is set to the **last 3 digits of the warranty sticker** in case of FDCAN MAB protocol and **10** node ID in case of CANopen protocol.
 
 ```{note}
-Although MAB motors are preconfigured, they still need their PID controlers adjusted for their final operation. Head to [motion modes](motion_modes) section to learn more.
+Although MAB motors are preconfigured, they still need their PID controllers adjusted for their final operation. Head to [motion modes](motion_modes) section to learn more.
 ```
 
 To checkout the configuration of your motor run the command:
@@ -130,7 +130,7 @@ If there are no errors present you should be able to test the drives movement us
 candletool md --id 'id' test relative 'angle in radians from -10.0 to 10.0'
 ```
 
-The motor shoudl than move using [impedance control mode](impedance-pd).
+The motor should than move using [impedance control mode](impedance-pd).
 
 #### For the standalone MDxx
 
@@ -138,7 +138,7 @@ The standalone MDxx procedure comes in a form of a configuration and calibration
 
 Standalone MDs that use FDCAN protocol always come with **CAN ID** set to **100**.
 
-In order to configure the driver we need a configuration file for this particular model. Some of the motors have MAB provided configuration files which can be used as a reference in creating your own. They can be found in the installation directory of candletool. For windows `C://Program Files/candletool/config/motors/` and for Linux `/etc/candletool/config/motors`. They are not ment to be modified so it is best to copy the one you need into your working directory and use that copy.
+In order to configure the driver we need a configuration file for this particular model. Some of the motors have MAB provided configuration files which can be used as a reference in creating your own. They can be found in the installation directory of candletool. For windows `C://Program Files/candletool/config/motors/` and for Linux `/etc/candletool/config/motors`. They are not meant to be modified so it is best to copy the one you need into your working directory and use that copy.
 
 ```{seealso}
 For more details on configuring your own drive see [configuration file description](config) and [configuration files in CANdle-SDK](config_md).
@@ -156,7 +156,7 @@ You can verify your config by running:
 candletool md --id 100 info
 ```
 
-In the output there shoudl be no CONFIGURATION_ERROR and the values provided from the driver should match your configuration.
+In the output there should be no CONFIGURATION_ERROR and the values provided from the driver should match your configuration.
 
 Next step is to calibrate the motor. This can be done via this command:
 
@@ -164,7 +164,7 @@ Next step is to calibrate the motor. This can be done via this command:
 candletool md --id 100 calibrate
 ```
 
-The prompt will provide the information on power rquirements and await confirmation. Once the calibration is done all of the errors should be gone and the driver should be ready to work.
+The prompt will provide the information on power requirements and await confirmation. Once the calibration is done all of the errors should be gone and the driver should be ready to work.
 
 ```{seealso}
 For more in depth explanation of calibration procedure head to [calibration section](calibration)
@@ -182,7 +182,7 @@ Once it is verified you can than change your drive id to be able to connect it t
 candletool md --id 100 can --new_id 'new id'
 ```
 
-Than you can run save command to make the new id permament
+Than you can run save command to make the new id permanent
 
 ```bash
 candletool md --id 'new id' save
@@ -193,7 +193,7 @@ For more commands see [candletool commands section](md_commands)
 ```
 
 ```{dropdown} **Deprecated video tutorials**
-Tutorials listed here are old and some of the things might not work but they still can give you a concept of how the system shoudl operate. Full video tutorials will come soon.
+Tutorials listed here are old and some of the things might not work but they still can give you a concept of how the system should operate. Full video tutorials will come soon.
 1. Guide on how to set up a new MD series motor controller to work with a motor of your choice:
    [MD x CANdle - Brushless Motor Setup Guide](https://www.youtube.com/watch?v=74zTUlJ2hmo&list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&index=5)
 1. Quick startup guide - watch when your motor is already configured and you'd like to try the
@@ -222,7 +222,7 @@ Tutorials listed here are old and some of the things might not work but they sti
 
 ### Installation
 
-PDS is a modular system that requires diffrent assemblies depending on the modules present in the stack.
+PDS is a modular system that requires different assemblies depending on the modules present in the stack.
 
 ```{important}
 For more details on how to assemble the PDS you are using please head to the [PDS overview section](pds_overview).
@@ -239,13 +239,13 @@ Following sections describe connections for each of the modules:
 <a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a>
 ```
 
-When the PDS has all the connections done turn on the powersupply and hold the power button for 4 seconds. It shoudl light green and stay lit. Than and run the following command:
+When the PDS has all the connections done turn on the powersupply and hold the power button for 4 seconds. It should light green and stay lit. Than and run the following command:
 
 ```bash
 candletool pds discover
 ```
 
-In the command output the connected PDS's id shoudl be present.
+In the command output the connected PDS's id should be present.
 
 ```{seealso}
 [PDS CLI](pds_commands)
@@ -256,7 +256,7 @@ In the command output the connected PDS's id shoudl be present.
 Below you can find the basic functionalities presentation for your particular module.
 
 ```{important}
-All modules asside from CTRL can have diffrent sockets they are connected to. When running module specific commands it is required to provide the socket number of the module. More info on that can be found inside <a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a>.
+All modules aside from CTRL can have different sockets they are connected to. When running module specific commands it is required to provide the socket number of the module. More info on that can be found inside <a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a>.
 ```
 
 #### CTRL module
