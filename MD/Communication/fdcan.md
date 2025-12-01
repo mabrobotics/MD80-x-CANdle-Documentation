@@ -122,9 +122,9 @@ drive, would, have a length of 20 bytes, and look like the following:
 		<tr>
 			<td> 0x41 </td>
             <td> 0x00 </td>
-            <td> 0x0062 </td>
-            <td> 0x00 00 00 00 </td>
             <td> 0x0063 </td>
+            <td> 0x00 00 00 00 </td>
+            <td> 0x0062 </td>
             <td> 0x00 00 00 00 </td>
             <td> 0x0064 </td>
             <td> 0x00 00 00 00 </td>
