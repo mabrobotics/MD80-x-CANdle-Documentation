@@ -1,3 +1,5 @@
+(faq)=
+
 # Common Issues and FAQ
 
 ## How to check if my motor is operating properly
@@ -23,10 +25,11 @@ scenario will cause the calibration to fail and in the worst will cause large to
 (large cogging torque).
 
 ```{warning}
-Operating such an improperly configured motor can lead to hazardous situations for both the operator and the driver. 
+Operating such an improperly configured motor can lead to hazardous situations for both the operator and the driver.
 ```
 
 (failed_calibration)=
+
 ## Failed calibration
 
 The calibration can fail for several reasons, yet the most common one is just improperly soldered
