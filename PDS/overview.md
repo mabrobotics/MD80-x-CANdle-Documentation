@@ -1,5 +1,7 @@
 # Overview
 
+(pds_overview)=
+
 ## **ON/OFF SWITCH**:
 
 After connecting, the switch can be used to enable the PDS and monitor its state. Please remember to
@@ -47,7 +49,7 @@ header-rows: 1
 ---
 * - Module type
   - Enabled STO effect
-* - Isolated Converter 
+* - Isolated Converter
   - The power supply is cut off from the DC/DC converter. For example, as a result, connected devices such as computer may shut down
 * - Power Stage
   - The load is disconnected from the power supply. This can lead to de-energization of connected actuators — for example, a robot may collapse as torque is no longer being generated.
@@ -135,14 +137,14 @@ align: center
 ```
 
 ````{warning}
-Please note that CAN interface on the PDS **Control board** is **NOT** connected to the sockets on the **Power Stage** module. User should provide CAN lines connection to both the **Control Board** and the Drivers powered by the **Power Stage** module. 
+Please note that CAN interface on the PDS **Control board** is **NOT** connected to the sockets on the **Power Stage** module. User should provide CAN lines connection to both the **Control Board** and the Drivers powered by the **Power Stage** module.
 
 It is also important that CAN FD lines are not shared between MicroFit connectors. They only share power lines.
 
 Please take a look at the diagram below for better understanding how to properly connect CAN lines to the PDS and Drivers powered by Power Stage.
 
 ```{image} ./images/canfd_bus_distribution.png
-:alt: SBC Connection example 
+:alt: SBC Connection example
 :class: bg-primary mb-1
 :width: 500px
 :align: center
