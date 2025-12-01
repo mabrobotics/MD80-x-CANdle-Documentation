@@ -181,6 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
@@ -495,7 +496,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="brake-resistor">
-<h1>Brake resistor<a class="headerlink" href="#brake-resistor" title="Link to this heading">#</a></h1>
+<span id="pds-br"></span><h1>Brake resistor<a class="headerlink" href="#brake-resistor" title="Link to this heading">#</a></h1>
 <p>The PDS_BR module is a low-profile, high-power resistor with an integrated control and monitoring
 system. It simplifies the management of overvoltage situations in the system, typically caused by
 regenerative braking in motors.
@@ -507,70 +508,46 @@ Key features include:</p>
 <li><p>braking control through a MOSFET switch,</p></li>
 <li><p>adjustable trigger voltage via soware, providing flexibility.</p></li>
 </ul>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    table-layout: auto;
-    min-width: 600px;
-    margin: 0 auto;
-  }
-
-  th, td {
-    padding: 10px;
-    font-size: 14px;
-  }
-</style>
-<table>
-  <tr>
-    <th> Parameter</th>
-    <th> Value</th>
-  </tr>
-  <tr>
-    <td> Input voltage</td>
-    <td> 12-54V</td>
-  </tr>
-  <tr>
-    <td> Input protection</td>
-    <td> transients, over temperature.</td>
-  </tr>
-  <tr>
-    <td> Maximum dissipated power</td>
-    <td> 420W</td>
-  </tr>
-  <tr>
-    <td> Current consumption on standby(resistors disabled)</td>
-    <td> 2,7 mA</td>
-  </tr>
-  <tr>
-    <td> Mass</td>
-    <td> 42g</td>
-  </tr>
-  <tr>
-    <td> Ambient Temperature (Operating)</td>
-    <td> 0-40℃</td>
-  </tr>
-  <tr>
-    <td> Ambient Temperature (non-operating)</td>
-    <td> 0-60℃</td>
-  </tr>
-  <tr>
-    <td> Maximum Humidity (Operating)</td>
-    <td> up to 95%, non-condensing at 40 ºC</td>
-  </tr>
-  <tr>
-    <td> Maximum Humidity (Non-Operating)</td>
-    <td> up to 95%, non-condensing at 60 ºC</td>
-  </tr>
-  <tr>
-    <td> Altitude (Operating)</td>
-    <td> -400 m to 2000 m</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input voltage</p></td>
+<td><p>12–54 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input protection</p></td>
+<td><p>Transients, over temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>Maximum dissipated power</p></td>
+<td><p>420 W</p></td>
+</tr>
+<tr class="row-odd"><td><p>Current consumption on standby (resistors disabled)</p></td>
+<td><p>2.7 mA</p></td>
+</tr>
+<tr class="row-even"><td><p>Mass</p></td>
+<td><p>42 g</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ambient Temperature (Operating)</p></td>
+<td><p>0–40 ℃</p></td>
+</tr>
+<tr class="row-even"><td><p>Ambient Temperature (Non-operating)</p></td>
+<td><p>0–60 ℃</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum Humidity (Operating)</p></td>
+<td><p>up to 95%, non-condensing at 40 ℃</p></td>
+</tr>
+<tr class="row-even"><td><p>Maximum Humidity (Non-operating)</p></td>
+<td><p>up to 95%, non-condensing at 60 ℃</p></td>
+</tr>
+<tr class="row-odd"><td><p>Altitude (Operating)</p></td>
+<td><p>–400 m to 2000 m</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 <p>The BRAKE_ENABLE is triggered when an overvoltage condition occurs on the PS module connected to the BR module. In such cases, excess energy is dissipated through the braking resistors. Proper cooling of the BR module is essential to prevent overheating and potential thermal shutdown.</p>
 <!-- The module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures. -->
 <figure class="align-center" id="id1">

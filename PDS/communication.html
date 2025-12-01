@@ -181,6 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
@@ -596,774 +597,721 @@ properties set in the request.</p>
 frame. For simplicity, there are only two command codes supported by the PDS device:</p>
 <p>Read properties from the PDS module
 Write properties to the PDS module</p>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    table-layout: auto;
-    min-width: 600px;
-    margin: 0 auto;
-  }
-
-  th, td {
-    padding: 10px;
-    font-size: 10px;
-  }
-</style>
-<table>
-  <tr>
-    <th>Command name</th>
-    <th>Command code [HEX]</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Read properties</td>
-    <td>0x20</td>
-    <td>Read properties from the PDS module</td>
-  </tr>
-  <tr>
-    <td>Write properties</td>
-    <td>0x21</td>
-    <td>Write properties to the PDS module</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command name</p></th>
+<th class="head"><p>Command code [HEX]</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Read properties</p></td>
+<td><p>0x20</p></td>
+<td><p>Read properties from the PDS module</p></td>
+</tr>
+<tr class="row-odd"><td><p>Write properties</p></td>
+<td><p>0x21</p></td>
+<td><p>Write properties to the PDS module</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 </section>
 <section id="properties">
 <h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
 <p>Properties are the values representing some state or parameter of the module like temperature,
 voltage, CAN Baudrade, or module type connected to socket number 5. Obviously, not all properties are
 available on each module and also there are some common properties that each module must have.</p>
-<table>
-  <tr>
-    <th rowspan = "2"> NAME</th>
-    <th rowspan = "2"> ID</th>
-    <th rowspan = "2"> ACCESS RIGHTS</th>
-    <th rowspan = "2"> TYPE</th>
-    <th rowspan = "2"> DESCRIPTION </th>
-    <th colspan = "4"> AVAILABILITY ON MODULES</th>
-  </tr>
-  <tr>
-    <th> CB</th>
-    <th> PS</th>
-    <th> BR</th>
-    <th> IC</th>
-  </tr>
-  <tr>
-    <td> STATUS WORD</td>
-    <td> 0x00</td>
-    <td> R</td>
-    <td> U32 - btiwise</td>
-    <td> A register were each bit represent different state of the module</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-    <td> STATUS CLEAR</td>
-    <td> 0x01</td>
-    <td> W</td>
-    <td> U32 - bitwise</td>
-    <td> A register used to clear status bits in the STATUS WORD</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-    <td> ENABLE</td>
-    <td> 0x02</td>
-    <td> RW</td>
-    <td> Boolean</td>
-    <td> Used to enable / disable particular module ( when write ) or simply check if it is enabled / disabled (when read )</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> TEMPERATURE</td>
-    <td> 0x03</td>
-    <td> R</td>
-    <td> Float</td>
-    <td> Module temperature</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> TEMPERATURE LIMIT</td>
-    <td> 0x04</td>
-    <td> RW</td>
-    <td> Float</td>
-    <td> Temperature limit. When module temperature exceeds this value it will become disabled and unable to be enabled back until cooldown</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> BUS VOLTAGE</td>
-    <td> 0x05</td>
-    <td> R</td>
-    <td> U32</td>
-    <td> Power supply input bus voltage on control board / Power output voltage on power stage and Isolated converter</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
-  <tr>
-    <td> LOAD CURRENT</td>
-    <td> 0x10</td>
-    <td> R</td>
-    <td> S32</td>
-    <td> Output current of the module</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> LOAD POWER</td>
-    <td> 0x11</td>
-    <td> R</td>
-    <td> S32 </td>
-    <td> Output power of the module</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> TOTAL DELIVERED ENERGY</td>
-    <td> 0x12</td>
-    <td> R</td>
-    <td> U32</td>
-    <td> Total amount of energy ( in WH ) that was consumed by device connected to the module</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> TOTAL RECUPERATED ENERGY</td>
-    <td> 0x13</td>
-    <td> R</td>
-    <td> U32</td>
-    <td> Total amount of energy ( in WH ) that was generated by the device connected to the module</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
-  <tr>
-    <td> CAN ID</td>
-    <td> 0x20</td>
-    <td> RW</td>
-    <td> U16</td>
-    <td> CAN ID</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> CAN BAUDRATE</td>
-    <td> 0x21</td>
-    <td> RW</td>
-    <td> ENUM*</td>
-    <td> CAN Baudrate ( 1M / 2M / 5M / 8M )</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SOCKET 1 MODULE</td>
-    <td> 0x22</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> The type of the module that is connected to socket number 1</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SOCKET 2 MODULE</td>
-    <td> 0x23</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> The type of the module that is connected to socket number 2</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SOCKET 3 MODULE</td>
-    <td> 0x24</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> The type of the module that is connected to socket number 3</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SOCKET 4 MODULE</td>
-    <td> 0x25</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> The type of the module that is connected to socket number 4</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SOCKET 5 MODULE</td>
-    <td> 0x26</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> The type of the module that is connected to socket number 5</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SOCKET 6 MODULE</td>
-    <td> 0x27</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> The type of the module that is connected to socket number 6</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> SHUTDOWN_TIME</td>
-    <td> 0x28</td>
-    <td> RW</td>
-    <td> U32</td>
-    <td> The time ( in mS ) that PDS device waits before it turns off after receiving shutdown request (either from power button or from host device )</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> BATTERY_LEVEL_1</td>
-    <td> 0x29</td>
-    <td> RW</td>
-    <td> U32</td>
-    <td rowspan = "2"> Levels ( in mV ) that defines ranges of battery energy available: 0 - L1 :: Almost discharged ( RED indication ), L1 - L2 :: Nominal charge ( YELLOW indication ), L2 < :: Fully charged ( GREEN indication )</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> BATTERY_LEVEL_2</td>
-    <td> 0x2A</td>
-    <td> RW</td>
-    <td> U32</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
-  <tr>
-    <td> BR SOCKET INDEX</td>
-    <td> 0x30</td>
-    <td> RW</td>
-    <td> ENUM*</td>
-    <td> Socket index of the brake resistor that we are going to bind with the power stage</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> BR TRIGGER VOLTAGE</td>
-    <td> 0x31</td>
-    <td> RW</td>
-    <td> U32</td>
-    <td> The value of the power stage output voltage above which the brake resistor will be triggered (in mV)</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
-  <tr>
-    <td> OCD_LEVEL</td>
-    <td> 0x40</td>
-    <td> RW</td>
-    <td> U32</td>
-    <td> The value of current ( in mA ) above which the module will enter OCD state if this value is exceeded for a time equal or grater than the "OCD Delay" time of the same module.</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> OCD_DELAY</td>
-    <td> 0x41</td>
-    <td> RW</td>
-    <td> U32</td>
-    <td> The time ( in mS ) that the OCD level has to be exceedeed for to turn the module into OCD state</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
-  <tr>
-    <td> HW_VERSION</td>
-    <td> 0xFD</td>
-    <td> R</td>
-    <td> ENUM*</td>
-    <td> Hardware version of the module</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> FW_VERSION</td>
-    <td> 0xFE</td>
-    <td> R</td>
-    <td> U32 - bytewise</td>
-    <td> Firmware version of the Control board MCU</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> COMMAND</td>
-    <td> 0xFF</td>
-    <td> W</td>
-    <td> ENUM*</td>
-    <td> Property used to send various commands to the PDS device like ( power off, reboot, etc... ).</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>NAME</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>ACCESS RIGHTS</p></th>
+<th class="head"><p>TYPE</p></th>
+<th class="head"><p>DESCRIPTION</p></th>
+<th class="head"><p>CB</p></th>
+<th class="head"><p>PS</p></th>
+<th class="head"><p>BR</p></th>
+<th class="head"><p>IC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STATUS WORD</p></td>
+<td><p>0x00</p></td>
+<td><p>R</p></td>
+<td><p>U32 - btiwise</p></td>
+<td><p>A register were each bit represent different state of the module</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>STATUS CLEAR</p></td>
+<td><p>0x01</p></td>
+<td><p>W</p></td>
+<td><p>U32 - bitwise</p></td>
+<td><p>A register used to clear status bits in the STATUS WORD</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>ENABLE</p></td>
+<td><p>0x02</p></td>
+<td><p>RW</p></td>
+<td><p>Boolean</p></td>
+<td><p>Used to enable / disable particular module ( when write ) or simply check if it is enabled / disabled (when read )</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEMPERATURE</p></td>
+<td><p>0x03</p></td>
+<td><p>R</p></td>
+<td><p>Float</p></td>
+<td><p>Module temperature</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>TEMPERATURE LIMIT</p></td>
+<td><p>0x04</p></td>
+<td><p>RW</p></td>
+<td><p>Float</p></td>
+<td><p>Temperature limit. When module temperature exceeds this value it will become disabled and unable to be enabled back until cooldown</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>BUS VOLTAGE</p></td>
+<td><p>0x05</p></td>
+<td><p>R</p></td>
+<td><p>U32</p></td>
+<td><p>Power supply input bus voltage on control board / Power output voltage on power stage and Isolated converter</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOAD CURRENT</p></td>
+<td><p>0x10</p></td>
+<td><p>R</p></td>
+<td><p>S32</p></td>
+<td><p>Output current of the module</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>LOAD POWER</p></td>
+<td><p>0x11</p></td>
+<td><p>R</p></td>
+<td><p>S32</p></td>
+<td><p>Output power of the module</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>TOTAL DELIVERED ENERGY</p></td>
+<td><p>0x12</p></td>
+<td><p>R</p></td>
+<td><p>U32</p></td>
+<td><p>Total amount of energy ( in WH ) that was consumed by device connected to the module</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>TOTAL RECUPERATED ENERGY</p></td>
+<td><p>0x13</p></td>
+<td><p>R</p></td>
+<td><p>U32</p></td>
+<td><p>Total amount of energy ( in WH ) that was generated by the device connected to the module</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>CAN ID</p></td>
+<td><p>0x20</p></td>
+<td><p>RW</p></td>
+<td><p>U16</p></td>
+<td><p>CAN ID</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>CAN BAUDRATE</p></td>
+<td><p>0x21</p></td>
+<td><p>RW</p></td>
+<td><p>ENUM*</p></td>
+<td><p>CAN Baudrate ( 1M / 2M / 5M / 8M )</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>SOCKET 1 MODULE</p></td>
+<td><p>0x22</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>The type of the module that is connected to socket number 1</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>SOCKET 2 MODULE</p></td>
+<td><p>0x23</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>The type of the module that is connected to socket number 2</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>SOCKET 3 MODULE</p></td>
+<td><p>0x24</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>The type of the module that is connected to socket number 3</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>SOCKET 4 MODULE</p></td>
+<td><p>0x25</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>The type of the module that is connected to socket number 4</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>SOCKET 5 MODULE</p></td>
+<td><p>0x26</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>The type of the module that is connected to socket number 5</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>SOCKET 6 MODULE</p></td>
+<td><p>0x27</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>The type of the module that is connected to socket number 6</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>SHUTDOWN_TIME</p></td>
+<td><p>0x28</p></td>
+<td><p>RW</p></td>
+<td><p>U32</p></td>
+<td><p>The time ( in mS ) that PDS device waits before it turns off after receiving shutdown request (either from power button or from host device )</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>BATTERY_LEVEL_1</p></td>
+<td><p>0x29</p></td>
+<td><p>RW</p></td>
+<td><p>U32</p></td>
+<td><p>Levels ( in mV ) that defines ranges of battery energy available: 0 - L1 :: Almost discharged ( RED indication ), L1 - L2 :: Nominal charge ( YELLOW indication ), L2 &lt; :: Fully charged ( GREEN indication )</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>BATTERY_LEVEL_2</p></td>
+<td><p>0x2A</p></td>
+<td><p>RW</p></td>
+<td><p>U32</p></td>
+<td><p>Same as above</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>BR SOCKET INDEX</p></td>
+<td><p>0x30</p></td>
+<td><p>RW</p></td>
+<td><p>ENUM*</p></td>
+<td><p>Socket index of the brake resistor that we are going to bind with the power stage</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>BR TRIGGER VOLTAGE</p></td>
+<td><p>0x31</p></td>
+<td><p>RW</p></td>
+<td><p>U32</p></td>
+<td><p>The value of the power stage output voltage above which the brake resistor will be triggered (in mV)</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>OCD_LEVEL</p></td>
+<td><p>0x40</p></td>
+<td><p>RW</p></td>
+<td><p>U32</p></td>
+<td><p>The value of current ( in mA ) above which the module will enter OCD state if this value is exceeded for a time equal or grater than the “OCD Delay” time of the same module.</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>OCD_DELAY</p></td>
+<td><p>0x41</p></td>
+<td><p>RW</p></td>
+<td><p>U32</p></td>
+<td><p>The time ( in mS ) that the OCD level has to be exceeded for to turn the module into OCD state</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>HW_VERSION</p></td>
+<td><p>0xFD</p></td>
+<td><p>R</p></td>
+<td><p>ENUM*</p></td>
+<td><p>Hardware version of the module</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>FW_VERSION</p></td>
+<td><p>0xFE</p></td>
+<td><p>R</p></td>
+<td><p>U32 - bytewise</p></td>
+<td><p>Firmware version of the Control board MCU</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>COMMAND</p></td>
+<td><p>0xFF</p></td>
+<td><p>W</p></td>
+<td><p>ENUM*</p></td>
+<td><p>Property used to send various commands to the PDS device like ( power off, reboot, etc… ).</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 </section>
 <section id="status-and-status-clear-words">
 <h3>Status and status clear words<a class="headerlink" href="#status-and-status-clear-words" title="Link to this heading">#</a></h3>
 <p>The terms ‘Status’ and ‘Status Clear’ indicate basic binary states or events within a module, such as whether it is enabled or a limit has been exceeded. The U32 bitwise type means that each bit in the value represents a different purpose rather than a singular numerical value. Like properties, status bits are module-specific—each module defines its own set, which may or may not align with those of othermodules.</p>
-<table>
-  <tr>
-    <th rowspan = "2"> NAME</th>
-    <th rowspan = "2"> BIT POSITION</th>
-    <th rowspan = "2"> DESCRIPTION</th>
-    <th colspan = "4"> AVAILABILITY ON MODULES</th>
-  </tr>
-  <tr>
-    <th> CB</th>
-    <th> PS</th>
-    <th> BR</th>
-    <th> IC</th>
-  </tr>
-  <tr>
-    <td> Enabled</td>
-    <td> 0</td>
-    <td> Indicates whenever the module is enabled or not. Note that in case of Control board it indicates entire device power on status.</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> Over temperature</td>
-    <td> 1</td>
-    <td> The temperature limit of the module has been exceeded</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> Over current</td>
-    <td> 2</td>
-    <td> The current limit of the module has been exceeded (OCD state )</td>
-    <td> ❌</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ✅</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
-  <tr>
-    <td> STO1</td>
-    <td> 10</td>
-    <td> Safe Turn Off at input 1 has been triggered</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> STO2</td>
-    <td> 11</td>
-    <td> Safe Turn Off at input 2 has been triggered</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> FDCAN Timeout</td>
-    <td> 12</td>
-    <td> CAN message processing timeout</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Submodule 1 error</td>
-    <td> 13</td>
-    <td rowspan = "6"> Some error occurs on the module connected to the socket ( 1 - 6 ). Refer to the particular module status word for more details about the issue</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Submodule 2 error</td>
-    <td> 14</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Submodule 3 error</td>
-    <td> 15</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Submodule 4 error</td>
-    <td> 16</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Submodule 5 error</td>
-    <td> 17</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Submodule 6 error</td>
-    <td> 18</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Charger detection</td>
-    <td> 19</td>
-    <td> Indicates whenever charger has been connected to the device</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> Shutdown schedule</td>
-    <td> 20</td>
-    <td> Indicates that the PDS device shutdown has been scheduled and the PDS device is about to be turned off within the time specified in the "Shutdown time" property of the control board.</td>
-    <td> ✅</td>
-    <td> ❌</td>
-    <td> ❌</td>
-    <td> ❌</td>
-  </tr>
-  <tr>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-    <td> ...</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>NAME</strong></p></th>
+<th class="head"><p><strong>BIT POSITION</strong></p></th>
+<th class="head"><p><strong>DESCRIPTION</strong></p></th>
+<th class="head"><p><strong>CB</strong></p></th>
+<th class="head"><p><strong>PS</strong></p></th>
+<th class="head"><p><strong>BR</strong></p></th>
+<th class="head"><p><strong>IC</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Enabled</p></td>
+<td><p>0</p></td>
+<td><p>Indicates whenever the module is enabled or not. Note that in case of Control board it indicates entire device power on status.</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>Over temperature</p></td>
+<td><p>1</p></td>
+<td><p>The temperature limit of the module has been exceeded</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>Over current</p></td>
+<td><p>2</p></td>
+<td><p>The current limit of the module has been exceeded (OCD state)</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>STO1</p></td>
+<td><p>10</p></td>
+<td><p>Safe Turn Off at input 1 has been triggered</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>STO2</p></td>
+<td><p>11</p></td>
+<td><p>Safe Turn Off at input 2 has been triggered</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>FDCAN Timeout</p></td>
+<td><p>12</p></td>
+<td><p>CAN message processing timeout</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Submodule 1 error</p></td>
+<td><p>13</p></td>
+<td><p>Some error occurs on the module connected to the socket (1 - 6). Refer to the particular module status word for more details about the issue</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Submodule 2 error</p></td>
+<td><p>14</p></td>
+<td><p>Some error occurs on the module connected to the socket (1 - 6). Refer to the particular module status word for more details about the issue</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Submodule 3 error</p></td>
+<td><p>15</p></td>
+<td><p>Same as above</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Submodule 4 error</p></td>
+<td><p>16</p></td>
+<td><p>Same as above</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Submodule 5 error</p></td>
+<td><p>17</p></td>
+<td><p>Same as above</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Submodule 6 error</p></td>
+<td><p>18</p></td>
+<td><p>Same as above</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Charger detection</p></td>
+<td><p>19</p></td>
+<td><p>Indicates whenever charger has been connected to the device</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Shutdown schedule</p></td>
+<td><p>20</p></td>
+<td><p>Indicates that the PDS device shutdown has been scheduled and the PDS device is about to be turned off within the time specified in the “Shutdown time” property</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 </section>
 <section id="communication-frames">
 <h3>Communication frames<a class="headerlink" href="#communication-frames" title="Link to this heading">#</a></h3>
 <p>Generic frame body of the “Write property” ( 0x21 ) message:</p>
-<table>
-  <tr>
-    <td> nBytes</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 4</td>
-    <td> …</td>
-    <td> 1</td>
-    <td> 4</td>
-    <td> 1</td>
-    <td> 4</td>
-  </tr>
-  <tr>
-    <td> Frame field</td>
-    <td> Write property command code [0x21]</td>
-    <td> Module type</td> 
-    <td> Socket index</td>
-    <td> Number of properties</td>
-    <td> Property 1 type</td>
-    <td> Property 1 value</td>
-    <td> Property 2 type</td>
-    <td> Property 2 value</td>
-    <td> ...</td>
-    <td> Property N-1 type</td>
-    <td> Property N-1 value</td>
-    <td> Property N type</td>
-    <td> Property N value</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>nBytes</strong></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frame field</strong></p></td>
+<td><p>Write property command code [0x21]</p></td>
+<td><p>Module type</p></td>
+<td><p>Socket index</p></td>
+<td><p>Number of properties</p></td>
+<td><p>Property 1 type</p></td>
+<td><p>Property 1 value</p></td>
+<td><p>Property 2 type</p></td>
+<td><p>Property 2 value</p></td>
+<td><p>…</p></td>
+<td><p>Property N-1 type</p></td>
+<td><p>Property N-1 value</p></td>
+</tr>
+</tbody>
 </table>
-Generic response to properties writes frame body:
-<table>
-  <tr>
-    <td> nBytes</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> …</td>
-    <td> 1</td>
-    <td> 1</td>
-  </tr>
-  <tr>
-    <td> Frame field</td>
-    <td> STATUS</td>
-    <td> Number of properties</td>
-    <td> Property 1 Status</td>
-    <td> Property 2 Status</td>
-    <td> ...</td>
-    <td> Property N-1 Status</td>
-    <td> Property N Status</td>
-  </tr>
+</div>
+<p>Generic response to properties writes frame body:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>nBytes</strong></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frame field</strong></p></td>
+<td><p>STATUS</p></td>
+<td><p>Number of properties</p></td>
+<td><p>Property 1 Status</p></td>
+<td><p>Property 2 Status</p></td>
+<td><p>…</p></td>
+<td><p>Property N-1 Status</p></td>
+<td><p>Property N Status</p></td>
+</tr>
+</tbody>
 </table>
-Generic frame body of the “Read properties” ( 0x20 ) message:
-<table>
-  <tr>
-    <td> nBytes</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> …</td>
-    <td> 1</td>
-    <td> 1</td>
-  </tr>
-  <tr>
-    <td> Frame field</td>
-    <td> Write property command code [0x20]</td>
-    <td> Module type</td> 
-    <td> Socket index</td>
-    <td> Number of properties</td>
-    <td> Property 1 type</td>
-    <td> Property 2 type</td>
-    <td> ...</td>
-    <td> Property N-1 type</td>
-    <td> Property N type</td>
-  </tr>
+</div>
+<p>Generic frame body of the “Read properties” ( 0x20 ) message:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>nBytes</strong></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frame field</strong></p></td>
+<td><p>Write property command code [0x20]</p></td>
+<td><p>Module type</p></td>
+<td><p>Socket index</p></td>
+<td><p>Number of properties</p></td>
+<td><p>Property 1 type</p></td>
+<td><p>Property 2 type</p></td>
+<td><p>…</p></td>
+<td><p>Property N-1 type</p></td>
+<td><p>Property N type</p></td>
+</tr>
+</tbody>
 </table>
-Generic response to properties read frame body:
-<table>
-  <tr>
-    <td> nBytes</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 4</td>
-    <td> 1</td>
-    <td> 4</td>
-    <td> …</td>
-    <td> 1</td>
-    <td> 4</td>
-    <td> 1</td>
-    <td> 4</td>
-  </tr>
-  <tr>
-    <td> Frame field</td>
-    <td> STATUS</td>
-    <td> Number of properties</td>
-    <td> Property 1 Status</td>
-    <td> Property 1 value</td>
-    <td> Property 2 Status</td>
-    <td> Property 2 value</td>
-    <td> ...</td>
-    <td> Property N-1 Status</td>
-    <td> Property N-1 value</td>
-    <td> Property N Status</td>
-    <td> Property N value</td>
-  </tr>
+</div>
+<p>Generic response to properties read frame body:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>nBytes</strong></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frame field</strong></p></td>
+<td><p>STATUS</p></td>
+<td><p>Number of properties</p></td>
+<td><p>Property 1 Status</p></td>
+<td><p>Property 1 value</p></td>
+<td><p>Property 2 Status</p></td>
+<td><p>Property 2 value</p></td>
+<td><p>…</p></td>
+<td><p>Property N-1 Status</p></td>
+<td><p>Property N-1 value</p></td>
+<td><p>Property N Status</p></td>
+<td><p>Property N value</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 </section>
 <section id="response-status-codes">
 <h3>Response status codes<a class="headerlink" href="#response-status-codes" title="Link to this heading">#</a></h3>
 <p>Response to correct read or write request frames contains two different status code types. The overall
 message status code ( protocol status ) and per property status code ( property status ).</p>
 <p>Overall message status codes:</p>
-<table>
-  <tr>
-    <th> Status</th>
-    <th> Code [ HEX ]</th>
-    <th> Description</th>
-  </tr>
-  <tr>
-    <td> OK</td>
-    <td> 0x00</td>
-    <td> Request frame parsed correctly</td>
-  </tr>
-  <tr>
-    <td> Invalid message length</td>
-    <td> 0x01</td>
-    <td> The received request frame length is incorrect. For example when the number of properties byte indicates 4 properties but only 3 types are provided. Or if the received frame length is less than the expected header.</td>
-  </tr>
-  <tr>
-    <td> Invalid module type</td>
-    <td> 0x02</td>
-    <td> Module type code is out of range</td>
-  </tr>
-  <tr>
-    <td> Invalid socket index</td>
-    <td> 0x03</td>
-    <td> Socket index code is out of range</td>
-  </tr>
-  <tr>
-    <td> No module at socket</td>
-    <td> 0x04</td>
-    <td> There is no module connected to the desired socket index</td>
-  </tr>
-  <tr>
-    <td> Wrong module at the socket</td>
-    <td> 0x05</td>
-    <td> The desired module type does not match the one actually connected to the desired socket</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status</strong></p></th>
+<th class="head"><p><strong>Code [HEX]</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OK</p></td>
+<td><p>0x00</p></td>
+<td><p>Request frame parsed correctly</p></td>
+</tr>
+<tr class="row-odd"><td><p>Invalid message length</p></td>
+<td><p>0x01</p></td>
+<td><p>The received request frame length is incorrect. For example, when the number of properties byte indicates 4 properties but only 3 types are provided, or if the received frame length is less than the expected header.</p></td>
+</tr>
+<tr class="row-even"><td><p>Invalid module type</p></td>
+<td><p>0x02</p></td>
+<td><p>Module type code is out of range</p></td>
+</tr>
+<tr class="row-odd"><td><p>Invalid socket index</p></td>
+<td><p>0x03</p></td>
+<td><p>Socket index code is out of range</p></td>
+</tr>
+<tr class="row-even"><td><p>No module at socket</p></td>
+<td><p>0x04</p></td>
+<td><p>There is no module connected to the desired socket index</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wrong module at the socket</p></td>
+<td><p>0x05</p></td>
+<td><p>The desired module type does not match the one actually connected to the desired socket</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 <p>Properties status codes:</p>
-<table>
-  <tr>
-    <th> Status</th>
-    <th> Code [ HEX ]</th>
-    <th> Description</th>
-  </tr>
-  <tr>
-    <td> OK</td>
-    <td> 0x00</td>
-    <td> Property read/write operation success</td>
-  </tr>
-  <tr>
-    <td> No property</td>
-    <td> 0x01</td>
-    <td> The addressed module does not support the requested property</td>
-  </tr>
-  <tr>
-    <td> Invalid access rights</td>
-    <td> 0x02</td>
-    <td> Requested read operation from write-only property or write operation to read-only property</td>
-  </tr>
-  <tr>
-    <td> Invalid data argument</td>
-    <td> 0x03</td>
-    <td> Given data value during the write operation is invalid. For example when the user is trying to exceed some limit or pass some value that is out of valid enumeration range.</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status</strong></p></th>
+<th class="head"><p><strong>Code [HEX]</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OK</p></td>
+<td><p>0x00</p></td>
+<td><p>Property read/write operation success</p></td>
+</tr>
+<tr class="row-odd"><td><p>No property</p></td>
+<td><p>0x01</p></td>
+<td><p>The addressed module does not support the requested property</p></td>
+</tr>
+<tr class="row-even"><td><p>Invalid access rights</p></td>
+<td><p>0x02</p></td>
+<td><p>Requested read operation from write-only property or write operation to read-only property</p></td>
+</tr>
+<tr class="row-odd"><td><p>Invalid data argument</p></td>
+<td><p>0x03</p></td>
+<td><p>Given data value during the write operation is invalid. For example, when the user is trying to exceed some limit or pass a value that is out of valid enumeration range</p></td>
+</tr>
+</tbody>
 </table>
+</div>
 </section>
 </section>
 </section>

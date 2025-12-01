@@ -1,0 +1,976 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GettingStarted/GettingStarted';</script>
+    <link rel="icon" href="../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MD" href="../MD/intro.html" />
+    <link rel="prev" title="MAB Ecosystem" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../MD/Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_od.html">Object Dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/communication.html">FDCAN Communication</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle_ROS2/md-node/overview.html">MD Node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle_ROS2/pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ctrl.html">Control Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ic.html">Isolated Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ps.html">Power Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/br.html">Brake Resistor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../candlelib/intro.html">Software - mdtool [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/quick_start_guide/QuickStartGuide.html">Quick Start Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Ecosystem.html">Ecosystem overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Calibration.html">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Config.html">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Measurements.html">Measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Motion_modes.html">Motion modes</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Safety_limits.html">Safety limits</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Status_codes.html">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_x_candle_ecosystem_overview/Utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/controllers/Controllers.html">Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/controllers/md80_controller/MD80.html">MD80</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/controllers/md20_controller/MD20.html">MD20</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../candlelib/controllers/add_ons/Add-ons.html">MD Add-ons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../candlelib/controllers/add_ons/aux_encoders/Auxiliary_Encoder.html">Auxiliary Encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../candlelib/controllers/add_ons/brake_systems/Brake_systems.html">Brake Systems</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/candle_and_candle_hat/CANdle.html">CANdle and CANdle HAT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/candle_and_candle_hat/Latency.html">Latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/candle_and_candle_hat/Principle.html">Principle of operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/candle_and_candle_hat/Using_CANdle.html">Using CANdle and CANdle HAT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/software_package/Software.html">Software Pack</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/Legacy.html">Legacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/MDTOOL.html">MDtool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/cpp.html">CANdle C++ library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/python.html">CANdle Python library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/quick_startup_ros2.html">Quick start - ROS2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/quick_startup_ros.html">Quick startup guide - ROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/software_package/legacy/ros_nodes.html">CANdle ROS/ROS2 nodes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/md_fdcan_protocol/canProtocol.html">Hardware requirements</a></li>
+
+<li class="toctree-l2 has-children"><a class="reference internal" href="../candlelib/md_canopen/CANopen.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_canopen/OD.html">Object Dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../candlelib/md_canopen/TransitionProcedure.html">Migration to and from CANopen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/Downloads/Downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/common_problems_and_faq/FAQ.html">Common Issues and FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../candlelib/Changelogs/Changelogs.html">Changelogs</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FGettingStarted/GettingStarted.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/GettingStarted/GettingStarted.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Getting Started</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notes">Important Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-candle-sdk">With CANdle-SDK</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-md">With MD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-preassembled-drive">For the preassembled drive</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-standalone-mdxx">For the standalone MDxx</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pds">With PDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ctrl-module">CTRL module</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ic-module">IC module</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ps-module">PS module</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#br-module">BR module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<section id="important-notes">
+<h2>Important Notes<a class="headerlink" href="#important-notes" title="Link to this heading">#</a></h2>
+<p>Before you start working with the MAB ecosystem, here are some key precautions to keep in mind:</p>
+<ol class="arabic simple">
+<li><p><strong>Safety with Actuators</strong>: Unintentional movement can cause serious injury. Always ensure they are securely fixed to a workbench during operation and have enough space to not damage people or goods.</p></li>
+<li><p><strong>Safety Limits</strong>: Familiarize yourself with the <a class="reference internal" href="../MD/safety.html#md-safety"><span class="std std-ref">safety limits</span></a> section in this document. Keep safety limits low during development, and only increase them once you are confident in your understanding and control of the system.</p></li>
+<li><p><strong>Electrical Safety</strong>: Though our systems are designed to work with safe voltages it is advised to be cautious and not touch powered on systems as well as watch out for any shorts which might cause an explosion at high currents present in the devices.</p></li>
+<li><p><strong>Power Supply Recommendations</strong>: Choose power supply sources that can operate in two quadrants. These supplies should be capable of both supplying and dissipating energy from the motor when it functions as a generator. Avoid using older transformer-based power supplies, as they may block current, leading to dangerous overvoltage events. SMPS power supplies are ideal.</p></li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Before operating the system, be sure to read the full documentation to understand all safety precautions and avoid potential damage to both the system and yourself.</p>
+</div>
+</section>
+<section id="with-candle-sdk">
+<h2>With CANdle-SDK<a class="headerlink" href="#with-candle-sdk" title="Link to this heading">#</a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<p>For running CANdle-SDK as a <strong>configuration package</strong> (candletool), the following prerequisites must be met:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Linux based OS (Ubuntu 24.04 or higher recommended) or Windows 10/11</p></li>
+<li><p>For linux glibc 2.38 or higher</p></li>
+<li><p>libusb 1.0.23 or higher</p></li>
+</ul>
+</div></blockquote>
+<p>Additionally for <strong>building your own applications</strong> with CANdle-SDK in C++, the following prerequisites must be met:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A C++20 compatible compiler (GCC 13 or higher or MinGW-w64 on Windows)</p></li>
+<li><p>CMake 3.25 or higher</p></li>
+<li><p>libusb-dev package 1.0.23 or higher</p></li>
+</ul>
+</div></blockquote>
+<p>Additionally, for <strong>Python applications</strong>, the following prerequisites must be met:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Python 3.12 or higher (glibc or mingw-w64 compatible)</p></li>
+</ul>
+</div></blockquote>
+<p>To communicate with MDxx or PDS devices, you will need to purchase a CAN interface device from MAB Robotics, such as CANdle or CANdle-HAT. You can find them <a class="reference external" href="https://www.mabrobotics.pl/product-page/candle">here</a>.</p>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<p>You can always find the latest installation instructions in the <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK">CANdle-SDK repository</a> readme file.</p>
+<p>Connect the CANdle device to your computer via USB-C cable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Windows users running the candletool for the first time it is required to run the <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/candletool/tools/candlesdk-win-driver.exe">candlesdk-win-driver.exe</a> installer as administrator with CANdle device connected to the computer. This step is not required for subsequent runs of candletool.</p>
+</div>
+</section>
+<section id="first-steps">
+<h3>First Steps<a class="headerlink" href="#first-steps" title="Link to this heading">#</a></h3>
+<p>After installing the CANdle-SDK, you can start by running the candletool application to configure and test your MD-based actuators. You can find the detailed instructions on how to use candletool in the <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/tree/main/candletool">candletool directory readme file</a>.</p>
+<p>To test if the candletool installed correctly try running <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">--version</span></code> and with a candle connected <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">candle</span> <span class="pre">version</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To get detailed information on usage you can run each <code class="docutils literal notranslate"><span class="pre">candletool</span></code> command with <code class="docutils literal notranslate"><span class="pre">-h</span></code> flag to display help.</p>
+</div>
+</section>
+</section>
+<section id="with-md">
+<h2>With MD<a class="headerlink" href="#with-md" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Prerequisites<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>To get started with MAB Driver (MD) systems you will need the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MDxx or MAB pre-assembled drive</p></li>
+<li><p>&gt; 25W 24V capable power supply</p></li>
+<li><p>CANdle or CANdle HAT</p></li>
+<li><p>Installed candletool</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Installation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Connect the MD with the power supply and CANdle class device according to the documentation provided in the MD section using cabeling that was sent by MAB along with the driver.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Connection details can be found in the <a class="reference internal" href="../intro.html#hardware-setup"><span class="std std-ref">hardware setup section</span></a>.</p>
+<p>For connecting the MD to your BLDC motor checkout the correct MD section of the document for driver specific soldering connections and magnet placement. <a class="reference internal" href="../MD/MD80.html#md80"><span class="std std-ref">MD80</span></a> <a class="reference internal" href="../MD/MD20.html#md20"><span class="std std-ref">MD20</span></a></p>
+</div>
+<p>When the cabeling is connected turn the power on. The green LED on top of the board should be light on and the green LED should flash periodically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Red LED on the bottom indicates an error in board operation and is normal for unconfigured drives. You can use <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">--id</span> <span class="pre">'id'</span> <span class="pre">info</span></code> for more details on the errors present.</p>
+<p>When both red and green LEDs flash rapidly it means the board is in its bootloader phase. This is normal for the first few seconds of operation but if it does not stop it means that the firmware is corrupted and needs to be recovered via <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">--id</span> <span class="pre">'id'</span> <span class="pre">update</span> <span class="pre">latest</span> <span class="pre">-r</span></code> where <code class="docutils literal notranslate"><span class="pre">-r</span></code> is a recovery flag.</p>
+</div>
+<p>When the power is on make sure that the CAN line is properly terminated. CANdle class devices have a switch that enables/disables internal 120 Ohm termination resistor. On the other end of CAN chain there should either be a resistor plugin provided by MAB or PDS control board CAN input which has a CAN termination builtin.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rest of this section will not work for the CANopen protocol. Currently only FDCAN MAB protocol is supported by the CANdle devices. The drives should be configured in accordance of CiA 402 specification which is not provided by MAB. The .eds files can be found in the <a class="reference internal" href="../Downloads/intro.html#downloads"><span class="std std-ref">Downloads</span></a> section.</p>
+</div>
+<p>To make sure that the installation process went correctly please try running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>discover
+</pre></div>
+</div>
+<p>and see if the drive responds with its ID on the network.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For troubleshooting please checkout the <a class="reference internal" href="../FAQ/intro.html#faq"><span class="std std-ref">FAQ</span></a> section of this document.</p>
+</div>
+</section>
+<section id="id3">
+<h3>First Steps<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="for-the-preassembled-drive">
+<h4>For the preassembled drive<a class="headerlink" href="#for-the-preassembled-drive" title="Link to this heading">#</a></h4>
+<p>The MAB motors with MDxx preassembled into them come preconfigured. Their <strong>CAN ID</strong> is set to the <strong>last 3 digits of the warranty sticker</strong> in case of FDCAN MAB protocol and <strong>10</strong> node ID in case of CANopen protocol.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although MAB motors are preconfigured, they still need their PID controllers adjusted for their final operation. Head to <a class="reference internal" href="../md_x_candle_ecosystem_overview/Motion%20modes.html#motion-modes"><span class="std std-ref">motion modes</span></a> section to learn more.</p>
+</div>
+<p>To checkout the configuration of your motor run the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>info
+</pre></div>
+</div>
+<p>If there are no errors present you should be able to test the drives movement using this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>relative<span class="w"> </span><span class="s1">&#39;angle in radians from -10.0 to 10.0&#39;</span>
+</pre></div>
+</div>
+<p>The motor should than move using <a class="reference internal" href="../MD/motion.html#impedance-pd"><span class="std std-ref">impedance control mode</span></a>.</p>
+</section>
+<section id="for-the-standalone-mdxx">
+<h4>For the standalone MDxx<a class="headerlink" href="#for-the-standalone-mdxx" title="Link to this heading">#</a></h4>
+<p>The standalone MDxx procedure comes in a form of a configuration and calibration steps.</p>
+<p>Standalone MDs that use FDCAN protocol always come with <strong>CAN ID</strong> set to <strong>100</strong>.</p>
+<p>In order to configure the driver we need a configuration file for this particular model. Some of the motors have MAB provided configuration files which can be used as a reference in creating your own. They can be found in the installation directory of candletool. For windows <code class="docutils literal notranslate"><span class="pre">C://Program</span> <span class="pre">Files/candletool/config/motors/</span></code> and for Linux <code class="docutils literal notranslate"><span class="pre">/etc/candletool/config/motors</span></code>. They are not meant to be modified so it is best to copy the one you need into your working directory and use that copy.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more details on configuring your own drive see <a class="reference internal" href="../MD/config_calibration.html#config"><span class="std std-ref">configuration file description</span></a> and <a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html#config-md"><span class="std std-ref">configuration files in CANdle-SDK</span></a>.</p>
+</div>
+<p>When you either created your own config or chosen config file made by MAB you need to run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="m">100</span><span class="w"> </span>config<span class="w"> </span>upload<span class="w"> </span><span class="s1">&#39;path to your configuration file or name of the premade config like AK60-6.cfg&#39;</span>
+</pre></div>
+</div>
+<p>You can verify your config by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="m">100</span><span class="w"> </span>info
+</pre></div>
+</div>
+<p>In the output there should be no CONFIGURATION_ERROR and the values provided from the driver should match your configuration.</p>
+<p>Next step is to calibrate the motor. This can be done via this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="m">100</span><span class="w"> </span>calibrate
+</pre></div>
+</div>
+<p>The prompt will provide the information on power requirements and await confirmation. Once the calibration is done all of the errors should be gone and the driver should be ready to work.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more in depth explanation of calibration procedure head to <a class="reference internal" href="../MD/config_calibration.html#calibration"><span class="std std-ref">calibration section</span></a></p>
+</div>
+<p>Run test to verify that the driver is able to operate:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>relative<span class="w"> </span><span class="s1">&#39;angle in radians from -10.0 to 10.0&#39;</span>
+</pre></div>
+</div>
+<p>Once it is verified you can than change your drive id to be able to connect it to the CAN network in chain. The valid ids range from 9 to 1999. You can change it using this command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="m">100</span><span class="w"> </span>can<span class="w"> </span>--new_id<span class="w"> </span><span class="s1">&#39;new id&#39;</span>
+</pre></div>
+</div>
+<p>Than you can run save command to make the new id permanent</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;new id&#39;</span><span class="w"> </span>save
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more commands see <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#md-commands"><span class="std std-ref">candletool commands section</span></a></p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Deprecated video tutorials</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Tutorials listed here are old and some of the things might not work but they still can give you a concept of how the system should operate. Full video tutorials will come soon.</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">Guide on how to set up a new MD series motor controller to work with a motor of your choice:
+<a class="reference external" href="https://www.youtube.com/watch?v=74zTUlJ2hmo&amp;amp;list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&amp;amp;index=5">MD x CANdle - Brushless Motor Setup Guide</a></p></li>
+<li><p class="sd-card-text">Quick startup guide - watch when your motor is already configured and you’d like to try the
+examples:
+<a class="reference external" href="https://www.youtube.com/watch?v=bIZuhFpFtus&amp;amp;list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&amp;amp;index=1">MD x CANdle - Getting Started Tutorial</a></p></li>
+<li><p class="sd-card-text">MDtool guide - a short introduction to MDtool and its basic commands (at this point the MDtool
+has evolved, however, the main principles are the same)
+<a class="reference external" href="https://www.youtube.com/watch?v=BrojxsU8oD8&amp;amp;list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&amp;amp;index=2">MD x CANdle - MDtool</a></p></li>
+<li><p class="sd-card-text">Motion modes guide - an introduction to motion modes available on MD series motor controller
+<a class="reference external" href="https://www.youtube.com/watch?v=XnD8sG22zro&amp;amp;list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&amp;amp;index=3">MD x CANdle - motion modes</a></p></li>
+<li><p class="sd-card-text">ROS/ROS2 startup guide - an introduction to ROS/ROS2 drivers for MD series motor controller
+<a class="reference external" href="https://www.youtube.com/watch?v=6sLQNaJKuJY&amp;amp;list=PLYKmGVZotGRoMR8eV5AuC2XP_qJsL6Bu6&amp;amp;index=4">MD x CANdle - ROS/ROS2 startup guide</a></p></li>
+</ol>
+</div>
+</details></section>
+</section>
+</section>
+<section id="with-pds">
+<h2>With PDS<a class="headerlink" href="#with-pds" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>Prerequisites<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Assembled PDS stack</p></li>
+<li><p>&gt; 25W 24V capable power supply</p></li>
+<li><p>CANdle or CANdle HAT</p></li>
+<li><p>Installed candletool</p></li>
+<li><p>PDS accessories provided by MAB</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>Installation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>PDS is a modular system that requires different assemblies depending on the modules present in the stack.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For more details on how to assemble the PDS you are using please head to the <a class="reference internal" href="../PDS/overview.html#pds-overview"><span class="std std-ref">PDS overview section</span></a>.</p>
+</div>
+<p>Following sections describe connections for each of the modules:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../PDS/control_board.html#pds-ctrl"><span class="std std-ref">Control module (CTRL)</span></a></p></li>
+<li><p><a class="reference internal" href="../PDS/power_stage.html#pds-ps"><span class="std std-ref">Power stage module (PS)</span></a></p></li>
+<li><p><a class="reference internal" href="../PDS/isolated_converter.html#pds-ic"><span class="std std-ref">Isolated converted module (IC)</span></a></p></li>
+<li><p><a class="reference internal" href="../PDS/brake_resistor.html#pds-br"><span class="std std-ref">Brake resistor module (BR)</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a></p>
+</div>
+<p>When the PDS has all the connections done turn on the powersupply and hold the power button for 4 seconds. It should light green and stay lit. Than and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>discover
+</pre></div>
+</div>
+<p>In the command output the connected PDS’s id should be present.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#pds-commands"><span class="std std-ref">PDS CLI</span></a></p>
+</div>
+</section>
+<section id="id6">
+<h3>First Steps<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Below you can find the basic functionalities presentation for your particular module.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>All modules aside from CTRL can have different sockets they are connected to. When running module specific commands it is required to provide the socket number of the module. More info on that can be found inside <a href = ../docs/pds_guide_1.0.pdf>PDS User Manual</a>.</p>
+</div>
+<section id="ctrl-module">
+<h4>CTRL module<a class="headerlink" href="#ctrl-module" title="Link to this heading">#</a></h4>
+<p>Run the command bellow for basic status of the module</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>info
+</pre></div>
+</div>
+</section>
+<section id="ic-module">
+<h4>IC module<a class="headerlink" href="#ic-module" title="Link to this heading">#</a></h4>
+<p>Run the command bellow for basic status of the module</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>ic<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span>info
+</pre></div>
+</div>
+<p>To enable power on the isolated converter’s output use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>ic<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span><span class="nb">enable</span>
+</pre></div>
+</div>
+<p>To disable power on the isolated converter’s output use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>ic<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span>disable
+</pre></div>
+</div>
+</section>
+<section id="ps-module">
+<h4>PS module<a class="headerlink" href="#ps-module" title="Link to this heading">#</a></h4>
+<p>Run the command bellow for basic status of the module</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>ps<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span>info
+</pre></div>
+</div>
+<p>To enable power on power stage outputs use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>ps<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span><span class="nb">enable</span>
+</pre></div>
+</div>
+<p>To disable power on the power stage outputs use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>ps<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span>disable
+</pre></div>
+</div>
+</section>
+<section id="br-module">
+<h4>BR module<a class="headerlink" href="#br-module" title="Link to this heading">#</a></h4>
+<p>Run the command bellow for basic status of the module</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>br<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span>info
+</pre></div>
+</div>
+<p>To check at what temperature the BR module will shutdown use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>pds<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>br<span class="w"> </span><span class="s1">&#39;socket id&#39;</span><span class="w"> </span>get_temp_limit
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./GettingStarted"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MAB Ecosystem</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../MD/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MD</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notes">Important Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-candle-sdk">With CANdle-SDK</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-md">With MD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-preassembled-drive">For the preassembled drive</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-standalone-mdxx">For the standalone MDxx</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pds">With PDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ctrl-module">CTRL module</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ic-module">IC module</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ps-module">PS module</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#br-module">BR module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

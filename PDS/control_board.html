@@ -181,6 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
@@ -523,75 +524,49 @@ diodes,</p></li>
 <li><p>tracking temperature across the system,</p></li>
 <li><p>managing Safe Turn Off (STO) inputs ensures safe operation in critical situations.</p></li>
 </ul>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    table-layout: auto;
-    min-width: 600px;
-    margin: 0 auto;
-  }
-
-  th, td {
-    padding: 10px;
-    font-size: 14px;
-  }
-</style>
-<table>
-  <tr>
-    <th> Parameter</th>
-    <th> Value</th>
-  </tr>
-  <tr>
-    <td> Input voltage</td>
-    <td> 12-54V</td>
-  </tr>
-  <tr>
-    <td> Max number of slave modules</td>
-    <td> 6</td>
-  </tr>
-  <tr>
-    <td> FDCAN Baudrate (adjustable)</td>
-    <td> 1/2/5/8 Mbps</td>
-  </tr>
-  <tr>
-    <td> Current consumption on standby (without slave modules)</td>
-    <td> 37.5 mA</td>
-  </tr>
-  <tr>
-    <td> The quiescent current in the shutdown</td>
-    <td> 11.63 uA</td>
-  </tr>
-  <tr>
-    <td> Mass</td>
-    <td> 36g</td>
-  </tr>
-  <tr>
-    <td> Ambient Temperature (Operating)</td>
-    <td> 0-40℃</td>
-  </tr>
-  <tr>
-    <td> Ambient Temperature (non-operating)</td>
-    <td> 0-60℃</td>
-  </tr>
-  <tr>
-    <td> Maximum Humidity (Operating)</td>
-    <td> up to 95%</td>
-  </tr>
-  <tr>
-    <td> Maximum Humidity (Non-Operating)</td>
-    <td> up to 95%</td>
-  </tr>
-  <tr>
-    <td> Altitude (Operating)</td>
-    <td> -400 m to 2000 m</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input voltage</p></td>
+<td><p>12–54 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max number of slave modules</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>FDCAN Baudrate (adjustable)</p></td>
+<td><p>1 / 2 / 5 / 8 Mbps</p></td>
+</tr>
+<tr class="row-odd"><td><p>Current consumption on standby (without slave modules)</p></td>
+<td><p>37.5 mA</p></td>
+</tr>
+<tr class="row-even"><td><p>Quiescent current in shutdown</p></td>
+<td><p>11.63 µA</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass</p></td>
+<td><p>36 g</p></td>
+</tr>
+<tr class="row-even"><td><p>Ambient Temperature (Operating)</p></td>
+<td><p>0–40 ℃</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ambient Temperature (Non-operating)</p></td>
+<td><p>0–60 ℃</p></td>
+</tr>
+<tr class="row-even"><td><p>Maximum Humidity (Operating)</p></td>
+<td><p>up to 95%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum Humidity (Non-operating)</p></td>
+<td><p>up to 95%</p></td>
+</tr>
+<tr class="row-even"><td><p>Altitude (Operating)</p></td>
+<td><p>–400 m to 2000 m</p></td>
+</tr>
+</tbody>
 </table>
-<br>
+</div>
 </section>
 <section id="ports-and-communication">
 <h2>Ports and communication<a class="headerlink" href="#ports-and-communication" title="Link to this heading">#</a></h2>
@@ -601,45 +576,41 @@ diodes,</p></li>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Control board with highlighted ports</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<br>
-<table>
-  <tr>
-    <th> Connector name</th>
-    <th> Included cable specification</th>
-    <th> Wiring details</th>
-  </tr>
-  <tr>
-    <td> SLAVE MODULES CONNECTORS</td>
-    <td> 10-pin Molex PicoBlade</td>
-    <td> Connect to each submodule</td>
-  </tr>
-  <tr>
-    <td> STO1/2</td>
-    <td> 2-pin Molex Microlock 1m</td>
-    <td> Connect normally closed switch to safe supply (12-30V).</td>
-  </tr>
-  <tr>
-    <td> FDCAN</td>
-    <td> 3-pin Molex Microlock 1m</td>
-    <td> Non-isolated FDCAN port for communication via CANdle or custom FDCAN.</td>
-  </tr>
-  <tr>
-    <td> CHARGER DETECTION</td>
-    <td> Optional</td>
-    <td> Port to detect charging. Connect to charging add-on module.</td>
-  </tr>
-  <tr>
-    <td> RS422</td>
-    <td> Optional</td>
-    <td> RS422 port with isolated power included on request.</td>
-  </tr>
-  <tr>
-    <td> RGB SWITCH</td>
-    <td> 6-pin Molex Microlock</td>
-    <td> RGB switch port. Switch enables PDS and indidates states.</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Connector Name</strong></p></th>
+<th class="head"><p><strong>Included Cable Specification</strong></p></th>
+<th class="head"><p><strong>Wiring Details</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SLAVE MODULES CONNECTORS</p></td>
+<td><p>10-pin Molex PicoBlade</p></td>
+<td><p>Connect to each submodule</p></td>
+</tr>
+<tr class="row-odd"><td><p>STO1/2</p></td>
+<td><p>2-pin Molex Microlock 1m</p></td>
+<td><p>Connect normally closed switch to safe supply (12–30V)</p></td>
+</tr>
+<tr class="row-even"><td><p>FDCAN</p></td>
+<td><p>3-pin Molex Microlock 1m</p></td>
+<td><p>Non-isolated FDCAN port for communication via CANdle or custom FDCAN</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHARGER DETECTION</p></td>
+<td><p>Optional</p></td>
+<td><p>Port to detect charging. Connect to charging add-on module</p></td>
+</tr>
+<tr class="row-even"><td><p>RS422</p></td>
+<td><p>Optional</p></td>
+<td><p>RS422 port with isolated power included on request</p></td>
+</tr>
+<tr class="row-odd"><td><p>RGB SWITCH</p></td>
+<td><p>6-pin Molex Microlock</p></td>
+<td><p>RGB switch port. Switch enables PDS and indicates states</p></td>
+</tr>
+</tbody>
 </table>
-<br>
+</div>
 <p>The CAN FD interface in the PDS is designed to provide essential telemetry data, including information
 on currents, voltages, and temperature, as well as to facilitate the configuration and control of the
 system. Its transceiver is non-isolated with split termination on board and operates up to 8-Mbps. In order to connect FDCAN with PDS system user needs to connect FDCAN directly to Control Board. Please take a look at examples of <a class="reference internal" href="communication.html#architecture"><span class="std std-ref">recommended architecture</span></a>.</p>
@@ -655,52 +626,55 @@ system. Its transceiver is non-isolated with split termination on board and oper
 </figcaption>
 </figure>
 <p>Truth table for STO1/2 logic:</p>
-<table>
-  <tr>
-    <th> STO1_FB</th>
-    <th> STO2_FB</th>
-    <th> ENABLE_X_MCU</th>
-    <th> STO_CONFIG_SWITCH</th>
-    <th> ENABLE_X_CONNECTOR MODULE ENABLE INPUT STATE</th>
-  </tr>
-  <tr>
-    <td> X</td>
-    <td> X</td>
-    <td> 0</td>
-    <td> X</td>
-    <td> 0</td>
-  </tr>
-  <tr>
-    <td> X</td>
-    <td> X</td>
-    <td> 1</td>
-    <td> 0</td>
-    <td> 1</td>
-  </tr>
-  <tr>
-    <td> 0</td>
-    <td> 0</td>
-    <td rowspan = "4"> 1</td>
-    <td rowspan = "4"> 1</td>
-    <td> 0</td>
-  </tr>
-  <tr>
-    <td> 1</td>
-    <td> 0</td>
-    <td> 0</td>
-  </tr>
-  <tr>
-    <td> 0</td>
-    <td> 1</td>
-    <td> 0</td>
-  </tr>
-  <tr>
-    <td> 1</td>
-    <td> 1</td>
-    <td> 1</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>STO1_FB</strong></p></th>
+<th class="head"><p><strong>STO2_FB</strong></p></th>
+<th class="head"><p><strong>ENABLE_X_MCU</strong></p></th>
+<th class="head"><p><strong>STO_CONFIG_SWITCH</strong></p></th>
+<th class="head"><p><strong>ENABLE_X_CONNECTOR MODULE ENABLE INPUT STATE</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>0</p></td>
+<td><p>X</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
 </table>
-<br>
+</div>
 <p>Summarizing:</p>
 <ol class="arabic simple">
 <li><p>If STO_CONFIG_SWITCH is in position 0, the ENABLE state set by MCU is passed directly to the
@@ -719,37 +693,34 @@ with the RGB diodes.</p>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">States and transitions on RGB switch</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<table>
-  <tr>
-    <th> State</th>
-    <th> Description</th>
-  </tr>
-  <tr>
-    <td> Shutdown</td>
-    <td> PDS is turned off with a quiescent current ~20uA.</td>
-  </tr>
-  <tr>
-    <td> Battery monitor</td>
-    <td> PDS shows the battery charge level with respect to the user-predefined voltage levels. In this state, all slave modules are turned off.</td>
-  </tr>
-  <tr>
-    <td> Charging</td>
-    <td> PDS slave modules are turned off. The CTRL module is enabled. The battery is charging. RGB button blinks slowly with color dependent on the battery voltage.</td>
-  </tr>
-  <tr>
-    <td> Operating</td>
-    <td> Normal operation. RGB switch indicates battery level same way as in battery monitor state. If the charger is connected the RGB switch additionally blinks slowly with BLUE/BAT_LEVEL color alternately.</td>
-  </tr>
-  <tr>
-    <td> STO</td>
-    <td> Device generally works as in operating state but RGB Led is indicating STO event by blinking RED / YELLOW.</td>
-  </tr>
-  <tr>
-    <td> Shutdown ongoing</td>
-    <td> All submodules except Isolated converters are disabled. RGB switch turns solid WHITE.</td>
-  </tr>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>State</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Shutdown</p></td>
+<td><p>PDS is turned off with a quiescent current of approximately 20 µA.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Battery monitor</p></td>
+<td><p>PDS shows the battery charge level with respect to the user-predefined voltage levels. In this state, all slave modules are turned off.</p></td>
+</tr>
+<tr class="row-even"><td><p>Charging</p></td>
+<td><p>PDS slave modules are turned off. The CTRL module is enabled. The battery is charging. RGB button blinks slowly with color dependent on the battery voltage.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operating</p></td>
+<td><p>Normal operation. RGB switch indicates battery level same way as in battery monitor state. If the charger is connected, the RGB switch additionally blinks slowly with BLUE/BAT_LEVEL color alternately.</p></td>
+</tr>
+<tr class="row-even"><td><p>STO</p></td>
+<td><p>Device generally works as in operating state but RGB LED indicates an STO event by blinking RED / YELLOW.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shutdown ongoing</p></td>
+<td><p>All submodules except isolated converters are disabled. RGB switch turns solid WHITE.</p></td>
+</tr>
+</tbody>
 </table>
-<br>
+</div>
 <p>Battery Level can be set in software using Candletool or CANdle-SDK using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setBatteryVoltageLevels</span><span class="p">(</span><span class="n">u32</span> <span class="n">batteryLvl1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">batteryLvl2</span><span class="p">)</span>
 </pre></div>

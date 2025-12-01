@@ -181,6 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MD20.html">MD20</a></li>
@@ -524,7 +525,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="configuration-and-calibration">
 <h1>Configuration and Calibration<a class="headerlink" href="#configuration-and-calibration" title="Link to this heading">#</a></h1>
 <section id="config">
-<h2>Config<a class="headerlink" href="#config" title="Link to this heading">#</a></h2>
+<span id="id1"></span><h2>Config<a class="headerlink" href="#config" title="Link to this heading">#</a></h2>
 <p>MD’s config allows for configuring the controller for a specific motor and the application it is
 used in. This section will cover the parameters that are used in config files.</p>
 <section id="motor-section">
@@ -606,7 +607,7 @@ script, or register access)</p>
 </section>
 </section>
 <section id="calibration">
-<h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading">#</a></h2>
 <p>Calibration should be performed when the MD controller is first mounted to the motor or when
 anything changes in the motor-controller assembly. It has three main stages during which specific
 parameters of the setup are measured and saved.</p>
@@ -676,13 +677,13 @@ off-axis encoder - it requires a full calibration routine.</p>
 <p>To run the routine, use the <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">calibration</span> <span class="pre">-e</span> <span class="pre">aux</span></code></span></a> command. after
 completing the routine the MD will reboot and after that it is recommended to run the candletool md
 setup info command in order to make sure the setup reports no errors:</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id3">
 <img alt="../_images/mdtool_setup_info_allok.png" src="../_images/mdtool_setup_info_allok.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">:alt: candle
 :class: bg-primary mb-1
 :align: center
-:class: no-scaled-link</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+:class: no-scaled-link</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The output encoder parameters are rather straightforward, except the “output encoder last check”

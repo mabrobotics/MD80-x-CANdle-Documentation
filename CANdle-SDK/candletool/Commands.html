@@ -181,6 +181,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted/GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../MD/MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../MD/MD20.html">MD20</a></li>
@@ -527,8 +528,8 @@ document.write(`
 <span id="candletool-commands"></span><h1>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h1>
 <p>CANdleTool CLI tree is build around each of devices provided by MAB. There it is split into actions
 that can be performed. Most of the commands are described below.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>Some commands are not listed in this document. You can explore all of the commands in the branch by issuing <code class="docutils literal notranslate"><span class="pre">-h</span></code> flag.</p>
 </div>
 <section id="global-parameters">
@@ -547,7 +548,7 @@ that can be performed. Most of the commands are described below.</p>
 </section>
 </section>
 <section id="candletool-md">
-<h2><strong>candletool md …</strong><a class="headerlink" href="#candletool-md" title="Link to this heading">#</a></h2>
+<span id="md-commands"></span><h2><strong>candletool md …</strong><a class="headerlink" href="#candletool-md" title="Link to this heading">#</a></h2>
 <p>Branch of CLI dedicated for <a class="reference internal" href="../../MD/intro.html"><span class="doc std std-doc">MD</span></a> devices. Most of the commands use <code class="docutils literal notranslate"><span class="pre">--id</span></code> parameter to
 specify which MD drive to operate on.</p>
 <section id="blink">
@@ -617,7 +618,7 @@ positional absolute mode (position profile).</p>
 </section>
 </section>
 <section id="candletool-pds">
-<h2><strong>candletool pds …</strong><a class="headerlink" href="#candletool-pds" title="Link to this heading">#</a></h2>
+<span id="pds-commands"></span><h2><strong>candletool pds …</strong><a class="headerlink" href="#candletool-pds" title="Link to this heading">#</a></h2>
 <p>Branch of CLI dedicated for <a class="reference internal" href="../../PDS/intro.html#pds"><span class="std std-ref">PDS</span></a> device.</p>
 <p>When issuing <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span></code> command, the user can operate on the PDS device. All of the commands
 here are tied to the main PDS command module (CTRL).</p>
