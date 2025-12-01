@@ -77,4 +77,4 @@ md1.blink();
 md2.blink();
 ```
 
-Pleace look at [register table](../MD/Communication/fdcan.md#register-table) to find more details about registers and their types.
+Please look at [register table](../MD/Communication/fdcan.md#register-table) to find more details about registers and their types.
