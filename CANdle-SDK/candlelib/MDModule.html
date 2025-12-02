@@ -204,7 +204,6 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="../../MD/motor_integration.html">Motor Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -503,6 +502,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-channel">Dual Channel</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics">Diagnostics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-template">Integration Template</a></li>
 </ul>
 </li>
 </ul>
@@ -544,44 +544,13 @@ MD Module functionality is based around reading and writing registers efficientl
 <h3>Basic Setup<a class="headerlink" href="#basic-setup" title="Link to this heading">#</a></h3>
 <p>Basically every program using CANdlelib and MD has the following workflow:</p>
 <ol class="arabic simple">
-<li><p>Create CANdle object</p></li>
-<li><p>Create MD objects</p></li>
+<li><p>Create CANdle object connected to computer</p></li>
+<li><p>Create MD objects connected via CAN to CANdle</p></li>
 <li><p>Setup Motion Mode, Limits etc.</p></li>
 <li><p>Enable MD</p></li>
 <li><p>Enter a loop, with regular read/writes of registers.</p></li>
 <li><p>Disable MD, free CANdle</p></li>
 </ol>
-<p>Simple working example would look something like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;candle.hpp&quot;</span>
-<span class="c1">#include &quot;MD.hpp&quot;</span>
-
-<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">mab</span><span class="p">::</span><span class="n">Candle</span><span class="o">*</span> <span class="n">candle</span> <span class="o">=</span> <span class="n">mab</span><span class="p">::</span><span class="n">attachCandle</span><span class="p">(</span><span class="n">mab</span><span class="p">::</span><span class="n">CANdleBaudrate_E</span><span class="p">::</span><span class="n">CAN_BAUD_1M</span><span class="p">,</span> <span class="n">mab</span><span class="p">::</span><span class="n">candleTypes</span><span class="p">::</span><span class="n">busTypes_t</span><span class="p">::</span><span class="n">USB</span><span class="p">);</span>
-
-    <span class="n">mab</span><span class="p">::</span><span class="n">MD</span> <span class="n">md</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">candle</span><span class="p">);</span>    
-
-    <span class="n">md</span><span class="o">.</span><span class="n">setMotionMode</span><span class="p">(</span><span class="n">mab</span><span class="p">::</span><span class="n">MdMode_E</span><span class="p">::</span><span class="n">IMPEDANCE</span><span class="p">);</span>
-    <span class="n">md</span><span class="o">.</span><span class="n">setImpedanceParams</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">);</span>
-    <span class="n">md</span><span class="o">.</span><span class="n">setTargetVelocity</span><span class="p">(</span><span class="mf">3.0</span><span class="p">);</span>
-
-    <span class="n">md</span><span class="o">.</span><span class="n">enable</span><span class="p">();</span>
-
-    <span class="n">mab</span><span class="p">::</span><span class="n">MDRegisters_S</span> <span class="n">regs</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">u16</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">md</span><span class="o">.</span><span class="n">readRegisters</span><span class="p">(</span><span class="n">regs</span><span class="o">.</span><span class="n">mainEncoderPosition</span><span class="p">,</span> <span class="n">regs</span><span class="o">.</span><span class="n">mainEncoderVelocity</span><span class="p">);</span>
-        <span class="n">usleep</span><span class="p">(</span><span class="mi">100</span><span class="s1">&#39;000);</span>
-    <span class="p">}</span>
-    <span class="n">md</span><span class="o">.</span><span class="n">setTargetVelocity</span><span class="p">(</span><span class="mf">0.</span><span class="p">);</span>
-    <span class="n">usleep</span><span class="p">(</span><span class="mi">100</span><span class="s1">&#39;000);</span>
-
-    <span class="n">md</span><span class="o">.</span><span class="n">disable</span><span class="p">();</span>  
-    <span class="n">mab</span><span class="p">::</span><span class="n">detachCandle</span><span class="p">(</span><span class="n">candle</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 </section>
 </section>
 <section id="code-examples">
@@ -606,6 +575,14 @@ needed for latency improvements over CAN).</p>
 <h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/md_example_diagnostics.cpp">Diagnostics</a><a class="headerlink" href="#diagnostics" title="Link to this heading">#</a></h3>
 <p>This example shows how to read arbitrary registers during MD operation. List of available registers
 can be found <a class="reference internal" href="../../MD/Communication/fdcan.html#registers"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="integration-template">
+<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/app_template.cpp">Integration Template</a><a class="headerlink" href="#integration-template" title="Link to this heading">#</a></h3>
+<p>This template can be used to quickly integrate CANdlelib and MAB devices into your own project.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can comment out unnecessary parts if you don’t need all the features like PDS integration.</p>
+</div>
 </section>
 </section>
 </section>
@@ -683,6 +660,7 @@ can be found <a class="reference internal" href="../../MD/Communication/fdcan.ht
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-channel">Dual Channel</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics">Diagnostics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-template">Integration Template</a></li>
 </ul>
 </li>
 </ul>
