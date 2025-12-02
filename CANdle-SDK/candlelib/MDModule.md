@@ -30,45 +30,12 @@ MD Module functionality is based around reading and writing registers efficientl
 
 Basically every program using CANdlelib and MD has the following workflow:
 
-1. Create CANdle object
-1. Create MD objects
+1. Create CANdle object connected to computer
+1. Create MD objects connected via CAN to CANdle
 1. Setup Motion Mode, Limits etc.
 1. Enable MD
 1. Enter a loop, with regular read/writes of registers.
 1. Disable MD, free CANdle
-
-Simple working example would look something like this:
-
-```
-#include "candle.hpp"
-#include "MD.hpp"
-
-int main()
-{
-    mab::Candle* candle = mab::attachCandle(mab::CANdleBaudrate_E::CAN_BAUD_1M, mab::candleTypes::busTypes_t::USB);
-
-    mab::MD md(100, candle);    
-
-    md.setMotionMode(mab::MdMode_E::IMPEDANCE);
-    md.setImpedanceParams(0., 1.);
-    md.setTargetVelocity(3.0);
-
-    md.enable();
-
-    mab::MDRegisters_S regs;
-    for (u16 i = 0; i < 100; i++)
-    {
-        md.readRegisters(regs.mainEncoderPosition, regs.mainEncoderVelocity);
-        usleep(100'000);
-    }
-    md.setTargetVelocity(0.);
-    usleep(100'000);
-
-    md.disable();  
-    mab::detachCandle(candle);
-    return EXIT_SUCCESS;
-}
-```
 
 ## Code Examples
 
@@ -93,3 +60,11 @@ It also show how to manually connect the bus interface to CANdle.
 
 This example shows how to read arbitrary registers during MD operation. List of available registers
 can be found [here](registers).
+
+### [Integration Template](https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/app_template.cpp)
+
+This template can be used to quickly integrate CANdlelib and MAB devices into your own project. 
+
+```{tip}
+You can comment out unnecessary parts if you don't need all the features like PDS integration.
+```
