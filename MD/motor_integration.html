@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CANdleduino &#8212; MAB Ecosystem</title>
+    <title>Motor Integration &#8212; MAB Ecosystem</title>
   
   
   
@@ -59,12 +59,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'CANdleduino/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/motor_integration';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Common Issues and FAQ" href="../FAQ/intro.html" />
-    <link rel="prev" title="Brake Resistor Module" href="../CANdle_ROS2/pds-node/modules/br.html" />
+    <link rel="next" title="PDS - Power Distribution System" href="../PDS/intro.html" />
+    <link rel="prev" title="PDO Overview" href="Communication/canopen_pdo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,29 +182,29 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/MD80HV.html">MD80 60V</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/encoders.html">Encoders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/brakes.html">Brakes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/measurements.html">Measurements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/safety.html">Safety</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/motion.html">Motion Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/status_utility.html">Status &amp; Utilities</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../MD/Communication/fdcan.html">MD Protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_od.html">Object Dictionary</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_od.html">Object Dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_nmt.html">NMT Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_sdo.html">SDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_pdo.html">PDO Overview</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/motor_integration.html">Motor Integration</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Motor Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -242,7 +242,7 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Software - Arduino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../candlelib/intro.html">Software - mdtool [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -370,7 +370,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FCANdleduino/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/motor_integration.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -400,7 +400,7 @@
       
       
       
-      <li><a href="../_sources/CANdleduino/intro.md" target="_blank"
+      <li><a href="../_sources/MD/motor_integration.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -484,7 +484,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CANdleduino</h1>
+    <h1>Motor Integration</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -494,8 +494,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionalities">Functionalities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md80-devices">MD80 devices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md20-devices">MD20 devices</a></li>
 </ul>
             </nav>
         </div>
@@ -507,78 +507,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="candleduino">
-<h1>CANdleduino<a class="headerlink" href="#candleduino" title="Link to this heading">#</a></h1>
-<p>Library for communication with drives for Arduino (AVR and Renesas) and Teensy &gt;4.0.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>AVR based Arduino boards don’t support native CAN, therefore Candleduino supports MCP2515 via SPI.</p>
-</div>
-<p>It can be included into a project via header-file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;Candleduino.hpp&quot;</span>
-</pre></div>
-</div>
-<section id="functionalities">
-<h2>Functionalities<a class="headerlink" href="#functionalities" title="Link to this heading">#</a></h2>
-<p>Main features of MD module include:</p>
-<ul class="simple">
-<li><p>Creating MDs assigned to instance with unique IDs</p></li>
-<li><p>Managing internal registers of MDs</p></li>
-<li><p>Provides helper functions for managing MDs, for example: <code class="docutils literal notranslate"><span class="pre">getPosition()</span></code>, <code class="docutils literal notranslate"><span class="pre">zero()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">setTargetPosition()</span></code></p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="motor-integration">
+<span id="id1"></span><h1>Motor Integration<a class="headerlink" href="#motor-integration" title="Link to this heading">#</a></h1>
+<section id="md80-devices">
+<h2>MD80 devices<a class="headerlink" href="#md80-devices" title="Link to this heading">#</a></h2>
 </section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c1">//ID of the MD drive</span>
-
-<span class="n">MD</span><span class="w"> </span><span class="nf">md</span><span class="p">(</span><span class="n">ID</span><span class="p">);</span><span class="w"> </span>
-<span class="c1">// MD md(ID, CS_PIN); for custom CS_PIN (Arduino AVR and MCP2515), default is 9</span>
-
-<span class="c1">// FlexCAN_T4FD&lt;CAN3, RX_SIZE_256, TX_SIZE_16&gt; CANbus; //CANFD</span>
-<span class="c1">//or</span>
-<span class="c1">// FlexCAN_T4&lt;CAN3, RX_SIZE_256, TX_SIZE_16&gt; CANbus; //CAN2.0</span>
-<span class="c1">// MD md(ID, &amp;CANbus); for Teensy</span>
-
-<span class="n">md</span><span class="p">.</span><span class="n">init</span><span class="p">();</span><span class="w"> </span><span class="c1">//initialize MD object</span>
-</pre></div>
-</div>
-<p>For basic communication there are predefined commands like:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">md</span><span class="p">.</span><span class="n">blink</span><span class="p">();</span>
-
-<span class="n">md</span><span class="p">.</span><span class="n">getMosfetTemperature</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temperature</span><span class="p">);</span>
-
-<span class="n">md</span><span class="p">.</span><span class="n">setPositionPIDparam</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">kp</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">ki</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">kd</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">integralMax</span><span class="p">);</span>
-
-<span class="p">...</span>
-</pre></div>
-</div>
-<p>For other registers it is recommended to use:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">readRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MD</span><span class="o">::</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">registerData</span><span class="p">)</span>
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">writeRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MD</span><span class="o">::</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registerData</span><span class="p">)</span>
-
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">readRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">registerData</span><span class="p">)</span>
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">writeRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">registerData</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Or CANFD only use readRegisters or writeRegisters for multiple data frame</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">readRegisters</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MD</span><span class="o">::</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registerData</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">writeRegisters</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MD</span><span class="o">::</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registerData</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
-</pre></div>
-</div>
-<p>For multiple MD drives user can create multiple MD object with unique ID’s.</p>
-<p>Example:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MD</span><span class="w"> </span><span class="nf">md1</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="n">MD</span><span class="w"> </span><span class="nf">md2</span><span class="p">(</span><span class="mi">120</span><span class="p">);</span>
-
-<span class="n">md1</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-<span class="n">md2</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
-
-<span class="n">md1</span><span class="p">.</span><span class="n">blink</span><span class="p">();</span>
-<span class="n">md2</span><span class="p">.</span><span class="n">blink</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>Please look at <a class="reference internal" href="../MD/Communication/fdcan.html#register-table"><span class="std std-ref">register table</span></a> to find more details about registers and their types.</p>
+<section id="md20-devices">
+<h2>MD20 devices<a class="headerlink" href="#md20-devices" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -595,7 +530,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./CANdleduino"
+            path: "./MD"
         },
         predefinedOutput: true
     }
@@ -613,20 +548,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../CANdle_ROS2/pds-node/modules/br.html"
+       href="Communication/canopen_pdo.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Brake Resistor Module</p>
+        <p class="prev-next-title">PDO Overview</p>
       </div>
     </a>
     <a class="right-next"
-       href="../FAQ/intro.html"
+       href="../PDS/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Common Issues and FAQ</p>
+        <p class="prev-next-title">PDS - Power Distribution System</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -646,8 +581,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionalities">Functionalities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md80-devices">MD80 devices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md20-devices">MD20 devices</a></li>
 </ul>
   </nav></div>
 

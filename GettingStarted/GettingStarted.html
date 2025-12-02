@@ -204,6 +204,7 @@
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/motor_integration.html">Motor Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -501,9 +502,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-md">With MD</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">First Steps</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-preassembled-drive">For the preassembled drive</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-standalone-mdxx">For the standalone MDxx</a></li>
 </ul>
@@ -511,9 +512,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pds">With PDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">First Steps</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ctrl-module">CTRL module</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ic-module">IC module</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ps-module">PS module</a></li>
@@ -534,7 +535,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
 <section id="important-notes">
 <h2>Important Notes<a class="headerlink" href="#important-notes" title="Link to this heading">#</a></h2>
 <p>Before you start working with the MAB ecosystem, here are some key precautions to keep in mind:</p>
@@ -598,8 +599,8 @@ document.write(`
 </section>
 <section id="with-md">
 <h2>With MD<a class="headerlink" href="#with-md" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Prerequisites<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Prerequisites<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>To get started with MAB Driver (MD) systems you will need the following:</p>
 <blockquote>
 <div><ul class="simple">
@@ -610,13 +611,13 @@ document.write(`
 </ul>
 </div></blockquote>
 </section>
-<section id="id2">
-<h3>Installation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>Installation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Connect the MD with the power supply and CANdle class device according to the documentation provided in the MD section using cabeling that was sent by MAB along with the driver.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Connection details can be found in the <a class="reference internal" href="../intro.html#hardware-setup"><span class="std std-ref">hardware setup section</span></a>.</p>
-<p>For connecting the MD to your BLDC motor checkout the correct MD section of the document for driver specific soldering connections and magnet placement. <a class="reference internal" href="../MD/MD80.html#md80"><span class="std std-ref">MD80</span></a> <a class="reference internal" href="../MD/MD20.html#md20"><span class="std std-ref">MD20</span></a></p>
+<p>For connecting the MD to your BLDC motor checkout the correct MD section of the document for driver specific soldering connections and magnet placement. <a class="reference internal" href="../MD/MD80.html#md80-mechanical-data"><span class="std std-ref">MD80</span></a> <a class="reference internal" href="../MD/MD20.html#md20-mechanical-data"><span class="std std-ref">MD20</span></a></p>
 </div>
 <p>When the cabeling is connected turn the power on. The green LED on top of the board should be light on and the green LED should flash periodically.</p>
 <div class="admonition note">
@@ -639,8 +640,8 @@ document.write(`
 <p>For troubleshooting please checkout the <a class="reference internal" href="../FAQ/intro.html#faq"><span class="std std-ref">FAQ</span></a> section of this document.</p>
 </div>
 </section>
-<section id="id3">
-<h3>First Steps<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>First Steps<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <section id="for-the-preassembled-drive">
 <h4>For the preassembled drive<a class="headerlink" href="#for-the-preassembled-drive" title="Link to this heading">#</a></h4>
 <p>The MAB motors with MDxx preassembled into them come preconfigured. Their <strong>CAN ID</strong> is set to the <strong>last 3 digits of the warranty sticker</strong> in case of FDCAN MAB protocol and <strong>10</strong> node ID in case of CANopen protocol.</p>
@@ -725,8 +726,8 @@ has evolved, however, the main principles are the same)
 </section>
 <section id="with-pds">
 <h2>With PDS<a class="headerlink" href="#with-pds" title="Link to this heading">#</a></h2>
-<section id="id4">
-<h3>Prerequisites<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>Prerequisites<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Assembled PDS stack</p></li>
@@ -737,8 +738,8 @@ has evolved, however, the main principles are the same)
 </ul>
 </div></blockquote>
 </section>
-<section id="id5">
-<h3>Installation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>Installation<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>PDS is a modular system that requires different assemblies depending on the modules present in the stack.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -767,8 +768,8 @@ has evolved, however, the main principles are the same)
 <p><a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#pds-commands"><span class="std std-ref">PDS CLI</span></a></p>
 </div>
 </section>
-<section id="id6">
-<h3>First Steps<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3>First Steps<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>Below you can find the basic functionalities presentation for your particular module.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -898,9 +899,9 @@ has evolved, however, the main principles are the same)
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-md">With MD</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">First Steps</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-preassembled-drive">For the preassembled drive</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-the-standalone-mdxx">For the standalone MDxx</a></li>
 </ul>
@@ -908,9 +909,9 @@ has evolved, however, the main principles are the same)
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pds">With PDS</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">First Steps</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ctrl-module">CTRL module</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ic-module">IC module</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ps-module">PS module</a></li>

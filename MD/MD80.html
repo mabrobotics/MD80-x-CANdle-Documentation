@@ -204,6 +204,7 @@
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="motor_integration.html">Motor Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -494,6 +495,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-integration">Mechanical integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermistor-connection">Thermistor connection</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-connectors">Aux connectors</a></li>
@@ -631,6 +633,63 @@ connection of many drives in a single control network.</p>
 </details><figure class="align-center">
 <img alt="mount_cross_section" class="no-scaled-link" src="../_images/mount_cross_section.png" />
 </figure>
+</section>
+<section id="mechanical-integration">
+<span id="md80-mechanical-data"></span><h2>Mechanical integration<a class="headerlink" href="#mechanical-integration" title="Link to this heading">#</a></h2>
+<p>Candletool can be used to set up a new motor to work with the MD series motor controller controller. More information on that can be found in <a class="reference internal" href="../GettingStarted/GettingStarted.html#getting-started"><span class="std std-ref">Getting Started</span></a> section.</p>
+<ul class="simple">
+<li><p>First, make sure the MD controller can work with your motor. A vast majority of hobby motors will
+be suitable, although too big motors in terms of power and gimbal motors ( with high phase
+resistance) might not work as expected. Be sure to contact us before you proceed with a gimbal or
+high-power motor (over 500W peak power).</p></li>
+<li><p>Place the
+<a class="reference external" href="https://www.mabrobotics.pl/product-page/encoder-on-axis-magnet">diametrically magnetized magnet</a> on the
+motor shaft and mount the MD controller firmly, centered above the magnet.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<img alt="candle" class="no-scaled-link" src="../_images/magnet_encoder_asm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Magnet - encoder placement cross section</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The optimal height between the magnet and the encoder IC is 1mm. The magnet and the encoder must be
+on the same rotation axis.</p>
+<p>MD80 V3.0 is equipped with seven mounting holes. Please refer to the technical drawing above to find
+out the hole dimensions and their placement. The 3D model of the driver can be found in the
+<a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=drive_link">3D models</a> gdrive directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always make sure the head of the screw is inside the white hole outline. Otherwise, it may cause permanent damage to the controller when a short circuit occurs between the head screw and any of the copper planes. Using M2.5 DIN912 stainless socket screws is recommended.</p>
+</div>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../_images/screw_placement.png" />
+</figure>
+<ul class="simple">
+<li><p>Solder the motor wires to the PCB making sure all the individual motor wires within a single phase
+are connected (in case the motor is wound with more than one wire on each phase). It is possible
+to solder the motor from the bottom, however, soldering the wires on the top is also acceptable.
+Make sure that the phase wires are connected only to their respective pads.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The order of the cables does not matter (does not change the rotation direction) as long as the order is not changed after the calibration. Each modification in wire order should be followed by a full motor calibration.</p>
+</div>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../_images/soldering.jpg" />
+</figure>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Sometimes soldering may be difficult due to the high-temperature enamel on the copper wires. In that case, try to apply solder at high temperatures using flux until the solder sticks to all wires nicely.</p>
+</div>
+<ul class="simple">
+<li><p>Connect the power supply to the controller through the CANdle device. When powered the controller should blink shortly with a
+green LED once a second. If the red LED is fully on there are some errors that should be cleared
+after the calibration.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always make sure that the polarity of the power supply is correct. MD controllers do not have reverse polarity protection so connecting the power supply in reverse polarity will cause permanent damage to the controller.</p>
+</div>
 </section>
 <section id="connectors-pinout">
 <h2>Connectors pinout<a class="headerlink" href="#connectors-pinout" title="Link to this heading">#</a></h2>
@@ -829,6 +888,7 @@ directly below the MOSFETs.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-integration">Mechanical integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermistor-connection">Thermistor connection</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-connectors">Aux connectors</a></li>
