@@ -5,135 +5,136 @@ format: jb-book
 root: intro
 
 chapters:
-- file: GettingStarted/GettingStarted.md
-  title: Getting Started
-- file: MD/intro
-  title: MD - Motor Controllers
-  sections:
-    - file: MD/MD80
-      title: MD80
-    - file: MD/MD20
-      title: MD20
-    - file: MD/MD80HV
-      title: MD80 60V
-    - file: MD/encoders
-      title: Encoders
-    - file: MD/brakes
-      title: Brakes
-    - file: MD/measurements
-      title: Measurements
-    - file: MD/safety
-      title: Safety
-    - file: MD/motion
-      title: Motion Control
-    - file: MD/config_calibration
-      title: Configuration & Calibration
-    - file: MD/status_utility
-      title: Status & Utilities
-    - file: MD/Communication/intro
-      title: CAN Communication
-      sections:
-       - file: MD/Communication/fdcan
-         title: MD Protocol 
-       - file: MD/Communication/canopen
-         title: CANOpen
-         sections:
-          - file: MD/Communication/canopen_od
-          - file: MD/Communication/canopen_nmt
-          - file: MD/Communication/canopen_sdo
-          - file: MD/Communication/canopen_pdo
-- file: PDS/intro
-  title: PDS - Power Distribution System
-  sections:
-    - file: PDS/overview
-      title: Overview
-    - file: PDS/control_board
-      title: Control Board
-    - file: PDS/power_stage
-      title: Power Stage
-    - file: PDS/isolated_converter
-      title: Isolated Converter
-    - file: PDS/brake_resistor
-      title: Brake Resistor
-    - file: PDS/communication
-      title: FDCAN Communication 
-- file: CANdle/intro.md
-  title: CANdle and CANdleHAT
-- file: CANdle-SDK/intro.md
-  title: Software - CANdle-SDK
-  sections:
-    - file: CANdle-SDK/CANdlelib
-      sections:
-       - file: CANdle-SDK/candlelib/CANdleModule
-       - file: CANdle-SDK/candlelib/MDModule
-       - file: CANdle-SDK/candlelib/PDSModule
-    - file: CANdle-SDK/CANdleTool
-      sections:
-        - file: CANdle-SDK/candletool/Commands
-        - file: CANdle-SDK/candletool/ConfigurationFiles
-- file: CANdle_ROS2/intro
-  title: Software - ROS2
-  sections:
-  - file: CANdle_ROS2/md-node/overview
-    title: MD Node
-  - file: CANdle_ROS2/pds-node/overview
-    title: PDS Node
+  - file: GettingStarted/GettingStarted.md
+    title: Getting Started
+  - file: MD/intro
+    title: MD - Motor Controllers
     sections:
-      - file: CANdle_ROS2/pds-node/modules/ctrl
+      - file: MD/MD80
+        title: MD80
+      - file: MD/MD20
+        title: MD20
+      - file: MD/MD80HV
+        title: MD80 60V
+      - file: MD/encoders
+        title: Encoders
+      - file: MD/brakes
+        title: Brakes
+      - file: MD/measurements
+        title: Measurements
+      - file: MD/safety
+        title: Safety
+      - file: MD/motion
+        title: Motion Control
+      - file: MD/config_calibration
+        title: Configuration & Calibration
+      - file: MD/status_utility
+        title: Status & Utilities
+      - file: MD/Communication/intro
+        title: CAN Communication
+        sections:
+          - file: MD/Communication/fdcan
+            title: MD Protocol
+          - file: MD/Communication/canopen
+            title: CANOpen
+            sections:
+              - file: MD/Communication/canopen_od
+              - file: MD/Communication/canopen_nmt
+              - file: MD/Communication/canopen_sdo
+              - file: MD/Communication/canopen_pdo
+      - file: MD/motor_integration
+        title: Motor Integration
+  - file: PDS/intro
+    title: PDS - Power Distribution System
+    sections:
+      - file: PDS/overview
+        title: Overview
+      - file: PDS/control_board
         title: Control Board
-      - file: CANdle_ROS2/pds-node/modules/ic
-        title: Isolated Converter
-      - file: CANdle_ROS2/pds-node/modules/ps
+      - file: PDS/power_stage
         title: Power Stage
-      - file: CANdle_ROS2/pds-node/modules/br
+      - file: PDS/isolated_converter
+        title: Isolated Converter
+      - file: PDS/brake_resistor
         title: Brake Resistor
-- file: CANdleduino/intro.md
-  title: Software - Arduino
-- file: FAQ/intro
-  title: FAQ
-- file: Downloads/intro
-  title: Downloads
-- file: candlelib/intro
-  title: Software - mdtool [LEGACY] 
-  sections:
-  - file: candlelib/quick_start_guide/QuickStartGuide
-  - file: candlelib/md_x_candle_ecosystem_overview/Ecosystem
+      - file: PDS/communication
+        title: FDCAN Communication
+  - file: CANdle/intro.md
+    title: CANdle and CANdleHAT
+  - file: CANdle-SDK/intro.md
+    title: Software - CANdle-SDK
     sections:
-      - file: candlelib/md_x_candle_ecosystem_overview/Calibration
-      - file: candlelib/md_x_candle_ecosystem_overview/Config
-      - file: candlelib/md_x_candle_ecosystem_overview/Measurements
-      - file: candlelib/md_x_candle_ecosystem_overview/Motion_modes
-      - file: candlelib/md_x_candle_ecosystem_overview/Safety_limits
-      - file: candlelib/md_x_candle_ecosystem_overview/Status_codes
-      - file: candlelib/md_x_candle_ecosystem_overview/Utilities
-  - file: candlelib/controllers/Controllers
+      - file: CANdle-SDK/CANdlelib
+        sections:
+          - file: CANdle-SDK/candlelib/CANdleModule
+          - file: CANdle-SDK/candlelib/MDModule
+          - file: CANdle-SDK/candlelib/PDSModule
+      - file: CANdle-SDK/CANdleTool
+        sections:
+          - file: CANdle-SDK/candletool/Commands
+          - file: CANdle-SDK/candletool/ConfigurationFiles
+  - file: CANdle_ROS2/intro
+    title: Software - ROS2
     sections:
-    - file: candlelib/controllers/md80_controller/MD80
-    - file: candlelib/controllers/md20_controller/MD20
-    - file: candlelib/controllers/add_ons/Add-ons
-      sections:
-        - file: candlelib/controllers/add_ons/aux_encoders/Auxiliary_Encoder
-        - file: candlelib/controllers/add_ons/brake_systems/Brake_systems
-  - file: candlelib/candle_and_candle_hat/CANdle
+      - file: CANdle_ROS2/md-node/overview
+        title: MD Node
+      - file: CANdle_ROS2/pds-node/overview
+        title: PDS Node
+        sections:
+          - file: CANdle_ROS2/pds-node/modules/ctrl
+            title: Control Board
+          - file: CANdle_ROS2/pds-node/modules/ic
+            title: Isolated Converter
+          - file: CANdle_ROS2/pds-node/modules/ps
+            title: Power Stage
+          - file: CANdle_ROS2/pds-node/modules/br
+            title: Brake Resistor
+  - file: CANdleduino/intro.md
+    title: Software - Arduino
+  - file: FAQ/intro
+    title: FAQ
+  - file: Downloads/intro
+    title: Downloads
+  - file: candlelib/intro
+    title: Software - mdtool [LEGACY]
     sections:
-      - file: candlelib/candle_and_candle_hat/Latency
-      - file: candlelib/candle_and_candle_hat/Principle
-      - file: candlelib/candle_and_candle_hat/Using_CANdle
-  - file: candlelib/software_package/Software
-    sections:
-      - file: candlelib/software_package/Legacy
-      - file: candlelib/software_package/legacy/MDTOOL
-      - file: candlelib/software_package/legacy/cpp
-      - file: candlelib/software_package/legacy/python
-      - file: candlelib/software_package/legacy/quick_startup_ros2
-      - file: candlelib/software_package/legacy/quick_startup_ros
-      - file: candlelib/software_package/legacy/ros_nodes
-  - file: candlelib/md_fdcan_protocol/canProtocol
-  - file: candlelib/md_canopen/CANopen
-    sections:
-      - file: candlelib/md_canopen/OD
-      - file: candlelib/md_canopen/TransitionProcedure
-  - file: candlelib/Downloads/Downloads
-  - file: candlelib/common_problems_and_faq/FAQ
-  - file: candlelib/Changelogs/Changelogs
-
+      - file: candlelib/quick_start_guide/QuickStartGuide
+      - file: candlelib/md_x_candle_ecosystem_overview/Ecosystem
+        sections:
+          - file: candlelib/md_x_candle_ecosystem_overview/Calibration
+          - file: candlelib/md_x_candle_ecosystem_overview/Config
+          - file: candlelib/md_x_candle_ecosystem_overview/Measurements
+          - file: candlelib/md_x_candle_ecosystem_overview/Motion_modes
+          - file: candlelib/md_x_candle_ecosystem_overview/Safety_limits
+          - file: candlelib/md_x_candle_ecosystem_overview/Status_codes
+          - file: candlelib/md_x_candle_ecosystem_overview/Utilities
+      - file: candlelib/controllers/Controllers
+        sections:
+          - file: candlelib/controllers/md80_controller/MD80
+          - file: candlelib/controllers/md20_controller/MD20
+          - file: candlelib/controllers/add_ons/Add-ons
+            sections:
+              - file: candlelib/controllers/add_ons/aux_encoders/Auxiliary_Encoder
+              - file: candlelib/controllers/add_ons/brake_systems/Brake_systems
+      - file: candlelib/candle_and_candle_hat/CANdle
+        sections:
+          - file: candlelib/candle_and_candle_hat/Latency
+          - file: candlelib/candle_and_candle_hat/Principle
+          - file: candlelib/candle_and_candle_hat/Using_CANdle
+      - file: candlelib/software_package/Software
+        sections:
+          - file: candlelib/software_package/Legacy
+          - file: candlelib/software_package/legacy/MDTOOL
+          - file: candlelib/software_package/legacy/cpp
+          - file: candlelib/software_package/legacy/python
+          - file: candlelib/software_package/legacy/quick_startup_ros2
+          - file: candlelib/software_package/legacy/quick_startup_ros
+          - file: candlelib/software_package/legacy/ros_nodes
+      - file: candlelib/md_fdcan_protocol/canProtocol
+      - file: candlelib/md_canopen/CANopen
+        sections:
+          - file: candlelib/md_canopen/OD
+          - file: candlelib/md_canopen/TransitionProcedure
+      - file: candlelib/Downloads/Downloads
+      - file: candlelib/common_problems_and_faq/FAQ
+      - file: candlelib/Changelogs/Changelogs

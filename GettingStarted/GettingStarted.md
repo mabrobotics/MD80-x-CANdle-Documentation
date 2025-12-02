@@ -1,3 +1,5 @@
+(getting_started)=
+
 # Getting Started
 
 ## Important Notes
@@ -79,7 +81,7 @@ Connect the MD with the power supply and CANdle class device according to the do
 Connection details can be found in the [hardware setup section](hardware_setup).
 
 
-For connecting the MD to your BLDC motor checkout the correct MD section of the document for driver specific soldering connections and magnet placement. [MD80](md80) [MD20](md20)
+For connecting the MD to your BLDC motor checkout the correct MD section of the document for driver specific soldering connections and magnet placement. [MD80](md80_mechanical_data) [MD20](md20_mechanical_data)
 ```
 
 When the cabeling is connected turn the power on. The green LED on top of the board should be light on and the green LED should flash periodically.
