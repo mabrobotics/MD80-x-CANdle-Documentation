@@ -181,7 +181,7 @@ Generic response to properties writes frame body:
 Generic frame body of the “Read properties” ( 0x20 ) message:
 | **nBytes**      | 1  | 1  | 1  | 1  | 1  | 1  | …  | 1  | 1  |
 |-----------------|----|----|----|----|----|----|----|----|----|
-| **Frame field** | Write property command code [0x20] | Module type | Socket index | Number of properties | Property 1 type | Property 2 type | ... | Property N-1 type | Property N type |
+| **Frame field** | Read property command code [0x20] | Module type | Socket index | Number of properties | Property 1 type | Property 2 type | ... | Property N-1 type | Property N type |
 
 Generic response to properties read frame body:
 | **nBytes**      | 1  | 1  | 1  | 4  | 1  | 4  | …  | 1  | 4  | 1  | 4  |
