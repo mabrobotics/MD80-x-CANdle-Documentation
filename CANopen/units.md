@@ -25,7 +25,7 @@ Listed in the following table are the possible exponents (prefixes) and their va
 |    Kilo    | 10<sup>3</sup>  |     k      |        0x03        |
 |     —      | 10<sup>0</sup>  |     —      |        0x00        |
 |   Milli    | 10<sup>-3</sup> |     m      |        0xFD        |
-|   Micro    | 10<sup>3</sup>  |    &mu;    |        0xFA        |
+|   Micro    | 10<sup>3</sup>  |     µ      |        0xFA        |
 
 **Table 2**: SI unit prefixes – Notation index
 
@@ -44,7 +44,7 @@ Listed in the following table are the possible exponents (prefixes) and their va
 
 **Table 3**: SI unit numerators – Notation index
 
-**\*** Manufacturer specific unit
+**\*** *Manufacturer specific unit*
 
 ### Denominators
 
