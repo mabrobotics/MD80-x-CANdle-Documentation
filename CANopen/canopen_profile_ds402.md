@@ -1063,8 +1063,28 @@ The following mode values are valid:
 |   1   |      Profile Position Mode (PPM)       |
 |   3   |      Profile Velocity Mode (PVM)       |
 |   8   | Cyclic Synchronous Position Mode (CSP) |
-|   9   |           Velocity Mode (VM)           |
+|   9   | Cyclic Synchronous Velocity Mode (CSV) |
 |  10   |  Cyclic Synchronous Torque Mode (CST)  |
+
+#### 1. Impedance Mode (IMP)
+
+#### 2. Service Mode (SRV)
+
+#### 3. Idle
+
+#### 4. Profile Position Mode (PPM)
+
+#### 5. Profile Velocity Mode (PVM)
+
+#### 6. Cyclic Synchronous Position Mode (CSP)
+
+Raw position PID controller. Target position is reached as fast as possible, respecting the position range limits, max velocity, and max torque limit. To achieve smooth trajectories new setpoints need to be sent with high frequency.
+
+#### 7. Cyclic Synchronous Velocity Mode (CSV)
+
+Raw velocity PID controller. Target velocity is reached as fast as possible, respecting the max velocity limit, and max torque limit. To achieve smooth acceleration new velocity setpoints need to be sent with high frequency.
+
+#### 8. Cyclic Synchronous Torque Mode (CST)
 
 ### 0x6061 – Modes Of Operation Display
 
@@ -1081,6 +1101,8 @@ Indicates the actual operation mode.
 </details>
 
 ### 0x6062 – Position Demand Value
+
+Indicates the demanded position value.
 
 <details>
 
@@ -1122,6 +1144,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x606B – Velocity Demand Value
 
+Indicates the demanded velocity value.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1133,6 +1157,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x606C – Velocity Actual Value
+
+The actual velocity value derived either from the velocity sensor or the position sensor.
 
 <details>
 
@@ -1146,6 +1172,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x606D – Velocity Window
 
+The *velocity window* defines a symmetrical range of accepted velocities relative to the target velocity.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1157,6 +1185,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6071 – Target Torque
+
+Desired torque value to be applied by the motor.
 
 <details>
 
@@ -1170,6 +1200,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6072 – Max Torque
 
+Maximum allowable torque the drive can apply.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1181,6 +1213,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6073 – Max Current
+
+Maximum allowable current for the motor.
 
 <details>
 
@@ -1194,6 +1228,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6074 – Torque Demand Value
 
+Current torque requested by the controller.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1205,6 +1241,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6075 – Motor Rated Current
+
+Nominal motor current rating in milliamperes.
 
 <details>
 
@@ -1218,6 +1256,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6076 – Motor Rated Torque
 
+Nominal motor torque rating in millinewton-meters.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1229,6 +1269,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6077 – Torque Actual Value
+
+Measured motor torque.
 
 <details>
 
@@ -1242,6 +1284,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6079 – DC Link Circuit Voltage
 
+Measured DC link voltage of the drive.
+
 <details>
 
 **<summary>Entry table</summary>** 
@@ -1254,6 +1298,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x607A – Target Position
 
+Desired motor position in increments.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1265,6 +1311,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x607B – Position Range Limit
+
+Minimum and maximum allowed motor positions.
 
 <details>
 
@@ -1280,6 +1328,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x607D – Software Position Limit
 
+Software-configurable minimum and maximum position limits.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1294,6 +1344,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x607E – Polarity
 
+Motor rotation direction setting.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1305,6 +1357,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6080 – Max Motor Speed
+
+Maximum allowed motor speed in millirevolutions per minute.
 
 <details>
 
@@ -1318,6 +1372,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6081 – Profile Velocity
 
+Velocity used in position profiles in millirevolutions per minute.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1329,6 +1385,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6083 – Profile Acceleration
+
+Acceleration used in motion profiles in millirevolutions per minute per second.
 
 <details>
 
@@ -1342,6 +1400,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6084 – Profile Deceleration
 
+Deceleration used in motion profiles in millirevolutions per minute per second.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1354,6 +1414,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 ### 0x6085 – Quick Stop Deceleration
 
+Deceleration applied during a quick stop in millirevolutions per minute per second.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1365,6 +1427,8 @@ The *position window* defines a symmetrical range of accepted positions relative
 </details>
 
 ### 0x6091 – Gear Ratio
+
+Motor-to-shaft gear ratio configuration.
 
 <details>
 
@@ -1394,7 +1458,7 @@ Default position units are encoder increments.
 
 ### 0x60A9 – SI Unit Velocity
 
-Default velocity units are milli revolutions per minute.
+Default velocity units are millirevolutions per minute.
 
 <details>
 
@@ -1408,7 +1472,7 @@ Default velocity units are milli revolutions per minute.
 
 ### 0x60A9 – SI Unit Acceleration
 
-Default acceleration units are milli revolutions per minute per second.
+Default acceleration units are millirevolutions per minute per second.
 
 <details>
 
@@ -1422,6 +1486,8 @@ Default acceleration units are milli revolutions per minute per second.
 
 ### 0x60C5 – Max Acceleration
 
+Maximum allowed motor acceleration in millirevolutions per minute per second.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1434,6 +1500,8 @@ Default acceleration units are milli revolutions per minute per second.
 
 ### 0x60C6 – Max Deceleration
 
+Maximum allowed motor deceleration in millirevolutions per minute per second.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -1445,6 +1513,8 @@ Default acceleration units are milli revolutions per minute per second.
 </details>
 
 ### 0x60C6 – Target Velocity
+
+Desired motor velocity in millirevolutions per minute.
 
 <details>
 
@@ -1477,7 +1547,7 @@ And two manufacturer specific modes:
 
 | Name                  | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Supported Drive Modes | 0x6502:0  | UNSIGNED32 |    32    |  0x00030287  |    —     |    —     |   —   |  RO   |   —   |
+| Supported Drive Modes | 0x6502:0  | UNSIGNED32 |    32    |  0x00030385  |    —     |    —     |   —   |  RO   |   —   |
 
 </details>
 
@@ -1492,14 +1562,14 @@ And two manufacturer specific modes:
 |   16    |   1   |  Service (SRV — Manufacturer-specific)  |
 | 15...10 |   0   |                Reserved                 |
 |    9    |   1   |  Cyclic Synchronous Torque Mode (CST)   |
-|    8    |   0   | Cyclic Synchronous Velocity Mode (CSV)  |
+|    8    |   1   | Cyclic Synchronous Velocity Mode (CSV)  |
 |    7    |   1   | Cyclic Synchronous Position Mode (CSP)  |
 |    6    |   0   |     Interpolated Position Mode (IP)     |
 |    5    |   0   |            Homing Mode (HM)             |
 |    4    |   0   |                Reserved                 |
 |    3    |   0   |            Torque Mode (TQ)             |
 |    2    |   1   |       Profile Velocity Mode (PV)        |
-|    1    |   1   |           Velocity Mode (VL)            |
+|    1    |   0   |           Velocity Mode (VL)            |
 |    0    |   1   |       Profile Position Mode (PP)        |
 
 </details>
