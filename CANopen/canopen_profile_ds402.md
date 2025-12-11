@@ -10,6 +10,8 @@ are three main groups in which the address space is divided into:
 
 ## Communication Area
 
+This section defines the Communication Area Object Dictionary entries for the device.
+
 <details>
 
 **<summary>Communication Area Object Dictionary entries</summary>**
@@ -31,7 +33,12 @@ Describes the device type. The entry stands for the supported device profile num
 
 ### 0x1001 – Error Register
 
-Main error register is now moved to the 
+Indicates whether an error has occurred. Currently, only the 0th bit is implemented, that indicates
+a general error. For a more verbose error and warning status, please see **0x2003 — System Status**.
+
+```{note}
+This Entry works now similarly to the `0x603F` Error Code entry defined in the Profile Specific Area.
+```
 
 <details>
 
@@ -45,6 +52,8 @@ Main error register is now moved to the
 
 ### 0x1005 – COB-ID SYNC Message
 
+Defines the COB-ID of the synchronization object (SYNC).
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -56,6 +65,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1006 – Communication Cycle Period
+
+Defines the communication cycle period (0 if not used).
 
 <details>
 
@@ -69,6 +80,8 @@ Main error register is now moved to the
 
 ### 0x1007 – Synchronous Window Length
 
+Defines the length of the time window for synchronous messages (0 if not used).
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -80,6 +93,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1008 – Manufacturer Device Name
+
+Contains manufacturer's device name.
 
 <details>
 
@@ -93,6 +108,8 @@ Main error register is now moved to the
 
 ### 0x1009 – Manufacturer Hardware Version
 
+Contains manufacturer's hardware version code.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -104,6 +121,12 @@ Main error register is now moved to the
 </details>
 
 ### 0x1010 – Store Parameters
+
+This entry saves parameters in non-volatile memory. Saving procedure is triggered by writing 0x65766173 (ASCII value of "save") to the *Save All Parameters* — `0x1010:1` sub-entry.
+
+```{note}
+For saving parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Save* (`0x2004:9`) will have exact same effect as this entry.
+```
 
 <details>
 
@@ -120,6 +143,12 @@ Main error register is now moved to the
 </details>
 
 ### 0x1011 – Restore Default Parameters
+
+This entry restore all parameters to the default states. Restoring procedure is triggered by writing 0x64616F6C (ASCII value of "load") to the *Restore All Default Parameters* — `0x1011:1` sub-entry.
+
+```{note}
+For restoring default parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Revert Factory Settings* (`0x2004:10`) will have exact same effect as this entry.
+```
 
 <details>
 
@@ -173,6 +202,8 @@ Main error register is now moved to the
 
 ### 0x1016 – Consumer Heartbeat Time
 
+The consumer heartbeat time specifies the expected interval between heartbeat messages and therefore must be set to a value greater than the producer heartbeat time configured on the device sending the heartbeat. Monitoring begins once the first heartbeat is received. If the consumer heartbeat time is set to 0, that entry is ignored.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -192,6 +223,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1017 – Producer Heartbeat Time
+
+Defines the period of heartbeat message sent by the device. It is 0 if not used.
 
 <details>
 
@@ -233,6 +266,8 @@ Main error register is now moved to the
 
 ### 0x1200 – SDO Server Parameter
 
+Holds the parameters for the SDOs in which the device acts as the server.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -246,6 +281,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1201 – SDO Server Parameter
+
+Holds the parameters for the SDOs in which the device acts as the server.
 
 <details>
 
@@ -276,6 +313,8 @@ Main error register is now moved to the
 
 ### 0x1400 – RPDO Communication Parameter
 
+Includes the communication parameters for the current PDO that the device can receive.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -289,6 +328,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1401 – RPDO Communication Parameter
+
+Includes the communication parameters for the current PDO that the device can receive.
 
 <details>
 
@@ -304,6 +345,8 @@ Main error register is now moved to the
 
 ### 0x1402 – RPDO Communication Parameter
 
+Includes the communication parameters for the current PDO that the device can receive.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -318,6 +361,8 @@ Main error register is now moved to the
 
 ### 0x1403 – RPDO Communication Parameter
 
+Includes the communication parameters for the current PDO that the device can receive.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -331,6 +376,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1600 – RPDO Mapping Parameter
+
+Provides the mapping for the PDOs that the device can receive.
 
 <details>
 
@@ -352,6 +399,8 @@ Main error register is now moved to the
 
 ### 0x1601 – RPDO Mapping Parameter
 
+Provides the mapping for the PDOs that the device can receive.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -371,6 +420,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1602 – RPDO Mapping Parameter
+
+Provides the mapping for the PDOs that the device can receive.
 
 <details>
 
@@ -392,6 +443,8 @@ Main error register is now moved to the
 
 ### 0x1603 – RPDO Mapping Parameter
 
+Provides the mapping for the PDOs that the device can receive.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -412,6 +465,8 @@ Main error register is now moved to the
 
 ### 0x1800 – TPDO Communication Parameter
 
+Includes the communication parameters for the current PDO that the device can transmit.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -429,6 +484,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1801 – TPDO Communication Parameter
+
+Includes the communication parameters for the current PDO that the device can transmit.
 
 <details>
 
@@ -448,6 +505,8 @@ Main error register is now moved to the
 
 ### 0x1802 – TPDO Communication Parameter
 
+Includes the communication parameters for the current PDO that the device can transmit.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -465,6 +524,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1803 – TPDO Communication Parameter
+
+Includes the communication parameters for the current PDO that the device can transmit.
 
 <details>
 
@@ -484,6 +545,8 @@ Main error register is now moved to the
 
 ### 0x1A00 – TPDO Mapping Parameter
 
+Provides the mapping for the PDOs that the device can transmit.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -497,6 +560,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1A01 – TPDO Mapping Parameter
+
+Provides the mapping for the PDOs that the device can transmit.
 
 <details>
 
@@ -512,6 +577,8 @@ Main error register is now moved to the
 
 ### 0x1A02 – TPDO Mapping Parameter
 
+Provides the mapping for the PDOs that the device can transmit.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -525,6 +592,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x1A03 – TPDO Mapping Parameter
+
+Provides the mapping for the PDOs that the device can transmit.
 
 <details>
 
@@ -542,11 +611,15 @@ Main error register is now moved to the
 
 ## Manufacturer Specific Area
 
+This section defines the Manufacturer Specific Area Object Dictionary entries for the device.
+
 <details>
 
 **<summary>Manufacturer Specific Area Object Dictionary entries</summary>**
 
 ### 0x2000 – Firmware Info
+
+Contains metadata describing the firmware running on the device, including version information, build date, and the commit hash used to generate the build.
 
 <details>
 
@@ -562,6 +635,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x2001 – Bootloader Info
+
+Provides information about the device’s bootloader, such as its version, build details, commit hash, and whether a fixed bootloader is present.
 
 <details>
 
@@ -579,6 +654,8 @@ Main error register is now moved to the
 
 ### 0x2002 – Hardware Info
 
+Includes hardware-related identifiers and configuration details for the device, such as bridge type, legacy revision data, device type, and core identification.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -595,6 +672,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x2003 – System Status
+
+Provides a set of real-time status indicators describing the current operating state of the device, as defined in the [status description](/MD/status_utility). All entries are read-only and can be transmitted via PDO for continuous monitoring.
 
 <details>
 
@@ -616,6 +695,8 @@ Main error register is now moved to the
 </details>
 
 ### 0x2004 – System Command
+
+Contains write-only command entries used to control system-level actions on the device.
 
 <details>
 
@@ -643,8 +724,7 @@ Main error register is now moved to the
 ### 0x2005 – Motor Settings
 
 Configures the most important motor settings. This object is especially useful when you want to
-configure or reconfigure an MD series motor controller for a particular motor. Be sure to save after
-modification using 0x1010 Store Parameters.
+configure or reconfigure an MD series motor controller for a particular motor.
 
 <details>
 
@@ -678,6 +758,8 @@ modification using 0x1010 Store Parameters.
 
 ### 0x2006 – Velocity PID Controller
 
+This entry configures the Velocity PID controller gains. 
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -693,7 +775,18 @@ modification using 0x1010 Store Parameters.
 
 </details>
 
+Velocity PID Controller diagram:
+
+```{figure} images/Velocity_PID_CANopen.png
+:align: center
+:width: 600px
+:class: no-scaled-link
+```
+
+
 ### 0x2007 – Position PID Controller
+
+This entry configures the Position PID controller gains. 
 
 <details>
 
@@ -710,7 +803,17 @@ modification using 0x1010 Store Parameters.
 
 </details>
 
+Position PID Controller diagram:
+
+```{figure} images/Position_PID_CANopen.png
+:align: center
+:width: 600px
+:class: no-scaled-link
+```
+
 ### 0x2008 – Impedance PD Controller
+
+This entry configures the Impedance PD controller gains. 
 
 <details>
 
@@ -725,7 +828,17 @@ modification using 0x1010 Store Parameters.
 
 </details>
 
+Impedance PD Controller diagram:
+
+```{figure} images/Impedance_PD_CANopen.png
+:align: center
+:width: 600px
+:class: no-scaled-link
+```
+
 ### 0x2009 – Main Encoder
+
+Main encoder related record.
 
 <details>
 
@@ -749,6 +862,8 @@ modification using 0x1010 Store Parameters.
 
 ### 0x200A – Auxiliary Encoder
 
+Auxiliary encoder related record.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -771,6 +886,8 @@ modification using 0x1010 Store Parameters.
 
 ### 0x200B – Temperature
 
+Entry containing temperature readings from the device.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -784,6 +901,8 @@ modification using 0x1010 Store Parameters.
 </details>
 
 ### 0x200C – User GPIO
+
+This entry provides access to user-configurable GPIO pins on the device and their states.
 
 <details>
 
@@ -800,6 +919,8 @@ modification using 0x1010 Store Parameters.
 </details>
 
 ## Profile Specific Area
+
+This section contains Object Dictionary entries that are specific to the CiA 402 profile for drives and motion control.
 
 <details>
 
@@ -889,6 +1010,8 @@ The events and respective transitions are gathered in the table below:
 
 ### 0x6041 – Statusword
 
+Describes the current state of the internal CiA402 state machine implemented on the drive.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -909,6 +1032,10 @@ The events and respective transitions are gathered in the table below:
 | xxxx xxxx x00x 0111 | Quick stop active      |
 | xxxx xxxx x0xx 1111 | Fault reaction active  |
 | xxxx xxxx x0xx 1000 | Quick stop active      |
+
+Bit 10 of the statusword indicates the current target has been reached (1) or not (0). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a `0x6067` Position Window margin), and in velocity mode that a velocity target has been reached (within `0x606D` Velocity Window).
+
+Bit 11 of the **Statusword** indicates whether any of the internal limits was active during current power up - for more information on which limit is active, check the `0x2003:7` Motion Status.
 
 
 ### 0x6060 – Modes Of Operation
@@ -1117,7 +1244,7 @@ The *position window* defines a symmetrical range of accepted positions relative
 
 <details>
 
-**<summary>Entry table</summary>**
+**<summary>Entry table</summary>** 
 
 | Name                    | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | ----------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
