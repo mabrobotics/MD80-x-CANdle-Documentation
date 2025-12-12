@@ -125,7 +125,7 @@ Contains manufacturer's hardware version code.
 This entry saves parameters in non-volatile memory. Saving procedure is triggered by writing 0x65766173 (ASCII value of "save") to the *Save All Parameters* — `0x1010:1` sub-entry.
 
 ```{note}
-For saving parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Save* (`0x2004:9`) will have exact same effect as this entry.
+For saving parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Save* (`0x2004:9`) will have exact same effect as the procedure described above.
 ```
 
 <details>
@@ -144,10 +144,15 @@ For saving parameters to non-volatile memory you can also use the `0x2004` – *
 
 ### 0x1011 – Restore Default Parameters
 
+<!-- TODO -->
+```{warning}
+This method is not yet fully implemented in the firmware!
+```
+
 This entry restore all parameters to the default states. Restoring procedure is triggered by writing 0x64616F6C (ASCII value of "load") to the *Restore All Default Parameters* — `0x1011:1` sub-entry.
 
 ```{note}
-For restoring default parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Revert Factory Settings* (`0x2004:10`) will have exact same effect as this entry.
+For restoring default parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Revert Factory Settings* (`0x2004:10`) will have exact same effect as the procedure described above.
 ```
 
 <details>
@@ -166,6 +171,8 @@ For restoring default parameters to non-volatile memory you can also use the `0x
 
 ### 0x1012 – COB-ID Time Stamp Object
 
+The entry defines the COB-ID of the time-stamp object (TIME).
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -177,6 +184,8 @@ For restoring default parameters to non-volatile memory you can also use the `0x
 </details>
 
 ### 0x1014 – COB-ID EMCY
+
+The entry defines the COB-ID of the emergency object (EMCY).
 
 <details>
 
@@ -190,13 +199,15 @@ For restoring default parameters to non-volatile memory you can also use the `0x
 
 ### 0x1015 – Inhibit Time EMCY
 
+Specifies the inhibit time used for emergency message (EMCY).
+
 <details>
 
 **<summary>Entry table</summary>**
 
 | Name              | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | ----------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Inhibit Time EMCY | 0x1015:0  | UNSIGNED16 |    16    |      0       |    —     |    —     | 100ms |  RW   |   —   |
+| Inhibit Time EMCY | 0x1015:0  | UNSIGNED16 |    16    |      0       |    —     |    —     | 100µs |  RW   |   —   |
 
 </details>
 
@@ -238,6 +249,8 @@ Defines the period of heartbeat message sent by the device. It is 0 if not used.
 
 ### 0x1018 – Identity Object
 
+Contains general information about the device.
+
 <details>
 
 **<summary>Entry table</summary>**
@@ -253,6 +266,8 @@ Defines the period of heartbeat message sent by the device. It is 0 if not used.
 </details>
 
 ### 0x1019 – Synchronous Counter Overflow Value
+
+This entry defines whether a counter is mapped into the synchronization message (SYNC), and the highest possible value of the counter.
 
 <details>
 
@@ -297,6 +312,8 @@ Holds the parameters for the SDOs in which the device acts as the server.
 </details>
 
 ### 0x1280 – SDO Client Parameter
+
+The SDO Client Parameters define the communication settings that enable the local CANopen node to interact with SDO servers on other nodes, allowing it to read from and write to their object dictionaries.
 
 <details>
 
@@ -696,7 +713,7 @@ Provides a set of real-time status indicators describing the current operating s
 
 ### 0x2004 – System Command
 
-Contains write-only command entries used to control system-level actions on the device.
+Contains write-only command entries used to control system-level actions on the device. Actions work only in *Switch On Disabled* state and *Service* (-2) operation mode.
 
 <details>
 
@@ -966,16 +983,18 @@ The state machine is defined as follows:
 All the transitions are based on the control word. The current state can be read using the status
 word (0x6041_legacy).
 
-| Command                        | Reset Fault (bit 7) | Enable Operation (bit 3) | Quick Stop (bit 2) | Disable Voltage (bit 1) | Switch On (bit 0) | Decimal value |
+| Command                        | Reset Fault (bit 7) | Enable Operation (bit 3) | Quick Stop (bit 2) | Disable Voltage (bit 1) | Switch On (bit 0) | Decimal Value |
 | ------------------------------ | :-----------------: | :----------------------: | :----------------: | :---------------------: | :---------------: | :-----------: |
 | Shutdown                       |          0          |            X             |         1          |            1            |         0         |       6       |
-| Switch on                      |          0          |            0             |         1          |            1            |         1         |       7       |
-| Switch on and Enable Operation |          0          |            1             |         1          |            1            |         1         |      15       |
+| Switch On                      |          0          |            0             |         1          |            1            |         1         |       7       |
+| Switch On and Enable Operation |          0          |            1             |         1          |            1            |         1         |      15       |
 | Disable Voltage                |          0          |            X             |         X          |            0            |         X         |       0       |
 | Quick Stop                     |          0          |            X             |         0          |            1            |         X         |       2       |
-| Disable operation              |          0          |            0             |         1          |            1            |         1         |       7       |
-| Enable operation               |          0          |            1             |         1          |            1            |         1         |      15       |
-| Fault reset                    |         0→1         |            X             |         X          |            X            |         X         |      128      |
+| Disable Operation              |          0          |            0             |         1          |            1            |         1         |       7       |
+| Enable Operation               |          0          |            1             |         1          |            1            |         1         |      15       |
+| Fault Reset                    |         0→1         |            X             |         X          |            X            |         X         |      128      |
+
+**Table 1**: State machine control word description.
 
 X means "do not care"
 
@@ -988,7 +1007,7 @@ To put the drive into operational mode set:
 
 The events and respective transitions are gathered in the table below:
 
-| Transition | Event                                                     | Internal action                                                                        |
+| Transition | Event                                                     | Internal Action                                                                        |
 | :--------: | --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 |     0      | Automatic transition after power up                       | Drive internal initialization                                                          |
 |     1      | Automatic transition after drives internal initialization | Object dictionary is initialized with NVM data                                         |
@@ -1007,6 +1026,7 @@ The events and respective transitions are gathered in the table below:
 |     14     | Automatic transition to fault state                       | None                                                                                   |
 |     15     | Fault reset command received                              | Fault is cleared if not critical                                                       |
 
+**Table 2**: State machine transitions description.
 
 ### 0x6041 – Statusword
 
@@ -1024,14 +1044,16 @@ Describes the current state of the internal CiA402 state machine implemented on 
 
 |     Status Word     | State Machine State    |
 | :-----------------: | ---------------------- |
-| xxxx xxxx x0xx 0000 | Not ready to switch on |
-| xxxx xxxx x1xx 0000 | Switch on disabled     |
-| xxxx xxxx x01x 0001 | Ready to switch on     |
-| xxxx xxxx x01x 0011 | Switched on            |
+| xxxx xxxx x0xx 0000 | Not Ready to Switch On |
+| xxxx xxxx x1xx 0000 | Switch On Disabled     |
+| xxxx xxxx x01x 0001 | Ready to Switch On     |
+| xxxx xxxx x01x 0011 | Switched On            |
 | xxxx xxxx x01x 0111 | Operation Enabled      |
-| xxxx xxxx x00x 0111 | Quick stop active      |
-| xxxx xxxx x0xx 1111 | Fault reaction active  |
-| xxxx xxxx x0xx 1000 | Quick stop active      |
+| xxxx xxxx x00x 0111 | Quick Stop Active      |
+| xxxx xxxx x0xx 1111 | Fault Reaction Active  |
+| xxxx xxxx x0xx 1000 | Quick Stop Active      |
+
+**Table 3**: State machine status word description.
 
 Bit 10 of the statusword indicates the current target has been reached (1) or not (0). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a `0x6067` Position Window margin), and in velocity mode that a velocity target has been reached (within `0x606D` Velocity Window).
 
@@ -1066,15 +1088,27 @@ The following mode values are valid:
 |   9   | Cyclic Synchronous Velocity Mode (CSV) |
 |  10   |  Cyclic Synchronous Torque Mode (CST)  |
 
+**Table 4**: Modes of operation codes.
+
 #### 1. Impedance Mode (IMP)
+
+Manufacturer-specific mode providing impedance (compliance) control. The controller acts as a virtual spring-damper system, allowing the motor to be back-drivable while maintaining stiffness control.
 
 #### 2. Service Mode (SRV)
 
+Manufacturer-specific mode for service and diagnostics. Provides direct access to controller internals for testing and debugging purposes.
+
 #### 3. Idle
+
+No operation mode. The motor is disabled and not controlled. Useful for safe shutdown or when transitioning between modes.
 
 #### 4. Profile Position Mode (PPM)
 
+Trapezoidal motion profile for position control. The controller generates smooth position trajectories with configurable acceleration and deceleration profiles, reaching the target position with minimal overshoot.
+
 #### 5. Profile Velocity Mode (PVM)
+
+Trapezoidal motion profile for velocity control. The controller generates smooth velocity profiles with configurable acceleration and deceleration, ideal for smooth velocity changes without jerky motion.
 
 #### 6. Cyclic Synchronous Position Mode (CSP)
 
@@ -1085,6 +1119,8 @@ Raw position PID controller. Target position is reached as fast as possible, res
 Raw velocity PID controller. Target velocity is reached as fast as possible, respecting the max velocity limit, and max torque limit. To achieve smooth acceleration new velocity setpoints need to be sent with high frequency.
 
 #### 8. Cyclic Synchronous Torque Mode (CST)
+
+Direct torque control mode with high-frequency update capability. New torque setpoints are applied immediately in each control cycle, enabling precise force/torque control for applications requiring fast torque changes and low latency.
 
 ### 0x6061 – Modes Of Operation Display
 
@@ -1470,7 +1506,7 @@ Default velocity units are millirevolutions per minute.
 
 </details>
 
-### 0x60A9 – SI Unit Acceleration
+### 0x60AA – SI Unit Acceleration
 
 Default acceleration units are millirevolutions per minute per second.
 
@@ -1480,7 +1516,7 @@ Default acceleration units are millirevolutions per minute per second.
 
 | Name                 | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | -------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| SI Unit Acceleration | 0x60A9:0  | UNSIGNED32 |    32    |  0xFDC00300  |    —     |    —     |   —   |  RO   |   —   |
+| SI Unit Acceleration | 0x60AA:0  | UNSIGNED32 |    32    |  0xFDC00300  |    —     |    —     |   —   |  RO   |   —   |
 
 </details>
 
@@ -1512,7 +1548,7 @@ Maximum allowed motor deceleration in millirevolutions per minute per second.
 
 </details>
 
-### 0x60C6 – Target Velocity
+### 0x60FF – Target Velocity
 
 Desired motor velocity in millirevolutions per minute.
 
@@ -1522,7 +1558,7 @@ Desired motor velocity in millirevolutions per minute.
 
 | Name            | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Target Velocity | 0x60C6:0  | INTEGER32 |    32    |      0       |    —     |    —     | mrpm  |  RW   |  Rx   |
+| Target Velocity | 0x60FF:0  | INTEGER32 |    32    |      0       |    —     |    —     | mrpm  |  RW   |  Rx   |
 
 </details>
 
@@ -1555,6 +1591,8 @@ And two manufacturer specific modes:
 | :-------------------------: | :---------: | :------------: |
 | Manufacturer-specific Modes |  Reserved   | Standard Modes |
 
+**Table 5**: Bit distribution of supported drive modes register.
+
 |   Bit   | Value |               Drive Mode                |
 | :-----: | :---: | :-------------------------------------: |
 | 31...18 |   0   |          Manufacturer-specific          |
@@ -1571,5 +1609,7 @@ And two manufacturer specific modes:
 |    2    |   1   |       Profile Velocity Mode (PV)        |
 |    1    |   0   |           Velocity Mode (VL)            |
 |    0    |   1   |       Profile Position Mode (PP)        |
+
+**Table 6**: Register bit positions and drive mode availability in MD controllers.
 
 </details>
