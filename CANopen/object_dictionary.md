@@ -741,7 +741,7 @@ Contains write-only command entries used to control system-level actions on the 
 ### 0x2005 – Motor Settings
 
 Configures the most important motor settings. This object is especially useful when you want to
-configure or reconfigure an MD series motor controller for a particular motor.
+configure or reconfigure an MD series motor controller for a particular motor. The most important parameters are described in the [Configuration Chapter](/MD/config_calibration.md). 
 
 <details>
 

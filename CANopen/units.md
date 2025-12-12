@@ -1,5 +1,7 @@
 # System units
 
+This file describes the SI units and their definitions used in MD CANopen devices compliant with the CiA 402 profile.
+
 SI Units are defined in the objects:
  
 - Position Unit — **0x60A8**

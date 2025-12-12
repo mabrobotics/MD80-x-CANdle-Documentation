@@ -89,6 +89,13 @@ chapters:
             title: Brake Resistor
   - file: CANdleduino/intro.md
     title: Software - Arduino
+  # TODO: when ready to publish uncomment following section
+  # - file: CANopen/intro.md
+  #   title: CANopen
+  #   sections:
+  #     - file: CANopen/object_dictionary
+  #     - file: CANopen/units
+  #     - file: CANopen/setting_up_new_motor
   - file: FAQ/intro
     title: FAQ
   - file: Downloads/intro
