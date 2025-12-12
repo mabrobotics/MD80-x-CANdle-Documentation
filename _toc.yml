@@ -91,7 +91,7 @@ chapters:
     title: Software - Arduino
   # TODO: when ready to publish uncomment following section
   # - file: CANopen/intro.md
-  #   title: CANopen
+  #   title: Software - CANopen
   #   sections:
   #     - file: CANopen/object_dictionary
   #     - file: CANopen/units
