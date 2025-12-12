@@ -10,34 +10,34 @@ The first stage of motor commissioning involves defining the essential motor cha
 
 These registers describe the motor’s electrical and mechanical properties and must be set prior to enabling any control loops:
 
+- **0x6072:0 — Max Torque**
+- **0x6073:0 — Max Current**
 - **0x6075:0 — Rated Current**
 - **0x6076:0 — Rated Torque**
-- **0x6072:0 — Maximum Torque**
-- **0x6073:0 — Maximum Current**
-- **0x6080:0 — Maximum Speed**
-- **0x2000:1 — Pole Pairs**
-- **0x2000:2 — Torque Constant**
-- **0x2000:5 — Torque Bandwidth**
-- **0x2000:7 — Motor Shutdown Temperature**
-- **0x2000:8 — Gear Ratio**
+- **0x6080:0 — Max Motor Speed**
+- **0x6091:1/2 — Gear Ratio**
+- **0x2005:1 — Pole Pairs**
+- **0x2005:2 — Torque Constant**
+- **0x2005:5 — Torque Bandwidth**
+- **0x2005:7 — Motor Shutdown Temperature**
 
 ### 2. Velocity PID Gains
 
 Configure the velocity control loop using:
 
-- **0x2001:1 — Kp**
-- **0x2001:2 — Ki**
-- **0x2001:3 — Kd**
-- **0x2001:4 — Integral Limit**
+- **0x2006:1 — Kp**
+- **0x2006:2 — Ki**
+- **0x2006:3 — Kd**
+- **0x2006:4 — Integral Limit**
 
 ### 3. Position PID Gains
 
 Set the position control loop parameters:
 
-- **0x2002:1 — Kp**
-- **0x2002:2 — Ki**
-- **0x2002:3 — Kd**
-- **0x2002:4 — Integral Limit**
+- **0x2007:1 — Kp**
+- **0x2007:2 — Ki**
+- **0x2007:3 — Kd**
+- **0x2007:4 — Integral Limit**
 
 ### 4. Profile Velocity and Position Settings
 
@@ -52,14 +52,14 @@ These registers determine the default motion profiles for velocity and position 
 Remember to save all modified parameters. See the **Saving and Calibrating** section for details.
 ```
 
-## Setting Up an External Encoder
+## Setting Up an Auxiliary Encoder
 
-The configuration of an external (output) encoder must be performed **after** all motor parameters have been set and verified. The following registers define the encoder type, calibration behavior, and operational mode:
+The configuration of an external (auxiliary) encoder must be performed **after** all motor parameters have been set and verified. The following registers define the encoder type, calibration behavior, and operational mode:
 
-- **0x2005:1 — Output Encoder Type**  
+- **0x200A:1 — Auxiliary Encoder Type**  
   Refer to the *Output Encoder* section for supported encoder types and detailed descriptions.
 
-- **0x2005:2 — Calibration Mode**  
+- **0x200A:2 — Calibration Mode**  
   Refer to the *Output Encoder Calibration* section for available calibration procedures.
 
 - **0x2005:3 — Mode**  
@@ -86,7 +86,7 @@ Execute the **Store Parameters** procedure using register **0x1010:1**:
 
 ### 2. Performing Calibration
 
-After the parameters have been saved, run the system calibration routine via **0x2003:3**, and, if an external encoder is installed, the output encoder calibration via **0x2003:4**.
+After the parameters have been saved, run the system calibration routine via **0x2004:3**, and, if an external encoder is installed, the output encoder calibration via **0x2004:4**.
 
 1. Ensure the controller is in the **“Operation Enabled”** state:
    - Write sequentially:  
@@ -97,8 +97,8 @@ After the parameters have been saved, run the system calibration routine via **0
    - Write `-2` to Modes of Operation **0x6060**
 
 3. Start the calibration routine:
-   - Write `1` to **0x2003:3**
-   - If applicable, write `1` to **0x2003:4** to calibrate the external encoder
+   - Write `1` to **0x2004:3**
+   - If applicable, write `1` to **0x2004:4** to calibrate the external encoder
 
 4. Wait for the controller to reboot.
 
