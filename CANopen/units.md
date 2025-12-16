@@ -19,7 +19,7 @@ SI object structure looks like this:
 
 Listed in the following table are the possible exponents (prefixes) and their values:
 
-### Prefixes
+## Prefixes
 
 | **Prefix** |   **Factor**    | **Symbol** | **Notation Index** |
 | :--------: | :-------------: | :--------: | :----------------: |
@@ -31,7 +31,7 @@ Listed in the following table are the possible exponents (prefixes) and their va
 
 **Table 2**: SI unit prefixes – Notation index
 
-### Numerators
+## Numerators
 
 |           **Name**            |     **Symbol**     | **Notation Index** |
 | :---------------------------: | :----------------: | :----------------: |
@@ -48,7 +48,7 @@ Listed in the following table are the possible exponents (prefixes) and their va
 
 **\*** *Manufacturer specific unit*
 
-### Denominators
+## Denominators
 
 |   **Name**    |  **Symbol**   | **Notation Index** |
 | :-----------: | :-----------: | :----------------: |
