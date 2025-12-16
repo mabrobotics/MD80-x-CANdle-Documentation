@@ -8,6 +8,7 @@ are three main groups in which the address space is divided into:
 2. [Manufacturer Specific Area](#manufacturer-specific-area)
 3. [Profile Specific Area](#profile-specific-area)
 
+(communication-area)=
 ## Communication Area
 
 This section defines the Communication Area Object Dictionary entries for the device.
@@ -626,6 +627,7 @@ Provides the mapping for the PDOs that the device can transmit.
 
 </details>
 
+(manufacturer-specific-area)=
 ## Manufacturer Specific Area
 
 This section defines the Manufacturer Specific Area Object Dictionary entries for the device.
@@ -935,6 +937,7 @@ This entry provides access to user-configurable GPIO pins on the device and thei
 
 </details>
 
+(profile-specific-area)=
 ## Profile Specific Area
 
 This section contains Object Dictionary entries that are specific to the CiA 402 profile for drives and motion control.
