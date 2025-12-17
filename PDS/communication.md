@@ -136,7 +136,7 @@ available on each module and also there are some common properties that each mod
 | BR TRIGGER VOLTAGE | 0x31 | RW  | U32 | The value of the power stage output voltage above which the brake resistor will be triggered (in mV) | ❌   | ✅   | ❌   | ❌   |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | OCD\_LEVEL | 0x40 | RW  | U32 | The value of current ( in mA ) above which the module will enter OCD state if this value is exceeded for a time equal or grater than the "OCD Delay" time of the same module. | ❌   | ✅   | ❌   | ✅   |
-| OCD\_DELAY | 0x41 | RW  | U32 | The time ( in mS ) that the OCD level has to be excedeed for to turn the module into OCD state | ❌   | ✅   | ❌   | ✅   |
+| OCD\_DELAY | 0x41 | RW  | U32 | The time ( in mS ) that the OCD level has to be exceeded for to turn the module into OCD state | ❌   | ✅   | ❌   | ✅   |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | HW\_VERSION | 0xFD | R   | ENUM\* | Hardware version of the module | ✅   | ✅   | ✅   | ✅   |
 | FW\_VERSION | 0xFE | R   | U32 - bytewise | Firmware version of the Control board MCU | ✅   | ❌   | ❌   | ❌   |

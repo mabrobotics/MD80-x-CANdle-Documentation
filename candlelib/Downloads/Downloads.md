@@ -82,8 +82,8 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.1>3.5.1</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.1>1.5.1</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a>1.4.0</a></td>
+			<td><a>— *</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.4>1.4.0</a></td>
 			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.4.0.zip>2.4.0</a></td>
 			<td><a href = ../docs/1.2.2.pdf>1.2.2</a></td>
@@ -93,8 +93,8 @@ Main stable releases:
 			<td><a href = https://github.com/mabrobotics/candle/releases/tag/v3.5.3>3.5.3</a></td>
 			<td><a href = https://github.com/mabrobotics/mdtool/releases/tag/v1.5.3>1.5.3</a></td>
      		<td><a href = https://pypi.org/project/pyCandleMAB/1.6.0>1.6.0</a></td>
-			<td><a>1.4.0</a></td>
-			<td><a>1.4.0</a></td>
+			<td><a>— *</a></td>
+			<td><a href = https://github.com/mabrobotics/candle_ros2/releases/tag/v1.4>1.4.0</a></td>
 			<td><a href = ../candle-firmware/MAB_USB_Flasher_2.2.1.zip>2.2.1</a></td>
 			<td><a href = ../md-firmware/MAB_CAN_Flasher_2.4.1.zip>2.4.1</a></td>
 			<td>this document</td>
@@ -104,6 +104,9 @@ Main stable releases:
 <p></p>
 
 (mab_can_flasher_legacy)=
+
+\* *`candle_ros` is no longer maintained since [ROS 1](https://wiki.ros.org/Documentation) reached end of life (May 31, 2025).
+Please use the ROS 2 version instead.*
 
 ### MD update tool - MAB CAN Flasher
 
