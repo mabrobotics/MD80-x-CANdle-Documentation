@@ -67,6 +67,7 @@ chapters:
           - file: CANdle-SDK/candlelib/CANdleModule
           - file: CANdle-SDK/candlelib/MDModule
           - file: CANdle-SDK/candlelib/PDSModule
+          - file: CANdle-SDK/candlelib/ResponseTimes
       - file: CANdle-SDK/CANdleTool
         sections:
           - file: CANdle-SDK/candletool/Commands
