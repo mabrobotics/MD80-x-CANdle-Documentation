@@ -18,3 +18,8 @@ CANdleSDK python API requires python versions never than:
 ## Installation
 
 Most strait forward way of getting the CANdleSDK python module is via pypi repository using pip. The link to the repository can be found [here](https://pypi.org/project/candlesdk/).
+
+
+## Usage
+
+For usage examples please refer to the [python examples](https://github.com/mabrobotics/CANdle-SDK/tree/main/examples/py).
