@@ -19,6 +19,8 @@ and ‘D’ parts of the controller.
 :class: no-scaled-link
 ```
 
+(velocity-pid)=
+
 ## Velocity PID
 
 Velocity PID controller calculates velocity error based on target velocity (set by user) and
@@ -37,6 +39,8 @@ current/torque controller. The parameters of the controller are:
 :align: center
 :class: no-scaled-link
 ```
+
+(position-pid)=
 
 ## Position PID
 
