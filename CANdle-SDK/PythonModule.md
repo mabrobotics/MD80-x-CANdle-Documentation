@@ -33,7 +33,7 @@ python3 -m pip install candlesdk
 For usage examples please refer to the [python examples](https://github.com/mabrobotics/CANdle-SDK/tree/main/examples/py).
 
 ```{important}
-If you have installed the CANdle-SDK using virtual environment remember to call `source` command on `activate` script inside virtual envrionment directory whenever you are trying to execute code with CANdleSDK.
+If you have installed the CANdle-SDK using virtual environment remember to call `source` command on `activate` script inside virtual environment directory whenever you are trying to execute code with CANdleSDK.
 ```
 
 ```{seealso}
