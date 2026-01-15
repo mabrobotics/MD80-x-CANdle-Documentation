@@ -4,6 +4,10 @@
 
 `/pds/id_<id>/ic_<socket_number>`
 
+**Type:**
+
+[`candle_ros2/IsolatedConverterData`](https://github.com/mabrobotics/candle_ros2/blob/main/msg/IsolatedConverterData.msg)
+
 ## Published Data
 
 | Name              | Type            | Description                                                                                  |
