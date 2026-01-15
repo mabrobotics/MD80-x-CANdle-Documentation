@@ -52,7 +52,13 @@ For Windows users running the candletool for the first time it is required to ru
 
 ```
 
+```{tip}
+The recommended way of installing python module of CANdle-SDK is to use [pypi CANdle-SDK repository](https://pypi.org/project/candlesdk/) along with [virtual environment for python](https://docs.python.org/3/library/venv.html).
+```
+
 ### First Steps
+
+#### CANdletool
 
 After installing the CANdle-SDK, you can start by running the candletool application to configure and test your MD-based actuators. You can find the detailed instructions on how to use candletool in the [candletool directory readme file](https://github.com/mabrobotics/CANdle-SDK/tree/main/candletool).
 
