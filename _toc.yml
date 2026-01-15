@@ -72,6 +72,7 @@ chapters:
         sections:
           - file: CANdle-SDK/candletool/Commands
           - file: CANdle-SDK/candletool/ConfigurationFiles
+      - file: CANdle-SDK/PythonModule
   - file: CANdle_ROS2/intro
     title: Software - ROS2
     sections:
