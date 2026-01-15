@@ -6,11 +6,11 @@
 CANdle-SDK is equipped with python module that is bonded via pyBind11 to candlelib. It can be used for simple applications that does not require real-time efficiency of C++. 
 
 ```{important}
-Python API of CANdle-SDK is much slower than C++ API so it should never be used for time-sensitive applications.
+Python API of CANdle-SDK is slower than C++ API so it should never be used for time-sensitive applications.
 ```
 
 ```{note}
-CANdleSDK python API requires python versions never than:
+CANdleSDK python API requires python versions newer than:
 - 3.13 for Windows
 - 3.12 for Linux
 ```
