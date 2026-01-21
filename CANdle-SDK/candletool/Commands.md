@@ -111,7 +111,7 @@ Update firmware on MD drive using MABs firmware file (.mab).
 
 Branch of CLI dedicated for [PDS](pds) device.
 
-When issuing `candletool pds` command, the user can operate on the PDS device. All of the commands
+When issuing `candletool pds --id <PDS_CAN_ID>` command, the user can operate on the PDS device. All of the commands
 here are tied to the main PDS command module (CTRL).
 
 Commands for the PDS control module are:
@@ -123,8 +123,9 @@ Commands for the PDS control module are:
 - `disable` - Shutdown the PDS device with timeout specified in the configuration file.
 - `setup_cfg` - Setup PDS configuration file. This command will create a configuration file in the
   current directory.
+- `discover` - Show all available PDS on bus.
 
-To access submodules, the user can use `candletool pds <module_name> <module_socket_number>`
+To access submodules, the user can use `candletool pds --id <PDS_CAN_ID> <module_name> <module_socket_number>`
 command.
 
 Module names are:
@@ -138,3 +139,18 @@ Main submodule commands are:
 - `info` - Get information about the PDS module.
 - `enable` - Enable the PDS module.
 - `disable` - Disable the PDS module.
+
+PS typical commands:
+- `set_ovc_level` - Set the Overcurrent Detection level.
+- `set_ovc_delay` - Set the Overcurrent Detection delay.
+- `set_temp_limit` - Set the Temperature Limit.
+- `set_br` - Bind PS with the Brake Resistor at given Socket index.
+- `set_br_trigger` - Set the Brake Resistor Trigger Voltage.
+- `set_autostart` - Set the Auto Start mode.
+
+IC typical commands: 
+- `set_ovc_level` - Set the Overcurrent Detection level.
+- `set_ovc_delay` - Set the Overcurrent Detection delay.
+- `set_temp_limit` - Set the Temperature Limit.
+
+Example command: `candletool pds --id 100 ps 1 set_ovc_level 20000`

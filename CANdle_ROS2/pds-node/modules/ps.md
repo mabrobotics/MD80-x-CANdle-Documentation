@@ -4,6 +4,10 @@
 
 `/pds/id_<id>/ps_<socket_number>`
 
+**Type:**
+
+[`candle_ros2/PowerStageData`](https://github.com/mabrobotics/candle_ros2/blob/main/msg/PowerStageData.msg)
+
 ## Published Data
 
 | Name                  | Type            | Description                                                                                  |

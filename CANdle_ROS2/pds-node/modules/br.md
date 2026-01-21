@@ -4,6 +4,10 @@
 
 `/pds/id_<id>/br_<socket_number>`
 
+**Type:**
+
+[`candle_ros2/BrakeResistorData`](https://github.com/mabrobotics/candle_ros2/blob/main/msg/BrakeResistorData.msg)
+
 ## Published Data
 
 | Name              | Type            | Description                                                   |

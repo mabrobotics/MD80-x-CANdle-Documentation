@@ -105,9 +105,11 @@ States and transitions on RGB switch
 | Shutdown ongoing     | All submodules except isolated converters are disabled. RGB switch turns solid WHITE.                                                                                    |
 
 
-Battery Level can be set in software using Candletool or CANdle-SDK using: 
+Battery Level can be set in software using:
 ```
-setBatteryVoltageLevels(u32 batteryLvl1, u32 batteryLvl2)
+setBatteryVoltageLevels(u32 batteryLvl1, u32 batteryLvl2) //CANdle-SDK
+
+set_battery_level <level1> <level2> //candletool
 ```
 
 ```{figure} ./images/control_board/ind_bar.png
@@ -118,3 +120,4 @@ setBatteryVoltageLevels(u32 batteryLvl1, u32 batteryLvl2)
 :width: 600px
 Battery levels and according color of RGB switch
 ```
+More information about commands in [CANdle-SDK PDS commands](../CANdle-SDK/candlelib/PDSModule.md) and [candletool for PDS](../CANdle-SDK/candletool/Commands.md#candletool-pds)
