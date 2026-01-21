@@ -4,6 +4,11 @@
 
 `/pds/id_<id>/ctrl`
 
+**Type:**
+
+[`candle_ros2/ControlModuleData`](https://github.com/mabrobotics/candle_ros2/blob/main/msg/ControlModuleData.msg)
+
+
 ## Published Data
 
 | Name                    | Type            | Description                                                                                 |

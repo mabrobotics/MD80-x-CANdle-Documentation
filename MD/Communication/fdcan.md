@@ -1187,7 +1187,7 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
       <td>RW</td>
       <td>uint16_t</td>
       <td>-</td>
-      <td>returns the internal <a href=../md_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
+      <td>returns the internal <a href=../../candlelib/md_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
     </tr>
     <tr>
       <td></td>

@@ -1,6 +1,6 @@
 # CANdleduino
 
-[Candleduino](https://github.com/mabrobotics/Candleduino) is a ibrary for communication with drives for Arduino (AVR and Renesas) and Teensy >4.0.
+[Candleduino](https://github.com/mabrobotics/Candleduino) is a library for communication with drives for Arduino (AVR and Renesas) and Teensy >4.0.
 
 ```{note} 
 AVR based Arduino boards don't support native CAN, therefore Candleduino supports MCP2515 via SPI.
