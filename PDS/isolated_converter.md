@@ -39,3 +39,5 @@ Isolated converter with highlighted ports
 ```
 
 The PDS_IC comes with a factory-assembled thermistor mounted on DC/DC converter. It also includes 2 pcs of 691340500002 without cables.
+
+To operate IC and configure its parameters such as OCD level or temperature limit use commands in [CANdle-SDK PDS commands](../CANdle-SDK/candlelib/PDSModule.md) and [candletool for PDS](../CANdle-SDK/candletool/Commands.md#candletool-pds)
