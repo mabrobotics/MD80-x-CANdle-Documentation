@@ -233,6 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle-SDK/PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -502,7 +503,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-candle-sdk">With CANdle-SDK</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#candletool">CANdletool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-md">With MD</a><ul class="nav section-nav flex-column">
@@ -590,15 +594,22 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>For Windows users running the candletool for the first time it is required to run the <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/candletool/tools/candlesdk-win-driver.exe">candlesdk-win-driver.exe</a> installer as administrator with CANdle device connected to the computer. This step is not required for subsequent runs of candletool.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The recommended way of installing python module of CANdle-SDK is to use <a class="reference external" href="https://pypi.org/project/candlesdk/">pypi CANdle-SDK repository</a> along with <a class="reference external" href="https://docs.python.org/3/library/venv.html">virtual environment for python</a>.</p>
+</div>
 </section>
 <section id="first-steps">
 <h3>First Steps<a class="headerlink" href="#first-steps" title="Link to this heading">#</a></h3>
+<section id="candletool">
+<h4>CANdletool<a class="headerlink" href="#candletool" title="Link to this heading">#</a></h4>
 <p>After installing the CANdle-SDK, you can start by running the candletool application to configure and test your MD-based actuators. You can find the detailed instructions on how to use candletool in the <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/tree/main/candletool">candletool directory readme file</a>.</p>
 <p>To test if the candletool installed correctly try running <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">--version</span></code> and with a candle connected <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">candle</span> <span class="pre">version</span></code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>To get detailed information on usage you can run each <code class="docutils literal notranslate"><span class="pre">candletool</span></code> command with <code class="docutils literal notranslate"><span class="pre">-h</span></code> flag to display help.</p>
 </div>
+</section>
 </section>
 </section>
 <section id="with-md">
@@ -899,7 +910,10 @@ has evolved, however, the main principles are the same)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-candle-sdk">With CANdle-SDK</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#candletool">CANdletool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-md">With MD</a><ul class="nav section-nav flex-column">

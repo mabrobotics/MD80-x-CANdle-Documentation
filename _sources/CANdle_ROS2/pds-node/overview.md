@@ -10,11 +10,11 @@ Once a PDS device is registered, the node automatically scans all connected modu
 
 The following services allow registering and managing PDS devices.
 
-| Service Name        | Description                          | Service Type             |
-| ------------------- | ------------------------------------ | ------------------------ |
-| `/pds/add_pds`      | Registers a PDS devices by ID        | `candle_ros2/AddDevices` |
-| `/pds/reboot_pds`   | Reboots the specified PDS devices    | `candle_ros2/Generic`    |
-| `/pds/shutdown_pds` | Shuts down the specified PDS devices | `candle_ros2/Generic`    |
+| Service Name        | Description                          | Service Type                                                                                        |
+| ------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `/pds/add_pds`      | Registers a PDS devices by ID        | [`candle_ros2/AddDevices`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/AddDevices.srv) |
+| `/pds/reboot_pds`   | Reboots the specified PDS devices    | [`candle_ros2/Generic`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv)       |
+| `/pds/shutdown_pds` | Shuts down the specified PDS devices | [`candle_ros2/Generic`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv)       |
 
 ## PDS Module Topics and Services
 
@@ -23,11 +23,12 @@ Topics follow the naming scheme:
 
 `/pds/id_<id>/<module>_<socket>`
 
-Each module additionally exposes **enable/disable** services using the pattern:
+Each module additionally exposes **enable/disable** services:
 
-`/pds/id_<id>/enable_<module>_<socket>`
-
-`/pds/id_<id>/disable_<module>_<socket>`
+| Type        | Naming Pattern                           | Service Type                                                                                        |
+| ----------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| **enable**  | `/pds/id_<id>/enable_<module>_<socket>`  | [`candle_ros2/GenericPds`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/GenericPds.srv) |
+| **disable** | `/pds/id_<id>/disable_<module>_<socket>` | [`candle_ros2/GenericPds`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/GenericPds.srv) |
 
 ---
 

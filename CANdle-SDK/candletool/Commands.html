@@ -233,6 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ConfigurationFiles.html">Configuration Files</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -625,7 +626,7 @@ positional absolute mode (position profile).</p>
 <section id="candletool-pds">
 <span id="pds-commands"></span><h2><strong>candletool pds …</strong><a class="headerlink" href="#candletool-pds" title="Link to this heading">#</a></h2>
 <p>Branch of CLI dedicated for <a class="reference internal" href="../../PDS/intro.html#pds"><span class="std std-ref">PDS</span></a> device.</p>
-<p>When issuing <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span></code> command, the user can operate on the PDS device. All of the commands
+<p>When issuing <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">--id</span> <span class="pre">&lt;PDS_CAN_ID&gt;</span></code> command, the user can operate on the PDS device. All of the commands
 here are tied to the main PDS command module (CTRL).</p>
 <p>Commands for the PDS control module are:</p>
 <ul class="simple">
@@ -636,8 +637,9 @@ here are tied to the main PDS command module (CTRL).</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">disable</span></code> - Shutdown the PDS device with timeout specified in the configuration file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">setup_cfg</span></code> - Setup PDS configuration file. This command will create a configuration file in the
 current directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">discover</span></code> - Show all available PDS on bus.</p></li>
 </ul>
-<p>To access submodules, the user can use <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">&lt;module_name&gt;</span> <span class="pre">&lt;module_socket_number&gt;</span></code>
+<p>To access submodules, the user can use <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">--id</span> <span class="pre">&lt;PDS_CAN_ID&gt;</span> <span class="pre">&lt;module_name&gt;</span> <span class="pre">&lt;module_socket_number&gt;</span></code>
 command.</p>
 <p>Module names are:</p>
 <ul class="simple">
@@ -651,6 +653,22 @@ command.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">enable</span></code> - Enable the PDS module.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">disable</span></code> - Disable the PDS module.</p></li>
 </ul>
+<p>PS typical commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_ovc_level</span></code> - Set the Overcurrent Detection level.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_ovc_delay</span></code> - Set the Overcurrent Detection delay.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_temp_limit</span></code> - Set the Temperature Limit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_br</span></code> - Bind PS with the Brake Resistor at given Socket index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_br_trigger</span></code> - Set the Brake Resistor Trigger Voltage.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_autostart</span></code> - Set the Auto Start mode.</p></li>
+</ul>
+<p>IC typical commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_ovc_level</span></code> - Set the Overcurrent Detection level.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_ovc_delay</span></code> - Set the Overcurrent Detection delay.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_temp_limit</span></code> - Set the Temperature Limit.</p></li>
+</ul>
+<p>Example command: <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">--id</span> <span class="pre">100</span> <span class="pre">ps</span> <span class="pre">1</span> <span class="pre">set_ovc_level</span> <span class="pre">20000</span></code></p>
 </section>
 </section>
 

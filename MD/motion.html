@@ -233,6 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle-SDK/PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -507,7 +508,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-controller-tuning">Motion controller tuning</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-velocity-profile">Velocity PID / Velocity Profile</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-position-profile">Position PID / Position Profile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Impedance PD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Impedance PD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi">Current PI</a></li>
 </ul>
 </li>
@@ -537,7 +538,7 @@ and ‘D’ parts of the controller.</p>
 <img alt="candle" class="no-scaled-link" src="../_images/limiters.png" />
 </figure>
 <section id="velocity-pid">
-<h2>Velocity PID<a class="headerlink" href="#velocity-pid" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2>Velocity PID<a class="headerlink" href="#velocity-pid" title="Link to this heading">#</a></h2>
 <p>Velocity PID controller calculates velocity error based on target velocity (set by user) and
 estimated velocity read from the encoder. Its output is a torque command for the internal
 current/torque controller. The parameters of the controller are:</p>
@@ -553,7 +554,7 @@ current/torque controller. The parameters of the controller are:</p>
 </figure>
 </section>
 <section id="position-pid">
-<h2>Position PID<a class="headerlink" href="#position-pid" title="Link to this heading">#</a></h2>
+<span id="id3"></span><h2>Position PID<a class="headerlink" href="#position-pid" title="Link to this heading">#</a></h2>
 <p>Position PID mode is the most common controller mode used in industrial servo applications. In MDxx,
 it is implemented as a cascaded PID controller. This means that the controller is working in two
 stages, firstly the position error is calculated, and it is then passed to the Position PID, which
@@ -583,7 +584,7 @@ velocity PID mode), and then the position PID. The controller can be described w
 </figure>
 </section>
 <section id="impedance-pd">
-<span id="id2"></span><h2>Impedance PD<a class="headerlink" href="#impedance-pd" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2>Impedance PD<a class="headerlink" href="#impedance-pd" title="Link to this heading">#</a></h2>
 <p>Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant
 mechanism. The main idea behind it is to mimic the behavior of a torsional spring with variable
 stiffness and damping. The parameters of the controller are:</p>
@@ -668,7 +669,7 @@ find the PID and impedance C/C++ language implementations below:</p>
 </div>
 </section>
 <section id="motion-controller-tuning">
-<span id="id3"></span><h2>Motion controller tuning<a class="headerlink" href="#motion-controller-tuning" title="Link to this heading">#</a></h2>
+<span id="id5"></span><h2>Motion controller tuning<a class="headerlink" href="#motion-controller-tuning" title="Link to this heading">#</a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>The best way to get started with tuning is to copy the <a class="reference external" href="https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf">default gains</a> and tweak them. You can treat this section as our recommendation for tuning the controllers, but <a class="reference external" href="https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/">online articles</a> can be useful as well</p>
@@ -712,8 +713,8 @@ velocity</p></li>
 <li><p>Generally try to avoid using kd</p></li>
 </ol>
 </section>
-<section id="id4">
-<h3>Impedance PD<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>Impedance PD<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Increase kp to the point you’re satisfied with the stiffnes of the output shaft (the spring
 coefficient)</p></li>
@@ -804,7 +805,7 @@ more insight on the topic.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-controller-tuning">Motion controller tuning</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-velocity-profile">Velocity PID / Velocity Profile</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-position-profile">Position PID / Position Profile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Impedance PD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Impedance PD</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi">Current PI</a></li>
 </ul>
 </li>

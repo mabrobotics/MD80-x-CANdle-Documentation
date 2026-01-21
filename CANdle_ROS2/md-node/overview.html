@@ -233,6 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../CANdle-SDK/PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../intro.html">Software - ROS2</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -498,7 +499,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-services">MD Node Services</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-services">MD Node Services</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-mode-service-details">Set Mode Service Details</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-topics">MD Node Topics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subscribed-topics">Subscribed Topics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#published-topics">Published Topics</a></li>
@@ -533,27 +537,37 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/md/add_mds</span></code></p></td>
 <td><p>Registers MD drives in the system</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/AddDevices</span></code></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/srv/AddDevices.srv"><code class="docutils literal notranslate"><span class="pre">candle_ros2/AddDevices</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/md/enable</span></code></p></td>
 <td><p>Enables selected registered drives</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/Generic</span></code></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv"><code class="docutils literal notranslate"><span class="pre">candle_ros2/Generic</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/md/disable</span></code></p></td>
 <td><p>Disables selected registered drives</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/Generic</span></code></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv"><code class="docutils literal notranslate"><span class="pre">candle_ros2/Generic</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/md/set_mode</span></code></p></td>
 <td><p>Changes the operating mode</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/SetMode</span></code></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/srv/SetMode.srv"><code class="docutils literal notranslate"><span class="pre">candle_ros2/SetMode</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/md/zero</span></code></p></td>
 <td><p>Performs a zeroing operation</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/Generic</span></code></p></td>
+<td><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv"><code class="docutils literal notranslate"><span class="pre">candle_ros2/Generic</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<section id="set-mode-service-details">
+<h3>Set Mode Service Details<a class="headerlink" href="#set-mode-service-details" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">/md/set_mode</span></code> service accepts requests of type <code class="docutils literal notranslate"><span class="pre">candle_ros2/SetMode</span></code>, field <code class="docutils literal notranslate"><span class="pre">mode</span></code> is a string that can take one of the following values:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../MD/motion.html#impedance-pd"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;IMPEDANCE&quot;</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="../../MD/motion.html#position-pid"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;POSITION_PID&quot;</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="../../MD/motion.html#velocity-pid"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;VELOCITY_PID&quot;</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="../../MD/motion.html#impedance-pd"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;RAW_TORQUE&quot;</span></code></span></a></p></li>
+</ul>
+</section>
 </section>
 <section id="md-node-topics">
 <h2>MD Node Topics<a class="headerlink" href="#md-node-topics" title="Link to this heading">#</a></h2>
@@ -569,19 +583,19 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/md/motion_command</span></code></p></td>
 <td class="text-left"><p>General motion command input</p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/MotionCmd</span></code></p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/msg/MotionCmd.msg"><code class="docutils literal notranslate"><span class="pre">candle_ros2/MotionCmd</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/md/position_command</span></code></p></td>
 <td class="text-left"><p>Position PID controller commands</p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/PositionPidCmd</span></code></p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/msg/PositionPidCmd.msg"><code class="docutils literal notranslate"><span class="pre">candle_ros2/PositionPidCmd</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/md/velocity_command</span></code></p></td>
 <td class="text-left"><p>Velocity PID controller commands</p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/VelocityPidCmd</span></code></p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/msg/VelocityPidCmd.msg"><code class="docutils literal notranslate"><span class="pre">candle_ros2/VelocityPidCmd</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/md/impedance_command</span></code></p></td>
 <td class="text-left"><p>Impedance PD controller commands</p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">candle_ros2/ImpedanceCmd</span></code></p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/mabrobotics/candle_ros2/blob/main/msg/ImpedanceCmd.msg"><code class="docutils literal notranslate"><span class="pre">candle_ros2/ImpedanceCmd</span></code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -672,7 +686,10 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-services">MD Node Services</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-services">MD Node Services</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-mode-service-details">Set Mode Service Details</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-topics">MD Node Topics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subscribed-topics">Subscribed Topics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#published-topics">Published Topics</a></li>

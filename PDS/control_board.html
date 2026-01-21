@@ -233,6 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle-SDK/PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -726,8 +727,10 @@ with the RGB diodes.</p>
 </tbody>
 </table>
 </div>
-<p>Battery Level can be set in software using Candletool or CANdle-SDK using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setBatteryVoltageLevels</span><span class="p">(</span><span class="n">u32</span> <span class="n">batteryLvl1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">batteryLvl2</span><span class="p">)</span>
+<p>Battery Level can be set in software using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setBatteryVoltageLevels</span><span class="p">(</span><span class="n">u32</span> <span class="n">batteryLvl1</span><span class="p">,</span> <span class="n">u32</span> <span class="n">batteryLvl2</span><span class="p">)</span> <span class="o">//</span><span class="n">CANdle</span><span class="o">-</span><span class="n">SDK</span>
+
+<span class="n">set_battery_level</span> <span class="o">&lt;</span><span class="n">level1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">level2</span><span class="o">&gt;</span> <span class="o">//</span><span class="n">candletool</span>
 </pre></div>
 </div>
 <figure class="align-center" id="id4">
@@ -736,6 +739,7 @@ with the RGB diodes.</p>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Battery levels and according color of RGB switch</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>More information about commands in <a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html"><span class="std std-doc">CANdle-SDK PDS commands</span></a> and <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-pds"><span class="std std-ref">candletool for PDS</span></a></p>
 </section>
 </section>
 

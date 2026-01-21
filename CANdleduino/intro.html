@@ -233,6 +233,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle-SDK/PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -499,7 +500,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionalities">Functionalities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-library">MD library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds-library">PDS library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examples</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -513,28 +521,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="candleduino">
 <h1>CANdleduino<a class="headerlink" href="#candleduino" title="Link to this heading">#</a></h1>
-<p>Library for communication with drives for Arduino (AVR and Renesas) and Teensy &gt;4.0.</p>
+<p><a class="reference external" href="https://github.com/mabrobotics/Candleduino">Candleduino</a> is a library for communication with drives for Arduino (AVR and Renesas) and Teensy &gt;4.0.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>AVR based Arduino boards don’t support native CAN, therefore Candleduino supports MCP2515 via SPI.</p>
-</div>
-<p>It can be included into a project via header-file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;Candleduino.hpp&quot;</span>
-</pre></div>
 </div>
 <section id="functionalities">
 <h2>Functionalities<a class="headerlink" href="#functionalities" title="Link to this heading">#</a></h2>
 <p>Main features of MD module include:</p>
 <ul class="simple">
-<li><p>Creating MDs assigned to instance with unique IDs</p></li>
-<li><p>Managing internal registers of MDs</p></li>
-<li><p>Provides helper functions for managing MDs, for example: <code class="docutils literal notranslate"><span class="pre">getPosition()</span></code>, <code class="docutils literal notranslate"><span class="pre">zero()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">setTargetPosition()</span></code></p></li>
+<li><p>Creating MD and PDS assigned to instance with unique IDs</p></li>
+<li><p>Managing internal registers of MD and properties of PDS</p></li>
+<li><p>Provides helper functions for managing MD and PDS, for example:
+<code class="docutils literal notranslate"><span class="pre">getPosition()</span></code>, <code class="docutils literal notranslate"><span class="pre">zero()</span></code>, <code class="docutils literal notranslate"><span class="pre">getVoltage(PDSmodule</span> <span class="pre">module,</span> <span class="pre">&amp;voltage)</span></code>, <code class="docutils literal notranslate"><span class="pre">enable(PDSmodule</span> <span class="pre">module)</span></code></p></li>
 </ul>
 </section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c1">//ID of the MD drive</span>
+<section id="md-library">
+<h2>MD library<a class="headerlink" href="#md-library" title="Link to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MD_arduino.hpp&quot;</span>
+<span class="kt">uint16_t</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c1">//ID of the MD drive</span>
 
 <span class="n">MD</span><span class="w"> </span><span class="nf">md</span><span class="p">(</span><span class="n">ID</span><span class="p">);</span><span class="w"> </span>
 <span class="c1">// MD md(ID, CS_PIN); for custom CS_PIN (Arduino AVR and MCP2515), default is 9</span>
@@ -558,11 +563,11 @@ document.write(`
 </pre></div>
 </div>
 <p>For other registers it is recommended to use:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">readRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MD</span><span class="o">::</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">registerData</span><span class="p">)</span>
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">writeRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MD</span><span class="o">::</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registerData</span><span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Error_t</span><span class="w"> </span><span class="n">readRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">registerData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">writeRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registerData</span><span class="p">)</span>
 
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">readRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">registerData</span><span class="p">)</span>
-<span class="n">MD</span><span class="o">::</span><span class="n">Error_t</span><span class="w"> </span><span class="n">MD</span><span class="o">::</span><span class="n">writeRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">registerData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">readRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">registerData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">writeRegister</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">registerId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">registerData</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or CANFD only use readRegisters or writeRegisters for multiple data frame</p>
@@ -582,7 +587,66 @@ document.write(`
 <span class="n">md2</span><span class="p">.</span><span class="n">blink</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Please look at <a class="reference internal" href="../MD/Communication/fdcan.html#register-table"><span class="std std-ref">register table</span></a> to find more details about registers and their types.</p>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/mabrobotics/Candleduino/blob/main/examples/MD_read_write/MD_read_write.ino">Read and write</a>
+This example shows basic usage of all possible communication functionalities.</p>
+<p><a class="reference external" href="https://github.com/mabrobotics/Candleduino/blob/main/examples/MD_impedance_control/MD_impedance_control.ino">Impedance control</a>
+This example demonstrates how to control MD drive using Arduino or Teensy.</p>
+</section>
+</section>
+<section id="pds-library">
+<h2>PDS library<a class="headerlink" href="#pds-library" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PDS library works only with Teensy boards with native CANFD compatibility.</p>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDS_arduino.hpp&quot;</span>
+<span class="kt">uint16_t</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="c1">//ID of the PDS</span>
+
+<span class="n">FlexCAN_T4FD</span><span class="o">&lt;</span><span class="n">CAN3</span><span class="p">,</span><span class="w"> </span><span class="n">RX_SIZE_256</span><span class="p">,</span><span class="w"> </span><span class="n">TX_SIZE_16</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CANbus</span><span class="p">;</span><span class="w"> </span><span class="c1">//CANFD</span>
+
+<span class="n">PDS</span><span class="w"> </span><span class="nf">pds</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">CANbus</span><span class="p">);</span>
+
+<span class="n">pds</span><span class="p">.</span><span class="n">init</span><span class="p">();</span><span class="w"> </span><span class="c1">//initialize PDS object</span>
+</pre></div>
+</div>
+<p>For simplicity, there is a structure called PDSmodule:</p>
+<p>Example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">PDSmodule</span><span class="w"> </span><span class="n">IC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">ISOLATED_CONVERTER</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w"> </span><span class="c1">// {NAME, SOCKET_INDEX}</span>
+</pre></div>
+</div>
+<p>For basic communication there are predefined commands like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="p">.</span><span class="n">enable</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">);</span>
+<span class="n">pds</span><span class="p">.</span><span class="n">getTemperature</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">&amp;</span><span class="n">temperature</span><span class="p">);</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p>Some functions are dedicated to only Power Stage or Isolated like <code class="docutils literal notranslate"><span class="pre">setOCDlevel(&lt;PS&gt;</span> <span class="pre">or</span> <span class="pre">&lt;IC&gt;,</span> <span class="pre">&lt;OCDlevel&gt;)</span></code> or <code class="docutils literal notranslate"><span class="pre">bindBrakeResistor(&lt;PS&gt;,</span> <span class="pre">&lt;BR</span> <span class="pre">index&gt;)</span></code></p>
+<p>Similarly to MD, PDS uses the same Message structure to send data as properties.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Error_t</span><span class="w"> </span><span class="n">readProperty</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">propertyData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">readProperty</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">propertyId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">propertyData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">readProperties</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="p">...</span><span class="n">message</span><span class="p">)</span>
+
+<span class="n">Error_t</span><span class="w"> </span><span class="n">writeProperty</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="n">Message</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">propertyData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">writeProperty</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">propertyId</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">propertyData</span><span class="p">)</span>
+<span class="n">Error_t</span><span class="w"> </span><span class="n">writeProperties</span><span class="p">(</span><span class="n">PDSmodule</span><span class="w"> </span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">...</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For multiple PDS stacks simply use multiple instances:</p>
+<p>Example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">PDS</span><span class="w"> </span><span class="nf">pds1</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">canBus</span><span class="p">);</span>
+<span class="n">PDS</span><span class="w"> </span><span class="nf">pds2</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">canBus</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="id1">
+<h3>Examples<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/mabrobotics/Candleduino/blob/main/examples/PDS_read_write/PDS_read_write.ino">Read and write</a>
+This example shows basic usage of all possible communication functionalities.</p>
+<p><a class="reference external" href="https://github.com/mabrobotics/Candleduino/blob/main/examples/PDS_modules/PDS_modules.ino">PDS modules</a>
+This example configures Isolated Converter, Power Stage and Brake Resistor, enables them and reads the data.</p>
+<p>Please look at <a class="reference internal" href="../MD/Communication/fdcan.html#register-table"><span class="std std-ref">register table</span></a> and <a class="reference external" href="https://mabrobotics.github.io/MD80-x-CANdle-Documentation/PDS/communication.html#properties">properties table</a> to find more details about registers/properites and their types.</p>
+</section>
 </section>
 </section>
 
@@ -651,7 +715,14 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionalities">Functionalities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-library">MD library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pds-library">PDS library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examples</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
