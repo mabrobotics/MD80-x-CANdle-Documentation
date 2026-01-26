@@ -48,6 +48,12 @@ Recommended requirements:
 - \>2 GB of disk space,
 - \>2 GHz dual-core CPU.
 
+```{important}
+Using VMs with CANdle-SDK is discouraged because USB and SPI hardware access is indirect, often unstable, and adds latency. Device passthrough and timing issues can break reliable CAN communication.
+
+Using Docker is heavily discouraged as USB and SPI devices require privileged access, manual passthrough linking, hot-plugging is unreliable, and extra abstraction can affect real-time CAN performance.
+```
+
 ## Installation
 
 For installation and integration instructions checkout
