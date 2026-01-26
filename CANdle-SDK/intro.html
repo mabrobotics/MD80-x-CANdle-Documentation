@@ -562,6 +562,11 @@ configure, test and integrate MAB devices into their systems. Currently CANdleSD
 <li><p>&gt;2 GB of disk space,</p></li>
 <li><p>&gt;2 GHz dual-core CPU.</p></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Using VMs with CANdle-SDK is discouraged because USB and SPI hardware access is indirect, often unstable, and adds latency. Device passthrough and timing issues can break reliable CAN communication.</p>
+<p>Using Docker is heavily discouraged as USB and SPI devices require privileged access, manual passthrough linking, hot-plugging is unreliable, and extra abstraction can affect real-time CAN performance.</p>
+</div>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
