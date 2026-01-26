@@ -18,7 +18,7 @@ In the near future, SDK will be expanded to include:
 
 ## Supported platforms
 
-Both CANdlelib and CANdleTool are currently supported onjhj
+Both CANdlelib and CANdleTool are currently supported
 
 - Linux systems (mainly Ubuntu, and Debian based distros),
 - Windows 10,
