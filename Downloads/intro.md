@@ -45,7 +45,8 @@ Main stable releases:
 |       29.07.2025        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.5.0](../_static/firmware/md_2.5.0.zip)                             |
 |       11.08.2025        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.5.1](../_static/firmware/md_2.5.1.zip)                             |
 |       17.11.2025        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |               [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.2.zip)               |
-| **24.11.2025 (latest)** |                 [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab)                  |               [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.2.zip)               |
+|   24.11.2025 (latest)   |                 [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab)                  |               [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.2.zip)               |
+| **10.03.2026 (latest)** |                 [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab)                  |               [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.4.zip)               |
 
 ## CANOpen EDS file
 
@@ -55,7 +56,8 @@ Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80
 | :--------: | :--------------------------------------------------------------------------: | :------------------------------: |
 | 11.08.2025 |                  [2.5.1](../_static/firmware/md_2.5.1.zip)                   | [1.0](../_static/eds/md_1.0.eds) |
 | 17.11.2025 | [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip) | [1.0](../_static/eds/md_1.0.eds) |
-| 17.11.2025 | [2.5.3](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.3.zip) | [1.0](../_static/eds/md_1.0.eds) |
+| 02.03.2026 | [2.5.3](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.3.zip) | [1.0](../_static/eds/md_1.0.eds) |
+| 10.03.2026 | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.0](../_static/eds/md_1.0.eds) |
 
 <!-- TODO: when new CANopen firmware is ready to publish, fill and add following section to the table -->
 <!-- | **??.??.????** |                         [-.-.-]()                         | [1.3](../_static/eds/md_1.3.eds) | -->
