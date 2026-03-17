@@ -1,4 +1,4 @@
-# Response Time
+# Response Time (Latency)
 
 The test was performed on multiple platforms, OS and interfaces. The frequency represents the time it took for the selected frames to reach set amount of drivers plus and for the CANdle device to register confirmation messages from all of successful transfers. The test was performed using an async CANdle-SDK API written and was written in C++.
 
