@@ -9,72 +9,112 @@ used in. This section will cover the parameters that are used in config files.
 
 ### [motor] section
 
-- `name` - actuator name. Max 20 characters
-- `pole pairs` - the number of rotor magnets divided by 2. If you are unsure type zero here - during
-  calibration it will be autodetected. Later on it is advised to retype it after the calibration to
-  the config file. It can be accessed using candletool md info or by register access.
-- `KV` - declared KV of the motor - its used when torque constant is set to zero.
-- `torque constant` - motor torque constant in Nm/A
-- `gear ratio` - gear ratio -> example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2
-- `max current` - maximum allowable phase (not power supply) current
-- `torque bandwidth` - torque bandwidth setting
-- `shutdown temp` - temperature threshold in \[*C\] of the motor that will cause a overtemperature
-  stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0*C
-  when candletool md info is called, the thermistor is not populated or is not working.
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| name | string | - | - | actuator name. Max 20 characters | no |
+| pole pairs | u32 | 1 | 500 | the number of rotor magnets divided by 2. If you are unsure type zero here - during calibration it will be autodetected. Later on it is advised to retype it after the calibration to the config file. It can be accessed using candletool md info or by register access. | yes |
+| torque constant | float | 0.0000001 | 500.0 | motor torque constant in Nm/A | yes |
+| torque constant a | float | 0.0 | 1.0 | motor torque constant for phase A in Nm/A  | no |
+| torque constant b | float | 0.0 | 1.0 | motor torque constant for phase B in Nm/A  | no |
+| torque constant c | float | 0.0 | 1.0 | motor torque constant for phase C in Nm/A  | no |
+| max current | float | 0.2 | 82.0 | maximum allowable phase (not power supply) current | yes |
+| gear ratio | float | 0.001 | 1000 | gear ratio -> example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2 | yes |
+| torque bandwidth | unsigned | 50 | 2000 | torque bandwidth setting in Hz | yes |
+| dynamic friction | float | 0.0 | 10000.0 | dynamic friction | no |
+| static friction | float | 0.0 | 10000.0 | static friction | no |
+| KV | unsigned | 0 | 10000 | declared KV of the motor - it is used when torque constant is set to zero. | no |
+| calibration mode | enum | - | - | FULL, NOPPDET | no | 
+| shutdown temp | unsigned | 25 | 127 | temperature threshold in \[*C\] of the motor that will cause a overtemperature stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0*C when candletool md info is called, the thermistor is not populated or is not working. | no |
 
-### [limits] section
-
-Global limits used to issue warnings or errors.
-
-- `max torque` - maximum allowed torque in Nm
-- `max velocity` - maximum allowed velocity in rad/s
-- `max position` - maximum position limit in rad
-- `min position` - minimum position limit in rad
-- `max acceleration` - max acceleration in rad/s^2
-- `max deceleration` - max deceleration in rad/s^2
-
-### [profile] section
-
-These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.
-
-- `acceleration` - profile acceleration in rad/s^2
-- `deceleration` - profile deceleration in rad/s^2
-- `velocity` - profile velocity in rad/s
 
 ### [output encoder] section
 
 For more information please refer to [aux encoder](aux_encoders) section.
 
-- `output encoder` - valid types: ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS
-- `output encoder mode` - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT
+| Name | Type | Values | Required |
+|------|------|------|------|
+| output encoder | enum | ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS | no |
+| output encoder default baud | unsigned | 9600-1000000 | no |
+| output encoder mode | enum | STARTUP, MOTION, REPORT, CALIBRATED_REPORT | no |
+| output encoder calibration mode | enum | FULL, DIRONLY | no |
+
 
 ### [position PID] section
 
 Position PID default gains (used at every startup, then can be modified using the C++/Python script,
 or register access)
 
-- `kp` - proportional gain
-- `ki` - integral gain
-- `kd` - derivative gain
-- `windup` - integral limit
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| kp | float | 0.0 | 100000.0 | proportional gain | yes |
+| ki | float | 0.0 | 100000.0 | integral gain | yes |
+| kd | float | 0.0 | 100000.0 | derivative gain | yes |
+| windup | float | 0.0 | 100000.0 | integral limit | yes |
+
 
 ### [velocity PID] section
 
 Velocity PID default gains (used at every startup, then can be modified using the C++/Python script,
 or register access)
 
-- `kp` - proportional gain
-- `ki` - integral gain
-- `kd` - derivative gain
-- `windup` - integral limit
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| kp | float | 0.0 | 100000.0 | proportional gain | yes |
+| ki | float | 0.0 | 100000.0 | integral gain | yes |
+| kd | float | 0.0 | 100000.0 | derivative gain | yes |
+| windup | float | 0.0 | 100000.0 | integral limit | yes |
+
 
 ### [impedance PD] section
 
 Impedance PID default gains (used at every startup, then can be modified using the C++/Python
 script, or register access)
 
-- `kp` - proportional gain
-- `kd` - derivative gain
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| kp | float | 0.0 | 100000.0 | proportional gain | yes |
+| kd | float | 0.0 | 100000.0 | derivative gain | yes |
+
+
+### [limits] section
+
+Global limits used to issue warnings or errors.
+
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| max position | float | -10000.0 | 10000.0| maximum position limit in rad | yes |
+| min position | float | -10000.0 | 10000.0 | minimum position limit in rad | yes |
+| max torque | float | 0.1 | 1000.0 | maximum allowed torque in Nm | yes |
+| max velocity | float | 0.0001 | 1500.0 | maximum allowed velocity in rad/s | yes |
+| max acceleration | float | 0.0001 | 10000.0 | max acceleration in rad/s^2 | yes |
+| max deceleration | float | 0.0001 | 10000.0 | max deceleration in rad/s^2 | yes |
+
+
+### [profile] section
+
+These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.
+
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| velocity | float | 0.0001 | 10000.0 | profile velocity in rad/s | yes |
+| acceleration | float | 0.0001 | 10000.0 | profile acceleration in rad/s^2 | yes |
+| deceleration | float | 0.0001 | 10000.0| profile deceleration in rad/s^2 | yes |
+| quick stop deceleration | float | 0.0001 | 10000.0 | quick stop deceleration in rad/s^2 | no |
+
+
+### [gpio] section
+
+| Name | Type | Values | Description | Required |
+|------|------|------|------|------|
+| mode | enum | OFF, AUTO_BRAKE, GPIO_INPUT | gpio mode | no |
+
+
+### [hardware] section
+
+| Name | Type | Min | Max | Description | Required |
+|------|------|------|------|------|------|
+| shunt resistance | float | 0.0002 | 0.01 | phase current shunt resistance | no |
+
 
 (calibration)=
 
