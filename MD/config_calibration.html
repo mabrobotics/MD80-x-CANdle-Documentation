@@ -210,7 +210,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../PDS/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated converter</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../PDS/brake_resistor.html">Brake Resistor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/communication.html">FDCAN Communication</a></li>
 </ul>
@@ -501,12 +502,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config">Config</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-section">[motor] section</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-section">[limits] section</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-section">[profile] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-encoder-section">[output encoder] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-section">[position PID] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-section">[velocity PID] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-pd-section">[impedance PD] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-section">[limits] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-section">[profile] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpio-section">[gpio] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-section">[hardware] section</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">Calibration</a><ul class="nav section-nav flex-column">
@@ -536,80 +539,433 @@ document.write(`
 used in. This section will cover the parameters that are used in config files.</p>
 <section id="motor-section">
 <h3>[motor] section<a class="headerlink" href="#motor-section" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - actuator name. Max 20 characters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pole</span> <span class="pre">pairs</span></code> - the number of rotor magnets divided by 2. If you are unsure type zero here - during
-calibration it will be autodetected. Later on it is advised to retype it after the calibration to
-the config file. It can be accessed using candletool md info or by register access.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">KV</span></code> - declared KV of the motor - its used when torque constant is set to zero.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">torque</span> <span class="pre">constant</span></code> - motor torque constant in Nm/A</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gear</span> <span class="pre">ratio</span></code> - gear ratio -&gt; example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">current</span></code> - maximum allowable phase (not power supply) current</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">torque</span> <span class="pre">bandwidth</span></code> - torque bandwidth setting</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">shutdown</span> <span class="pre">temp</span></code> - temperature threshold in [<em>C] of the motor that will cause a overtemperature
-stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0</em>C
-when candletool md info is called, the thermistor is not populated or is not working.</p></li>
-</ul>
-</section>
-<section id="limits-section">
-<h3>[limits] section<a class="headerlink" href="#limits-section" title="Link to this heading">#</a></h3>
-<p>Global limits used to issue warnings or errors.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">torque</span></code> - maximum allowed torque in Nm</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">velocity</span></code> - maximum allowed velocity in rad/s</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">position</span></code> - maximum position limit in rad</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min</span> <span class="pre">position</span></code> - minimum position limit in rad</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">acceleration</span></code> - max acceleration in rad/s^2</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">deceleration</span></code> - max deceleration in rad/s^2</p></li>
-</ul>
-</section>
-<section id="profile-section">
-<h3>[profile] section<a class="headerlink" href="#profile-section" title="Link to this heading">#</a></h3>
-<p>These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">acceleration</span></code> - profile acceleration in rad/s^2</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">deceleration</span></code> - profile deceleration in rad/s^2</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">velocity</span></code> - profile velocity in rad/s</p></li>
-</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>actuator name. Max 20 characters</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>pole pairs</p></td>
+<td><p>u32</p></td>
+<td><p>1</p></td>
+<td><p>500</p></td>
+<td><p>the number of rotor magnets divided by 2. If you are unsure type zero here - during calibration it will be autodetected. Later on it is advised to retype it after the calibration to the config file. It can be accessed using candletool md info or by register access.</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>torque constant</p></td>
+<td><p>float</p></td>
+<td><p>0.0000001</p></td>
+<td><p>500.0</p></td>
+<td><p>motor torque constant in Nm/A</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>torque constant a</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>1.0</p></td>
+<td><p>motor torque constant for phase A in Nm/A</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>torque constant b</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>1.0</p></td>
+<td><p>motor torque constant for phase B in Nm/A</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>torque constant c</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>1.0</p></td>
+<td><p>motor torque constant for phase C in Nm/A</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>max current</p></td>
+<td><p>float</p></td>
+<td><p>0.2</p></td>
+<td><p>82.0</p></td>
+<td><p>maximum allowable phase (not power supply) current</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>gear ratio</p></td>
+<td><p>float</p></td>
+<td><p>0.001</p></td>
+<td><p>1000</p></td>
+<td><p>gear ratio -&gt; example 6:1 reductor is 0.166666 whereas 1:2 multiplicator is 2</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>torque bandwidth</p></td>
+<td><p>unsigned</p></td>
+<td><p>50</p></td>
+<td><p>2000</p></td>
+<td><p>torque bandwidth setting in Hz</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>dynamic friction</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>10000.0</p></td>
+<td><p>dynamic friction</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>static friction</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>10000.0</p></td>
+<td><p>static friction</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>KV</p></td>
+<td><p>unsigned</p></td>
+<td><p>0</p></td>
+<td><p>10000</p></td>
+<td><p>declared KV of the motor - it is used when torque constant is set to zero.</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>calibration mode</p></td>
+<td><p>enum</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>FULL, NOPPDET</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>shutdown temp</p></td>
+<td><p>unsigned</p></td>
+<td><p>25</p></td>
+<td><p>127</p></td>
+<td><p>temperature threshold in [<em>C] of the motor that will cause a overtemperature stop. Note: this safety limit works only with a motor thermistor connected. If motor temp is 0</em>C when candletool md info is called, the thermistor is not populated or is not working.</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="output-encoder-section">
 <h3>[output encoder] section<a class="headerlink" href="#output-encoder-section" title="Link to this heading">#</a></h3>
 <p>For more information please refer to <a class="reference internal" href="encoders.html#aux-encoders"><span class="std std-ref">aux encoder</span></a> section.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">encoder</span></code> - valid types: ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">encoder</span> <span class="pre">mode</span></code> - valid modes: STARTUP, MOTION, REPORT, CALIBRATED_REPORT</p></li>
-</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>output encoder</p></td>
+<td><p>enum</p></td>
+<td><p>ME_AS_CENTER, ME_AS_OFFAXIS, MB053SFA17BENT00, CM_OFFAXIS</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>output encoder default baud</p></td>
+<td><p>unsigned</p></td>
+<td><p>9600-1000000</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>output encoder mode</p></td>
+<td><p>enum</p></td>
+<td><p>STARTUP, MOTION, REPORT, CALIBRATED_REPORT</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>output encoder calibration mode</p></td>
+<td><p>enum</p></td>
+<td><p>FULL, DIRONLY</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="position-pid-section">
 <h3>[position PID] section<a class="headerlink" href="#position-pid-section" title="Link to this heading">#</a></h3>
 <p>Position PID default gains (used at every startup, then can be modified using the C++/Python script,
 or register access)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">kp</span></code> - proportional gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ki</span></code> - integral gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kd</span></code> - derivative gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">windup</span></code> - integral limit</p></li>
-</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>kp</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>proportional gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>ki</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>integral gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>kd</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>derivative gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>windup</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>integral limit</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="velocity-pid-section">
 <h3>[velocity PID] section<a class="headerlink" href="#velocity-pid-section" title="Link to this heading">#</a></h3>
 <p>Velocity PID default gains (used at every startup, then can be modified using the C++/Python script,
 or register access)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">kp</span></code> - proportional gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ki</span></code> - integral gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kd</span></code> - derivative gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">windup</span></code> - integral limit</p></li>
-</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>kp</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>proportional gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>ki</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>integral gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>kd</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>derivative gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>windup</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>integral limit</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="impedance-pd-section">
 <h3>[impedance PD] section<a class="headerlink" href="#impedance-pd-section" title="Link to this heading">#</a></h3>
 <p>Impedance PID default gains (used at every startup, then can be modified using the C++/Python
 script, or register access)</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">kp</span></code> - proportional gain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kd</span></code> - derivative gain</p></li>
-</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>kp</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>proportional gain</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>kd</p></td>
+<td><p>float</p></td>
+<td><p>0.0</p></td>
+<td><p>100000.0</p></td>
+<td><p>derivative gain</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limits-section">
+<h3>[limits] section<a class="headerlink" href="#limits-section" title="Link to this heading">#</a></h3>
+<p>Global limits used to issue warnings or errors.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>max position</p></td>
+<td><p>float</p></td>
+<td><p>-10000.0</p></td>
+<td><p>10000.0</p></td>
+<td><p>maximum position limit in rad</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>min position</p></td>
+<td><p>float</p></td>
+<td><p>-10000.0</p></td>
+<td><p>10000.0</p></td>
+<td><p>minimum position limit in rad</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>max torque</p></td>
+<td><p>float</p></td>
+<td><p>0.1</p></td>
+<td><p>1000.0</p></td>
+<td><p>maximum allowed torque in Nm</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>max velocity</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>1500.0</p></td>
+<td><p>maximum allowed velocity in rad/s</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>max acceleration</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>10000.0</p></td>
+<td><p>max acceleration in rad/s^2</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>max deceleration</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>10000.0</p></td>
+<td><p>max deceleration in rad/s^2</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="profile-section">
+<h3>[profile] section<a class="headerlink" href="#profile-section" title="Link to this heading">#</a></h3>
+<p>These settings are respected in POSITION PROFILE and VELOCITY PROFILE modes.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>velocity</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>10000.0</p></td>
+<td><p>profile velocity in rad/s</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>acceleration</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>10000.0</p></td>
+<td><p>profile acceleration in rad/s^2</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>deceleration</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>10000.0</p></td>
+<td><p>profile deceleration in rad/s^2</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>quick stop deceleration</p></td>
+<td><p>float</p></td>
+<td><p>0.0001</p></td>
+<td><p>10000.0</p></td>
+<td><p>quick stop deceleration in rad/s^2</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="gpio-section">
+<h3>[gpio] section<a class="headerlink" href="#gpio-section" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mode</p></td>
+<td><p>enum</p></td>
+<td><p>OFF, AUTO_BRAKE, GPIO_INPUT</p></td>
+<td><p>gpio mode</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="hardware-section">
+<h3>[hardware] section<a class="headerlink" href="#hardware-section" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Min</p></th>
+<th class="head"><p>Max</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Required</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>shunt resistance</p></td>
+<td><p>float</p></td>
+<td><p>0.0002</p></td>
+<td><p>0.01</p></td>
+<td><p>phase current shunt resistance</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 <section id="calibration">
@@ -787,12 +1143,14 @@ command indicating there might be a problem with your setup:</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config">Config</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-section">[motor] section</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-section">[limits] section</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-section">[profile] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-encoder-section">[output encoder] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-section">[position PID] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-section">[velocity PID] section</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-pd-section">[impedance PD] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-section">[limits] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-section">[profile] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpio-section">[gpio] section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-section">[hardware] section</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">Calibration</a><ul class="nav section-nav flex-column">
