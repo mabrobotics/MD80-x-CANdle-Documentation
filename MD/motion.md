@@ -31,7 +31,7 @@ current/torque controller. The parameters of the controller are:
 - kP (proportional gain)
 - kI (integral gain)
 - kD (derivative gain)
-- I windup (maximal output of an integral part in[Nm])
+- I windup (maximal output of an integral part)
 
 ```{figure} ./images/velocity_pid.png
 :alt: candle
@@ -65,7 +65,7 @@ For Velocity PID:
 - kP (proportional gain)
 - kI (integral gain)
 - kD (derivative gain)
-- I windup (maximal output of an integral part in[Nm])
+- I windup (maximal output of an integral part)
 
 To properly tune the controller, it is recommended to first tune the velocity controller (in
 velocity PID mode), and then the position PID. The controller can be described with a diagram:
@@ -183,7 +183,7 @@ float mab_controller_performImpedanceController(Impedance_controller *c, float p
 ## Motion controller tuning
 
 ```{hint}
-The best way to get started with tuning is to copy the [default gains](https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf) and tweak them. You can treat this section as our recommendation for tuning the controllers, but [online articles](https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/) can be useful as well 
+The best way to get started with tuning is to copy the [default gains](https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf) and tweak them. You can treat this section as our recommendation for tuning the controllers, but [online articles](https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/) can be useful as well
 ```
 
 The first step to correctly set up the gains is to start with our
@@ -198,7 +198,7 @@ Default gains are set to work with CANdle examples. This way they can be assumed
 ```
 
 ```{hint}
-When something does go wrong during the tuning process just power-cycle the actuator - the default gains will be restored. 
+When something does go wrong during the tuning process just power-cycle the actuator - the default gains will be restored.
 ```
 
 ```{warning}
