@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PDO Overview &#8212; MAB Ecosystem</title>
+    <title>Migration to and from CANopen &#8212; MAB Ecosystem</title>
   
   
   
@@ -59,12 +59,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/Communication/canopen_pdo';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/Communication/migration';</script>
     <link rel="icon" href="../../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Migration to and from CANopen" href="migration.html" />
-    <link rel="prev" title="SDO Overview" href="canopen_sdo.html" />
+    <link rel="next" title="PDS - Power Distribution System" href="../../PDS/intro.html" />
+    <link rel="prev" title="PDO Overview" href="canopen_pdo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,8 +199,8 @@
 <li class="toctree-l4"><a class="reference internal" href="canopen_od.html">Object Dictionary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="canopen_nmt.html">NMT Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="canopen_sdo.html">SDO Overview</a></li>
-<li class="toctree-l4 current active"><a class="current reference internal" href="#">PDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration.html">Migration to and from CANopen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen_pdo.html">PDO Overview</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Migration to and from CANopen</a></li>
 </ul>
 </details></li>
 </ul>
@@ -377,7 +377,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/Communication/canopen_pdo.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/Communication/migration.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -407,7 +407,7 @@
       
       
       
-      <li><a href="../../_sources/MD/Communication/canopen_pdo.md" target="_blank"
+      <li><a href="../../_sources/MD/Communication/migration.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -491,7 +491,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>PDO Overview</h1>
+    <h1>Migration to and from CANopen</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -501,12 +501,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-pdos">2. Types of PDOs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo-message-structure">3. PDO Message Structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo-communication-parameters">4. PDO Communication Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo-mapping-parameters">5. PDO Mapping Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-to-canopen">Migration to CANopen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step">First step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-step">Second step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-from-canopen">Migration from CANopen</a></li>
 </ul>
             </nav>
         </div>
@@ -518,144 +519,58 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pdo-overview">
-<h1>PDO Overview<a class="headerlink" href="#pdo-overview" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p><strong>PDOs (Process Data Objects)</strong> are CANopen messages used for <strong>real-time data exchange</strong> between
-nodes. Unlike SDO (Service Data Objects), PDOs transmit data without a request/response mechanism.</p>
-</section>
-<hr class="docutils" />
-<section id="types-of-pdos">
-<h2>2. Types of PDOs<a class="headerlink" href="#types-of-pdos" title="Link to this heading">#</a></h2>
-<p>CANopen defines four types of PDOs per node:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>PDO Type</strong></p></th>
-<th class="head"><p><strong>Direction</strong></p></th>
-<th class="head"><p><strong>CAN-ID Range</strong></p></th>
-<th class="head"><p><strong>Purpose</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>TPDO1–4</p></td>
-<td><p>Transmit PDOs</p></td>
-<td><p>0x180–0x1FF</p></td>
-<td><p>Data sent by the node to the network</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPDO1–4</p></td>
-<td><p>Receive PDOs</p></td>
-<td><p>0x200–0x27F</p></td>
-<td><p>Data received by the node from the network</p></td>
-</tr>
-</tbody>
-</table>
+  <section class="tex2jax_ignore mathjax_ignore" id="migration-to-and-from-canopen">
+<h1>Migration to and from CANopen<a class="headerlink" href="#migration-to-and-from-canopen" title="Link to this heading">#</a></h1>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h2>
+<p>Download flasher program for CANopen firmware variant from <a class="reference internal" href="../../Downloads/intro.html#hardware-downloads"><span class="std std-ref">here</span></a>.</p>
+<p>The migration is performed via flashing appropriate firmware onto the MD device. Necessary
+components for this procedure are:</p>
+<ul class="simple">
+<li><p>Candle or Candle HAT device</p></li>
+<li><p>MD driver</p></li>
+<li><p>PC or SBC with candletool installed</p></li>
+</ul>
+<p>Connect your candle device to the driver and power it. Make sure that candle device is connected via
+the USB to the host.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only one device can be connected on the can line during the procedure, so all the drivers need to be updated individually.</p>
 </div>
 </section>
-<hr class="docutils" />
-<section id="pdo-message-structure">
-<h2>3. PDO Message Structure<a class="headerlink" href="#pdo-message-structure" title="Link to this heading">#</a></h2>
-<p>A PDO message can carry up to <strong>8 data bytes</strong>.<br />
-Its CAN-ID and mapping are fully configurable via <strong>communication</strong> and <strong>mapping</strong> parameters.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Field</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>CAN-ID</strong></p></td>
-<td><p>Identifies which PDO it is (default values can be remapped)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>DLC</strong></p></td>
-<td><p>Number of data bytes (0–8)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Data</strong></p></td>
-<td><p>Mapped application objects (e.g., sensor values, actuator commands)</p></td>
-</tr>
-</tbody>
-</table>
+<section id="migration-to-canopen">
+<h2>Migration to CANopen<a class="headerlink" href="#migration-to-canopen" title="Link to this heading">#</a></h2>
+<section id="first-step">
+<h3>First step<a class="headerlink" href="#first-step" title="Link to this heading">#</a></h3>
+<p>When switching to CANopen the driver ID must be within the range of valid nodeIDs in CANopen. To set
+this up we usually use the lowest valid nodeID in our protocol which is 10. So the first command
+issued should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="n">can</span> <span class="o">--</span><span class="n">new_id</span> <span class="mi">10</span> <span class="o">--</span><span class="n">save</span>
+</pre></div>
 </div>
 </section>
-<hr class="docutils" />
-<section id="pdo-communication-parameters">
-<h2>4. PDO Communication Parameters<a class="headerlink" href="#pdo-communication-parameters" title="Link to this heading">#</a></h2>
-<p>Each PDO has a <strong>Communication Parameter Record</strong> (object 0x1400 for RPDO1, 0x1800 for TPDO1, etc.)
-that defines how it is sent/received. cf: <a class="reference internal" href="../../candlelib/md_canopen/OD.html#receive-pdo1-mapping"><span class="std std-ref">Object Dictionary</span></a></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>COB-ID</p></td>
-<td><p>The CAN-ID used for the PDO</p></td>
-</tr>
-<tr class="row-odd"><td><p>Transmission Type</p></td>
-<td><p>Defines how the PDO is triggered (synchronous, asynchronous, event-driven, cyclic)</p></td>
-</tr>
-<tr class="row-even"><td><p>Inhibit Time</p></td>
-<td><p>Minimum time between two PDO transmissions</p></td>
-</tr>
-<tr class="row-odd"><td><p>Event Timer</p></td>
-<td><p>Periodic transmission time (in ms)</p></td>
-</tr>
-</tbody>
-</table>
+<section id="second-step">
+<h3>Second step<a class="headerlink" href="#second-step" title="Link to this heading">#</a></h3>
+<p>Use flasher to flash firmware onto the board:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">path_to_canopen_flasher</span><span class="o">&gt;</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">baud</span> <span class="o">&lt;</span><span class="n">baudrate</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher_CANopen_7fd0626</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">10</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span>
+</pre></div>
 </div>
 </section>
-<hr class="docutils" />
-<section id="pdo-mapping-parameters">
-<h2>5. PDO Mapping Parameters<a class="headerlink" href="#pdo-mapping-parameters" title="Link to this heading">#</a></h2>
-<p>PDO mapping parameters (object 0x1600 for RPDO1, 0x1A00 for TPDO1, etc.) define <strong>which application
-objects</strong> are packed into the PDO data bytes.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Entry</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Number of Mapped Objects</p></td>
-<td><p>Number of data objects included in this PDO</p></td>
-</tr>
-<tr class="row-odd"><td><p>Mapped Object 1..n</p></td>
-<td><p>Each entry specifies the object index, subindex, and size in bits</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Example of a mapped TPDO1:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Byte Offset</strong></p></th>
-<th class="head"><p><strong>Mapped Object</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0–1</p></td>
-<td><p>0x6041:00 (16-bit)</p></td>
-<td><p>Statusword</p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>0x6061:00 (8-bit)</p></td>
-<td><p>Mode of Operation Display</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </section>
-<hr class="docutils" />
-<section id="conclusion">
-<h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>PDOs are the <strong>fast data carriers</strong> of CANopen.<br />
-They allow efficient, low-overhead communication for process data, with flexible mapping and
-triggering options.</p>
-<p>✅ Use TPDOs to broadcast sensor data<br />
-✅ Use RPDOs to control actuators<br />
-✅ Configure transmission types carefully for deterministic real-time performance</p>
+<section id="migration-from-canopen">
+<h2>Migration from CANopen<a class="headerlink" href="#migration-from-canopen" title="Link to this heading">#</a></h2>
+<p>Using the recovery procedure, the driver can be reverted to version with MD FDCAN protocol. The
+recovery command looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="n">update</span> <span class="n">latest</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p>After starting this command, the driver needs to be restarted manually and then the recovery
+re-flashing procedure will begin. The driver should then operate in MD FDCAN protocol mode.</p>
+<p>If the nodeID was lower than 10 the driver should automatically assign itself an ID of 10.</p>
 </section>
 </section>
 
@@ -690,20 +605,20 @@ triggering options.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="canopen_sdo.html"
+       href="canopen_pdo.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SDO Overview</p>
+        <p class="prev-next-title">PDO Overview</p>
       </div>
     </a>
     <a class="right-next"
-       href="migration.html"
+       href="../../PDS/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Migration to and from CANopen</p>
+        <p class="prev-next-title">PDS - Power Distribution System</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -723,12 +638,13 @@ triggering options.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-pdos">2. Types of PDOs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo-message-structure">3. PDO Message Structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo-communication-parameters">4. PDO Communication Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdo-mapping-parameters">5. PDO Mapping Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-to-canopen">Migration to CANopen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step">First step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-step">Second step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-from-canopen">Migration from CANopen</a></li>
 </ul>
   </nav></div>
 
