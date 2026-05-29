@@ -57,7 +57,7 @@ For Position PID:
 - kP (proportional gain)
 - kI (integral gain)
 - kD (derivative gain)
-- I windup (maximal output of an integral part in [rad/s])
+- I windup (maximal output of an integral part)
 
 For Velocity PID:
 
