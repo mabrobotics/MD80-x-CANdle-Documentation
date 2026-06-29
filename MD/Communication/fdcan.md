@@ -651,8 +651,8 @@ releases introduce new features.
 ### Main Encoder
 | Register                        | Addr | R/W | Type    | Limits   | Description | Status |
 |---------------------------------|------:|-----|---------|-------------------|-------------| ---- |
-| mainEncoder (new)               | 0x02A | RW  | uint8     | [0; 1; 3; 8; 9; 10;] | NONE=0,<br>ME_AS_CENTER=1,<br>RLS_RS422_17B=3,<br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10| **Active**<br>from 3.0.0 |
-| mainEncoderDir (new)            | 0x02B | RW  | float32   | -1 or 1       | Main encoder direction, CCW or CW - automatically set during calibration | **Active**<br>from 3.0.0 |
+| mainEncoder (new)               | 0x02A | RW  | uint8     | [0; 1; 3; 8; 9; 10;] | NONE=0,<br>ME_AS_CENTER=1,<br>RLS_RS422_17B=3,<br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10| **Active**<br>from&nbsp;v3.0.0 |
+| mainEncoderDir (new)            | 0x02B | RW  | float32   | -1 or 1       | Main encoder direction, CCW or CW - automatically set during calibration | **Active**<br>from&nbsp;v3.0.0 |
 
 ### Motion Control
 | Register               | Addr  | R/W | Type  | Limits | Description | Status |
