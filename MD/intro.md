@@ -8,6 +8,7 @@ MD drivers offer:
 - high efficiency,
 - ultra-high power density,
 - advanced motion control strategies,
+- recuperative (regenerative) braking,
 - integrated encoder (14-bit),
 - FDCAN and CANOpen communication,
 - support for external encoders (up to 17 bit),
@@ -23,7 +24,7 @@ Suitable for most BLDC motors in 100-500W power range. ![MD80](./images/md80_hmd
 
 ## [MD20](/MD/MD20)
 
-Best for gimbal BLDC motor, and smaller motors up to 120W. ![MD20](./images/md20_coin.jpg)
+Best for gimbal BLDC motor, and smaller or gimbal motors up to 120W. ![MD20](./images/md20_coin.jpg)
 
 ## [MD80 60V](/MD/MD80HV)
 
