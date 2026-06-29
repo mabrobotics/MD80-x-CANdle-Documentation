@@ -6,13 +6,80 @@
 TL;DR: [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&t=0s)
 ```
 
-To control the motor shaft with the user’s command MDxx is equipped with multiple control loops. All
+There are several motion controllers that can be used on MD: 
+| Mode | Inputs (targets) | Parameters | Application |
+|------|--------|------------|--------------|
+| Impedance Controller | position, velocity, torque (feedforward) | 2 | Legged robots, cobots, compliant mechanisms, force-feedback |
+| Position PID (Cascade) | position, velocity | 8 | Robot arms, precision mechanisms |
+| Velocity PID | velocity | 4 | Wheels, rotors, gyroscopes |
+| Profile Position | position, velocity | 8 | Robot arms, offline optimization, safety mechanisms |
+| Profile Velocity | velocity | 4 | Offline optimization, precise velocity control, safety mechanisms |
+
+To control the motor shaft with the user’s command MD is equipped with multiple control loops. Most
 controllers are based on a regular PID controller design with an anti-windup block. The saturator
 (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as
 in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’
 and ‘D’ parts of the controller.
 
 ```{figure} ./images/limiters.png
+:alt: candle
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+```{hint} 
+<b>Selecting Controller & tuning advise</b>
+While starting up with MD based actuators, when required system gains are not known, we highly advise
+checking up Impendace PD mode.
+This mode offers flexibility, simplicity and surprisingly good performance for wide variety of tasks. 
+```
+
+(impedance-pd)=
+## Impedance PD
+
+Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant
+mechanism (virtual spring, collaborative robots etc), force control and force feedback. The main idea behind it is to mimic the behavior of a torsional spring with variable
+stiffness and damping. The parameters of the controller are:
+
+- Position Target
+- Velocity Target
+- kP (position gain)
+- kD (velocity gain)
+- Torque Feed Forward (Torque FF)
+
+The torque output is proportional to the position error and velocity error and additionally
+supplemented with a torque command from the user. Here are some of the most common applications for
+this control mode:
+
+- <b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to
+  the output controller torque.
+- <b>Spring-damper mechanism</b> - when velocity target is set to 0, impedance controllers kP gain
+  acts as the virtual spring stiffness and kD as its damping coefficient. Example use case: a
+  variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP,
+  damping by kD, and height (clearance) by changing the target position;
+- <b>Compliant trajectory follower</b> - when trajectory (set of positions and velocities, optionally
+  torque too) is known one can command both requested position and velocity to the actuator, which will
+  allow for following trajectory with small deviation, while still allowing for compliant behaviors.
+  This can be used in compliant robotic arms, allowing easy gravity and dynamics compensation (through
+  torque feed forward), and precise position tracing through position and velocity commands.
+- <b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents
+  to the torque command. Example use case: In legged robots, force control can be achieved by
+  advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to
+  stabilize the robot but too slow to avoid vibrations. Knowing desired robot's joint positions,
+  velocities, and torques, drives can be set to produce the proper torque and hold the
+  position/velocity with small gains. This would compensate for any high-frequency oscillations
+  (vibrations) that may occur, as the impedance controller works at 40kHz (much faster than \<100
+  Hz).
+- <b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the
+  motor shaft will be free to rotate. When the drive is disabled it connects all the windings
+  together for safety. This mode can be useful for enabling free rotation of the shaft, but the
+  rotational energy should not be too high as the voltages induced in the motor windings could break
+  the driver.
+
+The impedance controller is relatively simple and works according to the schematic below:
+
+```{figure} ./images/impedance.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
@@ -71,53 +138,6 @@ To properly tune the controller, it is recommended to first tune the velocity co
 velocity PID mode), and then the position PID. The controller can be described with a diagram:
 
 ```{figure} ./images/position_pid.png
-:alt: candle
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-(impedance-pd)=
-
-## Impedance PD
-
-Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant
-mechanism. The main idea behind it is to mimic the behavior of a torsional spring with variable
-stiffness and damping. The parameters of the controller are:
-
-- Position Target
-- Velocity Target
-- kP (position gain)
-- kD (velocity gain)
-- Torque Feed Forward (Torque FF)
-
-The torque output is proportional to the position error and velocity error and additionally
-supplemented with a torque command from the user. Here are some of the most common applications for
-this control mode:
-
-- <b>Spring-damper mechanism</b> - when velocity target is set to 0, impedance controllers kP gain
-  acts as the virtual spring stiffness and kD as its damping coefficient. Example use case: a
-  variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP,
-  damping by kD, and height (clearance) by changing the target position;
-- <b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents
-  to the torque command. Example use case: In legged robots, force control can be achieved by
-  advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to
-  stabilize the robot but too slow to avoid vibrations. Knowing desired robot's joint positions,
-  velocities, and torques, drives can be set to produce the proper torque and hold the
-  position/velocity with small gains. This would compensate for any high-frequency oscillations
-  (vibrations) that may occur, as the impedance controller works at 40kHz (much faster than \<100
-  Hz).
-- <b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to
-  the output controller torque.
-- <b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the
-  motor shaft will be free to rotate. When the drive is disabled it connects all the windings
-  together for safety. This mode can be useful for enabling free rotation of the shaft, but the
-  rotational energy should not be too high as the voltages induced in the motor windings could break
-  the driver.
-
-The impedance controller is relatively simple and works according to the schematic below:
-
-```{figure} ./images/impedance.png
 :alt: candle
 :class: bg-primary mb-1
 :align: center
