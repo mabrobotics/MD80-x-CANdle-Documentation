@@ -43,6 +43,33 @@ from overheating, as well as the surrounding environment from too-powerful actua
 Limits apply to: position, velocity, torque, phase current, and temperature of the MOSFETs and the
 motor.
 
+The limits are applied in cascading manner, with highest priority:
+- driver current limit, (highest priority),
+- motor current limiter,
+- torque limiter,
+- position/velocity limiters (lowest priority).
+
+```{dropdown} **EXAMPLE** 
+Lets assume the actuator is set up in Velocity PID mode, with `kP = 1.0`, and rotor is stationary.
+Assume limits are:
+- Velocity limit: 5 rad/s
+- Torque limit: 3 Nm
+- Motor Current limit: 1A
+- Torque constant (Kt): 1 Nm/A
+- Driver Current limit: 20A (md20)
+
+Now we command the actuator to spin at `target velocity = 10 rad/s`.
+
+The following chain of events will happen internally on the actuator:
+1. The velocity command is clipped to Velocity limit, from 10 rad/s to 5 rad/s - a Motion Status warning bit is set,
+2. Velocity PID regulator computes requested: `torque = velocity error * kP` -> `(5 rad/s - 0 rad/s) * 1.0 = 5 Nm`,
+3. Torque gets clipped to the Torque limit, from 5Nm to 3Nm - Motion Status warning bit is set,
+4. Requested current is computed: `Torque * Kt = current` -> `3Nm * 1 Nm/A = 3A`,
+5. The requested current is then clipped by Motor Current Limit from 3A to 1A,
+6. Resulting 1A is being applied to the motor, as it is lower than Driver Current Limit.
+
+```
+
 ## Position Limit
 
 Position limit is respected only in Impedance / Position PID / Profile Position modes. When target
