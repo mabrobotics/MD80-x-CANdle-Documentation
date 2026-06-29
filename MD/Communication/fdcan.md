@@ -39,8 +39,8 @@ frame length, the contents of the frames will be the same as in FDCAN version of
 
 ## Communication Structure
 
-Communication with MD, happen is a strict Master-Slave structure. The MD itself will never produce a
-CAN frame by itself, it will only respond to direct commands from a host. Each MD device has
+Communication with MD, happen is a strict Master-Slave structure. **The MD will never produce a
+CAN frame by itself**, it will only respond to direct commands from a host. Each MD device has
 configurable **CAN ID**, that serves as its unique identifier on the CAN bus. There may never be
 more than one MD with the same CAN ID, as this will lead to conflicts and errors.
 
@@ -48,7 +48,8 @@ All communication with the particular drive will happen only via messages with p
 example:
 
 ```{note}
-Host sends a request (command) to drive with Id *100*, the drive will execute the command and respond with a CAN frame that also has the ID of *100*
+Host sends a request (command) to drive with Id *100*, the drive will execute the command and respond 
+with a CAN frame that also has the ID of *100*
 ```
 
 The communication stack is based on a register access using two frames - **register read and
@@ -56,8 +57,18 @@ register write**. The list of [available registers](registers) can be found at t
 chapter. All fields are little-endian - least significant byte first, and all float fields are 4
 bytes long (32 bit) encoded in IEEE-754 standard.
 
-```{warning}
-Wrong access, incorrect data values or other communication errors are not reported explicitly. **Command that failed (regardless of the reason), will result in the drive not producing any response.** Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command, the host may consider the command has failed.
+The MD will response with one of the three possible frame types, based on the hosts' command:
+- Register Data frame,
+- Quick Data frame,
+- Error frame.
+
+```{warning} 
+**For pre 3.0.0 firmware versions (v2.5.x)**, 
+
+wrong access, incorrect data values or other communication errors are not reported explicitly.  
+**Command that failed (regardless of the reason), will result in the drive not producing any response.** 
+Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command,
+the host may consider the command has failed.
 ```
 
 ### Frame Structure
@@ -173,10 +184,16 @@ of the frame behaviours by their id:
             <td> WRITE_REGISTER_CAN2.0 </td>
             <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. Works same as <a href="write-register"> Write Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response.</td>
 		</tr>
+        <tr></tr>
 		<tr>
-			<td> 0x0A </td>
-            <td> LEGACY_RESPONSE </td>
+			<td> 0xA0 </td>
+            <td> QUICK DATA (LEGACY Response) </td>
             <td> RESPONSE ONLY. A response produced as a result of some frames. Contains data, most commonly required in fast control loops - <a href="#legacy-response">more info here.</a> </td>
+		</tr>
+		<tr>
+			<td> 0xA1 </td>
+            <td> ERROR RESPONSE </td>
+            <td> RESPONSE ONLY. A response produced as a result of failed register write or read attempt. Contains an error code and failed register id.</td>
 		</tr>
 	</tbody>
 </table>
@@ -478,6 +495,106 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
 	</tbody>
 </table>
 <p></p>
+
+### Error response
+
+Error response is present in MD firmware v3.0.0 and newer. For older versions (v2.x.x), when the error occurs, no
+response is produced at all, and error handling must happen via timeout handling.
+
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b></b></td>
+			<td> <b>BYTE 0</b></td>
+			<td> <b>BYTE 1</b></td>
+			<td> <b>BYTE 2-3</b></td>
+		</tr>
+		<tr>
+			<td>NAME </td>
+			<td>FRAME ID </td>
+			<td>ERROR CODE</td>
+			<td>REGISTER ID </td>
+		</tr>
+    <tr>
+			<td>TYPE </td>
+			<td>uint8_t </td>
+			<td>int8_t </td>
+			<td>uint16_t [*C] </td>
+		</tr>
+        <tr>
+			<td>VALUE </td>
+			<td>0xA1 </td>
+			<td>-255 - 0 </td>
+			<td>0x0000 - 0xFFFF</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+Error codes are int8 based **negative** values.
+| Error Code | Error Name | Description |
+| --- | --- | -------|
+|  0 (0x00) | NONE | No error |  
+| -1 (0xFF) | DEPRECATED | Register deprecated - can be treated as warning. The call had no effect | 
+| -2 (0xFE) | INVALID | Frame composition invalid - usually incorrecy size of frame layout |  
+| -3 (0xFD) | UNKNOWN | Register ID unknown - The call has no effect |  
+| -4 (0xFC) | OUT_OF_RANGE | Register value was parsed, but was out of acceptable range. Refer to register table below. |  
+| -5 (0xFB) | ACCESS | Trying to write to read-only register, or read write-only register |  
+
+```{dropdown} **EXAMPLE** Write invalid motor kv
+Command, send from host to MD:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-5 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - motorKv </td>
+            <td> (u16) 65001 </td>
+		</tr>
+		<tr>
+			<td> 0x42 </td>
+            <td> 0x00 </td>
+            <td> 0x001D </td>
+            <td> 0xFDE9 </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: 0x42 00 1D 00 E9 FD
+
+Acceptable range here is 1 - 65000, so value `65001` is out of range, producing error response.
+
+Response, send from MD to Host:
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> Error Code </td>
+            <td> RegisterId </td>
+		</tr>
+		<tr>
+			<td> 0xA1 </td>
+            <td> 0xFC </td>
+            <td> 0x001D </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: 0xA1 FC 1D 00 
+```
 
 (registers)=
 
