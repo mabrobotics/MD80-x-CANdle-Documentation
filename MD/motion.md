@@ -7,11 +7,11 @@ TL;DR: [MD x CANdle - motion modes](https://www.youtube.com/watch?v=XnD8sG22zro&
 ```
 
 There are several motion controllers that can be used on MD: 
-| Mode | Inputs (targets) | Parameters | Application |
+| Mode | Inputs (targets) | Tuning parameters | Applications |
 |------|--------|------------|--------------|
 | Impedance Controller | position, velocity, torque (feedforward) | 2 | Legged robots, cobots, compliant mechanisms, force-feedback |
 | Position PID (Cascade) | position, velocity | 8 | Robot arms, precision mechanisms |
-| Velocity PID | velocity | 4 | Wheels, rotors, gyroscopes |
+| Velocity PID | velocity | 4 | Wheels, rovers, rotors, gyroscopes |
 | Profile Position | position, velocity | 8 | Robot arms, offline optimization, safety mechanisms |
 | Profile Velocity | velocity | 4 | Offline optimization, precise velocity control, safety mechanisms |
 
@@ -109,9 +109,9 @@ current/torque controller. The parameters of the controller are:
 
 (position-pid)=
 
-## Position PID
+## Position PID (Cascade)
 
-Position PID mode is the most common controller mode used in industrial servo applications. In MDxx,
+Position PID mode is the most common controller mode used in industrial servo applications. In MD,
 it is implemented as a cascaded PID controller. This means that the controller is working in two
 stages, firstly the position error is calculated, and it is then passed to the Position PID, which
 outputs the target velocity. This value is then passed as an input to the Velocity PID controller,
@@ -250,8 +250,16 @@ Always keep your safety limits low when experimenting with gains. Gains not suit
    coefficient)
 1. Avoid setting kd too high - it may cause severe vibrations.
 
-### Current PI
+### Current PI / Torque bandwidth
 
 Current/torque PI is the lowest-level controller. Its gains are not directly user-configurable,
 however, they can be modified using the bandwidth parameter. Please see the calibration section for
 more insight on the topic.
+
+The torque bandwidth can be adjusted based on the dynamics of the actuator and application. The bandwidth
+controls how 'aggressively' the current (thus torque) control is applied. This is a tradeoff between 
+torque responsiveness, and factors like audible noise, position/velocity readout noise, high-frequency
+vibrations etc. For most cases, like position/velocity control, the default setting of 100/500 Hz is 
+usually sufficient. For very dynamic applications, for example for damping high-frequency vibrations 
+(100+/1000+ hz) increasing the bandwidth may improve the performance.
+
