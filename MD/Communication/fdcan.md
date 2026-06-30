@@ -1,3 +1,9 @@
+<style>
+.small-table table {
+  font-size: 12px;
+}
+</style>
+
 (md_protocol)=
 
 # MD communication
@@ -532,6 +538,7 @@ response is produced at all, and error handling must happen via timeout handling
 </table>
 <p></p>
 
+<div class="small-table">
 Error codes are int8 based **negative** values.
 | Error Code | Error Name | Description |
 | --- | --- | -------|
@@ -541,6 +548,7 @@ Error codes are int8 based **negative** values.
 | -3 (0xFD) | UNKNOWN | Register ID unknown - The call has no effect |  
 | -4 (0xFC) | OUT_OF_RANGE | Register value was parsed, but was out of acceptable range. Refer to register table below. |  
 | -5 (0xFB) | ACCESS | Trying to write to read-only register, or read write-only register |  
+</div>
 
 ```{dropdown} **EXAMPLE** Write invalid motor kv
 Command, send from host to MD:
@@ -603,18 +611,13 @@ Which in raw HEX is: 0xA1 FC 1D 00
 Below is full register list supported by MD drives. The list is being updated regularely as MD firmware
 releases introduce new features. 
 
-<style>
-.small-table table {
-  font-size: 12px;
-}
-</style>
 
 
 <div class="small-table">
 
 ### Communications
 
-| Register | Addr | R/W | Type | Limits | Description | Status |
+| Register | Addr | R/W | Type | Value | Description | Status |
 |:---------|:----:|:---:|:-----|:-------|:------------|:-----------------|
 | canId | `0x001` | RW | `uint32` | 10–2000 | FDCAN bus ID number | **Active** |
 | canBaudrate | `0x002` | RW | `uint32` | 1M, 2M, 5M, 8M | FDCAN bus baudrate | **Active** |
@@ -623,7 +626,7 @@ releases introduce new features.
 
 
 ### Actuator Parameters
-| Register | Addr | R/W | Type | Limits | Description | Status |
+| Register | Addr | R/W | Type | Value | Description | Status |
 |:---------|:----:|:---:|:-----|:-------|:------------|:-------|
 | motorName | `0x010` | RW | `char[24]` | – | User-defined motor name. | **Active** |
 | motorPolePairs | `0x011` | RW | `uint32` | 2–225 | Number of motor pole pairs. | **Active** |
@@ -638,7 +641,7 @@ releases introduce new features.
 | motorThermistorType | `0x01F` | RW | `uint8` | – | Connected motor thermistor type. | **Active** |
 
 ### Aux (Output) Encoder
-| Register                        | Addr | R/W | Type    | Limits   | Description | Status |
+| Register                        | Addr | R/W | Type    | Value   | Description | Status |
 |---------------------------------|------:|-----|---------|-------------------|-------------| ---- |
 | outputEncoder                   | 0x020 | RW  | uint8     | [0 - 11]      | NONE=0,<br>ME_AS_CENTER=1,<br>ME_AS_OFFAXIS=2,<br>RLS_RS422_17B=3,<br>CM_OFFAXIS=4,<br>M24B_CENTER=5,<br>M24B_OFFAXIS=6, <br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10,<br>CE300=11 | **Active** |
 | outputEncoderDir                | 0x021 | RW  | float32   | -1 or 1       | Aux encoder direction, CCW or CW - automatically set during calibration | **Active** |
@@ -649,13 +652,13 @@ releases introduce new features.
 | outputEncoderCalibrationMode    | 0x026 | RW  | uint8     | [0;1]         | FULL=0,<br> DIRONLY=1 | **Active** |
 
 ### Main Encoder
-| Register                        | Addr | R/W | Type    | Limits   | Description | Status |
+| Register                        | Addr | R/W | Type    | Value   | Description | Status |
 |---------------------------------|------:|-----|---------|-------------------|-------------| ---- |
 | mainEncoder (new)               | 0x02A | RW  | uint8     | [0; 1; 3; 8; 9; 10;] | NONE=0,<br>ME_AS_CENTER=1,<br>RLS_RS422_17B=3,<br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10| **Active**<br>from&nbsp;v3.0.0 |
 | mainEncoderDir (new)            | 0x02B | RW  | float32   | -1 or 1       | Main encoder direction, CCW or CW - automatically set during calibration | **Active**<br>from&nbsp;v3.0.0 |
 
 ### Motion Control
-| Register               | Addr  | R/W | Type  | Limits | Description | Status |
+| Register               | Addr  | R/W | Type  | Value | Description | Status |
 |------------------------|------:|-----|-------|--------|-------------| ------ |
 | motorPosPidKp         | 0x030 | RW  | float | -      | Position PID proportional gain | **Active** |
 | motorPosPidKi         | 0x031 | RW  | float | -      | Position PID integral gain | **Active** |
@@ -679,7 +682,7 @@ releases introduce new features.
 | targetTorque    | 0x152 | RW  | float | -      | Sets target torque in Nm | Active |
 
 ### System Commands
-| Register                     | Addr  | R/W | Type   | Limits               | Description | Status |
+| Register                     | Addr  | R/W | Type   | Value               | Description | Status |
 |-----------------------------|------:|-----|--------|----------------------|-------------| ----    |
 | runSaveCmd                  | 0x080 | WO  | uint8 | 1 to run  | Save non-volatile memory | **Active** |
 | runTestMainEncoderCmd       | 0x081 | WO  | uint8 | 1 to run  | Runs main encoder test routine | **Active** |
@@ -696,7 +699,7 @@ releases introduce new features.
 | runCanReinit                | 0x08D | WO  | uint8 | 1 to run  | Reinitializes CAN peripheral | **Active** |
 
 ### Test Results
-| Register                | Addr  | R/W | Type  | Limits | Description | Status |
+| Register                | Addr  | R/W | Type  | Value | Description | Status |
 |-------------------------|------:|-----|-------|--------|-------------| ------ |
 | calOutputEncoderStdDev  | 0x100 | RO  | float | -      | Aux encoder test result (standard deviation) | **Active** |
 | calOutputEncoderMinE    | 0x101 | RO  | float | -      | Aux encoder test result (min error) | **Active** |
@@ -705,8 +708,8 @@ releases introduce new features.
 | calMainEncoderMinE      | 0x104 | RO  | float | -      | Main encoder test result (min error) | **Active** |
 | calMainEncoderMaxE      | 0x105 | RO  | float | -      | Main encoder test result (max error) | **Active** |
 
-### Limits
-| Register           | Addr  | R/W | Type  | Limits | Description | Status |
+### Limits 
+| Register           | Addr  | R/W | Type  | Value | Description | Status |
 |--------------------|------:|-----|-------|--------|-------------| ------ |
 | maxPosition *(was positionLimitMax)* | 0x110 | RW  | float | > 0    | Maximum valid position | **Active** |
 | minPosition *(was positionLimitMin)* | 0x111 | RW  | float | < 0    | Minimum valid position | **Active** |
@@ -716,7 +719,7 @@ releases introduce new features.
 | maxDeceleration    | 0x115 | RW  | float | > 0    | Maximum deceleration | **Active** |
 
 ### Motion Profiles
-| Register                 | Addr  | R/W | Type  | Limits | Description | Status |
+| Register                 | Addr  | R/W | Type  | Value | Description | Status |
 |--------------------------|------:|-----|-------|--------|-------------| ------ |
 | profileVelocity         | 0x120 | RW  | float | -      | up to v2.5.4 - profile velocity<br>**from v3.0.0 - replaced by targetVelocity** | *Discontinued*<br>from&nbsp;v3.0.0 |
 | profileAcceleration     | 0x121 | RW  | float | -      | Profile acceleration | **Active** |
@@ -726,23 +729,29 @@ releases introduce new features.
 | velocityWindow          | 0x125 | RW  | float | -      | Velocity window within velocity is considered to be reached | **Active** |
 
 ### State
-| Register             | Addr  | R/W | Type   | Limits | Description | Status |
+| Register             | Addr  | R/W | Type   | Value | Description | Status |
 |----------------------|------:|-----|--------|--------|-------------| ------ |
 | motionModeCommand    | 0x140 | WO  | uint8 | -      | IDLE=0x00,<br>POSITION_PID=0x01,<br>VELOCITY_PID=0x02,<br>RAW_TORQUE=0x03,<br>IMPEDANCE=0x04,<br>POSITION_PROFILE=0x07,<br>VELOCITY_PROFILE=0x08 | **Active** |
 | motionModeStatus     | 0x141 | RO  | uint8 | -      | Shows the currently set motion mode | **Active** |
 | state                | 0x142 | RW  | uint16 | -     | Returns the internal state machine state of the controller | **Active** |
 
 ### GPIO / Add-ons
-| Register               | Addr  | R/W | Type    | Limits | Description | Status |
+| Register               | Addr  | R/W | Type    | Value | Description | Status |
 |------------------------|------:|-----|---------|--------|-------------| ------ |
 | userGpioConfiguration  | 0x160 | RW  | uint8  | -      | 0 - OFF,<br>1 - BRAKE,<br>2 - GPIO INPUT | **Active** |
 | userGpioState          | 0x161 | RO  | uint16 | 0 or 1 | GPIO input state | **Active** |
 
 ### Driver Info
-| Register          | Addr  | R/W | Type  | Limits      | Description | Status |
+| Register          | Addr  | R/W | Type  | Value      | Description | Status |
 |-------------------|------:|-----|-------|-------------|-------------| ------ |
 | shuntResistance   | 0x700 | RW  | float | > 0 | Current sense resistor value. Setting this register to a value that is not coherent with the hardware may damage the controller. In this cases warranty is not respected. | *Outdated*<br>from&nbsp;v3.0.0|
-| shuntResistance   | 0x700 | **RO**  | float | > 0 | Current sense resistance. | **Active**<br>from&nbsp;v3.0.0 |
+| shuntResistance   | 0x700 | **RO**  | float  | > 0 | Current sense resistance. | **Active**<br>from&nbsp;v3.0.0 |
+| maxDriverCurrent  | 0x701 | **RO**  | float  | > 0 | Max measurable (peak) current. | **Active**<br>from&nbsp;v3.0.0 |
+| productionDate    | 0x7FB | **RO**  | uint32 | > 0 | Production date encoded in ddmmyy format  | **Active**<br>from&nbsp;v3.0.0 |
+| productionBatch   | 0x7FC | **RO**  | uint32 | > 0 | Production batch code  | **Active**<br>from&nbsp;v3.0.0 |
+| productionUID     | 0x7FD | **RO**  | uint32 | > 0 | Unique Identifier of MD  | **Active**<br>from&nbsp;v3.0.0 |
+| hardwareRevision  | 0x7FE | **RO**  | uint32 | > 0 | Hardware revision  | **Active**<br>from&nbsp;v3.0.0 |
+| hardwareType      | 0x7FF | **RO**  | uint32 | > 0 | Hardware yype id  | **Active**<br>from&nbsp;v3.0.0 |
 | firmwareBuildDate *(was buildDate)* | 0x800 | RO  | uint32  | - | Firmware build date, as ddmmyy number | **Active** |
 | firmwareHash *(was commitHash)*     | 0x801 | RO  | char[8] | - | Firmware hash | **Active** |
 | firmwareVersion      | 0x802 | RO  | uint32 | -      | Firmware Version | **Active** |
@@ -750,7 +759,7 @@ releases introduce new features.
 | dcBusVoltage         | 0x811 | RO  | float32  | 0 - 100V | Voltage measured on the DC bus | **Active** |
 
 ### Status
-| Register              | Addr  | R/W | Type     | Limits | Description | Status |
+| Register              | Addr  | R/W | Type     | Value | Description | Status |
 |----------------------|------:|-----|----------|--------|-------------| ------  |
 | quickStatus          | 0x805 | RO  | uint16_t | -      | Quick status vector | **Active** |
 | mosfetTemperature    | 0x806 | RO  | float    | -      | Driver temperature | **Active** |
@@ -770,7 +779,7 @@ releases introduce new features.
 ### Deprecated
 These registers have been used in some points in the past, but are now not used or replaced. 
 
-| Register | Addr | R/W | Type | Limits | Description | Status |
+| Register | Addr | R/W | Type | Value | Description | Status |
 |:---------|:----:|:---:|:-----|:-------|:------------|:-------|
 | motorKt_a | `0x013` | RW | `float` | > 0 | Optional phase A torque constant. | **Deprecated** |
 | motorKt_b | `0x014` | RW | `float` | > 0 | Optional phase B torque constant. | **Deprecated** |
@@ -778,4 +787,12 @@ These registers have been used in some points in the past, but are now not used 
 | motorFriction | `0x019` | RO | `float32` | – | Actuator dynamic friction| **Temporarily disabled** |
 | motorStiction | `0x01A` | RO | `float32` | – | Actuator static friction | **Temporarily disabled** |
 | outputEncoderDefaultBaud        | 0x022 | RW  | uint32| 115200            | optional parameter for default output encoder baudrate | **Deprecated** |
-| bridgeType           | 0x804 | RO  | uint8_t  | -      | type of the mosfet driver | **Deprecated** |
+| bridgeType        | 0x070 | RO  | uint8 | - | type of the mosfet driver | **Deprecated** |
+| homingMode        | 0x071 | RW  | uint8 | - | Homing Mode | **Temporarily disabled** |
+| homingMaxTravel   | 0x072 | RW  | float | - | Max distance to travel looking for homing point| **Temporarily disabled** |
+| homingVelocity    | 0x073 | RW  | float | - | Target velocity during homing | **Temporarily disabled** |
+| homingTorque      | 0x074 | RW  | float | - | Max torque during homing | **Temporarily disabled** |
+| homingStatus      | 0x80F | RO  | uint32| - | Homing status bitfield| **Temporarily disabled** |
+
+</div>
+
