@@ -46,9 +46,9 @@ In real drive system there are losses which are ommited for simplicity.
 
 Visual relationship between output power, input current and motor phase current is presented below:
 
-```{figure} ./images/md_motor_wiring_diag.jpg
+```{figure} ./images/md_motor_wiring_diag.png
 :alt: candle
-:scale: 70%
+:scale: 40%
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
