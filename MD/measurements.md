@@ -41,21 +41,19 @@ This relation can be described with following equantion:
 
 $P = I_{dc} \cdot U_{dc} = I_{phase} \cdot U_{dc} \cdot \text{PWM}_{duty}$
 
-In real drive system there are losses which are ommited for simplicity.
+In real drive system there are losses which are omitted for simplicity.
 
 
 Visual relationship between output power, input current and motor phase current is presented below:
 
-```{figure} ./images/md_motor_wiring_diag.png
+```{figure} ./images/md_motor_wiring_diag.jpg
 :alt: candle
-:scale: 40%
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
-```{figure} ./images/current_comp.png
+```{figure} ./images/current_comp.jpg
 :alt: candle
-:scale: 70%
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
