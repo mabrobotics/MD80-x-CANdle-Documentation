@@ -83,6 +83,7 @@ output, regardless of the status of STO1_FB and STO2_FB
 2. If STO_CONFIG_SWITCH is in position 1, the ENABLE state set by MCU is passed to the output
 only when the STOx_FB signals state is 1
 
+(states)=
 ## RGB SWITCH
 This port is dedicated to connecting the RGB switch which enables the PDS and reports the system state
 with the RGB diodes.
