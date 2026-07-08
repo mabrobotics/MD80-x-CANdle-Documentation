@@ -56,6 +56,8 @@ chapters:
         title: Isolated Converter
       - file: PDS/brake_resistor
         title: Brake Resistor
+      - file: PDS/charger_addon
+        title: Charger Addon
       - file: PDS/communication
         title: FDCAN Communication
   - file: CANdle/intro.md
