@@ -72,7 +72,8 @@ communicating with the PDS, the host controller has to form a request frame that
 - A set of properties (when reading) or a property/value pairs (when writing).
 
 ```{note}
-As in all MAB CAN-based devices, the CAN ID is used to target specific devices. PSD is not an exception.
+As in all MAB CAN-based devices, the CAN ID is used to target specific devices. 
+The default ID is 100 (0x64 in hex). It can be changed later.
 When the frame is successfully received and processed by the PDS device, its response body depends
 on the message type.
 ```
@@ -211,3 +212,28 @@ Properties status codes:
 | No property                 | 0x01           | The addressed module does not support the requested property                                                     |
 | Invalid access rights       | 0x02           | Requested read operation from write-only property or write operation to read-only property                        |
 | Invalid data argument       | 0x03           | Given data value during the write operation is invalid. For example, when the user is trying to exceed some limit or pass a value that is out of valid enumeration range |
+
+### Example frame
+Below is the assumed physical setup of the PDS device:
+- Socket 1 :: Power stage module
+- Socket 2 :: Power stage module
+- Socket 3 :: No module
+- Socket 4 :: Brake resistor
+- Socket 5 :: No module
+- Socket 6 :: Isolated Converter 12V
+
+Reading the submodules stack frame:
+
+Generic frame body of the “Read properties” ( 0x20 ) message:
+| **Byte number**      | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|-|-|-|-|-|-|-|-|-|-|-|
+| **Data to send** | 0x20 | 0x01 | 0x00 | 0x06 | 0x22 | 0x23 | 0x24 | 0x25 | 0x26 | 0x26 |
+
+Generic response to properties read frame body:
+| **Byte number** | 1 | 2 | 3 | 4-7 | 8 | 9-12 |
+|-|-|-|-|-|-|-|
+| **Response data** | 0x00 | 0x06 | 0x00 | 0x00000005 | 0x00 | 0x00000005 |
+
+| 13 | 14-17 | 18 | 19-22 | 23 | 24-27 | 28 | 29-32 |
+|-|-|-|-|-|-|-|-|
+| 0x00 | 0x00000000 | 0x00 | 0x0000002 | 0x00 | 0x00000000 | 0x00 | 0x00000003 |
