@@ -20,9 +20,8 @@ Before operating the system, be sure to read the full documentation to understan
 
 ## With CANdle-SDK
 
-```{hint}
 TL;DR: [Getting Started Guide #1 Ready to use actuators - MD x CANdle](https://youtu.be/pqfCrU1CEHE?si=K1fUOJKDNJTPhcqd)
-```
+[![MD-GettingStarted](./images/thumbnail.png)](https://www.youtube.com/watch?v=pqfCrU1CEHE)
 
 ### Prerequisites
 
