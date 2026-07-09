@@ -16,13 +16,13 @@ Key characteristics include:
 
 |**Parameter**|**Value**|
 |-------------|---------|
-| Input voltage| 16-54V (60W, 150W), 36-54V (300W)|
+| Input voltage| 16-54V (60W, 150W) <br> 36-54V (300W)|
 | Input protection| Reverse polarity down to –54 V, overvoltage, overcurrent (with fuse), transients|
-| Power and DC/DC converter output| 60W: 3.3V/12A, 5V/12A, 12V/5A, 15V/4A, 150W: 24V/2.5A, 12V/13A, 24V/6.5A, 300W: 28V/9.4A|
+| Power and DC/DC converter output| **60W**: 3.3V/12A, 5V/12A, 12V/5A, 15V/4A, 24V/2.5A <br> **150W**:12V/13A, 24V/6.5A <br> **300W**: 28V/9.4A|
 | Output protection| Short circuit (continuous), overload, over-voltage, over-temperature, input undervoltage lockout|
-| Current consumption on enabled (no load) | 7.8 mA (60W), 160mA (24V, 150W), 300mA (12V, 150W), 100mA (28V, 300W)|
+| Current consumption on enabled (no load) | 7.8 mA (60W) <br> 160mA (24V, 150W) <br> 300mA (12V, 150W) <br> 100mA (28V, 300W)|
 | Quiescent current in shutdown | 6.57 µA|
-| Mass| 74 g (60W), 90g (150W, 300W)|
+| Mass| 74 g (60W) <br> 90g (150W, 300W)|
 | Ambient Temperature (Operating) | 0–40 ℃ |
 | Ambient Temperature (Non-operating)| 0–60 ℃|
 | Maximum Humidity (Operating)| up to 95%, non-condensing at 40 ℃|
