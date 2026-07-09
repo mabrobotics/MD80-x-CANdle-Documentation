@@ -72,8 +72,8 @@ communicating with the PDS, the host controller has to form a request frame that
 - A set of properties (when reading) or a property/value pairs (when writing).
 
 ```{note}
-As in all MAB CAN-based devices, the CAN ID is used to target specific devices. 
-The default ID is 100 (0x64 in hex). It can be changed later.
+As in all MAB CAN-based devices, the CAN ID is used to target specific devices.<br>
+**The default CAN ID is 100** (0x64 in hex). It can be changed later.<br>
 When the frame is successfully received and processed by the PDS device, its response body depends
 on the message type.
 ```
