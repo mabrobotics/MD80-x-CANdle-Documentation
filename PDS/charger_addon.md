@@ -29,7 +29,7 @@ It can be added to PDS without any changes in a saved configuration.
 Charger addon
 ```
 
-Addon is connected directly to VCC and GND power terminals to PDS power bus bar using M4 screws.
+Addon is connected directly to VCC and GND power terminals to PDS power bus bar using M3 screws.
 To integrate it with PDS connect 4-pin MicroLock connector to Charger Addon port on PDS.
 
 ```{figure} ./images/charger_addon_with_PDS.JPG
