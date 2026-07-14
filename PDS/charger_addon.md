@@ -20,6 +20,10 @@ It can be added to PDS without any changes in a saved configuration.
 | Maximum Humidity (Non-operating) | up to 95%, non-condensing at 60 ℃ |
 | Altitude (Operating) | –400 m to 2000 m |
 
+````{warning}
+Charger addon does **not** have reverse polarity protection. Please do not connect the battery or charger with the wrong polarity.
+````
+
 ```{figure} ./images/charger_addon_front_w.png
 :alt: Charger_addon
 :class: bg-primary mb-1
