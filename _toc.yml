@@ -24,6 +24,8 @@ chapters:
         title: Measurements
       - file: MD/safety
         title: Safety
+      - file: MD/state_machine
+        title: State Machine
       - file: MD/motion
         title: Motion Control
       - file: MD/config_calibration
