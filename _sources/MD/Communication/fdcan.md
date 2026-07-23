@@ -1,3 +1,9 @@
+<style>
+.small-table table {
+  font-size: 12px;
+}
+</style>
+
 (md_protocol)=
 
 # MD communication
@@ -39,8 +45,8 @@ frame length, the contents of the frames will be the same as in FDCAN version of
 
 ## Communication Structure
 
-Communication with MD, happen is a strict Master-Slave structure. The MD itself will never produce a
-CAN frame by itself, it will only respond to direct commands from a host. Each MD device has
+Communication with MD, happen is a strict Master-Slave structure. **The MD will never produce a
+CAN frame by itself**, it will only respond to direct commands from a host. Each MD device has
 configurable **CAN ID**, that serves as its unique identifier on the CAN bus. There may never be
 more than one MD with the same CAN ID, as this will lead to conflicts and errors.
 
@@ -48,16 +54,27 @@ All communication with the particular drive will happen only via messages with p
 example:
 
 ```{note}
-Host sends a request (command) to drive with Id *100*, the drive will execute the command and respond with a CAN frame that also has the ID of *100*
+Host sends a request (command) to drive with Id *100*, the drive will execute the command and respond 
+with a CAN frame that also has the ID of *100*
 ```
 
 The communication stack is based on a register access using two frames - **register read and
 register write**. The list of [available registers](registers) can be found at the end of this
-chapter. All fields are little-endian - least significant byte first, and all float fields are 4
+chapter. All fields are little-endian - least significant byte first, and all float32 fields are 4
 bytes long (32 bit) encoded in IEEE-754 standard.
 
-```{warning}
-Wrong access, incorrect data values or other communication errors are not reported explicitly. **Command that failed (regardless of the reason), will result in the drive not producing any response.** Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command, the host may consider the command has failed.
+The MD will response with one of the three possible frame types, based on the hosts' command:
+- Register Data frame,
+- Quick Data frame,
+- Error frame.
+
+```{warning} 
+**For pre 3.0.0 firmware versions (v2.5.x)**, 
+
+wrong access, incorrect data values or other communication errors are not reported explicitly.  
+**Command that failed (regardless of the reason), will result in the drive not producing any response.** 
+Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command,
+the host may consider the command has failed.
 ```
 
 ### Frame Structure
@@ -120,14 +137,14 @@ drive, would, have a length of 20 bytes, and look like the following:
             <td> PADDING </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
-            <td> 0x00 </td>
-            <td> 0x0063 </td>
-            <td> 0x00 00 00 00 </td>
-            <td> 0x0062 </td>
-            <td> 0x00 00 00 00 </td>
-            <td> 0x0064 </td>
-            <td> 0x00 00 00 00 </td>
+			<td> `0x41 </td>
+            <td> `0x00 </td>
+            <td> `0x0063 </td>
+            <td> `0x00 00 00 00 </td>
+            <td> `0x0062 </td>
+            <td> `0x00 00 00 00 </td>
+            <td> `0x0064 </td>
+            <td> `0x00 00 00 00 </td>
 		</tr>
 	</tbody>
 </table>
@@ -149,34 +166,40 @@ of the frame behaviours by their id:
             <td> Description </td>
 		</tr>
 		<tr>
-			<td> 0x40 </td>
+			<td> `0x40 </td>
             <td> WRITE_REGISTER_LEGACY</td>
             <td> performs write operation, and makes the drive respond with <a href="#legacy-response">legacy response</a>. This is sometimes useful in high frequency control loops, to minimize number of frames exchanged. For frame contents, refer to <a href="write-register"> Write Register Frame </a>. </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
+			<td> `0x41 </td>
             <td> READ_REGISTER</td>
             <td> performs read operation, and responds with state of the registers. Refer to  <a href="read-register"> Read Register Frame </a> </td>
 		</tr>
 		<tr>
-			<td> 0x42 </td>
+			<td> `0x42 </td>
             <td> WRITE_REGISTER</td>
             <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. For more info, refer to <a href="write-register"> Write Register Frame </a> </td>
 		</tr>
 		<tr>
-			<td> 0x43 </td>
+			<td> `0x43 </td>
             <td> READ_REGISTER_CAN2.0 </td>
             <td> performs read operation, and responds with state of the registers. Works same as <a href="read-register"> Read Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response. </td>
 		</tr>
 		<tr>
-			<td> 0x44 </td>
+			<td> `0x44 </td>
             <td> WRITE_REGISTER_CAN2.0 </td>
             <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. Works same as <a href="write-register"> Write Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response.</td>
 		</tr>
+        <tr></tr>
 		<tr>
-			<td> 0x0A </td>
-            <td> LEGACY_RESPONSE </td>
+			<td> `0xA0 </td>
+            <td> QUICK DATA (LEGACY Response) </td>
             <td> RESPONSE ONLY. A response produced as a result of some frames. Contains data, most commonly required in fast control loops - <a href="#legacy-response">more info here.</a> </td>
+		</tr>
+		<tr>
+			<td> `0xA1 </td>
+            <td> ERROR RESPONSE </td>
+            <td> RESPONSE ONLY. A response produced as a result of failed register write or read attempt. Contains an error code and failed register id.</td>
 		</tr>
 	</tbody>
 </table>
@@ -219,10 +242,10 @@ write access can be modified.
 
 Params:
 
-- regID (uint16_t) - first register ID (please see the end of this section)
-- value (uint8_t/uint16_t/uint32_t/float/char[]) - first register value to be written
-- regID (uint16_t) - second register ID (please see the end of this section)
-- value (uint8_t/uint16_t/uint32_t/float/char[]) - second register value to be written
+- regID (uint16) - first register ID (please see the end of this section)
+- value (uint8/uint16_t/uint32_t/float/char[]) - first register value to be written
+- regID (uint16) - second register ID (please see the end of this section)
+- value (uint8/uint16_t/uint32_t/float/char[]) - second register value to be written
 - ... (up to 64 bytes total)
 
 ```{dropdown} **EXAMPLE** Write target position and velocity
@@ -247,17 +270,17 @@ Command, send from host to MD:
             <td> (float) -7.4 </td>
 		</tr>
 		<tr>
-			<td> 0x42 </td>
-            <td> 0x00 </td>
-            <td> 0x0150 </td>
-            <td> 0x3E 80 00 00 </td>
-            <td> 0x0151 </td>
-            <td> 0xC0 EC CC CD </td>
+			<td> `0x42 </td>
+            <td> `0x00 </td>
+            <td> `0x0150 </td>
+            <td> `0x3E 80 00 00 </td>
+            <td> `0x0151 </td>
+            <td> `0xC0 EC CC CD </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
+Which in raw HEX is: `0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
 
 Response, send from MD to Host:
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -279,17 +302,17 @@ Response, send from MD to Host:
             <td> (float) -7.4 </td>
 		</tr>
 		<tr>
-			<td> 0x42 </td>
-            <td> 0x00 </td>
-            <td> 0x0150 </td>
-            <td> 0x3E 80 00 00 </td>
-            <td> 0x0151 </td>
-            <td> 0xC0 EC CC CD </td>
+			<td> `0x42 </td>
+            <td> `0x00 </td>
+            <td> `0x0150 </td>
+            <td> `0x3E 80 00 00 </td>
+            <td> `0x0151 </td>
+            <td> `0xC0 EC CC CD </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
+Which in raw HEX is: `0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
 ```
 
 (read-register)=
@@ -328,7 +351,7 @@ master request should have the following form:
 </table>
 <p></p>
 
-When all read operations succeed the 0x00 fields will be filled with appropriate register data when
+When all read operations succeed the `0x00 fields will be filled with appropriate register data when
 transmitted back to master by the MDxx controller.
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -381,17 +404,17 @@ Command, send from host to MD:
             <td> PADDING (4 bytes) </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
-            <td> 0x00 </td>
-            <td> 0x0805 </td>
-            <td> 0x00 00  </td>
-            <td> 0x0062 </td>
-            <td> 0x00 00 00 00 </td>
+			<td> `0x41 </td>
+            <td> `0x00 </td>
+            <td> `0x0805 </td>
+            <td> `0x00 00  </td>
+            <td> `0x0062 </td>
+            <td> `0x00 00 00 00 </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x41 00 08 05 00 00 00 62 00 00 00 00
+Which in raw HEX is: `0x41 00 08 05 00 00 00 62 00 00 00 00
 
 Response, send from MD to Host:
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -413,17 +436,17 @@ Response, send from MD to Host:
             <td> 16.74 (float) </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
-            <td> 0x00 </td>
-            <td> 0x0805 </td>
-            <td> 0x80 00  </td>
-            <td> 0x0062 </td>
-            <td> 0x41 85 EB 85 </td>
+			<td> `0x41 </td>
+            <td> `0x00 </td>
+            <td> `0x0805 </td>
+            <td> `0x80 00  </td>
+            <td> `0x0062 </td>
+            <td> `0x41 85 EB 85 </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
+Which in raw HEX is: `0x41 00 08 05 80 00 00 62 41 85 EB 85
 ```
 
 ### Legacy response
@@ -455,19 +478,19 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
 		</tr>
     <tr>
 			<td>TYPE </td>
-			<td>uint8_t </td>
-			<td>uint16_t </td>
-			<td>uint8_t [*C] </td>
-      <td>float [rad] </td>
-      <td>float [rad/s] </td>
-      <td>float [Nm] </td>
-      <td>float [rad] </td>
-      <td>float [rad/s] </td>
+			<td>uint8 </td>
+			<td>uint16 </td>
+			<td>uint8 [*C] </td>
+      <td>float32 [rad] </td>
+      <td>float32 [rad/s] </td>
+      <td>float32 [Nm] </td>
+      <td>float32 [rad] </td>
+      <td>float32 [rad/s] </td>
 		</tr>
         <tr>
 			<td>VALUE </td>
 			<td>0x0A </td>
-			<td>0x0000 - 0xFFFF </td>
+			<td>0x0000 - `0xFFFF </td>
 			<td>0 - 255 </td>
       <td>- </td>
       <td>- </td>
@@ -479,963 +502,300 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
 </table>
 <p></p>
 
+### Error response
+
+Error response is present in MD firmware v3.0.0 and newer. For older versions (v2.x.x), when the error occurs, no
+response is produced at all, and error handling must happen via timeout handling.
+
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b></b></td>
+			<td> <b>BYTE 0</b></td>
+			<td> <b>BYTE 1</b></td>
+			<td> <b>BYTE 2-3</b></td>
+		</tr>
+		<tr>
+			<td>NAME </td>
+			<td>FRAME ID </td>
+			<td>ERROR CODE</td>
+			<td>REGISTER ID </td>
+		</tr>
+    <tr>
+			<td>TYPE </td>
+			<td>uint8 </td>
+			<td>int8 </td>
+			<td>uint16 [*C] </td>
+		</tr>
+        <tr>
+			<td>VALUE </td>
+			<td>0xA1 </td>
+			<td>-255 - 0 </td>
+			<td>0x0000 - `0xFFFF</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+
+<div class="small-table">
+
+Error codes are int8 based **negative** values.
+
+| Error Code | Error Name | Description |
+| --- | --- | -------|
+| ` 0` (0x00) | NONE | No error |  
+| `-1` (0xFF) | DEPRECATED | Register deprecated - can be treated as warning. The call had no effect | 
+| `-2` (0xFE) | INVALID | Frame composition invalid - usually incorrecy size of frame layout |  
+| `-3` (0xFD) | UNKNOWN | Register ID unknown - The call has no effect |  
+| `-4` (0xFC) | OUT_OF_RANGE | Register value was parsed, but was out of acceptable range. Refer to register table below. |  
+| `-5` (0xFB) | ACCESS | Trying to write to read-only register, or read write-only register |  
+
+</div>
+
+```{dropdown} **EXAMPLE** Write invalid motor kv
+Command, send from host to MD:
+
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-5 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - motorKv </td>
+            <td> (u16) 65001 </td>
+		</tr>
+		<tr>
+			<td> `0x42 </td>
+            <td> `0x00 </td>
+            <td> `0x001D </td>
+            <td> `0xFDE9 </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: `0x42 00 1D 00 E9 FD
+
+Acceptable range here is 1 - 65000, so value `65001` is out of range, producing error response.
+
+Response, send from MD to Host:
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> Error Code </td>
+            <td> RegisterId </td>
+		</tr>
+		<tr>
+			<td> `0xA1 </td>
+            <td> `0xFC </td>
+            <td> `0x001D </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: `0xA1 FC 1D 00 
+```
+
 (registers)=
 
 ## Register Table
 
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-  <thead>
-    <tr style="text-align: center;">
-      <th>reg name</th>
-      <th>address</th>
-      <th>read/write</th>
-      <th>size</th>
-      <th>limits</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>canId</td>
-      <td>0x001</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>[10-2000]</td>
-      <td>FDCAN bus id number</td>
-    </tr>
-    <tr>
-      <td>canBaudrate</td>
-      <td>0x002</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>[1e6;2e6;5e6;8e6]</td>
-      <td>FDCAN bus baudrate</td>
-    </tr>
-    <tr>
-      <td>canWatchdog</td>
-      <td>0x003</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>[0-2500]</td>
-      <td>FDCAN bus watchdog period in ms</td>
-    </tr>
-    <tr>
-      <td>canTermination</td>
-      <td>0x004</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0-1]</td>
-      <td>CAN termination (available upon request)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorName</td>
-      <td>0x010</td>
-      <td>RW</td>
-      <td>char[24]</td>
-      <td>-</td>
-      <td>motor name</td>
-    </tr>
-    <tr>
-      <td>motorPolePairs</td>
-      <td>0x011</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>[2;225]</td>
-      <td>motor pole pair count</td>
-    </tr>
-    <tr>
-      <td>motorKt</td>
-      <td>0x012</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>motor torque constant</td>
-    </tr>
-    <tr>
-      <td>motorKt_a</td>
-      <td>0x013</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>optional parameter for phase specific torque constant</td>
-    </tr>
-    <tr>
-      <td>motorKt_b</td>
-      <td>0x014</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>optional parameter for phase specific torque constant</td>
-    </tr>
-    <tr>
-      <td>motorKt_c</td>
-      <td>0x015</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>optional parameter for phase specific torque constant</td>
-    </tr>
-    <tr>
-      <td>motorIMax</td>
-      <td>0x016</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>[1 - peak controller current]</td>
-      <td>maximum phase current</td>
-    </tr>
-    <tr>
-      <td>motorGearRatio</td>
-      <td>0x017</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>actuator gear ratio (ex 2:1 should be 0.5) <1 - reducer >1 - multiplier</td>
-    </tr>
-    <tr>
-      <td>motorTorqueBandwidth</td>
-      <td>0x018</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>[50-2500]</td>
-      <td>torque bandwidth in Hz</td>
-    </tr>
-    <tr>
-      <td>motorFriction</td>
-      <td>0x019</td>
-      <td>RO</td>
-      <td>float32</td>
-      <td>-</td>
-      <td>UNUSED</td>
-    </tr>
-    <tr>
-      <td>motorStiction</td>
-      <td>0x01A</td>
-      <td>RO</td>
-      <td>float32</td>
-      <td>-</td>
-      <td>UNUSED</td>
-    </tr>
-    <tr>
-      <td>motorResistance</td>
-      <td>0x01B</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>[5mOhm-20Ohm]</td>
-      <td>motor resistance in d axis</td>
-    </tr>
-    <tr>
-      <td>motorInductance</td>
-      <td>0x01C</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>[5nH-100mH]</td>
-      <td>motor inductance in d axis</td>
-    </tr>
-    <tr>
-      <td>motorKV</td>
-      <td>0x01D</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>motor KV rating [RPM/V]</td>
-    </tr>
-    <tr>
-      <td>motorCalibrationMode</td>
-      <td>0x01E</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1]</td>
-      <td>FULL = 0, NOPPDET = 1</td>
-    </tr>
-    <tr>
-      <td>motorThermistorType</td>
-      <td>0x01F</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>outputEncoder</td>
-      <td>0x020</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1;2;3]</td>
-      <td>NONE = 0, ME_AS_CENTER = 1, ME_AS_OFFAXIS = 2, MB053SFA17BENT00 = 3, CM_OFFAXIS = 4, M24B_CENTER = 5, M24B_OFFAXIS = 6</td>
-    </tr>
-    <tr>
-      <td>outputEncoderDir</td>
-      <td>0x021</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>0</td>
-      <td>RESERVED</td>
-    </tr>
-    <tr>
-      <td>outputEncoderDefaultBaud</td>
-      <td>0x022</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>115200</td>
-      <td>optional parameter for setting default output encoder baudrate</td>
-    </tr>
-    <tr>
-      <td>outputEncoderVelocity</td>
-      <td>0x023</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder velocity in rad/s (calculated in a 5kHz loop)</td>
-    </tr>
-    <tr>
-      <td>outputEncoderPosition</td>
-      <td>0x024</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder position in rad (read in 5kHz loop)</td>
-    </tr>
-    <tr>
-      <td>outputEncoderMode</td>
-      <td>0x025</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1;2;3;4]</td>
-      <td>NONE = 0, STARTUP = 1, MOTION = 2, REPORT = 3, MAIN = 4</td>
-    </tr>
-    <tr>
-      <td>outputEncoderCalibrationMode</td>
-      <td>0x026</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1]</td>
-      <td>FULL = 0, DIRONLY = 1</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorPosPidKp</td>
-      <td>0x030</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID proportional gain</td>
-    </tr>
-    <tr>
-      <td>motorPosPidKi</td>
-      <td>0x031</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID integral gain</td>
-    </tr>
-    <tr>
-      <td>motorPosPidKd</td>
-      <td>0x032</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID derivative gain</td>
-    </tr>
-    <tr>
-      <td>motorPosPidWindup</td>
-      <td>0x034</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID integral windup limit</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorVelPidKp</td>
-      <td>0x040</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID proportional gain</td>
-    </tr>
-    <tr>
-      <td>motorVelPidKi</td>
-      <td>0x041</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID integral gain</td>
-    </tr>
-    <tr>
-      <td>motorVelPidKd</td>
-      <td>0x042</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID derivative gain</td>
-    </tr>
-    <tr>
-      <td>motorVelPidWindup</td>
-      <td>0x044</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID integral windup limit</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorImpPidKp</td>
-      <td>0x050</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>impedance PD proportional gain</td>
-    </tr>
-    <tr>
-      <td>motorImpPidKd</td>
-      <td>0x051</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>impedance PD derivative gain</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>mainEncoderVelocity</td>
-      <td>0x062</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>main encoder velocity in rad/s (calculated in a 40kHz loop)</td>
-    </tr>
-    <tr>
-      <td>mainEncoderPosition</td>
-      <td>0x063</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>main encoder position in rad (read in 40kHz loop)</td>
-    </tr>
-    <tr>
-      <td>motorTorque</td>
-      <td>0x064</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td> motor output shaft torque in Nm (read in 40kHz loop)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>runSaveCmd</td>
-      <td>0x080</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>save non-volatile memory</td>
-    </tr>
-    <tr>
-      <td>runTestMainEncoderCmd</td>
-      <td>0x081</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs main encoder test routine</td>
-    </tr>
-    <tr>
-      <td>runTestOutputEncoderCmd</td>
-      <td>0x082</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs output encoder test routine</td>
-    </tr>
-    <tr>
-      <td>runCalibrateCmd</td>
-      <td>0x083</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs main calibration routine</td>
-    </tr>
-    <tr>
-      <td>runCalibrateOutputEncoderCmd</td>
-      <td>0x084</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs output encoder calibration routine</td>
-    </tr>
-    <tr>
-      <td>runCalibratePiGains</td>
-      <td>0x085</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs current PI loop calibration routine</td>
-    </tr>
-    <tr>
-      <td>runRestoreFactoryConfig</td>
-      <td>0x087</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>reverts config to factory state</td>
-    </tr>
-    <tr>
-      <td>runReset</td>
-      <td>0x088</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>resets the controller</td>
-    </tr>
-    <tr>
-      <td>runClearWarnings</td>
-      <td>0x089</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>clears all warnings</td>
-    </tr>
-    <tr>
-      <td>runClearErrors</td>
-      <td>0x08A</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>clears non-critical errors</td>
-    </tr>
-    <tr>
-      <td>runBlink</td>
-      <td>0x08B</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>blinks onboard LEDs</td>
-    </tr>
-    <tr>
-      <td>runZero</td>
-      <td>0x08C</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>sets new zero position</td>
-    </tr>
-    <tr>
-      <td>runCanReinit</td>
-      <td>0x08D</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>reinitializes can peripheral</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>calOutputEncoderStdDev</td>
-      <td>0x100</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder test result (standard deviation)</td>
-    </tr>
-    <tr>
-      <td>calOutputEncoderMinE</td>
-      <td>0x101</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder test result (min error)</td>
-    </tr>
-    <tr>
-      <td>calOutputEncoderMaxE</td>
-      <td>0x102</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder test result (max error)</td>
-    </tr>
-    <tr>
-      <td>calMainEncoderStdDev</td>
-      <td>0x103</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>main encoder test result (standard deviation)</td>
-    </tr>
-    <tr>
-      <td>calMainEncoderMinE</td>
-      <td>0x104</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>	main encoder test result (min error)</td>
-    </tr>
-    <tr>
-      <td>calMainEncoderMaxE</td>
-      <td>0x105</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>	main encoder test result (max error)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>positionLimitMax</td>
-      <td>0x110</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum valid position</td>
-    </tr>
-    <tr>
-      <td>positionLimitMin</td>
-      <td>0x111</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>minimum valid position</td>
-    </tr>
-    <tr>
-      <td>maxTorque</td>
-      <td>0x112</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum torque</td>
-    </tr>
-    <tr>
-      <td>maxVelocity</td>
-      <td>0x113</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum velocity</td>
-    </tr>
-    <tr>
-      <td>maxAcceleration</td>
-      <td>0x114</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum acceleration</td>
-    </tr>
-    <tr>
-      <td>maxDeceleration</td>
-      <td>0x115</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum deceleration</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>profileVelocity</td>
-      <td>0x120</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>profile velocity</td>
-    </tr>
-    <tr>
-      <td>profileAcceleration</td>
-      <td>0x121</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>profile acceleration</td>
-    </tr>
-    <tr>
-      <td>profileDeceleration</td>
-      <td>0x122</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>profile deceleration</td>
-    </tr>
-    <tr>
-      <td>quickStopDeceleration</td>
-      <td>0x123</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>quick stop deceleration in case of a non-critical error</td>
-    </tr>
-    <tr>
-      <td>positionWindow</td>
-      <td>0x124</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position window within position is considered to be reached</td>
-    </tr>
-    <tr>
-      <td>velocityWindow</td>
-      <td>0x125</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity window within velocity is considered to be reached</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motionModeCommand</td>
-      <td>0x140</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>commands a motion mode change: IDLE = 0x00,
-          POSITION_PID = 0x01,
-          VELOCITY_PID = 0x02,
-          RAW_TORQUE = 0x03,
-          IMPEDANCE = 0x04,
-          POSITION_PROFILE = 0x07,
-          VELOCITY_PROFILE = 0x08</td>
-    </tr>
-    <tr>
-      <td>motionModeStatus</td>
-      <td>0x141</td>
-      <td>RO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>shows the currently set motion mode</td>
-    </tr>
-    <tr>
-      <td>state</td>
-      <td>0x142</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>returns the internal <a href=../../candlelib/md_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>targetPosition</td>
-      <td>0x150</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>sets target position in rad</td>
-    </tr>
-    <tr>
-      <td>targetVelocity</td>
-      <td>0x151</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>sets target velocity in rad/s</td>
-    </tr>
-    <tr>
-      <td>targetTorque</td>
-      <td>0x152</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>sets target torque in Nm</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>userGpioConfiguration</td>
-      <td>0x160</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>0 - OFF, 1 - AUTO-BRAKE, 2 - GPIO INPUT</td>
-    </tr>
-    <tr>
-      <td>userGpioState</td>
-      <td>0x161</td>
-      <td>RO</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>GPIO input state</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>reverseDirection</td>
-      <td>0x600</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>used to change the direction of the main encoder when using other encoders than the onboard one. Always recalibrate after changing this setting</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>shuntResistance</td>
-      <td>0x700</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>[0.001 - 0.01]</td>
-      <td>Current sense resistor value. Setting this register to a value that is not coherent with the hardware may damage the controller. In this cases warranty is not respected.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>buildDate</td>
-      <td>0x800</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>software build date</td>
-    </tr>
-    <tr>
-      <td>commitHash</td>
-      <td>0x801</td>
-      <td>RO</td>
-      <td>char[8]</td>
-      <td>-</td>
-      <td>commit hash</td>
-    </tr>
-    <tr>
-      <td>firmwareVersion</td>
-      <td>0x802</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>hardwareVersion</td>
-      <td>0x803</td>
-      <td>RO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>bridgeType</td>
-      <td>0x804</td>
-      <td>RO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>type of the mosfet driver</td>
-    </tr>
-    <tr>
-      <td>quickStatus</td>
-      <td>0x805</td>
-      <td>RO</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>quick status vector</td>
-    </tr>
-    <tr>
-      <td>mosfetTemperature</td>
-      <td>0x806</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>power stage temperature</td>
-    </tr>
-    <tr>
-      <td>motorTemperature</td>
-      <td>0x807</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>motor temperature (if thermistor is mounted)</td>
-    </tr>
-    <tr>
-      <td>motorShutdownTemp</td>
-      <td>0x808</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>temperature at which the MD series motor controller will enter IDLE mode</td>
-    </tr>
-    <tr>
-      <td>mainEncoderErrors</td>
-      <td>0x809</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>main encoder errors</td>
-    </tr>
-    <tr>
-      <td>outputEncoderErrors</td>
-      <td>0x80A</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>output encoder errors</td>
-    </tr>
-    <tr>
-      <td>calibrationErrors</td>
-      <td>0x80B</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>calibration errors</td>
-    </tr>
-    <tr>
-      <td>bridgeErrors</td>
-      <td>0x80C</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>bridge errors</td>
-    </tr>
-    <tr>
-      <td>hardwareErrors</td>
-      <td>0x80D</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>hardware errors</td>
-    </tr>
-    <tr>
-      <td>communicationErrors</td>
-      <td>0x80E</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>communication errors</td>
-    </tr>
-    <tr>
-      <td>motionErrors</td>
-      <td>0x810</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>motion errors</td>
-    </tr>
-    <tr>
-      <td>dcBusVoltage</td>
-      <td>0x811</td>
-      <td>RO</td>
-      <td>float32</td>
-      <td>0 - 60V</td>
-      <td>voltage measured on the DC bus</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+Below is full register list supported by MD drives. The list is being updated regularely as MD firmware
+releases introduce new features. 
+
+
+
+<div class="small-table">
+
+### Communications
+
+| Register | Addr | R/W | Type | Value | Description | Status |
+|:---------|:----:|:---:|:-----|:-------|:------------|:-----------------|
+| canId | `0x001` | RW          | uint32    | 10–2000           | FDCAN bus ID number | **Active** |
+| canBaudrate | `0x002` | RW    | uint32    | 1M, 2M, 5M, 8M    | FDCAN bus baudrate | **Active** |
+| canWatchdog | `0x003` | RW    | uint16    | 0–2500 [ms]       | FDCAN watchdog timeout | **Active** |
+| canTermination | `0x004` | RW | uint8     | 0–1               | Toggle CAN bus termination (only on selected HW revisions) | Deprecated |
+
+
+### Actuator Parameters
+| Register | Addr | R/W | Type | Value | Description | Status |
+|:---------|:----:|:---:|:-----|:-------|:------------|:-------|
+| motorName         | `0x010` | RW | char[24]   | –     | User-defined motor name. | **Active** |
+| motorPolePairs    | `0x011` | RW | uint32     | 2–225 | Number of motor pole pairs. | **Active** |
+| motorKt           | `0x012` | RW | float32    | > 0   | Motor torque constant (Nm/A). | **Active** |
+| motorIMax         | `0x016` | RW | float32    | > 0   | Maximum allowable phase current.<br>Clamped to value of `maxDriverCurrent` (0x701).  | **Active** |
+| motorGearRatio    | `0x017` | RW | float32    | –     | Gear ratio. Values < 1 indicate a reducer, values > 1 indicate a multiplier (e.g. 2:1 reduction → 0.5). | **Active** ||
+| motorTorqueBandwidth  | `0x018` | RW | uint16 | 50–2500 Hz    | Desired torque control bandwidth. | **Active** |
+| motorResistance   | `0x01B` | **RO** | float32    | 5 mΩ–20 Ω     | Measured motor phase resistance (d-axis). | **Active** |
+| motorInductance   | `0x01C` | **RO** | float32    | 5 nH–100 mH   | Measured motor phase inductance (d-axis). | **Active** |
+| motorKV           | `0x01D` | RW | uint16     | 0 - 65000     | Motor speed constant (RPM/V). | **Active** |
+| motorCalibrationMode  | `0x01E` | RW | uint8  | 0 or 1        | Calibration mode (`FULL = 0`, `NOPPDET = 1`). | **Active** |
+| motorThermistorType   | `0x01F` | RW | uint8  | –  | Connected motor thermistor type. | **Active** |
+
+### Aux (Output) Encoder
+| Register                        | Addr | R/W | Type    | Value   | Description | Status |
+|---------------------------------|------:|-----|---------|-------------------|-------------| ---- |
+| outputEncoder                   | `0x020` | RW  | uint8     | [0 - 11]      | NONE=0,<br>ME_AS_CENTER=1,<br>ME_AS_OFFAXIS=2,<br>RLS_RS422_17B=3,<br>CM_OFFAXIS=4,<br>M24B_CENTER=5,<br>M24B_OFFAXIS=6, <br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10,<br>CE300=11 | **Active** |
+| outputEncoderDir                | `0x021` | RW  | float32   | -1 or 1       | Aux encoder direction, CCW or CW - automatically set during calibration | **Active** |
+| *outputEncoderDir (legacy)*     | `0x021` | RW  | int8      | -1 or 1       | Aux encoder direction, CCW or CW - automatically set during calibration | up to v2.5.4 |
+| outputEncoderVelocity           | `0x023` | **RO**  | float32   | -             | Aux encoder velocity [rad/s], computed @ 5kHz | **Active** |
+| outputEncoderPosition           | `0x024` | **RO**  | float32   | -             | Aux encoder position [rad], read @ 5kHz | **Active** |
+| outputEncoderMode               | `0x025` | RW  | uint8     | [0;1;2;3;4]   | NONE=0,<br> STARTUP=1,<br>MOTION=2,<br>REPORT=3,<br>MAIN=4 (legacy - valid up to v2.5.4) | **Active** |
+| outputEncoderCalibrationMode    | `0x026` | RW  | uint8     | [0;1]         | FULL=0,<br> DIRONLY=1 | **Active** |
+
+### Main Encoder
+| Register                        | Addr | R/W | Type    | Value   | Description | Status |
+|---------------------------------|------:|-----|---------|-------------------|-------------| ---- |
+| mainEncoder (new)               | `0x02A` | RW  | uint8     | [0; 1; 3; 8; 9; 10;] | NONE=0,<br>ME_AS_CENTER=1,<br>RLS_RS422_17B=3,<br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10| **Active**<br>from&nbsp;v3.0.0 |
+| mainEncoderDir (new)            | `0x02B` | RW  | float32   | -1 or 1       | Main encoder direction, CCW or CW - automatically set during calibration | **Active**<br>from&nbsp;v3.0.0 |
+
+### Motion Control
+| Register               | Addr  | R/W | Type  | Value | Description | Status |
+|------------------------|------:|-----|-------|--------|-------------| ------ |
+| motorPosPidKp         | `0x030` | RW  | float32 | -      | Position PID proportional gain | **Active** |
+| motorPosPidKi         | `0x031` | RW  | float32 | -      | Position PID integral gain | **Active** |
+| motorPosPidKd         | `0x032` | RW  | float32 | -      | Position PID derivative gain | **Active** |
+| motorPosPidWindup     | `0x034` | RW  | float32 | -      | Position PID integral windup limit | **Active** |
+| | | | | | | |
+| motorVelPidKp         | `0x040` | RW  | float32 | -      | Velocity PID proportional gain | **Active** |
+| motorVelPidKi         | `0x041` | RW  | float32 | -      | Velocity PID integral gain | **Active** |
+| motorVelPidKd         | `0x042` | RW  | float32 | -      | Velocity PID derivative gain | **Active** |
+| motorVelPidWindup     | `0x044` | RW  | float32 | -      | Velocity PID integral windup limit | **Active** |
+| | | | | | | |
+| motorImpPidKp         | `0x050` | RW  | float32 | -      | Impedance PD proportional gain | **Active** |
+| motorImpPidKd         | `0x051` | RW  | float32 | -      | Impedance PD derivative gain | **Active** |
+| | | | | | | |
+| velocity *(was mainEncoderVelocity)* | `0x062` | **RO**  | float32 | -      | Actuator velocity in rad/s | Active |
+| position *(was mainEncoderPosition)* | `0x063` | **RO**  | float32 | -      | Actuator position in rad | Active |
+| torque *(was motorTorque)*           | `0x064` | **RO**  | float32 | -      | Actuator torque in Nm | Active |
+| | | | | | | |
+| targetPosition  | `0x150` | RW  | float32 | -      | Sets target position in rad | Active |
+| targetVelocity  | `0x151` | RW  | float32 | -      | Sets target velocity in rad/s | Active |
+| targetTorque    | `0x152` | RW  | float32 | -      | Sets target torque in Nm | Active |
+
+### System Commands
+| Register                     | Addr  | R/W | Type   | Value               | Description | Status |
+|-----------------------------|------:|-----|--------|----------------------|-------------| ----    |
+| runSaveCmd                  | `0x080` | WO  | uint8 | 1 to run  | Save non-volatile memory | **Active** |
+| runTestMainEncoderCmd       | `0x081` | WO  | uint8 | 1 to run  | Runs main encoder test routine | **Active** |
+| runTestOutputEncoderCmd     | `0x082` | WO  | uint8 | 1 to run  | Runs output encoder test routine | **Active** |
+| runCalibrateCmd             | `0x083` | WO  | uint8 | 1 to run  | Runs main calibration routine | **Active** |
+| runCalibrateOutputEncoderCmd| `0x084` | WO  | uint8 | 1 to run  | Runs output encoder calibration routine | **Active** |
+| runCalibratePiGains         | `0x085` | WO  | uint8 | 1 to run  | Runs current PI loop calibration routine | **Active** |
+| runRestoreFactoryConfig     | `0x087` | WO  | uint8 | 1 to run  | Reverts config to factory state | **Active** |
+| runReset                    | `0x088` | WO  | uint8 | 1 to run  | Resets the controller | **Active** |
+| runClearWarnings            | `0x089` | WO  | uint8 | 1 to run  | Clears all warnings | **Active** |
+| runClearErrors              | `0x08A` | WO  | uint8 | 1 to run  | Clears non-critical errors | **Active** |
+| runBlink                    | `0x08B` | WO  | uint8 | 1 to run  | Blinks onboard LEDs | **Active** |
+| runZero                     | `0x08C` | WO  | uint8 | 1 to run  | Sets new zero position | **Active** |
+| runCanReinit                | `0x08D` | WO  | uint8 | 1 to run  | Reinitializes CAN peripheral | **Active** |
+
+### Test Results
+| Register                | Addr  | R/W | Type  | Value | Description | Status |
+|-------------------------|------:|-----|-------|--------|-------------| ------ |
+| calOutputEncoderStdDev  | `0x100` | **RO**  | float32 | -      | Aux encoder test result (standard deviation) | **Active** |
+| calOutputEncoderMinE    | `0x101` | **RO**  | float32 | -      | Aux encoder test result (min error) | **Active** |
+| calOutputEncoderMaxE    | `0x102` | **RO**  | float32 | -      | Aux encoder test result (max error) | **Active** |
+| calMainEncoderStdDev    | `0x103` | **RO**  | float32 | -      | Main encoder test result (standard deviation) | **Active** |
+| calMainEncoderMinE      | `0x104` | **RO**  | float32 | -      | Main encoder test result (min error) | **Active** |
+| calMainEncoderMaxE      | `0x105` | **RO**  | float32 | -      | Main encoder test result (max error) | **Active** |
+
+### Limits 
+| Register           | Addr  | R/W | Type  | Value | Description | Status |
+|--------------------|------:|-----|-------|--------|-------------| ------ |
+| maxPosition *(was positionLimitMax)* | `0x110` | RW  | float32 | > 0    | Maximum valid position | **Active** |
+| minPosition *(was positionLimitMin)* | `0x111` | RW  | float32 | < 0    | Minimum valid position | **Active** |
+| maxTorque          | `0x112` | RW  | float32 | > 0    | Maximum torque | **Active** |
+| maxVelocity        | `0x113` | RW  | float32 | > 0    | Maximum velocity | **Active** |
+| maxAcceleration    | `0x114` | RW  | float32 | > 0    | Maximum acceleration | **Active** |
+| maxDeceleration    | `0x115` | RW  | float32 | > 0    | Maximum deceleration | **Active** |
+
+### Motion Profiles
+| Register                 | Addr  | R/W | Type  | Value | Description | Status |
+|--------------------------|------:|-----|-------|--------|-------------| ------ |
+| profileVelocity         | `0x120` | RW  | float32 | -      | up to v2.5.4 - profile velocity<br>**from v3.0.0 - replaced by targetVelocity** | *Discontinued*<br>from&nbsp;v3.0.0 |
+| profileAcceleration     | `0x121` | RW  | float32 | -      | Profile acceleration | **Active** |
+| profileDeceleration     | `0x122` | RW  | float32 | -      | Profile deceleration | **Active** |
+| quickStopDeceleration   | `0x123` | RW  | float32 | -      | Quick stop deceleration in case of a non-critical error | **Active** |
+| positionWindow          | `0x124` | RW  | float32 | -      | Position window within position is considered to be reached | **Active** |
+| velocityWindow          | `0x125` | RW  | float32 | -      | Velocity window within velocity is considered to be reached | **Active** |
+
+### State
+| Register             | Addr  | R/W | Type   | Value | Description | Status |
+|----------------------|------:|-----|--------|--------|-------------| ------ |
+| motionModeCommand    | `0x140` | WO  | uint8 | -      | IDLE=0x00,<br>POSITION_PID=0x01,<br>VELOCITY_PID=0x02,<br>RAWORQUE=0x03,<br>IMPEDANCE=0x04,<br>POSITION_PROFILE=0x07,<br>VELOCITY_PROFILE=0x08 | **Active** |
+| motionModeStatus     | `0x141` | **RO**  | uint8 | -      | Shows the currently set motion mode | **Active** |
+| state                | `0x142` | RW  | uint16 | -     | Returns the internal state machine state of the controller | **Active** |
+
+### GPIO / Add-ons
+| Register               | Addr  | R/W | Type    | Value | Description | Status |
+|------------------------|------:|-----|---------|--------|-------------| ------ |
+| userGpioConfiguration  | `0x160` | RW  | uint8  | -      | 0 - OFF,<br>1 - BRAKE,<br>2 - GPIO INPUT | **Active** |
+| userGpioState          | `0x161` | **RO**  | uint16 | 0 or 1 | GPIO input state | **Active** |
+
+### Driver Info
+| Register          | Addr  | R/W | Type  | Value      | Description | Status |
+|-------------------|------:|-----|-------|-------------|-------------| ------ |
+| shuntResistance   | `0x700` | RW  | float32 | > 0 | Current sense resistor value. Setting this register to a value that is not coherent with the hardware may damage the controller. In this cases warranty is not respected. | *Outdated*<br>from&nbsp;v3.0.0|
+| shuntResistance   | `0x700` | **RO**  | float32  | > 0 | Current sense resistance. | **Active**<br>from&nbsp;v3.0.0 |
+| maxDriverCurrent  | `0x701` | **RO**  | float32  | > 0 | Max measurable (peak) current. | **Active**<br>from&nbsp;v3.0.0 |
+| productionDate    | `0x7FB` | **RO**  | uint32 | > 0 | Production date encoded in ddmmyy format  | **Active**<br>from&nbsp;v3.0.0 |
+| productionBatch   | `0x7FC` | **RO**  | uint32 | > 0 | Production batch code  | **Active**<br>from&nbsp;v3.0.0 |
+| productionUID     | `0x7FD` | **RO**  | uint32 | > 0 | Unique Identifier of MD  | **Active**<br>from&nbsp;v3.0.0 |
+| hardwareRevision  | `0x7FE` | **RO**  | uint32 | > 0 | Hardware revision  | **Active**<br>from&nbsp;v3.0.0 |
+| hardwareType      | `0x7FF` | **RO**  | uint32 | > 0 | Hardware yype id  | **Active**<br>from&nbsp;v3.0.0 |
+| firmwareBuildDate *(was buildDate)* | `0x800` | **RO**  | uint32  | - | Firmware build date, as ddmmyy number | **Active** |
+| firmwareHash *(was commitHash)*     | `0x801` | **RO**  | char[8] | - | Firmware hash | **Active** |
+| firmwareVersion      | `0x802` | **RO**  | uint32 | -      | Firmware Version | **Active** |
+| hardwareVersion      | `0x803` | **RO**  | uint8  | -      | Hardware Version | **Active** |
+| dcBusVoltage         | `0x811` | **RO**  | float32  | 0 - 100V | Voltage measured on the DC bus | **Active** |
+
+### Status
+| Register              | Addr  | R/W | Type     | Value | Description | Status |
+|----------------------|------:|-----|-----------|--------|-------------| ------  |
+| quickStatus          | `0x805` | **RO**  | uint16  | -      | Quick status vector | **Active** |
+| mosfetTemperature    | `0x806` | **RO**  | float32 | -      | Driver temperature | **Active** |
+| motorTemperature     | `0x807` | **RO**  | float32 | -      | Motor temperature (if thermistor is mounted) | **Active** |
+| motorShutdownTemp    | `0x808` | RW  | uint8   | -      | Temperature at which the MD will enter IDLE mode | **Active** |
+| | | | | | | |
+| mainEncoderStatus *(was mainEncoderErrors)*       | `0x809` | **RO**  | uint32 | - | Main encoder status | **Active** |
+| auxEncoderStatus *(was outputEncoderErrors)*      | `0x80A` | **RO**  | uint32 | - | Aux encoder status | **Active** |
+| calibrationStatus *(was calibrationErrors)*       | `0x80B` | **RO**  | uint32 | - | Calibration status | **Active** |
+| bridgeStatus *(was bridgeErrors)*                 | `0x80C` | **RO**  | uint32 | - | Bridge status | **Active** |
+| hardwareStatus *(was hardwareErrors)*             | `0x80D` | **RO**  | uint32 | - | Hardware status | **Active** |
+| communicationStatus *(was communicationErrors)*   | `0x80E` | **RO**  | uint32 | - | Communication status | **Active** |
+| motionStatus *(was motionErrors)*                 | `0x810` | **RO**  | uint32 | - | Motion status | **Active** |
+| miscStatus           | `0x812` | **RO**  | uint32 | -      | Misc status | **Active** <br>from&nbsp;v3.0.0 |
+| configStatus         | `0x813` | **RO**  | uint32 | -      | Config status | **Active** <br>from&nbsp;v3.0.0|
+
+### Deprecated
+These registers have been used in some points in the past, but are now not used or replaced. 
+
+| Register | Addr | R/W | Type | Value | Description | Status |
+|:---------|:----:|:---:|:-----|:-------|:------------|:-------|
+| motorKt_a     | `0x013` | RW | float32 | > 0 | Optional phase A torque constant. | **Deprecated** |
+| motorKt_b     | `0x014` | RW | float32 | > 0 | Optional phase B torque constant. | **Deprecated** |
+| motorKt_c     | `0x015` | RW | float32 | > 0 | Optional phase C torque constant. | **Deprecated** |
+| motorFriction | `0x019` | **RO** | float32 | – | Actuator dynamic friction| **Temporarily disabled** |
+| motorStiction | `0x01A` | **RO** | float32 | – | Actuator static friction | **Temporarily disabled** |
+| outputEncoderDefaultBaud  | `0x022` | RW  | uint32| 115200            | optional parameter for default output encoder baudrate | **Deprecated** |
+| bridgeType        | `0x070` | **RO**  | uint8 | - | type of the mosfet driver | **Deprecated** |
+| homingMode        | `0x071` | RW  | uint8 | - | Homing Mode | **Temporarily disabled** |
+| homingMaxTravel   | `0x072` | RW  | float32 | - | Max distance to travel looking for homing point| **Temporarily disabled** |
+| homingVelocity    | `0x073` | RW  | float32 | - | Target velocity during homing | **Temporarily disabled** |
+| homingTorque      | `0x074` | RW  | float32 | - | Max torque during homing | **Temporarily disabled** |
+| homingStatus      | `0x80F` | **RO**  | uint32| - | Homing status bitfield| **Temporarily disabled** |
+
+</div>
+

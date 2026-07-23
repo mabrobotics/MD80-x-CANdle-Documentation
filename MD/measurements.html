@@ -213,9 +213,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../PDS/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
@@ -225,6 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -506,6 +507,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position">Position</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity">Velocity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#torque">Torque</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-input-current-and-motor-phase-current">Power, input current and motor phase current</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-operating-conditions-case-a-vs-case-b">Motor operating conditions: Case A vs Case B</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-a-holding-torque-zero-speed">Case A — holding torque, zero speed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-b-active-work-under-load">Case B — active work under load</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -531,6 +538,7 @@ of the encoder is 14 bits (16384 counts per rotation). The drive aggregates all 
 provide <strong>multi-rotation positional feedback</strong>. The reference position (0.0 rad) is set by the user
 and stored in the non-volatile memory. Please see <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">zero</span></code></span></a>
 command for more information on how to set the desired zero position.</p>
+<p><strong>When the actuator power-up, the position readout is clamped to in -PI to +PI rad.</strong></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>When using geared actuators with gear ratios above 1:1 it is not possible to determine the position after startup unambiguously, since the motor completes multiple rotations per single rotation of the output shaft. For example, for a 2:1 gearbox, there are two sections within a single output shaft rotation where the motor shaft is in the same position. Unless the motor is placed in the wrong “section” during startup the absolute encoder functionality will work. To deal with this issue please see the <a class="reference internal" href="encoders.html#aux-encoders"><span class="std std-ref">axu encoder</span></a>.</p>
@@ -548,6 +556,90 @@ position differentiation method introduces noise.</p>
 ratio actuators (preferably below 9:1), that are easily back-drivable, to get an estimate of the
 torque applied by the motor. In applications with higher gear ratios, the torque readout might be
 less accurate due to excessive friction in the gearbox.</p>
+</section>
+<section id="power-input-current-and-motor-phase-current">
+<h2>Power, input current and motor phase current<a class="headerlink" href="#power-input-current-and-motor-phase-current" title="Link to this heading">#</a></h2>
+<p>Input current flows from the power supply into the controller. It increases when the motor works harder (more torque, higher speed). Think of it like fuel consumption in a car — the harder you push, the more you burn.</p>
+<p>Motor phase current is generated by the MD motor controller and directly determines motor torque. The controller regulates it via a high-frequency FOC loop — more phase current means more torque. Think of the controller as a three-phase DC/DC converter that sets the output current by adjusting the phase voltage through PWM.</p>
+<p>This relation can be described with following equantion:</p>
+<p><span class="math notranslate nohighlight">\(P = I_{dc} \cdot U_{dc} = I_{phase} \cdot U_{dc} \cdot \text{PWM}_{duty}\)</span></p>
+<p>In real drive system there are losses which are omitted for simplicity.</p>
+<p>Visual relationship between output power, input current and motor phase current is presented below:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../_images/md_motor_wiring_diag.jpg" />
+</figure>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../_images/current_comp.jpg" />
+</figure>
+</section>
+<section id="motor-operating-conditions-case-a-vs-case-b">
+<h2>Motor operating conditions: Case A vs Case B<a class="headerlink" href="#motor-operating-conditions-case-a-vs-case-b" title="Link to this heading">#</a></h2>
+<p>To illustrate the difference between two distinct motor operating conditions, two points are marked on the graph: <strong>A</strong> and <strong>B</strong>.</p>
+<section id="case-a-holding-torque-zero-speed">
+<h3>Case A — holding torque, zero speed<a class="headerlink" href="#case-a-holding-torque-zero-speed" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Torque / current setpoint</p></td>
+<td><p>20 A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Motor state</p></td>
+<td><p>Shaft blocked or heavily loaded</p></td>
+</tr>
+<tr class="row-even"><td><p>Speed</p></td>
+<td><p>0 RPM</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input current</p></td>
+<td><p>~2 A — covers only system power losses</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Example scenarios:</strong></p>
+<ul class="simple">
+<li><p>Actuators in a loaded robotic arm that don’t move,</p></li>
+<li><p>Actuators in a humanoid robot’s arms during walking while holding objects,</p></li>
+<li><p>Actuators in a quadruped robot’s legs during standing.</p></li>
+</ul>
+<blockquote>
+<div><p>All these scenarios share the same load scheme — significant motor phase current, but no mechanical work done. Energy is lost as heat in the wires, motor controller, power supply, and primarily in the motor coil resistance. <strong>Efficiency: 0%.</strong></p>
+</div></blockquote>
+</section>
+<section id="case-b-active-work-under-load">
+<h3>Case B — active work under load<a class="headerlink" href="#case-b-active-work-under-load" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Torque / current setpoint</p></td>
+<td><p>20 A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Motor state</p></td>
+<td><p>Heavy load, not blocked — producing torque</p></td>
+</tr>
+<tr class="row-even"><td><p>Speed</p></td>
+<td><p>50 RPM</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input current</p></td>
+<td><p>~10 A — covers losses <strong>and</strong> physical work</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Example scenarios:</strong></p>
+<ul class="simple">
+<li><p>Actuators in a loaded robotic arm that move quickly,</p></li>
+<li><p>Actuators in a humanoid robot’s arms during lifting objects,</p></li>
+<li><p>Actuators in a quadruped robot’s legs during running.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -618,6 +710,12 @@ less accurate due to excessive friction in the gearbox.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position">Position</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity">Velocity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#torque">Torque</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-input-current-and-motor-phase-current">Power, input current and motor phase current</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-operating-conditions-case-a-vs-case-b">Motor operating conditions: Case A vs Case B</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-a-holding-torque-zero-speed">Case A — holding torque, zero speed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-b-active-work-under-load">Case B — active work under load</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

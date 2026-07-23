@@ -211,9 +211,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../PDS/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
@@ -223,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -501,17 +502,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid">Velocity PID</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid">Position PID</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-pd">Impedance PD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid">Velocity PID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-cascade">Position PID (Cascade)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-profile">Velocity Profile</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-profile">Position Profile</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controller-implementation">Controller implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-controller-tuning">Motion controller tuning</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-velocity-profile">Velocity PID / Velocity Profile</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-position-profile">Position PID / Position Profile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Impedance PD</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi">Current PI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Impedance PD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi-torque-bandwidth">Current PI / Torque bandwidth</a></li>
 </ul>
 </li>
 </ul>
@@ -531,7 +532,45 @@ document.write(`
 <p class="admonition-title">Hint</p>
 <p>TL;DR: <a class="reference external" href="https://www.youtube.com/watch?v=XnD8sG22zro&amp;amp;t=0s">MD x CANdle - motion modes</a></p>
 </div>
-<p>To control the motor shaft with the user’s command MDxx is equipped with multiple control loops. All
+<p>There are several motion controllers that can be used on MD:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>Inputs (targets)</p></th>
+<th class="head"><p>Tuning parameters</p></th>
+<th class="head"><p>Applications</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Impedance Controller</p></td>
+<td><p>position, velocity, torque (feedforward)</p></td>
+<td><p>2</p></td>
+<td><p>Legged robots, cobots, compliant mechanisms, force-feedback</p></td>
+</tr>
+<tr class="row-odd"><td><p>Position PID (Cascade)</p></td>
+<td><p>position, velocity</p></td>
+<td><p>8</p></td>
+<td><p>Robot arms, precision mechanisms</p></td>
+</tr>
+<tr class="row-even"><td><p>Velocity PID</p></td>
+<td><p>velocity</p></td>
+<td><p>4</p></td>
+<td><p>Wheels, rovers, rotors, gyroscopes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Profile Position</p></td>
+<td><p>position, velocity</p></td>
+<td><p>8</p></td>
+<td><p>Robot arms, offline optimization, safety mechanisms</p></td>
+</tr>
+<tr class="row-even"><td><p>Profile Velocity</p></td>
+<td><p>velocity</p></td>
+<td><p>4</p></td>
+<td><p>Offline optimization, precise velocity control, safety mechanisms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To control the motor shaft with the user’s command MD is equipped with multiple control loops. Most
 controllers are based on a regular PID controller design with an anti-windup block. The saturator
 (anti-windup) is an additional module that acts as a limiter to the ‘I’ part of the controller, as
 in many systems, the error integration may grow to very large numbers, completely overwhelming ‘P’
@@ -539,8 +578,61 @@ and ‘D’ parts of the controller.</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/limiters.png" />
 </figure>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><b>Selecting Controller &amp; tuning advise</b>
+While starting up with MD based actuators, when required system gains are not known, we highly advise
+checking up Impendace PD mode.
+This mode offers flexibility, simplicity and surprisingly good performance for wide variety of tasks.</p>
+</div>
+<section id="impedance-pd">
+<span id="id2"></span><h2>Impedance PD<a class="headerlink" href="#impedance-pd" title="Link to this heading">#</a></h2>
+<p>Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant
+mechanism (virtual spring, collaborative robots etc), force control and force feedback. The main idea behind it is to mimic the behavior of a torsional spring with variable
+stiffness and damping. The parameters of the controller are:</p>
+<ul class="simple">
+<li><p>Position Target</p></li>
+<li><p>Velocity Target</p></li>
+<li><p>kP (position gain)</p></li>
+<li><p>kD (velocity gain)</p></li>
+<li><p>Torque Feed Forward (Torque FF)</p></li>
+</ul>
+<p>The torque output is proportional to the position error and velocity error and additionally
+supplemented with a torque command from the user. Here are some of the most common applications for
+this control mode:</p>
+<ul class="simple">
+<li><p><b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to
+the output controller torque.</p></li>
+<li><p><b>Spring-damper mechanism</b> - when velocity target is set to 0, impedance controllers kP gain
+acts as the virtual spring stiffness and kD as its damping coefficient. Example use case: a
+variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP,
+damping by kD, and height (clearance) by changing the target position;</p></li>
+<li><p><b>Compliant trajectory follower</b> - when trajectory (set of positions and velocities, optionally
+torque too) is known one can command both requested position and velocity to the actuator, which will
+allow for following trajectory with small deviation, while still allowing for compliant behaviors.
+This can be used in compliant robotic arms, allowing easy gravity and dynamics compensation (through
+torque feed forward), and precise position tracing through position and velocity commands.</p></li>
+<li><p><b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents
+to the torque command. Example use case: In legged robots, force control can be achieved by
+advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to
+stabilize the robot but too slow to avoid vibrations. Knowing desired robot’s joint positions,
+velocities, and torques, drives can be set to produce the proper torque and hold the
+position/velocity with small gains. This would compensate for any high-frequency oscillations
+(vibrations) that may occur, as the impedance controller works at 40kHz (much faster than &lt;100
+Hz).</p></li>
+<li><p><b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the
+motor shaft will be free to rotate. When the drive is disabled it connects all the windings
+together for safety. This mode can be useful for enabling free rotation of the shaft, but the
+rotational energy should not be too high as the voltages induced in the motor windings could break
+the driver.</p></li>
+</ul>
+<p>The impedance controller is relatively simple and works according to the schematic below:</p>
+<figure class="align-center">
+<img alt="candle" class="no-scaled-link" src="../_images/impedance.png" />
+</figure>
+</section>
 <section id="velocity-pid">
-<span id="id2"></span><h2>Velocity PID<a class="headerlink" href="#velocity-pid" title="Link to this heading">#</a></h2>
+<span id="id3"></span><h2>Velocity PID<a class="headerlink" href="#velocity-pid" title="Link to this heading">#</a></h2>
 <p>Velocity PID controller calculates velocity error based on target velocity (set by user) and
 estimated velocity read from the encoder. Its output is a torque command for the internal
 current/torque controller. The parameters of the controller are:</p>
@@ -555,9 +647,9 @@ current/torque controller. The parameters of the controller are:</p>
 <img alt="candle" class="no-scaled-link" src="../_images/velocity_pid.png" />
 </figure>
 </section>
-<section id="position-pid">
-<span id="id3"></span><h2>Position PID<a class="headerlink" href="#position-pid" title="Link to this heading">#</a></h2>
-<p>Position PID mode is the most common controller mode used in industrial servo applications. In MDxx,
+<section id="position-pid-cascade">
+<span id="position-pid"></span><h2>Position PID (Cascade)<a class="headerlink" href="#position-pid-cascade" title="Link to this heading">#</a></h2>
+<p>Position PID mode is the most common controller mode used in industrial servo applications. In MD,
 it is implemented as a cascaded PID controller. This means that the controller is working in two
 stages, firstly the position error is calculated, and it is then passed to the Position PID, which
 outputs the target velocity. This value is then passed as an input to the Velocity PID controller,
@@ -569,7 +661,7 @@ following parameters:</p>
 <li><p>kP (proportional gain)</p></li>
 <li><p>kI (integral gain)</p></li>
 <li><p>kD (derivative gain)</p></li>
-<li><p>I windup (maximal output of an integral part in [rad/s])</p></li>
+<li><p>I windup (maximal output of an integral part)</p></li>
 </ul>
 <p>For Velocity PID:</p>
 <ul class="simple">
@@ -583,47 +675,6 @@ following parameters:</p>
 velocity PID mode), and then the position PID. The controller can be described with a diagram:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/position_pid.png" />
-</figure>
-</section>
-<section id="impedance-pd">
-<span id="id4"></span><h2>Impedance PD<a class="headerlink" href="#impedance-pd" title="Link to this heading">#</a></h2>
-<p>Impedance Control mode is a popular choice for mobile or legged robots, as well as for any compliant
-mechanism. The main idea behind it is to mimic the behavior of a torsional spring with variable
-stiffness and damping. The parameters of the controller are:</p>
-<ul class="simple">
-<li><p>Position Target</p></li>
-<li><p>Velocity Target</p></li>
-<li><p>kP (position gain)</p></li>
-<li><p>kD (velocity gain)</p></li>
-<li><p>Torque Feed Forward (Torque FF)</p></li>
-</ul>
-<p>The torque output is proportional to the position error and velocity error and additionally
-supplemented with a torque command from the user. Here are some of the most common applications for
-this control mode:</p>
-<ul class="simple">
-<li><p><b>Spring-damper mechanism</b> - when velocity target is set to 0, impedance controllers kP gain
-acts as the virtual spring stiffness and kD as its damping coefficient. Example use case: a
-variable suspension for a wheeled robot, where suspension stiffness can be regulated by kP,
-damping by kD, and height (clearance) by changing the target position;</p></li>
-<li><p><b>High-frequency torque controller</b>, where its targets and gains can act as stabilizing agents
-to the torque command. Example use case: In legged robots, force control can be achieved by
-advanced control algorithms, which usually operate at rates below 100 Hz. It is usually enough to
-stabilize the robot but too slow to avoid vibrations. Knowing desired robot’s joint positions,
-velocities, and torques, drives can be set to produce the proper torque and hold the
-position/velocity with small gains. This would compensate for any high-frequency oscillations
-(vibrations) that may occur, as the impedance controller works at 40kHz (much faster than &lt;100
-Hz).</p></li>
-<li><p><b>Raw torque controller</b> - when kP and kD are set to zero, the torque_ff command is equal to
-the output controller torque.</p></li>
-<li><p><b>Idle</b> - when kP and kD are set to zero, and the torque_ff command is equal to zero, the
-motor shaft will be free to rotate. When the drive is disabled it connects all the windings
-together for safety. This mode can be useful for enabling free rotation of the shaft, but the
-rotational energy should not be too high as the voltages induced in the motor windings could break
-the driver.</p></li>
-</ul>
-<p>The impedance controller is relatively simple and works according to the schematic below:</p>
-<figure class="align-center">
-<img alt="candle" class="no-scaled-link" src="../_images/impedance.png" />
 </figure>
 </section>
 <section id="velocity-profile">
@@ -671,7 +722,7 @@ find the PID and impedance C/C++ language implementations below:</p>
 </div>
 </section>
 <section id="motion-controller-tuning">
-<span id="id5"></span><h2>Motion controller tuning<a class="headerlink" href="#motion-controller-tuning" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2>Motion controller tuning<a class="headerlink" href="#motion-controller-tuning" title="Link to this heading">#</a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>The best way to get started with tuning is to copy the <a class="reference external" href="https://2d033567-d193-42c8-9e42-4931131b206f.usrfiles.com/ugd/2d0335_4f52c3bdab9e4b1cbd2cec68e48b7e14.pdf">default gains</a> and tweak them. You can treat this section as our recommendation for tuning the controllers, but <a class="reference external" href="https://www.motioncontroltips.com/how-are-servo-system-velocity-control-loops-tuned/">online articles</a> can be useful as well</p>
@@ -715,8 +766,8 @@ velocity</p></li>
 <li><p>Generally try to avoid using kd</p></li>
 </ol>
 </section>
-<section id="id6">
-<h3>Impedance PD<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>Impedance PD<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Increase kp to the point you’re satisfied with the stiffnes of the output shaft (the spring
 coefficient)</p></li>
@@ -725,11 +776,17 @@ coefficient)</p></li>
 <li><p>Avoid setting kd too high - it may cause severe vibrations.</p></li>
 </ol>
 </section>
-<section id="current-pi">
-<h3>Current PI<a class="headerlink" href="#current-pi" title="Link to this heading">#</a></h3>
+<section id="current-pi-torque-bandwidth">
+<h3>Current PI / Torque bandwidth<a class="headerlink" href="#current-pi-torque-bandwidth" title="Link to this heading">#</a></h3>
 <p>Current/torque PI is the lowest-level controller. Its gains are not directly user-configurable,
 however, they can be modified using the bandwidth parameter. Please see the calibration section for
 more insight on the topic.</p>
+<p>The torque bandwidth can be adjusted based on the dynamics of the actuator and application. The bandwidth
+controls how ‘aggressively’ the current (thus torque) control is applied. This is a tradeoff between
+torque responsiveness, and factors like audible noise, position/velocity readout noise, high-frequency
+vibrations etc. For most cases, like position/velocity control, the default setting of 100/500 Hz is
+usually sufficient. For very dynamic applications, for example for damping high-frequency vibrations
+(100+/1000+ hz) increasing the bandwidth may improve the performance.</p>
 </section>
 </section>
 </section>
@@ -798,17 +855,17 @@ more insight on the topic.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid">Velocity PID</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid">Position PID</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance-pd">Impedance PD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid">Velocity PID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-cascade">Position PID (Cascade)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-profile">Velocity Profile</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-profile">Position Profile</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controller-implementation">Controller implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-controller-tuning">Motion controller tuning</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-pid-velocity-profile">Velocity PID / Velocity Profile</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-pid-position-profile">Position PID / Position Profile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Impedance PD</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi">Current PI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Impedance PD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-pi-torque-bandwidth">Current PI / Torque bandwidth</a></li>
 </ul>
 </li>
 </ul>

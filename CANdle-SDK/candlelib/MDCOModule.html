@@ -63,6 +63,8 @@
     <link rel="icon" href="../../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Response Time (Latency)" href="ResponseTimes.html" />
+    <link rel="prev" title="PDS Module" href="PDSModule.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../GettingStarted/GettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../MD/MD80.html">MD80</a></li>
@@ -211,18 +211,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../PDS/isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../../PDS/isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PDS/charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CANdle/intro.html">CANdle and CANdleHAT</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../intro.html">Software - CANdle-SDK</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../CANdlelib.html">CANdlelib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -502,13 +503,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features">Main Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">Code Examples</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-detection">ID detection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-register">Read &amp; write register</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features">Main Features</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speed-loop">Speed loop</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat">Heartbeat</a></li>
 </ul>
 </li>
 </ul>
@@ -553,56 +549,11 @@ modes.</p></li>
 <li><p><strong>TIME-STAMP management</strong>: Handling of messages containing the <em>TIME_OF_DAY</em> object (cf. CiA 301).</p></li>
 <li><p><strong>Heartbeat management</strong>: Handling of heartbeat messages.</p></li>
 </ul>
-</section>
-<section id="code-examples">
-<h2>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading">#</a></h2>
-<p>All codes examples are available in python or c++</p>
-<section id="id-detection">
-<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_id_motor_detection.cpp">ID detection</a><a class="headerlink" href="#id-detection" title="Link to this heading">#</a></h3>
-<p>This is the simplest example to use and the recommended starting point.</p>
-<p>The program displays the IDs of all motors connected to the CANdle via CANopen and makes the
-drivers’ LEDs blink one by one, allowing the user to identify which motor corresponds to which ID.</p>
-</section>
-<section id="read-write-register">
-<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_read_write_register.cpp">Read &amp; write register</a><a class="headerlink" href="#read-write-register" title="Link to this heading">#</a></h3>
-<p>This example demonstrates the different ways to communicate with the MD80 using the CANopen
-protocol.</p>
-<ul class="simple">
-<li><p>Send <strong>SDO expedited transfer</strong> requests to write and read values contained in most registers.</p></li>
-<li><p>Use <strong>PDOs</strong> for faster communication.</p></li>
-<li><p>Use <strong>SDO segmented transfers</strong> for registers larger than 4 bytes.</p></li>
-<li><p>Use <strong>NMT (Network Management)</strong> to easily manage the motor driver’s state machine (cf. CiA 301).</p></li>
-</ul>
-</section>
 <section id="speed-loop">
 <h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_speed_loop.cpp">Speed loop</a><a class="headerlink" href="#speed-loop" title="Link to this heading">#</a></h3>
 <p>This example shows how to run the motor using only <strong>SDO expedited transfers</strong>.</p>
 <p>You must first configure the registers (Max current, Max torque, etc.). Once the registers are set,
 you can create a loop to run your motor at the desired speed.</p>
-</section>
-<section id="impedance">
-<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_impedance.cpp">Impedance</a><a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
-<p>This example shows a use case of the MD module where we connect to the CANdle device, scan the CAN
-network for MDs, set its mode to <em>impedance</em> (or any other available mode from the enum), and start
-the control loop.</p>
-<blockquote>
-<div><p><strong>Warning</strong><br />
-Be careful using this mode, raw torque can be dangerous.</p>
-</div></blockquote>
-</section>
-<section id="heartbeat">
-<h3><a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/blob/main/examples/cpp/mdco_example_heartbeat.cpp">Heartbeat</a><a class="headerlink" href="#heartbeat" title="Link to this heading">#</a></h3>
-<p>The <strong>Heartbeat protocol</strong> is used to monitor the nodes in the network and verify that they are
-alive.<br />
-A heartbeat producer (usually a slave device) periodically sends a message with its node ID
-(<code class="docutils literal notranslate"><span class="pre">0x700</span> <span class="pre">+</span> <span class="pre">node</span> <span class="pre">ID</span></code>).</p>
-<p>This example shows how to use the heartbeat protocol:</p>
-<ol class="arabic simple">
-<li><p>The program first listens to the motor driver to check if it is sending heartbeats correctly.</p></li>
-<li><p>Then, a second test is performed where the motor driver is set as a heartbeat listener and the
-CANdle sends it heartbeat messages. After a few iterations, the CANdle stops sending heartbeat
-messages, and the motor driver should switch to <em>stop mode</em> in the NMT state machine.</p></li>
-</ol>
 </section>
 </section>
 </section>
@@ -637,6 +588,24 @@ messages, and the motor driver should switch to <em>stop mode</em> in the NMT st
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="PDSModule.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PDS Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ResponseTimes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Response Time (Latency)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -654,13 +623,8 @@ messages, and the motor driver should switch to <em>stop mode</em> in the NMT st
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features">Main Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">Code Examples</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-detection">ID detection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-register">Read &amp; write register</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-features">Main Features</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speed-loop">Speed loop</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat">Heartbeat</a></li>
 </ul>
 </li>
 </ul>

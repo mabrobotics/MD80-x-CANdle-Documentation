@@ -211,9 +211,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../PDS/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PDS/communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
@@ -223,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -562,6 +563,8 @@ document.write(`
 </section>
 <section id="with-candle-sdk">
 <h2>With CANdle-SDK<a class="headerlink" href="#with-candle-sdk" title="Link to this heading">#</a></h2>
+<p>TL;DR: <a class="reference external" href="https://youtu.be/pqfCrU1CEHE?si=K1fUOJKDNJTPhcqd">Getting Started Guide #1 Ready to use actuators - MD x CANdle</a>
+<a class="reference external" href="https://www.youtube.com/watch?v=pqfCrU1CEHE"><img alt="MD-GettingStarted" src="../_images/thumbnail.png" /></a></p>
 <section id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
 <p>For running CANdle-SDK as a <strong>configuration package</strong> (candletool), the following prerequisites must be met:</p>
@@ -664,7 +667,7 @@ document.write(`
 <p>The MAB motors with MDxx preassembled into them come preconfigured. Their <strong>CAN ID</strong> is set to the <strong>last 3 digits of the warranty sticker</strong> in case of FDCAN MAB protocol and <strong>10</strong> node ID in case of CANopen protocol.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Although MAB motors are preconfigured, they still need their PID controllers adjusted for their final operation. Head to <a class="reference internal" href="../md_x_candle_ecosystem_overview/Motion%20modes.html#motion-modes"><span class="std std-ref">motion modes</span></a> section to learn more.</p>
+<p>Although MAB motors are preconfigured, they still need their PID controllers adjusted for their final operation. Head to <a class="reference internal" href="../MD/motion.html#motion-modes"><span class="std std-ref">motion modes</span></a> section to learn more.</p>
 </div>
 <p>To checkout the configuration of your motor run the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>--id<span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="w"> </span>info

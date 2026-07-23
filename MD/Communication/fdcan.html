@@ -211,9 +211,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../PDS/isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../../PDS/isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PDS/charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../PDS/communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
@@ -223,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -512,9 +513,26 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-register-frame">Write register frame</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-register-frame">Read Register Frame</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-response">Legacy response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-response">Error response</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register-table">Register Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register-table">Register Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communications">Communications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actuator-parameters">Actuator Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-output-encoder">Aux (Output) Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-encoder">Main Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-control">Motion Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-commands">System Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-results">Test Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">Limits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-profiles">Motion Profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state">State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpio-add-ons">GPIO / Add-ons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#driver-info">Driver Info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status">Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated">Deprecated</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -526,7 +544,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="md-communication">
+  <style>
+.small-table table {
+  font-size: 12px;
+}
+</style>
+<section class="tex2jax_ignore mathjax_ignore" id="md-communication">
 <span id="md-protocol"></span><h1>MD communication<a class="headerlink" href="#md-communication" title="Link to this heading">#</a></h1>
 <p>The easiest way to communicate with MD controllers is to use a CANdle device connected to a PC. Even
 though we are aware some customers want to integrate the MD controllers in their product with
@@ -564,23 +587,34 @@ frame length, the contents of the frames will be the same as in FDCAN version of
 </section>
 <section id="communication-structure">
 <h2>Communication Structure<a class="headerlink" href="#communication-structure" title="Link to this heading">#</a></h2>
-<p>Communication with MD, happen is a strict Master-Slave structure. The MD itself will never produce a
-CAN frame by itself, it will only respond to direct commands from a host. Each MD device has
+<p>Communication with MD, happen is a strict Master-Slave structure. <strong>The MD will never produce a
+CAN frame by itself</strong>, it will only respond to direct commands from a host. Each MD device has
 configurable <strong>CAN ID</strong>, that serves as its unique identifier on the CAN bus. There may never be
 more than one MD with the same CAN ID, as this will lead to conflicts and errors.</p>
 <p>All communication with the particular drive will happen only via messages with particular ID. For
 example:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Host sends a request (command) to drive with Id <em>100</em>, the drive will execute the command and respond with a CAN frame that also has the ID of <em>100</em></p>
+<p>Host sends a request (command) to drive with Id <em>100</em>, the drive will execute the command and respond
+with a CAN frame that also has the ID of <em>100</em></p>
 </div>
 <p>The communication stack is based on a register access using two frames - <strong>register read and
 register write</strong>. The list of <a class="reference internal" href="#registers"><span class="std std-ref">available registers</span></a> can be found at the end of this
-chapter. All fields are little-endian - least significant byte first, and all float fields are 4
+chapter. All fields are little-endian - least significant byte first, and all float32 fields are 4
 bytes long (32 bit) encoded in IEEE-754 standard.</p>
+<p>The MD will response with one of the three possible frame types, based on the hosts’ command:</p>
+<ul class="simple">
+<li><p>Register Data frame,</p></li>
+<li><p>Quick Data frame,</p></li>
+<li><p>Error frame.</p></li>
+</ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Wrong access, incorrect data values or other communication errors are not reported explicitly. <strong>Command that failed (regardless of the reason), will result in the drive not producing any response.</strong> Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command, the host may consider the command has failed.</p>
+<p><strong>For pre 3.0.0 firmware versions (v2.5.x)</strong>,</p>
+<p>wrong access, incorrect data values or other communication errors are not reported explicitly.<br />
+<strong>Command that failed (regardless of the reason), will result in the drive not producing any response.</strong>
+Generally if the drive does not start producing a CAN frame with 100us of the the last bit of the command,
+the host may consider the command has failed.</p>
 </div>
 <section id="frame-structure">
 <h3>Frame Structure<a class="headerlink" href="#frame-structure" title="Link to this heading">#</a></h3>
@@ -638,14 +672,14 @@ drive, would, have a length of 20 bytes, and look like the following:</p>
             <td> PADDING </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
-            <td> 0x00 </td>
-            <td> 0x0063 </td>
-            <td> 0x00 00 00 00 </td>
-            <td> 0x0062 </td>
-            <td> 0x00 00 00 00 </td>
-            <td> 0x0064 </td>
-            <td> 0x00 00 00 00 </td>
+			<td> `0x41 </td>
+            <td> `0x00 </td>
+            <td> `0x0063 </td>
+            <td> `0x00 00 00 00 </td>
+            <td> `0x0062 </td>
+            <td> `0x00 00 00 00 </td>
+            <td> `0x0064 </td>
+            <td> `0x00 00 00 00 </td>
 		</tr>
 	</tbody>
 </table>
@@ -664,34 +698,40 @@ of the frame behaviours by their id:</p>
             <td> Description </td>
 		</tr>
 		<tr>
-			<td> 0x40 </td>
+			<td> `0x40 </td>
             <td> WRITE_REGISTER_LEGACY</td>
             <td> performs write operation, and makes the drive respond with <a href="#legacy-response">legacy response</a>. This is sometimes useful in high frequency control loops, to minimize number of frames exchanged. For frame contents, refer to <a href="write-register"> Write Register Frame </a>. </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
+			<td> `0x41 </td>
             <td> READ_REGISTER</td>
             <td> performs read operation, and responds with state of the registers. Refer to  <a href="read-register"> Read Register Frame </a> </td>
 		</tr>
 		<tr>
-			<td> 0x42 </td>
+			<td> `0x42 </td>
             <td> WRITE_REGISTER</td>
             <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. For more info, refer to <a href="write-register"> Write Register Frame </a> </td>
 		</tr>
 		<tr>
-			<td> 0x43 </td>
+			<td> `0x43 </td>
             <td> READ_REGISTER_CAN2.0 </td>
             <td> performs read operation, and responds with state of the registers. Works same as <a href="read-register"> Read Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response. </td>
 		</tr>
 		<tr>
-			<td> 0x44 </td>
+			<td> `0x44 </td>
             <td> WRITE_REGISTER_CAN2.0 </td>
             <td> performs write operation, and responds with state of the registers AFTER operation. Useful for verification of write operation. Works same as <a href="write-register"> Write Register Frame </a>, but is limited to 8 bytes and produces CAN2.0 compatible response.</td>
 		</tr>
+        <tr></tr>
 		<tr>
-			<td> 0x0A </td>
-            <td> LEGACY_RESPONSE </td>
+			<td> `0xA0 </td>
+            <td> QUICK DATA (LEGACY Response) </td>
             <td> RESPONSE ONLY. A response produced as a result of some frames. Contains data, most commonly required in fast control loops - <a href="#legacy-response">more info here.</a> </td>
+		</tr>
+		<tr>
+			<td> `0xA1 </td>
+            <td> ERROR RESPONSE </td>
+            <td> RESPONSE ONLY. A response produced as a result of failed register write or read attempt. Contains an error code and failed register id.</td>
 		</tr>
 	</tbody>
 </table>
@@ -730,10 +770,10 @@ write access can be modified.</p>
 <p></p>
 <p>Params:</p>
 <ul class="simple">
-<li><p>regID (uint16_t) - first register ID (please see the end of this section)</p></li>
-<li><p>value (uint8_t/uint16_t/uint32_t/float/char[]) - first register value to be written</p></li>
-<li><p>regID (uint16_t) - second register ID (please see the end of this section)</p></li>
-<li><p>value (uint8_t/uint16_t/uint32_t/float/char[]) - second register value to be written</p></li>
+<li><p>regID (uint16) - first register ID (please see the end of this section)</p></li>
+<li><p>value (uint8/uint16_t/uint32_t/float/char[]) - first register value to be written</p></li>
+<li><p>regID (uint16) - second register ID (please see the end of this section)</p></li>
+<li><p>value (uint8/uint16_t/uint32_t/float/char[]) - second register value to be written</p></li>
 <li><p>… (up to 64 bytes total)</p></li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -759,17 +799,17 @@ write access can be modified.</p>
             <td> (float) -7.4 </td>
 		</tr>
 		<tr>
-			<td> 0x42 </td>
-            <td> 0x00 </td>
-            <td> 0x0150 </td>
-            <td> 0x3E 80 00 00 </td>
-            <td> 0x0151 </td>
-            <td> 0xC0 EC CC CD </td>
+			<td> `0x42 </td>
+            <td> `0x00 </td>
+            <td> `0x0150 </td>
+            <td> `0x3E 80 00 00 </td>
+            <td> `0x0151 </td>
+            <td> `0xC0 EC CC CD </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
+Which in raw HEX is: `0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
 <p class="sd-card-text">Response, send from MD to Host:</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -790,17 +830,17 @@ Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
             <td> (float) -7.4 </td>
 		</tr>
 		<tr>
-			<td> 0x42 </td>
-            <td> 0x00 </td>
-            <td> 0x0150 </td>
-            <td> 0x3E 80 00 00 </td>
-            <td> 0x0151 </td>
-            <td> 0xC0 EC CC CD </td>
+			<td> `0x42 </td>
+            <td> `0x00 </td>
+            <td> `0x0150 </td>
+            <td> `0x3E 80 00 00 </td>
+            <td> `0x0151 </td>
+            <td> `0xC0 EC CC CD </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
+Which in raw HEX is: `0x42 00 01 50 3E 80 00 00 01 51 C0 EC CC CD
 </div>
 </details></section>
 <section id="read-register-frame">
@@ -835,7 +875,7 @@ master request should have the following form:</p>
 	</tbody>
 </table>
 <p></p>
-<p>When all read operations succeed the 0x00 fields will be filled with appropriate register data when
+<p>When all read operations succeed the `0x00 fields will be filled with appropriate register data when
 transmitted back to master by the MDxx controller.</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -887,17 +927,17 @@ transmitted back to master by the MDxx controller.</p>
             <td> PADDING (4 bytes) </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
-            <td> 0x00 </td>
-            <td> 0x0805 </td>
-            <td> 0x00 00  </td>
-            <td> 0x0062 </td>
-            <td> 0x00 00 00 00 </td>
+			<td> `0x41 </td>
+            <td> `0x00 </td>
+            <td> `0x0805 </td>
+            <td> `0x00 00  </td>
+            <td> `0x0062 </td>
+            <td> `0x00 00 00 00 </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x41 00 08 05 00 00 00 62 00 00 00 00
+Which in raw HEX is: `0x41 00 08 05 00 00 00 62 00 00 00 00
 <p class="sd-card-text">Response, send from MD to Host:</p>
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -918,17 +958,17 @@ Which in raw HEX is: 0x41 00 08 05 00 00 00 62 00 00 00 00
             <td> 16.74 (float) </td>
 		</tr>
 		<tr>
-			<td> 0x41 </td>
-            <td> 0x00 </td>
-            <td> 0x0805 </td>
-            <td> 0x80 00  </td>
-            <td> 0x0062 </td>
-            <td> 0x41 85 EB 85 </td>
+			<td> `0x41 </td>
+            <td> `0x00 </td>
+            <td> `0x0805 </td>
+            <td> `0x80 00  </td>
+            <td> `0x0062 </td>
+            <td> `0x41 85 EB 85 </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
+Which in raw HEX is: `0x41 00 08 05 80 00 00 62 41 85 EB 85
 </div>
 </details></section>
 <section id="legacy-response">
@@ -960,19 +1000,19 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
 		</tr>
     <tr>
 			<td>TYPE </td>
-			<td>uint8_t </td>
-			<td>uint16_t </td>
-			<td>uint8_t [*C] </td>
-      <td>float [rad] </td>
-      <td>float [rad/s] </td>
-      <td>float [Nm] </td>
-      <td>float [rad] </td>
-      <td>float [rad/s] </td>
+			<td>uint8 </td>
+			<td>uint16 </td>
+			<td>uint8 [*C] </td>
+      <td>float32 [rad] </td>
+      <td>float32 [rad/s] </td>
+      <td>float32 [Nm] </td>
+      <td>float32 [rad] </td>
+      <td>float32 [rad/s] </td>
 		</tr>
         <tr>
 			<td>VALUE </td>
 			<td>0x0A </td>
-			<td>0x0000 - 0xFFFF </td>
+			<td>0x0000 - `0xFFFF </td>
 			<td>0 - 255 </td>
       <td>- </td>
       <td>- </td>
@@ -984,965 +1024,1343 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
 </table>
 <p></p>
 </section>
+<section id="error-response">
+<h3>Error response<a class="headerlink" href="#error-response" title="Link to this heading">#</a></h3>
+<p>Error response is present in MD firmware v3.0.0 and newer. For older versions (v2.x.x), when the error occurs, no
+response is produced at all, and error handling must happen via timeout handling.</p>
+<p></p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b></b></td>
+			<td> <b>BYTE 0</b></td>
+			<td> <b>BYTE 1</b></td>
+			<td> <b>BYTE 2-3</b></td>
+		</tr>
+		<tr>
+			<td>NAME </td>
+			<td>FRAME ID </td>
+			<td>ERROR CODE</td>
+			<td>REGISTER ID </td>
+		</tr>
+    <tr>
+			<td>TYPE </td>
+			<td>uint8 </td>
+			<td>int8 </td>
+			<td>uint16 [*C] </td>
+		</tr>
+        <tr>
+			<td>VALUE </td>
+			<td>0xA1 </td>
+			<td>-255 - 0 </td>
+			<td>0x0000 - `0xFFFF</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<div class="small-table">
+<p>Error codes are int8 based <strong>negative</strong> values.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Code</p></th>
+<th class="head"><p>Error Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"> <span class="pre">0</span></code> (0x00)</p></td>
+<td><p>NONE</p></td>
+<td><p>No error</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code> (0xFF)</p></td>
+<td><p>DEPRECATED</p></td>
+<td><p>Register deprecated - can be treated as warning. The call had no effect</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-2</span></code> (0xFE)</p></td>
+<td><p>INVALID</p></td>
+<td><p>Frame composition invalid - usually incorrecy size of frame layout</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-3</span></code> (0xFD)</p></td>
+<td><p>UNKNOWN</p></td>
+<td><p>Register ID unknown - The call has no effect</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-4</span></code> (0xFC)</p></td>
+<td><p>OUT_OF_RANGE</p></td>
+<td><p>Register value was parsed, but was out of acceptable range. Refer to register table below.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-5</span></code> (0xFB)</p></td>
+<td><p>ACCESS</p></td>
+<td><p>Trying to write to read-only register, or read write-only register</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>EXAMPLE</strong> Write invalid motor kv</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Command, send from host to MD:</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+            <td> <b>BYTE 4-5 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> PADDING (0x00) </td>
+            <td> regId - motorKv </td>
+            <td> (u16) 65001 </td>
+		</tr>
+		<tr>
+			<td> `0x42 </td>
+            <td> `0x00 </td>
+            <td> `0x001D </td>
+            <td> `0xFDE9 </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: `0x42 00 1D 00 E9 FD
+<p class="sd-card-text">Acceptable range here is 1 - 65000, so value <code class="docutils literal notranslate"><span class="pre">65001</span></code> is out of range, producing error response.</p>
+<p class="sd-card-text">Response, send from MD to Host:</p>
+<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
+	<tbody>
+		<tr>
+			<td> <b>BYTE 0</b></td>
+            <td> <b>BYTE 1 </b></td>
+            <td> <b>BYTE 2-3 </b></td>
+		</tr>
+		<tr>
+			<td> FRAME ID </td>
+            <td> Error Code </td>
+            <td> RegisterId </td>
+		</tr>
+		<tr>
+			<td> `0xA1 </td>
+            <td> `0xFC </td>
+            <td> `0x001D </td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+Which in raw HEX is: `0xA1 FC 1D 00 
+</div>
+</details></section>
 </section>
 <section id="register-table">
 <span id="registers"></span><h2>Register Table<a class="headerlink" href="#register-table" title="Link to this heading">#</a></h2>
-<table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
-  <thead>
-    <tr style="text-align: center;">
-      <th>reg name</th>
-      <th>address</th>
-      <th>read/write</th>
-      <th>size</th>
-      <th>limits</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>canId</td>
-      <td>0x001</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>[10-2000]</td>
-      <td>FDCAN bus id number</td>
-    </tr>
-    <tr>
-      <td>canBaudrate</td>
-      <td>0x002</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>[1e6;2e6;5e6;8e6]</td>
-      <td>FDCAN bus baudrate</td>
-    </tr>
-    <tr>
-      <td>canWatchdog</td>
-      <td>0x003</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>[0-2500]</td>
-      <td>FDCAN bus watchdog period in ms</td>
-    </tr>
-    <tr>
-      <td>canTermination</td>
-      <td>0x004</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0-1]</td>
-      <td>CAN termination (available upon request)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorName</td>
-      <td>0x010</td>
-      <td>RW</td>
-      <td>char[24]</td>
-      <td>-</td>
-      <td>motor name</td>
-    </tr>
-    <tr>
-      <td>motorPolePairs</td>
-      <td>0x011</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>[2;225]</td>
-      <td>motor pole pair count</td>
-    </tr>
-    <tr>
-      <td>motorKt</td>
-      <td>0x012</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>motor torque constant</td>
-    </tr>
-    <tr>
-      <td>motorKt_a</td>
-      <td>0x013</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>optional parameter for phase specific torque constant</td>
-    </tr>
-    <tr>
-      <td>motorKt_b</td>
-      <td>0x014</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>optional parameter for phase specific torque constant</td>
-    </tr>
-    <tr>
-      <td>motorKt_c</td>
-      <td>0x015</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>>0</td>
-      <td>optional parameter for phase specific torque constant</td>
-    </tr>
-    <tr>
-      <td>motorIMax</td>
-      <td>0x016</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>[1 - peak controller current]</td>
-      <td>maximum phase current</td>
-    </tr>
-    <tr>
-      <td>motorGearRatio</td>
-      <td>0x017</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>actuator gear ratio (ex 2:1 should be 0.5) <1 - reducer >1 - multiplier</td>
-    </tr>
-    <tr>
-      <td>motorTorqueBandwidth</td>
-      <td>0x018</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>[50-2500]</td>
-      <td>torque bandwidth in Hz</td>
-    </tr>
-    <tr>
-      <td>motorFriction</td>
-      <td>0x019</td>
-      <td>RO</td>
-      <td>float32</td>
-      <td>-</td>
-      <td>UNUSED</td>
-    </tr>
-    <tr>
-      <td>motorStiction</td>
-      <td>0x01A</td>
-      <td>RO</td>
-      <td>float32</td>
-      <td>-</td>
-      <td>UNUSED</td>
-    </tr>
-    <tr>
-      <td>motorResistance</td>
-      <td>0x01B</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>[5mOhm-20Ohm]</td>
-      <td>motor resistance in d axis</td>
-    </tr>
-    <tr>
-      <td>motorInductance</td>
-      <td>0x01C</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>[5nH-100mH]</td>
-      <td>motor inductance in d axis</td>
-    </tr>
-    <tr>
-      <td>motorKV</td>
-      <td>0x01D</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>motor KV rating [RPM/V]</td>
-    </tr>
-    <tr>
-      <td>motorCalibrationMode</td>
-      <td>0x01E</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1]</td>
-      <td>FULL = 0, NOPPDET = 1</td>
-    </tr>
-    <tr>
-      <td>motorThermistorType</td>
-      <td>0x01F</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>outputEncoder</td>
-      <td>0x020</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1;2;3]</td>
-      <td>NONE = 0, ME_AS_CENTER = 1, ME_AS_OFFAXIS = 2, MB053SFA17BENT00 = 3, CM_OFFAXIS = 4, M24B_CENTER = 5, M24B_OFFAXIS = 6</td>
-    </tr>
-    <tr>
-      <td>outputEncoderDir</td>
-      <td>0x021</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>0</td>
-      <td>RESERVED</td>
-    </tr>
-    <tr>
-      <td>outputEncoderDefaultBaud</td>
-      <td>0x022</td>
-      <td>RW</td>
-      <td>uint32_t</td>
-      <td>115200</td>
-      <td>optional parameter for setting default output encoder baudrate</td>
-    </tr>
-    <tr>
-      <td>outputEncoderVelocity</td>
-      <td>0x023</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder velocity in rad/s (calculated in a 5kHz loop)</td>
-    </tr>
-    <tr>
-      <td>outputEncoderPosition</td>
-      <td>0x024</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder position in rad (read in 5kHz loop)</td>
-    </tr>
-    <tr>
-      <td>outputEncoderMode</td>
-      <td>0x025</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1;2;3;4]</td>
-      <td>NONE = 0, STARTUP = 1, MOTION = 2, REPORT = 3, MAIN = 4</td>
-    </tr>
-    <tr>
-      <td>outputEncoderCalibrationMode</td>
-      <td>0x026</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>[0;1]</td>
-      <td>FULL = 0, DIRONLY = 1</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorPosPidKp</td>
-      <td>0x030</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID proportional gain</td>
-    </tr>
-    <tr>
-      <td>motorPosPidKi</td>
-      <td>0x031</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID integral gain</td>
-    </tr>
-    <tr>
-      <td>motorPosPidKd</td>
-      <td>0x032</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID derivative gain</td>
-    </tr>
-    <tr>
-      <td>motorPosPidWindup</td>
-      <td>0x034</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position PID integral windup limit</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorVelPidKp</td>
-      <td>0x040</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID proportional gain</td>
-    </tr>
-    <tr>
-      <td>motorVelPidKi</td>
-      <td>0x041</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID integral gain</td>
-    </tr>
-    <tr>
-      <td>motorVelPidKd</td>
-      <td>0x042</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID derivative gain</td>
-    </tr>
-    <tr>
-      <td>motorVelPidWindup</td>
-      <td>0x044</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity PID integral windup limit</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motorImpPidKp</td>
-      <td>0x050</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>impedance PD proportional gain</td>
-    </tr>
-    <tr>
-      <td>motorImpPidKd</td>
-      <td>0x051</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>impedance PD derivative gain</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>mainEncoderVelocity</td>
-      <td>0x062</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>main encoder velocity in rad/s (calculated in a 40kHz loop)</td>
-    </tr>
-    <tr>
-      <td>mainEncoderPosition</td>
-      <td>0x063</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>main encoder position in rad (read in 40kHz loop)</td>
-    </tr>
-    <tr>
-      <td>motorTorque</td>
-      <td>0x064</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td> motor output shaft torque in Nm (read in 40kHz loop)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>runSaveCmd</td>
-      <td>0x080</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>save non-volatile memory</td>
-    </tr>
-    <tr>
-      <td>runTestMainEncoderCmd</td>
-      <td>0x081</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs main encoder test routine</td>
-    </tr>
-    <tr>
-      <td>runTestOutputEncoderCmd</td>
-      <td>0x082</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs output encoder test routine</td>
-    </tr>
-    <tr>
-      <td>runCalibrateCmd</td>
-      <td>0x083</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs main calibration routine</td>
-    </tr>
-    <tr>
-      <td>runCalibrateOutputEncoderCmd</td>
-      <td>0x084</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs output encoder calibration routine</td>
-    </tr>
-    <tr>
-      <td>runCalibratePiGains</td>
-      <td>0x085</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>runs current PI loop calibration routine</td>
-    </tr>
-    <tr>
-      <td>runRestoreFactoryConfig</td>
-      <td>0x087</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>reverts config to factory state</td>
-    </tr>
-    <tr>
-      <td>runReset</td>
-      <td>0x088</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>resets the controller</td>
-    </tr>
-    <tr>
-      <td>runClearWarnings</td>
-      <td>0x089</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>clears all warnings</td>
-    </tr>
-    <tr>
-      <td>runClearErrors</td>
-      <td>0x08A</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>clears non-critical errors</td>
-    </tr>
-    <tr>
-      <td>runBlink</td>
-      <td>0x08B</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>blinks onboard LEDs</td>
-    </tr>
-    <tr>
-      <td>runZero</td>
-      <td>0x08C</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>sets new zero position</td>
-    </tr>
-    <tr>
-      <td>runCanReinit</td>
-      <td>0x08D</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>other than 0 to run</td>
-      <td>reinitializes can peripheral</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>calOutputEncoderStdDev</td>
-      <td>0x100</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder test result (standard deviation)</td>
-    </tr>
-    <tr>
-      <td>calOutputEncoderMinE</td>
-      <td>0x101</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder test result (min error)</td>
-    </tr>
-    <tr>
-      <td>calOutputEncoderMaxE</td>
-      <td>0x102</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>output encoder test result (max error)</td>
-    </tr>
-    <tr>
-      <td>calMainEncoderStdDev</td>
-      <td>0x103</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>main encoder test result (standard deviation)</td>
-    </tr>
-    <tr>
-      <td>calMainEncoderMinE</td>
-      <td>0x104</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>	main encoder test result (min error)</td>
-    </tr>
-    <tr>
-      <td>calMainEncoderMaxE</td>
-      <td>0x105</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>	main encoder test result (max error)</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>positionLimitMax</td>
-      <td>0x110</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum valid position</td>
-    </tr>
-    <tr>
-      <td>positionLimitMin</td>
-      <td>0x111</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>minimum valid position</td>
-    </tr>
-    <tr>
-      <td>maxTorque</td>
-      <td>0x112</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum torque</td>
-    </tr>
-    <tr>
-      <td>maxVelocity</td>
-      <td>0x113</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum velocity</td>
-    </tr>
-    <tr>
-      <td>maxAcceleration</td>
-      <td>0x114</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum acceleration</td>
-    </tr>
-    <tr>
-      <td>maxDeceleration</td>
-      <td>0x115</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>maximum deceleration</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>profileVelocity</td>
-      <td>0x120</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>profile velocity</td>
-    </tr>
-    <tr>
-      <td>profileAcceleration</td>
-      <td>0x121</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>profile acceleration</td>
-    </tr>
-    <tr>
-      <td>profileDeceleration</td>
-      <td>0x122</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>profile deceleration</td>
-    </tr>
-    <tr>
-      <td>quickStopDeceleration</td>
-      <td>0x123</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>quick stop deceleration in case of a non-critical error</td>
-    </tr>
-    <tr>
-      <td>positionWindow</td>
-      <td>0x124</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>position window within position is considered to be reached</td>
-    </tr>
-    <tr>
-      <td>velocityWindow</td>
-      <td>0x125</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>velocity window within velocity is considered to be reached</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>motionModeCommand</td>
-      <td>0x140</td>
-      <td>WO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>commands a motion mode change: IDLE = 0x00,
-          POSITION_PID = 0x01,
-          VELOCITY_PID = 0x02,
-          RAW_TORQUE = 0x03,
-          IMPEDANCE = 0x04,
-          POSITION_PROFILE = 0x07,
-          VELOCITY_PROFILE = 0x08</td>
-    </tr>
-    <tr>
-      <td>motionModeStatus</td>
-      <td>0x141</td>
-      <td>RO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>shows the currently set motion mode</td>
-    </tr>
-    <tr>
-      <td>state</td>
-      <td>0x142</td>
-      <td>RW</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>returns the internal <a href=../../candlelib/md_canopen/OD.html#x6040-control-word>state machine</a> state of the controller </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>targetPosition</td>
-      <td>0x150</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>sets target position in rad</td>
-    </tr>
-    <tr>
-      <td>targetVelocity</td>
-      <td>0x151</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>sets target velocity in rad/s</td>
-    </tr>
-    <tr>
-      <td>targetTorque</td>
-      <td>0x152</td>
-      <td>RW</td>
-      <td>float</td>
-      <td>-</td>
-      <td>sets target torque in Nm</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>userGpioConfiguration</td>
-      <td>0x160</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>0 - OFF, 1 - AUTO-BRAKE, 2 - GPIO INPUT</td>
-    </tr>
-    <tr>
-      <td>userGpioState</td>
-      <td>0x161</td>
-      <td>RO</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>GPIO input state</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>reverseDirection</td>
-      <td>0x600</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>used to change the direction of the main encoder when using other encoders than the onboard one. Always recalibrate after changing this setting</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>shuntResistance</td>
-      <td>0x700</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>[0.001 - 0.01]</td>
-      <td>Current sense resistor value. Setting this register to a value that is not coherent with the hardware may damage the controller. In this cases warranty is not respected.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>buildDate</td>
-      <td>0x800</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>software build date</td>
-    </tr>
-    <tr>
-      <td>commitHash</td>
-      <td>0x801</td>
-      <td>RO</td>
-      <td>char[8]</td>
-      <td>-</td>
-      <td>commit hash</td>
-    </tr>
-    <tr>
-      <td>firmwareVersion</td>
-      <td>0x802</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>hardwareVersion</td>
-      <td>0x803</td>
-      <td>RO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>bridgeType</td>
-      <td>0x804</td>
-      <td>RO</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>type of the mosfet driver</td>
-    </tr>
-    <tr>
-      <td>quickStatus</td>
-      <td>0x805</td>
-      <td>RO</td>
-      <td>uint16_t</td>
-      <td>-</td>
-      <td>quick status vector</td>
-    </tr>
-    <tr>
-      <td>mosfetTemperature</td>
-      <td>0x806</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>power stage temperature</td>
-    </tr>
-    <tr>
-      <td>motorTemperature</td>
-      <td>0x807</td>
-      <td>RO</td>
-      <td>float</td>
-      <td>-</td>
-      <td>motor temperature (if thermistor is mounted)</td>
-    </tr>
-    <tr>
-      <td>motorShutdownTemp</td>
-      <td>0x808</td>
-      <td>RW</td>
-      <td>uint8_t</td>
-      <td>-</td>
-      <td>temperature at which the MD series motor controller will enter IDLE mode</td>
-    </tr>
-    <tr>
-      <td>mainEncoderErrors</td>
-      <td>0x809</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>main encoder errors</td>
-    </tr>
-    <tr>
-      <td>outputEncoderErrors</td>
-      <td>0x80A</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>output encoder errors</td>
-    </tr>
-    <tr>
-      <td>calibrationErrors</td>
-      <td>0x80B</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>calibration errors</td>
-    </tr>
-    <tr>
-      <td>bridgeErrors</td>
-      <td>0x80C</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>bridge errors</td>
-    </tr>
-    <tr>
-      <td>hardwareErrors</td>
-      <td>0x80D</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>hardware errors</td>
-    </tr>
-    <tr>
-      <td>communicationErrors</td>
-      <td>0x80E</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>communication errors</td>
-    </tr>
-    <tr>
-      <td>motionErrors</td>
-      <td>0x810</td>
-      <td>RO</td>
-      <td>uint32_t</td>
-      <td>-</td>
-      <td>motion errors</td>
-    </tr>
-    <tr>
-      <td>dcBusVoltage</td>
-      <td>0x811</td>
-      <td>RO</td>
-      <td>float32</td>
-      <td>0 - 60V</td>
-      <td>voltage measured on the DC bus</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
+<p>Below is full register list supported by MD drives. The list is being updated regularely as MD firmware
+releases introduce new features.</p>
+<div class="small-table">
+<section id="communications">
+<h3>Communications<a class="headerlink" href="#communications" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Register</p></th>
+<th class="head text-center"><p>Addr</p></th>
+<th class="head text-center"><p>R/W</p></th>
+<th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>canId</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x001</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint32</p></td>
+<td class="text-left"><p>10–2000</p></td>
+<td class="text-left"><p>FDCAN bus ID number</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>canBaudrate</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x002</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint32</p></td>
+<td class="text-left"><p>1M, 2M, 5M, 8M</p></td>
+<td class="text-left"><p>FDCAN bus baudrate</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>canWatchdog</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x003</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint16</p></td>
+<td class="text-left"><p>0–2500 [ms]</p></td>
+<td class="text-left"><p>FDCAN watchdog timeout</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>canTermination</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x004</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint8</p></td>
+<td class="text-left"><p>0–1</p></td>
+<td class="text-left"><p>Toggle CAN bus termination (only on selected HW revisions)</p></td>
+<td class="text-left"><p>Deprecated</p></td>
+</tr>
+</tbody>
 </table>
+</div>
+</section>
+<section id="actuator-parameters">
+<h3>Actuator Parameters<a class="headerlink" href="#actuator-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Register</p></th>
+<th class="head text-center"><p>Addr</p></th>
+<th class="head text-center"><p>R/W</p></th>
+<th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>motorName</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x010</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>char[24]</p></td>
+<td class="text-left"><p>–</p></td>
+<td class="text-left"><p>User-defined motor name.</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorPolePairs</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x011</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint32</p></td>
+<td class="text-left"><p>2–225</p></td>
+<td class="text-left"><p>Number of motor pole pairs.</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorKt</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x012</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>&gt; 0</p></td>
+<td class="text-left"><p>Motor torque constant (Nm/A).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorIMax</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x016</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>&gt; 0</p></td>
+<td class="text-left"><p>Maximum allowable phase current.<br>Clamped to value of <code class="docutils literal notranslate"><span class="pre">maxDriverCurrent</span></code> (0x701).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorGearRatio</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x017</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>–</p></td>
+<td class="text-left"><p>Gear ratio. Values &lt; 1 indicate a reducer, values &gt; 1 indicate a multiplier (e.g. 2:1 reduction → 0.5).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorTorqueBandwidth</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x018</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint16</p></td>
+<td class="text-left"><p>50–2500 Hz</p></td>
+<td class="text-left"><p>Desired torque control bandwidth.</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorResistance</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x01B</span></code></p></td>
+<td class="text-center"><p><strong>RO</strong></p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>5 mΩ–20 Ω</p></td>
+<td class="text-left"><p>Measured motor phase resistance (d-axis).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorInductance</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x01C</span></code></p></td>
+<td class="text-center"><p><strong>RO</strong></p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>5 nH–100 mH</p></td>
+<td class="text-left"><p>Measured motor phase inductance (d-axis).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorKV</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x01D</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint16</p></td>
+<td class="text-left"><p>0 - 65000</p></td>
+<td class="text-left"><p>Motor speed constant (RPM/V).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorCalibrationMode</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x01E</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint8</p></td>
+<td class="text-left"><p>0 or 1</p></td>
+<td class="text-left"><p>Calibration mode (<code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">NOPPDET</span> <span class="pre">=</span> <span class="pre">1</span></code>).</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorThermistorType</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x01F</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint8</p></td>
+<td class="text-left"><p>–</p></td>
+<td class="text-left"><p>Connected motor thermistor type.</p></td>
+<td class="text-left"><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="aux-output-encoder">
+<h3>Aux (Output) Encoder<a class="headerlink" href="#aux-output-encoder" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>outputEncoder</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x020</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint8</p></td>
+<td><p>[0 - 11]</p></td>
+<td><p>NONE=0,<br>ME_AS_CENTER=1,<br>ME_AS_OFFAXIS=2,<br>RLS_RS422_17B=3,<br>CM_OFFAXIS=4,<br>M24B_CENTER=5,<br>M24B_OFFAXIS=6, <br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10,<br>CE300=11</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>outputEncoderDir</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x021</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-1 or 1</p></td>
+<td><p>Aux encoder direction, CCW or CW - automatically set during calibration</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><em>outputEncoderDir (legacy)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x021</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>int8</p></td>
+<td><p>-1 or 1</p></td>
+<td><p>Aux encoder direction, CCW or CW - automatically set during calibration</p></td>
+<td><p>up to v2.5.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>outputEncoderVelocity</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x023</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Aux encoder velocity [rad/s], computed &#64; 5kHz</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>outputEncoderPosition</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x024</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Aux encoder position [rad], read &#64; 5kHz</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>outputEncoderMode</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x025</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint8</p></td>
+<td><p>[0;1;2;3;4]</p></td>
+<td><p>NONE=0,<br> STARTUP=1,<br>MOTION=2,<br>REPORT=3,<br>MAIN=4 (legacy - valid up to v2.5.4)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>outputEncoderCalibrationMode</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x026</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint8</p></td>
+<td><p>[0;1]</p></td>
+<td><p>FULL=0,<br> DIRONLY=1</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="main-encoder">
+<h3>Main Encoder<a class="headerlink" href="#main-encoder" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mainEncoder (new)</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x02A</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint8</p></td>
+<td><p>[0; 1; 3; 8; 9; 10;]</p></td>
+<td><p>NONE=0,<br>ME_AS_CENTER=1,<br>RLS_RS422_17B=3,<br>ONBOARD=8,<br>RLS_SPI_17B=9, <br>RLS_ORBIS_14B=10</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>mainEncoderDir (new)</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x02B</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-1 or 1</p></td>
+<td><p>Main encoder direction, CCW or CW - automatically set during calibration</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="motion-control">
+<h3>Motion Control<a class="headerlink" href="#motion-control" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>motorPosPidKp</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x030</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Position PID proportional gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motorPosPidKi</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x031</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Position PID integral gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>motorPosPidKd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x032</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Position PID derivative gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motorPosPidWindup</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x034</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Position PID integral windup limit</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>motorVelPidKp</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x040</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Velocity PID proportional gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>motorVelPidKi</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x041</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Velocity PID integral gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motorVelPidKd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x042</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Velocity PID derivative gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>motorVelPidWindup</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x044</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Velocity PID integral windup limit</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>motorImpPidKp</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x050</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Impedance PD proportional gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motorImpPidKd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x051</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Impedance PD derivative gain</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>velocity <em>(was mainEncoderVelocity)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x062</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Actuator velocity in rad/s</p></td>
+<td><p>Active</p></td>
+</tr>
+<tr class="row-even"><td><p>position <em>(was mainEncoderPosition)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x063</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Actuator position in rad</p></td>
+<td><p>Active</p></td>
+</tr>
+<tr class="row-odd"><td><p>torque <em>(was motorTorque)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x064</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Actuator torque in Nm</p></td>
+<td><p>Active</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>targetPosition</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x150</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Sets target position in rad</p></td>
+<td><p>Active</p></td>
+</tr>
+<tr class="row-even"><td><p>targetVelocity</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x151</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Sets target velocity in rad/s</p></td>
+<td><p>Active</p></td>
+</tr>
+<tr class="row-odd"><td><p>targetTorque</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x152</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Sets target torque in Nm</p></td>
+<td><p>Active</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="system-commands">
+<h3>System Commands<a class="headerlink" href="#system-commands" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>runSaveCmd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x080</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Save non-volatile memory</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>runTestMainEncoderCmd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x081</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Runs main encoder test routine</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>runTestOutputEncoderCmd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x082</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Runs output encoder test routine</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>runCalibrateCmd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x083</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Runs main calibration routine</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>runCalibrateOutputEncoderCmd</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x084</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Runs output encoder calibration routine</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>runCalibratePiGains</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x085</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Runs current PI loop calibration routine</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>runRestoreFactoryConfig</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x087</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Reverts config to factory state</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>runReset</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x088</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Resets the controller</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>runClearWarnings</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x089</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Clears all warnings</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>runClearErrors</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x08A</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Clears non-critical errors</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>runBlink</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x08B</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Blinks onboard LEDs</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>runZero</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x08C</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Sets new zero position</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>runCanReinit</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x08D</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>1 to run</p></td>
+<td><p>Reinitializes CAN peripheral</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="test-results">
+<h3>Test Results<a class="headerlink" href="#test-results" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>calOutputEncoderStdDev</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x100</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Aux encoder test result (standard deviation)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>calOutputEncoderMinE</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x101</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Aux encoder test result (min error)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>calOutputEncoderMaxE</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x102</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Aux encoder test result (max error)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>calMainEncoderStdDev</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x103</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Main encoder test result (standard deviation)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>calMainEncoderMinE</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x104</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Main encoder test result (min error)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>calMainEncoderMaxE</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x105</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Main encoder test result (max error)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limits">
+<h3>Limits<a class="headerlink" href="#limits" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>maxPosition <em>(was positionLimitMax)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x110</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Maximum valid position</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>minPosition <em>(was positionLimitMin)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x111</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&lt; 0</p></td>
+<td><p>Minimum valid position</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>maxTorque</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x112</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Maximum torque</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>maxVelocity</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x113</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Maximum velocity</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>maxAcceleration</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x114</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Maximum acceleration</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>maxDeceleration</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x115</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Maximum deceleration</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="motion-profiles">
+<h3>Motion Profiles<a class="headerlink" href="#motion-profiles" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>profileVelocity</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x120</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>up to v2.5.4 - profile velocity<br><strong>from v3.0.0 - replaced by targetVelocity</strong></p></td>
+<td><p><em>Discontinued</em><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>profileAcceleration</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x121</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Profile acceleration</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>profileDeceleration</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x122</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Profile deceleration</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>quickStopDeceleration</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x123</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Quick stop deceleration in case of a non-critical error</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>positionWindow</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x124</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Position window within position is considered to be reached</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>velocityWindow</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x125</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Velocity window within velocity is considered to be reached</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="state">
+<h3>State<a class="headerlink" href="#state" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>motionModeCommand</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x140</span></code></p></td>
+<td><p>WO</p></td>
+<td><p>uint8</p></td>
+<td><p>-</p></td>
+<td><p>IDLE=0x00,<br>POSITION_PID=0x01,<br>VELOCITY_PID=0x02,<br>RAWORQUE=0x03,<br>IMPEDANCE=0x04,<br>POSITION_PROFILE=0x07,<br>VELOCITY_PROFILE=0x08</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motionModeStatus</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x141</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint8</p></td>
+<td><p>-</p></td>
+<td><p>Shows the currently set motion mode</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>state</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x142</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint16</p></td>
+<td><p>-</p></td>
+<td><p>Returns the internal state machine state of the controller</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="gpio-add-ons">
+<h3>GPIO / Add-ons<a class="headerlink" href="#gpio-add-ons" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>userGpioConfiguration</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x160</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint8</p></td>
+<td><p>-</p></td>
+<td><p>0 - OFF,<br>1 - BRAKE,<br>2 - GPIO INPUT</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>userGpioState</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x161</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint16</p></td>
+<td><p>0 or 1</p></td>
+<td><p>GPIO input state</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="driver-info">
+<h3>Driver Info<a class="headerlink" href="#driver-info" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>shuntResistance</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x700</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Current sense resistor value. Setting this register to a value that is not coherent with the hardware may damage the controller. In this cases warranty is not respected.</p></td>
+<td><p><em>Outdated</em><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>shuntResistance</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x700</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Current sense resistance.</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>maxDriverCurrent</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x701</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Max measurable (peak) current.</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>productionDate</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x7FB</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Production date encoded in ddmmyy format</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>productionBatch</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x7FC</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Production batch code</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>productionUID</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x7FD</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Unique Identifier of MD</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>hardwareRevision</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x7FE</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Hardware revision</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>hardwareType</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x7FF</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>Hardware yype id</p></td>
+<td><p><strong>Active</strong><br>from v3.0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>firmwareBuildDate <em>(was buildDate)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x800</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Firmware build date, as ddmmyy number</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>firmwareHash <em>(was commitHash)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x801</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>char[8]</p></td>
+<td><p>-</p></td>
+<td><p>Firmware hash</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>firmwareVersion</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x802</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Firmware Version</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>hardwareVersion</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x803</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint8</p></td>
+<td><p>-</p></td>
+<td><p>Hardware Version</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>dcBusVoltage</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x811</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>0 - 100V</p></td>
+<td><p>Voltage measured on the DC bus</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="status">
+<h3>Status<a class="headerlink" href="#status" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head text-right"><p>Addr</p></th>
+<th class="head"><p>R/W</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>quickStatus</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x805</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint16</p></td>
+<td><p>-</p></td>
+<td><p>Quick status vector</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>mosfetTemperature</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x806</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Driver temperature</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>motorTemperature</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x807</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Motor temperature (if thermistor is mounted)</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motorShutdownTemp</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x808</span></code></p></td>
+<td><p>RW</p></td>
+<td><p>uint8</p></td>
+<td><p>-</p></td>
+<td><p>Temperature at which the MD will enter IDLE mode</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td class="text-right"><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mainEncoderStatus <em>(was mainEncoderErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x809</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Main encoder status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>auxEncoderStatus <em>(was outputEncoderErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x80A</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Aux encoder status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>calibrationStatus <em>(was calibrationErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x80B</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Calibration status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>bridgeStatus <em>(was bridgeErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x80C</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Bridge status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>hardwareStatus <em>(was hardwareErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x80D</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Hardware status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>communicationStatus <em>(was communicationErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x80E</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Communication status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>motionStatus <em>(was motionErrors)</em></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x810</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Motion status</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>miscStatus</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x812</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Misc status</p></td>
+<td><p><strong>Active</strong> <br>from v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>configStatus</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x813</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>uint32</p></td>
+<td><p>-</p></td>
+<td><p>Config status</p></td>
+<td><p><strong>Active</strong> <br>from v3.0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="deprecated">
+<h3>Deprecated<a class="headerlink" href="#deprecated" title="Link to this heading">#</a></h3>
+<p>These registers have been used in some points in the past, but are now not used or replaced.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Register</p></th>
+<th class="head text-center"><p>Addr</p></th>
+<th class="head text-center"><p>R/W</p></th>
+<th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Value</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>motorKt_a</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x013</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>&gt; 0</p></td>
+<td class="text-left"><p>Optional phase A torque constant.</p></td>
+<td class="text-left"><p><strong>Deprecated</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorKt_b</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x014</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>&gt; 0</p></td>
+<td class="text-left"><p>Optional phase B torque constant.</p></td>
+<td class="text-left"><p><strong>Deprecated</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorKt_c</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x015</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>&gt; 0</p></td>
+<td class="text-left"><p>Optional phase C torque constant.</p></td>
+<td class="text-left"><p><strong>Deprecated</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>motorFriction</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x019</span></code></p></td>
+<td class="text-center"><p><strong>RO</strong></p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>–</p></td>
+<td class="text-left"><p>Actuator dynamic friction</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>motorStiction</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x01A</span></code></p></td>
+<td class="text-center"><p><strong>RO</strong></p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>–</p></td>
+<td class="text-left"><p>Actuator static friction</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>outputEncoderDefaultBaud</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x022</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint32</p></td>
+<td class="text-left"><p>115200</p></td>
+<td class="text-left"><p>optional parameter for default output encoder baudrate</p></td>
+<td class="text-left"><p><strong>Deprecated</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>bridgeType</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x070</span></code></p></td>
+<td class="text-center"><p><strong>RO</strong></p></td>
+<td class="text-left"><p>uint8</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>type of the mosfet driver</p></td>
+<td class="text-left"><p><strong>Deprecated</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>homingMode</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x071</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>uint8</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Homing Mode</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>homingMaxTravel</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x072</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Max distance to travel looking for homing point</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>homingVelocity</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x073</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Target velocity during homing</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>homingTorque</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x074</span></code></p></td>
+<td class="text-center"><p>RW</p></td>
+<td class="text-left"><p>float32</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Max torque during homing</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>homingStatus</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">0x80F</span></code></p></td>
+<td class="text-center"><p><strong>RO</strong></p></td>
+<td class="text-left"><p>uint32</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Homing status bitfield</p></td>
+<td class="text-left"><p><strong>Temporarily disabled</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -2021,9 +2439,26 @@ Which in raw HEX is: 0x41 00 08 05 80 00 00 62 41 85 EB 85
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-register-frame">Write register frame</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-register-frame">Read Register Frame</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-response">Legacy response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-response">Error response</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register-table">Register Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register-table">Register Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communications">Communications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actuator-parameters">Actuator Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-output-encoder">Aux (Output) Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-encoder">Main Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-control">Motion Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-commands">System Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-results">Test Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limits">Limits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motion-profiles">Motion Profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state">State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpio-add-ons">GPIO / Add-ons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#driver-info">Driver Info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status">Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated">Deprecated</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

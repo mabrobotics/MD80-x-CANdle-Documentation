@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CANdle and CANdle HAT" href="../CANdle/intro.html" />
-    <link rel="prev" title="Brake resistor" href="brake_resistor.html" />
+    <link rel="prev" title="Charger addon" href="charger_addon.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,9 +211,9 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">FDCAN Communication</a></li>
 </ul>
 </details></li>
@@ -223,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -512,6 +513,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-and-status-clear-words">Status and status clear words</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-frames">Communication frames</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response-status-codes">Response status codes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-frame">Example frame</a></li>
 </ul>
 </li>
 </ul>
@@ -547,7 +549,7 @@ These bridges connect CAN-L and CAN-H to another CAN-L/H of neighbor connector s
 <figure class="align-center" id="id1">
 <img alt="pds_power_stage_bridges" src="../_images/pds_ps_bridges.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">FDCAN bridge placement</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">FDCAN bridge placement</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Also control board has its own built-in CAN termination.
@@ -558,7 +560,7 @@ If possible CAN termination should be placed on each ends of CAN circuit as show
 <figure class="align-center" id="id2">
 <img alt="PDS_CAN_architecture_example_1" src="../_images/PDS_CAN.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">FDCAN architecture with 2 Power Stage modules</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">FDCAN architecture with 2 Power Stage modules</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -568,7 +570,7 @@ If possible CAN termination should be placed on each ends of CAN circuit as show
 <figure class="align-center" id="id3">
 <img alt="PDS_CAN_architecture_example_2" src="../_images/PDS_CAN_3port.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">FDCAN architecture with 1 Power Stage module</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">FDCAN architecture with 1 Power Stage module</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -588,7 +590,8 @@ communicating with the PDS, the host controller has to form a request frame that
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As in all MAB CAN-based devices, the CAN ID is used to target specific devices. PSD is not an exception.
+<p>As in all MAB CAN-based devices, the CAN ID is used to target specific devices.<br>
+<strong>The default CAN ID is 100</strong> (0x64 in hex). It can be changed later.<br>
 When the frame is successfully received and processed by the PDS device, its response body depends
 on the message type.</p>
 </div>
@@ -1321,6 +1324,100 @@ message status code ( protocol status ) and per property status code ( property 
 </table>
 </div>
 </section>
+<section id="example-frame">
+<h3>Example frame<a class="headerlink" href="#example-frame" title="Link to this heading">#</a></h3>
+<p>Below is the assumed physical setup of the PDS device:</p>
+<ul class="simple">
+<li><p>Socket 1 :: Power stage module</p></li>
+<li><p>Socket 2 :: Power stage module</p></li>
+<li><p>Socket 3 :: No module</p></li>
+<li><p>Socket 4 :: Brake resistor</p></li>
+<li><p>Socket 5 :: No module</p></li>
+<li><p>Socket 6 :: Isolated Converter 12V</p></li>
+</ul>
+<p>Reading the submodules stack frame:</p>
+<p>Generic frame body of the “Read properties” ( 0x20 ) message:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Byte number</strong></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+<th class="head"><p>8</p></th>
+<th class="head"><p>9</p></th>
+<th class="head"><p>10</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data to send</strong></p></td>
+<td><p>0x20</p></td>
+<td><p>0x01</p></td>
+<td><p>0x00</p></td>
+<td><p>0x06</p></td>
+<td><p>0x22</p></td>
+<td><p>0x23</p></td>
+<td><p>0x24</p></td>
+<td><p>0x25</p></td>
+<td><p>0x26</p></td>
+<td><p>0x26</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Generic response to properties read frame body:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Byte number</strong></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4-7</p></th>
+<th class="head"><p>8</p></th>
+<th class="head"><p>9-12</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Response data</strong></p></td>
+<td><p>0x00</p></td>
+<td><p>0x06</p></td>
+<td><p>0x00</p></td>
+<td><p>0x00000005</p></td>
+<td><p>0x00</p></td>
+<td><p>0x00000005</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>13</p></th>
+<th class="head"><p>14-17</p></th>
+<th class="head"><p>18</p></th>
+<th class="head"><p>19-22</p></th>
+<th class="head"><p>23</p></th>
+<th class="head"><p>24-27</p></th>
+<th class="head"><p>28</p></th>
+<th class="head"><p>29-32</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x00</p></td>
+<td><p>0x00000000</p></td>
+<td><p>0x00</p></td>
+<td><p>0x0000002</p></td>
+<td><p>0x00</p></td>
+<td><p>0x00000000</p></td>
+<td><p>0x00</p></td>
+<td><p>0x00000003</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 </section>
 
@@ -1355,12 +1452,12 @@ message status code ( protocol status ) and per property status code ( property 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="brake_resistor.html"
+       href="charger_addon.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Brake resistor</p>
+        <p class="prev-next-title">Charger addon</p>
       </div>
     </a>
     <a class="right-next"
@@ -1399,6 +1496,7 @@ message status code ( protocol status ) and per property status code ( property 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-and-status-clear-words">Status and status clear words</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-frames">Communication frames</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response-status-codes">Response status codes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-frame">Example frame</a></li>
 </ul>
 </li>
 </ul>

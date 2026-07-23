@@ -63,7 +63,7 @@
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Communication FDCAN" href="communication.html" />
+    <link rel="next" title="Charger addon" href="charger_addon.html" />
     <link rel="prev" title="Isolated converter" href="isolated_converter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,9 +211,9 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="control_board.html">Control Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="power_stage.html">Power Stage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isolated_converter.html">Isolated converter</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="isolated_converter.html">Isolated Converter</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="charger_addon.html">Charger Addon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="communication.html">FDCAN Communication</a></li>
 </ul>
 </details></li>
@@ -223,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
 
 
@@ -557,11 +558,11 @@ Key features include:</p>
 </table>
 </div>
 <p>The BRAKE_ENABLE is triggered when an overvoltage condition occurs on the PS module connected to the BR module. In such cases, excess energy is dissipated through the braking resistors. Proper cooling of the BR module is essential to prevent overheating and potential thermal shutdown.</p>
-<!-- The module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures. -->
+<p>Module includes built-in hardware thermal protection and can automatically disable itself if it exceeds safe operating temperatures.</p>
 <figure class="align-center" id="id1">
-<img alt="PDS_CTRL" class="no-scaled-link" src="../_images/brv10.png" style="width: 600px;" />
+<img alt="PDS_CTRL" class="no-scaled-link" src="../_images/pds_braking_resistor_w.png" style="width: 600px;" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Brake resistor with highlighted ports</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Brake resistor with highlighted ports</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This port is designed for connecting the PDS_PS output. In the event of overvoltage caused by
@@ -611,11 +612,11 @@ limits, protecting components from potential damage.</p>
       </div>
     </a>
     <a class="right-next"
-       href="communication.html"
+       href="charger_addon.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Communication FDCAN</p>
+        <p class="prev-next-title">Charger addon</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
