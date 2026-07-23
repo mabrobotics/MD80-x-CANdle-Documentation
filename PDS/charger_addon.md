@@ -49,6 +49,6 @@ Charger addon integrated with PDS
 ### States and transitions
 Connecting external power to charger addon turns it on. Each switching enables PDS and the state changes to "Charging working state". 
 Charging is detected and it is visible in PDS information/status.
-Disconecting (or unplugging external power source from charger addon) changes state to "Working state" and PDS status indicates that charging is no longer active. To shut down whole system user can press and hold RGB power button.
+Disconnecting (or unplugging external power source from charger addon) changes state to "Working state" and PDS status indicates that charging is no longer active. To shut down whole system user can press and hold RGB power button.
 The rest of the states are described in [States and transitions](states).
 
