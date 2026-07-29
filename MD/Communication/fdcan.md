@@ -735,8 +735,8 @@ releases introduce new features.
 | Register             | Addr  | R/W | Type   | Value | Description | Status |
 |----------------------|------:|-----|--------|--------|-------------| ------ |
 | motionModeCommand    | `0x140` | WO  | uint8 | -      | IDLE=0x00,<br>POSITION_PID=0x01,<br>VELOCITY_PID=0x02,<br>RAWORQUE=0x03,<br>IMPEDANCE=0x04,<br>POSITION_PROFILE=0x07,<br>VELOCITY_PROFILE=0x08 | **Active** |
-| motionModeStatus     | `0x141` | **RO**  | uint8 | -      | Shows the currently set motion mode | **Active** |
-| state                | `0x142` | RW  | uint16 | -     | Returns the internal state machine state of the controller | **Active** |
+| motionModeStatus     | `0x141` | **RO**  | uint8 | -  | Shows the currently set motion mode | **Active** |
+| state                | `0x142` | RW  | uint16 | -     | Current [status of drivers' state machine](md_state_machine) | **Active** |
 
 ### GPIO / Add-ons
 | Register               | Addr  | R/W | Type    | Value | Description | Status |
