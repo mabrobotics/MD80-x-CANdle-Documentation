@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CANdle ROS2 &#8212; MAB Ecosystem</title>
+    <title>State Machine &#8212; MAB Ecosystem</title>
   
   
   
@@ -59,12 +59,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'CANdle_ROS2/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/state_machine';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MD Node" href="md-node/overview.html" />
-    <link rel="prev" title="Python Module" href="../CANdle-SDK/PythonModule.html" />
+    <link rel="next" title="Motion modes" href="motion.html" />
+    <link rel="prev" title="Safety" href="safety.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,30 +182,30 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../MD/intro.html">MD - Motor Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/MD80HV.html">MD80 60V</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/encoders.html">Encoders</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../MD/brakes.html">Brakes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/measurements.html">Measurements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/safety.html">Safety</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/state_machine.html">State Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/motion.html">Motion Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MD/status_utility.html">Status &amp; Utilities</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../MD/Communication/fdcan.html">MD Protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_od.html">Object Dictionary</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/migration.html">Migration to and from CANopen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_od.html">Object Dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_nmt.html">NMT Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_sdo.html">SDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_pdo.html">PDO Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/migration.html">Migration to and from CANopen</a></li>
 </ul>
 </details></li>
 </ul>
@@ -244,13 +244,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../CANdle-SDK/PythonModule.html">Python Module</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Software - ROS2</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="md-node/overview.html">MD Node</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="pds-node/modules/ctrl.html">Control Board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pds-node/modules/ic.html">Isolated Converter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pds-node/modules/ps.html">Power Stage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pds-node/modules/br.html">Brake Resistor</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle_ROS2/md-node/overview.html">MD Node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle_ROS2/pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ctrl.html">Control Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ic.html">Isolated Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ps.html">Power Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/br.html">Brake Resistor</a></li>
 </ul>
 </details></li>
 </ul>
@@ -383,7 +383,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FCANdle_ROS2/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/state_machine.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -413,7 +413,7 @@
       
       
       
-      <li><a href="../_sources/CANdle_ROS2/intro.md" target="_blank"
+      <li><a href="../_sources/MD/state_machine.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -497,7 +497,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CANdle ROS2</h1>
+    <h1>State Machine</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -507,12 +507,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node">MD Node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pds-node">PDS Node</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-protocol-model">MD Protocol model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-state-machine-model">Full State Machine model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6041-statusword">0x6041 – Statusword</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-run">Build &amp; Run</a></li>
 </ul>
             </nav>
         </div>
@@ -524,62 +524,307 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="candle-ros2">
-<h1>CANdle ROS2<a class="headerlink" href="#candle-ros2" title="Link to this heading">#</a></h1>
-<p><strong>CANdle ROS2</strong> is a ROS 2 package that provides communication interfaces and runtime control nodes for <strong>MD motor controllers</strong> and the <strong>PDS power delivery system</strong> developed by <strong>MAB Robotics</strong>.</p>
-<p>The package has been tested with the following ROS 2 distributions:</p>
-<ul class="simple">
-<li><p><strong>Humble</strong></p></li>
-<li><p><strong>Jazzy</strong></p></li>
-</ul>
-<p>It is verified on Linux-based systems including <strong>Ubuntu</strong> and <strong>Debian</strong>.</p>
-<p>Two main nodes are available:</p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">md_node</span></code></strong> — operational control of MD motor drives</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">pds_node</span></code></strong> — operational control and monitoring of PDS devices and their modules</p></li>
-</ul>
-<hr class="docutils" />
-<section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
-<section id="md-node">
-<h3>MD Node<a class="headerlink" href="#md-node" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Control MD drive controllers</p></li>
-<li><p>Publish joint state data</p></li>
-<li><p>Accept <strong>position</strong>, <strong>velocity</strong>, <strong>motion</strong>, and <strong>impedance</strong> commands</p></li>
-<li><p>Provide services for:</p>
-<ul>
-<li><p>enabling/disabling drives</p></li>
-<li><p>zeroing</p></li>
-<li><p>setting operating modes</p></li>
-<li><p>registering MD units</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="pds-node">
-<h3>PDS Node<a class="headerlink" href="#pds-node" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Manage PDS devices and automatically expose per-module topics and services</p></li>
-<li><p>Monitor modules such as:</p>
-<ul>
-<li><p>Control Board (<code class="docutils literal notranslate"><span class="pre">ctrl</span></code>)</p></li>
-<li><p>Isolated Converter (<code class="docutils literal notranslate"><span class="pre">ic</span></code>)</p></li>
-<li><p>Brake Resistor (<code class="docutils literal notranslate"><span class="pre">br</span></code>)</p></li>
-<li><p>Power Stage (<code class="docutils literal notranslate"><span class="pre">ps</span></code>)</p></li>
-</ul>
-</li>
-<li><p>Provide per-module enable/disable services</p></li>
-</ul>
-</section>
-</section>
-<hr class="docutils" />
-<section id="build-run">
-<h2>Build &amp; Run<a class="headerlink" href="#build-run" title="Link to this heading">#</a></h2>
-<p>For full build and usage instructions, refer to the <strong><a class="reference external" href="https://github.com/mabrobotics/candle_ros2">repository README</a></strong>.</p>
-</section>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="state-machine">
+<span id="md-state-machine"></span><h1>State Machine<a class="headerlink" href="#state-machine" title="Link to this heading">#</a></h1>
+<p>Internal state machine of the MD driver is compliant with industrial CIA402 standard, and allows for precise
+state control and validation.</p>
+<p>However for most applications, such level of control can introduce complication rather than functionality,
+thus we will first describe simplified model, and later full model, for those who require it.</p>
+<section id="md-protocol-model">
+<h2>MD Protocol model<a class="headerlink" href="#md-protocol-model" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is applicable while operating MD using MD Protocol.</p>
 </div>
+<p>While internally the state machine is transitioning though states as CIA402 requires, most of those
+changes happen in a span of micro-seconds, and are not very important from user perspective.</p>
+<figure class="align-center">
+<img alt="../_images/state_machine_simple.png" class="no-scaled-link" src="../_images/state_machine_simple.png" />
+</figure>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Transition</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>&lt; 0 &gt;</strong></p></td>
+<td><p>Disable by user</p></td>
+<td><p>CANdleSDK: <code class="docutils literal notranslate"><span class="pre">MD::disable();</span></code><br>MD Protocol: Write (hex) 0x40 to <code class="docutils literal notranslate"><span class="pre">state</span></code> (0x142) register</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>&lt; 1 &gt;</strong></p></td>
+<td><p>Enable by user</p></td>
+<td><p>CANdleSDK: <code class="docutils literal notranslate"><span class="pre">MD::enable();</span></code><br>MD Protocol: Write (hex) 0x27 to <code class="docutils literal notranslate"><span class="pre">state</span></code> (0x142) register</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>&lt; 2 &gt;</strong></p></td>
+<td><p>Non-critical error</p></td>
+<td><p>Position/Velocity limit hit; CAN communication loss</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>&lt; 3 &gt;</strong></p></td>
+<td><p>Velocity reached zero</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>&lt; 4 &gt;</strong></p></td>
+<td><p>All errors cleared</p></td>
+<td><p>CANdleSDK: <code class="docutils literal notranslate"><span class="pre">MD::clearErrors()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="full-state-machine-model">
+<h2>Full State Machine model<a class="headerlink" href="#full-state-machine-model" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is applicable while operating MD using CANOpen Protocol.</p>
+</div>
+<p>The state machine is defined according to CIA402 specification as follows:</p>
+<figure class="align-center">
+<img alt="../_images/state_machine_CIA402.png" class="no-scaled-link" src="../_images/state_machine_CIA402.png" />
+</figure>
+<p>All the transitions are based on the control word. The current state can be read using the status
+word (0x6041)</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head text-center"><p>Reset Fault (bit 7)</p></th>
+<th class="head text-center"><p>Enable Operation (bit 3)</p></th>
+<th class="head text-center"><p>Quick Stop (bit 2)</p></th>
+<th class="head text-center"><p>Disable Voltage (bit 1)</p></th>
+<th class="head text-center"><p>Switch On (bit 0)</p></th>
+<th class="head text-center"><p>Decimal Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Shutdown</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Switch On</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Switch On and Enable Operation</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable Voltage</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Quick Stop</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable Operation</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable Operation</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fault Reset</p></td>
+<td class="text-center"><p>0→1</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-center"><p>128</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Table 1</strong>: State machine control word description.</p>
+<p>X means “do not care”</p>
+<section id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<p>To put the drive into operational mode set:</p>
+<ol class="arabic simple">
+<li><p>Control word = 6 (dec) (Shutdown cmd)</p></li>
+<li><p>Control word = 15 (dec) (Switch on and Enable Operation cmds)</p></li>
+</ol>
+<p>The events and respective transitions are gathered in the table below:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Transition</p></th>
+<th class="head"><p>Event</p></th>
+<th class="head"><p>Internal Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
+<td><p>Automatic transition after power up</p></td>
+<td><p>Drive internal initialization</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
+<td><p>Automatic transition after drives internal initialization</p></td>
+<td><p>Object dictionary is initialized with NVM data</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
+<td><p>Shutdown command received</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
+<td><p>Switch on command received</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4</p></td>
+<td><p>Enable operation command received</p></td>
+<td><p>Current controllers are on, power is applied to the motor</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>5</p></td>
+<td><p>Disable operation command received</p></td>
+<td><p>Current controllers are off, power is not applied to the motor</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>6</p></td>
+<td><p>Shutdown command received</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>7</p></td>
+<td><p>Quick stop command received</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>8</p></td>
+<td><p>Shutdown command received</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>9</p></td>
+<td><p>Disable voltage command received</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>10</p></td>
+<td><p>Disable voltage / Quick stop command received</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>11</p></td>
+<td><p>Quick stop command received</p></td>
+<td><p>Quick stop action is enabled. The drive decelerates and transits to SWITCH ON DISABLED</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>12</p></td>
+<td><p>Automatic transition when quick stop is completed</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>13</p></td>
+<td><p>Fault occurred</p></td>
+<td><p>Current controllers are turned off</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>14</p></td>
+<td><p>Automatic transition to fault state</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>15</p></td>
+<td><p>Fault reset command received</p></td>
+<td><p>Fault is cleared if not critical</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Table 2</strong>: State machine transitions description.</p>
+</section>
+<section id="x6041-statusword">
+<h3>0x6041 – Statusword<a class="headerlink" href="#x6041-statusword" title="Link to this heading">#</a></h3>
+<p>Describes the current state of the internal CiA402 state machine implemented on the drive.</p>
+<details>
+<p><strong><summary>Entry table</summary></strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Index:Sub</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head text-center"><p>Bit Size</p></th>
+<th class="head text-center"><p>Default Data</p></th>
+<th class="head text-center"><p>Min Data</p></th>
+<th class="head text-center"><p>Max Data</p></th>
+<th class="head text-center"><p>Unit</p></th>
+<th class="head text-center"><p>SDO</p></th>
+<th class="head text-center"><p>PDO</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Statusword</p></td>
+<td><p>0x6041:0</p></td>
+<td><p>UNSIGNED16</p></td>
+<td class="text-center"><p>16</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>—</p></td>
+<td class="text-center"><p>—</p></td>
+<td class="text-center"><p>—</p></td>
+<td class="text-center"><p>RO</p></td>
+<td class="text-center"><p>Tx</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Status Word</p></th>
+<th class="head"><p>State Machine State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>xxxx xxxx x0xx 0000</p></td>
+<td><p>Not Ready to Switch On</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>xxxx xxxx x1xx 0000</p></td>
+<td><p>Switch On Disabled</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>xxxx xxxx x01x 0001</p></td>
+<td><p>Ready to Switch On</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>xxxx xxxx x01x 0011</p></td>
+<td><p>Switched On</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>xxxx xxxx x01x 0111</p></td>
+<td><p>Operation Enabled</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>xxxx xxxx x00x 0111</p></td>
+<td><p>Quick Stop Active</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>xxxx xxxx x0xx 1111</p></td>
+<td><p>Fault Reaction Active</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>xxxx xxxx x0xx 1000</p></td>
+<td><p>Quick Stop Active</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Table 3</strong>: State machine status word description.</p>
+<p>Bit 10 of the statusword indicates the current target has been reached (1) or not (0). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a <code class="docutils literal notranslate"><span class="pre">0x6067</span></code> Position Window margin), and in velocity mode that a velocity target has been reached (within <code class="docutils literal notranslate"><span class="pre">0x606D</span></code> Velocity Window).</p>
+<p>Bit 11 of the <strong>Statusword</strong> indicates whether any of the internal limits was active during current power up - for more information on which limit is active, check the <code class="docutils literal notranslate"><span class="pre">0x2003:7</span></code> Motion Status.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -595,7 +840,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./CANdle_ROS2"
+            path: "./MD"
         },
         predefinedOutput: true
     }
@@ -613,20 +858,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../CANdle-SDK/PythonModule.html"
+       href="safety.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python Module</p>
+        <p class="prev-next-title">Safety</p>
       </div>
     </a>
     <a class="right-next"
-       href="md-node/overview.html"
+       href="motion.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MD Node</p>
+        <p class="prev-next-title">Motion modes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -646,12 +891,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node">MD Node</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pds-node">PDS Node</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-protocol-model">MD Protocol model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-state-machine-model">Full State Machine model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6041-statusword">0x6041 – Statusword</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-run">Build &amp; Run</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Auxiliary Encoders &#8212; MAB Ecosystem</title>
+    <title>Encoders &#8212; MAB Ecosystem</title>
   
   
   
@@ -187,9 +187,14 @@
 <li class="toctree-l2"><a class="reference internal" href="MD20.html">MD20</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MD80HV.html">MD80 60V</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Encoders</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">State Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="motion.html">Motion Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_calibration.html">Configuration &amp; Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="status_utility.html">Status &amp; Utilities</a></li>
@@ -492,7 +497,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Auxiliary Encoders</h1>
+    <h1>Encoders</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -502,9 +507,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-modes">Encoder Modes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attaching-an-encoder">Attaching an encoder</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Encoders</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-encoders">Supported Encoders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#onboard-encoder">Onboard Encoder</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#auxiliary-aux-encoders">Auxiliary (Aux) Encoders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#me-am">ME-am</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cm-encoder">CM encoder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rls-precision-encoders">RLS Precision Encoders</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-encoder-modes">Aux Encoder Modes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#me-am-mechanical-mounting">ME-am - Mechanical mounting</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -515,110 +534,215 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="auxiliary-encoders">
-<span id="aux-encoders"></span><h1>Auxiliary Encoders<a class="headerlink" href="#auxiliary-encoders" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="encoders">
+<span id="aux-encoders"></span><h1>Encoders<a class="headerlink" href="#encoders" title="Link to this heading">#</a></h1>
+<p>Encoders are rotary position sensors, used for measuring motor/actuator rotor angle with respect to the stator.
+Encoders can be either incremental or absolute - MD only work with selected absolute encoders.</p>
+<p>MD motor controllers can work with up to 2 rotary position encoders at a time. There are two roles, the encoder can have:</p>
+<ul class="simple">
+<li><p><strong>Main Encoder</strong> - used for <strong>motor commutation</strong> and motion control by default,</p></li>
+<li><p><strong>Auxiliary (Aux) Encoder</strong> - used mostly getting absolute actuator position (after gearbox), optionally can
+be used for motion control, or not used by driver (can be read via register by host).</p></li>
+</ul>
+<p><strong>Main Encoder</strong> is required for operation. The MD does not currently support sensorless control mode.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="supported-encoders">
+<h1>Supported Encoders<a class="headerlink" href="#supported-encoders" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Encoder type</p></th>
+<th class="head"><p>Supported Role</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ONBOARD</span></code></p></td>
+<td><p><strong>Main</strong> / Aux</p></td>
+<td><p>Mounted on every MD</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/me-am">ME_AM On-axis</a></p></td>
+<td><p><strong>Main</strong> / Aux</p></td>
+<td><p>Present in some of MA-x actuators</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/me-am">ME_AM Off-axis</a></p></td>
+<td><p>Aux</p></td>
+<td><p>Present in some of MA-x actuators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">RLS_17B_RS422</a></p></td>
+<td><p><strong>Main</strong> / Aux</p></td>
+<td><p>High precision position sensor. Present in some of MA-x actuators, mainly hollow shaft (HS) series.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CM_OFFAXIS</span></code></p></td>
+<td><p>Aux</p></td>
+<td><p>Present in some of the CubeMars actuators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">RLS_17B_SPI</a></p></td>
+<td><p><strong>Main</strong> / Aux</p></td>
+<td><p>High precision position sensor variant. Present in some MA-x actuators</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RLS_ORBIS_RS422</span></code></p></td>
+<td><p><strong>Main</strong> / Aux</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CE300</span></code></p></td>
+<td><p>Aux</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Custom encoder support.</p>
+<p>If you would like to use specific position sensor that is not currently supported, we are open to introducing
+it to MD Ecosystem. Please contact us at: <code class="docutils literal notranslate"><span class="pre">contact&#64;mabrobotics.pl</span></code>.</p>
+</div>
+<section id="onboard-encoder">
+<h2>Onboard Encoder<a class="headerlink" href="#onboard-encoder" title="Link to this heading">#</a></h2>
+<p>Each MD unit, features a 14-bit absolute encoder on the PCB. The Encoder is mounted on the bottom layer
+in the middle of the driver - in the center point of all mounting holes. This allows for mounting the
+driver right behind the motor, creating a compact and power-dense actuator with minimal moving parts.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="auxiliary-aux-encoders">
+<h1>Auxiliary (Aux) Encoders<a class="headerlink" href="#auxiliary-aux-encoders" title="Link to this heading">#</a></h1>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/encoders.jpg" />
 </figure>
-<p>Encoder is a position sensor that can be attached to the output shaft of the actuator. It is usually
-useful for geared motors where the output shaft position after startup cannot be determined
-unambiguously using the MD’s onboard encoder due to the gearbox. By using an output encoder one can
-make sure that the output shaft position is always known at startup.</p>
-<p>Currently we support one encoder type with two placement configurations:</p>
+<p>If actuator has a gearbox, <strong>Main encoder</strong> (measuring motors’ rotor angle) cannot determine output shaft
+position on startup. This is where <strong>Aux Encoder</strong> can be used to supplement the driver with absolute
+angle measurement <em>after</em> gearbox.
+Thanks to this, the actuators can keep track of its position between startups, which is especially
+useful while starting up mobile robots.</p>
+<section id="me-am">
+<h2>ME-am<a class="headerlink" href="#me-am" title="Link to this heading">#</a></h2>
+<p><strong>ME-am</strong> is a simple, reliable and cost-effective solution for adding additional position sensor to
+MD based actuators. ME-am can work in one of two placement configurations:</p>
 <ul class="simple">
-<li><p>ME AS placed axially on the output shaft with a regular diametrically magnetized magnet</p></li>
+<li><p>ME-am placed axially on the output shaft with a regular diametrically magnetized magnet</p></li>
 </ul>
 <figure class="align-center">
 <img alt="../_images/output_encoder_axial.jpg" class="no-scaled-link" src="../_images/output_encoder_axial.jpg" style="width: 300px;" />
 </figure>
 <ul class="simple">
-<li><p>ME AS placed non-axially together with a diametrically magnetized ring magnet</p></li>
+<li><p>ME-am placed non-axially together with a <strong>diametrically magnetized</strong> ring magnet</p></li>
 </ul>
 <figure class="align-center">
 <img alt="../_images/output_encoder_offaxis.jpg" class="no-scaled-link" src="../_images/output_encoder_offaxis.jpg" style="width: 300px;" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>MD can also work with encoders supplied in most CubeMars motors (such as AK10-9) and be paired with custom encoder such as <a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">RLS Aksim2</a> series on demand. Many of MABs MA series actuators use these for high precision applications.</p>
-<p>If you want to pair an encoder other than MA AS, please contact us <a class="reference external" href="mailto:support&#37;&#52;&#48;mabrobotics&#46;pl">support<span>&#64;</span>mabrobotics<span>&#46;</span>pl</a>.</p>
+<p><strong>ME-am</strong> encoder can be connected to MD20 and MD80 using AUX1 (6-pin) connector.</p>
 </div>
-<section id="encoder-modes">
-<h2>Encoder Modes<a class="headerlink" href="#encoder-modes" title="Link to this heading">#</a></h2>
+<section id="cm-encoder">
+<h3>CM encoder<a class="headerlink" href="#cm-encoder" title="Link to this heading">#</a></h3>
+<p>MD drivers can also work with encoders supplied in many CubeMars actuators (such as AK10-9). These
+encoders are usually already mounted inside of the actuator. These encoders are perfectly fine to
+determine actuator on startup, but due to their noisy nature, are not recommended to be used for
+motion control.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>CM encoder</strong> can be connected to MD20 and MD80 using AUX1 (6-pin) connector.</p>
+</div>
+</section>
+</section>
+<section id="rls-precision-encoders">
+<h2><a class="reference external" href="https://www.rls.si/">RLS</a> Precision Encoders<a class="headerlink" href="#rls-precision-encoders" title="Link to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="../_images/rls.jpg" class="no-scaled-link" src="../_images/rls.jpg" />
+</figure>
+<p>While Onboard and ME-am encoders provide sufficient precision for most general-purpose applications,
+there are situations where high-precision, through hole (hollow shaft) encoder is required. For those
+cases we worked together with <a class="reference external" href="https://www.rls.si/">RLS</a> to provide easy way to connect MD to a few of
+<a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">https://www.mabrobotics.pl/product-page/rls-aksim-2</a> and RLS Orbis encoders.
+We support <a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">RLS AksIM 2</a> with RS-422 interface
+with the sizes ranging from 22 to 80mm.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>RLS AksIM2 and Orbis with RS-422 interface</strong> can be connected to MD20 and MD80 using AUX2 (10-pin) connector.</p>
+<p><b><font color="#AA0000">RS-422 is on-demand feature of MD drivers, and by default it is not available
+on the board. </font></b>
+Contact MAB Robotics support at <code class="docutils literal notranslate"><span class="pre">support&#64;mabrobotics.pl</span></code>, for more information.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="aux-encoder-modes">
+<h1>Aux Encoder Modes<a class="headerlink" href="#aux-encoder-modes" title="Link to this heading">#</a></h1>
 <p>With Aux encoder connected, MD can use its data in a few different ways. For most applications,
 where the encoder is used to determine absolute position of the shaft after a gearbox, STARTUP mode
 is the most suitable.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>&lt;encoder mode&gt;</p></th>
+<tr class="row-odd"><th class="head"><p>Encoder Mode</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>STARTUP</p></td>
-<td><p>initial position from <b><font color="#FF6900">output encoder</font></b>,
-report <b><font color="#008000">main encoder</font></b> values,
-motion based on <b><font color="#008000">main encoder</font></b></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code></p></td>
+<td><p>Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#008000">main encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>MOTION</p></td>
-<td><p>initial position from <b><font color="#FF6900">output encoder</font></b>,
-report <b><font color="#FF6900">output encoder</font></b> values,
-motion based on <b><font color="#FF6900">output encoder</font></b></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MOTION</span></code></p></td>
+<td><p>Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#FF6900">aux encoder</font></b>.</p></td>
 </tr>
-<tr class="row-even"><td><p>REPORT</p></td>
-<td><p>initial position from <b><font color="#008000">main encoder</font></b>,
-report <b><font color="#FF6900">output encoder</font></b> values,
-motion based on <b><font color="#008000">main encoder</font></b>,
-calibration of the <b><font color="#FF6900">output encoder</font></b>  is impossible</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">REPORT</span></code></p></td>
+<td><p>Initial position from <b><font color="#008000">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>. Calibration of the <b><font color="#FF6900">aux encoder</font></b> is impossible.</p></td>
 </tr>
-<tr class="row-odd"><td><p>MAIN</p></td>
-<td><p><b><font color="#FF6900">output encoder</font></b> is used as the <b><font color="#008000">main encoder</font></b>. All <b><font color="#FF6900">output encoder</font></b> measurements are mapped as <b><font color="#008000">main encoder</font></b> values.</p></td>
-</tr>
-<tr class="row-even"><td><p>CALIBRATED_REPORT</p></td>
-<td><p>initial position from <b><font color="#008000">main encoder</font></b>,
-report <b><font color="#FF6900">output encoder</font></b> values,
-motion based on <b><font color="#008000">main encoder</font></b>,
-calibration of the <b><font color="#FF6900">output encoder</font></b> is possible</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAIN</span></code> (legacy)</p></td>
+<td><p>Position from <b><font color="#008000">aux encoder</font></b>, is mapped as <b><font color="#008000">main encoder</font></b>, and used for both control and commutation. Note: This is only applicable for drivers with firmware 2.x.x. For v3.0.0+ firmware, the main/aux encoder is set though <code class="docutils literal notranslate"><span class="pre">mainEncoder</span></code> and <code class="docutils literal notranslate"><span class="pre">auxEncoder</span></code> registers.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The non-axial configuration outputs a nonlinear position values. This means it requires a <a class="reference internal" href="config_calibration.html#aux-encoder-calibration"><span class="std std-ref">full calibration</span></a> (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host’s software</p>
+<p>The non-axial configuration outputs a nonlinear position values. This means it requires a
+<a class="reference internal" href="config_calibration.html#aux-encoder-calibration"><span class="std std-ref">full calibration</span></a> (your setup should be able to rotate by at least one full rotation), and in case of the report mode it will output nonlinear position and velocity readings that will have to be compensated in the host’s software</p>
 </div>
-<p>Not all modes are recommended for every encoder. The non-axially placed ME AS encoder is inherently
+<p>Not all modes are recommended for every encoder. The off-axis placed CM or ME-am encoder is inherently
 more noisy and less accurate and thus we recommend using it only in STARTUP mode. Please refer to
 the table below:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>&lt;encoder type&gt;</p></th>
-<th class="head"><p>Valid modes</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Encoder type</p></th>
+<th class="head"><p>Supported modes</p></th>
+<th class="head"><p>Recommended</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>ME_AS_CENTER</p></td>
-<td><p>STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT</p></td>
-<td><p>-</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ME_AM_CENTER</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code> / <code class="docutils literal notranslate"><span class="pre">MOTION</span></code> / <code class="docutils literal notranslate"><span class="pre">REPORT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code> / <code class="docutils literal notranslate"><span class="pre">MOTION</span></code> / <code class="docutils literal notranslate"><span class="pre">REPORT</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>ME_AS_OFFAXIS</p></td>
-<td><p>STARTUP</p></td>
-<td><p>This configuration is much more noisy than the axial placement</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ME_AM_OFFAXIS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code> / <code class="docutils literal notranslate"><span class="pre">MOTION</span></code> / <code class="docutils literal notranslate"><span class="pre">REPORT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code> / <code class="docutils literal notranslate"><span class="pre">REPORT</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">MB053SFA17BENT00</a></p></td>
-<td><p>STARTUP / MOTION / REPORT / MAIN / CALIBRATED_REPORT</p></td>
-<td><p>-</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">RLS_17B_RS422</a></p></td>
+<td><p>ALL</p></td>
+<td><p>ALL</p></td>
 </tr>
-<tr class="row-odd"><td><p>CM_OFFAXIS</p></td>
-<td><p>STARTUP</p></td>
-<td><p>Only offaxis configuration is supported</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CM_OFFAXIS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code></p></td>
+<td><p>Only off-axis configuration is supported.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.mabrobotics.pl/product-page/rls-aksim-2">RLS_17B_SPI</a></p></td>
+<td><p>ALL</p></td>
+<td><p>ALL</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RLS_ORBIS_RS422</span></code></p></td>
+<td><p>ALL</p></td>
+<td><p>ALL</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CE300</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STARTUP</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="attaching-an-encoder">
-<h2>Attaching an encoder<a class="headerlink" href="#attaching-an-encoder" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="me-am-mechanical-mounting">
+<h1>ME-am - Mechanical mounting<a class="headerlink" href="#me-am-mechanical-mounting" title="Link to this heading">#</a></h1>
 <p>How to add an encoder to the driver setup:</p>
 <ul class="simple">
 <li><p>make sure the encoder sensor is placed correctly:</p></li>
@@ -645,7 +769,13 @@ the MD,</p></li>
 max and stddev errors) are within your expectations.</p></li>
 <li><p>The external encoder is ready to use!</p></li>
 </ul>
-</section>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Most of the auxialary encoder require sum-millimeter mounting for conitnous and reliable operation.
+It is recommended to use CNC-machined mounting brackets for attaching the encoder. 3D printed enclosures
+often do not provide sufficient precision and stiffnes (especially after heating up), and can lead to
+more noisy and reliable readings.</p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -712,9 +842,23 @@ max and stddev errors) are within your expectations.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-modes">Encoder Modes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attaching-an-encoder">Attaching an encoder</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Encoders</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-encoders">Supported Encoders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#onboard-encoder">Onboard Encoder</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#auxiliary-aux-encoders">Auxiliary (Aux) Encoders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#me-am">ME-am</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cm-encoder">CM encoder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rls-precision-encoders">RLS Precision Encoders</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-encoder-modes">Aux Encoder Modes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#me-am-mechanical-mounting">ME-am - Mechanical mounting</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>

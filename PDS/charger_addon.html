@@ -187,9 +187,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80HV.html">MD80 60V</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/encoders.html">Encoders</a></li>
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="../MD/brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/measurements.html">Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/state_machine.html">State Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/motion.html">Motion Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/config_calibration.html">Configuration &amp; Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/status_utility.html">Status &amp; Utilities</a></li>
@@ -581,7 +586,7 @@ To integrate it with PDS connect 4-pin MicroLock connector to Charger Addon port
 <h2>States and transitions<a class="headerlink" href="#states-and-transitions" title="Link to this heading">#</a></h2>
 <p>Connecting external power to charger addon turns it on. Each switching enables PDS and the state changes to “Charging working state”.
 Charging is detected and it is visible in PDS information/status.
-Disconecting (or unplugging external power source from charger addon) changes state to “Working state” and PDS status indicates that charging is no longer active. To shut down whole system user can press and hold RGB power button.
+Disconnecting (or unplugging external power source from charger addon) changes state to “Working state” and PDS status indicates that charging is no longer active. To shut down whole system user can press and hold RGB power button.
 The rest of the states are described in <a class="reference internal" href="control_board.html#states"><span class="std std-ref">States and transitions</span></a>.</p>
 </section>
 </section>
