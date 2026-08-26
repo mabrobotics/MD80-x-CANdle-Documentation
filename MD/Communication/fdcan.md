@@ -700,6 +700,7 @@ releases introduce new features.
 | runBlink                    | `0x08B` | WO  | uint8 | 1 to run  | Blinks onboard LEDs | **Active** |
 | runZero                     | `0x08C` | WO  | uint8 | 1 to run  | Sets new zero position | **Active** |
 | runCanReinit                | `0x08D` | WO  | uint8 | 1 to run  | Reinitializes CAN peripheral | **Active** |
+| runTorqueSensorZero         | `0x08E` | WO  | uint8 | 1 to run  | Zeroes the [external torque sensor](md_torque_sensor) | **Active** |
 
 ### Test Results
 | Register                | Addr  | R/W | Type  | Value | Description | Status |
@@ -743,6 +744,12 @@ releases introduce new features.
 |------------------------|------:|-----|---------|--------|-------------| ------ |
 | userGpioConfiguration  | `0x160` | RW  | uint8  | -      | 0 - OFF,<br>1 - BRAKE,<br>2 - GPIO INPUT | **Active** |
 | userGpioState          | `0x161` | **RO**  | uint16 | 0 or 1 | GPIO input state | **Active** |
+
+### Torque Sensor
+| Register               | Addr  | R/W | Type    | Value | Description | Status |
+|------------------------|------:|-----|---------|--------|-------------| ------ |
+| torqueSensor           | `0x200` | RW  | uint8  | 0 - 1  | [External torque sensor](md_torque_sensor) type: NONE=0, XJCSENSOR=1 | **Active** |
+| torqueSensorData       | `0x201` | **RO**  | float32 | -   | Measured torque from the [external torque sensor](md_torque_sensor), in Nm. Reads `0` if disabled or not detected. | **Active** |
 
 ### Driver Info
 | Register          | Addr  | R/W | Type  | Value      | Description | Status |

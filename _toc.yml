@@ -20,6 +20,8 @@ chapters:
         title: Encoders
       - file: MD/brakes
         title: Brakes
+      - file: MD/torque_sensor
+        title: External Torque Sensor
       - file: MD/measurements
         title: Measurements
       - file: MD/safety

@@ -108,6 +108,9 @@ with the sizes ranging from 22 to 80mm.
 <b><font color="#AA0000">RS-422 is on-demand feature of MD drivers, and by default it is not available 
 on the board. </font></b>
 Contact MAB Robotics support at `support@mabrobotics.pl`, for more information.
+
+This connector and RS-422 interface are shared with the [external torque sensor](torque_sensor) - only one
+RS-422 device can be connected at a time.
 ```
 
 For mechanical assembly instructions, please refer to the [RLS documentation](https://cdn.rls.si/documents/datasheets/MBD01.pdf).
