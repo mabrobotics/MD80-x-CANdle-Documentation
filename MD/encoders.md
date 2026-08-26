@@ -32,7 +32,7 @@ If you would like to use specific position sensor that is not currently supporte
 it to MD Ecosystem. Please contact us at: `contact@mabrobotics.pl`.
 ```
 
-### Onboard Encoder
+## Onboard Encoder
 Each MD unit, features a 14-bit absolute encoder on the PCB. The Encoder is mounted on the bottom layer 
 in the middle of the driver - in the center point of all mounting holes. This allows for mounting the 
 driver right behind the motor, creating a compact and power-dense actuator with minimal moving parts.
@@ -98,10 +98,10 @@ motion control.
 
 While Onboard and ME-am encoders provide sufficient precision for most general-purpose applications, 
 there are situations where high-precision, through hole (hollow shaft) encoder is required. For those
-cases we worked together with [RLS](https://www.rls.si/) to provide easy way to connect MD to a few of
-https://www.mabrobotics.pl/product-page/rls-aksim-2 and RLS Orbis encoders.
-We support [RLS AksIM 2](https://www.mabrobotics.pl/product-page/rls-aksim-2) with RS-422 interface
+cases we worked together with [RLS](https://www.rls.si/) to provide easy way to connect MD to a few of RLS encoders
+We support [RLS AksIM2](https://www.mabrobotics.pl/product-page/rls-aksim-2) and RLS Orbis with RS-422 interface
 with the sizes ranging from 22 to 80mm.
+
 ```{warning}
 **RLS AksIM2 and Orbis with RS-422 interface** can be connected to MD20 and MD80 using AUX2 (10-pin) connector.
 
@@ -109,6 +109,9 @@ with the sizes ranging from 22 to 80mm.
 on the board. </font></b>
 Contact MAB Robotics support at `support@mabrobotics.pl`, for more information.
 ```
+
+For mechanical assembly instructions, please refer to the [RLS documentation](https://cdn.rls.si/documents/datasheets/MBD01.pdf).
+For connecting RLS RS422 based encoders to MD in custom application, please [refer this instruction](https://drive.google.com/file/d/1VzK5lzn6CW-XmETgS23GLpEEGT939AvC/view?usp=drive_link).
 
 # Aux Encoder Modes
 
