@@ -137,4 +137,4 @@ This example shows basic usage of all possible communication functionalities.
 This example configures Isolated Converter, Power Stage and Brake Resistor, enables them and reads the data.
 
 
-Please look at [register table](../MD/Communication/fdcan.md#register-table) and [properties table](https://mabrobotics.github.io/MD80-x-CANdle-Documentation/PDS/communication.html#properties) to find more details about registers/properites and their types.
+Please look at [register table](registers) and [properties table](https://mabrobotics.github.io/MD80-x-CANdle-Documentation/PDS/communication.html#properties) to find more details about registers/properites and their types.

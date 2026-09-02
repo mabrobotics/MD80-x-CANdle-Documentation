@@ -57,7 +57,6 @@ Main stable releases:
 
 |          Date           |                                          CANdle device                                           |                                           MD Firmware                                            |
 | :---------------------: | :----------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
-|       12.12.2022        |  [2.0](https://drive.google.com/drive/folders/10wIX2uEaf42pkwGgW9fVAcGT7zrbptN9?usp=share_link)  |                            [2.0](../MAB_CAN_Flasher_ea1d72f2_V2.0.0)                             |
 |       05.04.2023        | [2.2.0](https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link) | [2.2.0](https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link) |
 |       31.05.2024        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |   [2.3.1](https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing)    |
 |       22.08.2024        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.4.0](../_static/firmware/md_2.4.0.zip)                             |

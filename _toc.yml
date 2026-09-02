@@ -110,7 +110,7 @@ chapters:
     title: FAQ
   - file: Downloads/intro
     title: Downloads
-  - file: candlelib/intro
+  # - file: candlelib/intro
     # title: Software - mdtool [LEGACY]
     # sections:
     #   - file: candlelib/quick_start_guide/QuickStartGuide

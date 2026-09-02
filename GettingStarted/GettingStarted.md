@@ -259,7 +259,7 @@ candletool pds discover
 In the command output the connected PDS's id should be present.
 
 ```{seealso}
-[PDS CLI](pds_commands)
+[PDS CLI](candletool-pds)
 ```
 
 ### First Steps
