@@ -1,6 +1,6 @@
 [FileInfo]
-FileName=MDv1.0.0.eds
-FileVersion=1.0
+FileName=md_1.1.eds
+FileVersion=1.1
 FileRevision=1
 LastEDS=
 EDSVersion=4.0
@@ -8,9 +8,9 @@ Description=MD motor controller
 CreationTime=1:00PM
 CreationDate=11-23-2020
 CreatedBy=Piotr Wasilewski
-ModificationTime=11:08AM
-ModificationDate=06-11-2024
-ModifiedBy=Pawel Korsak
+ModificationTime=1:00PM
+ModificationDate=09-14-2026
+ModifiedBy=Jakub Matyszczak
 
 [DeviceInfo]
 VendorName=MAB ROBOTICS
@@ -125,7 +125,7 @@ DefaultValue=0x00000000
 PDOMapping=0
 
 [OptionalObjects]
-SupportedObjects=61
+SupportedObjects=62
 1=0x1003
 2=0x1005
 3=0x1006
@@ -169,24 +169,25 @@ SupportedObjects=61
 41=0x606B
 42=0x606C
 43=0x606D
-44=0x6072
-45=0x6073
-46=0x6074
-47=0x6075
-48=0x6076
-49=0x6077
-50=0x6079
-51=0x607A
-52=0x607D
-53=0x6080
-54=0x6081
-55=0x6083
-56=0x6084
-57=0x6085
-58=0x60C5
-59=0x60C6
-60=0x60FF
-61=0x6502
+44=0x6071
+45=0x6072
+46=0x6073
+47=0x6074
+48=0x6075
+49=0x6076
+50=0x6077
+51=0x6079
+52=0x607A
+53=0x607D
+54=0x6080
+55=0x6081
+56=0x6083
+57=0x6084
+58=0x6085
+59=0x60C5
+60=0x60C6
+61=0x60FF
+62=0x6502
 
 [1003]
 ParameterName=Pre-defined error field
@@ -1645,7 +1646,7 @@ ParameterName=Modes Of Operation
 ObjectType=0x7
 ;StorageLocation=RAM
 DataType=0x0002
-AccessType=rwr
+AccessType=rww
 DefaultValue=0
 PDOMapping=1
 
@@ -1711,6 +1712,15 @@ DataType=0x0007
 AccessType=rw
 DefaultValue=0
 PDOMapping=0
+
+[6071]
+ParameterName=Target Torque
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0003
+AccessType=rw
+DefaultValue=0
+PDOMapping=1
 
 [6072]
 ParameterName=Max Torque
@@ -1831,7 +1841,7 @@ ParameterName=Profile Velocity
 ObjectType=0x7
 ;StorageLocation=RAM
 DataType=0x0007
-AccessType=rwr
+AccessType=rww
 DefaultValue=0
 PDOMapping=1
 
@@ -1858,7 +1868,7 @@ ParameterName=Quick Stop Deceleration
 ObjectType=0x7
 ;StorageLocation=RAM
 DataType=0x0007
-AccessType=rwr
+AccessType=rww
 DefaultValue=10000
 PDOMapping=1
 

@@ -33,6 +33,9 @@ ratio actuators (preferably below 9:1), that are easily back-drivable, to get an
 torque applied by the motor. In applications with higher gear ratios, the torque readout might be
 less accurate due to excessive friction in the gearbox.
 
+For applications that require a direct torque measurement independent of gearbox friction, MD also
+supports connecting an [external torque sensor](torque_sensor).
+
 ## Power, input current and motor phase current
 
 Input current flows from the power supply into the controller. It increases when the motor works harder (more torque, higher speed). Think of it like fuel consumption in a car — the harder you push, the more you burn.

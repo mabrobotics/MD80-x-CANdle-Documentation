@@ -45,4 +45,4 @@ regenerative braking, this port allows excess energy to be safely dissipated thr
 resistor or redirected to energy recovery systems. This ensures the system operates within safe voltage
 limits, protecting components from potential damage.
 
-To configure BR parameters such as temperature limit use commands in [CANdle-SDK PDS commands](../CANdle-SDK/candlelib/PDSModule.md) and [candletool for PDS](../CANdle-SDK/candletool/Commands.md#candletool-pds)
+To configure BR parameters such as temperature limit use commands in [CANdle-SDK PDS commands](../CANdle-SDK/candlelib/PDSModule.md) and [candletool for PDS](candletool-pds)

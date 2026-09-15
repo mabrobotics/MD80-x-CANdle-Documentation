@@ -227,7 +227,7 @@ write access can be modified.
 		</tr>
 		<tr>
 			<td>WRITE_REGISTER</td>
-			<td>10-1000</td>
+			<td>10-2000</td>
 			<td>X (64 max)</td>
 			<td>0x42</td>
       <td>0x00</td>
@@ -408,13 +408,13 @@ Command, send from host to MD:
             <td> `0x00 </td>
             <td> `0x0805 </td>
             <td> `0x00 00  </td>
-            <td> `0x0062 </td>
+            <td> `0x0063 </td>
             <td> `0x00 00 00 00 </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: `0x41 00 08 05 00 00 00 62 00 00 00 00
+Which in raw HEX is: `0x41 00 08 05 00 00 00 63 00 00 00 00
 
 Response, send from MD to Host:
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -440,13 +440,13 @@ Response, send from MD to Host:
             <td> `0x00 </td>
             <td> `0x0805 </td>
             <td> `0x80 00  </td>
-            <td> `0x0062 </td>
+            <td> `0x0063 </td>
             <td> `0x41 85 EB 85 </td>
 		</tr>
 	</tbody>
 </table>
 <p></p>
-Which in raw HEX is: `0x41 00 08 05 80 00 00 62 41 85 EB 85
+Which in raw HEX is: `0x41 00 08 05 80 00 00 63 41 85 EB 85
 ```
 
 ### Legacy response
@@ -624,7 +624,7 @@ releases introduce new features.
 |:---------|:----:|:---:|:-----|:-------|:------------|:-----------------|
 | canId | `0x001` | RW          | uint32    | 10–2000           | FDCAN bus ID number | **Active** |
 | canBaudrate | `0x002` | RW    | uint32    | 1M, 2M, 5M, 8M    | FDCAN bus baudrate | **Active** |
-| canWatchdog | `0x003` | RW    | uint16    | 0–2500 [ms]       | FDCAN watchdog timeout | **Active** |
+| canWatchdog | `0x003` | RW    | uint16    | 0–10000 [ms]       | FDCAN watchdog timeout | **Active** |
 | canTermination | `0x004` | RW | uint8     | 0–1               | Toggle CAN bus termination (only on selected HW revisions) | Deprecated |
 
 
@@ -632,14 +632,14 @@ releases introduce new features.
 | Register | Addr | R/W | Type | Value | Description | Status |
 |:---------|:----:|:---:|:-----|:-------|:------------|:-------|
 | motorName         | `0x010` | RW | char[24]   | –     | User-defined motor name. | **Active** |
-| motorPolePairs    | `0x011` | RW | uint32     | 2–225 | Number of motor pole pairs. | **Active** |
-| motorKt           | `0x012` | RW | float32    | > 0   | Motor torque constant (Nm/A). | **Active** |
+| motorPolePairs    | `0x011` | RW | uint32     | 1–42 | Number of motor pole pairs. | **Active** |
+| motorKt           | `0x012` | RW | float32    | 0 – 10   | Motor torque constant (Nm/A). | **Active** |
 | motorIMax         | `0x016` | RW | float32    | > 0   | Maximum allowable phase current.<br>Clamped to value of `maxDriverCurrent` (0x701).  | **Active** |
 | motorGearRatio    | `0x017` | RW | float32    | –     | Gear ratio. Values < 1 indicate a reducer, values > 1 indicate a multiplier (e.g. 2:1 reduction → 0.5). | **Active** ||
-| motorTorqueBandwidth  | `0x018` | RW | uint16 | 50–2500 Hz    | Desired torque control bandwidth. | **Active** |
-| motorResistance   | `0x01B` | **RO** | float32    | 5 mΩ–20 Ω     | Measured motor phase resistance (d-axis). | **Active** |
-| motorInductance   | `0x01C` | **RO** | float32    | 5 nH–100 mH   | Measured motor phase inductance (d-axis). | **Active** |
-| motorKV           | `0x01D` | RW | uint16     | 0 - 65000     | Motor speed constant (RPM/V). | **Active** |
+| motorTorqueBandwidth  | `0x018` | RW | uint16 | 1–5000 Hz    | Desired torque control bandwidth. | **Active** |
+| motorResistance   | `0x01B` | **RO** | float32    | 1 mΩ–50 Ω     | Measured motor phase resistance (d-axis). | **Active** |
+| motorInductance   | `0x01C` | **RO** | float32    | 10 nH–50 H   | Measured motor phase inductance (d-axis). | **Active** |
+| motorKV           | `0x01D` | RW | uint16     | 1 - 65000     | Motor speed constant (RPM/V). | **Active** |
 | motorCalibrationMode  | `0x01E` | RW | uint8  | 0 or 1        | Calibration mode (`FULL = 0`, `NOPPDET = 1`). | **Active** |
 | motorThermistorType   | `0x01F` | RW | uint8  | –  | Connected motor thermistor type. | **Active** |
 
@@ -700,6 +700,7 @@ releases introduce new features.
 | runBlink                    | `0x08B` | WO  | uint8 | 1 to run  | Blinks onboard LEDs | **Active** |
 | runZero                     | `0x08C` | WO  | uint8 | 1 to run  | Sets new zero position | **Active** |
 | runCanReinit                | `0x08D` | WO  | uint8 | 1 to run  | Reinitializes CAN peripheral | **Active** |
+| runTorqueSensorZero         | `0x08E` | WO  | uint8 | 1 to run  | Zeroes the [external torque sensor](md_torque_sensor) | **Active** |
 
 ### Test Results
 | Register                | Addr  | R/W | Type  | Value | Description | Status |
@@ -724,7 +725,7 @@ releases introduce new features.
 ### Motion Profiles
 | Register                 | Addr  | R/W | Type  | Value | Description | Status |
 |--------------------------|------:|-----|-------|--------|-------------| ------ |
-| profileVelocity         | `0x120` | RW  | float32 | -      | up to v2.5.4 - profile velocity<br>**from v3.0.0 - replaced by targetVelocity** | *Discontinued*<br>from&nbsp;v3.0.0 |
+| profileVelocity         | `0x120` | RW  | float32 | -      | up to v2.5.4 - profile velocity<br>**from v3.0.0 - writes are handled identically to `targetVelocity`, applying the same clipping** | **Active**<br>alias&nbsp;of&nbsp;targetVelocity |
 | profileAcceleration     | `0x121` | RW  | float32 | -      | Profile acceleration | **Active** |
 | profileDeceleration     | `0x122` | RW  | float32 | -      | Profile deceleration | **Active** |
 | quickStopDeceleration   | `0x123` | RW  | float32 | -      | Quick stop deceleration in case of a non-critical error | **Active** |
@@ -741,8 +742,14 @@ releases introduce new features.
 ### GPIO / Add-ons
 | Register               | Addr  | R/W | Type    | Value | Description | Status |
 |------------------------|------:|-----|---------|--------|-------------| ------ |
-| userGpioConfiguration  | `0x160` | RW  | uint8  | -      | 0 - OFF,<br>1 - BRAKE,<br>2 - GPIO INPUT | **Active** |
+| userGpioConfiguration  | `0x160` | RW  | uint8  | -      | 0 - GPIO INPUT,<br>1 - BRAKE | **Active** |
 | userGpioState          | `0x161` | **RO**  | uint16 | 0 or 1 | GPIO input state | **Active** |
+
+### Torque Sensor
+| Register               | Addr  | R/W | Type    | Value | Description | Status |
+|------------------------|------:|-----|---------|--------|-------------| ------ |
+| torqueSensor           | `0x200` | RW  | uint8  | 0 - 1  | [External torque sensor](md_torque_sensor) type: <br>NONE=0,<br>XJCSENSOR=1 | **Active** |
+| torqueSensorData       | `0x201` | **RO**  | float32 | -   | Measured torque from the [external torque sensor](md_torque_sensor), in Nm. Reads `0` if disabled or not detected. | **Active** |
 
 ### Driver Info
 | Register          | Addr  | R/W | Type  | Value      | Description | Status |
@@ -750,15 +757,15 @@ releases introduce new features.
 | shuntResistance   | `0x700` | RW  | float32 | > 0 | Current sense resistor value. Setting this register to a value that is not coherent with the hardware may damage the controller. In this cases warranty is not respected. | *Outdated*<br>from&nbsp;v3.0.0|
 | shuntResistance   | `0x700` | **RO**  | float32  | > 0 | Current sense resistance. | **Active**<br>from&nbsp;v3.0.0 |
 | maxDriverCurrent  | `0x701` | **RO**  | float32  | > 0 | Max measurable (peak) current. | **Active**<br>from&nbsp;v3.0.0 |
-| productionDate    | `0x7FB` | **RO**  | uint32 | > 0 | Production date encoded in ddmmyy format  | **Active**<br>from&nbsp;v3.0.0 |
-| productionBatch   | `0x7FC` | **RO**  | uint32 | > 0 | Production batch code  | **Active**<br>from&nbsp;v3.0.0 |
-| productionUID     | `0x7FD` | **RO**  | uint32 | > 0 | Unique Identifier of MD  | **Active**<br>from&nbsp;v3.0.0 |
-| hardwareRevision  | `0x7FE` | **RO**  | uint32 | > 0 | Hardware revision  | **Active**<br>from&nbsp;v3.0.0 |
-| hardwareType      | `0x7FF` | **RO**  | uint32 | > 0 | Hardware yype id  | **Active**<br>from&nbsp;v3.0.0 |
+| productionDate    | `0x7FB` | **RO**  | char[6] | - | Production date encoded in ddmmyy format  | **Active**<br>from&nbsp;v3.0.0 |
+| productionBatch   | `0x7FC` | **RO**  | char[24] | - | Production batch code  | **Active**<br>from&nbsp;v3.0.0 |
+| uniqueID *(was productionUID)* | `0x7FD` | **RO**  | char[12] | - | Unique Identifier of MD  | **Active**<br>from&nbsp;v3.0.0 |
+| hardwareRev *(was hardwareRevision)* | `0x7FE` | **RO**  | uint8 | > 0 | Hardware revision  | **Active**<br>from&nbsp;v3.0.0 |
+| hardwareType      | `0x7FF` | **RO**  | uint8 | > 0 | Hardware type id  | **Active**<br>from&nbsp;v3.0.0 |
 | firmwareBuildDate *(was buildDate)* | `0x800` | **RO**  | uint32  | - | Firmware build date, as ddmmyy number | **Active** |
 | firmwareHash *(was commitHash)*     | `0x801` | **RO**  | char[8] | - | Firmware hash | **Active** |
 | firmwareVersion      | `0x802` | **RO**  | uint32 | -      | Firmware Version | **Active** |
-| hardwareVersion      | `0x803` | **RO**  | uint8  | -      | Hardware Version | **Active** |
+| legacyHardwareVersion *(was hardwareVersion)* | `0x803` | **RO**  | uint8  | -      | Hardware Version | **Active** |
 | dcBusVoltage         | `0x811` | **RO**  | float32  | 0 - 100V | Voltage measured on the DC bus | **Active** |
 
 ### Status
@@ -776,8 +783,8 @@ releases introduce new features.
 | hardwareStatus *(was hardwareErrors)*             | `0x80D` | **RO**  | uint32 | - | Hardware status | **Active** |
 | communicationStatus *(was communicationErrors)*   | `0x80E` | **RO**  | uint32 | - | Communication status | **Active** |
 | motionStatus *(was motionErrors)*                 | `0x810` | **RO**  | uint32 | - | Motion status | **Active** |
-| miscStatus           | `0x812` | **RO**  | uint32 | -      | Misc status | **Active** <br>from&nbsp;v3.0.0 |
-| configStatus         | `0x813` | **RO**  | uint32 | -      | Config status | **Active** <br>from&nbsp;v3.0.0|
+| miscStatus           | `0x813` | **RO**  | uint32 | -      | Misc status | **Active** <br>from&nbsp;v3.0.0 |
+| configStatus         | `0x814` | **RO**  | uint32 | -      | Config status | **Active** <br>from&nbsp;v3.0.0|
 
 ### Deprecated
 These registers have been used in some points in the past, but are now not used or replaced. 
@@ -787,14 +794,14 @@ These registers have been used in some points in the past, but are now not used 
 | motorKt_a     | `0x013` | RW | float32 | > 0 | Optional phase A torque constant. | **Deprecated** |
 | motorKt_b     | `0x014` | RW | float32 | > 0 | Optional phase B torque constant. | **Deprecated** |
 | motorKt_c     | `0x015` | RW | float32 | > 0 | Optional phase C torque constant. | **Deprecated** |
-| motorFriction | `0x019` | **RO** | float32 | – | Actuator dynamic friction| **Temporarily disabled** |
-| motorStiction | `0x01A` | **RO** | float32 | – | Actuator static friction | **Temporarily disabled** |
+| motorFriction | `0x019` | RW | float32 | – | Actuator dynamic friction| **Temporarily disabled** |
+| motorStiction | `0x01A` | RW | float32 | – | Actuator static friction | **Temporarily disabled** |
 | outputEncoderDefaultBaud  | `0x022` | RW  | uint32| 115200            | optional parameter for default output encoder baudrate | **Deprecated** |
-| bridgeType        | `0x070` | **RO**  | uint8 | - | type of the mosfet driver | **Deprecated** |
-| homingMode        | `0x071` | RW  | uint8 | - | Homing Mode | **Temporarily disabled** |
-| homingMaxTravel   | `0x072` | RW  | float32 | - | Max distance to travel looking for homing point| **Temporarily disabled** |
-| homingVelocity    | `0x073` | RW  | float32 | - | Target velocity during homing | **Temporarily disabled** |
-| homingTorque      | `0x074` | RW  | float32 | - | Max torque during homing | **Temporarily disabled** |
+| bridgeType        | `0x804` | **RO**  | uint8 | - | type of the mosfet driver | **Deprecated** |
+| homingMode        | `0x070` | RW  | uint8 | - | Homing Mode | **Temporarily disabled** |
+| homingMaxTravel   | `0x071` | RW  | float32 | - | Max distance to travel looking for homing point| **Temporarily disabled** |
+| homingVelocity    | `0x072` | RW  | float32 | - | Target velocity during homing | **Temporarily disabled** |
+| homingTorque      | `0x073` | RW  | float32 | - | Max torque during homing | **Temporarily disabled** |
 | homingStatus      | `0x80F` | **RO**  | uint32| - | Homing status bitfield| **Temporarily disabled** |
 
 </div>

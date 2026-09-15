@@ -62,7 +62,7 @@ The `[motor]` section represent hardware motor that the MD is connected to. The 
 parameters depend on the application and can be set to different values. The configuration file can
 be used to configure the MD device using the `candletool md config upload` command.
 
-(config_pds)=
+(config-pds)=
 
 ## Configuration files for PDS device
 
