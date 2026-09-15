@@ -1645,6 +1645,18 @@ Operation Display.
 </table>
 <p></p>
 
+```{warning}
+Only the mode values listed above are implemented. Writing any other value — including standard
+CiA 402 modes such as `2` (Velocity Mode), `4` (Torque Mode) or `10` (Cyclic Synchronous Torque) —
+is silently accepted and drops the drive into `Idle`. No fault is raised and the Statusword keeps
+reporting *Operation Enabled*; the only symptom is that the motor stops moving.
+
+Do not use `0x6502` Supported Drive Modes to determine which modes are available. That register
+reports `647` (`0x287`), which incorrectly advertises Velocity Mode (`2`) and Cyclic Synchronous
+Torque (`10`), and incorrectly omits Cyclic Synchronous Velocity (`9`) even though mode 9 works.
+The table above is authoritative.
+```
+
 #### Impedance Mode
 
 Mode in which the motor is mimic the behavior of a torsional spring with variable stiffness and
@@ -2417,7 +2429,17 @@ Configures the deceleration for profile position and profile velocity modes.
 
 ### 0x60C5 - Max Acceleration
 
-Configures the maximum acceleration for profile position and profile velocity modes.
+Intended to configure the maximum acceleration for profile position and profile velocity modes.
+
+```{warning}
+This object currently has no effect. It is present in the object dictionary and accepts SDO writes,
+but no firmware code reads it — the acceleration limit stays at its boot-time value for the whole
+session.
+
+Note the difference from the profile ramp objects: `0x6083` Profile Acceleration and `0x6084`
+Profile Deceleration **do** work and are applied normally. It is specifically the *maximum limit*
+objects `0x60C5` / `0x60C6` that are inert.
+```
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>
@@ -2451,7 +2473,12 @@ Configures the maximum acceleration for profile position and profile velocity mo
 
 ### 0x60C6 - Max Deceleration
 
-Configures the maximum deceleration for profile position and profile velocity modes.
+Intended to configure the maximum deceleration for profile position and profile velocity modes.
+
+```{warning}
+This object currently has no effect — as with `0x60C5` Max Acceleration, it accepts SDO writes but
+is never read by firmware. See the warning under `0x60C5` above.
+```
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
 	<tbody>

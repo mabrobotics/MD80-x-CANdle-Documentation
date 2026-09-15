@@ -6,7 +6,7 @@ The following chapters are included:
 
 - [**Object Dictionary**](/CANopen/object_dictionary.md): Provides a complete description of all communication objects available in MD controllers.
  It contains detailed definitions of each entry, supported access types, default values, and the communication mechanisms used for data exchange within the CANopen framework. This section is essential for understanding how to configure and interact with the device programmatically.
-- [**System Units**](/CANopen/units.md): Describes the SI units and their definitions used across MD CANopen devices, ensuring consistent interpretation of physical values such as position, velocity, and torque.
+- [**System Units**](/CANopen/units.md): Describes the CiA 402 SI unit objects for reference; these are not currently implemented in MD firmware.
 - [**Setting Up a New Motor**](/CANopen/setting_up_new_motor.md): Provides instructions for initializing and configuring a new motor with the MD controller, including recommended procedures for calibration and communication setup.
 
 ```{note}
