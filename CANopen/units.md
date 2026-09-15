@@ -1,8 +1,17 @@
 # System units
 
-This file describes the SI units and their definitions used in MD CANopen devices compliant with the CiA 402 profile.
+```{warning}
+The CiA 402 SI Unit objects described below (`0x60A8`/`0x60A9`/`0x60AA`) are **not implemented** in the 
+current MD firmware object dictionary. This page documents how those objects work per the CiA 402 
+standard for reference only; do not expect to read or write them on a real device. 
+Position, velocity and acceleration units on current MD controllers are fixed 
+(see the relevant Object Dictionary entries for each object's `Unit` column) rather than 
+runtime-configurable through these registers.
+```
 
-SI Units are defined in the objects:
+This file describes the SI units and their definitions as specified by the CiA 402 profile.
+
+SI Units would be defined in the following (currently unimplemented) objects:
  
 - Position Unit — **0x60A8**
 - Velocity Unit — **0x60A9**

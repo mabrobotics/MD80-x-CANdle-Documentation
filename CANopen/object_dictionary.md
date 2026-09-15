@@ -35,11 +35,7 @@ Describes the device type. The entry stands for the supported device profile num
 ### 0x1001 – Error Register
 
 Indicates whether an error has occurred. Currently, only the 0th bit is implemented, that indicates
-a general error. For a more verbose error and warning status, please see **0x2003 — System Status**.
-
-```{note}
-This Entry works now similarly to the `0x603F` Error Code entry defined in the Profile Specific Area.
-```
+a general error. For a more verbose error and warning status, please see **0x2004 — System Status**.
 
 <details>
 
@@ -126,7 +122,7 @@ Contains manufacturer's hardware version code.
 This entry saves parameters in non-volatile memory. Saving procedure is triggered by writing 0x65766173 (ASCII value of "save") to the *Save All Parameters* — `0x1010:1` sub-entry.
 
 ```{note}
-For saving parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Save* (`0x2004:9`) will have exact same effect as the procedure described above.
+For saving parameters to non-volatile memory you can also use the `0x2003` – *System Command* entry. Sub-index *Save Memory* (`0x2003:9`) will have exact same effect as the procedure described above.
 ```
 
 <details>
@@ -153,7 +149,7 @@ This method is not yet fully implemented in the firmware!
 This entry restore all parameters to the default states. Restoring procedure is triggered by writing 0x64616F6C (ASCII value of "load") to the *Restore All Default Parameters* — `0x1011:1` sub-entry.
 
 ```{note}
-For restoring default parameters to non-volatile memory you can also use the `0x2004` – *System Command* entry. Sub-index *Revert Factory Settings* (`0x2004:10`) will have exact same effect as the procedure described above.
+For restoring default parameters to non-volatile memory you can also use the `0x2003` – *System Command* entry. Sub-index *Revert Factory Settings* (`0x2003:10`) will have exact same effect as the procedure described above.
 ```
 
 <details>
@@ -265,6 +261,10 @@ Contains general information about the device.
 | Serial Number               | 0x1018:4  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
 
 </details>
+
+```{warning}
+All four sub-entries are currently hardcoded to `0` and are never populated at runtime, on every unit. In particular, `Serial Number` being always `0` means LSS selective/fastscan addressing (see `0x1000`/EDS `LSS_Supported`) cannot distinguish between multiple MD units on the same bus — do not rely on this object to uniquely identify a device.
+```
 
 ### 0x1019 – Synchronous Counter Overflow Value
 
@@ -632,118 +632,18 @@ Provides the mapping for the PDOs that the device can transmit.
 
 This section defines the Manufacturer Specific Area Object Dictionary entries for the device.
 
+```{note}
+The index numbering below reflects the object dictionary as generated from the current CANopenNode source (`OD.c`/`OD.h`) and cross-checked against `MD80_DS402.eds`. It differs from index numbers used in older firmware/documentation revisions — the *content* of each object (Motor Settings, PID gains, etc.) has been preserved, but several objects were renumbered, split, merged, or added along the way.
+```
+
 <details>
 
 **<summary>Manufacturer Specific Area Object Dictionary entries</summary>**
 
-### 0x2000 – Firmware Info
-
-Contains metadata describing the firmware running on the device, including version information, build date, and the commit hash used to generate the build.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type              | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | ----------------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2000:0  | UNSIGNED8         |    8     |     0x03     |    —     |    —     |   —   |  RO   |   —   |
-| Commit Hash                 | 0x2000:1  | VISIBLE_STRING(8) |    64    |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Build Date                  | 0x2000:2  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Version                     | 0x2000:3  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
-
-</details>
-
-### 0x2001 – Bootloader Info
-
-Provides information about the device’s bootloader, such as its version, build details, commit hash, and whether a fixed bootloader is present.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type              | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | ----------------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2001:0  | UNSIGNED8         |    8     |     0x04     |    —     |    —     |   —   |  RO   |   —   |
-| Bootloader Fixed            | 0x2001:1  | BOOLEAN           |    8     |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Commit Hash                 | 0x2001:2  | VISIBLE_STRING(8) |    64    |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Build Date                  | 0x2001:3  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Version                     | 0x2001:4  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
-
-</details>
-
-### 0x2002 – Hardware Info
-
-Includes hardware-related identifiers and configuration details for the device, such as bridge type, legacy revision data, device type, and core identification.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type               | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | ------------------ | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2002:0  | UNSIGNED8          |    8     |     0x05     |    —     |    —     |   —   |  RO   |   —   |
-| Bridge Type                 | 0x2002:1  | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Legacy Version              | 0x2002:2  | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Device Type                 | 0x2002:3  | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Device Revision             | 0x2002:4  | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RO   |   —   |
-| Core ID                     | 0x2002:5  | VISIBLE_STRING(12) |    96    |      0       |    —     |    —     |   —   |  RO   |   —   |
-
-</details>
-
-### 0x2003 – System Status
-
-Provides a set of real-time status indicators describing the current operating state of the device, as defined in the [status description](/MD/status_utility). All entries are read-only and can be transmitted via PDO for continuous monitoring.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2003:0  | UNSIGNED8  |    8     |     0x09     |    —     |    —     |   —   |  RO   |   —   |
-| Main Encoder Status         | 0x2003:1  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Aux Encoder Status          | 0x2003:2  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Calibration Status          | 0x2003:3  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Bridge Status               | 0x2003:4  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Hardware Status             | 0x2003:5  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Homing Status               | 0x2003:6  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Motion Status               | 0x2003:7  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Communication Status        | 0x2003:8  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-| Misc Status                 | 0x2003:9  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-
-</details>
-
-### 0x2004 – System Command
-
-Contains write-only command entries used to control system-level actions on the device. Actions work only in *Switch On Disabled* state and *Service* (-2) operation mode.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2004:0  | UNSIGNED8 |    8     |     0x0D     |   —   |   —   |   —   |  RO   |   —   |
-| Blink                       | 0x2004:1  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Reset                       | 0x2004:2  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Calibrate                   | 0x2004:3  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Calibrate Aux               | 0x2004:4  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Zero                        | 0x2004:5  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Calibrate Current           | 0x2004:6  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Test Main Encoder           | 0x2004:7  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Test Aux Encoder            | 0x2004:8  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Save                        | 0x2004:9  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Revert Factory Settings     | 0x2004:10 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Clear Errors                | 0x2004:11 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| Clear Warnings              | 0x2004:12 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-| CAN Reinit                  | 0x2004:13 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  WO   |   —   |
-
-</details>
-
-### 0x2005 – Motor Settings
+### 0x2000 – Motor Settings
 
 Configures the most important motor settings. This object is especially useful when you want to
-configure or reconfigure an MD series motor controller for a particular motor. The most important parameters are described in the [Configuration Chapter](/MD/config_calibration.md). 
+configure or reconfigure an MD series motor controller for a particular motor. The most important parameters are described in the [Configuration Chapter](/MD/config_calibration.md).
 
 <details>
 
@@ -751,46 +651,42 @@ configure or reconfigure an MD series motor controller for a particular motor. T
 
 | Name                        | Index:Sub | Type               | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------------------- | --------- | ------------------ | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2005:0  | UNSIGNED8          |    8     |     0x14     |    —     |    —     |   —   |  RO   |   —   |
-| Pole Pairs                  | 0x2005:1  | UNSIGNED32         |    32    |      0       |    2     |   255    |   —   |  RW   |   —   |
-| Torque Constant             | 0x2005:2  | REAL32             |    32    |      0       |    —     |    —     | Nm/A  |  RW   |   —   |
-| Inductance                  | 0x2005:3  | REAL32             |    32    |      0       |    —     |    —     |   H   |  RO   |   —   |
-| Resistance                  | 0x2005:4  | REAL32             |    32    |      0       |    —     |    —     |  Ohm  |  RO   |   —   |
-| Torque Bandwidth            | 0x2005:5  | UNSIGNED16         |    16    |      0       |    50    |   2500   |  Hz   |  RW   |   —   |
-| Name                        | 0x2005:6  | VISIBLE_STRING(24) |   192    |      MD      |    —     |    —     |   —   |  RW   |   —   |
-| Motor Shutdown Temp         | 0x2005:7  | UNSIGNED8          |    8     |      80      |    —     |   140    |  °C   |  RW   |   —   |
-| Calibration Mode            | 0x2005:8  | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RW   |   —   |
-| CAN ID                      | 0x2005:9  | UNSIGNED32         |    32    |      10      |    10    |    31    |   —   |  RW   |   —   |
-| CAN Datarate                | 0x2005:10 | UNSIGNED32         |    32    |   1000000    |    —     |    —     |  Hz   |  RW   |   —   |
-| CAN Timeout                 | 0x2005:11 | UNSIGNED16         |    16    |     200      |    —     |    —     |  ms   |  RW   |   —   |
-| CAN Termination             | 0x2005:12 | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RW   |   —   |
-| KV                          | 0x2005:13 | UNSIGNED16         |    16    |      0       |    —     |    —     | rpm/V |  RW   |   —   |
-| Torque Constant A           | 0x2005:14 | REAL32             |    32    |      0       |    —     |    —     | Nm/A  |  RW   |   —   |
-| Torque Constant B           | 0x2005:15 | REAL32             |    32    |      0       |    —     |    —     | Nm/A  |  RW   |   —   |
-| Torque Constant C           | 0x2005:16 | REAL32             |    32    |      0       |    —     |    —     | Nm/A  |  RW   |   —   |
-| Friction Dynamic            | 0x2005:17 | REAL32             |    32    |      0       |    —     |    —     |  Nm   |  RW   |   —   |
-| Friction Static             | 0x2005:18 | REAL32             |    32    |      0       |    —     |    —     |  Nm   |  RW   |   —   |
-| Shunt Resistance            | 0x2005:19 | REAL32             |    32    |      0       |    —     |    —     |  Ohm  |  RW   |   —   |
-| Thermistor Type             | 0x2005:20 | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Highest sub-index supported | 0x2000:0  | UNSIGNED8          |    8     |     0x0D     |    —     |    —     |   —   |  RO   |   —   |
+| Pole Pairs                  | 0x2000:1  | UNSIGNED32         |    32    |      0       |    2     |   255    |   —   |  RW   |   —   |
+| Torque Constant             | 0x2000:2  | REAL32             |    32    |      0       |    —     |    —     | Nm/A  |  RW   |   —   |
+| Phase Inductance            | 0x2000:3  | REAL32             |    32    |      0       |    —     |    —     |   H   |  RO   |   —   |
+| Phase Resistance            | 0x2000:4  | REAL32             |    32    |      0       |    —     |    —     |  Ohm  |  RO   |   —   |
+| Torque Bandwidth            | 0x2000:5  | UNSIGNED16         |    16    |      0       |    50    |   2500   |  Hz   |  RW   |   —   |
+| Motor Name                  | 0x2000:6  | VISIBLE_STRING(24) |   192    |     MD80     |    —     |    —     |   —   |  RW   |   —   |
+| Motor Shutdown Temperature  | 0x2000:7  | UNSIGNED8          |    8     |      80      |    —     |   140    |  °C   |  RW   |   —   |
+| Gear Ratio                  | 0x2000:8  | UNSIGNED32         |    32    |      1       |    —     |    —     |   —   |  RW   |   —   |
+| Calibration Mode            | 0x2000:9  | UNSIGNED8          |    8     |      0       |    —     |    —     |   —   |  RW   |   —   |
+| CAN ID                      | 0x2000:10 | UNSIGNED32         |    32    |      1       |    1     |    31    |   —   |  RW   |   —   |
+| CAN Baudrate                | 0x2000:11 | UNSIGNED32         |    32    |      1       |    —     |    —     |   —   |  RW   |   —   |
+| CAN Watchdog                | 0x2000:12 | UNSIGNED16         |    16    |      1       |    —     |    —     |  ms   |  RW   |   —   |
+| Reverse Direction           | 0x2000:13 | BOOLEAN            |    8     |    false     |    —     |    —     |   —   |  RW   |   —   |
 
 </details>
 
-### 0x2006 – Velocity PID Controller
+```{note}
+`Gear Ratio`, `CAN Baudrate` and `CAN Watchdog` replace the separate motor-shunt / current-scaling and encoder-standard-deviation entries used in older revisions of this object; `Torque Constant A/B/C`, `Friction Dynamic/Static`, `Shunt Resistance`, `Thermistor Type` and `KV` from earlier firmware are no longer exposed here.
+```
 
-This entry configures the Velocity PID controller gains. 
+### 0x2001 – Velocity PID Controller
+
+This entry configures the Velocity PID controller gains.
 
 <details>
 
 **<summary>Entry table</summary>**
 
-| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2006:0  | UNSIGNED8 |    8     |     0x05     |   —   |   —   |   —   |  RO   |   —   |
-| Kp                          | 0x2006:1  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |  Rx   |
-| Ki                          | 0x2006:2  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |  Rx   |
-| Kd                          | 0x2006:3  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |  Rx   |
-| Integral Limit              | 0x2006:4  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Output Max                  | 0x2006:5  | REAL32    |    32    |      0       |   —   |   —   | rad/s |  RW   |   —   |
+| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO   |
+| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :----: |
+| Highest sub-index supported | 0x2001:0  | UNSIGNED8 |    8     |     0x04     |   —   |   —   |   —   |  RO   |   —    |
+| Kp                          | 0x2001:1  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Ki                          | 0x2001:2  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Kd                          | 0x2001:3  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Integral Limit              | 0x2001:4  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —    |
 
 </details>
 
@@ -802,23 +698,21 @@ Velocity PID Controller diagram:
 :class: no-scaled-link
 ```
 
+### 0x2002 – Position PID Controller
 
-### 0x2007 – Position PID Controller
-
-This entry configures the Position PID controller gains. 
+This entry configures the Position PID controller gains.
 
 <details>
 
 **<summary>Entry table</summary>**
 
-| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2007:0  | UNSIGNED8 |    8     |     0x05     |   —   |   —   |   —   |  RO   |   —   |
-| Kp                          | 0x2007:1  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Ki                          | 0x2007:2  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Kd                          | 0x2007:3  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Integral Limit              | 0x2007:4  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Output Max                  | 0x2007:5  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
+| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO   |
+| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :----: |
+| Highest sub-index supported | 0x2002:0  | UNSIGNED8 |    8     |     0x04     |   —   |   —   |   —   |  RO   |   —    |
+| Kp                          | 0x2002:1  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Ki                          | 0x2002:2  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Kd                          | 0x2002:3  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Integral Limit              | 0x2002:4  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —    |
 
 </details>
 
@@ -830,9 +724,70 @@ Position PID Controller diagram:
 :class: no-scaled-link
 ```
 
-### 0x2008 – Impedance PD Controller
+```{note}
+The `Output Max` sub-entry present in older revisions of the Velocity and Position PID Controller objects has been removed; output saturation is now governed by the `0x2007` Limits object instead.
+```
 
-This entry configures the Impedance PD controller gains. 
+### 0x2003 – System Command
+
+Contains command entries used to control system-level actions on the device. Actions work only in *Switch On Disabled* state and *Service* (-2) operation mode.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                          | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
+| ------------------------------ | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
+| Highest sub-index supported    | 0x2003:0  | UNSIGNED8 |    8     |     0x0D     |   —   |   —   |   —   |  RO   |   —   |
+| Blink LEDs                     | 0x2003:1  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Reset Controller               | 0x2003:2  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Run Calibration                | 0x2003:3  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Run Output Encoder Calibration | 0x2003:4  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Set Zero                       | 0x2003:5  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Calibrate Current PI Gains     | 0x2003:6  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Test Output Encoder            | 0x2003:7  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Test Main Encoder              | 0x2003:8  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Save Memory                    | 0x2003:9  | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Revert Factory Settings        | 0x2003:10 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Clear Errors                   | 0x2003:11 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Clear Warnings                 | 0x2003:12 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Run CAN Reinit                 | 0x2003:13 | BOOLEAN   |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+
+</details>
+
+```{note}
+Unlike earlier firmware revisions, these entries are SDO-readable as well as writable (they will read back as `0` — writing `1` triggers the action, it does not latch).
+```
+
+### 0x2004 – System Status
+
+Provides a set of real-time status indicators describing the current operating state of the device, as defined in the [status description](/MD/status_utility).
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
+| --------------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
+| Highest sub-index supported | 0x2004:0  | UNSIGNED8  |    8     |     0x08     |    —     |    —     |   —   |  RO   |   —   |
+| Main Encoder Status         | 0x2004:1  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Output Encoder Status       | 0x2004:2  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Calibration Status          | 0x2004:3  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Bridge Status               | 0x2004:4  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Hardware Status             | 0x2004:5  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Homing Status               | 0x2004:6  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Motion Status               | 0x2004:7  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+| Communication Status        | 0x2004:8  | UNSIGNED32 |    32    |      0       |    —     |    —     |   —   |  RW   |   —   |
+
+</details>
+
+```{note}
+These entries are no longer PDO-mappable and are no longer read-only over SDO — poll them individually via SDO instead of mapping them into a TPDO. `Aux Encoder Status` and `Misc Status` from older revisions have been renamed/removed; there is no longer a dedicated Misc Status sub-entry.
+```
+
+### 0x2005 – Output Encoder
+
+Configures and reports the external (output) encoder. The internal main encoder is always present and its status is reported in `0x2004:1`, but it has no separate configuration object of its own — only the output encoder is user-configurable here.
 
 <details>
 
@@ -840,10 +795,157 @@ This entry configures the Impedance PD controller gains.
 
 | Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
 | --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2008:0  | UNSIGNED8 |    8     |     0x03     |   —   |   —   |   —   |  RO   |   —   |
-| Kp                          | 0x2008:1  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Kd                          | 0x2008:2  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Output Max                  | 0x2008:3  | REAL32    |    32    |      0       |   —   |   —   |  Nm   |  RW   |   —   |
+| Highest sub-index supported | 0x2005:0  | UNSIGNED8 |    8     |     0x05     |   —   |   —   |   —   |  RO   |   —   |
+| Type                        | 0x2005:1  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Calibration Mode            | 0x2005:2  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Mode                        | 0x2005:3  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| Position                    | 0x2005:4  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RO   |  Tx   |
+| Velocity                    | 0x2005:5  | REAL32    |    32    |      0       |   —   |   —   | rad/s |  RW   |  Tx   |
+
+</details>
+
+```{note}
+The separate `Main Encoder` (formerly `0x2009`) and `Auxiliary Encoder` (formerly `0x200A`) objects — with their per-encoder `Direction`, `Standard Deviation`, `Max/Min Error` and `Zero Offset` sub-entries — have been consolidated into this single `Output Encoder` object with a reduced sub-entry set. If your integration relied on those removed sub-entries, they are no longer available over CANopen.
+```
+
+### 0x2006 – Temperature
+
+Entry containing temperature readings from the device.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
+| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
+| Highest sub-index supported | 0x2006:0  | UNSIGNED8 |    8     |     0x02     |   —   |   —   |   —   |  RO   |   —   |
+| Motor Temperature           | 0x2006:1  | REAL32    |    32    |      0       |   —   |   —   |  °C   |  RO   |  Tx   |
+| Mosfet Temperature          | 0x2006:2  | REAL32    |    32    |      0       |   —   |   —   |  °C   |  RO   |  Tx   |
+
+</details>
+
+### 0x2007 – Limits
+
+Configures motion limits enforced by the drive.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  |  Unit   |  SDO  |  PDO  |
+| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :-----: | :---: | :---: |
+| Highest sub-index supported | 0x2007:0  | UNSIGNED8 |    8     |     0x06     |   —   |   —   |    —    |  RO   |   —   |
+| Max Torque                  | 0x2007:1  | REAL32    |    32    |      0       |   —   |   —   |   Nm    |  RW   |   —   |
+| Max Acceleration            | 0x2007:2  | REAL32    |    32    |      0       |   —   |   —   | rad/s²  |  RW   |   —   |
+| Max Deceleration            | 0x2007:3  | REAL32    |    32    |      0       |   —   |   —   | rad/s²  |  RW   |   —   |
+| Max Velocity                | 0x2007:4  | REAL32    |    32    |      0       |   —   |   —   |  rad/s  |  RW   |   —   |
+| Max Position                | 0x2007:5  | REAL32    |    32    |      0       |   —   |   —   |   rad   |  RW   |   —   |
+| Min Position                | 0x2007:6  | REAL32    |    32    |      0       |   —   |   —   |   rad   |  RW   |   —   |
+
+</details>
+
+```{warning}
+This object exists in the object dictionary but is currently only written to by the legacy CANdle protocol handler, which is compiled out whenever CANopen support is built in. On a CANopen build this object can be read and written over SDO, but the values are **not consumed anywhere** in the motion control path — configure limits through the standard CiA 402 objects instead (`0x607D` Software Position Limit, `0x6080` Max Motor Speed, `0x6072`/`0x6073` Max Torque/Current, `0x6083`/`0x6084`/`0x6085` acceleration/deceleration).
+```
+
+### 0x2008 – Motion
+
+Manufacturer-specific motion command/feedback interface, predating the CiA 402 profile implementation.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                     | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  |  Unit  |  SDO  |  PDO  |
+| ------------------------ | --------- | --------- | :------: | :----------: | :---: | :---: | :----: | :---: | :---: |
+| Highest sub-index supported | 0x2008:0 | UNSIGNED8 |    8     |     0x0B     |   —   |   —   |   —    |  RO   |   —   |
+| Mode Command             | 0x2008:1  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —    |  RW   |  Rx   |
+| Mode Status              | 0x2008:2  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —    |  RW   |  Rx   |
+| Profile Velocity         | 0x2008:3  | REAL32    |    32    |      0       |   —   |   —   | rad/s  |  RW   |  Rx   |
+| Profile Acceleration     | 0x2008:4  | REAL32    |    32    |      0       |   —   |   —   | rad/s² |  RW   |  Rx   |
+| Profile Deceleration     | 0x2008:5  | REAL32    |    32    |      0       |   —   |   —   | rad/s² |  RW   |  Rx   |
+| Quick Stop Deceleration  | 0x2008:6  | REAL32    |    32    |      0       |   —   |   —   | rad/s² |  RW   |  Rx   |
+| Position Window          | 0x2008:7  | REAL32    |    32    |      0       |   —   |   —   |  rad   |  RW   |  Rx   |
+| Velocity Window          | 0x2008:8  | REAL32    |    32    |      0       |   —   |   —   | rad/s  |  RW   |  Rx   |
+| Target Position          | 0x2008:9  | REAL32    |    32    |      0       |   —   |   —   |  rad   |  RW   | Tx/Rx |
+| Target Velocity          | 0x2008:10 | REAL32    |    32    |      0       |   —   |   —   | rad/s  |  RW   | Tx/Rx |
+| Target Torque            | 0x2008:11 | REAL32    |    32    |      0       |   —   |   —   |  Nm    |  RW   | Tx/Rx |
+
+</details>
+
+```{warning}
+This object looks like a complete motion command interface — `Mode Command`, `Target Position`, `Target Velocity`, `Target Torque` — but on a CANopen build it is **entirely non-functional**. It is only ever written to or read from by the legacy CANdle protocol handler, which is compiled out whenever CANopen support is selected at build time. Writing to `0x2008:9` (Target Position) or any other sub-entry here produces no motion whatsoever over CANopen. Command motion exclusively through the CiA 402 profile objects: `0x6040` Controlword, `0x6060` Modes of Operation, `0x607A` Target Position, `0x60FF` Target Velocity, `0x6071` Target Torque.
+```
+
+### 0x2009 – Motor Measurements
+
+Intended to report output-side position, velocity and torque telemetry.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
+| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
+| Highest sub-index supported | 0x2009:0  | UNSIGNED8 |    8     |     0x03     |   —   |   —   |   —   |  RO   |   —   |
+| Output Position             | 0x2009:1  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |  Tx   |
+| Output Velocity             | 0x2009:2  | REAL32    |    32    |      0       |   —   |   —   | rad/s |  RW   |  Tx   |
+| Output Torque               | 0x2009:3  | REAL32    |    32    |      0       |   —   |   —   |  Nm   |  RW   |  Tx   |
+
+</details>
+
+```{warning}
+No code path writes to this object in **any** build configuration, CANopen or legacy. All three sub-entries will always read back as `0`; do not rely on this object for output-side telemetry. Use `0x6064`/`0x606C`/`0x6077` (Position/Velocity/Torque Actual Value) or `0x2005:4`/`0x2005:5` (Output Encoder Position/Velocity) instead.
+```
+
+### 0x200A – Firmware Info
+
+Contains metadata describing the firmware running on the device, including version information, build date, and the commit hash used to generate the build.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type              | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
+| --------------------------- | --------- | ----------------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
+| Highest sub-index supported | 0x200A:0  | UNSIGNED8         |    8     |     0x03     |    —     |    —     |   —   |  RO   |   —   |
+| Commit Hash                 | 0x200A:1  | VISIBLE_STRING(8) |    64    |      0       |    —     |    —     |   —   |  RO   |   —   |
+| Build Date                  | 0x200A:2  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
+| Version                     | 0x200A:3  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
+
+</details>
+
+### 0x200B – Bootloader Info
+
+Provides information about the device’s bootloader, such as its version, build details, commit hash, and whether a fixed bootloader is present.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type              | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
+| --------------------------- | --------- | ----------------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
+| Highest sub-index supported | 0x200B:0  | UNSIGNED8         |    8     |     0x04     |    —     |    —     |   —   |  RO   |   —   |
+| Bootloader Fixed            | 0x200B:1  | BOOLEAN           |    8     |      0       |    —     |    —     |   —   |  RO   |   —   |
+| Commit Hash                 | 0x200B:2  | VISIBLE_STRING(8) |    64    |      0       |    —     |    —     |   —   |  RO   |   —   |
+| Build Date                  | 0x200B:3  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
+| Version                     | 0x200B:4  | UNSIGNED32        |    32    |      0       |    —     |    —     |   —   |  RO   |   —   |
+
+</details>
+
+### 0x200C – Impedance PD Controller
+
+This entry configures the Impedance PD controller gains.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO   |
+| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :----: |
+| Highest sub-index supported | 0x200C:0  | UNSIGNED8 |    8     |     0x02     |   —   |   —   |   —   |  RO   |   —    |
+| Kp                          | 0x200C:1  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
+| Kd                          | 0x200C:2  | REAL32    |    32    |      0       |   —   |   —   |   —   |  RW   | Tx/Rx  |
 
 </details>
 
@@ -855,71 +957,11 @@ Impedance PD Controller diagram:
 :class: no-scaled-link
 ```
 
-### 0x2009 – Main Encoder
+```{note}
+The `Output Max` sub-entry present in older revisions has been removed; use `0x2007:1` (Limits — Max Torque) instead.
+```
 
-Main encoder related record.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x2009:0  | UNSIGNED8 |    8     |     0x0A     |   —   |   —   |   —   |  RO   |   —   |
-| Type                        | 0x2009:1  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Calibration Mode            | 0x2009:2  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Mode                        | 0x2009:3  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Direction                   | 0x2009:4  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Position                    | 0x2009:5  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RO   |  Tx   |
-| Velocity                    | 0x2009:6  | REAL32    |    32    |      0       |   —   |   —   | rad/s |  RO   |  Tx   |
-| Standard Deviation          | 0x2009:7  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-| Max Error                   | 0x2009:8  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-| Min Error                   | 0x2009:9  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-| Zero Offset                 | 0x2009:10 | INTEGER32 |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-
-</details>
-
-### 0x200A – Auxiliary Encoder
-
-Auxiliary encoder related record.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x200A:0  | UNSIGNED8 |    8     |     0x0A     |   —   |   —   |   —   |  RO   |   —   |
-| Type                        | 0x200A:1  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Calibration Mode            | 0x200A:2  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Mode                        | 0x200A:3  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Direction                   | 0x200A:4  | UNSIGNED8 |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| Position                    | 0x200A:5  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RO   |  Tx   |
-| Velocity                    | 0x200A:6  | REAL32    |    32    |      0       |   —   |   —   | rad/s |  RO   |  Tx   |
-| Standard Deviation          | 0x200A:7  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-| Max Error                   | 0x200A:8  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-| Min Error                   | 0x200A:9  | REAL32    |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-| Zero Offset                 | 0x200A:10 | INTEGER32 |    32    |      0       |   —   |   —   |  rad  |  RW   |   —   |
-
-</details>
-
-### 0x200B – Temperature
-
-Entry containing temperature readings from the device.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type      | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x200B:0  | UNSIGNED8 |    8     |     0x02     |   —   |   —   |   —   |  RO   |   —   |
-| Motor Temperature           | 0x200B:1  | REAL32    |    32    |      0       |   —   |   —   |  °C   |  RO   |  Tx   |
-| Driver Temperature          | 0x200B:2  | REAL32    |    32    |      0       |   —   |   —   |  °C   |  RO   |  Tx   |
-
-</details>
-
-### 0x200C – User GPIO
+### 0x200D – User GPIO
 
 This entry provides access to user-configurable GPIO pins on the device and their states.
 
@@ -929,11 +971,29 @@ This entry provides access to user-configurable GPIO pins on the device and thei
 
 | Name                        | Index:Sub | Type       | Bit Size | Default Data |  Min  |  Max  | Unit  |  SDO  |  PDO  |
 | --------------------------- | --------- | ---------- | :------: | :----------: | :---: | :---: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x200C:0  | UNSIGNED8  |    8     |     0x02     |   —   |   —   |   —   |  RO   |   —   |
-| GPIO Configuration          | 0x200C:1  | UNSIGNED8  |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
-| GPIO State                  | 0x200C:2  | UNSIGNED16 |    16    |      0       |   —   |   —   |   —   |  RO   |   —   |
+| Highest sub-index supported | 0x200D:0  | UNSIGNED8  |    8     |     0x02     |   —   |   —   |   —   |  RO   |   —   |
+| User GPIO Configuration     | 0x200D:1  | UNSIGNED8  |    8     |      0       |   —   |   —   |   —   |  RW   |   —   |
+| User GPIO State             | 0x200D:2  | UNSIGNED16 |    16    |      0       |   —   |   —   |   —   |  RO   |   —   |
 
 </details>
+
+### 0x200E – DC Bus Voltage
+
+Measured DC bus (supply) voltage.
+
+<details>
+
+**<summary>Entry table</summary>**
+
+| Name           | Index:Sub | Type   | Bit Size | Default Data | Min Data | Max Data | Unit |  SDO  |  PDO  |
+| -------------- | --------- | ------ | :------: | :----------: | :------: | :------: | :--: | :---: | :---: |
+| DC Bus Voltage | 0x200E:0  | REAL32 |    32    |      0       |    —     |    —     |  V   |  RO   |   —   |
+
+</details>
+
+```{note}
+This duplicates `0x6079` (DC Link Circuit Voltage) in the Profile Specific Area, reported here in volts (REAL32) instead of millivolts (UNSIGNED32).
+```
 
 </details>
 
@@ -945,21 +1005,6 @@ This section contains Object Dictionary entries that are specific to the CiA 402
 <details>
 
 **<summary>Profile Specific Area Object Dictionary entries</summary>**
-
-### 0x603F – Error Code
-
-Indicates whether an error has occurred. Currently, only the 0th bit is implemented, that indicates
-a general error. For a more verbose error and warning status, please see **0x2003 — System Status**.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name       | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| ---------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Error Code | 0x603F:0  | UNSIGNED16 |    16    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
-
-</details>
 
 ### 0x6040 – Controlword
 
@@ -1060,7 +1105,11 @@ Describes the current state of the internal CiA402 state machine implemented on 
 
 Bit 10 of the statusword indicates the current target has been reached (1) or not (0). This bit is motion mode - dependent, meaning for example in position mode it indicates the position has been reached (within a `0x6067` Position Window margin), and in velocity mode that a velocity target has been reached (within `0x606D` Velocity Window).
 
-Bit 11 of the **Statusword** indicates whether any of the internal limits was active during current power up - for more information on which limit is active, check the `0x2003:7` Motion Status.
+Bit 11 of the **Statusword** indicates whether any of the internal limits was active during current power up - for more information on which limit is active, check the `0x2004:7` Motion Status.
+
+```{note}
+Bit 4 (Voltage Enabled) is currently never set by the firmware, even once the power stage is live and DC-bus voltage is present (see `0x6079`/`0x200E`). All other statusword bits match the CiA 402 state table above.
+```
 
 
 ### 0x6060 – Modes Of Operation
@@ -1089,9 +1138,14 @@ The following mode values are valid:
 |   3   |      Profile Velocity Mode (PVM)       |
 |   8   | Cyclic Synchronous Position Mode (CSP) |
 |   9   | Cyclic Synchronous Velocity Mode (CSV) |
-|  10   |  Cyclic Synchronous Torque Mode (CST)  |
 
 **Table 4**: Modes of operation codes.
+
+```{warning}
+Writing any value other than the ones listed above — including standard CiA 402 values such as `2` (Velocity Mode), `4` (Torque Mode) or `10` (Cyclic Synchronous Torque Mode, CST) — is silently accepted and drops the drive into `Idle`. No fault is raised and the Statusword continues to report *Operation Enabled*; the only symptom is that the motor does not move.
+
+Only the modes listed in the table above are actually implemented. **Do not rely on `0x6502` Supported Drive Modes to determine this** — that register reports `0x00000287`, which wrongly advertises Velocity Mode (`2`) and CST (`10`), and wrongly omits CSV (`9`). See `0x6502` for details.
+```
 
 #### 1. Impedance Mode (IMP)
 
@@ -1109,6 +1163,10 @@ No operation mode. The motor is disabled and not controlled. Useful for safe shu
 
 Trapezoidal motion profile for position control. The controller generates smooth position trajectories with configurable acceleration and deceleration profiles, reaching the target position with minimal overshoot.
 
+```{note}
+The standard CiA 402 "new setpoint" handshake (Controlword bit 4 / Statusword bit 12) is not implemented in this mode — `0x607A` Target Position is applied unconditionally on every control cycle rather than being gated by bit 4.
+```
+
 #### 5. Profile Velocity Mode (PVM)
 
 Trapezoidal motion profile for velocity control. The controller generates smooth velocity profiles with configurable acceleration and deceleration, ideal for smooth velocity changes without jerky motion.
@@ -1120,10 +1178,6 @@ Raw position PID controller. Target position is reached as fast as possible, res
 #### 7. Cyclic Synchronous Velocity Mode (CSV)
 
 Raw velocity PID controller. Target velocity is reached as fast as possible, respecting the max velocity limit, and max torque limit. To achieve smooth acceleration new velocity setpoints need to be sent with high frequency.
-
-#### 8. Cyclic Synchronous Torque Mode (CST)
-
-Direct torque control mode with high-frequency update capability. New torque setpoints are applied immediately in each control cycle, enabling precise force/torque control for applications requiring fast torque changes and low latency.
 
 ### 0x6061 – Modes Of Operation Display
 
@@ -1191,9 +1245,13 @@ Indicates the demanded velocity value.
 
 | Name                  | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Velocity Demand Value | 0x606B:0  | INTEGER32 |    32    |      0       |    —     |    —     | mrpm  |  RO   |  Tx   |
+| Velocity Demand Value | 0x606B:0  | INTEGER32 |    32    |      0       |    —     |    —     | rpm  |  RW   |   —   |
 
 </details>
+
+```{note}
+This entry is SDO-writable, but the firmware recomputes and overwrites it every control cycle — a written value is only visible for roughly one cycle before being replaced. Treat it as effectively read-only.
+```
 
 ### 0x606C – Velocity Actual Value
 
@@ -1205,7 +1263,7 @@ The actual velocity value derived either from the velocity sensor or the positio
 
 | Name                  | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Velocity Actual Value | 0x606C:0  | INTEGER32 |    32    |      0       |    —     |    —     | mrpm  |  RO   |  Tx   |
+| Velocity Actual Value | 0x606C:0  | INTEGER32 |    32    |      0       |    —     |    —     | rpm  |  RO   |  Tx   |
 
 </details>
 
@@ -1219,7 +1277,7 @@ The *velocity window* defines a symmetrical range of accepted velocities relativ
 
 | Name            | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Velocity Window | 0x606D:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | mrpm  |  RW   |  Rx   |
+| Velocity Window | 0x606D:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | rpm  |  RW   |  Rx   |
 
 </details>
 
@@ -1273,11 +1331,15 @@ Current torque requested by the controller.
 
 **<summary>Entry table</summary>**
 
-| Name                | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| ------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Torque Demand Value | 0x6074:0  | UNSIGNED16 |    16    |      0       |    —     |    —     |   —   |  RO   |  Tx   |
+| Name                | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
+| ------------------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
+| Torque Demand Value | 0x6074:0  | INTEGER16 |    16    |      0       |    —     |    —     |   —   |  RW   |   —   |
 
 </details>
+
+```{note}
+This entry is SDO-writable, but the firmware recomputes and overwrites it every control cycle — a written value is only visible for roughly one cycle before being replaced. Treat it as effectively read-only.
+```
 
 ### 0x6075 – Motor Rated Current
 
@@ -1349,22 +1411,6 @@ Desired motor position in increments.
 
 </details>
 
-### 0x607B – Position Range Limit
-
-Minimum and maximum allowed motor positions.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x607B:0  | UNSIGNED8 |    8     |     0x02     |    —     |    —     |   —   |  RO   |   —   |
-| Min Position Range Limit    | 0x607B:1  | INTEGER32 |    32    | -2147483648  |    —     |    —     |  inc  |  RW   |  Rx   |
-| Max Position Range Limit    | 0x607B:2  | INTEGER32 |    32    |  2147483647  |    —     |    —     |  inc  |  RW   |  Rx   |
-
-</details>
-
 ### 0x607D – Software Position Limit
 
 Software-configurable minimum and maximum position limits.
@@ -1381,23 +1427,9 @@ Software-configurable minimum and maximum position limits.
 
 </details>
 
-### 0x607E – Polarity
-
-Motor rotation direction setting.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name     | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| -------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Polarity | 0x607E:0  | UNSIGNED8 |    8     |     0x00     |    —     |    —     |   —   |  RW   |   —   |
-
-</details>
-
 ### 0x6080 – Max Motor Speed
 
-Maximum allowed motor speed in millirevolutions per minute.
+Maximum allowed motor speed in revolutions per minute.
 
 <details>
 
@@ -1405,13 +1437,13 @@ Maximum allowed motor speed in millirevolutions per minute.
 
 | Name            | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Max Motor Speed | 0x6080:0  | UNSIGNED32 |    32    |     1000     |    —     |    —     | mrpm  |  RW   |  Rx   |
+| Max Motor Speed | 0x6080:0  | UNSIGNED32 |    32    |     1000     |    —     |    —     | rpm  |  RW   |  Rx   |
 
 </details>
 
 ### 0x6081 – Profile Velocity
 
-Velocity used in position profiles in millirevolutions per minute.
+Velocity used in position profiles in revolutions per minute.
 
 <details>
 
@@ -1419,13 +1451,13 @@ Velocity used in position profiles in millirevolutions per minute.
 
 | Name             | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | ---------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Profile Velocity | 0x6081:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | mrpm  |  RW   |  Rx   |
+| Profile Velocity | 0x6081:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | rpm  |  RW   |  Rx   |
 
 </details>
 
 ### 0x6083 – Profile Acceleration
 
-Acceleration used in motion profiles in millirevolutions per minute per second.
+Acceleration used in motion profiles in revolutions per minute per second.
 
 <details>
 
@@ -1433,13 +1465,13 @@ Acceleration used in motion profiles in millirevolutions per minute per second.
 
 | Name                 | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data |  Unit  |  SDO  |  PDO  |
 | -------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :----: | :---: | :---: |
-| Profile Acceleration | 0x6083:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | mrpm/s |  RW   |  Rx   |
+| Profile Acceleration | 0x6083:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | rpm/s |  RW   |  Rx   |
 
 </details>
 
 ### 0x6084 – Profile Deceleration
 
-Deceleration used in motion profiles in millirevolutions per minute per second.
+Deceleration used in motion profiles in revolutions per minute per second.
 
 <details>
 
@@ -1447,13 +1479,13 @@ Deceleration used in motion profiles in millirevolutions per minute per second.
 
 | Name                 | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data |  Unit  |  SDO  |  PDO  |
 | -------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :----: | :---: | :---: |
-| Profile Deceleration | 0x6084:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | mrpm/s |  RW   |  Rx   |
+| Profile Deceleration | 0x6084:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | rpm/s |  RW   |  Rx   |
 
 </details>
 
 ### 0x6085 – Quick Stop Deceleration
 
-Deceleration applied during a quick stop in millirevolutions per minute per second.
+Deceleration applied during a quick stop in revolutions per minute per second.
 
 <details>
 
@@ -1461,71 +1493,19 @@ Deceleration applied during a quick stop in millirevolutions per minute per seco
 
 | Name                    | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data |  Unit  |  SDO  |  PDO  |
 | ----------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :----: | :---: | :---: |
-| Quick Stop Deceleration | 0x6085:0  | UNSIGNED32 |    32    |    10000     |    —     |    —     | mrpm/s |  RW   |  Rx   |
-
-</details>
-
-### 0x6091 – Gear Ratio
-
-Motor-to-shaft gear ratio configuration.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                        | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| --------------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Highest sub-index supported | 0x6091:0  | UNSIGNED8  |    8     |     0x02     |    —     |    —     |   —   |  RO   |   —   |
-| Motor Revolutions           | 0x6091:1  | UNSIGNED32 |    32    |      1       |    —     |    —     |   —   |  RW   |  Rx   |
-| Shaft  Revolutions          | 0x6091:2  | UNSIGNED32 |    32    |      1       |    —     |    —     |   —   |  RW   |  Rx   |
-
-</details>
-
-### 0x60A8 – SI Unit Position
-
-Default position units are encoder increments.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name             | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| ---------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| SI Unit Position | 0x60A8:0  | UNSIGNED32 |    32    |  0x00B50000  |    —     |    —     |   —   |  RO   |   —   |
-
-</details>
-
-### 0x60A9 – SI Unit Velocity
-
-Default velocity units are millirevolutions per minute.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name             | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| ---------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| SI Unit Velocity | 0x60A9:0  | UNSIGNED32 |    32    |  0xFDB44700  |    —     |    —     |   —   |  RO   |   —   |
-
-</details>
-
-### 0x60AA – SI Unit Acceleration
-
-Default acceleration units are millirevolutions per minute per second.
-
-<details>
-
-**<summary>Entry table</summary>**
-
-| Name                 | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
-| -------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| SI Unit Acceleration | 0x60AA:0  | UNSIGNED32 |    32    |  0xFDC00300  |    —     |    —     |   —   |  RO   |   —   |
+| Quick Stop Deceleration | 0x6085:0  | UNSIGNED32 |    32    |    10000     |    —     |    —     | rpm/s |  RW   |  Rx   |
 
 </details>
 
 ### 0x60C5 – Max Acceleration
 
-Maximum allowed motor acceleration in millirevolutions per minute per second.
+Maximum allowed motor acceleration in revolutions per minute per second.
+
+```{warning}
+**This object has no effect over CANopen.** It is present in the object dictionary and accepts SDO writes, but no firmware code reads it — the acceleration limit stays fixed at its boot-time value. The only code that applies an acceleration limit reads it from `0x2007` (Limits), which is itself non-functional on CANopen builds.
+
+Note the distinction from the profile ramp objects: `0x6083` / `0x6084` (Profile Acceleration / Deceleration) **do** work and are applied normally. It is specifically the *maximum limit* objects `0x60C5` / `0x60C6` that are inert.
+```
 
 <details>
 
@@ -1533,13 +1513,17 @@ Maximum allowed motor acceleration in millirevolutions per minute per second.
 
 | Name             | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data |  Unit  |  SDO  |  PDO  |
 | ---------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :----: | :---: | :---: |
-| Max Acceleration | 0x60C5:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | mrpm/s |  RW   |  Rx   |
+| Max Acceleration | 0x60C5:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | rpm/s |  RW   |  Rx   |
 
 </details>
 
 ### 0x60C6 – Max Deceleration
 
-Maximum allowed motor deceleration in millirevolutions per minute per second.
+Maximum allowed motor deceleration in revolutions per minute per second.
+
+```{warning}
+**This object has no effect over CANopen.** As with `0x60C5`, it accepts SDO writes but is never read by firmware — see the warning under `0x60C5` for details.
+```
 
 <details>
 
@@ -1547,13 +1531,13 @@ Maximum allowed motor deceleration in millirevolutions per minute per second.
 
 | Name             | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data |  Unit  |  SDO  |  PDO  |
 | ---------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :----: | :---: | :---: |
-| Max Deceleration | 0x60C6:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | mrpm/s |  RW   |  Rx   |
+| Max Deceleration | 0x60C6:0  | UNSIGNED32 |    32    |      0       |    —     |    —     | rpm/s |  RW   |  Rx   |
 
 </details>
 
 ### 0x60FF – Target Velocity
 
-Desired motor velocity in millirevolutions per minute.
+Desired motor velocity in revolutions per minute.
 
 <details>
 
@@ -1561,24 +1545,29 @@ Desired motor velocity in millirevolutions per minute.
 
 | Name            | Index:Sub | Type      | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------- | --------- | --------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Target Velocity | 0x60FF:0  | INTEGER32 |    32    |      0       |    —     |    —     | mrpm  |  RW   |  Rx   |
+| Target Velocity | 0x60FF:0  | INTEGER32 |    32    |      0       |    —     |    —     | rpm  |  RW   |  Rx   |
 
 </details>
 
 ### 0x6502 – Supported Drive Modes
 
-MD controllers support following standard CiA 402 drive modes:
+MD controllers actually implement the following standard CiA 402 drive modes:
 
-- Cyclic Synchronous Torque Mode (CST)
 - Cyclic Synchronous Position Mode (CSP)
-- Velocity Mode (VM)
+- Cyclic Synchronous Velocity Mode (CSV)
 - Profile Position Mode (PPM)
 - Profile Velocity Mode (PVM)
 
-And two manufacturer specific modes:
+```{warning}
+**The value reported by this register does not match the modes the firmware actually implements.** On current firmware `0x6502` reads `0x00000287`, which disagrees with the list above in two directions:
 
-- Impedance Mode (IMP)
-- Service Mode (SRV)
+- **Advertised but *not* implemented:** Velocity Mode (VL, bit 1) and Cyclic Synchronous Torque Mode (CST, bit 9). Writing either mode number to `0x6060` puts the drive into an idle state — the motor stops producing torque, **no fault is raised, and the Statusword still reports `Operation Enabled`**. See the warning under `0x6060`.
+- **Implemented but *not* advertised:** Cyclic Synchronous Velocity Mode (CSV, bit 8). The mode works correctly when written to `0x6060` despite this register reporting it as unsupported.
+
+Do not use `0x6502` to decide which modes to use — treat the list above as authoritative. Master tooling that auto-populates a mode selector from this register will offer VL and CST (which silently fail) and hide CSV (which works).
+```
+
+Two additional manufacturer-specific modes are usable via `0x6060` (Impedance Mode / Service Mode, see above), but — like every manufacturer-specific mode under the CiA 402 profile — they are not, and cannot be, advertised through the standard bits of this register; the firmware does not set any bits above bit 9 here.
 
 <details>
 
@@ -1586,7 +1575,7 @@ And two manufacturer specific modes:
 
 | Name                  | Index:Sub | Type       | Bit Size | Default Data | Min Data | Max Data | Unit  |  SDO  |  PDO  |
 | --------------------- | --------- | ---------- | :------: | :----------: | :------: | :------: | :---: | :---: | :---: |
-| Supported Drive Modes | 0x6502:0  | UNSIGNED32 |    32    |  0x00030385  |    —     |    —     |   —   |  RO   |   —   |
+| Supported Drive Modes | 0x6502:0  | UNSIGNED32 |    32    |  0x00000287  |    —     |    —     |   —   |  RO   |   —   |
 
 </details>
 
@@ -1596,23 +1585,25 @@ And two manufacturer specific modes:
 
 **Table 5**: Bit distribution of supported drive modes register.
 
-|   Bit   | Value |               Drive Mode                |
-| :-----: | :---: | :-------------------------------------: |
-| 31...18 |   0   |          Manufacturer-specific          |
-|   17    |   1   | Impedance (IMP — Manufacturer-specific) |
-|   16    |   1   |  Service (SRV — Manufacturer-specific)  |
-| 15...10 |   0   |                Reserved                 |
-|    9    |   1   |  Cyclic Synchronous Torque Mode (CST)   |
-|    8    |   1   | Cyclic Synchronous Velocity Mode (CSV)  |
-|    7    |   1   | Cyclic Synchronous Position Mode (CSP)  |
-|    6    |   0   |     Interpolated Position Mode (IP)     |
-|    5    |   0   |            Homing Mode (HM)             |
-|    4    |   0   |                Reserved                 |
-|    3    |   0   |            Torque Mode (TQ)             |
-|    2    |   1   |       Profile Velocity Mode (PV)        |
-|    1    |   0   |           Velocity Mode (VL)            |
-|    0    |   1   |       Profile Position Mode (PP)        |
+|   Bit   | Reported Value |               Drive Mode                | Actually implemented? |
+| :-----: | :------------: | :-------------------------------------: | :-------------------: |
+| 31...16 |       0        |          Manufacturer-specific          |           —           |
+| 15...10 |       0        |                Reserved                 |           —           |
+|    9    |       1        |  Cyclic Synchronous Torque Mode (CST)   |    **No** — idles     |
+|    8    |       0        | Cyclic Synchronous Velocity Mode (CSV)  |   **Yes** — works     |
+|    7    |       1        | Cyclic Synchronous Position Mode (CSP)  |          Yes          |
+|    6    |       0        |     Interpolated Position Mode (IP)     |          No           |
+|    5    |       0        |            Homing Mode (HM)             |          No           |
+|    4    |       0        |                Reserved                 |           —           |
+|    3    |       0        |            Torque Mode (TQ)             |          No           |
+|    2    |       1        |       Profile Velocity Mode (PV)        |          Yes          |
+|    1    |       1        |           Velocity Mode (VL)            |    **No** — idles     |
+|    0    |       1        |       Profile Position Mode (PP)        |          Yes          |
 
-**Table 6**: Register bit positions and drive mode availability in MD controllers.
+**Table 6**: Register bit positions versus actual drive mode availability in MD controllers. The two bolded rows are where the register disagrees with the firmware.
+
+```{note}
+Bits 16-31 (manufacturer-specific) are always `0`; Impedance and Service modes are not advertised here even though they work when written directly to `0x6060`. Older documentation revisions showed a value with bits 16 and 17 set — no firmware release has ever set those bits.
+```
 
 </details>

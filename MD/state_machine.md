@@ -61,7 +61,7 @@ word (0x6041)
 
 X means "do not care"
 
-#### Example:
+### Example:
 
 To put the drive into operational mode set:
 

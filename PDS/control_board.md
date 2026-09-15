@@ -121,4 +121,4 @@ set_battery_level <level1> <level2> //candletool
 :width: 600px
 Battery levels and according color of RGB switch
 ```
-More information about commands in [CANdle-SDK PDS commands](../CANdle-SDK/candlelib/PDSModule.md) and [candletool for PDS](../CANdle-SDK/candletool/Commands.md#candletool-pds)
+More information about commands in [CANdle-SDK PDS commands](../CANdle-SDK/candlelib/PDSModule.md) and [candletool for PDS](candletool-pds)

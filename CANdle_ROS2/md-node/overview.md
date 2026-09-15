@@ -19,10 +19,10 @@ The following services provide runtime control over MD drive controllers.
 ### Set Mode Service Details
 
 The `/md/set_mode` service accepts requests of type `candle_ros2/SetMode`, field `mode` is a string that can take one of the following values:
-- [`"IMPEDANCE"`](/MD/motion.md#impedance-pd)
-- [`"POSITION_PID"`](/MD/motion.md#position-pid)
-- [`"VELOCITY_PID"`](/MD/motion.md#velocity-pid)
-- [`"RAW_TORQUE"`](/MD/motion.md#impedance-pd)
+- [`"IMPEDANCE"`](impedance-pd)
+- [`"POSITION_PID"`](position-pid)
+- [`"VELOCITY_PID"`](velocity-pid)
+- [`"RAW_TORQUE"`](impedance-pd)
 
 ## MD Node Topics
 
