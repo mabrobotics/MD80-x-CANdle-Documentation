@@ -69,7 +69,7 @@ def generate_file_list():
             files_data.append(file_info)
     
     with open(output_file, "w") as f:
-        json.dump(files_data, f, indent=4)
+        json.dump({"assets": files_data}, f, indent=4)
 
 if __name__ == "__main__":
     generate_file_list()
