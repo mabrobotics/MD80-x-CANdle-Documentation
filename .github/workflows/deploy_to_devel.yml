@@ -27,6 +27,7 @@ jobs:
 
       - name: Build the book
         run: |
+          python generate_json.py
           jupyter-book build . --config _config_devel.yml
 
       - name: Deploy to mab-documentation-devel-deploy
