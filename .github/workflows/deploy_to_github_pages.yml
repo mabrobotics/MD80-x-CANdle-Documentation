@@ -22,6 +22,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build the book
         run: |
+          python generate_ini_file_list.py
           jupyter-book build .
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
