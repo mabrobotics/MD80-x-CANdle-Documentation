@@ -3,10 +3,10 @@ import glob
 import re
 
 folder_to_scan = "./_static/firmware/"
-output_file = "./_static/firmware/api_download_82cc028h.ini"
+output_file = "./_static/firmware/api_download.ini"
 
-raw_base = "https://mabrobotics.github.io/MD80-x-CANdle-Documentation/md-firmware/"
-mirror_base = "https://mabrobotics.github.io/mab-documentation-devel-deploy/md-firmware/"
+raw_base = "https://mabrobotics.github.io/MD80-x-CANdle-Documentation/_static/firmware/"
+mirror_base = "https://mabrobotics.github.io/mab-documentation-devel-deploy/_static/firmware/"
 
 DEVICE_MAP = {
     "md": "MD",
