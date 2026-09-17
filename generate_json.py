@@ -4,7 +4,7 @@ import glob
 import re
 
 folder_to_scan = "./_static/firmware/"
-output_file = "./_static/firmware/downloadable_list.json"
+output_file = "./_static/firmware/api_download_82cc028h.json"
 
 raw_base = "https://mabrobotics.github.io/MD80-x-CANdle-Documentation/md-firmware/"
 html_base = "https://github.com/mabrobotics/MD80-x-CANdle-Documentation/tree/main/_static/firmware"
