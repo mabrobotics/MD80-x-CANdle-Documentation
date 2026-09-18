@@ -1,5 +1,15 @@
-(md_canopen)=
-# CANopen
+(md_canopen_co25)=
+# CANopen [LEGACY]
+
+```{warning}
+**Legacy documentation.** This page documents the CANopen implementation shipped with MD firmware
+**2.5.x**. It is kept for users who still run that firmware and is no longer updated.
+
+The CANopen stack has been rewritten for the current firmware and is documented in
+[CANopen](md_canopen). The two object dictionaries are not compatible, so do not read values across
+from that section.
+```
+
 
 MD controllers are capable of supporting CANopen communication protocol according the CiA402 device
 profile. For further details, please examine the Object Dictionary chapter that contains the
@@ -70,13 +80,13 @@ Remember to save the parameters - please see the last chapter
 After the parameters have been filled there are two more steps to follow - save to non-volatile
 memory and calibrate:
 
-1. Run [store parameters](store_parameters) routine using 0x1010:1:
+1. Run [store parameters](store_parameters_co25) routine using 0x1010:1:
 
    - make sure the state machine is in "switch on disabled" state (write 0x8 to controlword 0x6040)
    - write 0x65766173 to 0x1010:1
    - wait for the drive to reboot
 
-1. Run [calibration routine](system_command) using 0x2003:3 (and output encoder calibration routine
+1. Run [calibration routine](system_command_co25) using 0x2003:3 (and output encoder calibration routine
    0x2003:4 if output encoder is present)
 
    - make sure the state machine is in "operational" state (write sequentially 0x8, 0x6, 0xf to

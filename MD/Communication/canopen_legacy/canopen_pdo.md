@@ -1,4 +1,14 @@
-# PDO Overview
+# PDO Overview [LEGACY]
+
+```{warning}
+**Legacy documentation.** This page documents the CANopen implementation shipped with MD firmware
+**2.5.x**. It is kept for users who still run that firmware and is no longer updated.
+
+The CANopen stack has been rewritten for the current firmware and is documented in
+[CANopen](md_canopen). The two object dictionaries are not compatible, so do not read values across
+from that section.
+```
+
 
 ## 1. Introduction
 
@@ -34,7 +44,7 @@ ______________________________________________________________________
 ## 4. PDO Communication Parameters
 
 Each PDO has a **Communication Parameter Record** (object 0x1400 for RPDO1, 0x1800 for TPDO1, etc.)
-that defines how it is sent/received. cf: [Object Dictionary](receive_pdo1_mapping)
+that defines how it is sent/received. cf: [Object Dictionary](receive_pdo1_mapping_co25)
 
 | **Parameter**     | **Description**                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------- |

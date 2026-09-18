@@ -1,4 +1,14 @@
-# NMT Overview
+# NMT Overview [LEGACY]
+
+```{warning}
+**Legacy documentation.** This page documents the CANopen implementation shipped with MD firmware
+**2.5.x**. It is kept for users who still run that firmware and is no longer updated.
+
+The CANopen stack has been rewritten for the current firmware and is documented in
+[CANopen](md_canopen). The two object dictionaries are not compatible, so do not read values across
+from that section.
+```
+
 
 ## 1. Introduction
 

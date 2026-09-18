@@ -55,19 +55,31 @@ This should allow for uploading the firmware even to an otherwise unresponsive d
 
 Main stable releases:
 
-|          Date           |                                          CANdle device                                           |                                           MD Firmware                                            |
-| :---------------------: | :----------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
-|       05.04.2023        | [2.2.0](https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link) | [2.2.0](https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link) |
-|       31.05.2024        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |   [2.3.1](https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing)    |
-|       22.08.2024        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.4.0](../_static/firmware/md_2.4.0.zip)                             |
-|       30.01.2025        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.4.1](../_static/firmware/md_2.4.1.zip)                             |
-|       29.07.2025        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.5.0](../_static/firmware/md_2.5.0.zip)                             |
-|       11.08.2025        |                          [2.2.1](../_static/firmware/candle_2.2.1.zip)                           |                            [2.5.1](../_static/firmware/md_2.5.1.zip)                             |
-|       24.11.2025        |                 [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab)                  |               [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.2.zip)               |
-|       10.03.2026        |                 [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab)                  |               [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.4.zip)               |
-| **29.08.2026 (latest)** |                 [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab)                  |                  [3.0.0](../_static/firmware/md_app_3.0.0_3b52568.mab)                           |
+| Date | CANdle device | MD Firmware | MD CANopen | EDS file |
+| :--: | :-----------: | :---------: | :--------: | :------: |
+| **29.08.2026 (latest)** | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [3.0.0](../_static/firmware/md_app_3.0.0_3b52568.mab) | pending release | [2.0](../_static/eds/md_2.0.eds) |
+| 10.03.2026 | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.4.zip) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
 
-## CANOpen EDS file
+````{dropdown} Older releases
+| Date | CANdle device | MD Firmware | MD CANopen | EDS file |
+| :--: | :-----------: | :---------: | :--------: | :------: |
+| 02.03.2026 | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | - | [2.5.3](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.3.zip) | [1.1](../_static/eds/md_1.1.eds) |
+| 24.11.2025 | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.2.zip) | [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip) | [1.1](../_static/eds/md_1.1.eds) |
+| 11.08.2025 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.5.1](../_static/firmware/md_2.5.1.zip) | - | - |
+| 29.07.2025 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.5.0](../_static/firmware/md_2.5.0.zip) | - | - |
+| 30.01.2025 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.4.1](../_static/firmware/md_2.4.1.zip) | [2.4.1](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip) | [1.0](../_static/eds/md_1.0.eds) |
+| 22.08.2024 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.4.0](../_static/firmware/md_2.4.0.zip) | [2.4.0](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip) | - |
+| 31.05.2024 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.3.1](https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing) | - | - |
+| 05.04.2023 | [2.2.0](https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link) | [2.2.0](https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link) | - | - |
+````
+
+## CANopen EDS file [LEGACY]
+
+```{note}
+The files below belong to the **legacy** CANopen firmware (2.5.x), documented in the
+[legacy CANopen](md_canopen_co25) section. For the rewritten CANopen firmware, see
+[CANopen EDS file](canopen_eds) below.
+```
 
 Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80 and MD80HV.
 
@@ -78,5 +90,17 @@ Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80
 | 02.03.2026 | [2.5.3](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.3.zip) | [1.1](../_static/eds/md_1.1.eds) |
 | 10.03.2026 | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
 
-<!-- TODO: when new CANopen firmware is ready to publish, fill and add following section to the table -->
-<!-- | **??.??.????** |                         [-.-.-]()                         | [1.3](../_static/eds/md_1.3.eds) | -->
+(canopen_eds)=
+## CANopen EDS file
+
+Electronic data sheet for the current CANopen firmware, compatible with MD20, MD80 and MD80HV. The
+objects it describes are documented in the [CANopen](md_canopen) section.
+
+| Date       | MD CANopen firmware version | Compatible EDS file              |
+| :--------: | :-------------------------: | :------------------------------: |
+| 18.09.2026 | pending release             | [2.0](../_static/eds/md_2.0.eds) |
+
+```{important}
+The firmware this EDS belongs to has not been released yet. Fill in the version and its download
+link before publishing this page.
+```

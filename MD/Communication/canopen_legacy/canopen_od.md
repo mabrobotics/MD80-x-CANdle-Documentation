@@ -1,4 +1,14 @@
-# Object Dictionary
+# Object Dictionary [LEGACY]
+
+```{warning}
+**Legacy documentation.** This page documents the CANopen implementation shipped with MD firmware
+**2.5.x**. It is kept for users who still run that firmware and is no longer updated.
+
+The CANopen stack has been rewritten for the current firmware and is documented in
+[CANopen](md_canopen). The two object dictionaries are not compatible, so do not read values across
+from that section.
+```
+
 
 Object dictionary holds CAN objects that can be accessed using SDOs and in some cases by PDOs. There
 are three main groups in which the address space is divided into:
@@ -124,7 +134,7 @@ a general error. For a more verbose error and warning status, please see 0x2004 
 </table>
 <p></p>
 
-(store_parameters)=
+(store_parameters_co25)=
 
 ### 0x1010 - Store Parameters
 
@@ -196,6 +206,7 @@ Defines the period of heartbeat message sent by the MD80.
 </table>
 <p></p>
 
+(receive_pdo1_mapping_co25)=
 ### 0x1600 - Receive PDO1 mapping
 
 <table border="1" cellpadding="2" cellspacing="0"  class="gridlines sheet0" id="sheet0" style="float:center;text-align:center;font-size:11px ;width:100%">
@@ -599,7 +610,7 @@ modification using 0x1010 Store Parameters.
 </table>
 <p></p>
 
-(velocity_pid_controller)=
+(velocity_pid_controller_co25)=
 
 ### 0x2001 - Velocity PID Controller
 
@@ -679,7 +690,7 @@ width: 1000px
 ---
 ```
 
-(position_pid_controller)=
+(position_pid_controller_co25)=
 
 ### 0x2002 - Position PID Controller
 
@@ -760,7 +771,7 @@ align: center
 ---
 ```
 
-(system_command)=
+(system_command_co25)=
 
 ### 0x2003 - System Command
 
@@ -1210,7 +1221,7 @@ Parameters. **BE CAREFUL**, raw torque can be dangerous.
 </table>
 <p></p>
 
-```{figure} ../images/impedance.png
+```{figure} ../../images/impedance.png
 ---
 align: center
 width: 1000px
@@ -1664,7 +1675,7 @@ damping. [Impedance-pd](impedance-pd)
 
 #### Service
 
-Mode in which [System Commands](system_command) can be issued.
+Mode in which [System Commands](system_command_co25) can be issued.
 
 #### Idle
 
@@ -1674,7 +1685,7 @@ damping sensation on the shaft.
 #### Profile position
 
 Profile position mode uses a trapezoidal trajectory generator on top of the
-[Position PID controller](position_pid_controller). Allows to perform smooth point-to-point
+[Position PID controller](position_pid_controller_co25). Allows to perform smooth point-to-point
 movements.
 
 ```{figure} images/position_profile_generator_CANopen.png
@@ -1683,7 +1694,7 @@ movements.
 #### Profile velocity
 
 Profile velocity mode uses a trapezoidal trajectory generator on top of the
-[Velocity PID controller](velocity_pid_controller). Allows to reach a certain velocity with a
+[Velocity PID controller](velocity_pid_controller_co25). Allows to reach a certain velocity with a
 constant acceleration / deceleration.
 
 ```{figure} images/velocity_profile_generator_CANopen.png

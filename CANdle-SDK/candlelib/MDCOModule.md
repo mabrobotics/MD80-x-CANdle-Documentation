@@ -17,10 +17,9 @@ It can be included in your project via the header file:
 
 ## Installation
 
-Before using MDCO module you should migrate the motor driver in CANopen, cf:
-https://mabrobotics.github.io/MD80-x-CANdle-Documentation/md_canopen/TransitionProcedure.html. If
-you want to use candle features don't forget to update your candle with the latest version
-available.
+Before using the MDCO module you should migrate the motor driver to CANopen, see
+[Migration to and from CANopen](canopen_migration_co25). If you want to use candle features,
+don't forget to update your candle with the latest version available.
 
 ## Main Features
 
