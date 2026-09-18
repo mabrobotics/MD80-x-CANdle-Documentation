@@ -9,12 +9,7 @@
 Simplified (lightweight) 3D \*.STEP models of MABRobotics products can be found
 [here](https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing).
 
-## CANdleSDK
-
-Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the
-CANdleSDK binary releases.
-
-## MAB Firmware
+## Firmware
 
 Firmware update of MABs products is release in form of proprietary `.mab` files. These files can be
 uploaded to devices using [CANdleTool](candletool)
@@ -73,34 +68,7 @@ Main stable releases:
 | 05.04.2023 | [2.2.0](https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link) | [2.2.0](https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link) | - | - |
 ````
 
-## CANopen EDS file [LEGACY]
+## CANdleSDK
 
-```{note}
-The files below belong to the **legacy** CANopen firmware (2.5.x), documented in the
-[legacy CANopen](md_canopen_co25) section. For the rewritten CANopen firmware, see
-[CANopen EDS file](canopen_eds) below.
-```
-
-Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80 and MD80HV.
-
-|    Date    |                         MD CANopen firmware version                          |       Compatible EDS file        |
-| :--------: | :--------------------------------------------------------------------------: | :------------------------------: |
-| 11.08.2025 |                  [2.5.1](../_static/firmware/md_2.5.1.zip)                   | [1.1](../_static/eds/md_1.1.eds) |
-| 17.11.2025 | [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip) | [1.1](../_static/eds/md_1.1.eds) |
-| 02.03.2026 | [2.5.3](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.3.zip) | [1.1](../_static/eds/md_1.1.eds) |
-| 10.03.2026 | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
-
-(canopen_eds)=
-## CANopen EDS file
-
-Electronic data sheet for the current CANopen firmware, compatible with MD20, MD80 and MD80HV. The
-objects it describes are documented in the [CANopen](md_canopen) section.
-
-| Date       | MD CANopen firmware version | Compatible EDS file              |
-| :--------: | :-------------------------: | :------------------------------: |
-| 18.09.2026 | pending release             | [2.0](../_static/eds/md_2.0.eds) |
-
-```{important}
-The firmware this EDS belongs to has not been released yet. Fill in the version and its download
-link before publishing this page.
-```
+Please visit [**releases**](https://github.com/mabrobotics/CANdle-SDK/releases) page for all of the
+CANdleSDK binary releases.
