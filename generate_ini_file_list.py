@@ -19,8 +19,15 @@ DEVICE_MAP = {
     "flasher": "MD_FLASHER" 
 }
 
-# Lista rozszerzeń, które chcemy usuwać z nazwy sekcji
-KNOWN_EXTENSIONS = ['.exe', '.bin', '.hex', '.elf', '.zip', '.tar.gz', '.appimage']
+SUBPATH_MAP = {
+    "MD_FLASHER": "md/legacy/",
+    "MD": "md/",
+    "CANDLE": "candle/",
+    "PDS": "pds/",
+    "UNKNOWN": ""
+}
+
+KNOWN_EXTENSIONS = ['.exe', '.bin', '.hex', '.elf', '.zip', '.tar.gz', '.appimage', '.mab']
 
 def generate_ini_list():
     grouped_assets = {}
@@ -43,7 +50,6 @@ def generate_ini_list():
                 
                 filename_lower = filename.lower()
 
-                # Bezpieczne usuwanie rozszerzenia
                 name_only = filename
                 for ext in KNOWN_EXTENSIONS:
                     if filename_lower.endswith(ext):
@@ -85,9 +91,10 @@ def generate_ini_list():
                     f.write(f"filename={file_data['filename']}\n")
                 else:
                     f.write(f"filename_{arch}={file_data['filename']}\n")
-                    
-            f.write(f"base_url={raw_base}\n")
-            f.write(f"base_url_mirror={mirror_base}\n")
+            
+            subpath = SUBPATH_MAP.get(data['type'], "")
+            f.write(f"base_url={raw_base}{subpath}\n")
+            f.write(f"base_url_mirror={mirror_base}{subpath}\n")
             
             for arch, file_data in data['files'].items():
                 full_link = f"{raw_base}{file_data['rel_path']}"
