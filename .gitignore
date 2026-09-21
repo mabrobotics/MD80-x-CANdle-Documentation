@@ -3,3 +3,4 @@ _build
 venv
 *.DS_Store
 tags
+_static/firmware/api_download.ini
