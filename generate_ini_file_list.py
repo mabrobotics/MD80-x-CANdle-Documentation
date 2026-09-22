@@ -13,7 +13,7 @@ raw_base = "https://mabrobotics.github.io/MD80-x-CANdle-Documentation/_static/fi
 mirror_base = "https://mabrobotics.github.io/mab-documentation-devel-deploy/_static/firmware/"
 
 DEVICE_MAP = {
-    "md": "MD",
+    "md": "MAB_FILE",
     "candle": "CANDLE",
     "pds": "PDS",
     "flasher": "MD_FLASHER" 
