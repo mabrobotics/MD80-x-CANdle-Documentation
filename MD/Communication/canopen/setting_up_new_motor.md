@@ -28,9 +28,21 @@ identifiers immediately.
 | 0x2000:5 | Torque Bandwidth           | Hz, 10 to 2500                    |
 | 0x2000:6 | Motor Name                 | up to 24 characters               |
 | 0x2000:7 | Motor Shutdown Temperature | degrees Celsius, 10 to 120        |
+| 0x2000:9 | Motor Torque Constant      | Nm/A, greater than 0              |
+| 0x2000:A | Motor KV Rating            | RPM/V, greater than 0             |
 
 Motor Name is longer than 4 bytes, so it needs a segmented SDO write. An expedited write is
 rejected.
+
+```{important}
+The torque constant and the KV rating describe the same property, so the order you write them in
+decides which one wins. Writing KV recomputes the torque constant from it, as 60 divided by 2 pi
+times KV. Writing the torque constant afterwards leaves KV untouched.
+
+Write KV first and let the drive derive the torque constant, or write the torque constant last if
+your motor data sheet gives a measured value you trust more. KV is stored as a whole number, so a
+fractional value reads back rounded down.
+```
 
 ## 3. Gear ratio
 
@@ -130,8 +142,10 @@ emergency stop.
 
 ## 8. Save
 
-Write 1 to Save Config 0x2023:1. The drive writes flash and reboots, so expect it to disappear from
-the bus for a moment. Everything up to this point lives in RAM only.
+Write 1 to Save Config 0x2023:1, or write the signature 0x65766173 to the standard
+[Store Parameters](canopen_diagnostics) object 0x1010:1. The two do the same thing. The drive writes
+flash and reboots, so expect it to disappear from the bus for a moment. Everything up to this point
+lives in RAM only.
 
 ## 9. Calibrate
 

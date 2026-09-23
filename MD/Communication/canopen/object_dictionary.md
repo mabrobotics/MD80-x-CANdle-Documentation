@@ -1,8 +1,8 @@
 (canopen_od)=
 # Object Dictionary
 
-Complete reference for object dictionary revision 2.0. The machine readable version is
-`md_2.0.eds`, available from [Downloads](canopen_eds).
+Complete reference for object dictionary revision 1.2. The machine readable version is
+`md_1.2.eds`, available from [Downloads](device_firmware).
 
 The dictionary is split into three ranges:
 
@@ -10,8 +10,9 @@ The dictionary is split into three ranges:
 - **0x2000 to 0x5FFF, manufacturer specific area.** MAB objects: motor parameters, encoders, controller gains, status and commands.
 - **0x6000 to 0x9FFF, profile specific area.** CiA 402 objects: state machine, modes, setpoints and limits.
 
-Access types are `ro` read only, `rw` read and write over SDO, and `rww` read and write over
-SDO or through a receive PDO. The PDO column says whether the entry can be mapped into a PDO.
+Access types are `ro` read only, `wo` write only, `rw` read and write over SDO, and `rww`
+read and write over SDO or through a receive PDO. The PDO column says whether the entry can
+be mapped into a PDO.
 
 ```{note}
 Ranges in the notes column are the ones the **firmware** enforces. They are sometimes narrower
@@ -61,6 +62,24 @@ Hardware version string.
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | - | Manufacturer Hardware Version | STRING | ro | - | no |  |
+
+### 0x1010 Store Parameters
+
+Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Write-only: reading any sub-index other than 0 aborts with 0x05040001.
+
+| Sub | Name | Type | Access | Default | PDO | Notes |
+| --- | ---- | ---- | ------ | ------- | --- | ----- |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no | always reports 4, although only sub-index 1 is implemented |
+| 1 | Save all Parameters | UINT32 | wo | 0x00000000 | no | write the signature 0x65766173, ASCII "save"; any other value aborts with 0x08000020 |
+
+### 0x1011 Restore Default Parameters
+
+Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Only sub-index 4 is implemented. Write-only: reading any sub-index other than 0 aborts with 0x05040001.
+
+| Sub | Name | Type | Access | Default | PDO | Notes |
+| --- | ---- | ---- | ------ | ------- | --- | ----- |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no | always reports 4, although only sub-index 4 is implemented |
+| 4 | Restore manufacturer defined default Parameters | UINT32 | wo | 0x00000000 | no | write the signature 0x64616F6C, ASCII "load"; any other value aborts with 0x08000020 |
 
 ### 0x1014 COB-ID EMCY
 
@@ -328,11 +347,11 @@ Mapping for TPDO4. Default: DC Link Circuit Voltage.
 
 ### 0x2000 Actuator Config
 
-Motor and actuator identity. These values describe the physical motor and are needed before calibration can run.
+Motor and actuator identity. These values describe the physical motor and are needed before calibration can run. Sub-index 0 reports 10.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x08 | no |  |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x0A | no |  |
 | 1 | CAN ID | UINT8 | rw | 100 | no | 10 to 127 |
 | 2 | Pole Pairs | UINT8 | rw | 0 | no | 2 to 42 |
 | 3 | Phase Inductance | REAL32 | rw | 0.0 | no | H, 5e-9 to 0.1 |
@@ -341,6 +360,8 @@ Motor and actuator identity. These values describe the physical motor and are ne
 | 6 | Motor Name | STRING | rw | MD | no | up to 24 characters, segmented transfer only |
 | 7 | Motor Shutdown Temperature | UINT8 | rw | 80 | no | degrees C, 10 to 120 |
 | 8 | Motor Calibration Mode | UINT8 | rw | 0 | no | stored, not currently acted on by the firmware |
+| 9 | Motor Torque Constant | REAL32 | rw | 1.0 | no | Nm/A, must be greater than 0 |
+| 10 | Motor KV Rating | REAL32 | rw | 0.0 | no | RPM/V, must be greater than 0; writing it recomputes 0x2000:9 and is stored as a whole number |
 
 ### 0x2001 Main Encoder
 

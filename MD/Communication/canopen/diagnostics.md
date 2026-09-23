@@ -132,3 +132,22 @@ Save Config, Revert Factory Settings and Reset Controller all reboot the drive. 
 on the bus for the duration of the restart, and any SDO in flight is lost. The calibration and test
 routines save automatically when they succeed, so they reboot as well.
 ```
+
+### Standard save and restore
+
+Saving and restoring defaults are also reachable through their CiA 301 objects, which is what a
+generic CANopen master or configuration tool will use. Both take a four byte signature rather than
+the value 1.
+
+| Object   | Name                                            | Signature  | ASCII  | Equivalent to |
+| -------- | ----------------------------------------------- | ---------- | ------ | ------------- |
+| 0x1010:1 | Save all Parameters                             | 0x65766173 | `save` | 0x2023:1      |
+| 0x1011:4 | Restore manufacturer defined default Parameters | 0x64616F6C | `load` | 0x2023:7      |
+
+Writing any other value aborts with 0x08000020, data cannot be transferred or stored, which is the
+CiA 301 response to a wrong signature. Both objects are write only, so reading them aborts with
+0x05040001.
+
+Only sub-index 1 of 0x1010 and sub-index 4 of 0x1011 are implemented, even though both report a
+highest sub-index of 4. Restoring defaults therefore always restores everything; there is no way to
+reset one parameter group on its own.

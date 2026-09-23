@@ -13,7 +13,7 @@ published in [Downloads](downloads).
 
 ```{note}
 This section describes the CANopen firmware **v3.0.0** and later built around object dictionary 
-revision **2.0** (`md_2.0.eds`). Drives running the older 2.5.x CANopen firmware are covered by the
+revision **1.2** (`md_1.2.eds`). Drives running the older 2.5.x CANopen firmware are covered by the
 [legacy CANopen section](md_canopen_co25), which describes a different object dictionary.
 ```
 
@@ -77,8 +77,8 @@ more than one drive you must assign each drive its own transmit identifiers thro
 
 ## Electronic data sheet
 
-The EDS file describing this object dictionary is `md_2.0.eds`, available from
-[Downloads](canopen_eds). Load it into your CANopen master or configuration tool to get object
+The EDS file describing this object dictionary is `md_1.2.eds`, available from
+[Downloads](device_firmware). Load it into your CANopen master or configuration tool to get object
 names, data types and default values without transcribing them by hand.
 
 ## What is in this section

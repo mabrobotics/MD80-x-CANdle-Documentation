@@ -1,15 +1,15 @@
 [FileInfo]
-FileName=md_2.0.eds
-FileVersion=2.0
-FileRevision=1
+FileName=md_1.2.eds
+FileVersion=1.2
+FileRevision=2
 LastEDS=
 EDSVersion=4.0
 Description=MD Motor Controller
 CreationTime=4:41PM
 CreationDate=09-17-2026
 CreatedBy=MAB Robotics
-ModificationTime=8:46AM
-ModificationDate=09-18-2026
+ModificationTime=11:20AM
+ModificationDate=09-21-2026
 ModifiedBy=Jakub Matyszczak
 
 [DeviceInfo]
@@ -125,58 +125,60 @@ DefaultValue=0x00000000
 PDOMapping=0
 
 [OptionalObjects]
-SupportedObjects=51
+SupportedObjects=53
 1=0x1005
 2=0x1008
 3=0x1009
-4=0x1014
-5=0x1016
-6=0x1017
-7=0x1400
-8=0x1401
-9=0x1402
-10=0x1403
-11=0x1600
-12=0x1601
-13=0x1602
-14=0x1603
-15=0x1800
-16=0x1801
-17=0x1802
-18=0x1803
-19=0x1A00
-20=0x1A01
-21=0x1A02
-22=0x1A03
-23=0x603F
-24=0x6040
-25=0x6041
-26=0x6060
-27=0x6061
-28=0x6064
-29=0x6067
-30=0x606C
-31=0x606D
-32=0x6071
-33=0x6072
-34=0x6073
-35=0x6075
-36=0x6076
-37=0x6077
-38=0x6079
-39=0x607A
-40=0x607B
-41=0x607D
-42=0x6080
-43=0x6083
-44=0x6084
-45=0x6085
-46=0x6091
-47=0x60A8
-48=0x60A9
-49=0x60AA
-50=0x60FF
-51=0x6502
+4=0x1010
+5=0x1011
+6=0x1014
+7=0x1016
+8=0x1017
+9=0x1400
+10=0x1401
+11=0x1402
+12=0x1403
+13=0x1600
+14=0x1601
+15=0x1602
+16=0x1603
+17=0x1800
+18=0x1801
+19=0x1802
+20=0x1803
+21=0x1A00
+22=0x1A01
+23=0x1A02
+24=0x1A03
+25=0x603F
+26=0x6040
+27=0x6041
+28=0x6060
+29=0x6061
+30=0x6064
+31=0x6067
+32=0x606C
+33=0x606D
+34=0x6071
+35=0x6072
+36=0x6073
+37=0x6075
+38=0x6076
+39=0x6077
+40=0x6079
+41=0x607A
+42=0x607B
+43=0x607D
+44=0x6080
+45=0x6083
+46=0x6084
+47=0x6085
+48=0x6091
+49=0x60A8
+50=0x60A9
+51=0x60AA
+52=0x60FF
+53=0x6502
 
 [1005]
 ParameterName=COB-ID SYNC Message
@@ -203,6 +205,54 @@ ObjectType=0x7
 DataType=0x0009
 AccessType=ro
 DefaultValue=
+PDOMapping=0
+
+[1010]
+ParameterName=Store Parameters
+ObjectType=0x8
+;StorageLocation=RAM
+SubNumber=0x2
+
+[1010sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x04
+PDOMapping=0
+
+[1010sub1]
+ParameterName=Save all Parameters
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0007
+AccessType=wo
+DefaultValue=0x00000000
+PDOMapping=0
+
+[1011]
+ParameterName=Restore Default Parameters
+ObjectType=0x8
+;StorageLocation=RAM
+SubNumber=0x2
+
+[1011sub0]
+ParameterName=Highest sub-index supported
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x04
+PDOMapping=0
+
+[1011sub4]
+ParameterName=Restore manufacturer defined default Parameters
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0007
+AccessType=wo
+DefaultValue=0x00000000
 PDOMapping=0
 
 [1014]
@@ -1704,7 +1754,7 @@ SupportedObjects=13
 ParameterName=Actuator Config
 ObjectType=0x9
 ;StorageLocation=RAM
-SubNumber=0x9
+SubNumber=0xB
 
 [2000sub0]
 ParameterName=Highest sub-index supported
@@ -1712,7 +1762,7 @@ ObjectType=0x7
 ;StorageLocation=RAM
 DataType=0x0005
 AccessType=ro
-DefaultValue=0x08
+DefaultValue=0x0A
 PDOMapping=0
 
 [2000sub1]
@@ -1789,6 +1839,24 @@ ObjectType=0x7
 DataType=0x0005
 AccessType=rw
 DefaultValue=0
+PDOMapping=0
+
+[2000sub9]
+ParameterName=Motor Torque Constant
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0008
+AccessType=rw
+DefaultValue=1.0
+PDOMapping=0
+
+[2000subA]
+ParameterName=Motor KV Rating
+ObjectType=0x7
+;StorageLocation=RAM
+DataType=0x0008
+AccessType=rw
+DefaultValue=0.0
 PDOMapping=0
 
 [2001]

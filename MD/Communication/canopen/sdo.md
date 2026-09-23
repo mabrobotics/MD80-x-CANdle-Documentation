@@ -64,7 +64,7 @@ arriving with no transfer open, where both are reported as zero.
 | 0x06070013 | Data type does not match, length too low      | Fewer bytes were supplied than the object needs, including expedited writes to strings |
 | 0x06090011 | Sub-index does not exist                      | The index exists but the sub-index does not                                 |
 | 0x06090030 | Value range of parameter exceeded             | The value is outside the range the firmware accepts, see the [object dictionary](canopen_od) |
-| 0x08000020 | Data cannot be transferred or stored          | A per-mille torque or current object was accessed while its rated value is still zero |
+| 0x08000020 | Data cannot be transferred or stored          | A per-mille torque or current object was accessed while its rated value is still zero, or 0x1010 or 0x1011 was written with the wrong signature |
 
 ```{important}
 0x06090030 is the code you will meet most often during commissioning. The ranges the firmware

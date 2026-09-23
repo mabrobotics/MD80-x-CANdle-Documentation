@@ -3,7 +3,7 @@
 Usage:
     python generate_canopen_od.py [path/to/md_x.y.eds]
 
-Defaults to _static/eds/md_2.0.eds and overwrites MD/Communication/canopen/object_dictionary.md.
+Defaults to _static/eds/md_1.2.eds and overwrites MD/Communication/canopen/object_dictionary.md.
 
 The EDS supplies names, data types, access types, defaults and PDO mappability.
 The prose in DESC and the value ranges in NOTE are maintained by hand, because the
@@ -14,7 +14,7 @@ script and review both dictionaries for entries that were added or removed.
 import configparser, re, sys
 from pathlib import Path
 
-EDS_DEFAULT = Path("_static/eds/md_2.0.eds")
+EDS_DEFAULT = Path("_static/eds/md_1.2.eds")
 OUT = Path("MD/Communication/canopen/object_dictionary.md")
 
 DT = {1:"BOOLEAN",2:"INT8",3:"INT16",4:"INT32",5:"UINT8",6:"UINT16",7:"UINT32",
@@ -33,6 +33,8 @@ def g(s,k,d=""):
 DESC = {
 "1000":"Identifies the device profile. Reads 0x00020192: profile 402 in the low word, servo drive in the high word.",
 "1001":"One byte summary of active faults. See [Diagnostics](canopen_diagnostics) for the bit meanings.",
+"1010":"Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Write-only: reading any sub-index other than 0 aborts with 0x05040001.",
+"1011":"Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Only sub-index 4 is implemented. Write-only: reading any sub-index other than 0 aborts with 0x05040001.",
 "1005":"Identifier the drive listens on for SYNC. Fixed at 0x80; the drive never produces SYNC itself.",
 "1008":"Device name string.",
 "1009":"Hardware version string.",
@@ -56,7 +58,7 @@ DESC = {
 "1A01":"Mapping for TPDO2. Default: Position Actual Value and Velocity Actual Value.",
 "1A02":"Mapping for TPDO3. Default: Torque Actual Value, Power Stage Temperature and Motor Temperature.",
 "1A03":"Mapping for TPDO4. Default: DC Link Circuit Voltage.",
-"2000":"Motor and actuator identity. These values describe the physical motor and are needed before calibration can run.",
+"2000":"Motor and actuator identity. These values describe the physical motor and are needed before calibration can run. Sub-index 0 reports 10.",
 "2001":"Onboard commutation encoder.",
 "2002":"Optional encoder on the output shaft. See [Encoders](aux_encoders).",
 "2003":"Optional external torque sensor. See [External Torque Sensor](md_torque_sensor).",
@@ -102,6 +104,10 @@ DESC = {
 
 # Per-entry unit / range notes, keyed by "INDEX" or "INDEX:sub".
 NOTE = {
+"1010:0":"always reports 4, although only sub-index 1 is implemented",
+"1010:1":"write the signature 0x65766173, ASCII \"save\"; any other value aborts with 0x08000020",
+"1011:0":"always reports 4, although only sub-index 4 is implemented",
+"1011:4":"write the signature 0x64616F6C, ASCII \"load\"; any other value aborts with 0x08000020",
 "1016:1":"ms in bits 0-15, node ID in bits 16-23",
 "1017":"ms",
 "2000:1":"10 to 127",
@@ -112,6 +118,8 @@ NOTE = {
 "2000:6":"up to 24 characters, segmented transfer only",
 "2000:7":"degrees C, 10 to 120",
 "2000:8":"stored, not currently acted on by the firmware",
+"2000:9":"Nm/A, must be greater than 0",
+"2000:10":"RPM/V, must be greater than 0; writing it recomputes 0x2000:9 and is stored as a whole number",
 "2001:1":"encoder type identifier, see [Setting Up a New Motor](canopen_setup)",
 "2001:2":"-1.0 or 1.0 only",
 "2002:1":"encoder type identifier, see [Setting Up a New Motor](canopen_setup)",
@@ -191,8 +199,8 @@ out = []
 out.append("(canopen_od)=")
 out.append("# Object Dictionary")
 out.append("")
-out.append("Complete reference for object dictionary revision 2.0. The machine readable version is")
-out.append("`md_2.0.eds`, available from [Downloads](canopen_eds).")
+out.append("Complete reference for object dictionary revision 1.2. The machine readable version is")
+out.append("`md_1.2.eds`, available from [Downloads](device_firmware).")
 out.append("")
 out.append("The dictionary is split into three ranges:")
 out.append("")
@@ -200,8 +208,9 @@ out.append("- **0x1000 to 0x1FFF, communication area.** CiA 301 objects: identif
 out.append("- **0x2000 to 0x5FFF, manufacturer specific area.** MAB objects: motor parameters, encoders, controller gains, status and commands.")
 out.append("- **0x6000 to 0x9FFF, profile specific area.** CiA 402 objects: state machine, modes, setpoints and limits.")
 out.append("")
-out.append("Access types are `ro` read only, `rw` read and write over SDO, and `rww` read and write over")
-out.append("SDO or through a receive PDO. The PDO column says whether the entry can be mapped into a PDO.")
+out.append("Access types are `ro` read only, `wo` write only, `rw` read and write over SDO, and `rww`")
+out.append("read and write over SDO or through a receive PDO. The PDO column says whether the entry can")
+out.append("be mapped into a PDO.")
 out.append("")
 out.append("```{note}")
 out.append("Ranges in the notes column are the ones the **firmware** enforces. They are sometimes narrower")

@@ -33,13 +33,12 @@ compatible. Both are documented here.
 
 | Section                              | Firmware | Object dictionary | Status                          |
 | ------------------------------------ | -------- | ----------------- | ------------------------------- |
-| [CANopen](md_canopen)                | current  | revision 2.0      | actively developed              |
+| [CANopen](md_canopen)                | current  | revision 1.2      | actively developed              |
 | [CANopen \[LEGACY\]](md_canopen_co25) | 2.5.x   | revision 1.1      | supported, no longer updated    |
 
-To tell which firmware a drive is running, read Store Parameters 0x1010 over SDO. The legacy
-firmware answers; the current firmware aborts with 0x06020000, object does not exist, because saving
-moved to Save Config 0x2023:1. On the current firmware you can then read Firmware Version 0x2021:2,
-which the legacy dictionary does not have.
+To tell which firmware a drive is running, read Firmware Version 0x2021:2 over SDO. The current
+firmware answers; the legacy firmware aborts with 0x06020000, object does not exist, because it
+keeps its firmware information at 0x200A instead.
 
 ```{important}
 Do not mix the two references. Several indices exist in both generations with different meanings.

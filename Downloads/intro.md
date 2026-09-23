@@ -46,13 +46,14 @@ if the update cannot be performed sucessfullt from any reason, there is a recove
 This should allow for uploading the firmware even to an otherwise unresponsive drive.
 ````
 
+(device_firmware)=
 ## Device Firmware
 
 Main stable releases:
 
 | Date | CANdle device | MD Firmware | MD CANopen | EDS file |
 | :--: | :-----------: | :---------: | :--------: | :------: |
-| **29.08.2026 (latest)** | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [3.0.0](../_static/firmware/md_app_3.0.0_3b52568.mab) | pending release | [2.0](../_static/eds/md_2.0.eds) |
+| **29.08.2026 (latest)** | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [3.0.0](../_static/firmware/md/md_app_3.0.0_3b52568.mab) | pending release | [1.2](../_static/eds/md_1.2.eds) |
 | 10.03.2026 | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.4.zip) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
 
 ````{dropdown} Older releases
@@ -60,13 +61,17 @@ Main stable releases:
 | :--: | :-----------: | :---------: | :--------: | :------: |
 | 02.03.2026 | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | - | [2.5.3](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.3.zip) | [1.1](../_static/eds/md_1.1.eds) |
 | 24.11.2025 | [2.4.0](../candlelib/includes/candle-firmware/candle_2.4.0.mab) | [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.2.zip) | [2.5.2](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.2.zip) | [1.1](../_static/eds/md_1.1.eds) |
-| 11.08.2025 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.5.1](../_static/firmware/md_2.5.1.zip) | - | - |
-| 29.07.2025 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.5.0](../_static/firmware/md_2.5.0.zip) | - | - |
-| 30.01.2025 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.4.1](../_static/firmware/md_2.4.1.zip) | [2.4.1](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip) | [1.0](../_static/eds/md_1.0.eds) |
-| 22.08.2024 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.4.0](../_static/firmware/md_2.4.0.zip) | [2.4.0](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip) | - |
-| 31.05.2024 | [2.2.1](../_static/firmware/candle_2.2.1.zip) | [2.3.1](https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing) | - | - |
+| 11.08.2025 | [2.2.1](../candlelib/includes/candle-firmware/MAB_USB_Flasher_2.2.1.zip) | 2.5.1 | - | - |
+| 29.07.2025 | [2.2.1](../candlelib/includes/candle-firmware/MAB_USB_Flasher_2.2.1.zip) | 2.5.0 | - | - |
+| 30.01.2025 | [2.2.1](../candlelib/includes/candle-firmware/MAB_USB_Flasher_2.2.1.zip) | [2.4.1](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.4.1.zip) | [2.4.1](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.4.1.zip) | [1.0](../_static/eds/md_1.0.eds) |
+| 22.08.2024 | [2.2.1](../candlelib/includes/candle-firmware/MAB_USB_Flasher_2.2.1.zip) | [2.4.0](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.4.0.zip) | [2.4.0](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.4.0.zip) | - |
+| 31.05.2024 | [2.2.1](../candlelib/includes/candle-firmware/MAB_USB_Flasher_2.2.1.zip) | [2.3.1](https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing) | - | - |
 | 05.04.2023 | [2.2.0](https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link) | [2.2.0](https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link) | - | - |
 ````
+
+Versions 2.5.0 and 2.5.1 are listed without a download because they were never packaged as an
+archive. They exist only as per-architecture flasher executables under
+`_static/firmware/md/legacy/`.
 
 ## CANdleSDK
 

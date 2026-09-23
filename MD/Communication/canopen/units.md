@@ -83,6 +83,8 @@ with code 0x08000020, *data cannot be transferred or stored to the application*.
 | 0x2000:4 | Phase Resistance           | ohm, IEEE-754 single precision         |
 | 0x2000:5 | Torque Bandwidth           | Hz                                     |
 | 0x2000:7 | Motor Shutdown Temperature | degrees Celsius                        |
+| 0x2000:9 | Motor Torque Constant      | Nm/A, IEEE-754 single precision        |
+| 0x2000:A | Motor KV Rating            | RPM/V, IEEE-754 single precision       |
 | 0x2003:2 | Torque Sensor Value        | Nm, IEEE-754 single precision          |
 | 0x1017   | Producer Heartbeat Time    | ms                                     |
 | 0x6091:1 | Motor Revolutions          | dimensionless                          |
