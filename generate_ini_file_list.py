@@ -3,7 +3,7 @@ import glob
 import re
 
 folders_to_scan = [
-    "./_static/firmware/"
+    "./_static/firmware/*/"
 ]
 output_file = "./_static/firmware/api_download.ini"
 
