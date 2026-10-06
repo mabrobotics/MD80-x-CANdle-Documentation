@@ -73,8 +73,9 @@ Main stable releases:
 
 | Date | CANdle device | MD Firmware | MD CANopen | CANOpen EDS |
 | :--: | :-----------: | :---------: | :--------: | :------: |
-| **29.08.2026 (latest)** | [2.4.0](../_static/firmware/candle/candle_2.4.0.mab) | [3.0.0](../_static/firmware/md/md_app_3.0.0_3b52568.mab) | pending release | [1.2](../_static/eds/md_1.2.eds) |
-| 10.03.2026 | [2.4.0](../_static/firmware/candle/candle_2.4.0.mab) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.4.zip) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
+| **06.10.2026 (latest)** | [2.4.0](../_static/firmware/candle/candle_2.4.0.mab) | [3.0.1](../_static/firmware/md/md_app_3.0.1_da73b6a.mab) | [3.0.1](../_static/firmware/mdco/mdco_app_3.0.1_da73b6a.mab)| [1.2](../_static/eds/md_1.2.eds) |
+| 29.08.2026 | [2.4.0](../_static/firmware/candle/candle_2.4.0.mab) | [3.0.0](../_static/firmware/md/md_app_3.0.0_3b52568.mab) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
+|10.03.2026 | [2.4.0](../_static/firmware/candle/candle_2.4.0.mab) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_2.5.4.zip) | [2.5.4](../candlelib/includes/md-firmware/MAB_CAN_Flasher_CANopen_2.5.4.zip) | [1.1](../_static/eds/md_1.1.eds) |
 
 ````{dropdown} Older releases
 | Date | CANdle device | MD Firmware | MD CANopen | EDS file |
