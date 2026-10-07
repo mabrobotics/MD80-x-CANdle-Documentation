@@ -200,12 +200,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../MD/status_utility.html">Status &amp; Utilities</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../MD/Communication/fdcan.html">MD Protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_od.html">Object Dictionary</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/migration.html">Migration to and from CANopen</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen/intro.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/units.html">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/pdo.html">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen/object_dictionary.html">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../MD/Communication/canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MD/Communication/canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
 </ul>
 </details></li>
 </ul>
@@ -454,10 +466,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mab-firmware">MAB Firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware">Firmware</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#device-firmware">Device Firmware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-eds-file">CANOpen EDS file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
 </ul>
             </nav>
         </div>
@@ -476,22 +487,32 @@ document.write(`
 <p>Simplified (lightweight) 3D *.STEP models of MABRobotics products can be found
 <a class="reference external" href="https://drive.google.com/drive/folders/1HMs3-LDdo9Fq8obLJfhrmhvfJQhLiTa4?usp=sharing">here</a>.</p>
 </section>
-<section id="candlesdk">
-<h2>CANdleSDK<a class="headerlink" href="#candlesdk" title="Link to this heading">#</a></h2>
-<p>Please visit <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/releases"><strong>releases</strong></a> page for all of the
-CANdleSDK binary releases.</p>
-</section>
-<section id="mab-firmware">
-<h2>MAB Firmware<a class="headerlink" href="#mab-firmware" title="Link to this heading">#</a></h2>
-<p>Firmware update of MABs products is release in form of proprietary <code class="docutils literal notranslate"><span class="pre">.mab</span></code> files. These files can be
-uploaded to devices using <a class="reference internal" href="../CANdle-SDK/CANdleTool.html#candletool"><span class="std std-ref">CANdleTool</span></a></p>
+<section id="firmware">
+<h2>Firmware<a class="headerlink" href="#firmware" title="Link to this heading">#</a></h2>
+<p>Firmware update of MABs products is released in form of proprietary <code class="docutils literal notranslate"><span class="pre">.mab</span></code> files. These files can be
+uploaded to devices using <a class="reference internal" href="../CANdle-SDK/CANdleTool.html#candletool"><span class="std std-ref">CANdleTool</span></a>.</p>
+<p>MD and MDCO drives are updated by specifying a firmware version tag. CANdleTool downloads the
+matching firmware automatically:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">&lt;</span><span class="n">version_tag</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">&lt;</span><span class="n">version_tag</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;version_tag&gt;</span></code> is a release version, e.g. <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code> or <code class="docutils literal notranslate"><span class="pre">2.5.4</span></code>. To install the newest release,
+use <code class="docutils literal notranslate"><span class="pre">latest</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="n">latest</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="n">latest</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>When no internet connection is available, download the <code class="docutils literal notranslate"><span class="pre">.mab</span></code> file from the table below and upload
+it directly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mab</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">mab</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mab</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">mab</span>
 <span class="n">candletool</span> <span class="n">pds</span> <span class="n">update</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mab</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">mab</span>
 <span class="n">candletool</span> <span class="n">candle</span> <span class="n">update</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mab</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">mab</span>
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">-</span><span class="n">i</span> <span class="mi">100</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">md_3_0_0_abcdefa</span><span class="o">.</span><span class="n">mab</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">-</span><span class="n">i</span> <span class="mi">100</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">md_app_3</span><span class="mf">.0.0_3</span><span class="n">b52568</span><span class="o">.</span><span class="n">mab</span>
 </pre></div>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -499,106 +520,131 @@ uploaded to devices using <a class="reference internal" href="../CANdle-SDK/CANd
 <span class="sd-summary-text"><strong>Firmware change to version v2.5.4 and older:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Pre 3.0.0 firmware version uses a legacy update procedure, and requires Linux operating system.
 The firmware package is compiled into executable binary. Be sure to unpack a .zip package with your
-virmware version of choice and select executable appropriate for your system architecture (x86_64, arm64).
+firmware version of choice and select executable appropriate for your system architecture (x86_64, arm64).
 You can perform an update with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher_5938df3</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">baud</span> <span class="o">&lt;</span><span class="n">can</span> <span class="n">datarate</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_FLASHER_2</span><span class="mf">.5.4</span><span class="n">_X86_64</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">baud</span> <span class="o">&lt;</span><span class="n">can</span> <span class="n">datarate</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p class="sd-card-text">where:
 <code class="docutils literal notranslate"><span class="pre">&lt;id&gt;</span></code> -is your actuator can id i.e. <code class="docutils literal notranslate"><span class="pre">--id</span> <span class="pre">100</span></code>,
 <code class="docutils literal notranslate"><span class="pre">&lt;can</span> <span class="pre">datarate&gt;</span></code> - can be 1M, 2M, 5M or 8M.</p>
-<p class="sd-card-text">if the update cannot be performed sucessfullt from any reason, there is a recovery procedure:</p>
+<p class="sd-card-text">if the update cannot be performed successfully for any reason, there is a recovery procedure:</p>
 <ol class="arabic simple">
 <li><p class="sd-card-text">Disconnect your drive from power, and wait for total power loss (no LEDs),</p></li>
-<li><p class="sd-card-text">Run command <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_Flasher_5938df3</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span> <span class="pre">--baud</span> <span class="pre">&lt;can</span> <span class="pre">datarate&gt;</span> <span class="pre">**--wait**</span></code>,</p></li>
+<li><p class="sd-card-text">Run command <code class="docutils literal notranslate"><span class="pre">./MAB_CAN_FLASHER_2.5.4_X86_64</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span> <span class="pre">--baud</span> <span class="pre">&lt;can</span> <span class="pre">datarate&gt;</span> <span class="pre">**--wait**</span></code>,</p></li>
 <li><p class="sd-card-text">Connect power to the driver.
 This should allow for uploading the firmware even to an otherwise unresponsive drive.</p></li>
 </ol>
 </div>
 </details></section>
 <section id="device-firmware">
-<h2>Device Firmware<a class="headerlink" href="#device-firmware" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2>Device Firmware<a class="headerlink" href="#device-firmware" title="Link to this heading">#</a></h2>
 <p>Main stable releases:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Date</p></th>
 <th class="head text-center"><p>CANdle device</p></th>
 <th class="head text-center"><p>MD Firmware</p></th>
+<th class="head text-center"><p>MD CANopen</p></th>
+<th class="head text-center"><p>CANOpen EDS</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p>05.04.2023</p></td>
-<td class="text-center"><p><a class="reference external" href="https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link">2.2.0</a></p></td>
-<td class="text-center"><p><a class="reference external" href="https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link">2.2.0</a></p></td>
+<tr class="row-even"><td class="text-center"><p><strong>06.10.2026 (latest)</strong></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/0eb7213cd41d0f093d36875ba1ac287f/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/d23c9cea9d6b343ab365c2bac5f7227c/md_app_3.0.1_da73b6a.mab"><span class="xref download myst">3.0.1</span></a></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/f1a24ee60f93702a4b6197f60ccd0fc2/mdco_app_3.0.1_da73b6a.mab"><span class="xref download myst">3.0.1</span></a></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/1bf8eb173e4aacbefcf68d54afbb14a4/md_1.2.eds"><span class="xref download myst">1.2</span></a></p></td>
 </tr>
-<tr class="row-odd"><td class="text-center"><p>31.05.2024</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/eb4219dc290ce0b4098d8f550778dddc/candle_2.2.1.zip"><span class="xref download myst">2.2.1</span></a></p></td>
-<td class="text-center"><p><a class="reference external" href="https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing">2.3.1</a></p></td>
+<tr class="row-odd"><td class="text-center"><p>29.08.2026</p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/0eb7213cd41d0f093d36875ba1ac287f/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/390060ec40204af09e2db1e70209af15/md_app_3.0.0_3b52568.mab"><span class="xref download myst">3.0.0</span></a></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/2ae3473df004bdcd03857fd0c1f5c817/MAB_CAN_Flasher_CANopen_2.5.4.zip"><span class="xref download myst">2.5.4</span></a></p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
 </tr>
-<tr class="row-even"><td class="text-center"><p>22.08.2024</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/eb4219dc290ce0b4098d8f550778dddc/candle_2.2.1.zip"><span class="xref download myst">2.2.1</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/29fade504a4892895211839e3d841cea/md_2.4.0.zip"><span class="xref download myst">2.4.0</span></a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>30.01.2025</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/eb4219dc290ce0b4098d8f550778dddc/candle_2.2.1.zip"><span class="xref download myst">2.2.1</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/405e8dfd1d74db3cc0148288f3829428/md_2.4.1.zip"><span class="xref download myst">2.4.1</span></a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>29.07.2025</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/eb4219dc290ce0b4098d8f550778dddc/candle_2.2.1.zip"><span class="xref download myst">2.2.1</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/440f6bfd19be732c37208edcf4104c89/md_2.5.0.zip"><span class="xref download myst">2.5.0</span></a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>11.08.2025</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/eb4219dc290ce0b4098d8f550778dddc/candle_2.2.1.zip"><span class="xref download myst">2.2.1</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/e1ad55f897c78fc8853962b854e04aca/md_2.5.1.zip"><span class="xref download myst">2.5.1</span></a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>24.11.2025</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/6a1749dc06ccd528cc8476325d84bfb8/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/1b5d9964c17b930d383c502194c43f8a/MAB_CAN_Flasher_2.5.2.zip"><span class="xref download myst">2.5.2</span></a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>10.03.2026</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/6a1749dc06ccd528cc8476325d84bfb8/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
+<tr class="row-even"><td class="text-center"><p>10.03.2026</p></td>
+<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/0eb7213cd41d0f093d36875ba1ac287f/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
 <td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/687af6a262e1ec0549e86d0a58ccd2f6/MAB_CAN_Flasher_2.5.4.zip"><span class="xref download myst">2.5.4</span></a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p><strong>29.08.2026 (latest)</strong></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/6a1749dc06ccd528cc8476325d84bfb8/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/1841fea7d5d828b410a3b1b9aa0b9c6f/md_app_3.0.0_3b52568.mab"><span class="xref download myst">3.0.0</span></a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="canopen-eds-file">
-<h2>CANOpen EDS file<a class="headerlink" href="#canopen-eds-file" title="Link to this heading">#</a></h2>
-<p>Here is CANOpen EDS file for MD series motor drivers, compatible with MD20, MD80 and MD80HV.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>Date</p></th>
-<th class="head text-center"><p>MD CANopen firmware version</p></th>
-<th class="head text-center"><p>Compatible EDS file</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p>11.08.2025</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/e1ad55f897c78fc8853962b854e04aca/md_2.5.1.zip"><span class="xref download myst">2.5.1</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>17.11.2025</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/39d78897528b6b3f86cb992f7d346bfe/MAB_CAN_Flasher_CANopen_2.5.2.zip"><span class="xref download myst">2.5.2</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>02.03.2026</p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/5cf3995e75d0a4eecb9456aea2a0b9aa/MAB_CAN_Flasher_CANopen_2.5.3.zip"><span class="xref download myst">2.5.3</span></a></p></td>
-<td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>10.03.2026</p></td>
 <td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/2ae3473df004bdcd03857fd0c1f5c817/MAB_CAN_Flasher_CANopen_2.5.4.zip"><span class="xref download myst">2.5.4</span></a></p></td>
 <td class="text-center"><p><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<!-- TODO: when new CANopen firmware is ready to publish, fill and add following section to the table -->
-<!-- | **??.??.????** |                         [-.-.-]()                         | [1.3](../_static/eds/md_1.3.eds) | -->
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Older releases</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text">Date</p></th>
+<th class="head text-center"><p class="sd-card-text">CANdle device</p></th>
+<th class="head text-center"><p class="sd-card-text">MD Firmware</p></th>
+<th class="head text-center"><p class="sd-card-text">MD CANopen</p></th>
+<th class="head text-center"><p class="sd-card-text">EDS file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">02.03.2026</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/0eb7213cd41d0f093d36875ba1ac287f/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/5cf3995e75d0a4eecb9456aea2a0b9aa/MAB_CAN_Flasher_CANopen_2.5.3.zip"><span class="xref download myst">2.5.3</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">24.11.2025</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/0eb7213cd41d0f093d36875ba1ac287f/candle_2.4.0.mab"><span class="xref download myst">2.4.0</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/1b5d9964c17b930d383c502194c43f8a/MAB_CAN_Flasher_2.5.2.zip"><span class="xref download myst">2.5.2</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/39d78897528b6b3f86cb992f7d346bfe/MAB_CAN_Flasher_CANopen_2.5.2.zip"><span class="xref download myst">2.5.2</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/9ef54e5c67bd3f4b3c08f6bf8d8f2164/md_1.1.eds"><span class="xref download myst">1.1</span></a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">11.08.2025</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/d14db7006f53879575e5167a792efaff/MAB_USB_FLASHER_2.2.1"><span class="xref download myst">2.2.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text">2.5.1</p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">29.07.2025</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/d14db7006f53879575e5167a792efaff/MAB_USB_FLASHER_2.2.1"><span class="xref download myst">2.2.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text">2.5.0</p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">30.01.2025</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/d14db7006f53879575e5167a792efaff/MAB_USB_FLASHER_2.2.1"><span class="xref download myst">2.2.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/c366aada5dbacb3cc68a2463d75ba5db/MAB_CAN_Flasher_2.4.1.zip"><span class="xref download myst">2.4.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/c16c984c3571743c84fc54a941d6717d/MAB_CAN_Flasher_CANopen_2.4.1.zip"><span class="xref download myst">2.4.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/5fedb6fc7ce7a72e9ee7bbea8c4af329/md_1.0.eds"><span class="xref download myst">1.0</span></a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">22.08.2024</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/d14db7006f53879575e5167a792efaff/MAB_USB_FLASHER_2.2.1"><span class="xref download myst">2.2.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/733f35442d671162e1cf5f2ecfd01cc2/MAB_CAN_Flasher_2.4.0.zip"><span class="xref download myst">2.4.0</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/06b499748b74ee1582a1d97ab2356b10/MAB_CAN_Flasher_CANopen_2.4.0.zip"><span class="xref download myst">2.4.0</span></a></p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text">31.05.2024</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/d14db7006f53879575e5167a792efaff/MAB_USB_FLASHER_2.2.1"><span class="xref download myst">2.2.1</span></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://drive.google.com/file/d/1JEStPSVnSHGrSZuBAMhupySp18OfRDAs/view?usp=sharing">2.3.1</a></p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p class="sd-card-text">05.04.2023</p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://drive.google.com/drive/folders/1KDQ-C75hCG3vG0TmMa5ZI3u2Hdv0R0jF?usp=share_link">2.2.0</a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://drive.google.com/drive/folders/1fc-_x4e1BJuoYAXRuuwuZ3nlq07d4J5S?usp=share_link">2.2.0</a></p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+<td class="text-center"><p class="sd-card-text">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="sd-card-text">Versions 2.5.0 and 2.5.1 were never packaged as an
+archive. They exist only as per-architecture flasher executables:
+2.5.0 (<a class="reference download internal" download="" href="../_downloads/3d6d6e77cc4b8a7d410cfd02eae6cd68/MAB_CAN_FLASHER_2.5.0_ARM64"><span class="xref download myst">ARM64</span></a>, <a class="reference download internal" download="" href="../_downloads/8023dc653948a8554299edf63c578632/MAB_CAN_FLASHER_2.5.0_ARMHF"><span class="xref download myst">ARMHF</span></a>, <a class="reference download internal" download="" href="../_downloads/c2e2eca60c26438c5d4b1fb7a4d10962/MAB_CAN_FLASHER_2.5.0_X86_64"><span class="xref download myst">X86_64</span></a>),
+2.5.1 (<a class="reference download internal" download="" href="../_downloads/1b912afcdeef3e9554db174cecbdfff7/MAB_CAN_FLASHER_2.5.1_ARM64"><span class="xref download myst">ARM64</span></a>, <a class="reference download internal" download="" href="../_downloads/a8014b961050564cffb1bb69d4733aca/MAB_CAN_FLASHER_2.5.1_X86_64"><span class="xref download myst">X86_64</span></a>).</p>
+</div>
+</details></section>
+<section id="candlesdk">
+<h2>CANdleSDK<a class="headerlink" href="#candlesdk" title="Link to this heading">#</a></h2>
+<p>Please visit <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/releases"><strong>releases</strong></a> page for all of the
+CANdleSDK binary releases.</p>
 </section>
 </section>
 
@@ -658,10 +704,9 @@ This should allow for uploading the firmware even to an otherwise unresponsive d
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-models">3D models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mab-firmware">MAB Firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware">Firmware</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#device-firmware">Device Firmware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-eds-file">CANOpen EDS file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candlesdk">CANdleSDK</a></li>
 </ul>
   </nav></div>
 

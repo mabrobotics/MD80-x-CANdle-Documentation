@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Process Data Objects &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/Communication/canopen/pdo';</script>
+    <link rel="icon" href="../../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="State Machine" href="state_machine.html" />
+    <link rel="prev" title="Service Data Objects" href="sdo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../encoders.html">Encoders</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../state_machine.html">State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../intro.html">CAN Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="intro.html">CANopen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="units.html">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_dictionary.html">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/charger_addon.html">Charger Addon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/communication.html">FDCAN Communication</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../CANdle-SDK/PythonModule.html">Python Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../CANdle_ROS2/md-node/overview.html">MD Node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ctrl.html">Control Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ic.html">Isolated Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ps.html">Power Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/br.html">Brake Resistor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/Communication/canopen/pdo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/MD/Communication/canopen/pdo.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Process Data Objects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receive-pdos">Receive PDOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transmit-pdos">Transmit PDOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-a-transmit-pdo-to-send">Getting a transmit PDO to send</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remapping">Remapping</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="process-data-objects">
+<span id="canopen-pdo"></span><h1>Process Data Objects<a class="headerlink" href="#process-data-objects" title="Link to this heading">#</a></h1>
+<p>PDOs carry cyclic process data without the request and response overhead of an SDO. The drive
+supports four receive PDOs for setpoints and four transmit PDOs for feedback. Each PDO carries up to
+8 bytes.</p>
+<p>PDOs are exchanged only in NMT Operational. See <a class="reference internal" href="nmt.html#canopen-nmt"><span class="std std-ref">Network Management</span></a>.</p>
+<section id="receive-pdos">
+<h2>Receive PDOs<a class="headerlink" href="#receive-pdos" title="Link to this heading">#</a></h2>
+<p>Receive PDOs use the CiA 301 predefined connection set, offset by the node ID.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>PDO</p></th>
+<th class="head"><p>COB-ID</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Mapping</p></th>
+<th class="head"><p>Default content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RPDO1</p></td>
+<td><p>0x200 + <em>n</em></p></td>
+<td><p>0x1400</p></td>
+<td><p>0x1600</p></td>
+<td><p>Target Position 0x607A, Target Torque 0x6071</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPDO2</p></td>
+<td><p>0x300 + <em>n</em></p></td>
+<td><p>0x1401</p></td>
+<td><p>0x1601</p></td>
+<td><p>Target Velocity 0x60FF, Target Torque 0x6071</p></td>
+</tr>
+<tr class="row-even"><td><p>RPDO3</p></td>
+<td><p>0x400 + <em>n</em></p></td>
+<td><p>0x1402</p></td>
+<td><p>0x1602</p></td>
+<td><p>Controlword 0x6040, Target Position 0x607A, Target Torque 0x6071</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPDO4</p></td>
+<td><p>0x500 + <em>n</em></p></td>
+<td><p>0x1403</p></td>
+<td><p>0x1603</p></td>
+<td><p>Controlword 0x6040, Target Velocity 0x60FF, Target Torque 0x6071</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>RPDO3 and RPDO4 are the useful ones for closed loop control, because they carry the controlword
+alongside the setpoint. That lets a master enable the drive, command motion and apply a torque limit
+in a single frame.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Which identifier a receive PDO listens on is fixed by the node ID and cannot be changed. The COB-ID
+in 0x1400:1 through 0x1403:1 is stored and read back, but the drive does not use it to decide which
+frames to accept.</p>
+</div>
+</section>
+<section id="transmit-pdos">
+<h2>Transmit PDOs<a class="headerlink" href="#transmit-pdos" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>PDO</p></th>
+<th class="head"><p>Default COB-ID</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Mapping</p></th>
+<th class="head"><p>Default content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TPDO1</p></td>
+<td><p>0x180</p></td>
+<td><p>0x1800</p></td>
+<td><p>0x1A00</p></td>
+<td><p>Statusword 0x6041, Quick Status 0x2022:1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TPDO2</p></td>
+<td><p>0x280</p></td>
+<td><p>0x1801</p></td>
+<td><p>0x1A01</p></td>
+<td><p>Position Actual Value 0x6064, Velocity Actual Value 0x606C</p></td>
+</tr>
+<tr class="row-even"><td><p>TPDO3</p></td>
+<td><p>0x380</p></td>
+<td><p>0x1802</p></td>
+<td><p>0x1A02</p></td>
+<td><p>Torque Actual Value 0x6077, Power Stage Temperature 0x2004:1, Motor Temperature 0x2004:2</p></td>
+</tr>
+<tr class="row-odd"><td><p>TPDO4</p></td>
+<td><p>0x480</p></td>
+<td><p>0x1803</p></td>
+<td><p>0x1A03</p></td>
+<td><p>DC Link Circuit Voltage 0x6079</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Transmit COB-IDs are used exactly as stored, with no node ID offset. Every drive leaves the factory
+transmitting TPDO1 on 0x180. Put two drives on one bus without reconfiguring and their transmit PDOs
+will collide.</p>
+<p>Before connecting a second drive, write 0x1800:1 through 0x1803:1 on each drive to an identifier of
+its own. Following the predefined connection set and using 0x180 + node ID, 0x280 + node ID and so
+on keeps the bus conventional and readable.</p>
+</div>
+</section>
+<section id="getting-a-transmit-pdo-to-send">
+<h2>Getting a transmit PDO to send<a class="headerlink" href="#getting-a-transmit-pdo-to-send" title="Link to this heading">#</a></h2>
+<p>By default every PDO has transmission type 255 and an event timer of 0. In that combination nothing
+triggers a transmission, so <strong>a drive out of the box produces no PDO traffic at all</strong>. You have to
+choose a trigger.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Transmission type</p></th>
+<th class="head"><p>Behaviour for a transmit PDO</p></th>
+<th class="head"><p>Behaviour for a receive PDO</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Transmit on every SYNC</p></td>
+<td><p>Apply buffered data on every SYNC</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 to 240</p></td>
+<td><p>Transmit on every <em>n</em>-th SYNC</p></td>
+<td><p>Apply buffered data on every <em>n</em>-th SYNC</p></td>
+</tr>
+<tr class="row-even"><td><p>241 to 253</p></td>
+<td><p>Rejected with abort 0x06090030</p></td>
+<td><p>Rejected with abort 0x06090030</p></td>
+</tr>
+<tr class="row-odd"><td><p>254, 255</p></td>
+<td><p>Transmit only on the event timer</p></td>
+<td><p>Apply data immediately on arrival</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Two ways to produce feedback, then:</p>
+<ul class="simple">
+<li><p><strong>Time driven.</strong> Leave the transmission type at 255 and write the period in milliseconds to the
+event timer, sub-index 5. Writing 20 to 0x1800:5 makes TPDO1 transmit at 50 Hz.</p></li>
+<li><p><strong>SYNC driven.</strong> Set the transmission type to 1 and have the master produce SYNC frames. Every
+drive then samples and answers in lockstep, which is what you want for coordinated multi-axis
+motion.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Inhibit time, sub-index 3, is accepted and read back but is not enforced. SYNC start value,
+sub-index 6, is declared in the EDS for transmit PDOs but is not implemented, and accessing it
+aborts with 0x06090011. Sub-index 0 of every PDO communication parameter reports 5.</p>
+<p>The event timer field of a receive PDO is stored but has no effect. To make the drive react to a
+master that stops talking, use the <a class="reference internal" href="nmt.html#canopen-nmt"><span class="std std-ref">heartbeat consumer</span></a> instead.</p>
+</div>
+</section>
+<section id="remapping">
+<h2>Remapping<a class="headerlink" href="#remapping" title="Link to this heading">#</a></h2>
+<p>A mapping entry is a 32-bit value laid out as index, sub-index, then length in bits.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>16-31</p></td>
+<td><p>Object index</p></td>
+</tr>
+<tr class="row-odd"><td><p>8-15</p></td>
+<td><p>Object sub-index</p></td>
+</tr>
+<tr class="row-even"><td><p>0-7</p></td>
+<td><p>Object length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example 0x607A0020 maps Target Position, which is 32 bits.</p>
+<p>Remapping follows the standard CiA 301 sequence, and the drive enforces it:</p>
+<ol class="arabic simple">
+<li><p>Write 0 to sub-index 0 of the mapping object. This disables the mapping.</p></li>
+<li><p>Write the new entries to sub-indices 1 to 8.</p></li>
+<li><p>Write the number of entries back to sub-index 0. This re-enables the mapping.</p></li>
+</ol>
+<p>Skipping the first step is the usual mistake. Writing an entry while the mapping is still enabled is
+rejected with abort 0x06010000.</p>
+<p>The drive validates each entry as you write it. The object must exist, must be PDO mappable, and the
+length you declare must match the object’s real length, otherwise the write aborts with 0x06040041.
+When you write the count back, the drive adds up the mapped lengths and rejects anything over 64
+bits with 0x06040042.</p>
+<p>Objects that can be mapped are marked in the <a class="reference internal" href="object_dictionary.html#canopen-od"><span class="std std-ref">object dictionary</span></a>. All the measurement
+and status registers are mappable, which makes it practical to build a feedback PDO carrying exactly
+the diagnostics your application cares about.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A remapped PDO lives in RAM. Run Save Config, 0x2023:1, to make the new mapping survive a power
+cycle.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MD/Communication/canopen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sdo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Service Data Objects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="state_machine.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">State Machine</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#receive-pdos">Receive PDOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transmit-pdos">Transmit PDOs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-a-transmit-pdo-to-send">Getting a transmit PDO to send</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remapping">Remapping</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

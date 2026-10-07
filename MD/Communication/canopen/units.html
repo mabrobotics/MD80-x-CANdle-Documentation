@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>System Units &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/Communication/canopen/units';</script>
+    <link rel="icon" href="../../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Network Management" href="nmt.html" />
+    <link rel="prev" title="CANopen" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../encoders.html">Encoders</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../state_machine.html">State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../intro.html">CAN Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="intro.html">CANopen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pdo.html">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="object_dictionary.html">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/charger_addon.html">Charger Addon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/communication.html">FDCAN Communication</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../CANdle-SDK/PythonModule.html">Python Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../CANdle_ROS2/md-node/overview.html">MD Node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ctrl.html">Control Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ic.html">Isolated Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ps.html">Power Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/br.html">Brake Resistor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/Communication/canopen/units.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/MD/Communication/canopen/units.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>System Units</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-velocity-and-acceleration">Position, velocity and acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#torque-and-current">Torque and current</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-quantities">Other quantities</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="system-units">
+<span id="canopen-units"></span><h1>System Units<a class="headerlink" href="#system-units" title="Link to this heading">#</a></h1>
+<p>CANopen carries integers, not physical quantities. Every object in the MD object dictionary uses one
+of the scalings below. Getting this wrong is the most common cause of a drive that moves a thousand
+times too far, so read this page before writing any setpoint.</p>
+<section id="position-velocity-and-acceleration">
+<h2>Position, velocity and acceleration<a class="headerlink" href="#position-velocity-and-acceleration" title="Link to this heading">#</a></h2>
+<p>The drive works in <strong>micro-revolutions of the output shaft</strong>. One full output revolution is
+1 000 000 increments.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Unit</p></th>
+<th class="head"><p>Objects</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Position</p></td>
+<td><p>micro-revolutions</p></td>
+<td><p>0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velocity</p></td>
+<td><p>micro-revolutions per second</p></td>
+<td><p>0x606C, 0x60FF, 0x6080, 0x2002:6</p></td>
+</tr>
+<tr class="row-even"><td><p>Acceleration</p></td>
+<td><p>micro-revolutions per second squared</p></td>
+<td><p>0x6083, 0x6084, 0x6085</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The drive publishes these scalings through the CiA 402 SI unit objects, which are read-only:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Object</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x60A8</p></td>
+<td><p>SI Unit Position</p></td>
+<td><p>0xFAB40000</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x60A9</p></td>
+<td><p>SI Unit Velocity</p></td>
+<td><p>0xFAB40300</p></td>
+</tr>
+<tr class="row-even"><td><p>0x60AA</p></td>
+<td><p>SI Unit Acceleration</p></td>
+<td><p>0xFAB45700</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Converting to and from radians, which is what the MD Protocol and the CANdle SDK use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">increments</span> <span class="o">=</span> <span class="n">radians</span> <span class="o">*</span> <span class="mi">1000000</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span>
+<span class="n">radians</span>    <span class="o">=</span> <span class="n">increments</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000000</span>
+</pre></div>
+</div>
+<p>Some worked values:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Physical value</p></th>
+<th class="head"><p>Object value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 revolution</p></td>
+<td><p>1 000 000</p></td>
+</tr>
+<tr class="row-odd"><td><p>90 degrees</p></td>
+<td><p>250 000</p></td>
+</tr>
+<tr class="row-even"><td><p>1 rad</p></td>
+<td><p>159 155</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 rev/s (60 rpm)</p></td>
+<td><p>1 000 000</p></td>
+</tr>
+<tr class="row-even"><td><p>1 rad/s</p></td>
+<td><p>159 155</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Position is multi-turn and signed. The full INT32 range covers roughly plus or minus 2147 output
+revolutions before the counter wraps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of these are <strong>output shaft</strong> quantities. The gear ratio in 0x6091 is applied by the drive, so
+you never convert for the gearbox yourself.</p>
+</div>
+</section>
+<section id="torque-and-current">
+<h2>Torque and current<a class="headerlink" href="#torque-and-current" title="Link to this heading">#</a></h2>
+<p>Torque and current setpoints are expressed in <strong>thousandths of the corresponding rated value</strong>, as
+CiA 402 requires. The rated values themselves are absolute.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Object</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x6076</p></td>
+<td><p>Motor Rated Torque</p></td>
+<td><p>mNm</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x6071</p></td>
+<td><p>Target Torque</p></td>
+<td><p>1/1000 of Motor Rated Torque</p></td>
+</tr>
+<tr class="row-even"><td><p>0x6072</p></td>
+<td><p>Max Torque</p></td>
+<td><p>1/1000 of Motor Rated Torque</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x6077</p></td>
+<td><p>Torque Actual Value</p></td>
+<td><p>1/1000 of Motor Rated Torque</p></td>
+</tr>
+<tr class="row-even"><td><p>0x6075</p></td>
+<td><p>Motor Rated Current</p></td>
+<td><p>mA</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x6073</p></td>
+<td><p>Max Current</p></td>
+<td><p>1/1000 of Motor Rated Current</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, with Motor Rated Torque set to 1000 (1 Nm), a Target Torque of 250 commands 0.25 Nm,
+and a Max Torque of 2000 allows twice the rated torque.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Motor Rated Torque and Motor Rated Current must be written <strong>before</strong> any of the per-mille objects.
+While either rated value is still zero the drive cannot compute the scaling and aborts the transfer
+with code 0x08000020, <em>data cannot be transferred or stored to the application</em>.</p>
+</div>
+</section>
+<section id="other-quantities">
+<h2>Other quantities<a class="headerlink" href="#other-quantities" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Object</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x6079</p></td>
+<td><p>DC Link Circuit Voltage</p></td>
+<td><p>mV</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x2004:1</p></td>
+<td><p>Power Stage Temperature</p></td>
+<td><p>degrees Celsius</p></td>
+</tr>
+<tr class="row-even"><td><p>0x2004:2</p></td>
+<td><p>Motor Temperature</p></td>
+<td><p>degrees Celsius</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x2000:3</p></td>
+<td><p>Phase Inductance</p></td>
+<td><p>H, IEEE-754 single precision</p></td>
+</tr>
+<tr class="row-even"><td><p>0x2000:4</p></td>
+<td><p>Phase Resistance</p></td>
+<td><p>ohm, IEEE-754 single precision</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x2000:5</p></td>
+<td><p>Torque Bandwidth</p></td>
+<td><p>Hz</p></td>
+</tr>
+<tr class="row-even"><td><p>0x2000:7</p></td>
+<td><p>Motor Shutdown Temperature</p></td>
+<td><p>degrees Celsius</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x2000:9</p></td>
+<td><p>Motor Torque Constant</p></td>
+<td><p>Nm/A, IEEE-754 single precision</p></td>
+</tr>
+<tr class="row-even"><td><p>0x2000:A</p></td>
+<td><p>Motor KV Rating</p></td>
+<td><p>RPM/V, IEEE-754 single precision</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x2003:2</p></td>
+<td><p>Torque Sensor Value</p></td>
+<td><p>Nm, IEEE-754 single precision</p></td>
+</tr>
+<tr class="row-even"><td><p>0x1017</p></td>
+<td><p>Producer Heartbeat Time</p></td>
+<td><p>ms</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x6091:1</p></td>
+<td><p>Motor Revolutions</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p>0x6091:2</p></td>
+<td><p>Shaft Revolutions</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Controller gains in 0x2010, 0x2011 and 0x2012 are IEEE-754 single precision values and are not
+scaled. They operate on the shaft quantities described above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every multi-byte value, including the floating point ones, is transferred little endian. Some
+CANopen configuration tools display REAL32 objects as raw integers. If a gain reads back as a large
+meaningless number, the tool is showing you the bit pattern rather than the float.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MD/Communication/canopen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CANopen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="nmt.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Network Management</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-velocity-and-acceleration">Position, velocity and acceleration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#torque-and-current">Torque and current</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-quantities">Other quantities</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

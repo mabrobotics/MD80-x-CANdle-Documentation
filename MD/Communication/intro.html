@@ -201,12 +201,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../status_utility.html">Status &amp; Utilities</a></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">CAN Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="fdcan.html">MD Protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="canopen_od.html">Object Dictionary</a></li>
-<li class="toctree-l4"><a class="reference internal" href="canopen_nmt.html">NMT Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="canopen_sdo.html">SDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="canopen_pdo.html">PDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration.html">Migration to and from CANopen</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="canopen/intro.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="canopen/units.html">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/pdo.html">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen/object_dictionary.html">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
 </ul>
 </details></li>
 </ul>
@@ -454,16 +466,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-to-and-from-canopen">Migration to and from CANopen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-to-canopen">Migration to CANopen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step">First step</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#second-step">Second step</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#third-step">Third step</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-protocol-md">MD Protocol (MD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-mdco">CANopen (MDCO)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-canopen-section-applies-to-your-drive">Which CANopen section applies to your drive</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-from-canopen">Migration from CANopen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-from-canopen-to-legacy-firmware">Migration from CANopen to Legacy firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#switching-between-protocols">Switching between protocols</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-between-md-protocol-md-and-md-canopen-mdco-protocol">Migration between MD Protocol (MD) and MD CANOpen (MDCO) Protocol</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-md-to-mdco">From MD to MDCO:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-mdco-to-md">From MDCO to MD:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-update">Remote update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-pre-3-0-0-firmware-versions">Legacy (pre 3.0.0) firmware versions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdco-v2-x-x-update-to-v3-0-1">MDCO v2.x.x update to v3.0.1+</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -479,102 +497,168 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="communication-overview">
 <h1>Communication Overview<a class="headerlink" href="#communication-overview" title="Link to this heading">#</a></h1>
-<p>MD communication protocols are based on CAN and CAN-FD bus. One of the communication modes can be used:</p>
+<p>MD communication is based on the CAN and CAN-FD bus. A drive runs one of two application layers, and
+which one it runs is decided by the firmware flashed onto it:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="fdcan.html#md-protocol"><span class="std std-ref">MABs MD Protocol</span></a>,</p></li>
-<li><p><a class="reference internal" href="canopen.html#md-canopen"><span class="std std-ref">CANOpen</span></a>.</p></li>
+<li><p><a class="reference internal" href="fdcan.html#md-protocol"><span class="std std-ref">MD Protocol</span></a>, MAB’s own protocol,</p></li>
+<li><p><a class="reference internal" href="canopen/intro.html#md-canopen"><span class="std std-ref">CANopen</span></a>, the industry standard.</p></li>
 </ul>
-<p>MD Protocol, offers dead simple, yet quite efficient interface based around register access, similarly to
-modbus. It follows strict Master-Slave communication model where registers can be accessed one by one,
-or by batch read and writes. This is the protocol used by <a class="reference internal" href="../../CANdle/intro.html#candle-and-hat"><span class="std std-ref">CANdle and CANdleHAT</span></a>.
-MD Protocol can be used both with CAN-FD (up to 8M datarate and 64 bytes per frame) and CAN2.0.</p>
-<p>The other option is <a class="reference external" href="https://www.can-cia.org/can-knowledge/canopen">CANOpen</a>, which is and older, but
-widely used industrial communication protocol. While offering high configurability it is limited by
-CAN2.0 bandwidth restrictiong (data up to 8 bytes per frame), and is far more complex than MD Protocol.
-MD implements CANOpen compatible with <a class="reference external" href="https://www.can-cia.org/can-knowledge/cia-402-series-canopen-device-profile-for-drives-and-motion-control">CiA 402</a>
+<section id="md-protocol-md">
+<h2>MD Protocol (MD)<a class="headerlink" href="#md-protocol-md" title="Link to this heading">#</a></h2>
+<p>MD Protocol offers a dead simple, yet quite efficient interface based around register access,
+similar to Modbus. It follows a strict master and slave model where registers can be accessed one by
+one, or by batch reads and writes. This is the protocol used by
+<a class="reference internal" href="../../CANdle/intro.html#candle-and-hat"><span class="std std-ref">CANdle and CANdleHAT</span></a>.</p>
+<p>MD Protocol runs on CAN-FD, at up to 8 Mbit/s with 64 bytes per frame, and on CAN 2.0. Unless you
+already have a CANopen network to join, this is the protocol to choose. It is faster, simpler and
+better supported by MAB’s own tooling.</p>
+</section>
+<section id="canopen-mdco">
+<h2>CANopen (MDCO)<a class="headerlink" href="#canopen-mdco" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.can-cia.org/can-knowledge/canopen">CANopen</a> is an older but widely used industrial
+protocol. It offers high configurability and drops into existing industrial control systems without
+custom integration work, at the cost of complexity and of CAN 2.0 bandwidth limits, meaning up to 8
+bytes per frame. MD implements CANopen according to the
+<a class="reference external" href="https://www.can-cia.org/can-knowledge/cia-402-series-canopen-device-profile-for-drives-and-motion-control">CiA 402</a>
 device profile for drives and motion control.</p>
-<section id="migration-to-and-from-canopen">
-<h2>Migration to and from CANopen<a class="headerlink" href="#migration-to-and-from-canopen" title="Link to this heading">#</a></h2>
-<section id="preparation">
-<h3>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h3>
-<p>Download flasher programs from here:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../../candlelib/Downloads/Downloads.html#canopen-flashers-legacy"><span class="std std-ref">MD CANopen</span></a></p></li>
-<li><p><a class="reference internal" href="../../Downloads/intro.html#downloads"><span class="std std-ref">MD FDCAN Protocol</span></a></p></li>
-</ul>
-<p>The migration is performed via flashing appropriate firmware onto the MD device. Necessary
-components for this procedure are:</p>
-<ul class="simple">
-<li><p>Candle or Candle HAT device</p></li>
-<li><p>MD driver</p></li>
-<li><p>PC or SBC with mdtool installed</p></li>
-</ul>
-<p>Connect your candle device to the driver and power it. Make sure that candle device is connected via
-the USB to the host.</p>
+<section id="which-canopen-section-applies-to-your-drive">
+<h3>Which CANopen section applies to your drive<a class="headerlink" href="#which-canopen-section-applies-to-your-drive" title="Link to this heading">#</a></h3>
+<p>Two generations of MD CANopen firmware are in the field, and their object dictionaries are not
+compatible. Both are documented here.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Firmware</p></th>
+<th class="head"><p>Object dictionary</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="canopen/intro.html#md-canopen"><span class="std std-ref">CANopen</span></a></p></td>
+<td><p>current</p></td>
+<td><p>revision 1.2</p></td>
+<td><p>actively developed</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="canopen_legacy/canopen.html#md-canopen-co25"><span class="std std-ref">CANopen [LEGACY]</span></a></p></td>
+<td><p>2.5.x</p></td>
+<td><p>revision 1.1</p></td>
+<td><p>supported, no longer updated</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To tell which firmware a drive is running, read Firmware Version 0x2021:2 over SDO. The current
+firmware answers; the legacy firmware aborts with 0x06020000, object does not exist, because it
+keeps its firmware information at 0x200A instead.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Only one device can be connected on the can line during the procedure, so all the drivers need to be updated individually.</p>
-</div>
-</section>
-<section id="migration-to-canopen">
-<h3>Migration to CANopen<a class="headerlink" href="#migration-to-canopen" title="Link to this heading">#</a></h3>
-<section id="first-step">
-<h4>First step<a class="headerlink" href="#first-step" title="Link to this heading">#</a></h4>
-<p>When switching to CANopen the driver ID must be within the range of valid nodeIDs in CANopen. To set
-this up we usually use the lowest valid nodeID in our protocol which is 10. So the first command
-issued should be for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">can</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span> <span class="o">--</span><span class="n">new_id</span> <span class="mi">10</span>
-</pre></div>
-</div>
-</section>
-<section id="second-step">
-<h4>Second step<a class="headerlink" href="#second-step" title="Link to this heading">#</a></h4>
-<p>It is necessary to save this new ID to the persistent memory using save command as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">save</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</section>
-<section id="third-step">
-<h4>Third step<a class="headerlink" href="#third-step" title="Link to this heading">#</a></h4>
-<p>Use flasher to flash firmware onto the board:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">path_to_canopen_flasher</span><span class="o">&gt;</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">baud</span> <span class="o">&lt;</span><span class="n">baudrate</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher_CANopen_7fd0626</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">10</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span>
-</pre></div>
+<p>Do not mix the two references. Several indices exist in both generations with different meanings.
+0x2000 is Motor Settings on the legacy firmware and Actuator Config on the current one, so a value
+written from the wrong chapter can be accepted and act on something you did not intend.</p>
 </div>
 </section>
 </section>
-<section id="migration-from-canopen">
-<h3>Migration from CANopen<a class="headerlink" href="#migration-from-canopen" title="Link to this heading">#</a></h3>
-<p>Using the recovery procedure, the driver can be reverted to version with MD FDCAN protocol. The
-recovery command looks like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">recovery</span> <span class="o">./</span><span class="n">path_to_mab_file</span><span class="o">.</span><span class="n">mab</span>
+<section id="switching-between-protocols">
+<h2>Switching between protocols<a class="headerlink" href="#switching-between-protocols" title="Link to this heading">#</a></h2>
+<p>A drive runs either MD Protocol or CANopen, never both. Changing between them means flashing the
+other firmware variant, which is published in <a class="reference internal" href="../../Downloads/intro.html#downloads"><span class="std std-ref">Downloads</span></a>.</p>
+<section id="migration-between-md-protocol-md-and-md-canopen-mdco-protocol">
+<h3>Migration between MD Protocol (MD) and MD CANOpen (MDCO) Protocol<a class="headerlink" href="#migration-between-md-protocol-md-and-md-canopen-mdco-protocol" title="Link to this heading">#</a></h3>
+<p>For drives with firmware v3.0.0+ and with <code class="docutils literal notranslate"><span class="pre">candletool</span></code> v1.5.1+, the migration process is
+straightforward.</p>
+<section id="from-md-to-mdco">
+<h4>From MD to MDCO:<a class="headerlink" href="#from-md-to-mdco" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Set canId of the drive to range 10 - 127 with:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">can</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">current</span><span class="o">-</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">new_id</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">save</span>
+<span class="k">for</span> <span class="n">example</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">md</span> <span class="n">can</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">675</span> <span class="o">--</span><span class="n">new_id</span> <span class="mi">100</span> <span class="o">--</span><span class="n">save</span>
 </pre></div>
 </div>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">recovery</span> <span class="o">./</span><span class="n">md_3_X_X_xxxxxxx</span><span class="o">.</span><span class="n">mab</span>
+<ol class="arabic simple" start="2">
+<li><p>Update the drive with:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">--</span><span class="n">mdco</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">current</span><span class="o">-</span><span class="n">ID</span><span class="o">&gt;</span>
+<span class="k">for</span> <span class="n">example</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">--</span><span class="n">mdco</span> <span class="n">latest</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
+<span class="ow">or</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">--</span><span class="n">mdco</span> <span class="mf">3.0.1</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
 </pre></div>
 </div>
-<p>After starting this command, the driver needs to be restarted (power cycled) manually and then the
-recovery re-flashing procedure will begin. The driver should then operate in MD FDCAN protocol mode.</p>
-<p>If the nodeID was lower than 10 the driver should automatically assign itself an ID of 10.</p>
+<ol class="arabic simple" start="3">
+<li><p>Validate migration</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">info</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span>
+<span class="k">for</span> <span class="n">example</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">info</span> <span class="o">-</span><span class="n">i</span> <span class="mi">100</span>
+</pre></div>
+</div>
 </section>
-<section id="migration-from-canopen-to-legacy-firmware">
-<h3>Migration from CANopen to Legacy firmware<a class="headerlink" href="#migration-from-canopen-to-legacy-firmware" title="Link to this heading">#</a></h3>
-<p>Using the recovery procedure, the driver can be reverted to version with MD FDCAN protocol. The
-recovery command looks like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">path_to_fdcan_protocol_flasher</span><span class="o">&gt;</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span> <span class="o">--</span><span class="n">wait</span>
+<section id="from-mdco-to-md">
+<h4>From MDCO to MD:<a class="headerlink" href="#from-mdco-to-md" title="Link to this heading">#</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The update process uses FDCAN protocol and will corrupt (and get corrupted),
+by any other CANOpen devices present on the bus. The update procedure
+is only possible when the target device is THE ONLY DEVICE ON THE CAN BUS.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Update the drive with:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">--</span><span class="n">md</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span>
+<span class="k">for</span> <span class="n">example</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">--</span><span class="n">md</span> <span class="n">latest</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
+<span class="ow">or</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">--</span><span class="n">md</span> <span class="mf">3.0.1</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
 </pre></div>
 </div>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">MAB_CAN_Flasher_xxxxxxx</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">9</span> <span class="o">--</span><span class="n">baud</span> <span class="mi">1</span><span class="n">M</span> <span class="o">--</span><span class="n">wait</span>
+<ol class="arabic simple" start="2">
+<li><p>Validate migration</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">info</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span>
+<span class="k">for</span> <span class="n">example</span><span class="p">:</span>
+<span class="n">candletool</span> <span class="n">md</span> <span class="n">info</span> <span class="o">-</span><span class="n">i</span> <span class="mi">100</span>
 </pre></div>
 </div>
-<p>After starting this command, the driver needs to be restarted manually and then the recovery
-re-flashing procedure will begin. The driver should then operate in MD FDCAN protocol mode.</p>
-<p>If the nodeID was lower than 10 the driver should automatically assign itself an ID of 10.</p>
+</section>
+</section>
+<section id="remote-update">
+<h3>Remote update<a class="headerlink" href="#remote-update" title="Link to this heading">#</a></h3>
+<p>When no internet connection is available, the update can be done with
+local .mab files downloaded from <a class="reference internal" href="../../Downloads/intro.html#downloads"><span class="std std-ref">Downloads</span></a> section.
+Then you can upload firmware to MD drive with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">update</span> <span class="o">-</span><span class="n">p</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">mab</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">ID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or for MDCO drive with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">-</span><span class="n">p</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">mab</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="n">nodeId</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="legacy-pre-3-0-0-firmware-versions">
+<h3>Legacy (pre 3.0.0) firmware versions<a class="headerlink" href="#legacy-pre-3-0-0-firmware-versions" title="Link to this heading">#</a></h3>
+<p>The procedure for drives on the legacy CANopen firmware is described in
+<a class="reference internal" href="canopen_legacy/migration.html#canopen-migration-co25"><span class="std std-ref">Migration to and from CANopen</span></a>.</p>
+<section id="mdco-v2-x-x-update-to-v3-0-1">
+<h4>MDCO v2.x.x update to v3.0.1+<a class="headerlink" href="#mdco-v2-x-x-update-to-v3-0-1" title="Link to this heading">#</a></h4>
+<p>To update the drive from legacy MDCO firmware to new, actively
+supported firmware, a special procedure has been implemented in
+<strong>candletool v1.5.1+</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">nodeId</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">legacy</span><span class="o">-</span><span class="n">migration</span>
+<span class="k">for</span> <span class="n">example</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="n">latest</span> <span class="o">-</span><span class="n">i</span> <span class="mi">69</span> <span class="o">--</span><span class="n">legacy</span><span class="o">-</span><span class="n">migration</span>
+<span class="ow">or</span>
+<span class="n">candletool</span> <span class="n">mdco</span> <span class="n">update</span> <span class="mf">3.0.1</span> <span class="o">-</span><span class="n">i</span> <span class="mi">69</span> <span class="o">--</span><span class="n">legacy</span><span class="o">-</span><span class="n">migration</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This migration will cause the drive configuration to be mostly dropped.
+Config upload and calibration will be required in majority of cases.
+This will also make drive use <code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code> instead of <code class="docutils literal notranslate"><span class="pre">md_1.1.eds</span></code>.</p>
+</div>
+</section>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -645,16 +729,22 @@ re-flashing procedure will begin. The driver should then operate in MD FDCAN pro
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-to-and-from-canopen">Migration to and from CANopen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-to-canopen">Migration to CANopen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step">First step</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#second-step">Second step</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#third-step">Third step</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-protocol-md">MD Protocol (MD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-mdco">CANopen (MDCO)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-canopen-section-applies-to-your-drive">Which CANopen section applies to your drive</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-from-canopen">Migration from CANopen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-from-canopen-to-legacy-firmware">Migration from CANopen to Legacy firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#switching-between-protocols">Switching between protocols</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-between-md-protocol-md-and-md-canopen-mdco-protocol">Migration between MD Protocol (MD) and MD CANOpen (MDCO) Protocol</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-md-to-mdco">From MD to MDCO:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-mdco-to-md">From MDCO to MD:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-update">Remote update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-pre-3-0-0-firmware-versions">Legacy (pre 3.0.0) firmware versions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mdco-v2-x-x-update-to-v3-0-1">MDCO v2.x.x update to v3.0.1+</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

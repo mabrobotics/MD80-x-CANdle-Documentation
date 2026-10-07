@@ -1,0 +1,4079 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Object Dictionary &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/Communication/canopen/object_dictionary';</script>
+    <link rel="icon" href="../../../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="CANopen [LEGACY]" href="../canopen_legacy/canopen.html" />
+    <link rel="prev" title="Setting Up a New Motor" href="setting_up_new_motor.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../encoders.html">Encoders</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../state_machine.html">State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../intro.html">CAN Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="intro.html">CANopen</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="units.html">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pdo.html">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/charger_addon.html">Charger Addon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../PDS/communication.html">FDCAN Communication</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../CANdle-SDK/PythonModule.html">Python Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../CANdle_ROS2/md-node/overview.html">MD Node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ctrl.html">Control Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ic.html">Isolated Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/ps.html">Power Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../CANdle_ROS2/pds-node/modules/br.html">Brake Resistor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/Communication/canopen/object_dictionary.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/MD/Communication/canopen/object_dictionary.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Object Dictionary</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-area">Communication Area</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1000-device-type">0x1000 Device Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1001-error-register">0x1001 Error Register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1005-cob-id-sync-message">0x1005 COB-ID SYNC Message</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1008-manufacturer-device-name">0x1008 Manufacturer Device Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1009-manufacturer-hardware-version">0x1009 Manufacturer Hardware Version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1010-store-parameters">0x1010 Store Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1011-restore-default-parameters">0x1011 Restore Default Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1014-cob-id-emcy">0x1014 COB-ID EMCY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1016-consumer-heartbeat-time">0x1016 Consumer Heartbeat Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1017-producer-heartbeat-time">0x1017 Producer Heartbeat Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1018-identity-object">0x1018 Identity Object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1400-rpdo-communication-parameter">0x1400 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1401-rpdo-communication-parameter">0x1401 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1402-rpdo-communication-parameter">0x1402 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1403-rpdo-communication-parameter">0x1403 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1600-rpdo-mapping-parameter">0x1600 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1601-rpdo-mapping-parameter">0x1601 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1602-rpdo-mapping-parameter">0x1602 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1603-rpdo-mapping-parameter">0x1603 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1800-tpdo-communication-parameter">0x1800 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1801-tpdo-communication-parameter">0x1801 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1802-tpdo-communication-parameter">0x1802 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1803-tpdo-communication-parameter">0x1803 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a00-tpdo-mapping-parameter">0x1A00 TPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a01-tpdo-mapping-parameter">0x1A01 TPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a02-tpdo-mapping-parameter">0x1A02 TPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a03-tpdo-mapping-parameter">0x1A03 TPDO mapping parameter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturer-specific-area">Manufacturer Specific Area</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2000-actuator-config">0x2000 Actuator Config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2001-main-encoder">0x2001 Main Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2002-auxiliary-encoder">0x2002 Auxiliary Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2003-torque-sensor">0x2003 Torque Sensor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2004-temperature">0x2004 Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2010-position-pid-controller">0x2010 Position PID Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2011-velocity-pid-controller">0x2011 Velocity PID Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2012-impedance-pd-controller">0x2012 Impedance PD Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2020-hardware-info">0x2020 Hardware Info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2021-firmware-info">0x2021 Firmware Info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2022-status">0x2022 Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2023-commands">0x2023 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2024-user-gpio">0x2024 User GPIO</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-specific-area">Profile Specific Area</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x603f-error-code">0x603F Error Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6040-controlword">0x6040 Controlword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6041-statusword">0x6041 Statusword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6060-modes-of-operation">0x6060 Modes of Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6061-modes-of-operation-display">0x6061 Modes of Operation Display</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6064-position-actual-value">0x6064 Position Actual Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6067-position-window">0x6067 Position Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x606c-velocity-actual-value">0x606C Velocity Actual Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x606d-velocity-window">0x606D Velocity Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6071-target-torque">0x6071 Target Torque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6072-max-torque">0x6072 Max Torque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6073-max-current">0x6073 Max Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6075-motor-rated-current">0x6075 Motor Rated Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6076-motor-rated-torque">0x6076 Motor Rated Torque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6077-torque-actual-value">0x6077 Torque Actual Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6079-dc-link-circuit-voltage">0x6079 DC Link Circuit Voltage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607a-target-position">0x607A Target Position</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607b-position-range-limit">0x607B Position Range Limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607d-software-position-limit">0x607D Software Position Limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6080-max-motor-speed">0x6080 Max Motor Speed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6083-profile-acceleration">0x6083 Profile Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6084-profile-deceleration">0x6084 Profile Deceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6085-quick-stop-deceleration">0x6085 Quick Stop Deceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6091-gear-ratio">0x6091 Gear Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a8-si-unit-position">0x60A8 SI Unit Position</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a9-si-unit-velocity">0x60A9 SI Unit Velocity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60aa-si-unit-acceleration">0x60AA SI Unit Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60ff-target-velocity">0x60FF Target Velocity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6502-supported-drive-modes">0x6502 Supported Drive Modes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="object-dictionary">
+<span id="canopen-od"></span><h1>Object Dictionary<a class="headerlink" href="#object-dictionary" title="Link to this heading">#</a></h1>
+<p>Complete reference for object dictionary revision 1.2. The machine readable version is
+<code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code>, available from <a class="reference internal" href="../../../Downloads/intro.html#device-firmware"><span class="std std-ref">Downloads</span></a>.</p>
+<p>The dictionary is split into three ranges:</p>
+<ul class="simple">
+<li><p><strong>0x1000 to 0x1FFF, communication area.</strong> CiA 301 objects: identification, heartbeat, SYNC and PDO configuration.</p></li>
+<li><p><strong>0x2000 to 0x5FFF, manufacturer specific area.</strong> MAB objects: motor parameters, encoders, controller gains, status and commands.</p></li>
+<li><p><strong>0x6000 to 0x9FFF, profile specific area.</strong> CiA 402 objects: state machine, modes, setpoints and limits.</p></li>
+</ul>
+<p>Access types are <code class="docutils literal notranslate"><span class="pre">ro</span></code> read only, <code class="docutils literal notranslate"><span class="pre">wo</span></code> write only, <code class="docutils literal notranslate"><span class="pre">rw</span></code> read and write over SDO, and <code class="docutils literal notranslate"><span class="pre">rww</span></code>
+read and write over SDO or through a receive PDO. The PDO column says whether the entry can
+be mapped into a PDO.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ranges in the notes column are the ones the <strong>firmware</strong> enforces. They are sometimes narrower
+than the data type allows and, in a few places, narrower than the EDS declares. A value outside
+the enforced range is rejected with SDO abort code 0x06090030.</p>
+</div>
+<section id="communication-area">
+<span id="id1"></span><h2>Communication Area<a class="headerlink" href="#communication-area" title="Link to this heading">#</a></h2>
+<section id="x1000-device-type">
+<h3>0x1000 Device Type<a class="headerlink" href="#x1000-device-type" title="Link to this heading">#</a></h3>
+<p>Identifies the device profile. Reads 0x00020192: profile 402 in the low word, servo drive in the high word.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Device Type</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00020192</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1001-error-register">
+<h3>0x1001 Error Register<a class="headerlink" href="#x1001-error-register" title="Link to this heading">#</a></h3>
+<p>One byte summary of active faults. See <a class="reference internal" href="diagnostics.html#canopen-diagnostics"><span class="std std-ref">Diagnostics</span></a> for the bit meanings.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Error Register</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1005-cob-id-sync-message">
+<h3>0x1005 COB-ID SYNC Message<a class="headerlink" href="#x1005-cob-id-sync-message" title="Link to this heading">#</a></h3>
+<p>Identifier the drive listens on for SYNC. Fixed at 0x80; the drive never produces SYNC itself.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>COB-ID SYNC Message</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00000080</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1008-manufacturer-device-name">
+<h3>0x1008 Manufacturer Device Name<a class="headerlink" href="#x1008-manufacturer-device-name" title="Link to this heading">#</a></h3>
+<p>Device name string.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Manufacturer Device Name</p></td>
+<td><p>STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1009-manufacturer-hardware-version">
+<h3>0x1009 Manufacturer Hardware Version<a class="headerlink" href="#x1009-manufacturer-hardware-version" title="Link to this heading">#</a></h3>
+<p>Hardware version string.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Manufacturer Hardware Version</p></td>
+<td><p>STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1010-store-parameters">
+<h3>0x1010 Store Parameters<a class="headerlink" href="#x1010-store-parameters" title="Link to this heading">#</a></h3>
+<p>Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Write-only: reading any sub-index other than 0 aborts with 0x05040001.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x04</p></td>
+<td><p>no</p></td>
+<td><p>always reports 4, although only sub-index 1 is implemented</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Save all Parameters</p></td>
+<td><p>UINT32</p></td>
+<td><p>wo</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>write the signature 0x65766173, ASCII “save”; any other value aborts with 0x08000020</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1011-restore-default-parameters">
+<h3>0x1011 Restore Default Parameters<a class="headerlink" href="#x1011-restore-default-parameters" title="Link to this heading">#</a></h3>
+<p>Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Only sub-index 4 is implemented. Write-only: reading any sub-index other than 0 aborts with 0x05040001.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x04</p></td>
+<td><p>no</p></td>
+<td><p>always reports 4, although only sub-index 4 is implemented</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Restore manufacturer defined default Parameters</p></td>
+<td><p>UINT32</p></td>
+<td><p>wo</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>write the signature 0x64616F6C, ASCII “load”; any other value aborts with 0x08000020</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1014-cob-id-emcy">
+<h3>0x1014 COB-ID EMCY<a class="headerlink" href="#x1014-cob-id-emcy" title="Link to this heading">#</a></h3>
+<p>Identifier the drive transmits emergency messages on.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>COB-ID EMCY</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>$NODEID+0x80</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1016-consumer-heartbeat-time">
+<h3>0x1016 Consumer Heartbeat Time<a class="headerlink" href="#x1016-consumer-heartbeat-time" title="Link to this heading">#</a></h3>
+<p>Watchdog on another node. Bits 0-15 are the timeout in milliseconds, bits 16-23 the node ID to watch. A timeout raises a communication error and commands a quick stop. See <a class="reference internal" href="nmt.html#canopen-nmt"><span class="std std-ref">Network Management</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x01</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Consumer Heartbeat Time 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>ms in bits 0-15, node ID in bits 16-23</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1017-producer-heartbeat-time">
+<h3>0x1017 Producer Heartbeat Time<a class="headerlink" href="#x1017-producer-heartbeat-time" title="Link to this heading">#</a></h3>
+<p>Heartbeat period in milliseconds. 0 disables the heartbeat.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Producer Heartbeat Time</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>1000</p></td>
+<td><p>no</p></td>
+<td><p>ms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1018-identity-object">
+<h3>0x1018 Identity Object<a class="headerlink" href="#x1018-identity-object" title="Link to this heading">#</a></h3>
+<p>Vendor, product, revision and serial identification. The vendor ID is 0 because MAB Robotics has no CiA-assigned vendor ID yet.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x04</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Vendor-ID</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Product Code</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00000001</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Revision Number</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Serial Number</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1400-rpdo-communication-parameter">
+<h3>0x1400 RPDO communication parameter<a class="headerlink" href="#x1400-rpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for RPDO1. The COB-ID is stored and read back but is not used for filtering; RPDO1 is always received on 0x200 plus the node ID. See <a class="reference internal" href="pdo.html#canopen-pdo"><span class="std std-ref">PDO</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x05</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by RPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x200</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1401-rpdo-communication-parameter">
+<h3>0x1401 RPDO communication parameter<a class="headerlink" href="#x1401-rpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for RPDO2, received on 0x300 plus the node ID.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x05</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by RPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x300</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1402-rpdo-communication-parameter">
+<h3>0x1402 RPDO communication parameter<a class="headerlink" href="#x1402-rpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for RPDO3, received on 0x400 plus the node ID.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x05</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by RPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x400</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1403-rpdo-communication-parameter">
+<h3>0x1403 RPDO communication parameter<a class="headerlink" href="#x1403-rpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for RPDO4, received on 0x500 plus the node ID.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x05</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by RPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x500</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1600-rpdo-mapping-parameter">
+<h3>0x1600 RPDO mapping parameter<a class="headerlink" href="#x1600-rpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for RPDO1. Default: Target Position and Target Torque.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>2</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x607A0020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60710010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1601-rpdo-mapping-parameter">
+<h3>0x1601 RPDO mapping parameter<a class="headerlink" href="#x1601-rpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for RPDO2. Default: Target Velocity and Target Torque.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>2</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60FF0020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60710010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1602-rpdo-mapping-parameter">
+<h3>0x1602 RPDO mapping parameter<a class="headerlink" href="#x1602-rpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for RPDO3. Default: Controlword, Target Position and Target Torque.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>3</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60400010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x607A0020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60710010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1603-rpdo-mapping-parameter">
+<h3>0x1603 RPDO mapping parameter<a class="headerlink" href="#x1603-rpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for RPDO4. Default: Controlword, Target Velocity and Target Torque.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>3</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60400010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60FF0020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60710010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1800-tpdo-communication-parameter">
+<h3>0x1800 TPDO communication parameter<a class="headerlink" href="#x1800-tpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for TPDO1. The COB-ID is used exactly as stored, with no node ID offset. See <a class="reference internal" href="pdo.html#canopen-pdo"><span class="std std-ref">PDO</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by TPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x180</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Inhibit time</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>accepted but not enforced</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>SYNC start value</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>declared in the EDS but not implemented</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1801-tpdo-communication-parameter">
+<h3>0x1801 TPDO communication parameter<a class="headerlink" href="#x1801-tpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for TPDO2.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by TPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x280</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Inhibit time</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>accepted but not enforced</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>SYNC start value</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>declared in the EDS but not implemented</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1802-tpdo-communication-parameter">
+<h3>0x1802 TPDO communication parameter<a class="headerlink" href="#x1802-tpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for TPDO3.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by TPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x380</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Inhibit time</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>accepted but not enforced</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>SYNC start value</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>declared in the EDS but not implemented</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1803-tpdo-communication-parameter">
+<h3>0x1803 TPDO communication parameter<a class="headerlink" href="#x1803-tpdo-communication-parameter" title="Link to this heading">#</a></h3>
+<p>Communication parameters for TPDO4.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p>always reports 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>COB-ID used by TPDO</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x480</p></td>
+<td><p>no</p></td>
+<td><p>COB-ID</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Transmission type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>255</p></td>
+<td><p>no</p></td>
+<td><p>0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Inhibit time</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>accepted but not enforced</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Event timer</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>ms, transmit PDOs only</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>SYNC start value</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>declared in the EDS but not implemented</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1a00-tpdo-mapping-parameter">
+<h3>0x1A00 TPDO mapping parameter<a class="headerlink" href="#x1a00-tpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for TPDO1. Default: Statusword and Quick Status.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>2</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60410010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x20220110</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1a01-tpdo-mapping-parameter">
+<h3>0x1A01 TPDO mapping parameter<a class="headerlink" href="#x1a01-tpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for TPDO2. Default: Position Actual Value and Velocity Actual Value.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>2</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60640020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x606C0020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1a02-tpdo-mapping-parameter">
+<h3>0x1A02 TPDO mapping parameter<a class="headerlink" href="#x1a02-tpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for TPDO3. Default: Torque Actual Value, Power Stage Temperature and Motor Temperature.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>3</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60770010</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x20040108</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x20040208</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1a03-tpdo-mapping-parameter">
+<h3>0x1A03 TPDO mapping parameter<a class="headerlink" href="#x1a03-tpdo-mapping-parameter" title="Link to this heading">#</a></h3>
+<p>Mapping for TPDO4. Default: DC Link Circuit Voltage.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of mapped application objects in PDO</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>1</p></td>
+<td><p>no</p></td>
+<td><p>number of mapped objects, 0 to 8, write 0 before changing entries</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Application object 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x60790020</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Application object 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Application object 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Application object 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Application object 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Application object 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Application object 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Application object 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000000</p></td>
+<td><p>no</p></td>
+<td><p>index, sub-index, length in bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="manufacturer-specific-area">
+<span id="id2"></span><h2>Manufacturer Specific Area<a class="headerlink" href="#manufacturer-specific-area" title="Link to this heading">#</a></h2>
+<section id="x2000-actuator-config">
+<h3>0x2000 Actuator Config<a class="headerlink" href="#x2000-actuator-config" title="Link to this heading">#</a></h3>
+<p>Motor and actuator identity. These values describe the physical motor and are needed before calibration can run. Sub-index 0 reports 10.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x0A</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>CAN ID</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>100</p></td>
+<td><p>no</p></td>
+<td><p>10 to 127</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Pole Pairs</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>2 to 42</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Phase Inductance</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>H, 5e-9 to 0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Phase Resistance</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>ohm, 0.005 to 20</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Torque Bandwidth</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>Hz, 10 to 2500</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Motor Name</p></td>
+<td><p>STRING</p></td>
+<td><p>rw</p></td>
+<td><p>MD</p></td>
+<td><p>no</p></td>
+<td><p>up to 24 characters, segmented transfer only</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Motor Shutdown Temperature</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>80</p></td>
+<td><p>no</p></td>
+<td><p>degrees C, 10 to 120</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Motor Calibration Mode</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>stored, not currently acted on by the firmware</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Motor Torque Constant</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>1.0</p></td>
+<td><p>no</p></td>
+<td><p>Nm/A, must be greater than 0</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Motor KV Rating</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>RPM/V, must be greater than 0; writing it recomputes 0x2000:9 and is stored as a whole number</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2001-main-encoder">
+<h3>0x2001 Main Encoder<a class="headerlink" href="#x2001-main-encoder" title="Link to this heading">#</a></h3>
+<p>Onboard commutation encoder.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>encoder type identifier, see <a class="reference internal" href="setting_up_new_motor.html#canopen-setup"><span class="std std-ref">Setting Up a New Motor</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Direction</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>-1.0</p></td>
+<td><p>no</p></td>
+<td><p>-1.0 or 1.0 only</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2002-auxiliary-encoder">
+<h3>0x2002 Auxiliary Encoder<a class="headerlink" href="#x2002-auxiliary-encoder" title="Link to this heading">#</a></h3>
+<p>Optional encoder on the output shaft. See <a class="reference internal" href="../../encoders.html#aux-encoders"><span class="std std-ref">Encoders</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>encoder type identifier, see <a class="reference internal" href="setting_up_new_motor.html#canopen-setup"><span class="std std-ref">Setting Up a New Motor</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Direction</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>1.0</p></td>
+<td><p>no</p></td>
+<td><p>-1.0 or 1.0 only</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Mode</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>0 none, 1 startup, 2 motion, 3 report; takes effect after reboot</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Calibration Mode</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>0 full, 1 direction only</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Position</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Velocity</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions per second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2003-torque-sensor">
+<h3>0x2003 Torque Sensor<a class="headerlink" href="#x2003-torque-sensor" title="Link to this heading">#</a></h3>
+<p>Optional external torque sensor. See <a class="reference internal" href="../../torque_sensor.html#md-torque-sensor"><span class="std std-ref">External Torque Sensor</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Type</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>0 none, 1 XJC sensor</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Value</p></td>
+<td><p>REAL32</p></td>
+<td><p>ro</p></td>
+<td><p>0.0</p></td>
+<td><p>yes</p></td>
+<td><p>Nm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2004-temperature">
+<h3>0x2004 Temperature<a class="headerlink" href="#x2004-temperature" title="Link to this heading">#</a></h3>
+<p>Measured temperatures.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Power Stage Temperature</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>degrees C</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Motor Temperature</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>degrees C</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2010-position-pid-controller">
+<h3>0x2010 Position PID Controller<a class="headerlink" href="#x2010-position-pid-controller" title="Link to this heading">#</a></h3>
+<p>Position loop gains, used in Cyclic Synchronous Position. See <a class="reference internal" href="../../motion.html#position-pid"><span class="std std-ref">Position PID</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x04</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Kp</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Ki</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Kd</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Integral Limit</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2011-velocity-pid-controller">
+<h3>0x2011 Velocity PID Controller<a class="headerlink" href="#x2011-velocity-pid-controller" title="Link to this heading">#</a></h3>
+<p>Velocity loop gains, used in Cyclic Synchronous Velocity and by both profile modes. See <a class="reference internal" href="../../motion.html#velocity-pid"><span class="std std-ref">Velocity PID</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x04</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Kp</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Ki</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Kd</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Integral Limit</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2012-impedance-pd-controller">
+<h3>0x2012 Impedance PD Controller<a class="headerlink" href="#x2012-impedance-pd-controller" title="Link to this heading">#</a></h3>
+<p>Impedance mode stiffness and damping. See <a class="reference internal" href="../../motion.html#impedance-pd"><span class="std std-ref">Impedance PD</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Kp</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Kd</p></td>
+<td><p>REAL32</p></td>
+<td><p>rw</p></td>
+<td><p>0.0</p></td>
+<td><p>no</p></td>
+<td><p>must be 0 or positive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2020-hardware-info">
+<h3>0x2020 Hardware Info<a class="headerlink" href="#x2020-hardware-info" title="Link to this heading">#</a></h3>
+<p>Read-only board identification, programmed during production.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Device Type</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Device Revision</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Legacy Version</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Core ID</p></td>
+<td><p>OCTET_STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Batch Code</p></td>
+<td><p>OCTET_STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Production Date</p></td>
+<td><p>STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2021-firmware-info">
+<h3>0x2021 Firmware Info<a class="headerlink" href="#x2021-firmware-info" title="Link to this heading">#</a></h3>
+<p>Read-only firmware and bootloader identification.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x06</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Firmware Build Date</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Firmware Version</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Firmware Commit Hash</p></td>
+<td><p>STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Bootloader Build Date</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Bootloader Version</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Bootloader Commit Hash</p></td>
+<td><p>STRING</p></td>
+<td><p>ro</p></td>
+<td><p>-</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2022-status">
+<h3>0x2022 Status<a class="headerlink" href="#x2022-status" title="Link to this heading">#</a></h3>
+<p>Manufacturer status registers. Bit meanings are documented in <a class="reference internal" href="../../status_utility.html#status"><span class="std std-ref">Status</span></a> and summarised in <a class="reference internal" href="diagnostics.html#canopen-diagnostics"><span class="std std-ref">Diagnostics</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x0A</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Quick Status</p></td>
+<td><p>UINT16</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Main Encoder Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Auxiliary Encoder Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Calibration Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Bridge Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Hardware Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Communication Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Motion Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Misc Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Config Status</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2023-commands">
+<h3>0x2023 Commands<a class="headerlink" href="#x2023-commands" title="Link to this heading">#</a></h3>
+<p>Manufacturer commands. Trigger one by writing 1; any other value aborts with 0x06090030. Several of these reboot the drive.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x0E</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Save Config</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Test Main Encoder</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Test Auxiliary Encoder</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Run Calibration</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Run Auxiliary Encoder Calibration</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Calibrate Current PI Gains</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Revert Factory Settings</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Reset Controller</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Clear Warnings</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Clear Errors</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Blink LEDs</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Set Zero</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Reinitialise CAN</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Zero Torque Sensor</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x2024-user-gpio">
+<h3>0x2024 User GPIO<a class="headerlink" href="#x2024-user-gpio" title="Link to this heading">#</a></h3>
+<p>The two user GPIO pins. See <a class="reference internal" href="../../status_utility.html#gpio"><span class="std std-ref">GPIO</span></a> for the electrical limits.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>GPIO Mode</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>0 input, 1 brake</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>GPIO State</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="profile-specific-area">
+<span id="id3"></span><h2>Profile Specific Area<a class="headerlink" href="#profile-specific-area" title="Link to this heading">#</a></h2>
+<section id="x603f-error-code">
+<h3>0x603F Error Code<a class="headerlink" href="#x603f-error-code" title="Link to this heading">#</a></h3>
+<p>CiA 402 code for the most recent fault. Latches until the drive is reset.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Error Code</p></td>
+<td><p>UINT16</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6040-controlword">
+<h3>0x6040 Controlword<a class="headerlink" href="#x6040-controlword" title="Link to this heading">#</a></h3>
+<p>Commands the CiA 402 state machine. See <a class="reference internal" href="state_machine.html#canopen-state-machine"><span class="std std-ref">State Machine</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Controlword</p></td>
+<td><p>UINT16</p></td>
+<td><p>rww</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6041-statusword">
+<h3>0x6041 Statusword<a class="headerlink" href="#x6041-statusword" title="Link to this heading">#</a></h3>
+<p>Reports the CiA 402 state. Carries the state bits only.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Statusword</p></td>
+<td><p>UINT16</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6060-modes-of-operation">
+<h3>0x6060 Modes of Operation<a class="headerlink" href="#x6060-modes-of-operation" title="Link to this heading">#</a></h3>
+<p>Selects the active controller. See <a class="reference internal" href="modes_of_operation.html#canopen-modes"><span class="std std-ref">Modes of Operation</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Modes of Operation</p></td>
+<td><p>INT8</p></td>
+<td><p>rww</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6061-modes-of-operation-display">
+<h3>0x6061 Modes of Operation Display<a class="headerlink" href="#x6061-modes-of-operation-display" title="Link to this heading">#</a></h3>
+<p>Reports the active mode. Gives the same answer as reading 0x6060.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Modes of Operation Display</p></td>
+<td><p>INT8</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6064-position-actual-value">
+<h3>0x6064 Position Actual Value<a class="headerlink" href="#x6064-position-actual-value" title="Link to this heading">#</a></h3>
+<p>Measured output shaft position.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Position Actual Value</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6067-position-window">
+<h3>0x6067 Position Window<a class="headerlink" href="#x6067-position-window" title="Link to this heading">#</a></h3>
+<p>Tolerance used to decide that a position move has arrived. Reported through bit 15 of Quick Status.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Position Window</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>15915</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x606c-velocity-actual-value">
+<h3>0x606C Velocity Actual Value<a class="headerlink" href="#x606c-velocity-actual-value" title="Link to this heading">#</a></h3>
+<p>Measured output shaft velocity.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Velocity Actual Value</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions per second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x606d-velocity-window">
+<h3>0x606D Velocity Window<a class="headerlink" href="#x606d-velocity-window" title="Link to this heading">#</a></h3>
+<p>Tolerance used to decide that a velocity command has been reached.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Velocity Window</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>14041</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6071-target-torque">
+<h3>0x6071 Target Torque<a class="headerlink" href="#x6071-target-torque" title="Link to this heading">#</a></h3>
+<p>Torque setpoint, and the feed-forward torque in Impedance mode.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Target Torque</p></td>
+<td><p>INT16</p></td>
+<td><p>rww</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>1/1000 of 0x6076</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6072-max-torque">
+<h3>0x6072 Max Torque<a class="headerlink" href="#x6072-max-torque" title="Link to this heading">#</a></h3>
+<p>Torque limit applied to every mode.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Max Torque</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>1/1000 of 0x6076</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6073-max-current">
+<h3>0x6073 Max Current<a class="headerlink" href="#x6073-max-current" title="Link to this heading">#</a></h3>
+<p>Phase current limit.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Max Current</p></td>
+<td><p>UINT16</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>1/1000 of 0x6075</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6075-motor-rated-current">
+<h3>0x6075 Motor Rated Current<a class="headerlink" href="#x6075-motor-rated-current" title="Link to this heading">#</a></h3>
+<p>Nameplate current of the motor. Must be non-zero before 0x6073 can be used.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Motor Rated Current</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>mA</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6076-motor-rated-torque">
+<h3>0x6076 Motor Rated Torque<a class="headerlink" href="#x6076-motor-rated-torque" title="Link to this heading">#</a></h3>
+<p>Nameplate torque of the motor. Must be non-zero before 0x6071, 0x6072 or 0x6077 can be used.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Motor Rated Torque</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>mNm</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6077-torque-actual-value">
+<h3>0x6077 Torque Actual Value<a class="headerlink" href="#x6077-torque-actual-value" title="Link to this heading">#</a></h3>
+<p>Measured torque at the output shaft.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Torque Actual Value</p></td>
+<td><p>INT16</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>1/1000 of 0x6076</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6079-dc-link-circuit-voltage">
+<h3>0x6079 DC Link Circuit Voltage<a class="headerlink" href="#x6079-dc-link-circuit-voltage" title="Link to this heading">#</a></h3>
+<p>Measured DC link voltage.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>DC Link Circuit Voltage</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>mV</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x607a-target-position">
+<h3>0x607A Target Position<a class="headerlink" href="#x607a-target-position" title="Link to this heading">#</a></h3>
+<p>Position setpoint. In Profile Position it is the destination; in Cyclic Synchronous Position it is applied directly; in Impedance it is the equilibrium point.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Target Position</p></td>
+<td><p>INT32</p></td>
+<td><p>rww</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x607b-position-range-limit">
+<h3>0x607B Position Range Limit<a class="headerlink" href="#x607b-position-range-limit" title="Link to this heading">#</a></h3>
+<p>Hard bounds of the position representation. Read only, and fixed to the full INT32 range.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Min Position Range Limit</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>-2147483648</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Max Position Range Limit</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>2147483647</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x607d-software-position-limit">
+<h3>0x607D Software Position Limit<a class="headerlink" href="#x607d-software-position-limit" title="Link to this heading">#</a></h3>
+<p>Software position limits. Setting both sub-indices to the same value disables limiting.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Min Position Limit</p></td>
+<td><p>INT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Max Position Limit</p></td>
+<td><p>INT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6080-max-motor-speed">
+<h3>0x6080 Max Motor Speed<a class="headerlink" href="#x6080-max-motor-speed" title="Link to this heading">#</a></h3>
+<p>Speed limit applied to every mode, and the clamp on the position loop output.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Max Motor Speed</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6083-profile-acceleration">
+<h3>0x6083 Profile Acceleration<a class="headerlink" href="#x6083-profile-acceleration" title="Link to this heading">#</a></h3>
+<p>Acceleration used by the trajectory generator in both profile modes.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Profile Acceleration</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second squared</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6084-profile-deceleration">
+<h3>0x6084 Profile Deceleration<a class="headerlink" href="#x6084-profile-deceleration" title="Link to this heading">#</a></h3>
+<p>Deceleration used by the trajectory generator in both profile modes.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Profile Deceleration</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>15915494</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second squared</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6085-quick-stop-deceleration">
+<h3>0x6085 Quick Stop Deceleration<a class="headerlink" href="#x6085-quick-stop-deceleration" title="Link to this heading">#</a></h3>
+<p>Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Quick Stop Deceleration</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>15915494</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second squared</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6091-gear-ratio">
+<h3>0x6091 Gear Ratio<a class="headerlink" href="#x6091-gear-ratio" title="Link to this heading">#</a></h3>
+<p>Gearbox ratio. All shaft quantities are computed with it applied.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Highest sub-index supported</p></td>
+<td><p>UINT8</p></td>
+<td><p>ro</p></td>
+<td><p>0x02</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Motor Revolutions</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>1</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Shaft Revolutions</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>1</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x60a8-si-unit-position">
+<h3>0x60A8 SI Unit Position<a class="headerlink" href="#x60a8-si-unit-position" title="Link to this heading">#</a></h3>
+<p>Declares the position unit, micro-revolutions. Read only.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>SI Unit Position</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0xFAB40000</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x60a9-si-unit-velocity">
+<h3>0x60A9 SI Unit Velocity<a class="headerlink" href="#x60a9-si-unit-velocity" title="Link to this heading">#</a></h3>
+<p>Declares the velocity unit, micro-revolutions per second. Read only.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>SI Unit Velocity</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0xFAB40300</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x60aa-si-unit-acceleration">
+<h3>0x60AA SI Unit Acceleration<a class="headerlink" href="#x60aa-si-unit-acceleration" title="Link to this heading">#</a></h3>
+<p>Declares the acceleration unit, micro-revolutions per second squared. Read only.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>SI Unit Acceleration</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0xFAB45700</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x60ff-target-velocity">
+<h3>0x60FF Target Velocity<a class="headerlink" href="#x60ff-target-velocity" title="Link to this heading">#</a></h3>
+<p>Velocity setpoint. In Profile Velocity it is the target; in Profile Position it is the cruise velocity; in Cyclic Synchronous Velocity it is applied directly; in Impedance it is the equilibrium velocity.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Target Velocity</p></td>
+<td><p>INT32</p></td>
+<td><p>rww</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions per second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x6502-supported-drive-modes">
+<h3>0x6502 Supported Drive Modes<a class="headerlink" href="#x6502-supported-drive-modes" title="Link to this heading">#</a></h3>
+<p>Bit field of supported CiA 402 modes. Reads 0x00000185.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Supported Drive Modes</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0x00000185</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MD/Communication/canopen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="setting_up_new_motor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Setting Up a New Motor</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../canopen_legacy/canopen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CANopen [LEGACY]</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-area">Communication Area</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1000-device-type">0x1000 Device Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1001-error-register">0x1001 Error Register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1005-cob-id-sync-message">0x1005 COB-ID SYNC Message</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1008-manufacturer-device-name">0x1008 Manufacturer Device Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1009-manufacturer-hardware-version">0x1009 Manufacturer Hardware Version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1010-store-parameters">0x1010 Store Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1011-restore-default-parameters">0x1011 Restore Default Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1014-cob-id-emcy">0x1014 COB-ID EMCY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1016-consumer-heartbeat-time">0x1016 Consumer Heartbeat Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1017-producer-heartbeat-time">0x1017 Producer Heartbeat Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1018-identity-object">0x1018 Identity Object</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1400-rpdo-communication-parameter">0x1400 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1401-rpdo-communication-parameter">0x1401 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1402-rpdo-communication-parameter">0x1402 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1403-rpdo-communication-parameter">0x1403 RPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1600-rpdo-mapping-parameter">0x1600 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1601-rpdo-mapping-parameter">0x1601 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1602-rpdo-mapping-parameter">0x1602 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1603-rpdo-mapping-parameter">0x1603 RPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1800-tpdo-communication-parameter">0x1800 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1801-tpdo-communication-parameter">0x1801 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1802-tpdo-communication-parameter">0x1802 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1803-tpdo-communication-parameter">0x1803 TPDO communication parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a00-tpdo-mapping-parameter">0x1A00 TPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a01-tpdo-mapping-parameter">0x1A01 TPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a02-tpdo-mapping-parameter">0x1A02 TPDO mapping parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1a03-tpdo-mapping-parameter">0x1A03 TPDO mapping parameter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturer-specific-area">Manufacturer Specific Area</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2000-actuator-config">0x2000 Actuator Config</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2001-main-encoder">0x2001 Main Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2002-auxiliary-encoder">0x2002 Auxiliary Encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2003-torque-sensor">0x2003 Torque Sensor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2004-temperature">0x2004 Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2010-position-pid-controller">0x2010 Position PID Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2011-velocity-pid-controller">0x2011 Velocity PID Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2012-impedance-pd-controller">0x2012 Impedance PD Controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2020-hardware-info">0x2020 Hardware Info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2021-firmware-info">0x2021 Firmware Info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2022-status">0x2022 Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2023-commands">0x2023 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x2024-user-gpio">0x2024 User GPIO</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-specific-area">Profile Specific Area</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x603f-error-code">0x603F Error Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6040-controlword">0x6040 Controlword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6041-statusword">0x6041 Statusword</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6060-modes-of-operation">0x6060 Modes of Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6061-modes-of-operation-display">0x6061 Modes of Operation Display</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6064-position-actual-value">0x6064 Position Actual Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6067-position-window">0x6067 Position Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x606c-velocity-actual-value">0x606C Velocity Actual Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x606d-velocity-window">0x606D Velocity Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6071-target-torque">0x6071 Target Torque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6072-max-torque">0x6072 Max Torque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6073-max-current">0x6073 Max Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6075-motor-rated-current">0x6075 Motor Rated Current</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6076-motor-rated-torque">0x6076 Motor Rated Torque</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6077-torque-actual-value">0x6077 Torque Actual Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6079-dc-link-circuit-voltage">0x6079 DC Link Circuit Voltage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607a-target-position">0x607A Target Position</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607b-position-range-limit">0x607B Position Range Limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607d-software-position-limit">0x607D Software Position Limit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6080-max-motor-speed">0x6080 Max Motor Speed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6083-profile-acceleration">0x6083 Profile Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6084-profile-deceleration">0x6084 Profile Deceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6085-quick-stop-deceleration">0x6085 Quick Stop Deceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6091-gear-ratio">0x6091 Gear Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a8-si-unit-position">0x60A8 SI Unit Position</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a9-si-unit-velocity">0x60A9 SI Unit Velocity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60aa-si-unit-acceleration">0x60AA SI Unit Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60ff-target-velocity">0x60FF Target Velocity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6502-supported-drive-modes">0x6502 Supported Drive Modes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

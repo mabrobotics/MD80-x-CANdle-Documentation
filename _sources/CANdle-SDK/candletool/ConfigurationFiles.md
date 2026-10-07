@@ -107,7 +107,12 @@ A template configuration file can be created using the `candletool pds read_cfg`
 modified configuration file can be used to configure the PDS device using the
 `candletool pds setup_cfg` command.
 
-## Configuration files for MD device with CANOpen communication
+## Configuration files for MD device with CANopen communication [LEGACY]
+
+```{note}
+Applies to the **legacy** CANopen firmware (2.5.x). See the
+[legacy CANopen](md_canopen_co25) section.
+```
 
 MD using can open communication need to have special config file.
 

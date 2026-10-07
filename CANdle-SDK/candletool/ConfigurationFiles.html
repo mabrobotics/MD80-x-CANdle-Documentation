@@ -201,12 +201,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../../MD/status_utility.html">Status &amp; Utilities</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../MD/Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../MD/Communication/fdcan.html">MD Protocol</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../../MD/Communication/canopen.html">CANOpen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_od.html">Object Dictionary</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_nmt.html">NMT Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_sdo.html">SDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_pdo.html">PDO Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/migration.html">Migration to and from CANopen</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../MD/Communication/canopen/intro.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/units.html">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/pdo.html">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen/object_dictionary.html">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../MD/Communication/canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../MD/Communication/canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
 </ul>
 </details></li>
 </ul>
@@ -456,7 +468,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-devices">Configuration files for MD devices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-pds-device">Configuration files for PDS device</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-device-with-canopen-communication">Configuration files for MD device with CANOpen communication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-device-with-canopen-communication-legacy">Configuration files for MD device with CANopen communication [LEGACY]</a></li>
 </ul>
             </nav>
         </div>
@@ -567,8 +579,13 @@ be used to configure the MD device using the <code class="docutils literal notra
 modified configuration file can be used to configure the PDS device using the
 <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">pds</span> <span class="pre">setup_cfg</span></code> command.</p>
 </section>
-<section id="configuration-files-for-md-device-with-canopen-communication">
-<h2>Configuration files for MD device with CANOpen communication<a class="headerlink" href="#configuration-files-for-md-device-with-canopen-communication" title="Link to this heading">#</a></h2>
+<section id="configuration-files-for-md-device-with-canopen-communication-legacy">
+<h2>Configuration files for MD device with CANopen communication [LEGACY]<a class="headerlink" href="#configuration-files-for-md-device-with-canopen-communication-legacy" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies to the <strong>legacy</strong> CANopen firmware (2.5.x). See the
+<a class="reference internal" href="../../MD/Communication/canopen_legacy/canopen.html#md-canopen-co25"><span class="std std-ref">legacy CANopen</span></a> section.</p>
+</div>
 <p>MD using can open communication need to have special config file.</p>
 <p>Exemplary configuration files can be found below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">motor</span><span class="p">]</span>
@@ -686,7 +703,7 @@ modified configuration file can be used to configure the PDS device using the
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-devices">Configuration files for MD devices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-pds-device">Configuration files for PDS device</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-device-with-canopen-communication">Configuration files for MD device with CANOpen communication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-files-for-md-device-with-canopen-communication-legacy">Configuration files for MD device with CANopen communication [LEGACY]</a></li>
 </ul>
   </nav></div>
 
