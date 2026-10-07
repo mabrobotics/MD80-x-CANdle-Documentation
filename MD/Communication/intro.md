@@ -6,7 +6,7 @@ which one it runs is decided by the firmware flashed onto it:
 - [MD Protocol](md_protocol), MAB's own protocol,
 - [CANopen](md_canopen), the industry standard.
 
-## MD Protocol
+## MD Protocol (MD)
 
 MD Protocol offers a dead simple, yet quite efficient interface based around register access,
 similar to Modbus. It follows a strict master and slave model where registers can be accessed one by
@@ -17,7 +17,7 @@ MD Protocol runs on CAN-FD, at up to 8 Mbit/s with 64 bytes per frame, and on CA
 already have a CANopen network to join, this is the protocol to choose. It is faster, simpler and
 better supported by MAB's own tooling.
 
-## CANopen
+## CANopen (MDCO)
 
 [CANopen](https://www.can-cia.org/can-knowledge/canopen) is an older but widely used industrial
 protocol. It offers high configurability and drops into existing industrial control systems without
@@ -49,6 +49,69 @@ written from the wrong chapter can be accepted and act on something you did not 
 ## Switching between protocols
 
 A drive runs either MD Protocol or CANopen, never both. Changing between them means flashing the
-other firmware variant, which is published in [Downloads](downloads). The procedure for drives on
-the legacy CANopen firmware is described in
+other firmware variant, which is published in [Downloads](downloads).
+
+### Migration between MD Protocol (MD) and MD CANOpen (MDCO) Protocol 
+For drives with firmware v3.0.0+ and with `candletool` v1.5.1+, the migration process is
+straightforward. 
+
+#### From MD to MDCO:
+1. Set canId of the drive to range 10 - 127 with: 
+```
+candletool md can --id <current-ID> --new_id <new-ID> --save
+for example:
+candletool md can --id 675 --new_id 100 --save
+```
+2. Update the drive with:
+```
+candletool md update --mdco <version> --id <current-ID>
+for example:
+candletool md update --mdco latest --id 100
+or:
+candletool md update --mdco 3.0.1 --id 100
+```
+
+3. Validate migration
+```
+candletool mdco info -i <ID>
+for example:
+candletool mdco info -i 100
+```
+
+#### From MDCO to MD:
+```{note}
+The update process uses FDCAN protocol and will corrupt (and get corrupted),
+by any other CANOpen devices present on the bus. The update procedure 
+is only possible when the target device is THE ONLY DEVICE ON THE CAN BUS.
+```
+1. Update the drive with:
+```
+candletool mdco update --md <version> --id <ID>
+for example:
+candletool mdco update --md latest --id 100
+or:
+candletool mdco update --md 3.0.1 --id 100
+```
+
+2. Validate migration
+```
+candletool md info -i <ID>
+for example:
+candletool md info -i 100
+```
+
+### Remote update
+When no internet connection is available, the update can be done with
+local .mab files downloaded from [Downloads](downloads) section.
+Then you can upload firmware to MD drive with:
+```
+candletool md update -p path/to/file.mab --id <ID>
+```
+or for MDCO drive with:
+```
+candletool mdco update -p path/to/file.mab --id <nodeId>
+```
+
+### Legacy (pre 3.0.0) firmware versions
+The procedure for drives on the legacy CANopen firmware is described in
 [Migration to and from CANopen](canopen_migration_co25).
