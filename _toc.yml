@@ -39,14 +39,36 @@ chapters:
         sections:
           - file: MD/Communication/fdcan
             title: MD Protocol
-          - file: MD/Communication/canopen
-            title: CANOpen
+          # TODO: drop this section once every user has moved off the 2.5.x CANopen firmware
+          - file: MD/Communication/canopen/intro
+            title: CANopen
             sections:
-              - file: MD/Communication/canopen_od
-              - file: MD/Communication/canopen_nmt
-              - file: MD/Communication/canopen_sdo
-              - file: MD/Communication/canopen_pdo
-              - file: MD/Communication/migration
+              - file: MD/Communication/canopen/units
+                title: System Units
+              - file: MD/Communication/canopen/nmt
+                title: Network Management
+              - file: MD/Communication/canopen/sdo
+                title: Service Data Objects
+              - file: MD/Communication/canopen/pdo
+                title: Process Data Objects
+              - file: MD/Communication/canopen/state_machine
+                title: State Machine
+              - file: MD/Communication/canopen/modes_of_operation
+                title: Modes of Operation
+              - file: MD/Communication/canopen/diagnostics
+                title: Diagnostics
+              - file: MD/Communication/canopen/setting_up_new_motor
+                title: Setting Up a New Motor
+              - file: MD/Communication/canopen/object_dictionary
+                title: Object Dictionary
+          - file: MD/Communication/canopen_legacy/canopen
+            title: CANopen [LEGACY]
+            sections:
+              - file: MD/Communication/canopen_legacy/canopen_od
+              - file: MD/Communication/canopen_legacy/canopen_nmt
+              - file: MD/Communication/canopen_legacy/canopen_sdo
+              - file: MD/Communication/canopen_legacy/canopen_pdo
+              - file: MD/Communication/canopen_legacy/migration
   - file: PDS/intro
     title: PDS - Power Distribution System
     sections:
@@ -99,13 +121,6 @@ chapters:
             title: Brake Resistor
   - file: CANdleduino/intro.md
     title: Software - Arduino
-  # TODO: when new CANopen firmware is ready to publish uncomment following section
-  # - file: CANopen/intro.md
-  #   title: CANopen Support
-  #   sections:
-  #     - file: CANopen/object_dictionary
-  #     - file: CANopen/units
-  #     - file: CANopen/setting_up_new_motor
   - file: FAQ/intro
     title: FAQ
   - file: Downloads/intro
