@@ -113,5 +113,23 @@ candletool mdco update -p path/to/file.mab --id <nodeId>
 ```
 
 ### Legacy (pre 3.0.0) firmware versions
+
 The procedure for drives on the legacy CANopen firmware is described in
 [Migration to and from CANopen](canopen_migration_co25).
+
+#### MDCO v2.x.x update to v3.0.1+
+To update the drive from legacy MDCO firmware to new, actively
+supported firmware, a special procedure has been implemented in
+**candletool v1.5.1+**:
+```
+candletool mdco update <version> -i <nodeId> --legacy-migration
+for example
+candletool mdco update latest -i 69 --legacy-migration
+or
+candletool mdco update 3.0.1 -i 69 --legacy-migration
+```
+```{warning}
+This migration will cause the drive configuration to be mostly dropped.
+Config upload and calibration will be required in majority of cases.
+This will also make drive use `md_1.2.eds` instead of `md_1.1.eds`.
+```
