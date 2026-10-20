@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MD200 dynamometer test</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<script src="dynamometer_data.js"></script>
+<script src="thermal_map.js"></script>
 <style>
 html, body { margin: 0; height: 100%; background: #fff; font-family: sans-serif; }
 #p { width: 100vw; height: 100vh; }
@@ -15,7 +17,8 @@ html, body { margin: 0; height: 100%; background: #fff; font-family: sans-serif;
 <div id="p"></div>
 <script>
 /* Interactive plots of the MD200 dynamometer test.
-   Data source: dynamometer/<voltage>V/<current>A.csv, MD200 (QS205) side, columns:
+   Data source: dynamometer/<voltage>V/<current>A.csv, MD200 (QS205) side, packed into dynamometer_data.js
+   during the documentation build (_ext/md200_plot_data.py), columns:
    supply voltage [V], supply current [A], driver temp [C], motor phase current [A],
    velocity [rad/s], torque [Nm], timestamp [s]
    Usage: dynamometer_plot.html?v=48 - driver temperature vs time for one supply voltage
@@ -30,26 +33,22 @@ var CONFIG = { responsive: true, displaylogo: false, modeBarButtonsToRemove: ['s
 /* resolves to null when the run does not exist (not every voltage was tested up to 150 A) */
 function loadRun(v, a)
 {
-	return fetch('dynamometer/' + v + 'V/' + a + 'A.csv').then(function (r)
+	return Promise.resolve(MD200_CSV['dynamometer/' + v + 'V/' + a + 'A.csv']).then(function (text)
 	{
-		if (r.status == 404) return null;
-		if (!r.ok) throw new Error('cannot load ' + r.url);
-		return r.text().then(function (text)
+		if (text === undefined) return null;
+		var run = { a: a, t: [], temp: [], mech: 0, feedback: 0 };
+		var lines = text.trim().split('\n');
+		for (var k = 1; k < lines.length; k++)
 		{
-			var run = { a: a, t: [], temp: [], mech: 0, feedback: 0 };
-			var lines = text.trim().split('\n');
-			for (var k = 1; k < lines.length; k++)
-			{
-				var c = lines[k].split(',').map(parseFloat);
-				run.t.push(c[6]);
-				run.temp.push(c[2]);
-				run.mech += Math.abs(c[4] * c[5]);   /* velocity x torque */
-				run.feedback += -c[0] * c[1];        /* negative supply current = power fed back */
-			}
-			run.mech /= lines.length - 1;
-			run.feedback /= lines.length - 1;
-			return run;
-		});
+			var c = lines[k].split(',').map(parseFloat);
+			run.t.push(c[6]);
+			run.temp.push(c[2]);
+			run.mech += Math.abs(c[4] * c[5]);   /* velocity x torque */
+			run.feedback += -c[0] * c[1];        /* negative supply current = power fed back */
+		}
+		run.mech /= lines.length - 1;
+		run.feedback /= lines.length - 1;
+		return run;
 	});
 }
 
@@ -72,12 +71,14 @@ function plotVoltage(v)
 				line: { color: TAB10[k % 10], width: 1.8 },
 				hovertemplate: name + '<br>%{x:.1f} s<br>%{y:.1f} °C<extra></extra>' };
 		});
+		traces.push(thermalMapTrace(runs.map(function (run) { return { a: run.a, t: run.t, T: run.temp }; }), 0.5, 1, 120));
 		var layout = { title: { text: v + ' V' }, margin: { l: 60, r: 10, t: 50, b: 50 },
 			xaxis: { title: { text: 'Time [s]' }, zeroline: false },
 			yaxis: { title: { text: 'Driver temperature [°C]' }, zeroline: false },
 			legend: { title: { text: 'Phase current / mechanical power' }, font: { size: 11 }, tracegroupgap: 0 },
 			hovermode: 'closest' };
-		Plotly.newPlot('p', traces, layout, CONFIG);
+		addMapSwitch(layout, traces.length - 1, 'Driver temperature [°C]');
+		Plotly.newPlot('p', traces, layout, CONFIG).then(function () { mapFromUrl(layout); });
 	});
 }
 
@@ -116,7 +117,7 @@ var job = q.has('power') ? plotPower() : plotVoltage(parseInt(q.get('v') || '48'
 job.catch(function (e)
 {
 	document.getElementById('p').innerHTML = '<div id="err">Plot data could not be loaded (' + e.message +
-		'). Open the documentation through a web server, not directly from disk.</div>';
+		').</div>';
 });
 </script>
 </body>

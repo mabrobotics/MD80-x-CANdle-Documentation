@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MD200 inductive load test</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<script src="inductive_load_data.js"></script>
+<script src="thermal_map.js"></script>
 <style>
 html, body { margin: 0; height: 100%; background: #fff; font-family: sans-serif; }
 #p { width: 100vw; height: 100vh; }
@@ -15,7 +17,8 @@ html, body { margin: 0; height: 100%; background: #fff; font-family: sans-serif;
 <div id="p"></div>
 <script>
 /* Interactive plots of the MD200 inductive load test.
-   Data source: inductive_load/<voltage>V/<current>.csv (time [s], temperature [C]).
+   Data source: inductive_load/<voltage>V/<current>.csv (time [s], temperature [C]), packed into
+   inductive_load_data.js during the documentation build (_ext/md200_plot_data.py).
    Usage: inductive_plot.html?v=24  - temperature vs time for one supply voltage
           inductive_plot.html?cutoff - time to over-temperature cutoff vs phase current */
 var VOLTAGES = [24, 36, 48, 60];
@@ -28,12 +31,10 @@ var CONFIG = { responsive: true, displaylogo: false, modeBarButtonsToRemove: ['s
 
 function loadCsv(v, a)
 {
-	return fetch('inductive_load/' + v + 'V/' + a + '.csv').then(function (r)
+	var path = 'inductive_load/' + v + 'V/' + a + '.csv';
+	return Promise.resolve(MD200_CSV[path]).then(function (text)
 	{
-		if (!r.ok) throw new Error('cannot load ' + r.url);
-		return r.text();
-	}).then(function (text)
-	{
+		if (text === undefined) throw new Error('missing ' + path);
 		var t = [], T = [];
 		var lines = text.trim().split('\n');
 		for (var k = 1; k < lines.length; k++)
@@ -56,12 +57,14 @@ function plotVoltage(v)
 				line: { color: TAB10[k % 10], width: 1.8 },
 				hovertemplate: CURRENTS[k] + ' A<br>%{x:.1f} s<br>%{y:.1f} °C<extra></extra>' };
 		});
+		traces.push(thermalMapTrace(runs.map(function (run, k) { return { a: CURRENTS[k], t: run.t, T: run.T }; }), 0.25, 1, RUN_LENGTH));
 		var layout = { title: { text: v + ' V' }, margin: { l: 60, r: 10, t: 50, b: 50 },
 			xaxis: { title: { text: 'Time [s]' }, zeroline: false },
 			yaxis: { title: { text: 'Temperature [°C]' }, zeroline: false },
 			legend: { title: { text: 'Phase current' }, font: { size: 11 }, tracegroupgap: 0 },
 			hovermode: 'closest' };
-		Plotly.newPlot('p', traces, layout, CONFIG);
+		addMapSwitch(layout, traces.length - 1, 'Temperature [°C]');
+		Plotly.newPlot('p', traces, layout, CONFIG).then(function () { mapFromUrl(layout); });
 	});
 }
 
@@ -102,7 +105,7 @@ var job = q.has('cutoff') ? plotCutoff() : plotVoltage(parseInt(q.get('v') || '2
 job.catch(function (e)
 {
 	document.getElementById('p').innerHTML = '<div id="err">Plot data could not be loaded (' + e.message +
-		'). Open the documentation through a web server, not directly from disk.</div>';
+		').</div>';
 });
 </script>
 </body>
