@@ -30,6 +30,8 @@ html:
   favicon: logo32x32.png
 
 sphinx:
+  local_extensions:
+    md200_plot_data: _ext
   config:
     html_context:
       default_mode: light
