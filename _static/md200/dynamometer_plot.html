@@ -71,7 +71,7 @@ function plotVoltage(v)
 				line: { color: TAB10[k % 10], width: 1.8 },
 				hovertemplate: name + '<br>%{x:.1f} s<br>%{y:.1f} °C<extra></extra>' };
 		});
-		traces.push(thermalMapTrace(runs.map(function (run) { return { a: run.a, t: run.t, T: run.temp }; }), 0.5, 1, 120));
+		traces.push(thermalMapTrace(runs.map(function (run) { return { a: run.a, t: run.t, T: run.temp }; }), 0.2, 0.25, 120));
 		var layout = { title: { text: v + ' V' }, margin: { l: 60, r: 10, t: 50, b: 50 },
 			xaxis: { title: { text: 'Time [s]' }, zeroline: false },
 			yaxis: { title: { text: 'Driver temperature [°C]' }, zeroline: false },

@@ -57,7 +57,7 @@ function plotVoltage(v)
 				line: { color: TAB10[k % 10], width: 1.8 },
 				hovertemplate: CURRENTS[k] + ' A<br>%{x:.1f} s<br>%{y:.1f} °C<extra></extra>' };
 		});
-		traces.push(thermalMapTrace(runs.map(function (run, k) { return { a: CURRENTS[k], t: run.t, T: run.T }; }), 0.25, 1, RUN_LENGTH));
+		traces.push(thermalMapTrace(runs.map(function (run, k) { return { a: CURRENTS[k], t: run.t, T: run.T }; }), 0.2, 0.25, RUN_LENGTH));
 		var layout = { title: { text: v + ' V' }, margin: { l: 60, r: 10, t: 50, b: 50 },
 			xaxis: { title: { text: 'Time [s]' }, zeroline: false },
 			yaxis: { title: { text: 'Temperature [°C]' }, zeroline: false },
