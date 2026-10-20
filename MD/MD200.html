@@ -1,0 +1,1457 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MD200 &#8212; MAB Ecosystem</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=11d49ae1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MD/MD200';</script>
+    <script src="../_static/md200/thermal_map.js?v=20d3742b"></script>
+    <link rel="icon" href="../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Encoders" href="encoders.html" />
+    <link rel="prev" title="MD80 60V" href="MD80HV.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MAB Ecosystem - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MAB Ecosystem - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    MAB Ecosystem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">MD - Motor Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MD80.html">MD80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD20.html">MD20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MD200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torque_sensor.html">External Torque Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motion.html">Motion Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_calibration.html">Configuration &amp; Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status_utility.html">Status &amp; Utilities</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Communication/intro.html">CAN Communication</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Communication/fdcan.html">MD Protocol</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Communication/canopen/intro.html">CANopen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/units.html">System Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/nmt.html">Network Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/sdo.html">Service Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/pdo.html">Process Data Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/state_machine.html">State Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/modes_of_operation.html">Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/setting_up_new_motor.html">Setting Up a New Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen/object_dictionary.html">Object Dictionary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Communication/canopen_legacy/canopen.html">CANopen [LEGACY]</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_legacy/canopen_od.html">Object Dictionary [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_legacy/canopen_nmt.html">NMT Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_legacy/canopen_sdo.html">SDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_legacy/canopen_pdo.html">PDO Overview [LEGACY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Communication/canopen_legacy/migration.html">Migration to and from CANopen [LEGACY]</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PDS/intro.html">PDS - Power Distribution System</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/control_board.html">Control Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/power_stage.html">Power Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/isolated_converter.html">Isolated Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/brake_resistor.html">Brake Resistor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/charger_addon.html">Charger Addon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PDS/communication.html">FDCAN Communication</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../CANdle/intro.html">CANdle and CANdleHAT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle-SDK/intro.html">Software - CANdle-SDK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle-SDK/CANdlelib.html">CANdlelib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/CANdleModule.html">CANdle Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDModule.html">MD Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html">PDS Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html">MDCO Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html">Response Time (Latency)</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle-SDK/CANdleTool.html">CANdleTool</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/Commands.html">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle-SDK/candletool/ConfigurationFiles.html">Configuration Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle-SDK/PythonModule.html">Python Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../CANdle_ROS2/intro.html">Software - ROS2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../CANdle_ROS2/md-node/overview.html">MD Node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CANdle_ROS2/pds-node/overview.html">PDS Node</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ctrl.html">Control Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ic.html">Isolated Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/ps.html">Power Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../CANdle_ROS2/pds-node/modules/br.html">Brake Resistor</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/MD80-x-CANdle-Documentation/issues/new?title=Issue%20on%20page%20%2FMD/MD200.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/MD/MD200.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MD200</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-integration">Mechanical integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mounting">Mounting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-and-magnet">Encoder and magnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cooling-and-thermal-interface">Cooling and thermal interface</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-fd">CAN FD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermistor-connection">Thermistor connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-connectors">Aux connectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-integration">Electrical integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-and-motor-wiring">Power and motor wiring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-source">Power source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-cable-sizing">Power cable sizing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cable-lugs">Cable lugs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-example">Wiring example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-characteristics">Thermal characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-i-inductive-load">Test I - inductive load</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-ii-dynamometer">Test II - dynamometer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-current">Peak current</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="md200">
+<span id="id1"></span><h1>MD200<a class="headerlink" href="#md200" title="Link to this heading">#</a></h1>
+<figure class="align-center" id="id2">
+<img alt="MD200 integrated with AKE90-8 motor" class="no-scaled-link" src="../_images/md200_ake90_wth_bg.png" style="width: 450px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">MD200 integrated with the AKE90-8 motor</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="general-parameters">
+<h2>General parameters<a class="headerlink" href="#general-parameters" title="Link to this heading">#</a></h2>
+<p>MD200 is a high-current brushless motor controller targeted at robotic actuators with high motor
+phase current and power requirements, such as the
+<a class="reference external" href="https://www.mabrobotics.pl/product-page/ake90-8-cubemars-t-motor">AKE90-8</a>. It shares the control
+algorithm (FOC), encoder, FDCAN communication interface and operation modes (position PID, velocity
+PID, impedance, profile position and profile velocity) with the <a class="reference internal" href="MD80.html#md80"><span class="std std-ref">MD80</span></a>, so all software
+tools and configuration procedures described for MD80 apply to MD200 as well.</p>
+<p><strong>General parameters table:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Nominal Input Voltage Range</p></td>
+<td><p>24 - 48 VDC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum Input Voltage Range</p></td>
+<td><p>12 - 60 VDC</p></td>
+</tr>
+<tr class="row-even"><td><p>Max Input Current (M4 terminals)</p></td>
+<td><p>175 A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Continuous Phase Current w/o cooling (see <a class="reference internal" href="#md200-thermal"><span class="std std-ref">Thermal characteristics</span></a>)</p></td>
+<td><p>70 A at 24 - 48 V, 60 A at 60 V</p></td>
+</tr>
+<tr class="row-even"><td><p>Max Peak Phase Current</p></td>
+<td><p>200 A for approx. 10 s (see <a class="reference internal" href="#md200-peak-current"><span class="std std-ref">Peak current</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Power</p></td>
+<td><p>2 kW*</p></td>
+</tr>
+<tr class="row-even"><td><p>PWM Frequency</p></td>
+<td><p>40 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Termination resistor</p></td>
+<td><p>optional, solder pads on PCB</p></td>
+</tr>
+<tr class="row-even"><td><p>FDCAN Baudrate (adjustable)</p></td>
+<td><p>1/2/5/8 Mbps</p></td>
+</tr>
+<tr class="row-odd"><td><p>Position PID Controller Execution Frequency</p></td>
+<td><p>1 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>Velocity PID Controller Execution Frequency</p></td>
+<td><p>5 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Impedance Controller Execution Frequency</p></td>
+<td><p>40 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>Torque Control Execution Frequency</p></td>
+<td><p>40 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Torque Bandwidth (adjustable)</p></td>
+<td><p>50 Hz - 2.5 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>External encoder support</p></td>
+<td><p>yes, SPI and RS422 (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p>External 5V power supply max current</p></td>
+<td><p>150 mA</p></td>
+</tr>
+<tr class="row-even"><td><p>Weight</p></td>
+<td><p>83 g</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimum firmware version</p></td>
+<td><p>3.0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*The maximum power of MD200 is still under investigation and this value may change. The achievable
+power depends strongly on cooling, supply voltage and the motor used. In the free-air tests described in
+<a class="reference internal" href="#md200-thermal"><span class="std std-ref">Thermal characteristics</span></a>, MD200 delivered approx. 1 kW of mechanical power for 120 s
+(60 V, 60 A) and up to 1.58 kW for 14 s (60 V, 150 A).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>MD200 requires firmware version 3.0.0 or newer. See <a class="reference internal" href="../Downloads/intro.html#device-firmware"><span class="std std-ref">Downloads</span></a> for the latest
+firmware.</p>
+</div>
+</section>
+<section id="mechanical-integration">
+<h2>Mechanical integration<a class="headerlink" href="#mechanical-integration" title="Link to this heading">#</a></h2>
+<p>The 3D model of the controller can be downloaded
+<a class="reference external" href="https://drive.google.com/file/d/1bpqXe-KO8DsIHSqVn6Uil96rZMs_xd8a/view?usp=drive_link">here</a>.</p>
+<section id="mounting">
+<h3>Mounting<a class="headerlink" href="#mounting" title="Link to this heading">#</a></h3>
+<p>MD200 is fixed with four M2.5x5 DIN 912 screws placed on a Ø93 mm hole circle (top view). The
+screws are threaded into PCB mounting elements, e.g. bosses on the motor rear cover, as shown in
+section A-A. The Ø3.1 mm step of the mounting element centers the PCB, and the Ø4.8 mm shoulder
+supports it (PCB mounting element).</p>
+<figure class="align-center" id="id3">
+<img alt="MD200 top view" class="no-scaled-link" src="../_images/md200_drawing_top.png" style="width: 600px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Top view - mounting holes, terminals and section line A-A</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<img alt="MD200 section A-A" class="no-scaled-link" src="../_images/md200_drawing_section_aa.png" style="width: 450px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Section A-A - PCB fixed to the mounting elements</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<img alt="MD200 PCB mounting element" class="no-scaled-link" src="../_images/md200_drawing_mounting_element.png" style="width: 550px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Recommended dimensions of the PCB mounting element</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always make sure the head of the screw does not touch any copper or components outside the mounting
+hole outline. A short circuit between the screw head and the copper planes can permanently damage
+the controller.</p>
+</div>
+</section>
+<section id="encoder-and-magnet">
+<h3>Encoder and magnet<a class="headerlink" href="#encoder-and-magnet" title="Link to this heading">#</a></h3>
+<p>Place the
+<a class="reference external" href="https://www.mabrobotics.pl/product-page/encoder-on-axis-magnet">diametrically magnetized magnet</a>
+on the motor shaft, on the same rotation axis as the encoder, at a distance of 1.2 ±0.2 mm from the
+bottom surface of the PCB. Section C-C shows the position of the encoder on the board, and detail D
+shows the magnet and the encoder in close-up.</p>
+<figure class="align-center" id="id6">
+<img alt="MD200 section C-C and detail D" class="no-scaled-link" src="../_images/md200_drawing_section_cc.png" style="width: 700px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Section C-C and detail D - magnet and encoder placement</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="cooling-and-thermal-interface">
+<span id="md200-cooling"></span><h3>Cooling and thermal interface<a class="headerlink" href="#cooling-and-thermal-interface" title="Link to this heading">#</a></h3>
+<p>Most of the MD200 losses are generated in the power stage (MOSFETs). The values in
+<a class="reference internal" href="#md200-thermal"><span class="std std-ref">Thermal characteristics</span></a> were measured in free air, without any heatsink. A heatsink
+on the power stage lowers the MOSFET temperature, which increases the continuous phase current and
+extends the time for which MD200 can deliver peak current. The best results are achieved when the
+heatsink is also thermally connected to a larger metal part, such as the actuator housing.</p>
+<p>To make the integration easy, we prepared a reference radiator. It can be used as is, or as a
+starting point for a heatsink integrated into the actuator housing. The 3D model of the reference
+radiator can be downloaded
+<a class="reference external" href="https://drive.google.com/file/d/1IPlCsJjpr9Lcex5QSyhXzZErPZKnnHAa/view?usp=drive_link">here</a>.</p>
+<figure class="align-center" id="id7">
+<img alt="MD200 with the reference radiator" class="no-scaled-link" src="../_images/md200_with_radiator.png" style="width: 600px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">MD200 with the reference radiator mounted on the power stage</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id8">
+<img alt="Reference radiator, bottom side" class="no-scaled-link" src="../_images/md200_radiator_bottom.png" style="width: 500px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Reference radiator, side facing the MOSFETs</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Mounting</strong></p>
+<p>The radiator is placed on the top side of the board, over the power stage, and fixed with four
+DIN 912 M2x4 screws inserted from the bottom side of the PCB into the threaded standoffs of the
+radiator (see section A-A of the radiator drawing below). The four Ø2.2 mm mounting holes are placed on a 61.2 x 18.8 mm rectangle.</p>
+<figure class="align-center" id="id9">
+<img alt="MD200 radiator mounting holes" class="no-scaled-link" src="../_images/md200_radiator_mounting_holes.drawio.png" style="width: 600px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Radiator mounting holes</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<img alt="MD200 with radiator, section A-A" class="no-scaled-link" src="../_images/md200_radiator_section.png" style="width: 500px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Radiator drawing, section A-A - radiator fixed to the PCB</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Tighten the screws with a torque of <strong>0.2 Nm</strong>. Overtightening bends the PCB and loads the MOSFET
+solder joints.</p></li>
+<li><p>Secure the screws against loosening caused by vibration with threadlocker (e.g. medium strength,
+removable) and/or spring washers. When washers are used, check that the screw still engages enough
+threads in the standoff - a longer screw may be needed.</p></li>
+</ul>
+<p><strong>Thermal interface material (TIM)</strong></p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The MD200 MOSFETs are dual-side cooled packages with an exposed metal pad on top. These pads are
+electrically live - they carry the bus voltage and the switching phase voltage. The reference radiator
+is made of bare (non-anodized) aluminium, which is electrically conductive. The TIM between the
+MOSFETs and the radiator <strong>must be electrically insulating</strong>. Never mount the radiator directly on the
+MOSFETs or with an electrically conductive paste.</p>
+</div>
+<p>MAB does not recommend a particular thermal pad. When choosing the TIM, consider:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Recommendation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Type</p></td>
+<td><p>Soft, electrically insulating thermal gap pad (e.g. silicone based)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Electrical insulation</p></td>
+<td><p>Electrically non-conductive, with a breakdown voltage well above the maximum bus voltage (60 V)
+plus switching overshoots - typical gap pads offer several kV</p></td>
+</tr>
+<tr class="row-even"><td><p>Thermal conductivity</p></td>
+<td><p>As high as possible, at least approx. 3 W/(m·K)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thickness</p></td>
+<td><p>Matched to the gap between the MOSFETs and the radiator in your design (check it in the 3D
+model), so that the pad is compressed by approx. 10 - 30%. A thicker pad than necessary
+increases the thermal resistance</p></td>
+</tr>
+<tr class="row-even"><td><p>Hardness</p></td>
+<td><p>Soft (low Shore 00 hardness), so that the compression does not load the MOSFETs and their
+solder joints</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operating temperature</p></td>
+<td><p>At least 125°C</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>The pad must cover all exposed MOSFET pads completely.</p></li>
+<li><p>Deburr the radiator edges and keep the contact surfaces clean - a burr or a metal chip can cut
+through the pad and short the MOSFETs to the radiator.</p></li>
+<li><p>Make sure the radiator does not touch any other component or copper on the board.</p></li>
+<li><p>After assembly, check with a multimeter that there is no electrical connection between the
+radiator and the VCC and motor phase terminals.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The performance of MD200 with a heatsink has not been characterized yet. The values in
+<a class="reference internal" href="#md200-thermal"><span class="std std-ref">Thermal characteristics</span></a> (free air, no heatsink) can be treated as conservative.</p>
+</div>
+</section>
+</section>
+<section id="connectors-pinout">
+<span id="md200-connectors"></span><h2>Connectors pinout<a class="headerlink" href="#connectors-pinout" title="Link to this heading">#</a></h2>
+<figure class="align-center" id="id11">
+<img alt="MD200 connectors" class="no-scaled-link" src="../_images/md200_connectors.drawio.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">MD200 connectors overview</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="can-fd">
+<h3>CAN FD<a class="headerlink" href="#can-fd" title="Link to this heading">#</a></h3>
+<p>MD200 has two CAN FD connectors (Molex Micro-Lock Plus, PCB header 505567-0371, mating housing
+<a class="reference external" href="https://www.molex.com/en-us/products/part-detail/5055650301">505565-0301</a>). Both connectors are
+connected in parallel for easy daisy-chaining. The CAN FD port is not isolated. The termination
+resistor can be mounted on the solder pads marked TERM if necessary.</p>
+<figure class="align-center" id="id12">
+<img alt="MD200 CAN FD connector pinout" class="no-scaled-link" src="../_images/md200_can_pinout.drawio.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">CAN FD connector pinout (both connectors are identical)</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The CAN FD cable supplied with MD200, used to connect it to CANdle, follows the wire colors listed
+in the table below.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>Wire color</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CAN_H</p></td>
+<td><p>grey</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>GND</p></td>
+<td><p>black</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>CAN_L</p></td>
+<td><p>yellow</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><font color='red'> Always make sure CAN bus lines are not shorted to the positive power rail.
+Applying supply voltage to these pins will cause permanent damage to the controller! </font></p>
+</div>
+</section>
+<section id="thermistor-connection">
+<h3>Thermistor connection<a class="headerlink" href="#thermistor-connection" title="Link to this heading">#</a></h3>
+<p>MD200 measures the MOSFET and motor temperature in the same way as MD80. The motor shutdown
+temperature is configurable up to 140°C max with a hysteresis of 20°C. The driver shutdown
+temperature is fixed at 100°C with a hysteresis of 20°C. The MOSFET thermistor is built in directly
+under the power stage and only the motor thermistor pads (marked MOTOR TEMP) are available.</p>
+<figure class="align-center" id="id13">
+<img alt="MD200 motor thermistor pads" class="no-scaled-link" src="../_images/md200_motor_thermistor.drawio.png" style="width: 384px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Motor thermistor pads (MOTOR TEMP)</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend using <a class="reference external" href="https://www.mabrobotics.pl/product-page/thermistor">MABs thermistors</a>. Using
+other thermistors may result in imprecise temperature readout.</p>
+</div>
+</section>
+<section id="aux-connectors">
+<h3>Aux connectors<a class="headerlink" href="#aux-connectors" title="Link to this heading">#</a></h3>
+<p>MD200 has the same auxiliary connectors as MD80.</p>
+<p><strong>Aux 1 connector (SPI)</strong> is dedicated to connect MABs
+<a class="reference external" href="https://www.mabrobotics.pl/product-page/me-am">ME_am</a> and other SPI based encoders (<em>530480650
+Molex PicoBlade</em>).</p>
+<p><strong>Aux 2 connector (RS422/GPIO)</strong> has two user-configurable GPIOs and an RS422 interface for
+connecting to the RLS Axim2 encoder (<em>530480810 Molex PicoBlade</em>). AUX GPIO A pin can be used as an
+automatic brake control output signal, the same way as on MD80. See <a class="reference internal" href="brakes.html"><span class="doc std std-doc">Brakes</span></a> for
+details.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><font color='red'>While auxiliary connector pins are 5V tolerant, we recommend using 3.3V logic if
+possible. </font></p>
+</div>
+<figure class="align-center" id="id14">
+<img alt="MD200 Aux 1 (SPI) connector pinout" class="no-scaled-link" src="../_images/md200_spi_pinout.drawio.png" style="width: 556px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Aux 1 (SPI) connector pinout</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id15">
+<img alt="MD200 Aux 2 (RS422/GPIO) connector pinout" class="no-scaled-link" src="../_images/md200_rs422_pinout.drawio.png" style="width: 568px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Aux 2 (RS422/GPIO) connector pinout</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By default the RS422 transceiver is not soldered on the boards. If you plan to use the RLS Axim2
+encoder with MD200, let us know when ordering the board.</p>
+</div>
+</section>
+</section>
+<section id="electrical-integration">
+<span id="md200-electrical-integration"></span><h2>Electrical integration<a class="headerlink" href="#electrical-integration" title="Link to this heading">#</a></h2>
+<section id="power-and-motor-wiring">
+<h3>Power and motor wiring<a class="headerlink" href="#power-and-motor-wiring" title="Link to this heading">#</a></h3>
+<p>The power supply and the motor phases are connected to seven M4x0.8 threaded terminals (see
+<a class="reference internal" href="#md200-connectors"><span class="std std-ref">Connectors pinout</span></a>). Use M4 ring (tubular) cable lugs and M4 screws, and tighten
+them with a torque of 1.4 Nm. MD200 has two positive (VCC) and two ground (GND) supply terminals, connected in
+parallel, for easy daisy-chaining of the power supply between controllers.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Terminals</p></td>
+<td><p>7x M4x0.8 (2x VCC, 2x GND, 3x motor phase)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Terminal current rating</p></td>
+<td><p>175 A continuous</p></td>
+</tr>
+<tr class="row-even"><td><p>Terminal screw tightening torque</p></td>
+<td><p>1.4 Nm</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cable and cable lugs</p></td>
+<td><p>see <a class="reference internal" href="#md200-cable-sizing"><span class="std std-ref">Power cable sizing</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="align-center" id="id16">
+<img alt="MD200 motor phase wiring" class="no-scaled-link" src="../_images/md200_phase_wiring.png" style="width: 600px;" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Motor phases connected to terminals A, B and C with ring (tubular) cable lugs</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The order of the motor phases does not matter (does not change the rotation direction) as long as
+the order is not changed after the calibration. Each modification in phase order should be followed
+by a full motor calibration.</p>
+</div>
+</section>
+<section id="power-source">
+<span id="md200-power-supply"></span><h3>Power source<a class="headerlink" href="#power-source" title="Link to this heading">#</a></h3>
+<p>MD200 works with supply voltages of 24 - 48 V nominal (12 - 60 V maximum). The power source, e.g. a
+battery or a power supply unit, must meet three requirements:</p>
+<ul class="simple">
+<li><p><strong>Correct polarity</strong> - MD200 does not have reverse polarity protection.</p></li>
+<li><p><strong>Precharge</strong> - a precharge circuit must be placed between the power source and MD200 to limit
+the inrush current into the DC bus capacitors when the supply is connected.</p></li>
+<li><p><strong>Regenerative energy</strong> - when braking, MD200 feeds energy back to the supply. The power
+source must be able to absorb this energy (e.g. a battery), or a braking resistor must be used. A
+power supply that cannot sink current lets the bus voltage rise.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Reverse polarity or a bus voltage above 60 V will permanently damage the controller.</p>
+</div>
+</section>
+<section id="power-cable-sizing">
+<span id="md200-cable-sizing"></span><h3>Power cable sizing<a class="headerlink" href="#power-cable-sizing" title="Link to this heading">#</a></h3>
+<p><strong>Quick recommendation</strong> for a single MD200 at up to 1.5 kW, with a supply cable of up to 1 m:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Supply voltage</p></th>
+<th class="head"><p>Recommended cable</p></th>
+<th class="head"><p>Result (1 m, 1.5 kW)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>12 V</p></td>
+<td><p>not recommended for high power; if used, 6 mm² and as short as possible</p></td>
+<td><p>6.0% voltage drop, 90 W loss</p></td>
+</tr>
+<tr class="row-odd"><td><p>24 V</p></td>
+<td><p>6 mm²</p></td>
+<td><p>1.5% voltage drop, 22 W loss</p></td>
+</tr>
+<tr class="row-even"><td><p>48 V</p></td>
+<td><p>2.5 mm²</p></td>
+<td><p>0.9% voltage drop, 13 W loss</p></td>
+</tr>
+<tr class="row-odd"><td><p>60 V</p></td>
+<td><p>2.5 mm²</p></td>
+<td><p>0.6% voltage drop, 9 W loss</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A higher supply voltage means a lower current for the same power, so a thinner cable can be used and
+less energy is lost in the wiring. Whenever possible, use 48 V or 60 V for high-power actuators.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These recommendations are a starting point. For longer cables, several actuators on one supply line
+or high environment temperature, choose a thicker cable using the details below.</p>
+</div>
+<section id="details">
+<h4>Details<a class="headerlink" href="#details" title="Link to this heading">#</a></h4>
+<p>The tables below show the voltage drop and power loss in the supply cable of a single MD200 drawing
+1.5 kW. The cable is 1 m long (2 m of copper in total for VCC and GND), copper at 20°C.</p>
+<p><strong>Supply current at 1.5 kW</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Supply voltage</p></th>
+<th class="head"><p>12 V</p></th>
+<th class="head"><p>24 V</p></th>
+<th class="head"><p>48 V</p></th>
+<th class="head"><p>60 V</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Current</p></td>
+<td><p>125 A</p></td>
+<td><p>62.5 A</p></td>
+<td><p>31.3 A</p></td>
+<td><p>25 A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Voltage drop (percentage of the supply voltage)</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Cable</p></th>
+<th class="head"><p>12 V</p></th>
+<th class="head"><p>24 V</p></th>
+<th class="head"><p>48 V</p></th>
+<th class="head"><p>60 V</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.5 mm²</p></td>
+<td><p>1.72 V (14.3%)</p></td>
+<td><p>0.86 V (3.6%)</p></td>
+<td><p>0.43 V (0.9%)</p></td>
+<td><p>0.34 V (0.6%)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 mm²</p></td>
+<td><p>1.08 V (9.0%)</p></td>
+<td><p>0.54 V (2.2%)</p></td>
+<td><p>0.27 V (0.6%)</p></td>
+<td><p>0.22 V (0.4%)</p></td>
+</tr>
+<tr class="row-even"><td><p>6 mm²</p></td>
+<td><p>0.72 V (6.0%)</p></td>
+<td><p>0.36 V (1.5%)</p></td>
+<td><p>0.18 V (0.4%)</p></td>
+<td><p>0.14 V (0.2%)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Power loss in the cable</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Cable</p></th>
+<th class="head"><p>12 V</p></th>
+<th class="head"><p>24 V</p></th>
+<th class="head"><p>48 V</p></th>
+<th class="head"><p>60 V</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2.5 mm²</p></td>
+<td><p>215 W</p></td>
+<td><p>53.8 W</p></td>
+<td><p>13.4 W</p></td>
+<td><p>8.6 W</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 mm²</p></td>
+<td><p>134 W</p></td>
+<td><p>33.6 W</p></td>
+<td><p>8.4 W</p></td>
+<td><p>5.4 W</p></td>
+</tr>
+<tr class="row-even"><td><p>6 mm²</p></td>
+<td><p>89.6 W</p></td>
+<td><p>22.4 W</p></td>
+<td><p>5.6 W</p></td>
+<td><p>3.6 W</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The voltage drop grows linearly with the current and the cable length, and the power loss grows
+linearly with the cable length and with the square of the current. Halving the supply voltage
+doubles the current and therefore quadruples the power loss in the same cable.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The right cable and lug depend on the application. Consider:</p>
+<ul class="simple">
+<li><p><strong>cable length</strong> - the losses grow linearly with the length,</p></li>
+<li><p><strong>number of actuators in line</strong> - when the supply is daisy-chained, the first segment carries
+the current of all downstream controllers (see the example below),</p></li>
+<li><p><strong>environment temperature</strong> - copper resistance rises by about 0.4% per °C, and the cable
+current rating must be derated at high temperatures,</p></li>
+<li><p><strong>accepted temperature rise</strong> of the cable and the lugs,</p></li>
+<li><p><strong>duty cycle</strong> - peak power is usually drawn only for a short time, while the cable heating
+depends on the average (RMS) current.</p></li>
+</ul>
+</div>
+</section>
+<section id="cable-lugs">
+<h4>Cable lugs<a class="headerlink" href="#cable-lugs" title="Link to this heading">#</a></h4>
+<p>MD200 supply terminals accept M4 ring (tubular) cable lugs, matched to the cable cross-section. The lugs
+below are examples that fit MD200. Choose the lug based on the cable and the requirements of your
+application.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example part (Würth Elektronik)</p></th>
+<th class="head"><p>Screw size</p></th>
+<th class="head"><p>Cable cross-section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>55804025</p></td>
+<td><p>M4</p></td>
+<td><p>2.5 mm²</p></td>
+</tr>
+<tr class="row-odd"><td><p>5580404</p></td>
+<td><p>M4</p></td>
+<td><p>4 mm²</p></td>
+</tr>
+<tr class="row-even"><td><p>5580406</p></td>
+<td><p>M4</p></td>
+<td><p>6 mm²</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="wiring-example">
+<h3>Wiring example<a class="headerlink" href="#wiring-example" title="Link to this heading">#</a></h3>
+<p>The example below shows three MD200 controllers connected to one power source and one CANdle.</p>
+<figure class="align-center" id="id17">
+<img alt="MD200 electrical integration example" class="no-scaled-link" src="../_images/md200_electrical_integration.drawio.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Power and CAN FD daisy-chaining of three MD200 controllers</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Power</strong> - the power source is connected to the first MD200. The two VCC and two GND terminals
+of each MD200 are connected in parallel, so the supply can be passed on to the next controller.
+Each segment carries the current of all controllers behind it, so the segment closest to the
+power source must be sized for the sum of their currents. For a long chain or high power, connect
+each MD200 directly to a common distribution point (e.g. a bus bar) instead.</p></li>
+<li><p><strong>Precharge</strong> - a precharge circuit must be placed between the power source and the first MD200
+(see <a class="reference internal" href="#md200-power-supply"><span class="std std-ref">Power source</span></a>).</p></li>
+<li><p><strong>CAN FD</strong> - CANdle is connected to the first MD200, and the two CAN FD connectors of each MD200
+pass the bus on to the next controller. The bus must be terminated with 120 Ω at both ends:
+CANdle at one end and the last MD200 at the other (TERM pads, see
+<a class="reference internal" href="#md200-connectors"><span class="std std-ref">Connectors pinout</span></a>).</p></li>
+<li><p><strong>Motor phases</strong> - each motor is connected only to its own MD200.</p></li>
+</ul>
+<p>After wiring, connect the CAN bus and power the controller. When powered, the controller should
+blink shortly with a green LED once a second. If the red LED is fully on there are some errors that
+should be cleared after the calibration.</p>
+</section>
+</section>
+<section id="thermal-characteristics">
+<span id="md200-thermal"></span><h2>Thermal characteristics<a class="headerlink" href="#thermal-characteristics" title="Link to this heading">#</a></h2>
+<p><strong>Test conditions and setup</strong></p>
+<p>MD200 was tested at supply voltages of 24, 36, 48 and 60 V in two setups:</p>
+<ul class="simple">
+<li><p>inductive load - star-connected inductors simulating a motor winding,</p></li>
+<li><p>dynamometer - QS205 hub motor braked by MD200, driven by an AKE90-8 load motor.</p></li>
+</ul>
+<p>Each run held a constant phase current for up to 120 s. A run ended either after 120 s or when the
+driver over-temperature protection tripped at 100°C. All tests were performed in free air at approx.
+20°C ambient temperature, with no heatsink and no forced airflow. The temperature was measured with
+the onboard power stage thermistor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The continuous current values below are the highest currents at which MD200 completed 120 s without
+thermal cutoff. In some of these runs the driver temperature was still rising at the end of the run.
+With a heatsink or forced airflow, higher continuous currents can be achieved.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Inductive load</p></th>
+<th class="head"><p>Dynamometer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Continuous phase current (120 s, no thermal cutoff)</p></td>
+<td><p>70 A at 24 V and 48 V, 80 A at 36 V, 60 A at 60 V</p></td>
+<td><p>80 A at 24 V, 70 A at 36 V and 48 V, 60 A at 60 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Time to thermal cutoff at 100 A</p></td>
+<td><p>40 - 71 s</p></td>
+<td><p>39 - 64 s</p></td>
+</tr>
+<tr class="row-even"><td><p>Time to thermal cutoff at 150 A</p></td>
+<td><p>15 - 19 s</p></td>
+<td><p>14 - 19 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Time to thermal cutoff at 200 A</p></td>
+<td><p>9.7 - 10.8 s</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Max. mechanical power</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>1584 W (60 V, 150 A)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max. power fed back to the supply</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>858 W (60 V, 90 A)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The plots below are interactive: hover to read the values, drag to zoom (double-click to reset) and
+click the legend to show or hide curves. The temperature plots can be switched between <strong>Curves</strong>
+(the measured runs) and <strong>Thermal map</strong> (temperature over time and phase current, interpolated
+between the measured runs).</p>
+</div>
+<section id="test-i-inductive-load">
+<h3>Test I - inductive load<a class="headerlink" href="#test-i-inductive-load" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="id18">
+<img alt="MD200 inductive load setup" class="no-scaled-link" src="../_images/setup.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Inductive load setup: MD200 (right) drives three phases loaded with star-connected inductors</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In this setup there is no shaft, so all the power is converted to heat. The phase current was swept from 10 A to 200 A in 10 A steps.</p>
+<iframe src="../_static/md200/inductive_plot.html?cutoff" title="MD200 time to thermal cutoff" loading="lazy"
+        style="width:100%;height:460px;border:0"></iframe><p>Between 80 A and 130 A, the time to cutoff at 60 V is 30 - 50% shorter than at 24 V (100 A: 70.6 s at
+24 V, 40.1 s at 60 V). Above approx. 170 A all voltages give similar times of 9.7 - 14 s.</p>
+<iframe src="../_static/md200/inductive_plot.html?v=24" title="MD200 inductive load 24 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>24 V: no cutoff within 120 s up to 70 A (82.5°C at 70 A)</em></p>
+<iframe src="../_static/md200/inductive_plot.html?v=36" title="MD200 inductive load 36 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>36 V: no cutoff within 120 s up to 80 A (99.1°C at 80 A)</em></p>
+<iframe src="../_static/md200/inductive_plot.html?v=48" title="MD200 inductive load 48 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>48 V: no cutoff within 120 s up to 70 A (94.4°C at 70 A)</em></p>
+<iframe src="../_static/md200/inductive_plot.html?v=60" title="MD200 inductive load 60 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>60 V: no cutoff within 120 s up to 60 A (88.6°C at 60 A)</em></p>
+</section>
+<section id="test-ii-dynamometer">
+<h3>Test II - dynamometer<a class="headerlink" href="#test-ii-dynamometer" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="id19">
+<img alt="MD200 dynamometer setup" class="no-scaled-link" src="../_images/setup1.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Dynamometer: QS205 hub motor with MD200 mounted on a 3D printed rear cover, coupled to the AKE90-8
+load motor (right)</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The AKE90-8 drove the shaft while MD200 braked the QS205 at the set phase current, from 10 A to
+150 A in 10 A steps. Mechanical power is calculated from the torque estimated by MD200 and the
+measured shaft speed. Both drives were powered from the same supply, so power circulates in a closed
+loop and the supply delivers only the losses of both drives.</p>
+<figure class="align-center" id="id20">
+<img alt="MD200 dynamometer power flow" class="no-scaled-link" src="../_images/power_flow.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Power flow at 48 V, 100 A, averages over a 44 s run</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<iframe src="../_static/md200/dynamometer_plot.html?power" title="MD200 mechanical power and power fed back" loading="lazy"
+        style="width:100%;height:520px;border:0"></iframe><p>At low currents (10 - 20 A) MD200 feeds 77 - 86% of the shaft power back to the DC bus. At high
+currents the losses in the motor exceed the shaft power, and MD200 draws power from the bus while
+braking (24 V from 90 A, 36 V at 130 - 140 A).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Supply voltage</p></th>
+<th class="head"><p>Shaft speed, 10 → 150 A [rad/s]</p></th>
+<th class="head"><p>Max. shaft power</p></th>
+<th class="head"><p>Max. power fed back</p></th>
+<th class="head"><p>Continuous current, 120 s</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>60 V</p></td>
+<td><p>21.8 → 12.2</p></td>
+<td><p>1584 W (150 A)</p></td>
+<td><p>858 W (90 A)</p></td>
+<td><p>60 A (86.9°C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>48 V</p></td>
+<td><p>17.1 → 9.0</p></td>
+<td><p>1214 W (140 A)</p></td>
+<td><p>570 W (80 A)</p></td>
+<td><p>70 A (96.7°C)</p></td>
+</tr>
+<tr class="row-even"><td><p>36 V</p></td>
+<td><p>12.6 → 6.7 (140 A)</p></td>
+<td><p>817 W (130 A)</p></td>
+<td><p>347 W (60 A)</p></td>
+<td><p>70 A (88.7°C)</p></td>
+</tr>
+<tr class="row-odd"><td><p>24 V</p></td>
+<td><p>8.2 → 2.9</p></td>
+<td><p>416 W (110 A)</p></td>
+<td><p>159 W (50 A)</p></td>
+<td><p>80 A (93.5°C)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<iframe src="../_static/md200/dynamometer_plot.html?v=24" title="MD200 dynamometer 24 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>24 V: no cutoff within 120 s up to 80 A (93.5°C at 80 A)</em></p>
+<iframe src="../_static/md200/dynamometer_plot.html?v=36" title="MD200 dynamometer 36 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>36 V: no cutoff within 120 s up to 70 A (88.7°C at 70 A)</em></p>
+<iframe src="../_static/md200/dynamometer_plot.html?v=48" title="MD200 dynamometer 48 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>48 V: no cutoff within 120 s up to 70 A (96.7°C at 70 A)</em></p>
+<iframe src="../_static/md200/dynamometer_plot.html?v=60" title="MD200 dynamometer 60 V" loading="lazy"
+        style="width:100%;height:600px;border:0"></iframe><p><em>60 V: no cutoff within 120 s up to 60 A (86.9°C at 60 A)</em></p>
+</section>
+<section id="peak-current">
+<span id="md200-peak-current"></span><h3>Peak current<a class="headerlink" href="#peak-current" title="Link to this heading">#</a></h3>
+<p>The maximum phase current available to users is limited to 200 A.</p>
+<p>The time for which MD200 can deliver a high phase current is limited by the driver over-temperature
+protection (100°C). Starting from approx. 30°C in free air, the inductive load test gave the
+following times to thermal cutoff:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Phase current</p></th>
+<th class="head"><p>Time to thermal cutoff</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>100 A</p></td>
+<td><p>40 - 71 s (60 V - 24 V)</p></td>
+</tr>
+<tr class="row-odd"><td><p>150 A</p></td>
+<td><p>15 - 19 s (60 V - 24 V)</p></td>
+</tr>
+<tr class="row-even"><td><p>200 A</p></td>
+<td><p>approx. 10 s (all supply voltages)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Above approx. 170 A the time to cutoff hardly depends on the supply voltage. A higher starting
+temperature shortens these times, and a heatsink or forced airflow lengthens them.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MD"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MD80HV.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MD80 60V</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="encoders.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Encoders</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-parameters">General parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-integration">Mechanical integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mounting">Mounting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-and-magnet">Encoder and magnet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cooling-and-thermal-interface">Cooling and thermal interface</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-pinout">Connectors pinout</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-fd">CAN FD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermistor-connection">Thermistor connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-connectors">Aux connectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-integration">Electrical integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-and-motor-wiring">Power and motor wiring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-source">Power source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-cable-sizing">Power cable sizing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cable-lugs">Cable lugs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-example">Wiring example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-characteristics">Thermal characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-i-inductive-load">Test I - inductive load</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-ii-dynamometer">Test II - dynamometer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-current">Peak current</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

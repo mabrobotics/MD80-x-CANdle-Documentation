@@ -60,6 +60,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'PDS/control_board';</script>
+    <script src="../_static/md200/thermal_map.js?v=20d3742b"></script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -186,6 +187,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80.html">MD80</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD20.html">MD20</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/MD80HV.html">MD80 60V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MD/MD200.html">MD200</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/encoders.html">Encoders</a></li>
 
 
@@ -546,7 +548,7 @@ diodes,</p></li>
 <figure class="align-center" id="id1">
 <img alt="PDS_CTRL" class="no-scaled-link" src="../_images/PDS_CTRL.drawio.png" style="width: 600px;" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Control board with highlighted ports</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Control board with highlighted ports</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -595,7 +597,7 @@ system. Its transceiver is non-isolated with split termination on board and oper
 <figure class="align-center" id="id2">
 <img alt="PDS_CTRL_STO" class="no-scaled-link" src="../_images/sto.drawio.png" style="width: 600px;" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">STO1/2 logic circuit</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">STO1/2 logic circuit</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Truth table for STO1/2 logic:</p>
@@ -663,7 +665,7 @@ with the RGB diodes.</p>
 <figure class="align-center" id="id3">
 <img alt="PDS_CTRL_RGB_SWITCH" class="no-scaled-link" src="../_images/rgb_switch_states.drawio.png" style="width: 600px;" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">States and transitions on RGB switch</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">States and transitions on RGB switch</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -703,7 +705,7 @@ with the RGB diodes.</p>
 <figure class="align-center" id="id4">
 <img alt="PDS_CTRL_BATTERY_LEVELS" class="no-scaled-link" src="../_images/ind_bar.png" style="width: 600px;" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Battery levels and according color of RGB switch</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Battery levels and according color of RGB switch</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>More information about commands in <a class="reference internal" href="../CANdle-SDK/candlelib/PDSModule.html"><span class="std std-doc">CANdle-SDK PDS commands</span></a> and <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-pds"><span class="std std-ref">candletool for PDS</span></a></p>

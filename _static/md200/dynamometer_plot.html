@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD200 dynamometer test</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<script src="dynamometer_data.js"></script>
+<script src="thermal_map.js"></script>
+<style>
+html, body { margin: 0; height: 100%; background: #fff; font-family: sans-serif; }
+#p { width: 100vw; height: 100vh; }
+#err { padding: 16px; color: #a00; }
+</style>
+</head>
+<body>
+<div id="p"></div>
+<script>
+/* Interactive plots of the MD200 dynamometer test.
+   Data source: dynamometer/<voltage>V/<current>A.csv, MD200 (QS205) side, packed into dynamometer_data.js
+   during the documentation build (_ext/md200_plot_data.py), columns:
+   supply voltage [V], supply current [A], driver temp [C], motor phase current [A],
+   velocity [rad/s], torque [Nm], timestamp [s]
+   Usage: dynamometer_plot.html?v=48 - driver temperature vs time for one supply voltage
+          dynamometer_plot.html?power - run averages of shaft power and power fed back vs phase current */
+var VOLTAGES = [24, 36, 48, 60];
+var CURRENTS = [];
+for (var i = 10; i <= 150; i += 10) CURRENTS.push(i);
+var TAB10 = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
+var COLORS = { 24: '#FDBA74', 36: '#F97316', 48: '#C2410C', 60: '#7C2D12' };
+var CONFIG = { responsive: true, displaylogo: false, modeBarButtonsToRemove: ['select2d', 'lasso2d'] };
+
+/* resolves to null when the run does not exist (not every voltage was tested up to 150 A) */
+function loadRun(v, a)
+{
+	return Promise.resolve(MD200_CSV['dynamometer/' + v + 'V/' + a + 'A.csv']).then(function (text)
+	{
+		if (text === undefined) return null;
+		var run = { a: a, t: [], temp: [], mech: 0, feedback: 0 };
+		var lines = text.trim().split('\n');
+		for (var k = 1; k < lines.length; k++)
+		{
+			var c = lines[k].split(',').map(parseFloat);
+			run.t.push(c[6]);
+			run.temp.push(c[2]);
+			run.mech += Math.abs(c[4] * c[5]);   /* velocity x torque */
+			run.feedback += -c[0] * c[1];        /* negative supply current = power fed back */
+		}
+		run.mech /= lines.length - 1;
+		run.feedback /= lines.length - 1;
+		return run;
+	});
+}
+
+function loadVoltage(v)
+{
+	return Promise.all(CURRENTS.map(function (a) { return loadRun(v, a); })).then(function (runs)
+	{
+		return runs.filter(function (r) { return r; });
+	});
+}
+
+function plotVoltage(v)
+{
+	return loadVoltage(v).then(function (runs)
+	{
+		var traces = runs.map(function (run, k)
+		{
+			var name = run.a + ' A / ' + Math.round(run.mech) + ' W';
+			return { x: run.t, y: run.temp, name: name, mode: 'lines',
+				line: { color: TAB10[k % 10], width: 1.8 },
+				hovertemplate: name + '<br>%{x:.1f} s<br>%{y:.1f} °C<extra></extra>' };
+		});
+		traces.push(thermalMapTrace(runs.map(function (run) { return { a: run.a, t: run.t, T: run.temp }; }), 0.2, 0.25, 120));
+		var layout = { title: { text: v + ' V' }, margin: { l: 60, r: 10, t: 50, b: 50 },
+			xaxis: { title: { text: 'Time [s]' }, zeroline: false },
+			yaxis: { title: { text: 'Driver temperature [°C]' }, zeroline: false },
+			legend: { title: { text: 'Phase current / mechanical power' }, font: { size: 11 }, tracegroupgap: 0 },
+			hovermode: 'closest' };
+		addMapSwitch(layout, traces.length - 1, 'Driver temperature [°C]');
+		Plotly.newPlot('p', traces, layout, CONFIG).then(function () { mapFromUrl(layout); });
+	});
+}
+
+function plotPower()
+{
+	return Promise.all(VOLTAGES.map(loadVoltage)).then(function (all)
+	{
+		var traces = [];
+		VOLTAGES.forEach(function (v, n)
+		{
+			var a = all[n].map(function (r) { return r.a; });
+			var style = { mode: 'lines+markers', line: { color: COLORS[v], width: 2.5 }, marker: { size: 6 }, legendgroup: v };
+			traces.push(Object.assign({ x: a, y: all[n].map(function (r) { return r.mech; }), name: v + ' V',
+				hovertemplate: v + ' V, %{x} A<br>shaft power %{y:.0f} W<extra></extra>' }, style));
+			traces.push(Object.assign({ x: a, y: all[n].map(function (r) { return r.feedback; }), name: v + ' V',
+				showlegend: false, xaxis: 'x2', yaxis: 'y2',
+				hovertemplate: v + ' V, %{x} A<br>fed back %{y:.0f} W<extra></extra>' }, style));
+		});
+		var axis = { title: { text: 'Phase current [A]' }, dtick: 20, showgrid: false };
+		var layout = { margin: { l: 60, r: 10, t: 70, b: 100 }, hovermode: 'closest',
+			xaxis: Object.assign({ domain: [0, 0.45] }, axis),
+			xaxis2: Object.assign({ domain: [0.55, 1], anchor: 'y2' }, axis),
+			yaxis: { title: { text: 'Power [W]' }, gridcolor: '#e6e6e6', rangemode: 'tozero' },
+			yaxis2: { anchor: 'x2', title: { text: 'Power [W]' }, gridcolor: '#e6e6e6', zeroline: true, zerolinecolor: '#999' },
+			legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.15, yanchor: 'top' },
+			annotations: [
+				{ text: 'Mechanical power at the QS205 shaft', xref: 'paper', yref: 'paper', x: 0.225, y: 1.02, xanchor: 'center', yanchor: 'bottom', showarrow: false },
+				{ text: 'Power fed back to the DC bus by MD200<br><span style="font-size:11px;color:#606060">below zero: MD200 draws power from the bus</span>',
+				  xref: 'paper', yref: 'paper', x: 0.775, y: 1.02, xanchor: 'center', yanchor: 'bottom', showarrow: false }] };
+		Plotly.newPlot('p', traces, layout, CONFIG);
+	});
+}
+
+var q = new URLSearchParams(location.search);
+var job = q.has('power') ? plotPower() : plotVoltage(parseInt(q.get('v') || '48', 10));
+job.catch(function (e)
+{
+	document.getElementById('p').innerHTML = '<div id="err">Plot data could not be loaded (' + e.message +
+		').</div>';
+});
+</script>
+</body>
+</html>

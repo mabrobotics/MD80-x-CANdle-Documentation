@@ -31,6 +31,16 @@ Best for gimbal BLDC motor, and smaller or gimbal motors up to 120W. ![MD20](./i
 For high voltage applications.\
 ![MD80](./images/md80hv.jpg)
 
+## [MD200](/MD/MD200)
+
+For robotic actuators with high phase current and power requirements, up to 2 kW (under
+investigation).
+
+```{image} ../images/md200_ake90_wth_bg.png
+:alt: MD200
+:width: 300px
+```
+
 ## Accessories
 
 MD functionality can be further increased by connecting auxiliary encoders and brakes
