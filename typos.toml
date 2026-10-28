@@ -1,4 +1,8 @@
+[default]
+check-filename = false
+
 [default.extend-words]
 AksIM = "AksIM"
 AksIM2 = "AksIM2"
 Aks = "Aks"
+AKE = "AKE"

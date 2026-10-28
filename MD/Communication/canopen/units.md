@@ -49,6 +49,13 @@ All of these are **output shaft** quantities. The gear ratio in 0x6091 is applie
 you never convert for the gearbox yourself.
 ```
 
+```{note}
+The drive stores position, velocity and acceleration internally as IEEE-754 single precision
+floats, not integers. A value written and then read back may differ slightly from the original,
+as single precision cannot represent every INT32 value exactly. The difference grows with the
+magnitude of the value, so do not compare read-back values for exact equality.
+```
+
 ## Torque and current
 
 Torque and current setpoints are expressed in **thousandths of the corresponding rated value**, as
