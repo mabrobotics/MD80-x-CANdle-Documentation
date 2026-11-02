@@ -17,7 +17,7 @@ html, body { margin: 0; height: 100%; background: #fff; font-family: sans-serif;
 <div id="p"></div>
 <script>
 /* Interactive plots of the MD200 dynamometer test.
-   Data source: dynamometer/<voltage>V/<current>A.csv, MD200 (QS205) side, packed into dynamometer_data.js
+   Data source: dynamometer/<voltage>V/<current>A.csv, MD200 side, packed into dynamometer_data.js
    during the documentation build (_ext/md200_plot_data.py), columns:
    supply voltage [V], supply current [A], driver temp [C], motor phase current [A],
    velocity [rad/s], torque [Nm], timestamp [s]
@@ -71,7 +71,7 @@ function plotVoltage(v)
 				line: { color: TAB10[k % 10], width: 1.8 },
 				hovertemplate: name + '<br>%{x:.1f} s<br>%{y:.1f} °C<extra></extra>' };
 		});
-		traces.push(thermalMapTrace(runs.map(function (run) { return { a: run.a, t: run.t, T: run.temp }; }), 0.5, 1, 120));
+		traces.push(thermalMapTrace(runs.map(function (run) { return { a: run.a, t: run.t, T: run.temp }; }), 0.2, 0.25, 120));
 		var layout = { title: { text: v + ' V' }, margin: { l: 60, r: 10, t: 50, b: 50 },
 			xaxis: { title: { text: 'Time [s]' }, zeroline: false },
 			yaxis: { title: { text: 'Driver temperature [°C]' }, zeroline: false },
@@ -105,7 +105,7 @@ function plotPower()
 			yaxis2: { anchor: 'x2', title: { text: 'Power [W]' }, gridcolor: '#e6e6e6', zeroline: true, zerolinecolor: '#999' },
 			legend: { orientation: 'h', x: 0.5, xanchor: 'center', y: -0.15, yanchor: 'top' },
 			annotations: [
-				{ text: 'Mechanical power at the QS205 shaft', xref: 'paper', yref: 'paper', x: 0.225, y: 1.02, xanchor: 'center', yanchor: 'bottom', showarrow: false },
+				{ text: 'Mechanical power at the shaft', xref: 'paper', yref: 'paper', x: 0.225, y: 1.02, xanchor: 'center', yanchor: 'bottom', showarrow: false },
 				{ text: 'Power fed back to the DC bus by MD200<br><span style="font-size:11px;color:#606060">below zero: MD200 draws power from the bus</span>',
 				  xref: 'paper', yref: 'paper', x: 0.775, y: 1.02, xanchor: 'center', yanchor: 'bottom', showarrow: false }] };
 		Plotly.newPlot('p', traces, layout, CONFIG);

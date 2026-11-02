@@ -5,11 +5,13 @@
 var INFERNO = [[0, '#000004'], [0.1, '#160b39'], [0.2, '#420a68'], [0.3, '#6a176e'], [0.4, '#932667'],
 	[0.5, '#bc3754'], [0.6, '#dd513a'], [0.7, '#f37819'], [0.8, '#fca50a'], [0.9, '#f6d746'], [1, '#fcffa4']];
 
-/* linear interpolation of one run at time t, null outside the measured time range */
+/* linear interpolation of one run at time t, null after the end of the run,
+   the first sample before the start of the run */
 function runAt(run, t)
 {
 	var ts = run.t, n = ts.length;
-	if (t < ts[0] || t > ts[n - 1]) return null;
+	if (t > ts[n - 1]) return null;
+	if (t <= ts[0]) return run.T[0];
 	var lo = 0, hi = n - 1;
 	while (hi - lo > 1)
 	{
@@ -25,12 +27,19 @@ function runAt(run, t)
 function thermalMapTrace(runs, dt, da, tMax)
 {
 	var times = [], currents = [], z = [];
-	for (var t = 0; t <= tMax + 1e-9; t += dt) times.push(Math.round(t * 100) / 100);
+	/* the map starts when every run has its first sample and ends with the shortest of the runs
+	   that were not stopped by the temperature limit (they end within 2 s of the longest run) */
+	var tStart = Math.max.apply(null, runs.map(function (run) { return run.t[0]; }));
+	var ends = runs.map(function (run) { return run.t[run.t.length - 1]; });
+	var tLong = Math.max.apply(null, ends);
+	var tEnd = Math.min(tMax, Math.min.apply(null, ends.filter(function (e) { return e > tLong - 2; })));
+	for (var t = Math.ceil(tStart / dt) * dt; t <= tEnd + 1e-9; t += dt) times.push(Math.round(t * 100) / 100);
 	var aMin = runs[0].a, aMax = runs[runs.length - 1].a;
 	for (var a = aMin; a <= aMax + 1e-9; a += da) currents.push(a);
 
-	/* each measured run resampled on the time grid */
-	var rows = runs.map(function (run) { return times.map(function (t) { return runAt(run, t); }); });
+	/* between two runs the end time (temperature limit reached) is interpolated in log scale and both
+	   runs are compared at the same fraction of their length, so the map edge follows the limit smoothly
+	   instead of stepping down to the shorter run */
 
 	currents.forEach(function (a)
 	{
@@ -38,13 +47,16 @@ function thermalMapTrace(runs, dt, da, tMax)
 		while (i < runs.length - 1 && runs[i + 1].a <= a) i++;
 		var zr = [];
 		if (runs[i].a == a)
-			zr = rows[i].slice();
+			zr = times.map(function (t) { return runAt(runs[i], t); });
 		else
 		{
 			var w = (a - runs[i].a) / (runs[i + 1].a - runs[i].a);
-			times.forEach(function (t, k)
+			var end = Math.exp(Math.log(ends[i]) + (Math.log(ends[i + 1]) - Math.log(ends[i])) * w);
+			times.forEach(function (t)
 			{
-				var lo = rows[i][k], hi = rows[i + 1][k];
+				var f = t / end;
+				var lo = f > 1 ? null : runAt(runs[i], f * ends[i]);
+				var hi = f > 1 ? null : runAt(runs[i + 1], f * ends[i + 1]);
 				zr.push(lo === null || hi === null ? null : lo + (hi - lo) * w);
 			});
 		}
