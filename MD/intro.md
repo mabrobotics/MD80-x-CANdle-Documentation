@@ -33,8 +33,8 @@ For high voltage applications.\
 
 ## [MD200](/MD/MD200)
 
-For robotic actuators with high phase current and power requirements, up to 2 kW (under
-investigation).
+For robotic actuators with high phase current and power requirements, up to 3 kW of continuous
+power.
 
 ```{image} ../images/md200_ake90_wth_bg.png
 :alt: MD200
