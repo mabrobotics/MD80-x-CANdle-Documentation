@@ -126,8 +126,9 @@ is the most suitable.
 |--------------|-------------|
 | `STARTUP` | Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#008000">main encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>. |
 | `MOTION` | Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#FF6900">aux encoder</font></b>. |
-| `REPORT` | Initial position from <b><font color="#008000">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>. Calibration of the <b><font color="#FF6900">aux encoder</font></b> is impossible. |
-| `MAIN` (legacy) | Position from <b><font color="#008000">aux encoder</font></b>, is mapped as <b><font color="#008000">main encoder</font></b>, and used for both control and commutation. Note: This is only applicable for drivers with firmware 2.x.x. For v3.0.0+ firmware, the main/aux encoder is set though `mainEncoder` and `auxEncoder` registers. |
+| `REPORT` | Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>. Calibration of the <b><font color="#FF6900">aux encoder</font></b> is impossible. |
+| `MAIN` (legacy) | Position from <b><font color="#FF6900">aux encoder</font></b>, is mapped as <b><font color="#008000">main encoder</font></b>, and used for both control and commutation. Note: This is only applicable for drivers with firmware 2.x.x. For v3.0.0+ firmware, the main/aux encoder is set though `mainEncoder` and `auxEncoder` registers. |
+| `DUAL` | Initial position is computed from phase difference between <b><font color="#FF6900">aux encoder</font></b> and <b><font color="#008000">main encoder</font></b>. This is the mechanical configuration shipped in some actuators, notably MA-P-110. Refer to [dual encoders section](dual_encoders). 
 
 ```{warning}
 The non-axial configuration outputs a nonlinear position values. This means it requires a 
@@ -189,4 +190,34 @@ It is recommended to use CNC-machined mounting brackets for attaching the encode
 often do not provide sufficient precision and stiffnes (especially after heating up), and can lead to 
 more noisy and reliable readings.
 ```
+(dual_encoders)=
+# Drives with DUAL encoders
+Some actuators, like the MA-P-110, use two encoders coupled by gears with a 35:36 ratio. Because
+the two gears turn at slightly different speeds, the phase difference between their readings
+changes as the output rotates. The drive uses this difference (the Vernier principle) to compute
+the absolute output shaft position, without an encoder mounted directly on the output.
 
+Compared to a ring encoder, this gives high precision with a simpler mechanical design. The
+trade-off is a limited absolute measurement range of **0 - 35 rad**. Outside this range the
+absolute position wraps around.
+
+## Actuator setup
+Keep the measurement range in mind when setting up the actuator. If your application depends on
+absolute position, set the zero position near the middle of the range (17.5 rad), so the joint can
+move the same distance in both directions without leaving it.
+
+The absolute position is available in the `dualEncoderAbsPosition` register (`0x027`). It is not
+affected by offsets or zeroing, so you can always use it to check where the joint is within the
+range:
+
+```
+candletool md register read dualEncoderAbsPosition --id 100
+```
+
+`candletool md --id 100 info` also shows it in the aux encoder section when the aux encoder mode is
+`DUAL`.
+
+```{note}
+MA-P-110 actuators ship calibrated and zeroed at 17.5 rad absolute position. This gives
+±17.5 rad (about ±2.78 output revolutions) of absolute feedback around zero.
+```

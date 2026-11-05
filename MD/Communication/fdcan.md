@@ -651,8 +651,9 @@ releases introduce new features.
 | *outputEncoderDir (legacy)*     | `0x021` | RW  | int8      | -1 or 1       | Aux encoder direction, CCW or CW - automatically set during calibration | up to v2.5.4 |
 | outputEncoderVelocity           | `0x023` | **RO**  | float32   | -             | Aux encoder velocity [rad/s], computed @ 5kHz | **Active** |
 | outputEncoderPosition           | `0x024` | **RO**  | float32   | -             | Aux encoder position [rad], read @ 5kHz | **Active** |
-| outputEncoderMode               | `0x025` | RW  | uint8     | [0;1;2;3;4]   | NONE=0,<br> STARTUP=1,<br>MOTION=2,<br>REPORT=3,<br>MAIN=4 (legacy - valid up to v2.5.4) | **Active** |
+| outputEncoderMode               | `0x025` | RW  | uint8     | [0 - 6]       | NONE=0,<br> STARTUP=1,<br>MOTION=2,<br>REPORT=3,<br>MAIN=4 (legacy - valid up to v2.5.4),<br>CALIBRATED_REPORT=5,<br>DUAL=6 | **Active** |
 | outputEncoderCalibrationMode    | `0x026` | RW  | uint8     | [0;1]         | FULL=0,<br> DIRONLY=1 | **Active** |
+| dualEncoderAbsPosition          | `0x027` | **RO**  | float32   | -             | Absolute position [rad] computed from main and aux encoders, valid only in DUAL encoder mode | **Active** |
 
 ### Main Encoder
 | Register                        | Addr | R/W | Type    | Value   | Description | Status |

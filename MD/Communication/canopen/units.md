@@ -12,7 +12,7 @@ The drive works in **micro-revolutions of the output shaft**. One full output re
 
 | Quantity     | Unit                          | Objects                                              |
 | ------------ | ----------------------------- | ---------------------------------------------------- |
-| Position     | micro-revolutions             | 0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5     |
+| Position     | micro-revolutions             | 0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5, 0x2002:7 |
 | Velocity     | micro-revolutions per second  | 0x606C, 0x60FF, 0x6080, 0x2002:6                     |
 | Acceleration | micro-revolutions per second squared | 0x6083, 0x6084, 0x6085                        |
 

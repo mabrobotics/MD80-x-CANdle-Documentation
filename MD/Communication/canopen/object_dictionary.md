@@ -379,13 +379,14 @@ Optional encoder on the output shaft. See [Encoders](aux_encoders).
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x06 | no |  |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x07 | no |  |
 | 1 | Type | UINT8 | rw | 0 | no | encoder type identifier, see [Setting Up a New Motor](canopen_setup) |
 | 2 | Direction | REAL32 | rw | 1.0 | no | -1.0 or 1.0 only |
 | 3 | Mode | UINT8 | rw | 0 | no | 0 none, 1 startup, 2 motion, 3 report; takes effect after reboot |
 | 4 | Calibration Mode | UINT8 | rw | 0 | no | 0 full, 1 direction only |
 | 5 | Position | INT32 | ro | 0 | yes | micro-revolutions |
 | 6 | Velocity | INT32 | ro | 0 | yes | micro-revolutions per second |
+| 7 | Dual Encoder Absolute Position | INT32 | ro | 0 | yes | micro-revolutions; valid only when the aux encoder mode is DUAL, see [Drives with DUAL encoders](dual_encoders). Not affected by zeroing or offsets |
 
 ### 0x2003 Torque Sensor
 
