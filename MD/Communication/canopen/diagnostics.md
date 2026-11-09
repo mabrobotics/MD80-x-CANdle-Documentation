@@ -27,8 +27,8 @@ in the low 16 bits and warnings in the high 16 bits. The bit meanings are docume
 Every sub-index is read-only and PDO mappable, so you can stream whichever ones matter to your
 application in a transmit PDO.
 
-Quick Status is the one to poll first. It carries one summary bit per category plus, in bit 15, the
-target reached flag. It is mapped into TPDO1 by default alongside the statusword.
+Quick Status is the one to poll first. It carries one summary bit per category, the drive disabled
+flag in bit 14 and, in bit 15, the target reached flag. It is mapped into TPDO1 by default alongside the statusword.
 
 Two bits are worth calling out because they affect commissioning:
 

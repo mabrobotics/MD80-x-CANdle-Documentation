@@ -12,8 +12,7 @@ and switching between them means reflashing the drive with the other firmware. B
 published in [Downloads](downloads).
 
 ```{note}
-This section describes the CANopen firmware **v3.0.0** and later built around object dictionary 
-revision **1.2** (`md_1.2.eds`). Drives running the older 2.5.x CANopen firmware are covered by the
+This section describes the CANopen firmware **v3.0.2** built around object dictionary revision **1.3** (`md_1.3.eds`, firmware v3.0.2 and later). Drives running the older 2.5.x CANopen firmware are covered by the
 [legacy CANopen section](md_canopen_co25), which describes a different object dictionary.
 ```
 
@@ -44,6 +43,7 @@ detection.
 | 0x6502   | Supported Drive Modes | 0x00000185 | Profile Position, Profile Velocity, Cyclic Sync Position, Cyclic Sync Velocity |
 | 0x1018:1 | Vendor ID    | 0          | MAB Robotics has no CiA-assigned vendor ID yet |
 | 0x1018:2 | Product Code | 1          | MD series                                      |
+| 0x1018:3 | Revision Number | 0x00010003 | Object dictionary revision 1.3              |
 
 ## Predefined connection set
 
@@ -77,7 +77,7 @@ more than one drive you must assign each drive its own transmit identifiers thro
 
 ## Electronic data sheet
 
-The EDS file describing this object dictionary is `md_1.2.eds`, available from
+The EDS file describing this object dictionary is `md_1.3.eds`, available from
 [Downloads](device_firmware). Load it into your CANopen master or configuration tool to get object
 names, data types and default values without transcribing them by hand.
 

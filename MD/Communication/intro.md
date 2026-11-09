@@ -131,5 +131,5 @@ candletool mdco update 3.0.1 -i 69 --legacy-migration
 ```{warning}
 This migration will cause the drive configuration to be mostly dropped.
 Config upload and calibration will be required in majority of cases.
-This will also make drive use `md_1.2.eds` instead of `md_1.1.eds`.
+This will also make drive use `md_1.3.eds` instead of `md_1.1.eds`.
 ```

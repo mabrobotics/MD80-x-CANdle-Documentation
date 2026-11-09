@@ -106,7 +106,7 @@ A type the drive cannot use on that port is rejected with abort 0x06090030.
 | 0x2001:2 | Main Encoder Direction     | -1.0 or 1.0 only                        |
 | 0x2002:1 | Auxiliary Encoder Type     | see table above                         |
 | 0x2002:2 | Auxiliary Encoder Direction | -1.0 or 1.0 only                       |
-| 0x2002:3 | Auxiliary Encoder Mode     | 0 none, 1 startup, 2 motion, 3 report   |
+| 0x2002:3 | Auxiliary Encoder Mode     | 0 none, 1 startup, 2 motion, 3 report, 6 dual |
 | 0x2002:4 | Calibration Mode           | 0 full, 1 direction only                |
 
 [Aux Encoder Modes](aux_encoders) explains what each mode does. Changing 0x2002:3 sets the restart

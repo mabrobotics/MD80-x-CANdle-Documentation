@@ -1,8 +1,8 @@
 (canopen_od)=
 # Object Dictionary
 
-Complete reference for object dictionary revision 1.2. The machine readable version is
-`md_1.2.eds`, available from [Downloads](device_firmware).
+Complete reference for object dictionary revision 1.3. The machine readable version is
+`md_1.3.eds`, available from [Downloads](device_firmware).
 
 The dictionary is split into three ranges:
 
@@ -115,7 +115,7 @@ Vendor, product, revision and serial identification. The vendor ID is 0 because 
 | 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no |  |
 | 1 | Vendor-ID | UINT32 | ro | 0x00000000 | no |  |
 | 2 | Product Code | UINT32 | ro | 0x00000001 | no |  |
-| 3 | Revision Number | UINT32 | ro | 0x00000000 | no |  |
+| 3 | Revision Number | UINT32 | ro | 0x00010003 | no | object dictionary revision 1.3 |
 | 4 | Serial Number | UINT32 | ro | 0x00000000 | no |  |
 
 ### 0x1400 RPDO communication parameter
@@ -382,7 +382,7 @@ Optional encoder on the output shaft. See [Encoders](aux_encoders).
 | 0 | Highest sub-index supported | UINT8 | ro | 0x07 | no |  |
 | 1 | Type | UINT8 | rw | 0 | no | encoder type identifier, see [Setting Up a New Motor](canopen_setup) |
 | 2 | Direction | REAL32 | rw | 1.0 | no | -1.0 or 1.0 only |
-| 3 | Mode | UINT8 | rw | 0 | no | 0 none, 1 startup, 2 motion, 3 report; takes effect after reboot |
+| 3 | Mode | UINT8 | rw | 0 | no | 0 none, 1 startup, 2 motion, 3 report, 6 dual; other values are rejected with an SDO range abort; takes effect after reboot |
 | 4 | Calibration Mode | UINT8 | rw | 0 | no | 0 full, 1 direction only |
 | 5 | Position | INT32 | ro | 0 | yes | micro-revolutions |
 | 6 | Velocity | INT32 | ro | 0 | yes | micro-revolutions per second |
@@ -415,10 +415,10 @@ Position loop gains, used in Cyclic Synchronous Position. See [Position PID](pos
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no |  |
-| 1 | Kp | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 2 | Ki | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 3 | Kd | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 4 | Integral Limit | REAL32 | rw | 0.0 | no | must be 0 or positive |
+| 1 | Kp | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 2 | Ki | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 3 | Kd | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 4 | Integral Limit | REAL32 | rw | 0.0 | yes | must be 0 or positive |
 
 ### 0x2011 Velocity PID Controller
 
@@ -427,10 +427,10 @@ Velocity loop gains, used in Cyclic Synchronous Velocity and by both profile mod
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no |  |
-| 1 | Kp | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 2 | Ki | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 3 | Kd | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 4 | Integral Limit | REAL32 | rw | 0.0 | no | must be 0 or positive |
+| 1 | Kp | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 2 | Ki | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 3 | Kd | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 4 | Integral Limit | REAL32 | rw | 0.0 | yes | must be 0 or positive |
 
 ### 0x2012 Impedance PD Controller
 
@@ -439,8 +439,8 @@ Impedance mode stiffness and damping. See [Impedance PD](impedance-pd).
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x02 | no |  |
-| 1 | Kp | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 2 | Kd | REAL32 | rw | 0.0 | no | must be 0 or positive |
+| 1 | Kp | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 2 | Kd | REAL32 | rw | 0.0 | yes | must be 0 or positive |
 
 ### 0x2020 Hardware Info
 
