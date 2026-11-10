@@ -5,3 +5,5 @@ venv
 tags
 _static/firmware/api_download.ini
 _static/md200/*_data.js
+__pycache__/
+*__pycache__*
