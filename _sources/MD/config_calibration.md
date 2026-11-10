@@ -139,7 +139,7 @@ the \*.cfg file. Then the pole pairs will be automatically detected.
 
 ```{note}
 In some rare cases, when pole pairs are correctly specified in the config, MD may not be able to verify
-that correctly. In this case, refer to [FAQ](failed_calibration), for a quick workaround.
+that correctly. In this case, refer to [FAQ](faq-calibration-failed), for a quick workaround.
 ```
 
 ### Encoder eccentricity
@@ -195,8 +195,8 @@ off-axis encoder - it requires a full calibration routine.
 ```
 
 To run the routine, use the [`candletool md calibration -e aux`](candletool_commands) command. after
-completing the routine the MD will reboot and after that it is recommended to run the candletool md
-setup info command in order to make sure the setup reports no errors:
+completing the routine the MD will reboot and after that it is recommended to run the `candletool md info`
+command in order to make sure the setup reports no errors:
 
 ```{figure} images/Calibration/mdtool_setup_info_allok.png
 
@@ -208,7 +208,7 @@ setup info command in order to make sure the setup reports no errors:
 
 The output encoder parameters are rather straightforward, except the “output encoder last check”
 errors. These values are filled during the output encoder check routine, which can be run using
-[`candletool md test encoder -e aux`](candletool_commands). These params represent the output
+[`candletool md test encoder aux`](candletool_commands). These params represent the output
 encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the
 PCB. This means that if there are large inaccuracies during the calibration, or the output encoder
 moves in your setup, you can always check how accurate it is by running the check_aux routine.
@@ -233,7 +233,7 @@ Example errors for ME_AS_OFFAXIS:
 
 As can be seen, the non-axial encoder features larger errors, and thus can be utilized only for
 initial position determination rather than output shaft control. In case the errors get too large
-they will turn yellow after running [`candletool md test encoder -e aux`](candletool_commands)
+they will turn yellow after running [`candletool md test encoder aux`](candletool_commands)
 command indicating there might be a problem with your setup:
 
 ```{figure} images/Calibration/errors_yellow.png

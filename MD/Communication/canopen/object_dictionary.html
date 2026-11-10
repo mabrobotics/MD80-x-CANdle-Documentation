@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -471,6 +475,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-area">Communication Area</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1000-device-type">0x1000 Device Type</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1001-error-register">0x1001 Error Register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1003-pre-defined-error-field">0x1003 Pre-defined Error Field</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1005-cob-id-sync-message">0x1005 COB-ID SYNC Message</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1008-manufacturer-device-name">0x1008 Manufacturer Device Name</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1009-manufacturer-hardware-version">0x1009 Manufacturer Hardware Version</a></li>
@@ -535,6 +540,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607b-position-range-limit">0x607B Position Range Limit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607d-software-position-limit">0x607D Software Position Limit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6080-max-motor-speed">0x6080 Max Motor Speed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6081-profile-velocity">0x6081 Profile Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6083-profile-acceleration">0x6083 Profile Acceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6084-profile-deceleration">0x6084 Profile Deceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6085-quick-stop-deceleration">0x6085 Quick Stop Deceleration</a></li>
@@ -542,6 +548,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a8-si-unit-position">0x60A8 SI Unit Position</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a9-si-unit-velocity">0x60A9 SI Unit Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60aa-si-unit-acceleration">0x60AA SI Unit Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c5-max-acceleration">0x60C5 Max Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c6-max-deceleration">0x60C6 Max Deceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60ff-target-velocity">0x60FF Target Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6502-supported-drive-modes">0x6502 Supported Drive Modes</a></li>
 </ul>
@@ -559,8 +567,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="object-dictionary">
 <span id="canopen-od"></span><h1>Object Dictionary<a class="headerlink" href="#object-dictionary" title="Link to this heading">#</a></h1>
-<p>Complete reference for object dictionary revision 1.2. The machine readable version is
-<code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code>, available from <a class="reference internal" href="../../../Downloads/intro.html#device-firmware"><span class="std std-ref">Downloads</span></a>.</p>
+<p>Complete reference for object dictionary revision 1.3. The machine readable version is
+<code class="docutils literal notranslate"><span class="pre">md_1.3.eds</span></code>, available from <a class="reference internal" href="../../../Downloads/intro.html#device-firmware"><span class="std std-ref">Downloads</span></a>.</p>
 <p>The dictionary is split into three ranges:</p>
 <ul class="simple">
 <li><p><strong>0x1000 to 0x1FFF, communication area.</strong> CiA 301 objects: identification, heartbeat, SYNC and PDO configuration.</p></li>
@@ -626,6 +634,97 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>ro</p></td>
 <td><p>0</p></td>
 <td><p>yes</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x1003-pre-defined-error-field">
+<h3>0x1003 Pre-defined Error Field<a class="headerlink" href="#x1003-pre-defined-error-field" title="Link to this heading">#</a></h3>
+<p>History of the last 8 errors, sub-index 1 the newest. Each entry holds the emergency error code in bits 0-15 and the source error flags in bits 16-31. Reading a sub-index above the number of errors aborts with 0x08000024.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Number of errors</p></td>
+<td><p>UINT8</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>write 0 to clear the history; any other value aborts</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Standard error field 1</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Standard error field 2</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Standard error field 3</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Standard error field 4</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Standard error field 5</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Standard error field 6</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Standard error field 7</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Standard error field 8</p></td>
+<td><p>UINT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -715,7 +814,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </section>
 <section id="x1010-store-parameters">
 <h3>0x1010 Store Parameters<a class="headerlink" href="#x1010-store-parameters" title="Link to this heading">#</a></h3>
-<p>Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Write-only: reading any sub-index other than 0 aborts with 0x05040001.</p>
+<p>Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Reading sub-index 1 returns 1, saves on command.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -732,15 +831,15 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Highest sub-index supported</p></td>
 <td><p>UINT8</p></td>
 <td><p>ro</p></td>
-<td><p>0x04</p></td>
+<td><p>0x01</p></td>
 <td><p>no</p></td>
-<td><p>always reports 4, although only sub-index 1 is implemented</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>Save all Parameters</p></td>
 <td><p>UINT32</p></td>
-<td><p>wo</p></td>
-<td><p>0x00000000</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000001</p></td>
 <td><p>no</p></td>
 <td><p>write the signature 0x65766173, ASCII “save”; any other value aborts with 0x08000020</p></td>
 </tr>
@@ -750,7 +849,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </section>
 <section id="x1011-restore-default-parameters">
 <h3>0x1011 Restore Default Parameters<a class="headerlink" href="#x1011-restore-default-parameters" title="Link to this heading">#</a></h3>
-<p>Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Only sub-index 4 is implemented. Write-only: reading any sub-index other than 0 aborts with 0x05040001.</p>
+<p>Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Sub-indices 1 and 4 behave identically. Reading either returns 1, restores on command.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -769,13 +868,21 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>ro</p></td>
 <td><p>0x04</p></td>
 <td><p>no</p></td>
-<td><p>always reports 4, although only sub-index 4 is implemented</p></td>
+<td><p>sub-indices 2 and 3 are not implemented</p></td>
 </tr>
-<tr class="row-odd"><td><p>4</p></td>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Restore all Default Parameters</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000001</p></td>
+<td><p>no</p></td>
+<td><p>write the signature 0x64616F6C, ASCII “load”; any other value aborts with 0x08000020</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
 <td><p>Restore manufacturer defined default Parameters</p></td>
 <td><p>UINT32</p></td>
-<td><p>wo</p></td>
-<td><p>0x00000000</p></td>
+<td><p>rw</p></td>
+<td><p>0x00000001</p></td>
 <td><p>no</p></td>
 <td><p>write the signature 0x64616F6C, ASCII “load”; any other value aborts with 0x08000020</p></td>
 </tr>
@@ -915,9 +1022,9 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Revision Number</p></td>
 <td><p>UINT32</p></td>
 <td><p>ro</p></td>
-<td><p>0x00000000</p></td>
+<td><p>0x00010003</p></td>
 <td><p>no</p></td>
-<td><p></p></td>
+<td><p>object dictionary revision 1.3</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
 <td><p>Serial Number</p></td>
@@ -958,7 +1065,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by RPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x200</p></td>
+<td><p>$NODEID+0x200</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1009,7 +1116,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by RPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x300</p></td>
+<td><p>$NODEID+0x300</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1060,7 +1167,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by RPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x400</p></td>
+<td><p>$NODEID+0x400</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1111,7 +1218,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by RPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x500</p></td>
+<td><p>$NODEID+0x500</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1518,7 +1625,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Highest sub-index supported</p></td>
 <td><p>UINT8</p></td>
 <td><p>ro</p></td>
-<td><p>0x06</p></td>
+<td><p>0x05</p></td>
 <td><p>no</p></td>
 <td><p>always reports 5</p></td>
 </tr>
@@ -1526,7 +1633,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by TPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x180</p></td>
+<td><p>$NODEID+0x180</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1553,14 +1660,6 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>0</p></td>
 <td><p>no</p></td>
 <td><p>ms, transmit PDOs only</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>SYNC start value</p></td>
-<td><p>UINT8</p></td>
-<td><p>rw</p></td>
-<td><p>0</p></td>
-<td><p>no</p></td>
-<td><p>declared in the EDS but not implemented</p></td>
 </tr>
 </tbody>
 </table>
@@ -1585,7 +1684,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Highest sub-index supported</p></td>
 <td><p>UINT8</p></td>
 <td><p>ro</p></td>
-<td><p>0x06</p></td>
+<td><p>0x05</p></td>
 <td><p>no</p></td>
 <td><p>always reports 5</p></td>
 </tr>
@@ -1593,7 +1692,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by TPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x280</p></td>
+<td><p>$NODEID+0x280</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1620,14 +1719,6 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>0</p></td>
 <td><p>no</p></td>
 <td><p>ms, transmit PDOs only</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>SYNC start value</p></td>
-<td><p>UINT8</p></td>
-<td><p>rw</p></td>
-<td><p>0</p></td>
-<td><p>no</p></td>
-<td><p>declared in the EDS but not implemented</p></td>
 </tr>
 </tbody>
 </table>
@@ -1652,7 +1743,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Highest sub-index supported</p></td>
 <td><p>UINT8</p></td>
 <td><p>ro</p></td>
-<td><p>0x06</p></td>
+<td><p>0x05</p></td>
 <td><p>no</p></td>
 <td><p>always reports 5</p></td>
 </tr>
@@ -1660,7 +1751,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by TPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x380</p></td>
+<td><p>$NODEID+0x380</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1687,14 +1778,6 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>0</p></td>
 <td><p>no</p></td>
 <td><p>ms, transmit PDOs only</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>SYNC start value</p></td>
-<td><p>UINT8</p></td>
-<td><p>rw</p></td>
-<td><p>0</p></td>
-<td><p>no</p></td>
-<td><p>declared in the EDS but not implemented</p></td>
 </tr>
 </tbody>
 </table>
@@ -1719,7 +1802,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Highest sub-index supported</p></td>
 <td><p>UINT8</p></td>
 <td><p>ro</p></td>
-<td><p>0x06</p></td>
+<td><p>0x05</p></td>
 <td><p>no</p></td>
 <td><p>always reports 5</p></td>
 </tr>
@@ -1727,7 +1810,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>COB-ID used by TPDO</p></td>
 <td><p>UINT32</p></td>
 <td><p>rw</p></td>
-<td><p>0x480</p></td>
+<td><p>$NODEID+0x480</p></td>
 <td><p>no</p></td>
 <td><p>COB-ID</p></td>
 </tr>
@@ -1754,14 +1837,6 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>0</p></td>
 <td><p>no</p></td>
 <td><p>ms, transmit PDOs only</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>SYNC start value</p></td>
-<td><p>UINT8</p></td>
-<td><p>rw</p></td>
-<td><p>0</p></td>
-<td><p>no</p></td>
-<td><p>declared in the EDS but not implemented</p></td>
 </tr>
 </tbody>
 </table>
@@ -2231,11 +2306,11 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </tr>
 <tr class="row-even"><td><p>10</p></td>
 <td><p>Motor KV Rating</p></td>
-<td><p>REAL32</p></td>
+<td><p>UINT16</p></td>
 <td><p>rw</p></td>
-<td><p>0.0</p></td>
+<td><p>0</p></td>
 <td><p>no</p></td>
-<td><p>RPM/V, must be greater than 0; writing it recomputes 0x2000:9 and is stored as a whole number</p></td>
+<td><p>RPM/V, must be greater than 0; writing it recomputes 0x2000:9</p></td>
 </tr>
 </tbody>
 </table>
@@ -2303,7 +2378,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>Highest sub-index supported</p></td>
 <td><p>UINT8</p></td>
 <td><p>ro</p></td>
-<td><p>0x06</p></td>
+<td><p>0x07</p></td>
 <td><p>no</p></td>
 <td><p></p></td>
 </tr>
@@ -2329,7 +2404,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>rw</p></td>
 <td><p>0</p></td>
 <td><p>no</p></td>
-<td><p>0 none, 1 startup, 2 motion, 3 report; takes effect after reboot</p></td>
+<td><p>0 none, 1 startup, 2 motion, 3 report, 6 dual; other values are rejected with an SDO range abort; takes effect after reboot</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
 <td><p>Calibration Mode</p></td>
@@ -2354,6 +2429,14 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>0</p></td>
 <td><p>yes</p></td>
 <td><p>micro-revolutions per second</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Dual Encoder Absolute Position</p></td>
+<td><p>INT32</p></td>
+<td><p>ro</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions; valid only when the aux encoder mode is DUAL, see <a class="reference internal" href="../../encoders.html#dual-encoders"><span class="std std-ref">Drives with DUAL encoders</span></a>. Not affected by zeroing or offsets</p></td>
 </tr>
 </tbody>
 </table>
@@ -2473,7 +2556,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
@@ -2481,7 +2564,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
@@ -2489,7 +2572,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
@@ -2497,7 +2580,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 </tbody>
@@ -2532,7 +2615,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
@@ -2540,7 +2623,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
@@ -2548,7 +2631,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
@@ -2556,7 +2639,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 </tbody>
@@ -2591,7 +2674,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
@@ -2599,7 +2682,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <td><p>REAL32</p></td>
 <td><p>rw</p></td>
 <td><p>0.0</p></td>
-<td><p>no</p></td>
+<td><p>yes</p></td>
 <td><p>must be 0 or positive</p></td>
 </tr>
 </tbody>
@@ -3050,7 +3133,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <span id="id3"></span><h2>Profile Specific Area<a class="headerlink" href="#profile-specific-area" title="Link to this heading">#</a></h2>
 <section id="x603f-error-code">
 <h3>0x603F Error Code<a class="headerlink" href="#x603f-error-code" title="Link to this heading">#</a></h3>
-<p>CiA 402 code for the most recent fault. Latches until the drive is reset.</p>
+<p>Code of the most recently raised error that is still active, 0 when no error is active. See <a class="reference internal" href="diagnostics.html#canopen-diagnostics"><span class="std std-ref">Diagnostics</span></a>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -3104,7 +3187,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </section>
 <section id="x6041-statusword">
 <h3>0x6041 Statusword<a class="headerlink" href="#x6041-statusword" title="Link to this heading">#</a></h3>
-<p>Reports the CiA 402 state. Carries the state bits only.</p>
+<p>Reports the CiA 402 state together with voltage enabled, remote, target reached, internal limit and mode specific bits. Mask with 0x006F before comparing it to a state. See <a class="reference internal" href="state_machine.html#canopen-state-machine"><span class="std std-ref">State Machine</span></a>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -3620,9 +3703,36 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </table>
 </div>
 </section>
+<section id="x6081-profile-velocity">
+<h3>0x6081 Profile Velocity<a class="headerlink" href="#x6081-profile-velocity" title="Link to this heading">#</a></h3>
+<p>Cruise velocity in Profile Position. Shares the same internal register as Target Velocity 0x60FF: writing either object changes both, and a read returns the magnitude of 0x60FF.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Profile Velocity</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>yes</p></td>
+<td><p>micro-revolutions per second</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="x6083-profile-acceleration">
 <h3>0x6083 Profile Acceleration<a class="headerlink" href="#x6083-profile-acceleration" title="Link to this heading">#</a></h3>
-<p>Acceleration used by the trajectory generator in both profile modes.</p>
+<p>Acceleration used by the trajectory generator in both profile modes. Limited to Max Acceleration 0x60C5.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -3649,7 +3759,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </section>
 <section id="x6084-profile-deceleration">
 <h3>0x6084 Profile Deceleration<a class="headerlink" href="#x6084-profile-deceleration" title="Link to this heading">#</a></h3>
-<p>Deceleration used by the trajectory generator in both profile modes.</p>
+<p>Deceleration used by the trajectory generator in both profile modes. Limited to Max Deceleration 0x60C6.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -3676,7 +3786,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </section>
 <section id="x6085-quick-stop-deceleration">
 <h3>0x6085 Quick Stop Deceleration<a class="headerlink" href="#x6085-quick-stop-deceleration" title="Link to this heading">#</a></h3>
-<p>Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout.</p>
+<p>Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout. Limited to Max Deceleration 0x60C6.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sub</p></th>
@@ -3825,6 +3935,60 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 </table>
 </div>
 </section>
+<section id="x60c5-max-acceleration">
+<h3>0x60C5 Max Acceleration<a class="headerlink" href="#x60c5-max-acceleration" title="Link to this heading">#</a></h3>
+<p>Upper limit for Profile Acceleration 0x6083. 0 means no limit.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Max Acceleration</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>0</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second squared</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="x60c6-max-deceleration">
+<h3>0x60C6 Max Deceleration<a class="headerlink" href="#x60c6-max-deceleration" title="Link to this heading">#</a></h3>
+<p>Upper limit for Profile Deceleration 0x6084 and Quick Stop Deceleration 0x6085. 0 means no limit.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>PDO</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Max Deceleration</p></td>
+<td><p>UINT32</p></td>
+<td><p>rw</p></td>
+<td><p>15915494</p></td>
+<td><p>no</p></td>
+<td><p>micro-revolutions per second squared</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="x60ff-target-velocity">
 <h3>0x60FF Target Velocity<a class="headerlink" href="#x60ff-target-velocity" title="Link to this heading">#</a></h3>
 <p>Velocity setpoint. In Profile Velocity it is the target; in Profile Position it is the cruise velocity; in Cyclic Synchronous Velocity it is applied directly; in Impedance it is the equilibrium velocity.</p>
@@ -3949,6 +4113,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-area">Communication Area</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1000-device-type">0x1000 Device Type</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1001-error-register">0x1001 Error Register</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1003-pre-defined-error-field">0x1003 Pre-defined Error Field</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1005-cob-id-sync-message">0x1005 COB-ID SYNC Message</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1008-manufacturer-device-name">0x1008 Manufacturer Device Name</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x1009-manufacturer-hardware-version">0x1009 Manufacturer Hardware Version</a></li>
@@ -4013,6 +4178,7 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607b-position-range-limit">0x607B Position Range Limit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x607d-software-position-limit">0x607D Software Position Limit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6080-max-motor-speed">0x6080 Max Motor Speed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6081-profile-velocity">0x6081 Profile Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6083-profile-acceleration">0x6083 Profile Acceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6084-profile-deceleration">0x6084 Profile Deceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6085-quick-stop-deceleration">0x6085 Quick Stop Deceleration</a></li>
@@ -4020,6 +4186,8 @@ the enforced range is rejected with SDO abort code 0x06090030.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a8-si-unit-position">0x60A8 SI Unit Position</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60a9-si-unit-velocity">0x60A9 SI Unit Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60aa-si-unit-acceleration">0x60AA SI Unit Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c5-max-acceleration">0x60C5 Max Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60c6-max-deceleration">0x60C6 Max Deceleration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x60ff-target-velocity">0x60FF Target Velocity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x6502-supported-drive-modes">0x6502 Supported Drive Modes</a></li>
 </ul>

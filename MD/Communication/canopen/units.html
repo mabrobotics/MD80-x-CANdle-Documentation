@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -501,7 +505,7 @@ times too far, so read this page before writing any setpoint.</p>
 <tbody>
 <tr class="row-even"><td><p>Position</p></td>
 <td><p>micro-revolutions</p></td>
-<td><p>0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5</p></td>
+<td><p>0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5, 0x2002:7</p></td>
 </tr>
 <tr class="row-odd"><td><p>Velocity</p></td>
 <td><p>micro-revolutions per second</p></td>
@@ -575,6 +579,13 @@ revolutions before the counter wraps.</p>
 <p class="admonition-title">Note</p>
 <p>All of these are <strong>output shaft</strong> quantities. The gear ratio in 0x6091 is applied by the drive, so
 you never convert for the gearbox yourself.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The drive stores position, velocity and acceleration internally as IEEE-754 single precision
+floats, not integers. A value written and then read back may differ slightly from the original,
+as single precision cannot represent every INT32 value exactly. The difference grows with the
+magnitude of the value, so do not compare read-back values for exact equality.</p>
 </div>
 </section>
 <section id="torque-and-current">
@@ -669,7 +680,7 @@ with code 0x08000020, <em>data cannot be transferred or stored to the applicatio
 </tr>
 <tr class="row-even"><td><p>0x2000:A</p></td>
 <td><p>Motor KV Rating</p></td>
-<td><p>RPM/V, IEEE-754 single precision</p></td>
+<td><p>RPM/V, unsigned 16-bit integer</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x2003:2</p></td>
 <td><p>Torque Sensor Value</p></td>

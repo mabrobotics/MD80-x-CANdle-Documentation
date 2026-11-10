@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -483,6 +487,10 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-encoder-modes">Aux Encoder Modes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#me-am-mechanical-mounting">ME-am - Mechanical mounting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#drives-with-dual-encoders">Drives with DUAL encoders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actuator-setup">Actuator setup</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -649,10 +657,13 @@ is the most suitable.</p>
 <td><p>Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#FF6900">aux encoder</font></b>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">REPORT</span></code></p></td>
-<td><p>Initial position from <b><font color="#008000">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>. Calibration of the <b><font color="#FF6900">aux encoder</font></b> is impossible.</p></td>
+<td><p>Initial position from <b><font color="#FF6900">aux encoder</font></b>, report <b><font color="#FF6900">aux encoder</font></b> values, motion based on <b><font color="#008000">main encoder</font></b>. Calibration of the <b><font color="#FF6900">aux encoder</font></b> is impossible.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAIN</span></code> (legacy)</p></td>
-<td><p>Position from <b><font color="#008000">aux encoder</font></b>, is mapped as <b><font color="#008000">main encoder</font></b>, and used for both control and commutation. Note: This is only applicable for drivers with firmware 2.x.x. For v3.0.0+ firmware, the main/aux encoder is set though <code class="docutils literal notranslate"><span class="pre">mainEncoder</span></code> and <code class="docutils literal notranslate"><span class="pre">auxEncoder</span></code> registers.</p></td>
+<td><p>Position from <b><font color="#FF6900">aux encoder</font></b>, is mapped as <b><font color="#008000">main encoder</font></b>, and used for both control and commutation. Note: This is only applicable for drivers with firmware 2.x.x. For v3.0.0+ firmware, the main/aux encoder is set though <code class="docutils literal notranslate"><span class="pre">mainEncoder</span></code> and <code class="docutils literal notranslate"><span class="pre">auxEncoder</span></code> registers.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DUAL</span></code></p></td>
+<td><p>Initial position is computed from phase difference between <b><font color="#FF6900">aux encoder</font></b> and <b><font color="#008000">main encoder</font></b>. This is the mechanical configuration shipped in some actuators, notably MA-P-110. Refer to <a class="reference internal" href="#dual-encoders"><span class="std std-ref">dual encoders section</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -728,7 +739,7 @@ MD,</p></li>
 the MD,</p></li>
 <li><p>Calibrate the MD using <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">calibration</span></code> command,</p></li>
 <li><p>(if applicable) Calibrate the output encoder using <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">calibration</span> <span class="pre">-e</span> <span class="pre">aux</span></code> command</p></li>
-<li><p>Test the encoders using <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">test</span> <span class="pre">encoder</span></code> command.</p></li>
+<li><p>Test the encoders using <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">main</span></code> (and <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">aux</span></code>) command.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span></code> command to make sure there are no errors and the test results (min,
 max and stddev errors) are within your expectations.</p></li>
 <li><p>The external encoder is ready to use!</p></li>
@@ -740,6 +751,35 @@ It is recommended to use CNC-machined mounting brackets for attaching the encode
 often do not provide sufficient precision and stiffnes (especially after heating up), and can lead to
 more noisy and reliable readings.</p>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="drives-with-dual-encoders">
+<span id="dual-encoders"></span><h1>Drives with DUAL encoders<a class="headerlink" href="#drives-with-dual-encoders" title="Link to this heading">#</a></h1>
+<p>Some actuators, like the MA-P-110, use two encoders coupled by gears with a 35:36 ratio. Because
+the two gears turn at slightly different speeds, the phase difference between their readings
+changes as the output rotates. The drive uses this difference (the Vernier principle) to compute
+the absolute output shaft position, without an encoder mounted directly on the output.</p>
+<p>Compared to a ring encoder, this gives high precision with a simpler mechanical design. The
+trade-off is a limited absolute measurement range of <strong>0 - 35 rad</strong>. Outside this range the
+absolute position wraps around.</p>
+<section id="actuator-setup">
+<h2>Actuator setup<a class="headerlink" href="#actuator-setup" title="Link to this heading">#</a></h2>
+<p>Keep the measurement range in mind when setting up the actuator. If your application depends on
+absolute position, set the zero position near the middle of the range (17.5 rad), so the joint can
+move the same distance in both directions without leaving it.</p>
+<p>The absolute position is available in the <code class="docutils literal notranslate"><span class="pre">dualEncoderAbsPosition</span></code> register (<code class="docutils literal notranslate"><span class="pre">0x027</span></code>). It is not
+affected by offsets or zeroing, so you can always use it to check where the joint is within the
+range:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">candletool</span> <span class="n">md</span> <span class="n">register</span> <span class="n">read</span> <span class="n">dualEncoderAbsPosition</span> <span class="o">--</span><span class="nb">id</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">--id</span> <span class="pre">100</span> <span class="pre">info</span></code> also shows it in the aux encoder section when the aux encoder mode is
+<code class="docutils literal notranslate"><span class="pre">DUAL</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MA-P-110 actuators ship calibrated and zeroed at 17.5 rad absolute position. This gives
+±17.5 rad (about ±2.78 output revolutions) of absolute feedback around zero.</p>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -821,6 +861,10 @@ more noisy and reliable readings.</p>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aux-encoder-modes">Aux Encoder Modes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#me-am-mechanical-mounting">ME-am - Mechanical mounting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#drives-with-dual-encoders">Drives with DUAL encoders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#actuator-setup">Actuator setup</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

@@ -1,8 +1,8 @@
 (canopen_od)=
 # Object Dictionary
 
-Complete reference for object dictionary revision 1.2. The machine readable version is
-`md_1.2.eds`, available from [Downloads](device_firmware).
+Complete reference for object dictionary revision 1.3. The machine readable version is
+`md_1.3.eds`, available from [Downloads](device_firmware).
 
 The dictionary is split into three ranges:
 
@@ -39,6 +39,22 @@ One byte summary of active faults. See [Diagnostics](canopen_diagnostics) for th
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | - | Error Register | UINT8 | ro | 0 | yes |  |
 
+### 0x1003 Pre-defined Error Field
+
+History of the last 8 errors, sub-index 1 the newest. Each entry holds the emergency error code in bits 0-15 and the source error flags in bits 16-31. Reading a sub-index above the number of errors aborts with 0x08000024.
+
+| Sub | Name | Type | Access | Default | PDO | Notes |
+| --- | ---- | ---- | ------ | ------- | --- | ----- |
+| 0 | Number of errors | UINT8 | rw | 0 | no | write 0 to clear the history; any other value aborts |
+| 1 | Standard error field 1 | UINT32 | ro | 0 | no |  |
+| 2 | Standard error field 2 | UINT32 | ro | 0 | no |  |
+| 3 | Standard error field 3 | UINT32 | ro | 0 | no |  |
+| 4 | Standard error field 4 | UINT32 | ro | 0 | no |  |
+| 5 | Standard error field 5 | UINT32 | ro | 0 | no |  |
+| 6 | Standard error field 6 | UINT32 | ro | 0 | no |  |
+| 7 | Standard error field 7 | UINT32 | ro | 0 | no |  |
+| 8 | Standard error field 8 | UINT32 | ro | 0 | no |  |
+
 ### 0x1005 COB-ID SYNC Message
 
 Identifier the drive listens on for SYNC. Fixed at 0x80; the drive never produces SYNC itself.
@@ -65,21 +81,22 @@ Hardware version string.
 
 ### 0x1010 Store Parameters
 
-Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Write-only: reading any sub-index other than 0 aborts with 0x05040001.
+Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Reading sub-index 1 returns 1, saves on command.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no | always reports 4, although only sub-index 1 is implemented |
-| 1 | Save all Parameters | UINT32 | wo | 0x00000000 | no | write the signature 0x65766173, ASCII "save"; any other value aborts with 0x08000020 |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x01 | no |  |
+| 1 | Save all Parameters | UINT32 | rw | 0x00000001 | no | write the signature 0x65766173, ASCII "save"; any other value aborts with 0x08000020 |
 
 ### 0x1011 Restore Default Parameters
 
-Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Only sub-index 4 is implemented. Write-only: reading any sub-index other than 0 aborts with 0x05040001.
+Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Sub-indices 1 and 4 behave identically. Reading either returns 1, restores on command.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no | always reports 4, although only sub-index 4 is implemented |
-| 4 | Restore manufacturer defined default Parameters | UINT32 | wo | 0x00000000 | no | write the signature 0x64616F6C, ASCII "load"; any other value aborts with 0x08000020 |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no | sub-indices 2 and 3 are not implemented |
+| 1 | Restore all Default Parameters | UINT32 | rw | 0x00000001 | no | write the signature 0x64616F6C, ASCII "load"; any other value aborts with 0x08000020 |
+| 4 | Restore manufacturer defined default Parameters | UINT32 | rw | 0x00000001 | no | write the signature 0x64616F6C, ASCII "load"; any other value aborts with 0x08000020 |
 
 ### 0x1014 COB-ID EMCY
 
@@ -115,7 +132,7 @@ Vendor, product, revision and serial identification. The vendor ID is 0 because 
 | 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no |  |
 | 1 | Vendor-ID | UINT32 | ro | 0x00000000 | no |  |
 | 2 | Product Code | UINT32 | ro | 0x00000001 | no |  |
-| 3 | Revision Number | UINT32 | ro | 0x00000000 | no |  |
+| 3 | Revision Number | UINT32 | ro | 0x00010003 | no | object dictionary revision 1.3 |
 | 4 | Serial Number | UINT32 | ro | 0x00000000 | no |  |
 
 ### 0x1400 RPDO communication parameter
@@ -125,7 +142,7 @@ Communication parameters for RPDO1. The COB-ID is stored and read back but is no
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
-| 1 | COB-ID used by RPDO | UINT32 | rw | 0x200 | no | COB-ID |
+| 1 | COB-ID used by RPDO | UINT32 | rw | $NODEID+0x200 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
 
@@ -136,7 +153,7 @@ Communication parameters for RPDO2, received on 0x300 plus the node ID.
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
-| 1 | COB-ID used by RPDO | UINT32 | rw | 0x300 | no | COB-ID |
+| 1 | COB-ID used by RPDO | UINT32 | rw | $NODEID+0x300 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
 
@@ -147,7 +164,7 @@ Communication parameters for RPDO3, received on 0x400 plus the node ID.
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
-| 1 | COB-ID used by RPDO | UINT32 | rw | 0x400 | no | COB-ID |
+| 1 | COB-ID used by RPDO | UINT32 | rw | $NODEID+0x400 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
 
@@ -158,7 +175,7 @@ Communication parameters for RPDO4, received on 0x500 plus the node ID.
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
-| 1 | COB-ID used by RPDO | UINT32 | rw | 0x500 | no | COB-ID |
+| 1 | COB-ID used by RPDO | UINT32 | rw | $NODEID+0x500 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
 
@@ -232,12 +249,11 @@ Communication parameters for TPDO1. The COB-ID is used exactly as stored, with n
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x06 | no | always reports 5 |
-| 1 | COB-ID used by TPDO | UINT32 | rw | 0x180 | no | COB-ID |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
+| 1 | COB-ID used by TPDO | UINT32 | rw | $NODEID+0x180 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 3 | Inhibit time | UINT16 | rw | 0 | no | accepted but not enforced |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
-| 6 | SYNC start value | UINT8 | rw | 0 | no | declared in the EDS but not implemented |
 
 ### 0x1801 TPDO communication parameter
 
@@ -245,12 +261,11 @@ Communication parameters for TPDO2.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x06 | no | always reports 5 |
-| 1 | COB-ID used by TPDO | UINT32 | rw | 0x280 | no | COB-ID |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
+| 1 | COB-ID used by TPDO | UINT32 | rw | $NODEID+0x280 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 3 | Inhibit time | UINT16 | rw | 0 | no | accepted but not enforced |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
-| 6 | SYNC start value | UINT8 | rw | 0 | no | declared in the EDS but not implemented |
 
 ### 0x1802 TPDO communication parameter
 
@@ -258,12 +273,11 @@ Communication parameters for TPDO3.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x06 | no | always reports 5 |
-| 1 | COB-ID used by TPDO | UINT32 | rw | 0x380 | no | COB-ID |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
+| 1 | COB-ID used by TPDO | UINT32 | rw | $NODEID+0x380 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 3 | Inhibit time | UINT16 | rw | 0 | no | accepted but not enforced |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
-| 6 | SYNC start value | UINT8 | rw | 0 | no | declared in the EDS but not implemented |
 
 ### 0x1803 TPDO communication parameter
 
@@ -271,12 +285,11 @@ Communication parameters for TPDO4.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x06 | no | always reports 5 |
-| 1 | COB-ID used by TPDO | UINT32 | rw | 0x480 | no | COB-ID |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x05 | no | always reports 5 |
+| 1 | COB-ID used by TPDO | UINT32 | rw | $NODEID+0x480 | no | COB-ID |
 | 2 | Transmission type | UINT8 | rw | 255 | no | 0 every SYNC, 1-240 every n-th SYNC, 254 and 255 event driven |
 | 3 | Inhibit time | UINT16 | rw | 0 | no | accepted but not enforced |
 | 5 | Event timer | UINT16 | rw | 0 | no | ms, transmit PDOs only |
-| 6 | SYNC start value | UINT8 | rw | 0 | no | declared in the EDS but not implemented |
 
 ### 0x1A00 TPDO mapping parameter
 
@@ -361,7 +374,7 @@ Motor and actuator identity. These values describe the physical motor and are ne
 | 7 | Motor Shutdown Temperature | UINT8 | rw | 80 | no | degrees C, 10 to 120 |
 | 8 | Motor Calibration Mode | UINT8 | rw | 0 | no | stored, not currently acted on by the firmware |
 | 9 | Motor Torque Constant | REAL32 | rw | 1.0 | no | Nm/A, must be greater than 0 |
-| 10 | Motor KV Rating | REAL32 | rw | 0.0 | no | RPM/V, must be greater than 0; writing it recomputes 0x2000:9 and is stored as a whole number |
+| 10 | Motor KV Rating | UINT16 | rw | 0 | no | RPM/V, must be greater than 0; writing it recomputes 0x2000:9 |
 
 ### 0x2001 Main Encoder
 
@@ -379,13 +392,14 @@ Optional encoder on the output shaft. See [Encoders](aux_encoders).
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
-| 0 | Highest sub-index supported | UINT8 | ro | 0x06 | no |  |
+| 0 | Highest sub-index supported | UINT8 | ro | 0x07 | no |  |
 | 1 | Type | UINT8 | rw | 0 | no | encoder type identifier, see [Setting Up a New Motor](canopen_setup) |
 | 2 | Direction | REAL32 | rw | 1.0 | no | -1.0 or 1.0 only |
-| 3 | Mode | UINT8 | rw | 0 | no | 0 none, 1 startup, 2 motion, 3 report; takes effect after reboot |
+| 3 | Mode | UINT8 | rw | 0 | no | 0 none, 1 startup, 2 motion, 3 report, 6 dual; other values are rejected with an SDO range abort; takes effect after reboot |
 | 4 | Calibration Mode | UINT8 | rw | 0 | no | 0 full, 1 direction only |
 | 5 | Position | INT32 | ro | 0 | yes | micro-revolutions |
 | 6 | Velocity | INT32 | ro | 0 | yes | micro-revolutions per second |
+| 7 | Dual Encoder Absolute Position | INT32 | ro | 0 | yes | micro-revolutions; valid only when the aux encoder mode is DUAL, see [Drives with DUAL encoders](dual_encoders). Not affected by zeroing or offsets |
 
 ### 0x2003 Torque Sensor
 
@@ -414,10 +428,10 @@ Position loop gains, used in Cyclic Synchronous Position. See [Position PID](pos
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no |  |
-| 1 | Kp | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 2 | Ki | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 3 | Kd | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 4 | Integral Limit | REAL32 | rw | 0.0 | no | must be 0 or positive |
+| 1 | Kp | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 2 | Ki | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 3 | Kd | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 4 | Integral Limit | REAL32 | rw | 0.0 | yes | must be 0 or positive |
 
 ### 0x2011 Velocity PID Controller
 
@@ -426,10 +440,10 @@ Velocity loop gains, used in Cyclic Synchronous Velocity and by both profile mod
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x04 | no |  |
-| 1 | Kp | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 2 | Ki | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 3 | Kd | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 4 | Integral Limit | REAL32 | rw | 0.0 | no | must be 0 or positive |
+| 1 | Kp | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 2 | Ki | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 3 | Kd | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 4 | Integral Limit | REAL32 | rw | 0.0 | yes | must be 0 or positive |
 
 ### 0x2012 Impedance PD Controller
 
@@ -438,8 +452,8 @@ Impedance mode stiffness and damping. See [Impedance PD](impedance-pd).
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | 0 | Highest sub-index supported | UINT8 | ro | 0x02 | no |  |
-| 1 | Kp | REAL32 | rw | 0.0 | no | must be 0 or positive |
-| 2 | Kd | REAL32 | rw | 0.0 | no | must be 0 or positive |
+| 1 | Kp | REAL32 | rw | 0.0 | yes | must be 0 or positive |
+| 2 | Kd | REAL32 | rw | 0.0 | yes | must be 0 or positive |
 
 ### 0x2020 Hardware Info
 
@@ -524,7 +538,7 @@ The two user GPIO pins. See [GPIO](GPIO) for the electrical limits.
 
 ### 0x603F Error Code
 
-CiA 402 code for the most recent fault. Latches until the drive is reset.
+Code of the most recently raised error that is still active, 0 when no error is active. See [Diagnostics](canopen_diagnostics).
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
@@ -540,7 +554,7 @@ Commands the CiA 402 state machine. See [State Machine](canopen_state_machine).
 
 ### 0x6041 Statusword
 
-Reports the CiA 402 state. Carries the state bits only.
+Reports the CiA 402 state together with voltage enabled, remote, target reached, internal limit and mode specific bits. Mask with 0x006F before comparing it to a state. See [State Machine](canopen_state_machine).
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
@@ -686,9 +700,17 @@ Speed limit applied to every mode, and the clamp on the position loop output.
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | - | Max Motor Speed | UINT32 | rw | 0 | no | micro-revolutions per second |
 
+### 0x6081 Profile Velocity
+
+Cruise velocity in Profile Position. Shares the same internal register as Target Velocity 0x60FF: writing either object changes both, and a read returns the magnitude of 0x60FF.
+
+| Sub | Name | Type | Access | Default | PDO | Notes |
+| --- | ---- | ---- | ------ | ------- | --- | ----- |
+| - | Profile Velocity | UINT32 | rw | 0 | yes | micro-revolutions per second |
+
 ### 0x6083 Profile Acceleration
 
-Acceleration used by the trajectory generator in both profile modes.
+Acceleration used by the trajectory generator in both profile modes. Limited to Max Acceleration 0x60C5.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
@@ -696,7 +718,7 @@ Acceleration used by the trajectory generator in both profile modes.
 
 ### 0x6084 Profile Deceleration
 
-Deceleration used by the trajectory generator in both profile modes.
+Deceleration used by the trajectory generator in both profile modes. Limited to Max Deceleration 0x60C6.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
@@ -704,7 +726,7 @@ Deceleration used by the trajectory generator in both profile modes.
 
 ### 0x6085 Quick Stop Deceleration
 
-Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout.
+Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout. Limited to Max Deceleration 0x60C6.
 
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
@@ -743,6 +765,22 @@ Declares the acceleration unit, micro-revolutions per second squared. Read only.
 | Sub | Name | Type | Access | Default | PDO | Notes |
 | --- | ---- | ---- | ------ | ------- | --- | ----- |
 | - | SI Unit Acceleration | UINT32 | ro | 0xFAB45700 | no |  |
+
+### 0x60C5 Max Acceleration
+
+Upper limit for Profile Acceleration 0x6083. 0 means no limit.
+
+| Sub | Name | Type | Access | Default | PDO | Notes |
+| --- | ---- | ---- | ------ | ------- | --- | ----- |
+| - | Max Acceleration | UINT32 | rw | 0 | no | micro-revolutions per second squared |
+
+### 0x60C6 Max Deceleration
+
+Upper limit for Profile Deceleration 0x6084 and Quick Stop Deceleration 0x6085. 0 means no limit.
+
+| Sub | Name | Type | Access | Default | PDO | Notes |
+| --- | ---- | ---- | ------ | ------- | --- | ----- |
+| - | Max Deceleration | UINT32 | rw | 15915494 | no | micro-revolutions per second squared |
 
 ### 0x60FF Target Velocity
 

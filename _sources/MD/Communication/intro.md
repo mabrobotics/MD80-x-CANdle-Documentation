@@ -33,7 +33,7 @@ compatible. Both are documented here.
 
 | Section                              | Firmware | Object dictionary | Status                          |
 | ------------------------------------ | -------- | ----------------- | ------------------------------- |
-| [CANopen](md_canopen)                | current  | revision 1.2      | actively developed              |
+| [CANopen](md_canopen)                | 3.0.2+   | revision 1.3      | actively developed              |
 | [CANopen \[LEGACY\]](md_canopen_co25) | 2.5.x   | revision 1.1      | supported, no longer updated    |
 
 To tell which firmware a drive is running, read Firmware Version 0x2021:2 over SDO. The current
@@ -131,5 +131,5 @@ candletool mdco update 3.0.1 -i 69 --legacy-migration
 ```{warning}
 This migration will cause the drive configuration to be mostly dropped.
 Config upload and calibration will be required in majority of cases.
-This will also make drive use `md_1.2.eds` instead of `md_1.1.eds`.
+This will also make drive use `md_1.3.eds` instead of `md_1.1.eds`.
 ```

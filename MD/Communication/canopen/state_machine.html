@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -469,6 +473,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statusword-bits">Statusword bits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlword-commands">Controlword commands</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transitions">Transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-drive">Enabling the drive</a></li>
@@ -497,7 +502,8 @@ CiA 402 state machine decides whether it moves.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>State</p></th>
-<th class="head"><p>Statusword</p></th>
+<th class="head"><p>Statusword &amp; 0x006F</p></th>
+<th class="head"><p>Typical raw value</p></th>
 <th class="head"><p>Power stage</p></th>
 <th class="head"><p>Setpoints followed</p></th>
 </tr>
@@ -505,41 +511,49 @@ CiA 402 state machine decides whether it moves.</p>
 <tbody>
 <tr class="row-even"><td><p>Not ready to switch on</p></td>
 <td><p>0x0000</p></td>
+<td><p>0x0200</p></td>
 <td><p>off</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-odd"><td><p>Switch on disabled</p></td>
 <td><p>0x0040</p></td>
+<td><p>0x0240</p></td>
 <td><p>off</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-even"><td><p>Ready to switch on</p></td>
 <td><p>0x0021</p></td>
+<td><p>0x0221</p></td>
 <td><p>off</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-odd"><td><p>Switched on</p></td>
 <td><p>0x0023</p></td>
+<td><p>0x0223</p></td>
 <td><p>on</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-even"><td><p>Operation enabled</p></td>
 <td><p>0x0027</p></td>
+<td><p>0x0237 or higher</p></td>
 <td><p>on</p></td>
 <td><p>yes</p></td>
 </tr>
 <tr class="row-odd"><td><p>Quick stop active</p></td>
 <td><p>0x0007</p></td>
+<td><p>0x0217</p></td>
 <td><p>on</p></td>
 <td><p>no, decelerating</p></td>
 </tr>
 <tr class="row-even"><td><p>Fault reaction active</p></td>
 <td><p>0x000F</p></td>
+<td><p>0x020F</p></td>
 <td><p>stopping</p></td>
 <td><p>no</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fault</p></td>
 <td><p>0x0008</p></td>
+<td><p>0x0208</p></td>
 <td><p>off</p></td>
 <td><p>no</p></td>
 </tr>
@@ -548,15 +562,53 @@ CiA 402 state machine decides whether it moves.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The statusword carries the state bits and nothing else. Voltage enabled, remote, target reached and
-internal limit active are not implemented, so the values above are exact and can be compared
-directly rather than masked.</p>
-<p>For target reached, use bit 15 of Quick Status 0x2022:1, which is mapped into TPDO1 by default. It
-is set when a Profile Position or Position PID move has arrived inside the Position Window 0x6067,
-or when a Profile Velocity or Velocity PID move has settled inside the Velocity Window 0x606D.</p>
+<p>The statusword carries more than the state bits, so always mask it with 0x006F before comparing it to
+a state. Comparing the raw value against 0x0027 never matches.</p>
 </div>
+</section>
+<section id="statusword-bits">
+<h2>Statusword bits<a class="headerlink" href="#statusword-bits" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bit</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0-3, 5, 6</p></td>
+<td><p>State</p></td>
+<td><p>See the table above</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Voltage enabled</p></td>
+<td><p>Set in Operation enabled and Quick stop active, while the power stage drives the motor</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Remote</p></td>
+<td><p>Always set, the controlword is always processed</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Target reached</p></td>
+<td><p>Profile Position: within Position Window 0x6067 of the target. Profile Velocity: within Velocity Window 0x606D of the target</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Internal limit active</p></td>
+<td><p>A velocity, torque or, in position modes, position target is being clipped by a limit</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Mode specific</p></td>
+<td><p>Profile Position: set-point acknowledge. Profile Velocity: speed zero, the speed is within 0x606D of zero. Cyclic Synchronous Position and Velocity: drive follows the command</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Bits 10, 11 and 12 are only set in Operation enabled. Bits 7, 8, 13, 14 and 15 are always 0.</p>
+<p>Bit 15 of Quick Status 0x2022:1 also reports target reached, using the same windows, and is mapped
+into TPDO1 by default.</p>
 <p>Not ready to switch on is transient. The drive leaves it for Switch on disabled on its own as soon
-as the state machine runs, so in practice the first state a master observes is 0x0040.</p>
+as the state machine runs, so in practice the first state a master observes is Switch on disabled,
+raw value 0x0240.</p>
 </section>
 <section id="controlword-commands">
 <h2>Controlword commands<a class="headerlink" href="#controlword-commands" title="Link to this heading">#</a></h2>
@@ -693,11 +745,12 @@ outside the mask are ignored.</p>
 <h2>Enabling the drive<a class="headerlink" href="#enabling-the-drive" title="Link to this heading">#</a></h2>
 <p>From a freshly powered drive the sequence is two writes to 0x6040:</p>
 <ol class="arabic simple">
-<li><p>Write 0x0006. The drive moves to Ready to switch on, statusword 0x0021.</p></li>
-<li><p>Write 0x000F. The drive moves through Switched on to Operation enabled, statusword 0x0027.</p></li>
+<li><p>Write 0x0006. The drive moves to Ready to switch on, statusword &amp; 0x006F = 0x0021.</p></li>
+<li><p>Write 0x000F. The drive moves through Switched on to Operation enabled, statusword &amp; 0x006F =
+0x0027.</p></li>
 </ol>
 <p>Writing 0x000F on its own does nothing, because Switch on disabled only responds to Shutdown. Always
-read the statusword back and confirm 0x0027 before sending setpoints.</p>
+read the statusword back, mask it with 0x006F and confirm 0x0027 before sending setpoints.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Select the <a class="reference internal" href="modes_of_operation.html#canopen-modes"><span class="std std-ref">mode of operation</span></a> and write a sensible setpoint before enabling. The
@@ -795,6 +848,7 @@ Fault. Read 0x2022 to find out what actually failed before attempting recovery.<
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#states">States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statusword-bits">Statusword bits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlword-commands">Controlword commands</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transitions">Transitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-the-drive">Enabling the drive</a></li>

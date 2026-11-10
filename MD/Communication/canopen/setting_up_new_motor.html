@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -731,7 +735,7 @@ A type the drive cannot use on that port is rejected with abort 0x06090030.</p>
 </tr>
 <tr class="row-even"><td><p>0x2002:3</p></td>
 <td><p>Auxiliary Encoder Mode</p></td>
-<td><p>0 none, 1 startup, 2 motion, 3 report</p></td>
+<td><p>0 none, 1 startup, 2 motion, 3 report, 6 dual</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x2002:4</p></td>
 <td><p>Calibration Mode</p></td>
@@ -849,7 +853,7 @@ should be zero.</p></li>
 <ol class="arabic simple">
 <li><p>Select a mode, for example write 3 to 0x6060 for Profile Velocity, and read 0x6061 back.</p></li>
 <li><p>Write a small Target Velocity to 0x60FF.</p></li>
-<li><p>Write 0x0006 then 0x000F to Controlword 0x6040 and confirm Statusword 0x6041 reads 0x0027.</p></li>
+<li><p>Write 0x0006 then 0x000F to Controlword 0x6040 and confirm Statusword 0x6041 masked with 0x006F reads 0x0027.</p></li>
 <li><p>Stop by writing 0x0002 for quick stop, then 0x0000.</p></li>
 </ol>
 <p>See <a class="reference internal" href="state_machine.html#canopen-state-machine"><span class="std std-ref">State Machine</span></a> and <a class="reference internal" href="modes_of_operation.html#canopen-modes"><span class="std std-ref">Modes of Operation</span></a> for the detail.</p>

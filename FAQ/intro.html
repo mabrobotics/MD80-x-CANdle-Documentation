@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../MD/brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MD/measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -468,15 +472,70 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-check-if-my-motor-is-operating-properly">How to check if my motor is operating properly</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">Motor terminals not soldered properly</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-calibration">Failed calibration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lack-of-fdcan-termination">Lack of FDCAN termination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-is-not-detected-on-candletool-discover-command">MD is not detected on “candletool discover” command</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-fdcan-speeds-between-actuators">Different FDCAN speeds between actuators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-md-fd-protocol-and-canopen-work-on-single-bus">Can MD FD Protocol and CANOpen work on single bus?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-low-torque-bandwidth-setting">Too-low torque bandwidth setting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-use-fdcan-protocol-or-canopen">Should I use FDCAN Protocol or CANOpen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-triage">Quick triage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-software-should-i-use">Which software should I use?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-use-fdcan-md-protocol-or-canopen">Should I use FDCAN (MD protocol) or CANopen?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-units-are-used">What units are used?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-and-connection">CANdle and connection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-not-detected-by-the-pc">CANdle not detected by the PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-not-detected-by-candletool-md-discover">MD not detected by <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">discover</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fdcan-termination">FDCAN termination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-datarates-between-actuators">Different datarates between actuators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-change-the-can-id">How do I change the CAN ID?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-id-datarate-watchdog-not-saved-after-power-cycle">CAN ID / datarate / watchdog not saved after power cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-i-control-md-without-candle-own-mcu-plc-arduino">Can I control MD without CANdle (own MCU, PLC, Arduino)?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware-and-updates">Firmware and updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware-is-a-future-version-version-mismatch">“Firmware is a future version” / version mismatch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-update-md-firmware">How do I update MD firmware?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-fails-failed-to-initialize-bootloader-hangs-at-power-cycle-the-driver">Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drive-appears-with-id-100-lost-its-configuration">Drive appears with ID 100 / lost its configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#switching-fdcan-canopen">Switching FDCAN ↔ CANopen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-and-encoders">Calibration and encoders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-failed">Calibration failed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">Motor terminals not soldered properly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-low-accuracy-on-main-encoder"><code class="docutils literal notranslate"><span class="pre">WARNING_LOW_ACCURACY</span></code> on main encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-aux-encoder-issues">Output (aux) encoder issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-r-l-differ-from-the-cfg-file">Motor R/L differ from the .cfg file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-check-if-my-motor-works-properly">How do I check if my motor works properly?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-and-motion">Control and motion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-does-not-move-after-sending-commands">Motor does not move after sending commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-stops-or-disables-during-idle-periods-watchdog">Motor stops or disables during idle periods (watchdog)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#must-i-disable-the-drive-before-set-zero-mode-change">Must I disable the drive before set zero / mode change?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-slow-response-overshoot-knocking-in-position-mode">Tuning: slow response, overshoot, knocking in position mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#too-low-torque-bandwidth">Too-low torque bandwidth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-update-rate-can-i-achieve">What update rate can I achieve?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-torque">Reading torque</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-and-hardware-protection">Power and hardware protection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mosfet-driver-failure-during-hard-braking">MOSFET / driver failure during hard braking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-temperature-reads-100-c-at-room-temperature">Motor temperature reads &gt; 100 °C at room temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cable-and-connector-current-ratings">Cable and connector current ratings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erratic-behavior-resets-during-motion">Erratic behavior, resets during motion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-sdk-candletool-python">CANdle-SDK / candletool / Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-candle-sdk-on-windows">Building CANdle-SDK on Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candletool-command-not-found-wrong-syntax">candletool command not found / wrong syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-canopen-mdco">MD CANopen (MDCO)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-eds-object-missing-documentation-does-not-match">Which EDS? Object missing / documentation does not match</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-position-new-velocity-applied-one-move-late-start-timing-jitter">Profile Position: new velocity applied one move late / start timing jitter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-all-drives-have-the-same-node-id">CANopen: all drives have the same node ID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-abort-0x06020000-on-0x2021-02-during-mdco-update"><code class="docutils literal notranslate"><span class="pre">SDO</span> <span class="pre">abort</span> <span class="pre">0x06020000</span> <span class="pre">on</span> <span class="pre">0x2021:02</span></code> during mdco update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contacting-support">Contacting support</a></li>
 </ul>
             </nav>
         </div>
@@ -488,100 +547,697 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="common-issues-and-faq">
+  <!--
+FORMAT NOTE (humans + agents):
+- One entry = one `###` heading with a stable `(faq-*)=` label.
+- Troubleshooting entries use the fields **Symptom**, **Cause**, **Fix** where they apply.
+- Commands assume candletool 1.5.1+. Older versions use slightly different syntax - check `candletool --help`.
+- Placeholders: <id> = drive CAN ID, <file.cfg> = motor config path.
+-->
+<section class="tex2jax_ignore mathjax_ignore" id="common-issues-and-faq">
 <span id="faq"></span><h1>Common Issues and FAQ<a class="headerlink" href="#common-issues-and-faq" title="Link to this heading">#</a></h1>
-<section id="how-to-check-if-my-motor-is-operating-properly">
-<h2>How to check if my motor is operating properly<a class="headerlink" href="#how-to-check-if-my-motor-is-operating-properly" title="Link to this heading">#</a></h2>
-<p>First thing to check is the <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span></code></span></a> command
-output. If there are no errors (meaning the error field are empty or show ‘ALL OK” message) the
-drive did not detect any issues by itself. The other thing is to make sure that the actuator runs
-smoothly - such that there is no excessive cogging torque when rotating. You can check it using
-<a class="reference internal" href="../CANdle-SDK/candletool/Commands.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">relative</span></code></span></a> command - for example by
-commanding 0 position and moving the rotor by hand - such test makes easy to determine if there is
-excessive cogging torque. You can also use the Python/C++ examples to rotate the motor. The last
-thing to check is the motion parameters - position velocity and torque. If any of these quantities
-look suspicious feel free to contact us using:
-<a class="reference external" href="https://www.mabrobotics.pl/contact">support&#64;mabrobotics.pl</a>.</p>
-</section>
-<section id="motor-terminals-not-soldered-properly">
-<h2>Motor terminals not soldered properly<a class="headerlink" href="#motor-terminals-not-soldered-properly" title="Link to this heading">#</a></h2>
-<p>In case you have ordered the MD controllers without the MAB assembly option you will have to make
-sure the controller is soldered correctly to the motor. Usually, hobby motors have multiple wires
-wound in parallel on each motor phase, and it is crucial to solder ALL wires to the controller.
-Leaving a single string of wire can lead to an imbalance between the phases, which in the best
-scenario will cause the calibration to fail and in the worst will cause large torque variations
-(large cogging torque).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Operating such an improperly configured motor can lead to hazardous situations for both the operator and the driver.</p>
+<section id="quick-triage">
+<h2>Quick triage<a class="headerlink" href="#quick-triage" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Go to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CANdle not detected by PC</p></td>
+<td><p><a class="reference internal" href="#faq-candle-not-detected"><span class="std std-ref">CANdle not detected by the PC</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MD not found by <code class="docutils literal notranslate"><span class="pre">discover</span></code></p></td>
+<td><p><a class="reference internal" href="#faq-md-not-discovered"><span class="std std-ref">MD not detected by candletool md discover</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>“future version” / version mismatch error</p></td>
+<td><p><a class="reference internal" href="#faq-version-mismatch"><span class="std std-ref">“Firmware is a future version” / version mismatch</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Firmware update hangs / bootloader not entered</p></td>
+<td><p><a class="reference internal" href="#faq-update-fails"><span class="std std-ref">Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Drive has ID 100 after update/recovery</p></td>
+<td><p><a class="reference internal" href="#faq-id-100"><span class="std std-ref">Drive appears with ID 100 / lost its configuration</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CAN ID / datarate not saved after power cycle</p></td>
+<td><p><a class="reference internal" href="#faq-can-not-persistent"><span class="std std-ref">CAN ID / datarate / watchdog not saved after power cycle</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Calibration fails / pole pair detection failed</p></td>
+<td><p><a class="reference internal" href="#faq-calibration-failed"><span class="std std-ref">Calibration failed</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WARNING_LOW_ACCURACY</span></code> on main encoder</p></td>
+<td><p><a class="reference internal" href="#faq-low-accuracy"><span class="std std-ref">WARNING_LOW_ACCURACY on main encoder</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Output (aux) encoder errors</p></td>
+<td><p><a class="reference internal" href="#faq-aux-encoder"><span class="std std-ref">Output (aux) encoder issues</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Motor does not move after enable</p></td>
+<td><p><a class="reference internal" href="#faq-enable-sequence"><span class="std std-ref">Motor does not move after sending commands</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Motor stops / disables during idle periods</p></td>
+<td><p><a class="reference internal" href="#faq-watchdog"><span class="std std-ref">Motor stops or disables during idle periods (watchdog)</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Motor temperature reads &gt; 100 °C at room temp</p></td>
+<td><p><a class="reference internal" href="#faq-thermistor"><span class="std std-ref">Motor temperature reads &gt; 100 °C at room temperature</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>MOSFET / driver failure after hard braking</p></td>
+<td><p><a class="reference internal" href="#faq-regen"><span class="std std-ref">MOSFET / driver failure during hard braking</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CANopen: object missing, wrong mode, Set Zero no effect</p></td>
+<td><p><a class="reference internal" href="#faq-mdco-eds"><span class="std std-ref">Which EDS? Object missing / documentation does not match</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>CANopen: new profile velocity applied one move late</p></td>
+<td><p><a class="reference internal" href="#faq-mdco-profile"><span class="std std-ref">Profile Position: new velocity applied one move late / start timing jitter</span></a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
-<section id="failed-calibration">
-<span id="id1"></span><h2>Failed calibration<a class="headerlink" href="#failed-calibration" title="Link to this heading">#</a></h2>
-<p>The calibration can fail for several reasons, yet the most common one is just improperly soldered
-motor wires. In this case, you’ll see the ERROR_CALIBRATION general error or ERROR_CALIBRATION and
-ERROR_PARAM_IDENT. These two errors will also show up when automatic parameter identification fails.
-In this case, rerunning the calibration should fix the issue. ERROR_POLE_PAIR_DET error is shown in
-case the automatic pole pair detection algorithm detected a different pole pair number (compared to
-the one form the *.cfg file) or it failed due to high rotor friction/external load, which stopped
-the rotor during the process.</p>
-<p>The other most common reason is that the eccentricity calibration is interrupted by either a large
-load on the motor shaft or the encoder placed non-axially in regard to the magnet mounted on the
-motor shaft. In this case, you’ll see the ERROR_CALIBRATION general error. To fix it be sure to
-unload the motor shaft completely, make it run smoothly, and make sure the controller is placed
-axially with respect to the magnet placed on the motor shaft.</p>
+<hr class="docutils" />
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading">#</a></h2>
+<section id="which-software-should-i-use">
+<span id="faq-which-software"></span><h3>Which software should I use?<a class="headerlink" href="#which-software-should-i-use" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Stack</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CANdle-SDK</strong> (candletool, candlelib, Python module)</p></td>
+<td><p><strong>Active</strong></p></td>
+<td><p>Linux + Windows. Use for all new projects. <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK">GitHub</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>mdtool + legacy CANdle library / pyCandle</p></td>
+<td><p>Legacy (EOL)</p></td>
+<td><p>Linux only. Supported, not developed.</p></td>
+</tr>
+<tr class="row-even"><td><p>CANdleduino</p></td>
+<td><p>Getting-started only</p></td>
+<td><p>AVR, Renesas, Teensy. Not optimized for production.</p></td>
+</tr>
+<tr class="row-odd"><td><p>candle_ros2</p></td>
+<td><p>Active</p></td>
+<td><p>ROS2 wrapper over SDK.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>No official MATLAB binding - customers have connected via Python module.</p></li>
+<li><p>No auto-tune tool.</p></li>
+</ul>
 </section>
-<section id="lack-of-fdcan-termination">
-<h2>Lack of FDCAN termination<a class="headerlink" href="#lack-of-fdcan-termination" title="Link to this heading">#</a></h2>
-<p>Proper termination on the FDCAN bus is crucial, especially when the string of actuators is long or
-selected datarate high. In case you see some communication errors, or the drives connected to your
-FDCAN bus string are not discovered correctly using CANdleTool, be sure to check if the termination
-is present and working (the resistance between CANH and CANL lines should be 60 Ohms - two 120 Ohm
-resistors in parallel, on ends of the bus). The termination resistor is embedded in the CANdle
-device, and can be turned on/off with a physical switch.</p>
+<section id="should-i-use-fdcan-md-protocol-or-canopen">
+<span id="faq-fdcan-vs-canopen"></span><h3>Should I use FDCAN (MD protocol) or CANopen?<a class="headerlink" href="#should-i-use-fdcan-md-protocol-or-canopen" title="Link to this heading">#</a></h3>
+<p>FDCAN (MD protocol) is recommended unless your system already uses CANopen. CANopen is an
+established industry standard, but it is more complex and has lower bandwidth (CAN 2.0, 8 bytes per
+frame) and flexibility. See <a class="reference internal" href="../MD/Communication/intro.html"><span class="std std-doc">Communication Overview</span></a>.</p>
+<ul class="simple">
+<li><p>Both protocols <strong>cannot</strong> share one bus - they interfere with each other.</p></li>
+<li><p>CANdle / CANdle HAT can talk CANopen through <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span></code> and the <a class="reference internal" href="../CANdle-SDK/candlelib/MDCOModule.html#mdco"><span class="std std-ref">MDCO module</span></a> of
+CANdle-SDK. Like the rest of the CANdle ecosystem it is meant for configuration, testing and
+development - see <a class="reference internal" href="../CANdle/intro.html#candle-and-hat"><span class="std std-ref">CANdle purpose &amp; limitations</span></a>.</p></li>
+</ul>
 </section>
-<section id="md-is-not-detected-on-candletool-discover-command">
-<h2>MD is not detected on “candletool discover” command<a class="headerlink" href="#md-is-not-detected-on-candletool-discover-command" title="Link to this heading">#</a></h2>
-<p>There might be several reasons why MD controllers are not showing up during the discovery. Please
-ensure you’ve check the things listed below:</p>
-<ol class="arabic simple">
-<li><p>Check the power supply - when powered the MD’s onboard LEDs should be blinking. The LEDs are
-located under the connectors near the PCB edge.</p></li>
-<li><p>Check the LED blink pattern - if red and green LEDs are blinking very quickly, this means your MD
-firmware is corrupted and, you need to update/repair it using <a class="reference internal" href="../Downloads/intro.html#downloads"><span class="std std-ref">candletool md update</span></a>.
-If red led is on and the green one is blinking in 1s intervals this means there is an error in
-the setup that can be checked using <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html"><span class="std std-doc">candletool md info</span></a>. If
-only the green LED is blinking in 1s intervals the MD should operate and be discovered without
-issues. In case it’s not please check the cabling one more time.</p></li>
+<section id="what-units-are-used">
+<span id="faq-units"></span><h3>What units are used?<a class="headerlink" href="#what-units-are-used" title="Link to this heading">#</a></h3>
+<p>SI units everywhere in MD protocol / CANdle-SDK: rad, rad/s, Nm, A. Example: 10.0 rad/s ≈ 95 RPM.
+CANopen uses different units for some objects - see <a class="reference internal" href="../MD/Communication/canopen/units.html#canopen-units"><span class="std std-ref">System Units</span></a> and the EDS.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="candle-and-connection">
+<h2>CANdle and connection<a class="headerlink" href="#candle-and-connection" title="Link to this heading">#</a></h2>
+<section id="candle-not-detected-by-the-pc">
+<span id="faq-candle-not-detected"></span><h3>CANdle not detected by the PC<a class="headerlink" href="#candle-not-detected-by-the-pc" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> candletool reports no CANdle; device missing in <code class="docutils literal notranslate"><span class="pre">lsusb</span></code>.</p>
+<p><strong>Fix:</strong></p>
+<ol class="arabic">
+<li><p>Swap the USB cable - charge-only or poor cables are the most common cause. Try a different USB-A↔USB-C cable.</p></li>
+<li><p>Check enumeration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>mab
+<span class="c1"># expected: ID 0069:1000 MAB Robotics MD USB-TO-CAN</span>
+</pre></div>
+</div>
+</li>
+<li><p>Linux permissions: install udev rules (see <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK">SDK README</a>) or run once with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> to confirm.
+Windows: run <code class="docutils literal notranslate"><span class="pre">candlesdk-win-driver.exe</span></code> once as administrator (see <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK">SDK README</a>).</p></li>
+<li><p>Update CANdle firmware:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>candle<span class="w"> </span>update<span class="w"> </span>latest
+</pre></div>
+</div>
+</li>
+<li><p>Try another USB port / host. Avoid VMs and Docker (<a class="reference internal" href="../CANdle-SDK/intro.html#candle-sdk"><span class="std std-ref">CANdle-SDK</span></a>). Intermittent drops
+on one specific host can be a kernel driver or USB hardware issue on the host side.</p></li>
+</ol>
+<p><strong>Note:</strong> CANdle is powered from USB. It does not need power from the PDS/PSU - the 6-pin Molex cable carries both power and CAN, only passed through.</p>
+</section>
+<section id="md-not-detected-by-candletool-md-discover">
+<span id="faq-md-not-discovered"></span><h3>MD not detected by <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">discover</span></code><a class="headerlink" href="#md-not-detected-by-candletool-md-discover" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Power</strong> - MD LEDs (under connectors, near PCB edge) must blink.</p></li>
+<li><p><strong>LED pattern:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Red + green blinking fast (longer than the first few seconds)</p></td>
+<td><p>Firmware corrupted / stuck in bootloader</p></td>
+<td><p>Recovery update (<a class="reference internal" href="#faq-update-fails"><span class="std std-ref">Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red solid, green 1 s blink</p></td>
+<td><p>Error present</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Green 1 s blink only</p></td>
+<td><p>OK</p></td>
+<td><p>Check cabling, termination, datarate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><p><strong>Termination</strong> - <a class="reference internal" href="#faq-termination"><span class="std std-ref">FDCAN termination</span></a>.</p></li>
+<li><p><strong>Datarate</strong> - all drives on bus must use the same datarate (<a class="reference internal" href="#faq-datarate"><span class="std std-ref">Different datarates between actuators</span></a>). Run <code class="docutils literal notranslate"><span class="pre">discover</span></code>
+with the drive’s datarate, e.g. <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">discover</span> <span class="pre">-d</span> <span class="pre">8M</span></code>. Drives may ship configured at
+8 Mbps for long chains.</p></li>
+<li><p><strong>Protocol</strong> - a CANopen (MDCO) drive is not found by <code class="docutils literal notranslate"><span class="pre">md</span> <span class="pre">discover</span></code>. Use <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">discover</span></code>.</p></li>
+<li><p><strong>Old CANdle firmware</strong> - update CANdle (<a class="reference internal" href="#faq-candle-not-detected"><span class="std std-ref">CANdle not detected by the PC</span></a>, step 4).</p></li>
 </ol>
 </section>
-<section id="different-fdcan-speeds-between-actuators">
-<h2>Different FDCAN speeds between actuators<a class="headerlink" href="#different-fdcan-speeds-between-actuators" title="Link to this heading">#</a></h2>
-<p>MAB Ecosystem is not adopted for working with actuators of different FDCAN baudrates. Trying to
-control actuators with different baud rates on a common FDCAN bus can cause the communication to
-fail or not start at all. If that’s the case, use the
-<a class="reference internal" href="../CANdle-SDK/candletool/Commands.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">can</span></code></span></a> command to fix it. It may be required to
-set up all the driver one by one.</p>
+<section id="fdcan-termination">
+<span id="faq-termination"></span><h3>FDCAN termination<a class="headerlink" href="#fdcan-termination" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> communication errors, missing drives, random frame loss (especially on long chains / high datarate).</p>
+<p><strong>Fix:</strong></p>
+<ul class="simple">
+<li><p>120 Ω at <strong>both physical ends</strong> of the bus → 60 Ω measured between CANH and CANL (power off).</p></li>
+<li><p>CANdle has a built-in 120 Ω terminator switched on/off with a physical switch.</p></li>
+<li><p>Other end: MAB terminator plug, or a PDS control board CAN input (termination built in).</p></li>
+<li><p>Topology example: <code class="docutils literal notranslate"><span class="pre">CANdle</span> <span class="pre">(term</span> <span class="pre">ON)</span> <span class="pre">—</span> <span class="pre">MD</span> <span class="pre">—</span> <span class="pre">MD</span> <span class="pre">—</span> <span class="pre">…</span> <span class="pre">—</span> <span class="pre">MD</span> <span class="pre">—</span> <span class="pre">terminator</span></code>.</p></li>
+<li><p>Missing termination causes ringing - errors may appear only at higher datarates.</p></li>
+</ul>
 </section>
-<section id="can-md-fd-protocol-and-canopen-work-on-single-bus">
-<h2>Can MD FD Protocol and CANOpen work on single bus?<a class="headerlink" href="#can-md-fd-protocol-and-canopen-work-on-single-bus" title="Link to this heading">#</a></h2>
-<p>No, they cannot. Both protocols are fundamentally different, and will interfere with each other.</p>
+<section id="different-datarates-between-actuators">
+<span id="faq-datarate"></span><h3>Different datarates between actuators<a class="headerlink" href="#different-datarates-between-actuators" title="Link to this heading">#</a></h3>
+<p>All drives on one bus must use the same datarate. Mixed datarates cause communication to fail or not start.</p>
+<ul>
+<li><p>CAN-FD arbitration phase is always 1 Mbps. Data phase is 1, 2, 5 or 8 Mbps (configured).</p></li>
+<li><p>Fix per drive (connect one at a time if needed). <code class="docutils literal notranslate"><span class="pre">-d</span></code> = datarate the drive uses <strong>now</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>can<span class="w"> </span>-d<span class="w"> </span>&lt;current&gt;<span class="w"> </span>--id<span class="w"> </span>&lt;id&gt;<span class="w"> </span>--new_datarate<span class="w"> </span>1M<span class="w"> </span>--save
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
-<section id="too-low-torque-bandwidth-setting">
-<h2>Too-low torque bandwidth setting<a class="headerlink" href="#too-low-torque-bandwidth-setting" title="Link to this heading">#</a></h2>
-<p>When the torque bandwidth is set to a too low value it can cause the motor to behave improperly in
-highly dynamic scenarios, for example, impacts. Because with low torque bandwidth, the torque
-controller gains are set so that the controller is slow, it might not be able to keep up with the
-changing setpoint value. This can be done by changing the bandwidth in motor .cfg file, or via
-register, and recalibrating. This has a disadvantage connected to it - the higher the bandwidth the
-more audible noise (hissing) you will hear coming from the motor.</p>
+<section id="how-do-i-change-the-can-id">
+<span id="faq-can-id"></span><h3>How do I change the CAN ID?<a class="headerlink" href="#how-do-i-change-the-can-id" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># MD (FDCAN), valid IDs 10-2000</span>
+candletool<span class="w"> </span>md<span class="w"> </span>can<span class="w"> </span>--id<span class="w"> </span>&lt;old_id&gt;<span class="w"> </span>--new_id<span class="w"> </span>&lt;new_id&gt;<span class="w"> </span>--save
+<span class="c1"># MD CANopen, valid node IDs 10-127</span>
+candletool<span class="w"> </span>mdco<span class="w"> </span>can<span class="w"> </span>-i<span class="w"> </span>&lt;old_id&gt;<span class="w"> </span>--new_id<span class="w"> </span>&lt;new_id&gt;<span class="w"> </span>--save
+</pre></div>
+</div>
+<p>Connect <strong>only one</strong> drive with a given ID at a time. Factory default IDs are often identical.</p>
 </section>
-<section id="should-i-use-fdcan-protocol-or-canopen">
-<h2>Should I use FDCAN Protocol or CANOpen?<a class="headerlink" href="#should-i-use-fdcan-protocol-or-canopen" title="Link to this heading">#</a></h2>
-<p>While CANOpen is well established industry standard protocol, we generally recommend using FDCAN
-protocol. CANOpen provides a lot of robustness, it is more complicated and lacks flexibility and
-bandwidth, for many modern control systems. If you dont already use CANOpen, FDCAN protocol will
-likely be a better option.</p>
+<section id="can-id-datarate-watchdog-not-saved-after-power-cycle">
+<span id="faq-can-not-persistent"></span><h3>CAN ID / datarate / watchdog not saved after power cycle<a class="headerlink" href="#can-id-datarate-watchdog-not-saved-after-power-cycle" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> CAN-related registers live in a separate working memory region. Writing the register alone does not apply it - <code class="docutils literal notranslate"><span class="pre">save</span></code> stores a snapshot of the old values.</p>
+<p><strong>Fix (raw register writes):</strong> write <code class="docutils literal notranslate"><span class="pre">runCanReinit</span></code> (0x08D) after changing CAN ID, datarate or watchdog, then save <strong>using the new ID</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span><span class="w"> </span>-d<span class="w"> </span>1M<span class="w"> </span>register<span class="w"> </span>write<span class="w"> </span>0x001<span class="w"> </span><span class="m">101</span><span class="w">   </span><span class="c1"># canId</span>
+candletool<span class="w"> </span>md<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span><span class="w"> </span>-d<span class="w"> </span>1M<span class="w"> </span>register<span class="w"> </span>write<span class="w"> </span>0x08D<span class="w"> </span><span class="m">1</span><span class="w">     </span><span class="c1"># runCanReinit</span>
+candletool<span class="w"> </span>md<span class="w"> </span>-i<span class="w"> </span><span class="m">101</span><span class="w"> </span>-d<span class="w"> </span>1M<span class="w"> </span>save
+</pre></div>
+</div>
+<p>Prefer <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">can</span> <span class="pre">...</span> <span class="pre">--save</span></code> which does this for you.</p>
+</section>
+<section id="can-i-control-md-without-candle-own-mcu-plc-arduino">
+<span id="faq-third-party-host"></span><h3>Can I control MD without CANdle (own MCU, PLC, Arduino)?<a class="headerlink" href="#can-i-control-md-without-candle-own-mcu-plc-arduino" title="Link to this heading">#</a></h3>
+<p>Yes. MD protocol is documented (<a class="reference internal" href="../MD/Communication/fdcan.html#md-protocol"><span class="std std-ref">MD Protocol</span></a>). Requirements:</p>
+<ol class="arabic simple">
+<li><p>CAN-FD transceiver (not classic CAN only) + correct termination.</p></li>
+<li><p>Update MD firmware to latest first (legacy firmware &lt; 2.5 uses a different frame format).</p></li>
+<li><p>Configure drive with candletool/CANdle beforehand (config, calibration, CAN ID).</p></li>
+<li><p>Follow <a class="reference internal" href="#faq-enable-sequence"><span class="std std-ref">Motor does not move after sending commands</span></a> and keep frames flowing faster than the watchdog (<a class="reference internal" href="#faq-watchdog"><span class="std std-ref">Motor stops or disables during idle periods (watchdog)</span></a>).</p></li>
+</ol>
+<p>Firmware updates still require CANdle or CANdle HAT.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="firmware-and-updates">
+<h2>Firmware and updates<a class="headerlink" href="#firmware-and-updates" title="Link to this heading">#</a></h2>
+<section id="firmware-is-a-future-version-version-mismatch">
+<span id="faq-version-mismatch"></span><h3>“Firmware is a future version” / version mismatch<a class="headerlink" href="#firmware-is-a-future-version-version-mismatch" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> mdtool &lt; 1.5.4 requires strict mdtool ↔ firmware version match.</p>
+<p><strong>Fix:</strong> update to mdtool 1.5.4 (relaxed check) or - recommended - switch to candletool (CANdle-SDK).</p>
+</section>
+<section id="how-do-i-update-md-firmware">
+<span id="faq-update-md"></span><h3>How do I update MD firmware?<a class="headerlink" href="#how-do-i-update-md-firmware" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>update<span class="w"> </span>latest<span class="w"> </span>--id<span class="w"> </span>&lt;id&gt;
+candletool<span class="w"> </span>mdco<span class="w"> </span>update<span class="w"> </span>latest<span class="w"> </span>--id<span class="w"> </span>&lt;id&gt;<span class="w">    </span><span class="c1"># CANopen drive</span>
+candletool<span class="w"> </span>candle<span class="w"> </span>update<span class="w"> </span>latest<span class="w">            </span><span class="c1"># CANdle itself</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Requires CANdle or CANdle HAT. Not possible via third-party CAN adapters.</p></li>
+<li><p>Files, offline update (<code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;file.mab&gt;</span></code>) and legacy flashers: <a class="reference internal" href="../Downloads/intro.html#downloads"><span class="std std-ref">Downloads</span></a>.</p></li>
+<li><p>Firmware v3.x requires a board with the new bootloader, introduced around March-April 2026.
+Older boards can only run v2.5.x - contact support for a factory update.</p></li>
+</ul>
+</section>
+<section id="update-fails-failed-to-initialize-bootloader-hangs-at-power-cycle-the-driver">
+<span id="faq-update-fails"></span><h3>Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”<a class="headerlink" href="#update-fails-failed-to-initialize-bootloader-hangs-at-power-cycle-the-driver" title="Link to this heading">#</a></h3>
+<p><strong>Fix - recovery mode:</strong></p>
+<ol class="arabic">
+<li><p>Connect <strong>only one</strong> drive.</p></li>
+<li><p>Remove power from the drive (wait ≥ 3 s, all LEDs off).</p></li>
+<li><p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>update<span class="w"> </span>latest<span class="w"> </span>-r<span class="w"> </span>--id<span class="w"> </span><span class="m">9</span><span class="w">      </span><span class="c1"># MD (FDCAN) target</span>
+candletool<span class="w"> </span>mdco<span class="w"> </span>update<span class="w"> </span>latest<span class="w"> </span>-r<span class="w"> </span>--id<span class="w"> </span><span class="m">9</span><span class="w">    </span><span class="c1"># CANopen target</span>
+</pre></div>
+</div>
+</li>
+<li><p>Power the drive. Flashing starts when the bootloader appears. May need 2-3 attempts.</p></li>
+<li><p>Check the drive’s ID and config afterwards (<a class="reference internal" href="#faq-id-100"><span class="std std-ref">Drive appears with ID 100 / lost its configuration</span></a>).</p></li>
+</ol>
+<p>ID 9 is the bootloader ID - this is not the drive ID.</p>
+</section>
+<section id="drive-appears-with-id-100-lost-its-configuration">
+<span id="faq-id-100"></span><h3>Drive appears with ID 100 / lost its configuration<a class="headerlink" href="#drive-appears-with-id-100-lost-its-configuration" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> factory reset (<code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">config</span> <span class="pre">factory-reset</span></code>), <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">--force-erase</span></code> or a recovery
+update restores defaults (ID 100, default config).</p>
+<p><strong>Fix:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>info<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span>
+candletool<span class="w"> </span>md<span class="w"> </span>config<span class="w"> </span>upload<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span><span class="w"> </span>&lt;file.cfg&gt;<span class="w">    </span><span class="c1"># also saves</span>
+candletool<span class="w"> </span>md<span class="w"> </span>reset<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span>
+candletool<span class="w"> </span>md<span class="w"> </span>calibration<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span>
+candletool<span class="w"> </span>md<span class="w"> </span>can<span class="w"> </span>--id<span class="w"> </span><span class="m">100</span><span class="w"> </span>--new_id<span class="w"> </span>&lt;new_id&gt;<span class="w"> </span>--save
+</pre></div>
+</div>
+<p>Configs: <a class="reference external" href="https://github.com/mabrobotics/motor_configs">motor_configs</a>. For MAB actuators ask support for the exact config - CubeMars motor parameters change between batches.</p>
+</section>
+<section id="switching-fdcan-canopen">
+<span id="faq-switch-protocol"></span><h3>Switching FDCAN ↔ CANopen<a class="headerlink" href="#switching-fdcan-canopen" title="Link to this heading">#</a></h3>
+<p>Requires firmware v3.0.0+ and candletool v1.5.1+. Full procedure: <a class="reference internal" href="../MD/Communication/intro.html"><span class="std std-doc">Communication Overview</span></a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Direction</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MD → CANopen (MDCO)</p></td>
+<td><p>Set ID to 10-127 first (<a class="reference internal" href="#faq-can-id"><span class="std std-ref">How do I change the CAN ID?</span></a>), then <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">update</span> <span class="pre">--mdco</span> <span class="pre">latest</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CANopen → MD</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">update</span> <span class="pre">--md</span> <span class="pre">latest</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span></code> - drive must be the <strong>only device on the bus</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Legacy MDCO 2.5.x → MDCO 3.x</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">update</span> <span class="pre">latest</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span> <span class="pre">--legacy-migration</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fallback (drive does not respond)</p></td>
+<td><p>Recovery (<a class="reference internal" href="#faq-update-fails"><span class="std std-ref">Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Validate with <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code> / <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code>. After
+<code class="docutils literal notranslate"><span class="pre">--legacy-migration</span></code> the configuration is mostly dropped: upload config and recalibrate. CANopen
+parameters use different units - convert config values (<a class="reference internal" href="../MD/Communication/canopen/units.html#canopen-units"><span class="std std-ref">System Units</span></a>).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="calibration-and-encoders">
+<h2>Calibration and encoders<a class="headerlink" href="#calibration-and-encoders" title="Link to this heading">#</a></h2>
+<section id="calibration-failed">
+<span id="faq-calibration-failed"></span><h3>Calibration failed<a class="headerlink" href="#calibration-failed" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error</p></th>
+<th class="head"><p>Likely cause</p></th>
+<th class="head"><p>Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ERROR_CALIBRATION</span></code> + <code class="docutils literal notranslate"><span class="pre">ERROR_PARAM_IDENT</span></code></p></td>
+<td><p>Phase wires not soldered correctly / identification glitch</p></td>
+<td><p>Check soldering (<a class="reference internal" href="#faq-soldering"><span class="std std-ref">Motor terminals not soldered properly</span></a>), rerun calibration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ERROR_POLE_PAIR_DET</span></code></p></td>
+<td><p>Wrong <code class="docutils literal notranslate"><span class="pre">pole</span> <span class="pre">pairs</span></code> in .cfg, shaft loaded/blocked, very low KV motor</p></td>
+<td><p>Set correct pole pairs (or <code class="docutils literal notranslate"><span class="pre">0</span></code> to autodetect), unload shaft. Optionally skip check: <code class="docutils literal notranslate"><span class="pre">[motor]</span> <span class="pre">calibration</span> <span class="pre">mode</span> <span class="pre">=</span> <span class="pre">NOPPDET</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ERROR_POLE_PAIR_DET</span></code> on a previously working actuator</p></td>
+<td><p><strong>Power stage fault</strong> (MOSFET or current sensing)</p></td>
+<td><p>Contact support - do not force with NOPPDET</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ERROR_CALIBRATION</span></code> (eccentricity step)</p></td>
+<td><p>Load on shaft, encoder not axial to magnet</p></td>
+<td><p>Unload shaft, fix encoder/magnet alignment</p></td>
+</tr>
+<tr class="row-even"><td><p>R/L readings erratic between runs</p></td>
+<td><p>Pole pair mismatch</p></td>
+<td><p>Fix pole pairs first</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <a class="reference internal" href="../MD/config_calibration.html#config"><span class="std std-ref">Configuration &amp; Calibration</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">NOPPDET</span></code> skips validation only - a wrong <code class="docutils literal notranslate"><span class="pre">pole</span> <span class="pre">pairs</span></code> value gives wrong commutation: stalls, current spikes (&gt; 10 A), noise.</p>
+</div>
+</section>
+<section id="motor-terminals-not-soldered-properly">
+<span id="faq-soldering"></span><h3>Motor terminals not soldered properly<a class="headerlink" href="#motor-terminals-not-soldered-properly" title="Link to this heading">#</a></h3>
+<p>Hobby motors often have several parallel strands per phase. Solder <strong>all</strong> strands. One loose strand causes phase imbalance → failed calibration, cogging, motor stuck in one position.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Operating an improperly connected motor can damage the driver and is hazardous.</p>
+</div>
+</section>
+<section id="warning-low-accuracy-on-main-encoder">
+<span id="faq-low-accuracy"></span><h3><code class="docutils literal notranslate"><span class="pre">WARNING_LOW_ACCURACY</span></code> on main encoder<a class="headerlink" href="#warning-low-accuracy-on-main-encoder" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> magnet too far / off-axis from the encoder IC.</p>
+<ul class="simple">
+<li><p>Present on all MA-p-100-30 units by design - compensated in calibration, safe to operate.</p></li>
+<li><p>Custom builds - magnet spec:</p>
+<ul>
+<li><p>6 mm Ø × 2.5 mm, diametrically magnetized</p></li>
+<li><p>air gap <strong>1 mm ± 0.25 mm</strong> (1 mm optimal), magnet on the same axis as the encoder IC</p></li>
+<li><p>loose fit + glue (magnet tolerance up to ±0.1 mm)</p></li>
+<li><p>calibration compensates off-axis error up to ~1 mm</p></li>
+</ul>
+</li>
+<li><p>Check with <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">main</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span></code>.</p></li>
+</ul>
+</section>
+<section id="output-aux-encoder-issues">
+<span id="faq-aux-encoder"></span><h3>Output (aux) encoder issues<a class="headerlink" href="#output-aux-encoder-issues" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Max <strong>2 encoders active</strong>: main (commutation) + output/aux (post-gearbox position or monitoring).</p></li>
+<li><p>After config change run aux calibration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>calibration<span class="w"> </span>-e<span class="w"> </span>aux<span class="w"> </span>--id<span class="w"> </span>&lt;id&gt;
+</pre></div>
+</div>
+<p>Fixes <code class="docutils literal notranslate"><span class="pre">ERROR_WRONG_DIRECTION</span></code>. Check accuracy with <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">aux</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span></code>.</p>
+</li>
+<li><p>RLS AksIM-2 / high-quality encoders: set <code class="docutils literal notranslate"><span class="pre">[output</span> <span class="pre">encoder]</span> <span class="pre">output</span> <span class="pre">encoder</span> <span class="pre">calibration</span> <span class="pre">mode</span> <span class="pre">=</span> <span class="pre">DIRONLY</span></code>
+(skips eccentricity compensation meant for cheaper encoders). Not possible with off-axis encoders.</p></li>
+<li><p>RLS mounting is strict - 3D-printed brackets often not precise enough. RLS LED must stay <strong>solid green</strong> while slowly rotating. Any red/yellow flash = mounting problem or damaged disc (avoid magnetized tools near the disc).</p></li>
+<li><p>Config shows <code class="docutils literal notranslate"><span class="pre">ONBOARD</span></code> despite setting output encoder → check the <code class="docutils literal notranslate"><span class="pre">[output</span> <span class="pre">encoder]</span></code> section was not overwritten with <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p>Example configs: MA-D-HS-GL60 (RLS as main), MA-H (RLS as output) in <a class="reference external" href="https://github.com/mabrobotics/motor_configs">motor_configs</a>.</p></li>
+<li><p>Set Zero affects all position readings, including output encoder.</p></li>
+<li><p>Motor direction cannot be reversed in firmware - MAB follows the right-hand rule.</p></li>
+</ul>
+<p>See <a class="reference internal" href="../MD/encoders.html#aux-encoders"><span class="std std-ref">Encoders</span></a>.</p>
+</section>
+<section id="motor-r-l-differ-from-the-cfg-file">
+<span id="faq-rl-values"></span><h3>Motor R/L differ from the .cfg file<a class="headerlink" href="#motor-r-l-differ-from-the-cfg-file" title="Link to this heading">#</a></h3>
+<p>R and L are measured by the drive during factory assembly and stored in non-volatile memory. Keep
+factory values. Firmware 2.5.x does not load R/L from .cfg (v3.x does - 0 means auto-detect during
+calibration). Re-measurement via <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">calibration</span> <span class="pre">--autodetect</span></code> is possible but not
+recommended.</p>
+</section>
+<section id="how-do-i-check-if-my-motor-works-properly">
+<span id="faq-motor-check"></span><h3>How do I check if my motor works properly?<a class="headerlink" href="#how-do-i-check-if-my-motor-works-properly" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code> - error fields empty / <code class="docutils literal notranslate"><span class="pre">ALL</span> <span class="pre">OK</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">relative</span> <span class="pre">...</span></code> - hold position 0, rotate rotor by hand: no excessive cogging.</p></li>
+<li><p>Run Python/C++ example, compare position, velocity, torque against expectation.</p></li>
+<li><p>Still suspicious → <a class="reference internal" href="#faq-support"><span class="std std-ref">Contacting support</span></a>.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="control-and-motion">
+<h2>Control and motion<a class="headerlink" href="#control-and-motion" title="Link to this heading">#</a></h2>
+<section id="motor-does-not-move-after-sending-commands">
+<span id="faq-enable-sequence"></span><h3>Motor does not move after sending commands<a class="headerlink" href="#motor-does-not-move-after-sending-commands" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> drive not enabled, or disabled again by watchdog/fault.</p>
+<p><strong>Enable sequence (MD protocol):</strong></p>
+<ol class="arabic simple">
+<li><p>Set mode: <code class="docutils literal notranslate"><span class="pre">motionModeCommand</span></code> (0x140), e.g. <code class="docutils literal notranslate"><span class="pre">0x02</span></code> = velocity PID.</p></li>
+<li><p>Enable: write <code class="docutils literal notranslate"><span class="pre">0x27</span></code> to <code class="docutils literal notranslate"><span class="pre">state</span></code> (0x142).</p></li>
+<li><p>Loop: write target, read <code class="docutils literal notranslate"><span class="pre">quickStatus</span></code> (0x805, errors) + feedback - faster than watchdog period.</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">state</span></code> value</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x27 (39)</p></td>
+<td><p>Operation enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x40 (64)</p></td>
+<td><p>Disabled</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>Mode returns to idle every time the drive disables → re-send mode before enable.</p></li>
+<li><p>Enable is refused if a fault is active - read <code class="docutils literal notranslate"><span class="pre">quickStatus</span></code> first.</p></li>
+<li><p>“Choppy” motion = drive toggling enabled/disabled due to watchdog.</p></li>
+</ul>
+<p>See <a class="reference internal" href="../MD/state_machine.html#md-state-machine"><span class="std std-ref">State Machine</span></a> and <a class="reference internal" href="../MD/Communication/fdcan.html#md-protocol"><span class="std std-ref">MD Protocol</span></a>.</p>
+</section>
+<section id="motor-stops-or-disables-during-idle-periods-watchdog">
+<span id="faq-watchdog"></span><h3>Motor stops or disables during idle periods (watchdog)<a class="headerlink" href="#motor-stops-or-disables-during-idle-periods-watchdog" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> no valid frame within <code class="docutils literal notranslate"><span class="pre">canWatchdog</span></code> period (default 200 ms) → drive decelerates
+(<code class="docutils literal notranslate"><span class="pre">quickStopDeceleration</span></code>, 0x123) and disables. See <a class="reference internal" href="../MD/safety.html#watchdog"><span class="std std-ref">Communication Watchdog</span></a>.</p>
+<p><strong>Options:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Recommended:</strong> keep sending frames (any valid frame) faster than the watchdog.</p></li>
+<li><p>Host-side timer per drive: if idle &gt; watchdog, re-run enable sequence before next move.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disable()</span></code> after a move, enable sequence before the next one.</p></li>
+<li><p>Change the timeout: <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">can</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span> <span class="pre">--new_timeout</span> <span class="pre">&lt;ms&gt;</span> <span class="pre">--save</span></code>. <code class="docutils literal notranslate"><span class="pre">0</span></code> disables the
+watchdog - <strong>not recommended</strong>, drive keeps executing last command if host fails.</p></li>
+</ol>
+<p>Explicit disable and watchdog disable are the same internal procedure.</p>
+</section>
+<section id="must-i-disable-the-drive-before-set-zero-mode-change">
+<span id="faq-zero-mode-change"></span><h3>Must I disable the drive before set zero / mode change?<a class="headerlink" href="#must-i-disable-the-drive-before-set-zero-mode-change" title="Link to this heading">#</a></h3>
+<p>Not strictly required, but recommended - both cause a torque discontinuity.</p>
+</section>
+<section id="tuning-slow-response-overshoot-knocking-in-position-mode">
+<span id="faq-tuning"></span><h3>Tuning: slow response, overshoot, knocking in position mode<a class="headerlink" href="#tuning-slow-response-overshoot-knocking-in-position-mode" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Position PID is cascaded on velocity PID - tune velocity PID first for acceleration/response.</p></li>
+<li><p>Factory gains are for unloaded demo movement only - tune for your load.</p></li>
+<li><p>Profile Position: tune profile velocity/acceleration/deceleration for smooth moves.</p></li>
+<li><p>No auto-tune available. See <a class="reference internal" href="../MD/motion.html#motion-modes"><span class="std std-ref">Motion Control</span></a>.</p></li>
+</ul>
+</section>
+<section id="too-low-torque-bandwidth">
+<span id="faq-torque-bandwidth"></span><h3>Too-low torque bandwidth<a class="headerlink" href="#too-low-torque-bandwidth" title="Link to this heading">#</a></h3>
+<p>Low torque bandwidth → slow current loop → poor behavior in dynamic scenarios (impacts). Increase bandwidth in .cfg or register, then recalibrate. Trade-off: higher bandwidth = more audible hiss.</p>
+</section>
+<section id="what-update-rate-can-i-achieve">
+<span id="faq-update-rate"></span><h3>What update rate can I achieve?<a class="headerlink" href="#what-update-rate-can-i-achieve" title="Link to this heading">#</a></h3>
+<p>Limited by CAN throughput (datarate × frame length × number of drives) and the host. Single drive,
+simple read/write on x86 Linux: ~2 kHz, dropping with every drive added; Windows is noticeably
+slower. Measured values: <a class="reference internal" href="../CANdle-SDK/candlelib/ResponseTimes.html"><span class="std std-doc">Response Time</span></a>. Raspberry Pi:
+SDK build takes long (heavy templates) - expected.</p>
+</section>
+<section id="reading-torque">
+<span id="faq-torque-reading"></span><h3>Reading torque<a class="headerlink" href="#reading-torque" title="Link to this heading">#</a></h3>
+<p>Register <code class="docutils literal notranslate"><span class="pre">torque</span></code> (0x064, float32, Nm) = estimated output torque. Torque constant <code class="docutils literal notranslate"><span class="pre">Kt</span></code> is a physical motor parameter - do not change it to limit power, use current/torque limits instead.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="power-and-hardware-protection">
+<h2>Power and hardware protection<a class="headerlink" href="#power-and-hardware-protection" title="Link to this heading">#</a></h2>
+<section id="mosfet-driver-failure-during-hard-braking">
+<span id="faq-regen"></span><h3>MOSFET / driver failure during hard braking<a class="headerlink" href="#mosfet-driver-failure-during-hard-braking" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> regenerative energy pumps bus voltage above rating. Most MOSFET failures seen in tests happened during regenerative braking.</p>
+<p><strong>Fix:</strong></p>
+<ul class="simple">
+<li><p>Use a supply that can absorb regen (two-quadrant), or a brake resistor (<a class="reference internal" href="../PDS/brake_resistor.html#pds-br"><span class="std std-ref">PDS Brake Resistor</span></a>).</p></li>
+<li><p>Limit deceleration and max velocity.</p></li>
+<li><p>Unidirectional bench PSUs cannot sink current.</p></li>
+</ul>
+<p>See <a class="reference internal" href="../MD/safety.html#md-safety"><span class="std std-ref">Recuperation</span></a>.</p>
+</section>
+<section id="motor-temperature-reads-100-c-at-room-temperature">
+<span id="faq-thermistor"></span><h3>Motor temperature reads &gt; 100 °C at room temperature<a class="headerlink" href="#motor-temperature-reads-100-c-at-room-temperature" title="Link to this heading">#</a></h3>
+<p><strong>Cause:</strong> damaged/disconnected motor thermistor. Thermal shutdown triggers falsely.</p>
+<ul>
+<li><p>Thermal shutdown works only with a thermistor connected (<code class="docutils literal notranslate"><span class="pre">[motor]</span> <span class="pre">shutdown</span> <span class="pre">temp</span></code>, 25-127 °C, default 80 °C).</p></li>
+<li><p>Contact support for repair. Temporary workaround (at own risk, removes protection; helps only if
+the false reading stays below the new limit):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>md<span class="w"> </span>register<span class="w"> </span>write<span class="w"> </span>motorShutdownTemp<span class="w"> </span><span class="m">127</span><span class="w"> </span>-i<span class="w"> </span>&lt;id&gt;
+candletool<span class="w"> </span>md<span class="w"> </span>save<span class="w"> </span>-i<span class="w"> </span>&lt;id&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="cable-and-connector-current-ratings">
+<span id="faq-current-rating"></span><h3>Cable and connector current ratings<a class="headerlink" href="#cable-and-connector-current-ratings" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Rating</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MD80 / MD80 60V Micro-Fit connector</p></td>
+<td><p>10 A RMS max input current. 6-pin connector: 2× VCC, 2× GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>MD20 connector</p></td>
+<td><p>3.1 A max input current</p></td>
+</tr>
+<tr class="row-even"><td><p>MAB daisy-chain cables</p></td>
+<td><p>10 A RMS continuous, 15 A bursts &lt; 100 ms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>DC bus current is usually much lower than motor phase current - size wiring for bus current. For long chains feed power at several points.</p>
+</section>
+<section id="erratic-behavior-resets-during-motion">
+<span id="faq-power-supply"></span><h3>Erratic behavior, resets during motion<a class="headerlink" href="#erratic-behavior-resets-during-motion" title="Link to this heading">#</a></h3>
+<p>Check power supply capacity first - insufficient current or voltage sag resets the drive mid-motion (looks like calibration or communication failure).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="candle-sdk-candletool-python">
+<h2>CANdle-SDK / candletool / Python<a class="headerlink" href="#candle-sdk-candletool-python" title="Link to this heading">#</a></h2>
+<section id="building-candle-sdk-on-windows">
+<span id="faq-sdk-windows"></span><h3>Building CANdle-SDK on Windows<a class="headerlink" href="#building-candle-sdk-on-windows" title="Link to this heading">#</a></h3>
+<p>MSVC is not supported. Use <code class="docutils literal notranslate"><span class="pre">launch/buildForWindows.bat</span></code> (w64devkit, MinGW-w64 GCC) or the pre-built
+Windows installers from <a class="reference external" href="https://github.com/mabrobotics/CANdle-SDK/releases">Releases</a>. Windows +
+<code class="docutils literal notranslate"><span class="pre">mdco</span></code>: use latest release.</p>
+</section>
+<section id="candletool-command-not-found-wrong-syntax">
+<span id="faq-cli-syntax"></span><h3>candletool command not found / wrong syntax<a class="headerlink" href="#candletool-command-not-found-wrong-syntax" title="Link to this heading">#</a></h3>
+<p>CLI changed between versions. <code class="docutils literal notranslate"><span class="pre">-i/--id</span></code> and <code class="docutils literal notranslate"><span class="pre">-d</span></code> may be placed before or after the subcommand
+(<code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">--id</span> <span class="pre">100</span> <span class="pre">calibration</span></code> = <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">calibration</span> <span class="pre">-i</span> <span class="pre">100</span></code>). Run <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">--help</span></code>
+/ <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">&lt;cmd&gt;</span> <span class="pre">--help</span></code>. Typical typo: missing <code class="docutils literal notranslate"><span class="pre">md</span></code> → <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">register</span> <span class="pre">write</span> <span class="pre">...</span></code>.
+See <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref">Commands</span></a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="md-canopen-mdco">
+<h2>MD CANopen (MDCO)<a class="headerlink" href="#md-canopen-mdco" title="Link to this heading">#</a></h2>
+<section id="which-eds-object-missing-documentation-does-not-match">
+<span id="faq-mdco-eds"></span><h3>Which EDS? Object missing / documentation does not match<a class="headerlink" href="#which-eds-object-missing-documentation-does-not-match" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Firmware</p></th>
+<th class="head"><p>EDS</p></th>
+<th class="head"><p>Documentation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MDCO 2.5.x (legacy)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">md_1.1.eds</span></code></p></td>
+<td><p><a class="reference internal" href="../MD/Communication/canopen_legacy/canopen.html#md-canopen-co25"><span class="std std-ref">CANopen [LEGACY]</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MDCO 3.0.1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code></p></td>
+<td><p><a class="reference internal" href="../MD/Communication/canopen/intro.html#md-canopen"><span class="std std-ref">CANopen</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>MDCO 3.0.2+</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">md_1.3.eds</span></code></p></td>
+<td><p><a class="reference internal" href="../MD/Communication/canopen/intro.html#md-canopen"><span class="std std-ref">CANopen</span></a>. Recommended.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>The two generations are <strong>not compatible</strong> - same indices, different meaning (e.g. 0x2003 is
+System Command on 2.5.x, Torque Sensor on 3.x). Use the EDS as source of truth.</p></li>
+<li><p>candletool auto-switches EDS based on reported firmware version (<code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">eds</span></code> to select manually).</p></li>
+<li><p>Check version: <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code>, or SDO read 0x2021:2 (2.5.x aborts with 0x06020000).
+Update: <a class="reference internal" href="#faq-switch-protocol"><span class="std std-ref">Switching FDCAN ↔ CANopen</span></a>.</p></li>
+</ul>
+<p><strong>Legacy 2.5.x gotchas:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0x2007</span></code>, <code class="docutils literal notranslate"><span class="pre">0x2008</span></code>, <code class="docutils literal notranslate"><span class="pre">0x2009</span></code> are MD-protocol objects - present in OD but <strong>inert</strong> in CANopen builds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x2003</span></code> = system commands (LED blink, reset, set zero…), <code class="docutils literal notranslate"><span class="pre">0x2004</span></code> = system status (encoders, calibration, …).</p></li>
+<li><p>System commands (incl. Set Zero <code class="docutils literal notranslate"><span class="pre">0x2003:05</span></code>) require Switch On Disabled + Service mode (write <code class="docutils literal notranslate"><span class="pre">-2</span></code> to <code class="docutils literal notranslate"><span class="pre">0x6060</span></code>).
+<code class="docutils literal notranslate"><span class="pre">0x6061</span></code> displays <code class="docutils literal notranslate"><span class="pre">-1</span></code> - drive is still in service mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x2005:03</span> <span class="pre">Mode</span> <span class="pre">=</span> <span class="pre">4</span></code> = aux encoder used as main (default on MA-D-HS series).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x6071</span></code> in 2.5.4 ignores value/sign (applies max torque) - fixed in hotfix 2.5.5.x / 3.0.x. Contact support.</p></li>
+<li><p>Velocity <code class="docutils literal notranslate"><span class="pre">0x606C</span></code> resolution = 1 RPM (3.x: µrev/s).</p></li>
+<li><p>“Internal limit” bit in statusword = position/velocity/torque/acceleration clipped by config limits - not an error.</p></li>
+</ul>
+<p><strong>MDCO 3.x:</strong> system commands are in <code class="docutils literal notranslate"><span class="pre">0x2023</span></code>, status in <code class="docutils literal notranslate"><span class="pre">0x2022</span></code>, aux encoder in <code class="docutils literal notranslate"><span class="pre">0x2002</span></code> - see
+<a class="reference internal" href="../MD/Communication/canopen/object_dictionary.html#canopen-od"><span class="std std-ref">Object Dictionary</span></a>. Calibration does not require Service mode.</p>
+</section>
+<section id="profile-position-new-velocity-applied-one-move-late-start-timing-jitter">
+<span id="faq-mdco-profile"></span><h3>Profile Position: new velocity applied one move late / start timing jitter<a class="headerlink" href="#profile-position-new-velocity-applied-one-move-late-start-timing-jitter" title="Link to this heading">#</a></h3>
+<p><strong>Cause (legacy 2.5.x firmware):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0x6081</span></code>, <code class="docutils literal notranslate"><span class="pre">0x6083</span></code>, <code class="docutils literal notranslate"><span class="pre">0x6084</span></code> are copied to the motion controller only in <strong>Switch On Disabled</strong>.</p></li>
+<li><p>Profile velocity is read only when a new target <code class="docutils literal notranslate"><span class="pre">0x607A</span></code> arrives - changing velocity mid-move is not supported.</p></li>
+<li><p>Mode 1 starts motion as soon as <code class="docutils literal notranslate"><span class="pre">0x607A</span></code> arrives - controlword bit 4 handshake not used, statusword bit 12 not set.</p></li>
+</ul>
+<p><strong>Fix:</strong> update to MDCO 3.x (<a class="reference internal" href="#faq-switch-protocol"><span class="std std-ref">Switching FDCAN ↔ CANopen</span></a>) - see <a class="reference internal" href="../MD/Communication/canopen/modes_of_operation.html#canopen-modes"><span class="std std-ref">Modes of Operation</span></a>.</p>
+<p><strong>Workaround on 2.5.x - new velocity:</strong></p>
+<ol class="arabic simple">
+<li><p>Controlword <code class="docutils literal notranslate"><span class="pre">0x0000</span></code> (Switch On Disabled).</p></li>
+<li><p>Write <code class="docutils literal notranslate"><span class="pre">0x6081</span></code> (+ <code class="docutils literal notranslate"><span class="pre">0x6083</span></code>/<code class="docutils literal notranslate"><span class="pre">0x6084</span></code>).</p></li>
+<li><p>Enable: <code class="docutils literal notranslate"><span class="pre">0x0006</span></code> → <code class="docutils literal notranslate"><span class="pre">0x000F</span></code>.</p></li>
+<li><p>Send target + SYNC.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Torque is removed between moves - make sure the axis can be safely unpowered.</p>
+</div>
+<p><strong>Synchronized multi-axis start:</strong></p>
+<ol class="arabic simple">
+<li><p>Map <code class="docutils literal notranslate"><span class="pre">0x607A</span></code> to an RPDO, transmission type = 1 (<code class="docutils literal notranslate"><span class="pre">0x140x:02</span></code>).</p></li>
+<li><p>Send targets to all drives, then one SYNC (COB-ID 0x80, <strong>DLC = 0</strong>, <code class="docutils literal notranslate"><span class="pre">0x1019</span> <span class="pre">=</span> <span class="pre">0</span></code>).</p></li>
+<li><p>Residual skew ≤ ~1.5 ms. Tighter: use CSP (<code class="docutils literal notranslate"><span class="pre">0x6060</span> <span class="pre">=</span> <span class="pre">8</span></code>) with host-side trajectory.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Drive must be NMT Operational.</p></li>
+<li><p>2.5.x: PDO mapping is <strong>not</strong> stored by <code class="docutils literal notranslate"><span class="pre">0x1010</span></code> - rewrite after every power-up / comm reset.
+3.x: save it with Save Config <code class="docutils literal notranslate"><span class="pre">0x2023:1</span></code> (<a class="reference internal" href="../MD/Communication/canopen/pdo.html#canopen-pdo"><span class="std std-ref">PDO</span></a>).</p></li>
+</ul>
+</section>
+<section id="canopen-all-drives-have-the-same-node-id">
+<span id="faq-mdco-node-id"></span><h3>CANopen: all drives have the same node ID<a class="headerlink" href="#canopen-all-drives-have-the-same-node-id" title="Link to this heading">#</a></h3>
+<p>Factory default node ID is identical on all drives. Set IDs (10-127) one drive at a time:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>mdco<span class="w"> </span>can<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span><span class="w"> </span>--new_id<span class="w"> </span><span class="m">11</span><span class="w"> </span>--save
+</pre></div>
+</div>
+</section>
+<section id="sdo-abort-0x06020000-on-0x2021-02-during-mdco-update">
+<span id="faq-mdco-update-legacy"></span><h3><code class="docutils literal notranslate"><span class="pre">SDO</span> <span class="pre">abort</span> <span class="pre">0x06020000</span> <span class="pre">on</span> <span class="pre">0x2021:02</span></code> during mdco update<a class="headerlink" href="#sdo-abort-0x06020000-on-0x2021-02-during-mdco-update" title="Link to this heading">#</a></h3>
+<p>The drive runs legacy 2.5.x CANopen firmware, which has no 0x2021 firmware-version object. Use the
+legacy migration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>candletool<span class="w"> </span>mdco<span class="w"> </span>update<span class="w"> </span>latest<span class="w"> </span>-i<span class="w"> </span>&lt;id&gt;<span class="w"> </span>--legacy-migration
+</pre></div>
+</div>
+<p>Then upload config, calibrate, set node ID. If that fails, use recovery (<a class="reference internal" href="#faq-update-fails"><span class="std std-ref">Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”</span></a>). If
+the bootloader never answers, the board has the old bootloader → v3.x not possible in field, contact
+support.</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="contacting-support">
+<span id="faq-support"></span><h2>Contacting support<a class="headerlink" href="#contacting-support" title="Link to this heading">#</a></h2>
+<p>Send to <a class="reference external" href="mailto:support&#37;&#52;&#48;mabrobotics&#46;pl">support<span>&#64;</span>mabrobotics<span>&#46;</span>pl</a>:</p>
+<ol class="arabic simple">
+<li><p>Output of <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code> (or <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">mdco</span> <span class="pre">info</span> <span class="pre">-i</span> <span class="pre">&lt;id&gt;</span></code>).</p></li>
+<li><p>Versions: candletool, CANdle firmware, MD firmware, OS.</p></li>
+<li><p>Your .cfg file.</p></li>
+<li><p>Log with <code class="docutils literal notranslate"><span class="pre">--verbosity=3</span></code> for failing command.</p></li>
+<li><p>Photo/video of setup and LED state if hardware-related.</p></li>
+</ol>
 </section>
 </section>
 
@@ -649,15 +1305,70 @@ likely be a better option.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-check-if-my-motor-is-operating-properly">How to check if my motor is operating properly</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">Motor terminals not soldered properly</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-calibration">Failed calibration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lack-of-fdcan-termination">Lack of FDCAN termination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-is-not-detected-on-candletool-discover-command">MD is not detected on “candletool discover” command</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#different-fdcan-speeds-between-actuators">Different FDCAN speeds between actuators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-md-fd-protocol-and-canopen-work-on-single-bus">Can MD FD Protocol and CANOpen work on single bus?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-low-torque-bandwidth-setting">Too-low torque bandwidth setting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-use-fdcan-protocol-or-canopen">Should I use FDCAN Protocol or CANOpen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-triage">Quick triage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-software-should-i-use">Which software should I use?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-use-fdcan-md-protocol-or-canopen">Should I use FDCAN (MD protocol) or CANopen?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-units-are-used">What units are used?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-and-connection">CANdle and connection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-not-detected-by-the-pc">CANdle not detected by the PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#md-not-detected-by-candletool-md-discover">MD not detected by <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">discover</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fdcan-termination">FDCAN termination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-datarates-between-actuators">Different datarates between actuators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-change-the-can-id">How do I change the CAN ID?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-id-datarate-watchdog-not-saved-after-power-cycle">CAN ID / datarate / watchdog not saved after power cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-i-control-md-without-candle-own-mcu-plc-arduino">Can I control MD without CANdle (own MCU, PLC, Arduino)?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware-and-updates">Firmware and updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware-is-a-future-version-version-mismatch">“Firmware is a future version” / version mismatch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-update-md-firmware">How do I update MD firmware?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-fails-failed-to-initialize-bootloader-hangs-at-power-cycle-the-driver">Update fails / “Failed to initialize bootloader” / hangs at “power-cycle the driver”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drive-appears-with-id-100-lost-its-configuration">Drive appears with ID 100 / lost its configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#switching-fdcan-canopen">Switching FDCAN ↔ CANopen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-and-encoders">Calibration and encoders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-failed">Calibration failed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-terminals-not-soldered-properly">Motor terminals not soldered properly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-low-accuracy-on-main-encoder"><code class="docutils literal notranslate"><span class="pre">WARNING_LOW_ACCURACY</span></code> on main encoder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-aux-encoder-issues">Output (aux) encoder issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-r-l-differ-from-the-cfg-file">Motor R/L differ from the .cfg file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-check-if-my-motor-works-properly">How do I check if my motor works properly?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-and-motion">Control and motion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-does-not-move-after-sending-commands">Motor does not move after sending commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-stops-or-disables-during-idle-periods-watchdog">Motor stops or disables during idle periods (watchdog)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#must-i-disable-the-drive-before-set-zero-mode-change">Must I disable the drive before set zero / mode change?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-slow-response-overshoot-knocking-in-position-mode">Tuning: slow response, overshoot, knocking in position mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#too-low-torque-bandwidth">Too-low torque bandwidth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-update-rate-can-i-achieve">What update rate can I achieve?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-torque">Reading torque</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-and-hardware-protection">Power and hardware protection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mosfet-driver-failure-during-hard-braking">MOSFET / driver failure during hard braking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motor-temperature-reads-100-c-at-room-temperature">Motor temperature reads &gt; 100 °C at room temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cable-and-connector-current-ratings">Cable and connector current ratings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erratic-behavior-resets-during-motion">Erratic behavior, resets during motion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#candle-sdk-candletool-python">CANdle-SDK / candletool / Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-candle-sdk-on-windows">Building CANdle-SDK on Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#candletool-command-not-found-wrong-syntax">candletool command not found / wrong syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-canopen-mdco">MD CANopen (MDCO)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-eds-object-missing-documentation-does-not-match">Which EDS? Object missing / documentation does not match</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-position-new-velocity-applied-one-move-late-start-timing-jitter">Profile Position: new velocity applied one move late / start timing jitter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canopen-all-drives-have-the-same-node-id">CANopen: all drives have the same node ID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sdo-abort-0x06020000-on-0x2021-02-during-mdco-update"><code class="docutils literal notranslate"><span class="pre">SDO</span> <span class="pre">abort</span> <span class="pre">0x06020000</span> <span class="pre">on</span> <span class="pre">0x2021:02</span></code> during mdco update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contacting-support">Contacting support</a></li>
 </ul>
   </nav></div>
 

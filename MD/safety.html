@@ -195,6 +195,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
@@ -274,7 +275,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -496,7 +500,7 @@ document.write(`
 no FDCAN frame has been received in a specified time. This is to protect the drive and its
 surroundings in an event of loss of communications, for example by physical damage to the wiring. By
 default, the watchdog is set to 200ms. This time can be set to any value in the range of 1 to 2000ms
-using <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">config</span> <span class="pre">can</span></code> command. When the watchdog is set to 0, it will disable the timer,
+using <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">can</span> <span class="pre">--id</span> <span class="pre">&lt;id&gt;</span> <span class="pre">--new_timeout</span> <span class="pre">&lt;ms&gt;</span> <span class="pre">--save</span></code> command. When the watchdog is set to 0, it will disable the timer,
 however, this can lead to dangerous situations, and it is not a recommended way of operating MD.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

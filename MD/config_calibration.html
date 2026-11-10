@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -956,7 +960,7 @@ the *.cfg file. Then the pole pairs will be automatically detected.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In some rare cases, when pole pairs are correctly specified in the config, MD may not be able to verify
-that correctly. In this case, refer to <a class="reference internal" href="../FAQ/intro.html#failed-calibration"><span class="std std-ref">FAQ</span></a>, for a quick workaround.</p>
+that correctly. In this case, refer to <a class="reference internal" href="../FAQ/intro.html#faq-calibration-failed"><span class="std std-ref">FAQ</span></a>, for a quick workaround.</p>
 </div>
 </section>
 <section id="encoder-eccentricity">
@@ -1005,12 +1009,12 @@ off-axis encoder - it requires a full calibration routine.</p>
 <img alt="../_images/output_calibration_requirements.png" class="no-scaled-link" src="../_images/output_calibration_requirements.png" />
 </figure>
 <p>To run the routine, use the <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">calibration</span> <span class="pre">-e</span> <span class="pre">aux</span></code></span></a> command. after
-completing the routine the MD will reboot and after that it is recommended to run the candletool md
-setup info command in order to make sure the setup reports no errors:</p>
+completing the routine the MD will reboot and after that it is recommended to run the <code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">info</span></code>
+command in order to make sure the setup reports no errors:</p>
 <figure class="align-default" id="id3">
 <img alt="../_images/mdtool_setup_info_allok.png" src="../_images/mdtool_setup_info_allok.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">:alt: candle
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">:alt: candle
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
@@ -1018,7 +1022,7 @@ setup info command in order to make sure the setup reports no errors:</p>
 </figure>
 <p>The output encoder parameters are rather straightforward, except the “output encoder last check”
 errors. These values are filled during the output encoder check routine, which can be run using
-<a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">-e</span> <span class="pre">aux</span></code></span></a>. These params represent the output
+<a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">aux</span></code></span></a>. These params represent the output
 encoder errors (max, min and standard deviation) with respect to the main encoder mounted on the
 PCB. This means that if there are large inaccuracies during the calibration, or the output encoder
 moves in your setup, you can always check how accurate it is by running the check_aux routine.</p>
@@ -1032,7 +1036,7 @@ moves in your setup, you can always check how accurate it is by running the chec
 </figure>
 <p>As can be seen, the non-axial encoder features larger errors, and thus can be utilized only for
 initial position determination rather than output shaft control. In case the errors get too large
-they will turn yellow after running <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">-e</span> <span class="pre">aux</span></code></span></a>
+they will turn yellow after running <a class="reference internal" href="../CANdle-SDK/candletool/Commands.html#candletool-commands"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">candletool</span> <span class="pre">md</span> <span class="pre">test</span> <span class="pre">encoder</span> <span class="pre">aux</span></code></span></a>
 command indicating there might be a problem with your setup:</p>
 <figure class="align-center">
 <img alt="candle" class="no-scaled-link" src="../_images/errors_yellow.png" />

@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -496,8 +500,7 @@ and switching between them means reflashing the drive with the other firmware. B
 published in <a class="reference internal" href="../../../Downloads/intro.html#downloads"><span class="std std-ref">Downloads</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This section describes the CANopen firmware <strong>v3.0.0</strong> and later built around object dictionary
-revision <strong>1.2</strong> (<code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code>). Drives running the older 2.5.x CANopen firmware are covered by the
+<p>This section describes the CANopen firmware <strong>v3.0.2</strong> built around object dictionary revision <strong>1.3</strong> (<code class="docutils literal notranslate"><span class="pre">md_1.3.eds</span></code>, firmware v3.0.2 and later). Drives running the older 2.5.x CANopen firmware are covered by the
 <a class="reference internal" href="../canopen_legacy/canopen.html#md-canopen-co25"><span class="std std-ref">legacy CANopen section</span></a>, which describes a different object dictionary.</p>
 </div>
 <section id="bus-parameters">
@@ -566,6 +569,11 @@ detection.</p>
 <td><p>Product Code</p></td>
 <td><p>1</p></td>
 <td><p>MD series</p></td>
+</tr>
+<tr class="row-even"><td><p>0x1018:3</p></td>
+<td><p>Revision Number</p></td>
+<td><p>0x00010003</p></td>
+<td><p>Object dictionary revision 1.3</p></td>
 </tr>
 </tbody>
 </table>
@@ -643,7 +651,7 @@ more than one drive you must assign each drive its own transmit identifiers thro
 </section>
 <section id="electronic-data-sheet">
 <h2>Electronic data sheet<a class="headerlink" href="#electronic-data-sheet" title="Link to this heading">#</a></h2>
-<p>The EDS file describing this object dictionary is <code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code>, available from
+<p>The EDS file describing this object dictionary is <code class="docutils literal notranslate"><span class="pre">md_1.3.eds</span></code>, available from
 <a class="reference internal" href="../../../Downloads/intro.html#device-firmware"><span class="std std-ref">Downloads</span></a>. Load it into your CANopen master or configuration tool to get object
 names, data types and default values without transcribing them by hand.</p>
 </section>

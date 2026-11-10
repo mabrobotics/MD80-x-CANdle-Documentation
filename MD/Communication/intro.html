@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -537,8 +541,8 @@ compatible. Both are documented here.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="canopen/intro.html#md-canopen"><span class="std std-ref">CANopen</span></a></p></td>
-<td><p>current</p></td>
-<td><p>revision 1.2</p></td>
+<td><p>3.0.2+</p></td>
+<td><p>revision 1.3</p></td>
 <td><p>actively developed</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="canopen_legacy/canopen.html#md-canopen-co25"><span class="std std-ref">CANopen [LEGACY]</span></a></p></td>
@@ -658,7 +662,7 @@ supported firmware, a special procedure has been implemented in
 <p class="admonition-title">Warning</p>
 <p>This migration will cause the drive configuration to be mostly dropped.
 Config upload and calibration will be required in majority of cases.
-This will also make drive use <code class="docutils literal notranslate"><span class="pre">md_1.2.eds</span></code> instead of <code class="docutils literal notranslate"><span class="pre">md_1.1.eds</span></code>.</p>
+This will also make drive use <code class="docutils literal notranslate"><span class="pre">md_1.3.eds</span></code> instead of <code class="docutils literal notranslate"><span class="pre">md_1.1.eds</span></code>.</p>
 </div>
 </section>
 </section>

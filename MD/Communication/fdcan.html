@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -1336,8 +1340,8 @@ releases introduce new features.</p>
 <td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x025</span></code></p></td>
 <td><p>RW</p></td>
 <td><p>uint8</p></td>
-<td><p>[0;1;2;3;4]</p></td>
-<td><p>NONE=0,<br> STARTUP=1,<br>MOTION=2,<br>REPORT=3,<br>MAIN=4 (legacy - valid up to v2.5.4)</p></td>
+<td><p>[0 - 6]</p></td>
+<td><p>NONE=0,<br> STARTUP=1,<br>MOTION=2,<br>REPORT=3,<br>MAIN=4 (legacy - valid up to v2.5.4),<br>CALIBRATED_REPORT=5,<br>DUAL=6</p></td>
 <td><p><strong>Active</strong></p></td>
 </tr>
 <tr class="row-even"><td><p>outputEncoderCalibrationMode</p></td>
@@ -1346,6 +1350,14 @@ releases introduce new features.</p>
 <td><p>uint8</p></td>
 <td><p>[0;1]</p></td>
 <td><p>FULL=0,<br> DIRONLY=1</p></td>
+<td><p><strong>Active</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>dualEncoderAbsPosition</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0x027</span></code></p></td>
+<td><p><strong>RO</strong></p></td>
+<td><p>float32</p></td>
+<td><p>-</p></td>
+<td><p>Absolute position [rad] computed from main and aux encoders, valid only in DUAL encoder mode</p></td>
 <td><p><strong>Active</strong></p></td>
 </tr>
 </tbody>

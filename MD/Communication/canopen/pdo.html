@@ -193,6 +193,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="../../brakes.html">Brakes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../torque_sensor.html">External Torque Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../measurements.html">Measurements</a></li>
@@ -272,7 +273,10 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CANdleduino/intro.html">Software - Arduino</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQ/intro.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../Downloads/intro.html">Downloads</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Downloads/changelog.html">Firmware Changelog</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -631,8 +635,7 @@ motion.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Inhibit time, sub-index 3, is accepted and read back but is not enforced. SYNC start value,
-sub-index 6, is declared in the EDS for transmit PDOs but is not implemented, and accessing it
-aborts with 0x06090011. Sub-index 0 of every PDO communication parameter reports 5.</p>
+sub-index 6, is not implemented, and accessing it aborts with 0x06090011. Sub-index 0 of every PDO communication parameter reports 5.</p>
 <p>The event timer field of a receive PDO is stored but has no effect. To make the drive react to a
 master that stops talking, use the <a class="reference internal" href="nmt.html#canopen-nmt"><span class="std std-ref">heartbeat consumer</span></a> instead.</p>
 </div>

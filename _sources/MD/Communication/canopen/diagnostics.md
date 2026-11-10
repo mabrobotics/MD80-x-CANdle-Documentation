@@ -2,8 +2,8 @@
 # Diagnostics
 
 The drive reports problems through three layers. The manufacturer status registers in 0x2022 hold
-the detail, the CiA 402 objects 0x1001 and 0x603F summarise it, and an emergency message announces
-one specific failure.
+the detail, the CiA 301 and CiA 402 objects 0x1001 and 0x603F summarise it, and an emergency
+message announces every new error as it is raised.
 
 ## Status registers
 
@@ -27,8 +27,8 @@ in the low 16 bits and warnings in the high 16 bits. The bit meanings are docume
 Every sub-index is read-only and PDO mappable, so you can stream whichever ones matter to your
 application in a transmit PDO.
 
-Quick Status is the one to poll first. It carries one summary bit per category plus, in bit 15, the
-target reached flag. It is mapped into TPDO1 by default alongside the statusword.
+Quick Status is the one to poll first. It carries one summary bit per category, the drive disabled
+flag in bit 14 and, in bit 15, the target reached flag. It is mapped into TPDO1 by default alongside the statusword.
 
 Two bits are worth calling out because they affect commissioning:
 
@@ -55,55 +55,68 @@ emergency message.
 
 ## Error codes
 
-0x603F Error Code holds a CiA 402 code for the most recent fault. The drive derives both this object
-and the error register from the status registers, according to the table below.
+0x603F Error Code holds the CiA code of the most recently raised error that is still active. The drive
+derives both this object and the error register from the status registers and the CANopen
+communication errors, according to the table below.
 
-| Condition                       | Error register bit | 0x603F |
-| ------------------------------- | ------------------ | ------ |
-| Output over current             | Current            | 0x2110 |
-| Internal current sensing fault  | Current            | 0x2120 |
-| DC link over voltage            | Voltage            | 0x3210 |
-| DC link under voltage           | Voltage            | 0x3220 |
-| Power stage over temperature    | Temperature        | 0x4210 |
-| Motor over temperature          | Temperature        | 0x4310 |
-| Velocity limit exceeded         | Device profile     | 0x8400 |
-| Position limit exceeded         | Device profile     | 0x8500 |
-| Calibration failure             | Manufacturer       | 0x6100 |
-| Configuration error             | Manufacturer       | 0x6200 |
-| Main encoder error              | Manufacturer       | 0x7200 |
-| Auxiliary encoder error         | Manufacturer       | 0x7300 |
-| Heartbeat consumer timeout      | Communication      | not set |
+| Condition                       | Source                       | Error register bit | Error code |
+| ------------------------------- | ---------------------------- | ------------------ | ---------- |
+| Over current                    | Hardware Status 0x2022:6     | Current            | 0x2310     |
+| Current sensing offset fault    | Hardware Status 0x2022:6     | Current            | 0x2120     |
+| DC link over voltage            | Hardware Status 0x2022:6     | Voltage            | 0x3210     |
+| DC link under voltage           | Hardware Status 0x2022:6     | Voltage            | 0x3220     |
+| Power stage over temperature    | Hardware Status 0x2022:6     | Temperature        | 0x4210     |
+| Motor over temperature          | Hardware Status 0x2022:6     | Temperature        | 0x4310     |
+| Position limit exceeded         | Motion Status 0x2022:8       | Device profile     | 0x8612     |
+| Velocity limit exceeded         | Motion Status 0x2022:8       | Device profile     | 0x8400     |
+| Main encoder error              | Main Encoder Status 0x2022:2 | Manufacturer       | 0x7305     |
+| Auxiliary encoder error         | Aux Encoder Status 0x2022:3  | Manufacturer       | 0x7306     |
+| Calibration error               | Calibration Status 0x2022:4  | Manufacturer       | 0x6100     |
+| Configuration error             | Config Status 0x2022:10      | Manufacturer       | 0x6200     |
+| Heartbeat consumer timeout      | [NMT](canopen_nmt)           | Communication      | 0x8130     |
+| CAN receive overrun, frames dropped | CANopen stack            | Communication      | 0x8110     |
 
-```{important}
-0x1001 and 0x603F latch. Clearing the fault with Clear Errors 0x2023:10 clears the status registers
-in 0x2022, but the error register and the error code keep their values until the drive is reset.
+0x1001 and 0x603F are live. They are rebuilt from the active errors, so they clear by themselves once
+the condition is gone and the error bits are cleared with Clear Errors 0x2023:10. When several errors
+are active and the newest one clears, 0x603F reports one of the others.
 
-Treat 0x2022 as the live state of the drive and 0x1001 together with 0x603F as a record of what went
-wrong since power on.
-```
+Two event errors are reported only through an emergency message and 0x1003, without setting
+0x1001 or 0x603F:
+
+| Event                                         | Error code |
+| --------------------------------------------- | ---------- |
+| Receive PDO shorter than its mapping, ignored | 0x8210     |
+| SYNC frame with data bytes, ignored           | 0x8240     |
+
+## Error history
+
+0x1003 Pre-defined Error Field keeps the last 8 error codes, newest in sub-index 1. Sub-index 0 gives
+the number of stored entries. Each entry carries the error code in bits 0-15 and, for errors from the
+status registers, the active error flags of that register in bits 16-31. Write 0 to sub-index 0 to
+clear the history. Reading a sub-index above the number of entries aborts with 0x08000024.
 
 ## Emergency messages
 
-The drive transmits an emergency message on COB-ID 0x080 + node ID.
+The drive transmits an emergency message on COB-ID 0x080 + node ID:
+
+- once for every newly raised error in the error codes table above, with that error's code,
+- once for each event error,
+- once with code 0x0000, error reset, when the last active error clears.
 
 | Byte | Content                                |
 | ---- | -------------------------------------- |
-| 0-1  | Emergency error code, always 0x1000    |
+| 0-1  | Emergency error code                   |
 | 2    | Error register, the value of 0x1001    |
 | 3-4  | Quick Status, the value of 0x2022:1    |
 | 5-7  | Zero                                   |
 
-Two limitations are worth knowing before you build alarm handling on this:
+An error that stays active produces one message, not one per cycle. Up to 8 messages are queued
+when several errors are raised at once; if the queue is full, newer ones are dropped and only
+recorded in 0x1003. In NMT Stopped no emergency messages are sent, and those raised meanwhile are
+dropped.
 
-- The emergency error code field is fixed at 0x1000, generic error. The specific cause is in the
-  Quick Status bytes, and in 0x603F over SDO.
-- An emergency message is produced by exactly one condition, a
-  [heartbeat consumer timeout](canopen_nmt). Faults such as over current or an encoder failure change
-  the status registers, the error register and the state machine, but do not generate an emergency
-  message.
-
-For fault detection, monitor the statusword and Quick Status through a transmit PDO rather than
-waiting for an emergency message. A drive entering Fault reports statusword 0x0008.
+Statusword and Quick Status mapped into a transmit PDO remain the most direct way to watch the
+drive. A drive entering Fault reports statusword 0x0208, 0x0008 after masking with 0x006F.
 
 ## Commands
 
@@ -142,12 +155,12 @@ the value 1.
 | Object   | Name                                            | Signature  | ASCII  | Equivalent to |
 | -------- | ----------------------------------------------- | ---------- | ------ | ------------- |
 | 0x1010:1 | Save all Parameters                             | 0x65766173 | `save` | 0x2023:1      |
+| 0x1011:1 | Restore all Default Parameters                  | 0x64616F6C | `load` | 0x2023:7      |
 | 0x1011:4 | Restore manufacturer defined default Parameters | 0x64616F6C | `load` | 0x2023:7      |
 
 Writing any other value aborts with 0x08000020, data cannot be transferred or stored, which is the
-CiA 301 response to a wrong signature. Both objects are write only, so reading them aborts with
-0x05040001.
+CiA 301 response to a wrong signature. Reading 0x1010:1, 0x1011:1 or 0x1011:4 returns 1, meaning
+the drive saves or restores on command.
 
-Only sub-index 1 of 0x1010 and sub-index 4 of 0x1011 are implemented, even though both report a
-highest sub-index of 4. Restoring defaults therefore always restores everything; there is no way to
-reset one parameter group on its own.
+0x1011:1 and 0x1011:4 behave identically. Restoring defaults always restores everything; there is no
+way to reset one parameter group on its own.
