@@ -106,7 +106,7 @@ A type the drive cannot use on that port is rejected with abort 0x06090030.
 | 0x2001:2 | Main Encoder Direction     | -1.0 or 1.0 only                        |
 | 0x2002:1 | Auxiliary Encoder Type     | see table above                         |
 | 0x2002:2 | Auxiliary Encoder Direction | -1.0 or 1.0 only                       |
-| 0x2002:3 | Auxiliary Encoder Mode     | 0 none, 1 startup, 2 motion, 3 report   |
+| 0x2002:3 | Auxiliary Encoder Mode     | 0 none, 1 startup, 2 motion, 3 report, 6 dual |
 | 0x2002:4 | Calibration Mode           | 0 full, 1 direction only                |
 
 [Aux Encoder Modes](aux_encoders) explains what each mode does. Changing 0x2002:3 sets the restart
@@ -175,7 +175,7 @@ damaged by unexpected motion.
 
 1. Select a mode, for example write 3 to 0x6060 for Profile Velocity, and read 0x6061 back.
 2. Write a small Target Velocity to 0x60FF.
-3. Write 0x0006 then 0x000F to Controlword 0x6040 and confirm Statusword 0x6041 reads 0x0027.
+3. Write 0x0006 then 0x000F to Controlword 0x6040 and confirm Statusword 0x6041 masked with 0x006F reads 0x0027.
 4. Stop by writing 0x0002 for quick stop, then 0x0000.
 
 See [State Machine](canopen_state_machine) and [Modes of Operation](canopen_modes) for the detail.

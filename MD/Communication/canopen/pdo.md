@@ -70,8 +70,7 @@ Two ways to produce feedback, then:
 
 ```{note}
 Inhibit time, sub-index 3, is accepted and read back but is not enforced. SYNC start value,
-sub-index 6, is declared in the EDS for transmit PDOs but is not implemented, and accessing it
-aborts with 0x06090011. Sub-index 0 of every PDO communication parameter reports 5.
+sub-index 6, is not implemented, and accessing it aborts with 0x06090011. Sub-index 0 of every PDO communication parameter reports 5.
 
 The event timer field of a receive PDO is stored but has no effect. To make the drive react to a
 master that stops talking, use the [heartbeat consumer](canopen_nmt) instead.

@@ -127,6 +127,9 @@ chapters:
     title: FAQ
   - file: Downloads/intro
     title: Downloads
+    sections:
+      - file: Downloads/changelog
+        title: Firmware Changelog
   # - file: candlelib/intro
     # title: Software - mdtool [LEGACY]
     # sections:

@@ -3,7 +3,7 @@
 Usage:
     python generate_canopen_od.py [path/to/md_x.y.eds]
 
-Defaults to _static/eds/md_1.2.eds and overwrites MD/Communication/canopen/object_dictionary.md.
+Defaults to _static/eds/md_1.3.eds and overwrites MD/Communication/canopen/object_dictionary.md.
 
 The EDS supplies names, data types, access types, defaults and PDO mappability.
 The prose in DESC and the value ranges in NOTE are maintained by hand, because the
@@ -14,7 +14,7 @@ script and review both dictionaries for entries that were added or removed.
 import configparser, re, sys
 from pathlib import Path
 
-EDS_DEFAULT = Path("_static/eds/md_1.2.eds")
+EDS_DEFAULT = Path("_static/eds/md_1.3.eds")
 OUT = Path("MD/Communication/canopen/object_dictionary.md")
 
 DT = {1:"BOOLEAN",2:"INT8",3:"INT16",4:"INT32",5:"UINT8",6:"UINT16",7:"UINT32",
@@ -33,8 +33,9 @@ def g(s,k,d=""):
 DESC = {
 "1000":"Identifies the device profile. Reads 0x00020192: profile 402 in the low word, servo drive in the high word.",
 "1001":"One byte summary of active faults. See [Diagnostics](canopen_diagnostics) for the bit meanings.",
-"1010":"Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Write-only: reading any sub-index other than 0 aborts with 0x05040001.",
-"1011":"Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Only sub-index 4 is implemented. Write-only: reading any sub-index other than 0 aborts with 0x05040001.",
+"1003":"History of the last 8 errors, sub-index 1 the newest. Each entry holds the emergency error code in bits 0-15 and the source error flags in bits 16-31. Reading a sub-index above the number of errors aborts with 0x08000024.",
+"1010":"Saves the configuration to flash, the CiA 301 equivalent of Save Config 0x2023:1. Reading sub-index 1 returns 1, saves on command.",
+"1011":"Restores factory defaults and saves them, the CiA 301 equivalent of Revert Factory Settings 0x2023:7. Sub-indices 1 and 4 behave identically. Reading either returns 1, restores on command.",
 "1005":"Identifier the drive listens on for SYNC. Fixed at 0x80; the drive never produces SYNC itself.",
 "1008":"Device name string.",
 "1009":"Hardware version string.",
@@ -71,9 +72,9 @@ DESC = {
 "2022":"Manufacturer status registers. Bit meanings are documented in [Status](status) and summarised in [Diagnostics](canopen_diagnostics).",
 "2023":"Manufacturer commands. Trigger one by writing 1; any other value aborts with 0x06090030. Several of these reboot the drive.",
 "2024":"The two user GPIO pins. See [GPIO](GPIO) for the electrical limits.",
-"603F":"CiA 402 code for the most recent fault. Latches until the drive is reset.",
+"603F":"Code of the most recently raised error that is still active, 0 when no error is active. See [Diagnostics](canopen_diagnostics).",
 "6040":"Commands the CiA 402 state machine. See [State Machine](canopen_state_machine).",
-"6041":"Reports the CiA 402 state. Carries the state bits only.",
+"6041":"Reports the CiA 402 state together with voltage enabled, remote, target reached, internal limit and mode specific bits. Mask with 0x006F before comparing it to a state. See [State Machine](canopen_state_machine).",
 "6060":"Selects the active controller. See [Modes of Operation](canopen_modes).",
 "6061":"Reports the active mode. Gives the same answer as reading 0x6060.",
 "6064":"Measured output shaft position.",
@@ -91,25 +92,30 @@ DESC = {
 "607B":"Hard bounds of the position representation. Read only, and fixed to the full INT32 range.",
 "607D":"Software position limits. Setting both sub-indices to the same value disables limiting.",
 "6080":"Speed limit applied to every mode, and the clamp on the position loop output.",
-"6083":"Acceleration used by the trajectory generator in both profile modes.",
-"6084":"Deceleration used by the trajectory generator in both profile modes.",
-"6085":"Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout.",
+"6081":"Cruise velocity in Profile Position. Shares the same internal register as Target Velocity 0x60FF: writing either object changes both, and a read returns the magnitude of 0x60FF.",
+"6083":"Acceleration used by the trajectory generator in both profile modes. Limited to Max Acceleration 0x60C5.",
+"6084":"Deceleration used by the trajectory generator in both profile modes. Limited to Max Deceleration 0x60C6.",
+"6085":"Deceleration used for quick stop, including the automatic quick stop on a heartbeat timeout. Limited to Max Deceleration 0x60C6.",
 "6091":"Gearbox ratio. All shaft quantities are computed with it applied.",
 "60A8":"Declares the position unit, micro-revolutions. Read only.",
 "60A9":"Declares the velocity unit, micro-revolutions per second. Read only.",
 "60AA":"Declares the acceleration unit, micro-revolutions per second squared. Read only.",
+"60C5":"Upper limit for Profile Acceleration 0x6083. 0 means no limit.",
+"60C6":"Upper limit for Profile Deceleration 0x6084 and Quick Stop Deceleration 0x6085. 0 means no limit.",
 "60FF":"Velocity setpoint. In Profile Velocity it is the target; in Profile Position it is the cruise velocity; in Cyclic Synchronous Velocity it is applied directly; in Impedance it is the equilibrium velocity.",
 "6502":"Bit field of supported CiA 402 modes. Reads 0x00000185.",
 }
 
 # Per-entry unit / range notes, keyed by "INDEX" or "INDEX:sub".
 NOTE = {
-"1010:0":"always reports 4, although only sub-index 1 is implemented",
 "1010:1":"write the signature 0x65766173, ASCII \"save\"; any other value aborts with 0x08000020",
-"1011:0":"always reports 4, although only sub-index 4 is implemented",
+"1011:0":"sub-indices 2 and 3 are not implemented",
+"1011:1":"write the signature 0x64616F6C, ASCII \"load\"; any other value aborts with 0x08000020",
 "1011:4":"write the signature 0x64616F6C, ASCII \"load\"; any other value aborts with 0x08000020",
+"1003:0":"write 0 to clear the history; any other value aborts",
 "1016:1":"ms in bits 0-15, node ID in bits 16-23",
 "1017":"ms",
+"1018:3":"object dictionary revision 1.3",
 "2000:1":"10 to 127",
 "2000:2":"2 to 42",
 "2000:3":"H, 5e-9 to 0.1",
@@ -119,15 +125,16 @@ NOTE = {
 "2000:7":"degrees C, 10 to 120",
 "2000:8":"stored, not currently acted on by the firmware",
 "2000:9":"Nm/A, must be greater than 0",
-"2000:10":"RPM/V, must be greater than 0; writing it recomputes 0x2000:9 and is stored as a whole number",
+"2000:10":"RPM/V, must be greater than 0; writing it recomputes 0x2000:9",
 "2001:1":"encoder type identifier, see [Setting Up a New Motor](canopen_setup)",
 "2001:2":"-1.0 or 1.0 only",
 "2002:1":"encoder type identifier, see [Setting Up a New Motor](canopen_setup)",
 "2002:2":"-1.0 or 1.0 only",
-"2002:3":"0 none, 1 startup, 2 motion, 3 report; takes effect after reboot",
+"2002:3":"0 none, 1 startup, 2 motion, 3 report, 6 dual; other values are rejected with an SDO range abort; takes effect after reboot",
 "2002:4":"0 full, 1 direction only",
 "2002:5":"micro-revolutions",
 "2002:6":"micro-revolutions per second",
+"2002:7":"micro-revolutions; valid only when the aux encoder mode is DUAL, see [Drives with DUAL encoders](dual_encoders). Not affected by zeroing or offsets",
 "2003:1":"0 none, 1 XJC sensor",
 "2003:2":"Nm",
 "2004:1":"degrees C",
@@ -160,9 +167,12 @@ NOTE = {
 "607D:1":"micro-revolutions",
 "607D:2":"micro-revolutions",
 "6080":"micro-revolutions per second",
+"6081":"micro-revolutions per second",
 "6083":"micro-revolutions per second squared",
 "6084":"micro-revolutions per second squared",
 "6085":"micro-revolutions per second squared",
+"60C5":"micro-revolutions per second squared",
+"60C6":"micro-revolutions per second squared",
 "60FF":"micro-revolutions per second",
 }
 
@@ -199,8 +209,8 @@ out = []
 out.append("(canopen_od)=")
 out.append("# Object Dictionary")
 out.append("")
-out.append("Complete reference for object dictionary revision 1.2. The machine readable version is")
-out.append("`md_1.2.eds`, available from [Downloads](device_firmware).")
+out.append("Complete reference for object dictionary revision 1.3. The machine readable version is")
+out.append("`md_1.3.eds`, available from [Downloads](device_firmware).")
 out.append("")
 out.append("The dictionary is split into three ranges:")
 out.append("")

@@ -53,9 +53,21 @@ reached.
 			<td>6</td>
 			<td>Motion errors</td>
 		</tr>
+		<tr>
+			<td>7</td>
+			<td>Misc errors</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>Configuration errors</td>
+		</tr>
        	<tr>
-			<td>8-14</td>
+			<td>9-13</td>
 			<td>RESERVED</td>
+		</tr>
+		<tr>
+			<td>14</td>
+			<td>Drive disabled (power stage not enabled)</td>
 		</tr>
 		</tr>
 			<tr>

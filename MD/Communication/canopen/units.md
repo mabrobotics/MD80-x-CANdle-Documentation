@@ -12,7 +12,7 @@ The drive works in **micro-revolutions of the output shaft**. One full output re
 
 | Quantity     | Unit                          | Objects                                              |
 | ------------ | ----------------------------- | ---------------------------------------------------- |
-| Position     | micro-revolutions             | 0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5     |
+| Position     | micro-revolutions             | 0x6064, 0x607A, 0x6067, 0x607B, 0x607D, 0x2002:5, 0x2002:7 |
 | Velocity     | micro-revolutions per second  | 0x606C, 0x60FF, 0x6080, 0x2002:6                     |
 | Acceleration | micro-revolutions per second squared | 0x6083, 0x6084, 0x6085                        |
 
@@ -47,6 +47,13 @@ revolutions before the counter wraps.
 ```{note}
 All of these are **output shaft** quantities. The gear ratio in 0x6091 is applied by the drive, so
 you never convert for the gearbox yourself.
+```
+
+```{note}
+The drive stores position, velocity and acceleration internally as IEEE-754 single precision
+floats, not integers. A value written and then read back may differ slightly from the original,
+as single precision cannot represent every INT32 value exactly. The difference grows with the
+magnitude of the value, so do not compare read-back values for exact equality.
 ```
 
 ## Torque and current
@@ -84,7 +91,7 @@ with code 0x08000020, *data cannot be transferred or stored to the application*.
 | 0x2000:5 | Torque Bandwidth           | Hz                                     |
 | 0x2000:7 | Motor Shutdown Temperature | degrees Celsius                        |
 | 0x2000:9 | Motor Torque Constant      | Nm/A, IEEE-754 single precision        |
-| 0x2000:A | Motor KV Rating            | RPM/V, IEEE-754 single precision       |
+| 0x2000:A | Motor KV Rating            | RPM/V, unsigned 16-bit integer         |
 | 0x2003:2 | Torque Sensor Value        | Nm, IEEE-754 single precision          |
 | 0x1017   | Producer Heartbeat Time    | ms                                     |
 | 0x6091:1 | Motor Revolutions          | dimensionless                          |
