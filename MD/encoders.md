@@ -177,7 +177,7 @@ How to add an encoder to the driver setup:
 
 - (if applicable) Calibrate the output encoder using `candletool md calibration -e aux` command
 
-- Test the encoders using `candletool test encoder` command.
+- Test the encoders using `candletool md test encoder main` (and `candletool md test encoder aux`) command.
 
 - Use the `candletool md info` command to make sure there are no errors and the test results (min,
   max and stddev errors) are within your expectations.

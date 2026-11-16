@@ -10,7 +10,7 @@ MD drivers feature an Communication Watchdog Timer. This timer will shut down th
 no FDCAN frame has been received in a specified time. This is to protect the drive and its
 surroundings in an event of loss of communications, for example by physical damage to the wiring. By
 default, the watchdog is set to 200ms. This time can be set to any value in the range of 1 to 2000ms
-using `candletool md config can` command. When the watchdog is set to 0, it will disable the timer,
+using `candletool md can --id <id> --new_timeout <ms> --save` command. When the watchdog is set to 0, it will disable the timer,
 however, this can lead to dangerous situations, and it is not a recommended way of operating MD.
 
 ```{warning}

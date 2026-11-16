@@ -25,11 +25,9 @@ Supported Drive Modes 0x6502 reads 0x00000185, which advertises Profile Position
 Cyclic Synchronous Position and Cyclic Synchronous Velocity. The two manufacturer specific modes,
 Impedance and Service, are negative values and are not represented in that bit field.
 
-```{warning}
-Writing a value that is not in the table above does not produce an SDO abort. The drive accepts the
-write and falls back to Idle, which stops the motor. Always read 0x6061 back to confirm the mode you
-asked for is the mode you got.
-```
+Writing a value that is not in the table above aborts with 0x06090030, value range exceeded, and
+leaves the current mode unchanged. Read 0x6061 back to confirm the mode you asked for is the mode you
+got.
 
 ```{note}
 Reading 0x6060 returns the mode the drive is currently running, not the last value written. It gives
@@ -44,25 +42,46 @@ and feeds the result to the velocity controller.
 | Object | Role                               |
 | ------ | ---------------------------------- |
 | 0x607A | Destination                        |
-| 0x60FF | Cruise velocity of the profile     |
+| 0x60FF or 0x6081 | Cruise velocity of the profile |
 | 0x6083 | Acceleration                       |
 | 0x6084 | Deceleration                       |
 | 0x2011 | Velocity PID gains                 |
 
 ```{important}
-The cruise velocity comes from Target Velocity 0x60FF, not from Profile Velocity 0x6081. There is no
-0x6081 in this object dictionary. A profile position move with 0x60FF left at zero will not move.
+Profile Velocity 0x6081 and Target Velocity 0x60FF share the same internal register. Writing either
+object changes both, and 0x6081 reads back the magnitude of 0x60FF. Profile Position uses that
+magnitude as its cruise velocity, so a move with the shared value left at zero will not move. In
+Profile Velocity mode, writing 0x6081 changes the target velocity as well.
 ```
 
-Completion is reported through bit 15 of Quick Status 0x2022:1, using Position Window 0x6067 as the
-tolerance. The statusword does not carry a target reached bit.
+In Operation enabled, a new Target Position is taken over only on a set-point handshake through the
+controlword:
+
+1. Write the destination to 0x607A. The drive stores it but keeps moving to the previous target.
+2. Set controlword bit 4, new set-point, for example 0x001F. On the rising edge the drive takes the
+   stored 0x607A and sets statusword bit 12, set-point acknowledge.
+3. Clear controlword bit 4, for example 0x000F. The drive clears statusword bit 12 and is ready for
+   the next set-point.
+
+With controlword bit 6 set together with bit 4, for example 0x005F, 0x607A is relative and is added to
+the current target. A new set-point always acts at once, as if bit 5, change set immediately, were
+set; set-points are not buffered. Outside Operation enabled, a write to 0x607A is applied directly,
+so the master can preset the position held on enable.
+
+Completion is reported through statusword bit 10, target reached, and bit 15 of Quick Status 0x2022:1,
+both using Position Window 0x6067 as the tolerance.
 
 ## Profile Velocity, mode 3
 
 The trajectory generator ramps from the current velocity to Target Velocity 0x60FF, respecting
 0x6083 and 0x6084, and feeds the velocity controller. Position targets are ignored.
 
-Completion is reported through bit 15 of Quick Status 0x2022:1, using Velocity Window 0x606D.
+Completion is reported through statusword bit 10, target reached, and bit 15 of Quick Status 0x2022:1,
+both using Velocity Window 0x606D. Statusword bit 12, speed zero, is set while the speed is within
+0x606D of zero.
+
+Controlword bit 8, halt, decelerates the drive to standstill using 0x6084. Clearing it resumes the
+previous target velocity. A target velocity written while halted is applied on release.
 
 ## Cyclic Synchronous Position, mode 8
 

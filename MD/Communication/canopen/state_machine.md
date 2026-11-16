@@ -10,29 +10,41 @@ CiA 402 state machine decides whether it moves.
 
 ## States
 
-| State                 | Statusword | Power stage | Setpoints followed |
-| --------------------- | ---------- | ----------- | ------------------ |
-| Not ready to switch on | 0x0000    | off         | no                 |
-| Switch on disabled    | 0x0040     | off         | no                 |
-| Ready to switch on    | 0x0021     | off         | no                 |
-| Switched on           | 0x0023     | on          | no                 |
-| Operation enabled     | 0x0027     | on          | yes                |
-| Quick stop active     | 0x0007     | on          | no, decelerating   |
-| Fault reaction active | 0x000F     | stopping    | no                 |
-| Fault                 | 0x0008     | off         | no                 |
+| State                 | Statusword & 0x006F | Typical raw value | Power stage | Setpoints followed |
+| --------------------- | ------------------- | ----------------- | ----------- | ------------------ |
+| Not ready to switch on | 0x0000             | 0x0200            | off         | no                 |
+| Switch on disabled    | 0x0040              | 0x0240            | off         | no                 |
+| Ready to switch on    | 0x0021              | 0x0221            | off         | no                 |
+| Switched on           | 0x0023              | 0x0223            | on          | no                 |
+| Operation enabled     | 0x0027              | 0x0237 or higher  | on          | yes                |
+| Quick stop active     | 0x0007              | 0x0217            | on          | no, decelerating   |
+| Fault reaction active | 0x000F              | 0x020F            | stopping    | no                 |
+| Fault                 | 0x0008              | 0x0208            | off         | no                 |
 
 ```{important}
-The statusword carries the state bits and nothing else. Voltage enabled, remote, target reached and
-internal limit active are not implemented, so the values above are exact and can be compared
-directly rather than masked.
-
-For target reached, use bit 15 of Quick Status 0x2022:1, which is mapped into TPDO1 by default. It
-is set when a Profile Position or Position PID move has arrived inside the Position Window 0x6067,
-or when a Profile Velocity or Velocity PID move has settled inside the Velocity Window 0x606D.
+The statusword carries more than the state bits, so always mask it with 0x006F before comparing it to
+a state. Comparing the raw value against 0x0027 never matches.
 ```
 
+## Statusword bits
+
+| Bit | Name                | Meaning                                                              |
+| --- | ------------------- | -------------------------------------------------------------------- |
+| 0-3, 5, 6 | State         | See the table above                                                  |
+| 4   | Voltage enabled     | Set in Operation enabled and Quick stop active, while the power stage drives the motor |
+| 9   | Remote              | Always set, the controlword is always processed                      |
+| 10  | Target reached      | Profile Position: within Position Window 0x6067 of the target. Profile Velocity: within Velocity Window 0x606D of the target |
+| 11  | Internal limit active | A velocity, torque or, in position modes, position target is being clipped by a limit |
+| 12  | Mode specific       | Profile Position: set-point acknowledge. Profile Velocity: speed zero, the speed is within 0x606D of zero. Cyclic Synchronous Position and Velocity: drive follows the command |
+
+Bits 10, 11 and 12 are only set in Operation enabled. Bits 7, 8, 13, 14 and 15 are always 0.
+
+Bit 15 of Quick Status 0x2022:1 also reports target reached, using the same windows, and is mapped
+into TPDO1 by default.
+
 Not ready to switch on is transient. The drive leaves it for Switch on disabled on its own as soon
-as the state machine runs, so in practice the first state a master observes is 0x0040.
+as the state machine runs, so in practice the first state a master observes is Switch on disabled,
+raw value 0x0240.
 
 ## Controlword commands
 
@@ -74,11 +86,12 @@ outside the mask are ignored.
 
 From a freshly powered drive the sequence is two writes to 0x6040:
 
-1. Write 0x0006. The drive moves to Ready to switch on, statusword 0x0021.
-2. Write 0x000F. The drive moves through Switched on to Operation enabled, statusword 0x0027.
+1. Write 0x0006. The drive moves to Ready to switch on, statusword & 0x006F = 0x0021.
+2. Write 0x000F. The drive moves through Switched on to Operation enabled, statusword & 0x006F =
+   0x0027.
 
 Writing 0x000F on its own does nothing, because Switch on disabled only responds to Shutdown. Always
-read the statusword back and confirm 0x0027 before sending setpoints.
+read the statusword back, mask it with 0x006F and confirm 0x0027 before sending setpoints.
 
 ```{note}
 Select the [mode of operation](canopen_modes) and write a sensible setpoint before enabling. The

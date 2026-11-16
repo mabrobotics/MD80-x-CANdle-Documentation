@@ -11,7 +11,7 @@ sit in NMT Operational with its power stage switched off, and the two never inte
 | --------------- | --- | --- | --------- | ---- |
 | Pre-operational | yes | no  | yes       | yes  |
 | Operational     | yes | yes | yes       | yes  |
-| Stopped         | no  | no  | yes       | yes  |
+| Stopped         | no  | no  | yes       | no   |
 
 In Stopped the drive ignores SDO requests entirely. It does not answer with an abort, so a master
 will see its own request time out.
@@ -69,13 +69,14 @@ through 0x1016:1 Consumer Heartbeat Time, a 32-bit value laid out as follows.
 | 24-31 | Reserved, write 0            |
 
 Monitoring is active only when both the node ID and the timeout are non-zero. Writing 0 to either
-field disables it.
+field disables it. After a write to 0x1016 or a communication reset, monitoring starts with the first
+heartbeat received from the monitored node, so a master that is already silent is not detected.
 
 When the monitored node goes quiet for longer than the timeout, the drive does all three of the
 following:
 
 1. Sets the communication bit in the [error register](canopen_diagnostics) 0x1001.
-2. Transmits an emergency message.
+2. Transmits an emergency message with error code 0x8130.
 3. Commands its own quick stop, decelerating at the rate in 0x6085.
 
 This is the recommended way to make a drive stop when the master crashes or a cable falls out. Point
@@ -83,8 +84,11 @@ it at the node ID of your master and set the timeout to a few times the master's
 period.
 
 ```{note}
-The reaction fires once. After the communication error bit is set, further timeouts produce no new
-emergency message until the error is cleared with 0x2023:10.
+The reaction fires once. Monitoring re-arms, and the communication error clears, when the next
+heartbeat from the monitored node arrives. Writing 0x1016 or a communication reset clears it too.
+Once no other error is active, the drive sends an emergency message with code 0x0000, error reset.
+The drive stays in Quick stop active until the master writes Disable voltage, see
+[State Machine](canopen_state_machine).
 ```
 
 ## SYNC

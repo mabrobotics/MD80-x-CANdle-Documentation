@@ -98,13 +98,13 @@ When the cabeling is connected turn the power on. The green LED on top of the bo
 ```{note}
 Red LED on the bottom indicates an error in board operation and is normal for unconfigured drives. You can use `candletool md --id 'id' info` for more details on the errors present.
 
-When both red and green LEDs flash rapidly it means the board is in its bootloader phase. This is normal for the first few seconds of operation but if it does not stop it means that the firmware is corrupted and needs to be recovered via `candletool md --id 'id' update latest -r` where `-r` is a recovery flag.
+When both red and green LEDs flash rapidly it means the board is in its bootloader phase. This is normal for the first few seconds of operation but if it does not stop it means that the firmware is corrupted and needs to be recovered via `candletool md update latest -r --id 9` (`candletool mdco update latest -r --id 9` for CANopen firmware), where `-r` is a recovery flag and 9 is the bootloader ID, not the drive ID. See the [FAQ](faq-update-fails) for details.
 ```
 
 When the power is on make sure that the CAN line is properly terminated. CANdle class devices have a switch that enables/disables internal 120 Ohm termination resistor. On the other end of CAN chain there should either be a resistor plugin provided by MAB or PDS control board CAN input which has a CAN termination builtin.
 
 ```{note}
-The rest of this section will not work for the CANopen protocol. Currently only FDCAN MAB protocol is supported by the CANdle devices. The drives should be configured in accordance of CiA 402 specification which is not provided by MAB. The .eds files can be found in the [Downloads](downloads) section.
+The rest of this section applies to the MD protocol (FDCAN). For CANopen drives, CANdle devices also support basic CANopen diagnostics and configuration through `candletool mdco` (e.g. `candletool mdco discover`, `candletool mdco info`) and the [MDCO module](mdco) of CANdle-SDK. See the [CANopen](md_canopen) section for details. The .eds files can be found in the [Downloads](downloads) section.
 ```
 
 To make sure that the installation process went correctly please try running

@@ -33,7 +33,7 @@ compatible. Both are documented here.
 
 | Section                              | Firmware | Object dictionary | Status                          |
 | ------------------------------------ | -------- | ----------------- | ------------------------------- |
-| [CANopen](md_canopen)                | current  | revision 1.2      | actively developed              |
+| [CANopen](md_canopen)                | 3.0.2+   | revision 1.3      | actively developed              |
 | [CANopen \[LEGACY\]](md_canopen_co25) | 2.5.x   | revision 1.1      | supported, no longer updated    |
 
 To tell which firmware a drive is running, read Firmware Version 0x2021:2 over SDO. The current
