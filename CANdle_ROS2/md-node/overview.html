@@ -474,6 +474,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-services">MD Node Services</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-mode-service-details">Set Mode Service Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-mds-service-details">Add MDs Service Details</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-topics">MD Node Topics</a><ul class="nav section-nav flex-column">
@@ -481,6 +482,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#published-topics">Published Topics</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-loop">Control Loop</a></li>
 </ul>
             </nav>
         </div>
@@ -535,11 +537,17 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
 <h3>Set Mode Service Details<a class="headerlink" href="#set-mode-service-details" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">/md/set_mode</span></code> service accepts requests of type <code class="docutils literal notranslate"><span class="pre">candle_ros2/SetMode</span></code>, field <code class="docutils literal notranslate"><span class="pre">mode</span></code> is a string that can take one of the following values:</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;IDLE&quot;</span></code></p></li>
 <li><p><a class="reference internal" href="../../MD/motion.html#impedance-pd"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;IMPEDANCE&quot;</span></code></span></a></p></li>
 <li><p><a class="reference internal" href="../../MD/motion.html#position-pid"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;POSITION_PID&quot;</span></code></span></a></p></li>
 <li><p><a class="reference internal" href="../../MD/motion.html#velocity-pid"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;VELOCITY_PID&quot;</span></code></span></a></p></li>
 <li><p><a class="reference internal" href="../../MD/motion.html#impedance-pd"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">&quot;RAW_TORQUE&quot;</span></code></span></a></p></li>
 </ul>
+<p>An unrecognized mode sets the drive to <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> and returns <code class="docutils literal notranslate"><span class="pre">false</span></code> in the <code class="docutils literal notranslate"><span class="pre">success</span></code> field for that drive.</p>
+</section>
+<section id="add-mds-service-details">
+<h3>Add MDs Service Details<a class="headerlink" href="#add-mds-service-details" title="Link to this heading">#</a></h3>
+<p>Drives that are already registered are skipped by <code class="docutils literal notranslate"><span class="pre">/md/add_mds</span></code> and reported with <code class="docutils literal notranslate"><span class="pre">false</span></code> in the <code class="docutils literal notranslate"><span class="pre">success</span></code> field.</p>
 </section>
 </section>
 <section id="md-node-topics">
@@ -592,6 +600,14 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
 </table>
 </div>
 </section>
+</section>
+<section id="control-loop">
+<h2>Control Loop<a class="headerlink" href="#control-loop" title="Link to this heading">#</a></h2>
+<p>The node runs a single control loop at <strong>200 Hz</strong> that handles all bus communication with registered drives. In each cycle it:</p>
+<ol class="arabic simple">
+<li><p>Sends the latest pending <code class="docutils literal notranslate"><span class="pre">/md/motion_command</span></code> targets (position, velocity, torque) to each drive. If several commands arrive between cycles, only the most recent one is sent.</p></li>
+<li><p>Reads position, velocity and torque from each drive and publishes them on <code class="docutils literal notranslate"><span class="pre">/md/joint_states</span></code>. Drives that fail to respond are omitted from that cycle’s message.</p></li>
+</ol>
 </section>
 </section>
 
@@ -661,6 +677,7 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-services">MD Node Services</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-mode-service-details">Set Mode Service Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-mds-service-details">Add MDs Service Details</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#md-node-topics">MD Node Topics</a><ul class="nav section-nav flex-column">
@@ -668,6 +685,7 @@ For configuration, use <a class="reference internal" href="../../CANdle-SDK/CANd
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#published-topics">Published Topics</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-loop">Control Loop</a></li>
 </ul>
   </nav></div>
 

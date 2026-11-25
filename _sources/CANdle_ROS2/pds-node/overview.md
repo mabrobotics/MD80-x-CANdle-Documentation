@@ -16,9 +16,11 @@ The following services allow registering and managing PDS devices.
 | `/pds/reboot_pds`   | Reboots the specified PDS devices    | [`candle_ros2/Generic`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv)       |
 | `/pds/shutdown_pds` | Shuts down the specified PDS devices | [`candle_ros2/Generic`](https://github.com/mabrobotics/candle_ros2/blob/main/srv/Generic.srv)       |
 
+PDS devices that are already registered are skipped by `/pds/add_pds` and reported with `false` in the `success` field.
+
 ## PDS Module Topics and Services
 
-The node publishes telemetry data for each detected module.  
+The node publishes telemetry data for each detected module at **10 Hz**.  
 Topics follow the naming scheme:
 
 `/pds/id_<id>/<module>_<socket>`

@@ -521,10 +521,11 @@ For configuration details, refer to the official PDS documentation.</p>
 </tbody>
 </table>
 </div>
+<p>PDS devices that are already registered are skipped by <code class="docutils literal notranslate"><span class="pre">/pds/add_pds</span></code> and reported with <code class="docutils literal notranslate"><span class="pre">false</span></code> in the <code class="docutils literal notranslate"><span class="pre">success</span></code> field.</p>
 </section>
 <section id="pds-module-topics-and-services">
 <h2>PDS Module Topics and Services<a class="headerlink" href="#pds-module-topics-and-services" title="Link to this heading">#</a></h2>
-<p>The node publishes telemetry data for each detected module.<br />
+<p>The node publishes telemetry data for each detected module at <strong>10 Hz</strong>.<br />
 Topics follow the naming scheme:</p>
 <p><code class="docutils literal notranslate"><span class="pre">/pds/id_&lt;id&gt;/&lt;module&gt;_&lt;socket&gt;</span></code></p>
 <p>Each module additionally exposes <strong>enable/disable</strong> services:</p>

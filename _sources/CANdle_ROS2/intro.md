@@ -4,8 +4,15 @@
 
 The package has been tested with the following ROS 2 distributions:
 
-- **Humble**
-- **Jazzy**
+| Distribution | Version                                                                                      |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| **Lyrical**  | `main`                                                                                       |
+| **Jazzy**    | `main`                                                                                       |
+| **Humble**   | [`v2.1.2`](https://github.com/mabrobotics/candle_ros2/releases/tag/v2.1.2) (last supported)  |
+
+```{note}
+Later releases may still work on Humble, but they are not tested on it.
+```
 
 It is verified on Linux-based systems including **Ubuntu** and **Debian**.
 
