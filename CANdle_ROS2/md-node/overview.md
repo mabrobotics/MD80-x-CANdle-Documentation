@@ -19,10 +19,17 @@ The following services provide runtime control over MD drive controllers.
 ### Set Mode Service Details
 
 The `/md/set_mode` service accepts requests of type `candle_ros2/SetMode`, field `mode` is a string that can take one of the following values:
+- `"IDLE"`
 - [`"IMPEDANCE"`](impedance-pd)
 - [`"POSITION_PID"`](position-pid)
 - [`"VELOCITY_PID"`](velocity-pid)
 - [`"RAW_TORQUE"`](impedance-pd)
+
+An unrecognized mode sets the drive to `IDLE` and returns `false` in the `success` field for that drive.
+
+### Add MDs Service Details
+
+Drives that are already registered are skipped by `/md/add_mds` and reported with `false` in the `success` field.
 
 ## MD Node Topics
 
@@ -41,4 +48,9 @@ The `/md/set_mode` service accepts requests of type `candle_ros2/SetMode`, field
 | ------------------ | -------------------------------------- | ------------------------ |
 | `/md/joint_states` | Joint state feedback for all MD drives | `sensor_msgs/JointState` |
 
+## Control Loop
 
+The node runs a single control loop at **200 Hz** that handles all bus communication with registered drives. In each cycle it:
+
+1. Sends the latest pending `/md/motion_command` targets (position, velocity, torque) to each drive. If several commands arrive between cycles, only the most recent one is sent.
+2. Reads position, velocity and torque from each drive and publishes them on `/md/joint_states`. Drives that fail to respond are omitted from that cycle's message.
